@@ -1,8 +1,8 @@
 # Applied Math for Engineers
 
-These are notes on MATH 305 at UD by Toby Driscoll. All rights reserved.
+These are notes on MATH 351 at UD by Toby Driscoll. Copyrighted, all rights reserved.
 
-## Schedule for Spring 2021
+## Schedule for Fall 2021
 
 ### Linear Algebra
 

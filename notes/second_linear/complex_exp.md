@@ -5,12 +5,12 @@ jupytext:
   text_representation:
     extension: .md
     format_name: myst
-    format_version: '0.12'
-    jupytext_version: 1.5.1
+    format_version: 0.13
+    jupytext_version: 1.10.3
 kernelspec:
-  display_name: Matlab
-  language: matlab
-  name: matlab
+  display_name: Julia 1.6.1
+  language: julia
+  name: julia-1.6
 ---
 # Complex exponentials
 
