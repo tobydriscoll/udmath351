@@ -1,0 +1,63 @@
+format: jb-book
+root: frontmatter
+parts:
+- caption: Scalar ODEs
+  numbered: true
+  chapters:
+  - file: first_order/overview
+    sections:
+    - file: first_order/preview
+    - file: first_order/ivp
+    - file: first_order/separable
+    - file: first_order/linear
+    - file: first_order/homogeneous
+    - file: first_order/variation_parameters
+    - file: first_order/undetermined_coeffs
+    - file: first_order/modeling
+  - file: second_linear/overview
+    sections:
+    - file: second_linear/solution_structure
+    - file: second_linear/homogeneous
+    - file: second_linear/complex_exp
+    - file: second_linear/undetermined_coeffs
+    - file: second_linear/variation_parameters
+    - file: second_linear/oscillators
+- caption: Linear algebra
+  numbered: true
+  chapters:
+  - file: matrix/overview
+    sections:
+    - file: matrix/vectors_matrices
+    - file: matrix/linear_systems
+    - file: matrix/row_elimination
+    - file: matrix/RREF
+    - file: matrix/vector_algebra
+    - file: matrix/matrix_vector
+    - file: matrix/matrix_matrix
+    - file: matrix/identity_inverse
+    - file: matrix/singular
+    - file: matrix/subspaces
+  chapters:
+  - file: eigen/overview
+    sections:
+    - file: eigen/eigenvalues
+    - file: eigen/determinants
+    - file: eigen/diagonalization
+  chapters:
+  - file: basis/overview
+    sections:
+    - file: basis/span_independence
+    - file: basis/dimension
+    - file: basis/change
+- caption: Linear ODE systems
+  numbered: true
+  chapters:
+  - file: system/overview
+    sections:
+    - file: system/order_dimension
+    - file: system/structure
+    - file: system/homogeneous
+    - file: system/const_coeff
+    - file: system/phase_plane
+    - file: system/matrix_exp
+    - file: system/linearization

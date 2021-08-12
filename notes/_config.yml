@@ -1,0 +1,121 @@
+# Book settings
+title: Notes on ODEs and linear algebra
+author: Tobin A. Driscoll
+# logo: _static/butterfly128.png
+
+parse:
+  myst_enable_extensions:
+  - amsmath
+  - colon_fence
+  - deflist
+  - dollarmath
+  - html_image
+  - linkify
+  - replacements
+
+latex:
+  latex_documents:
+    targetname: notes351.tex
+
+kernelspec:
+  name: julia-1.6
+  display_name: Julia 1.6
+  language: julia
+  
+execute:
+  execute_notebooks: cache
+  timeout: 180
+
+html:
+  comments:
+    hypothesis: true
+
+sphinx:
+  config:
+    mathjax_config:
+      TeX:
+        Macros:
+          "real": ["\\mathbb{R}"]
+          "complex": ["\\mathbb{C}"]
+          "nat": ["\\mathbb{N}"]
+          "integer": ["\\mathbb{Z}"]
+          "rmn" : ["\\mathbb{R}^{#1 \\times #2}",2]
+          "cmn" : ["\\complex^{#1 \\times #2}",2]
+          "dd" : ["\\frac{d #1}{d #2}",2]
+          "pp" : ["\\frac{\\partial #1}{\\partial #2}",2]
+          "ddd" : ["\\frac{d^2 #1}{d #2^2}",2]
+          "norm" : ["\\| #1 \\|",1]
+          "twonorm" : ["\\| #1 \\|_2",1]
+          "onenorm" : ["\\| #1 \\|_1",1]
+          "infnorm" : ["\\| #1 \\|_\\infty",1]
+          "innerprod" : ["\\langle #1,#2 \\rangle",2]
+          "twovec" : ["\\begin{bmatrix} #1 \\\\ #2 \\end{bmatrix}",2]
+          "threevec" : ["\\begin{bmatrix} #1 \\\\ #2 \\\\ #3 \\end{bmatrix}",3]
+          "twomat" : ["\\begin{bmatrix} #1 & #2 \\\\ #3 & #4 \\end{bmatrix}",4]
+          "twodet" : ["\\begin{vmatrix} #1 & #2 \\\\ #3 & #4 \\end{vmatrix}",4]
+          "pr" : ["^{(#1)}",1]
+          "eye" : ["\\mathbf{e}_#1",1]
+          "meye" : ["\\mathbf{I}"]
+          "bff": ["\\mathbf{f}"]
+          "bfx": ["\\mathbf{x}"]
+          "bfy": ["\\mathbf{y}"]
+          "bfz": ["\\mathbf{z}"]
+          "bfu": ["\\mathbf{u}"]
+          "bfv": ["\\mathbf{v}"]
+          "bfa": ["\\mathbf{a}"]
+          "bfb": ["\\mathbf{b}"]
+          "bfe": ["\\mathbf{e}"]
+          "bfA": ["\\mathbf{A}"]
+          "bfB": ["\\mathbf{B}"]
+          "bfX": ["\\mathbf{X}"]
+          "bfV": ["\\mathbf{V}"]
+          "bfX": ["\\mathbf{X}"]
+          "opA": ["\\mathcal{A}"]
+          "lx": ["\\mathcal{L}"]
+          "bfalpha": ["\\mathbf{alpha}"]
+          "bfdelta": ["\\mathbf{delta}"]
+          "bfzero": ["\\boldsymbol{0}"]
+          "diag": ["\\operatorname{diag}"]
+          "sign": ["\\operatorname{sign}"]
+          "Re": ["\\operatorname{Re}"]
+          "Im": ["\\operatorname{Im}"]
+          "ee": ["\\times 10^"]
+      HTML-CSS:
+        # styles: "{overflow-y: visible;}"
+        availableFonts: []
+        preferredFont: null
+        # webFont: Gyre-Pagella
+        # webFont: Asana-Math
+        webFont: Gyre-Schola
+    proof_theorem_types:
+      "algorithm": "Algorithm"
+      "conjecture": "Conjecture"
+      "corollary": "Corollary"
+      "definition": "Definition"
+      "demo": "Demo"
+      "example": "Example"
+      "function": "Function"
+      "formula": "Formula"
+      "lemma": "Lemma"
+      "observation": "Observation"
+      "proof": "Proof"
+      "property": "Property"
+      "rule": "Rule"
+      "theorem": "Theorem"
+    proof_html_nonumbers:
+    - "observation"
+    - "proof"
+    - "rule"
+     
+  extra_extensions:
+  - sphinxcontrib.proof
+
+# Information about where the book exists on the web
+repository:
+  url                       : https://tobydriscoll.net/udmath351/  # Online location of your book
+#  book_path                 : unlinked/fnc  # Optional path to your book, relative to the repository root
+  branch                    : master  # Which branch of the repository should be used when creating links (optional)
+
+# launch_buttons:
+#   binderhub_url: "https://mybinder.org"  # The URL for your BinderHub (e.g., https://mybinder.org)
+#   thebelab: true
