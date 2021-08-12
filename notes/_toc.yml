@@ -37,13 +37,11 @@ parts:
     - file: matrix/identity_inverse
     - file: matrix/singular
     - file: matrix/subspaces
-  chapters:
   - file: eigen/overview
     sections:
     - file: eigen/eigenvalues
     - file: eigen/determinants
     - file: eigen/diagonalization
-  chapters:
   - file: basis/overview
     sections:
     - file: basis/span_independence

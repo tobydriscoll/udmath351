@@ -86,7 +86,7 @@ sphinx:
         preferredFont: null
         # webFont: Gyre-Pagella
         # webFont: Asana-Math
-        webFont: Gyre-Schola
+        webFont: Asana-Math
     proof_theorem_types:
       "algorithm": "Algorithm"
       "conjecture": "Conjecture"
