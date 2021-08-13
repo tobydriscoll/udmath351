@@ -5,12 +5,12 @@ jupytext:
   text_representation:
     extension: .md
     format_name: myst
-    format_version: '0.12'
-    jupytext_version: 1.5.0
+    format_version: 0.13
+    jupytext_version: 1.10.3
 kernelspec:
-  display_name: Matlab
-  language: matlab
-  name: matlab
+  display_name: Julia 1.6.1
+  language: julia
+  name: julia-1.6
 ---
 
 # Vectors and matrices
@@ -48,8 +48,11 @@ MATLAB stands for "matrix laboratory," and it's a natural place to compute with 
 To construct small vectors and matrices, put elements inside square brackets. Spaces separate columns, and semicolons separate rows.
 
 ```{code-cell}
-x = [ 1 2 3 4 ]
-y = [10; 20; 30]
+x = [1,2,-3,-4]
+y = [10, 20, 30]
+```
+
+```{code-cell}
 A = [ 1 2 3; -4 -5 -6; pi sqrt(2) exp(1) ]
 ```
 
@@ -67,7 +70,7 @@ All vectors are assumed to have a column shape.
 We can get the dimensions of a vector using `size`. 
 
 ```{code-cell}
-sizes = [ size(x); size(y); size(A) ]
+@show size(x), size(y), size(A);
 ```
 
 You can see from the above that we can concatenate vectors and matrices inside square brackets. Also:
@@ -79,17 +82,20 @@ MATLAB makes no distinction between a column vector in $\real^n$ and an $n\times
 To access individual elements in a vector or matrix, use parentheses. The `end` keyword always stands for the last element in its dimension.
 
 ```{code-cell}
-x_2 = x(2)
-A_31 = A(3,1)
-y_last = y(end)
+x_2 = x[2]
 ```
-
-The parenthetical syntax also works for assigning values within a vector or matrix.
 
 ```{code-cell}
-A(2,1) = 1i     % the imaginary unit
+A_31 = A[3,1]
 ```
 
-Note how complex numbers are automatically supported.
+```{code-cell}
+y_last = y[end]
+```
 
-<div style="max-width:608px"><div style="position:relative;padding-bottom:66.118421052632%"><iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/2358381/sp/235838100/embedIframeJs/uiconf_id/43030021/partner_id/2358381?iframeembed=true&playerId=kaltura_player&entry_id=1_oxt8jaok&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_71et1kf0" width="608" height="402" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="Kaltura Player" style="position:absolute;top:0;left:0;width:100%;height:100%"></iframe></div></div>
+The indexing syntax also works for assigning values within a vector or matrix.
+
+```{code-cell}
+A[2,1] = 0
+A
+```

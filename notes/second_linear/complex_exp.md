@@ -18,16 +18,8 @@ kernelspec:
 ---
 tags: [remove-cell]
 ---
-restoredefaultpath
-set(0,'defaultlinelinewidth',1)
-set(0,'defaultaxesfontsize',10)
-```
-
-```{code-cell}
----
-tags: [remove-cell]
----
-%plot -s 800,400 -r 160 -f png
+using Plots,LaTeXStrings,Printf
+default(linewidth=2,label="")
 ```
 
 For second-order equations we need to make sense of $e^{\lambda t}$ when $\lambda$ is complex. The key is one of the most famous equations in mathematics.
@@ -62,23 +54,17 @@ along with $u(0)=1$ and $v(0)=0$. It should not take you long to confirm that $u
 Euler's identity shows that imaginary exponents produce oscillation, rather than the growth/decay of real exponents.
 
 ```{code-cell}
-c = @(t) real(exp(1i*t));
-s = @(t) imag(exp(1i*t));
-fplot({c,s},[0,4*pi])
-xlabel('t'), ylabel('e^{it}')
-title('Complex exponential')
-legend('Re part','Im part')
+c = t -> real(exp(1im*t));
+s = t -> imag(exp(1im*t));
+plot([c s],0,4pi,label=["Re part" "Im part"],xlabel=L"t",ylabel=L"e^{it}")
+title!("Complex exponential")
 ```
 
 Alternatively, if we take $x$ and $y$ to be the real and imaginary parts of $z=e^{it}$, then they parametrically describe a unit circle in the complex plane.
 
 ```{code-cell}
-c = @(t) real(exp(1i*t));
-s = @(t) imag(exp(1i*t));
-fplot(c,s,[0,2*pi])
-axis equal, axis(1.05*[-1 1 -1 1])
-xlabel('Re z'), ylabel('Im z')
-title('Complex exponential = Unit circle')
+plot(c,s,0,2pi,aspect_ratio=1,xaxis=("Re z"),yaxis=("Im z"))
+title!("Complex exponential = Unit circle")
 ```
 
 ## Polar form
@@ -150,21 +136,15 @@ If $\text{Re} \lambda > 0$, the magnitude of the function grows exponentially. T
 ---
 tags: [hide-input]
 ---
-a = 0.02;  om = 0.75;
-t = linspace(0, 25, 500);
-f = exp((a+1i*om)*t);
+a = 0.02;  ω = 0.75;
+t = range(0, 25, length=500)
+f = @. exp((a+1im*ω)*t)
 
-plot3(t, real(f), imag(f))
-hold on
-plot3(t,real(f), 0*t-1.5)
-plot3(t, 0*t+2, imag(f))
-plot3(0*t+30,real(f),imag(f),'k')
-axis([0 30 -2  2 -2 2])
-title(sprintf('a = %.2f, \\omega = %.2f',a,om))
-grid on, xlabel('Time')
-ylabel('Re part')
-zlabel('Im part')
-set(gca,'dataaspect',[6,1,1])
+plot(t,real(f),imag(f),xlims=(0,30),ylims=(-2,2),zlims=(-2,2))
+plot!(t,real(f),0*t.-1.5)
+plot!(t,0*t.+2,imag(f))
+plot!(0*t.+30,real(f),imag(f),l=:black,xlabel="Time",ylabel="Re part",zlabel="Im part")
+title!(@sprintf("a = %.2f, ω = %.2f",a,ω))
 ```
 
 ### Neutral
@@ -176,20 +156,13 @@ When $\lambda$ is purely imaginary, the function values stay on the unit circle 
 tags: [hide-input]
 ---
 a = 0;  om = 1;
-t = linspace(0, 25, 500);
-f = exp((a+1i*om)*t);
+f = @. exp((a+1im*ω)*t)
 
-plot3(t, real(f), imag(f))
-hold on
-plot3(t,real(f), 0*t-1.5)
-plot3(t, 0*t+2, imag(f))
-plot3(0*t+30,real(f),imag(f),'k')
-axis([0 30 -2  2 -2 2])
-title(sprintf('a = 0, \\omega = %.1f',a,om))
-grid on, xlabel('Time')
-ylabel('Re part')
-zlabel('Im part')
-set(gca,'dataaspect',[6,1,1])
+plot(t,real(f),imag(f),xlims=(0,30),ylims=(-2,2),zlims=(-2,2))
+plot!(t,real(f),0*t.-1.5)
+plot!(t,0*t.+2,imag(f))
+plot!(0*t.+30,real(f),imag(f),l=:black,xlabel="Time",ylabel="Re part",zlabel="Im part")
+title!(@sprintf("a = %.2f, ω = %.2f",a,ω))
 ```
 
 ### Decaying
@@ -201,20 +174,13 @@ Finally, if $\text{Re} \lambda < 0$, the spiral is a decaying one. The real and 
 tags: [hide-input]
 ---
 a = -0.07;  om = 2.4;
-t = linspace(0, 25, 500);
-f = exp((a+1i*om)*t);
+f = @. exp((a+1im*ω)*t)
 
-plot3(t, real(f), imag(f))
-hold on
-plot3(t,real(f), 0*t-1.5)
-plot3(t, 0*t+2, imag(f))
-plot3(0*t+30,real(f),imag(f),'k')
-axis([0 30 -2 2 -2 2])
-title(sprintf('a = %.2f, \\omega = %.1f',a,om))
-grid on, xlabel('Time')
-ylabel('Re part')
-zlabel('Im part')
-set(gca,'dataaspect',[6,1,1])
+plot(t,real(f),imag(f),xlims=(0,30),ylims=(-2,2),zlims=(-2,2))
+plot!(t,real(f),0*t.-1.5)
+plot!(t,0*t.+2,imag(f))
+plot!(0*t.+30,real(f),imag(f),l=:black)
+title!(@sprintf("a = %.2f, ω = %.2f",a,ω),xlabel="Time",ylabel="Re part",zlabel="Im part")
 ```
 
 ## Homogeneous solutions
@@ -292,5 +258,3 @@ Hence the IVP solution is $2\cos(3t) - 4\sin(3t).$
 ::::
 
 Since complex exponentials are much less familiar to you than sin and cos, the real form might seem more appealing to you. Don't be so quick to jump back there. Not only is the complex form the point of view that unifies all the second-order linear problems we solve under the exponential umbrella, but in some cases it greatly simplifies expressions and algebra.
-
-<div style="max-width:608px"><div style="position:relative;padding-bottom:66.118421052632%"><iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/2358381/sp/235838100/embedIframeJs/uiconf_id/43030021/partner_id/2358381?iframeembed=true&playerId=kaltura_player&entry_id=1_k38u7wfb&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_3wvcsazj" width="608" height="402" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="Kaltura Player" style="position:absolute;top:0;left:0;width:100%;height:100%"></iframe></div></div>

@@ -18,16 +18,8 @@ kernelspec:
 ---
 tags: [remove-cell]
 ---
-restoredefaultpath
-set(0,'defaultlinelinewidth',1)
-set(0,'defaultaxesfontsize',10)
-```
-
-```{code-cell}
----
-tags: [remove-cell]
----
-%plot -s 800,400 -r 160 -f png
+using Plots,LaTeXStrings,Printf
+default(linewidth=2,label="")
 ```
 
 The homogeneous system $\mathbf{x}'=\mathbf{A}\mathbf{x}$ for a constant matrix $\mathbf{A}$ clearly has the constant function $\mathbf{x}(t)\equiv \boldsymbol{0}$ as a solution. We call this an {term}`equilibrium` or steady-state solution. (If $\mathbf{A}$ is singular, then there are other equilibrium points as well, but we are not interested in that peculiar case.)
@@ -81,27 +73,24 @@ When the eigenvalues are real and have the same sign, the steady state is called
 
 Here is a phase plane plot for $\mathbf{A}=\twomat{-4}{-1}{-2}{-5}$, which has eigenvalues $-3$ and $-6$. 
 
+<!-- 
 ```{code-cell}
 ---
 tags: [hide-input]
 ---
 
-A = [-4 -1; -2 -5];
-[V,D] = eig(A);
-lam = diag(D);
+A = [-4 -1; -2 -5]
+λ,V = eigen(A)
 
-clf
-plot(0,0,'r.','markersize',18)
-hold on
+scatter([0],[0],m=(5,:red))
 
-% plot directions
-[x1,x2] = meshgrid(-1:.2:1);
-v = A*[x1(:)';x2(:)'];
+x1 = x2 = collect(-1:0.2:1)
+v = A*[x1 x2]'
 sz = size(x1);
-quiver(x1,x2,reshape(v(1,:),sz),reshape(v(2,:),sz))
+#quiver(x1,x2,reshape(v[1,:],sz),reshape(v[2,:],sz))
 
-% plot eigenvectors
-plot(5*[-V(1,:);V(1,:)],5*[-V(2,:);V(2,:)],'k','linew',2)
+# plot eigenvectors
+plot!(5*[-V[1,:];V[1,:]],5*[-V[2,:];V[2,:]],'k','linew',2)
 
 % plot trajectories
 colr = get(gca,'colororder');
@@ -111,7 +100,7 @@ for theta = 2*pi*(0:23)/24
 		X = expm(t(j)*A);
 		x(:,j) = X*[ cos(theta); sin(theta) ];
 	end
-	plot(x(1,:),x(2,:),'linew',1.5,'color',colr(1,:))
+	plot(x[1,:],x[2,:],'linew',1.5,'color',colr[1,:])
 end
 
 axis([-1.1 1.1 -1.1 1.1]), axis square
@@ -119,6 +108,7 @@ title('stable node')
 xlabel('x_1')
 ylabel('x_2')		
 ```
+ -->
 
 The black lines show the directions of the eigenvectors. An initial state on one of those lines stays on it forever. Other initial conditions follow a path tending to become parallel to eigenvector $\mathbf{v}_1$, since the other component decays out more quickly. The plot for $-\mathbf{A}$ would just reverse all of the arrows and show an unstable steady state. 
 
@@ -128,6 +118,8 @@ When the eigenvalues are real and of different signs, the steady state is called
 {term}`saddle`. A saddle point is always unstable. The part of the solution along the negative eigenvector decays away, but the contribution from the positive eigenvector grows with time. 
 
 Here is a phase plane plot for $\mathbf{A}=\twomat{-2}{-3}{-6}{-5}$, which has eigenvalues $1$ and $-8$. 
+
+<!-- 
 
 ```{code-cell}
 ---
@@ -145,10 +137,10 @@ hold on
 [x1,x2] = meshgrid(-1:.2:1);
 v = A*[x1(:)';x2(:)'];
 sz = size(x1);
-quiver(x1,x2,reshape(v(1,:),sz),reshape(v(2,:),sz))
+quiver(x1,x2,reshape(v[1,:],sz),reshape(v[2,:],sz))
 
 % plot eigenvectors
-plot(5*[-V(1,:);V(1,:)],5*[-V(2,:);V(2,:)],'k','linew',2)
+plot(5*[-V[1,:];V[1,:]],5*[-V[2,:];V[2,:]],'k','linew',2)
 
 % plot trajectories
 colr = get(gca,'colororder');
@@ -158,7 +150,7 @@ for theta = 2*pi*(0:23)/24
 		X = expm(t(j)*A);
 		x(:,j) = X*[ cos(theta); sin(theta) ];
 	end
-	plot(x(1,:),x(2,:),'linew',1.5,'color',colr(1,:))
+	plot(x[1,:],x[2,:],'linew',1.5,'color',colr[1,:])
 end
 
 axis([-1.1 1.1 -1.1 1.1]), axis square
@@ -166,6 +158,7 @@ title('saddle')
 xlabel('x_1')
 ylabel('x_2')
 ```
+-->
 
 An initial condition exactly on the stable black line (eigenvector) will approach the origin, but anything else ends up shooting away more or less in the direction of the unstable eigenvector.  
 
@@ -175,6 +168,8 @@ An initial condition exactly on the stable black line (eigenvector) will approac
 When the eigenvalues are complex conjugates with nonzero real part, the steady state is called a {term}`spiral`. If the eigenvalues are $a \pm i b$, then all solutions contain $e^{at}e^{\pm i b t}$, or equivalently, $e^{at}\cos{b t}$ and $e^{at}\sin{b t}$. The real part causes growth and instability if $a> 0$, or decay and stability if $a < 0$. The imaginary part determines the angular speed of the spiral. 
 
 Here is a phase plane plot for $\mathbf{A}=\twomat{1}{-2}{4}{-3}$, which has eigenvalues $-1\pm 2i$. 
+
+<!-- 
 
 ```{code-cell}
 ---
@@ -192,7 +187,7 @@ hold on
 [x1,x2] = meshgrid(-1:.2:1);
 v = A*[x1(:)';x2(:)'];
 sz = size(x1);
-quiver(x1,x2,reshape(v(1,:),sz),reshape(v(2,:),sz))
+quiver(x1,x2,reshape(v[1,:],sz),reshape(v[2,:],sz))
 
 % plot trajectories
 colr = get(gca,'colororder');
@@ -202,7 +197,7 @@ for theta = 2*pi*(0:6)/7
 		X = expm(t(j)*A);
 		x(:,j) = X*[ cos(theta); sin(theta) ];
 	end
-	plot(x(1,:),x(2,:),'linew',1.5,'color',colr(1,:))
+	plot(x[1,:],x[2,:],'linew',1.5,'color',colr[1,:])
 end
 
 axis([-1.2 1.2 -1.2 1.2]), axis square
@@ -210,6 +205,7 @@ title('stable spiral')
 xlabel('x_1')
 ylabel('x_2')
 ```
+-->
 
 The eigenvectors are complex and don't show up on the plot; there are no purely linear trajectories as in the other cases.
 
@@ -219,6 +215,7 @@ The special case of imaginary eigenvalues, $\lambda=\pm i b$, is called a {term}
 
 Here is a phase plane plot for $\mathbf{A}=\twomat{0}{-1}{4}{0}$, which has eigenvalues $\pm 2i$. 
 
+<!-- 
 ```{code-cell}
 ---
 tags: [hide-input]
@@ -235,7 +232,7 @@ hold on
 [x1,x2] = meshgrid(-1:.2:1);
 v = A*[x1(:)';x2(:)'];
 sz = size(x1);
-quiver(x1,x2,reshape(v(1,:),sz),reshape(v(2,:),sz))
+quiver(x1,x2,reshape(v[1,:],sz),reshape(v[2,:],sz))
 
 % plot trajectories
 colr = get(gca,'colororder');
@@ -245,7 +242,7 @@ for r = 0.15:0.1:0.55
 		X = expm(t(j)*A);
 		x(:,j) = X*[r; 0];
 	end
-	plot(x(1,:),x(2,:),'linew',1.5,'color',colr(1,:))
+	plot(x[1,:],x[2,:],'linew',1.5,'color',colr[1,:])
 end
 
 axis([-1.2 1.2 -1.2 1.2]), axis square
@@ -253,7 +250,6 @@ title('center')
 xlabel('x_1')
 ylabel('x_2')
 ```
+-->
 
 A center is on a knife edge between asymptotically stable and unstable: small perturbations do not decay away, but they also can grow only by a bounded amount. This situation might be called *weakly stable*, *neutrally stable*, or simply {term}`stable` but not asymptotically stable.
-
-<div style="max-width:608px"><div style="position:relative;padding-bottom:66.118421052632%"><iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/2358381/sp/235838100/embedIframeJs/uiconf_id/43030021/partner_id/2358381?iframeembed=true&playerId=kaltura_player&entry_id=1_hb3kci29&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_e4bq6b9e" width="608" height="402" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="Kaltura Player" style="position:absolute;top:0;left:0;width:100%;height:100%"></iframe></div></div>

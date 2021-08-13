@@ -18,16 +18,8 @@ kernelspec:
 ---
 tags: [remove-cell]
 ---
-restoredefaultpath
-set(0,'defaultlinelinewidth',1)
-set(0,'defaultaxesfontsize',10)
-```
-
-```{code-cell}
----
-tags: [remove-cell]
----
-%plot -s 800,400 -r 160 -f png
+using Plots,LaTeXStrings,Printf
+default(linewidth=2,label="")
 ```
 
 Our standard form for oscillators is
@@ -192,22 +184,18 @@ g_\text{max} = g(\rho_\text{max}) = \frac{1}{2Z\omega_0^2\sqrt{1-Z^2}}.
 
 The gain remains finite for all $\rho$ when $Z>0$, but it becomes proportional to $1/Z$ as $Z\to 0$. The following graph shows the gain as a function of the damping $Z$ and forcing frequency $\omega$ when $\omega_0=1$. The white curve shows the path of pseudoresonance.
 
-```{code-cell}
+```{code-cell} 
 ---
 tags: [hide-input]
 ---
-A = @(omega,Z) 1./(-omega.^2 + 2i*Z.*omega + 1);
-log_g = @(omega,Z) log10(abs(A(omega,Z)));
-fsurf( log_g,[0 1.5 1e-3 1])
-set(gca,'ydir','rev')
-view(20,20)
-xlabel('driving frequency')
-ylabel('damping coefficient')
-zlabel('log_{10}(gain)')
-hold on
-Z = linspace(1e-3,1,300);
-rhomax = real(sqrt(1-2*Z.^2));
-plot3(rhomax,Z,1e-2+log_g(rhomax,Z),'w','linew',2)
+ω = range(0,1.5,length=90)
+ζ = range(1e-3,1,length=90)
+A = [ 1/(-ω^2 + 2im*z*ω + 1) for ω in ω, z in ζ ]
+log_g = @. log10(abs(A))
+contour(ω,ζ,log_g,yflip=true,xlabel="driving frequency",ylabel="damping coefficient",zlabel=L"log_{10}(g)")
+#ζ = range(1e-3,1,length=300)
+#rhomax = @. real( sqrt(1-2ζ^2) ) 
+#plot!(rhomax,ζ,1e-2+log_g(rhomax,Z),'w','linew',2)
 ```
 
 Here's a short video showing how the gain of an oscillator varies with the forcing frequency $\omega$. (I use the term "eigenvalues" to mean characteristic values here.) 
@@ -216,5 +204,3 @@ Here's a short video showing how the gain of an oscillator varies with the forci
 <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/2358381/sp/235838100/embedIframeJs/uiconf_id/43030021/partner_id/2358381?iframeembed=true&playerId=kaltura_player&entry_id=1_izrey0ty&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_s72ikzpz" width="400" height="285" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="Kaltura Player"></iframe>
 </div>
 
-
-<div style="max-width:608px"><div style="position:relative;padding-bottom:66.118421052632%"><iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/2358381/sp/235838100/embedIframeJs/uiconf_id/43030021/partner_id/2358381?iframeembed=true&playerId=kaltura_player&entry_id=1_gqgsjn37&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_3nv8hl6e" width="608" height="402" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="Kaltura Player" style="position:absolute;top:0;left:0;width:100%;height:100%"></iframe></div></div>

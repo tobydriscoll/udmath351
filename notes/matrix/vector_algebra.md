@@ -5,12 +5,12 @@ jupytext:
   text_representation:
     extension: .md
     format_name: myst
-    format_version: '0.12'
-    jupytext_version: 1.5.0
+    format_version: 0.13
+    jupytext_version: 1.10.3
 kernelspec:
-  display_name: Matlab
-  language: matlab
-  name: matlab
+  display_name: Julia 1.6.1
+  language: julia
+  name: julia-1.6
 ---
 
 # Vector algebra
@@ -116,39 +116,36 @@ In general, if $\bfx$ is an $m$-vector and $\bfy$ is an $n$-vector, then $\bfx\b
 If two vectors have the same size, then `+` and `-` work elementwise. 
 
 ```{code-cell}
-[1;2;3] + [9;8;7]
+[1,2,3] + [9,8,7]
 ```
 
 For column vectors of different sizes, these operations cause errors.
 
 ```{code-cell}
----
-tags: [raises-exception]
----
-[1;2;3;4] - [1;0;1]
+:tags: [raises-exception]
+
+[1,2,3,4] - [1,0,1]
 ```
 
 As a convenience, you can add or subtract a scalar to or from a vector, and the scalar will be used with each element.
 
 ```{code-cell}
-[1;2;3] - 1i
+[1,2,3] .- 1im
 ```
 
 The `*` operator does scalar multiplication.
 
 ```{code-cell}
--1*[4;3;2;1]
+-1*[4,3,2,1]
 ```
 
 So we can express the linear system in {eq}`linsys-lincomb` using a linear combination of column vectors:
 
 ```{code-cell}
-A = [1 -1 -1; 3 -2 0; 1 -2 -1]    % coefficient matrix
-b = [2;9;5]    % right-side vector
+A = [1 -1 -1; 3 -2 0; 1 -2 -1]    # coefficient matrix
+b = [2,9,5]    # right-side vector
 ```
 
 ```{code-cell}
-1*A(:,1) - 3*A(:,2) + 2*A(:,3)
+1*A[:,1] - 3*A[:,2] + 2*A[:,3]
 ```
-
-<div style="max-width:608px"><div style="position:relative;padding-bottom:66.118421052632%"><iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/2358381/sp/235838100/embedIframeJs/uiconf_id/43030021/partner_id/2358381?iframeembed=true&playerId=kaltura_player&entry_id=1_eey4ivjm&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_oygunv57" width="608" height="402" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="Kaltura Player" style="position:absolute;top:0;left:0;width:100%;height:100%"></iframe></div></div>

@@ -5,12 +5,12 @@ jupytext:
   text_representation:
     extension: .md
     format_name: myst
-    format_version: '0.12'
-    jupytext_version: 1.5.0
+    format_version: 0.13
+    jupytext_version: 1.10.3
 kernelspec:
-  display_name: Matlab
-  language: matlab
-  name: matlab
+  display_name: Julia 1.6.1
+  language: julia
+  name: julia-1.6
 ---
 
 # Eigenvalues
@@ -130,17 +130,24 @@ leading to the eigenspace basis $[-1/2;\,1]$ or equivalently, $\twovec{-1}{2}$.
 MATLAB computes eigenvalues (through an entirely different process) with the `eig` command. From the preceding example, for instance,
 
 ```{code-cell}
+using LinearAlgebra
 A = [ 1 1; 4 1 ];
-lambda = eig(A)
+λ = eigvals(A)
 ```
 
 If you want eigenvectors as well, use an alternate form for the output:
 
 ```{code-cell}
-[V,D] = eig(A)
+λ,V = eigen(A)
 ```
 
-In most cases, column `V(:,k)` is an eigenvector for the eigenvalue `D(k,k)`. (For eigenvalues of multiplicity greater than 1, the interpretation can be more complicated.) Keep in mind that any scalar multiple of an eigenvector is equally valid.
+In most cases, column `V[:,k]` is an eigenvector for the eigenvalue `λ[k]`. (For eigenvalues of multiplicity greater than 1, the interpretation can be more complicated.) 
+
+```{code-cell}
+A*V[:,1] - λ[1]*V[:,1]
+```
+
+Keep in mind that any scalar multiple of an eigenvector is equally valid.
 
 ## Eigenvectors for $2\times 2$
 

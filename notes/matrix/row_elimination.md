@@ -5,12 +5,12 @@ jupytext:
   text_representation:
     extension: .md
     format_name: myst
-    format_version: '0.12'
-    jupytext_version: 1.5.0
+    format_version: 0.13
+    jupytext_version: 1.10.3
 kernelspec:
-  display_name: Matlab
-  language: matlab
-  name: matlab
+  display_name: Julia 1.6.1
+  language: julia
+  name: julia-1.6
 ---
 
 # Row elimination
@@ -116,45 +116,52 @@ $$
 (Observe that when a variable is absent from an equation, its corresponding element in $\bfG$ is zero.) To ease the arithmetic, we do the elimination in MATLAB.
 
 ```{code-cell}
-G = [1 -1 -1 2; 3 -2 0 9; 1 -2 -1 5]
+G = float([1 -1 -1 2; 3 -2 0 9; 1 -2 -1 5])
 ```
 
-The first elimination step uses multiples of the first row to eliminate below it. Note that in MATLAB, `G(1,:)` refers to the entire first row of `G`, etc.
+The first elimination step uses multiples of the first row to eliminate below it. Note that in MATLAB, `G[1,:]` refers to the entire first row of `G`, etc.
 
 ```{code-cell}
-G(2,:) = G(2,:) - 3*G(1,:)
+G[2,:] = G[2,:] - 3*G[1,:]
+G
 ```
 
 ```{code-cell}
-G(3,:) = G(3,:) - 1*G(1,:)
+G[3,:] = G[3,:] - 1*G[1,:]
+G
 ```
 
 Next we use the second row to eliminate below it.
 
 ```{code-cell}
-G(3,:) = G(3,:) - (-1)*G(2,:)
+G[3,:] -= (-1)*G[2,:]
+G
 ```
 
 Having reached the last row, we turn around and use it to eliminate above it in column 3.
 
 ```{code-cell}
-G(2,:) = G(2,:) - 1*G(3,:)
+G[2,:] -= 1*G[3,:]
+G
 ```
 
 ```{code-cell}
-G(1,:) = G(1,:) - (-1/3)*G(3,:)
+G[1,:] -= (-1/3)*G[3,:]
+G
 ```
 
 We move up to the second row and eliminate above that in column 2.
 
 ```{code-cell}
-G(1,:) = G(1,:) - (-1)*G(2,:)
+G[1,:] -= (-1)*G[2,:]
+G
 ```
 
 Finally, to be super pedantic, we normalize the last row by its leading nonzero.
 
 ```{code-cell}
-G(3,:) = G(3,:)/G(3,3)
+G[3,:] = G[3,:]/G[3,3]
+G
 ```
 
 The result is the augmented matrix of the system
@@ -184,21 +191,24 @@ $$
 First, we use multiples of the first row to eliminate in the first column below it.
 
 ```{code-cell}
-G = [ 1 1 -1 4; 1 2 2 3; 2 1 -5 9];
-G(2,:) = G(2,:) - 1*G(1,:);
-G(3,:) = G(3,:) - 2*G(1,:)
+G = [ 1 1 -1 4; 1 2 2 3; 2 1 -5 9]
+G[2,:] = G[2,:] - 1*G[1,:]
+G[3,:] = G[3,:] - 2*G[1,:]
+G
 ```
 
 Now use a multiple of the second row to put a zero underneath it in column 2.
 
 ```{code-cell}
-G(3,:) = G(3,:) - (-1)*G(2,:)
+G[3,:] -= (-1)*G[2,:]
+G
 ```
 
 We have reached the last row, and it's time to turn around and eliminate upwards. But because the last row is entirely zero, it can't make changes to the rows above it. So we skip that and move up to the second row, eliminating upwards in the second column.
 
 ```{code-cell}
-G(1,:) = G(1,:) - 1*G(2,:)
+G[1,:] -= 1*G[2,:]
+G
 ```
 
 This is as simple as we can get things. The last row is telling us the astounding fact that $0=0$—i.e., nothing at all. The other two rows imply
@@ -217,5 +227,3 @@ x_3 &= s.
 \end{align*}
 
 is a solution for any value of $s$, and we have an infinite family of solutions.
-
-<div style="max-width:608px"><div style="position:relative;padding-bottom:66.118421052632%"><iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/2358381/sp/235838100/embedIframeJs/uiconf_id/43030021/partner_id/2358381?iframeembed=true&playerId=kaltura_player&entry_id=1_qd7d4t08&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_jt4kjh69" width="608" height="402" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="Kaltura Player" style="position:absolute;top:0;left:0;width:100%;height:100%"></iframe></div></div>

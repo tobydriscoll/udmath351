@@ -15,19 +15,9 @@ kernelspec:
 # Initial-value problems
 
 ```{code-cell}
----
-tags: [remove-cell]
----
-restoredefaultpath
-set(0,'defaultlinelinewidth',1)
-set(0,'defaultaxesfontsize',6)
-```
-
-```{code-cell}
----
-tags: [remove-cell]
----
-%plot -s 800,400 -r 160 -f png
+:tags: [remove-cell]
+using Plots,DifferentialEquations
+default(label="",linewidth=2,markersize=4)
 ```
 
 A consistent theme so far about first-order ODEs is that solutions are not unique. There is a general solution that describes a family of functions that provide all possible solutions. The manifestation of the nonuniqueness is an integration constant.
@@ -68,17 +58,15 @@ $$
 A graphical interpretation of the role of an initial condition is that the general solution is a family of curves in the $(t,x)$ plane, and the initial condition is a point that the particular solution of interest must pass through.
 
 ```{code-cell}
-a = 1.25;
-for C = [-1 -0.67 -0.33 0 0.33 0.67 1]
-    fplot(@(t) C*exp(a*t),[1,4])
-    hold on
+a = 1.25
+plt = plot(xaxis=("t"),yaxis=("x",(-60,60)))
+for C in (-3:3)/3
+    plot!(t -> C*exp(a*t),1,4)
 end
 
-plot(3,20,'k.','markersize',11)
-fplot(@(t) 20*exp(a*(t-3)),[1,4],'k','linew',1.5)
-ylim([-60 60])
-xlabel('t'), ylabel('x')
-title('Picking the solution with x(3)=20')
+scatter!([3],[20],m=(3,:black))
+plot!(t->20exp(a*(t-3)),1,4,l=(2.5,:black))
+title!("Picking the solution with x(3)=20")
 ```
 
 ## Numerical solutions
@@ -86,46 +74,34 @@ title('Picking the solution with x(3)=20')
 Because an initial-value problem has a unique solution, it's a suitable target for a numerical simulation. We will use the function `ode45` to provide such numerics in MATLAB. For example, here is constant growth subject to the initial condition $x(1)=3$.
 
 ```{code-cell}
-f = @(t,x) 2*x;
-t = linspace(1,5,300);
-[t,x] = ode45(f,t,3);
-clf
-plot(t,x)
-title('Constant growth rate')
-xlabel('t'), ylabel('x')
+f = (x,p,t) -> 2x
+ivp = ODEProblem(f,3.,(1.,5.))
+x = solve(ivp)
+plot(x,label="",xlabel="t",ylabel="x",title="Constant growth rate")
 ```
 
 Exponential growth or decay is best plotted on a log-linear scale, where the solution becomes a straight line.
 
 ```{code-cell}
-semilogy(t,x)
-title('Constant growth rate (log scale)')
-xlabel('t'), ylabel('x')
+plot(x,label="",xaxis="t",yaxis=("x",:log10),title="Constant growth rate (log scale)")
 ```
 
 Here's our example of variable growth. Note that we are not using the known exact solution, but just letting MATLAB create a numerical approximation by other means.
 
 ```{code-cell}
-f = @(t,x) 2*t*x;
-t = linspace(0,5,300);
-[t,x] = ode45(f,t,1);
-clf
-semilogy(t,x)
-title('Growing growth rate')
-xlabel('t'), ylabel('x')
+f = (x,p,t) -> 2t*x
+ivp = ODEProblem(f,1.,(0.,5.))
+x = solve(ivp)
+plot(x,label="",xlabel="t",yaxis=("x",:log10),title="Growing growth rate")
 ```
 
 Even on the log scale, the solution bends upward, showing superexponential growth. Finally, here is the nonlinear feedback problem.
 
 ```{code-cell}
-f = @(t,x) x^2;
-t = linspace(0,4,300);
-[t,x] = ode45(f,t,0.5);
-semilogy(t,x)
-title('Nonlinear growth')
-xlabel('t'), ylabel('x')
+f = (x,p,t) -> x^2
+ivp = ODEProblem(f,0.5,(0.,4.))
+x = solve(ivp)
+plot(x,label="",xlabel="t",yaxis=("x",:log10),title="Nonlinear growth")
 ```
 
 The warning issued here can mean that there is a bug in the code, but in this case, it's just MATLAB noticing the finite-time blowup. In fact, it gets the true blowup time rather accurately.
-
-<div style="max-width:608px"><div style="position:relative;padding-bottom:66.118421052632%"><iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/2358381/sp/235838100/embedIframeJs/uiconf_id/43030021/partner_id/2358381?iframeembed=true&playerId=kaltura_player&entry_id=1_q1aq8k0w&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_clcqkkfz" width="608" height="402" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="Kaltura Player" style="position:absolute;top:0;left:0;width:100%;height:100%"></iframe></div></div>
