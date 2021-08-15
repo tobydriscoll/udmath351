@@ -112,11 +112,11 @@ x(t) = \frac{1}{4\epsilon\hat{\omega}} \bigl[ 2 \sin(\epsilon t) \sin(\hat{\omeg
 = \frac{\sin(\epsilon t)}{2\epsilon \hat{\omega}} \sin(\hat{\omega} t).
 ```
 
-If $\epsilon$ is small, we can interpret this solution as an oscillation at the average frequency inside an envelope that oscillates at the much lower frequency $\epsilon$. This phenomenon is called {term}`beating` and is audible as a modulating change in volume when two instruments slightly out of tune play together. You can hear this phenomenon demonstrated in [this video](https://youtu.be/rmvDu6EY2lE?t=10), among many others.
+If $\epsilon$ is small, we can interpret this solution as an oscillation at the average frequency inside an envelope that oscillates at the much lower frequency $\epsilon$. This phenomenon is called **beating** and is audible as a modulating change in volume when two instruments slightly out of tune play together. You can hear this phenomenon demonstrated in [this video](https://youtu.be/rmvDu6EY2lE?t=10), among many others.
 
 ### Resonance
 
-{numref}`Formula {number}<formula-secondlin-nonresonant>` cannot account for the case $\omega=\omega_0$. This situation is known as {term}`resonance`. It's an idealization of pushing someone on a swing at *exactly* the right moment in each cycle.
+{numref}`Formula {number}<formula-secondlin-nonresonant>` cannot account for the case $\omega=\omega_0$. This situation is known as **resonance**. It's an idealization of pushing someone on a swing at *exactly* the right moment in each cycle.
 
 We can obtain the resonant solution by taking the limit $\epsilon\to 0$ in {eq}`secondlin-beats`. (Alternatively, we can start from scratch and use an enhanced form of the method of undetermined coefficients.) Since $\sin(\theta)/\theta \to 1$, we get the following.
 
@@ -146,7 +146,7 @@ $$
 A = \frac{1}{\omega_0^2} \cdot \frac{1}{1-\rho^2 + 2i\rho Z}.
 $$
 
-Taking the modulus of $A$ gives a quantity called the {term}`gain`,
+Taking the modulus of $A$ gives a quantity called the **gain**,
 
 $$
 g(\rho) = \frac{1}{\rule{0pt}{1em} \omega_0^2 \sqrt{\rule{0pt}{0.8em}(1-\rho^2)^2 + 4\rho^2 Z^2 } }.
@@ -173,7 +173,7 @@ A little calculus shows that as a function of $\rho$, the gain is maximized at
 \end{cases}
 ```
 
-When $0 < Z^2 < 1/2$, this value satisfies $0 < \rho_\text{max}<1$, i.e., the gain is maximized at a nonzero forcing frequency smaller than the natural frequency. We can consider this to be a {term}`pseudoresonance`.[^pseudo] The peak value of the gain at pseudoresonance is found to be
+When $0 < Z^2 < 1/2$, this value satisfies $0 < \rho_\text{max}<1$, i.e., the gain is maximized at a nonzero forcing frequency smaller than the natural frequency. We can consider this to be a **pseudoresonance**.[^pseudo] The peak value of the gain at pseudoresonance is found to be
 
 [^pseudo]: Since pure resonance cannot be observed in real physical systems, one usually refers to pseudoresonance as simply resonance in practice.
 

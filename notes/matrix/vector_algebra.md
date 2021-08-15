@@ -17,18 +17,16 @@ kernelspec:
 
 Vectors support two basic operations. The first is addition. Two vectors of the same size can be added together elementwise. (The same is true for subtraction.) If the vectors have different sizes, the operation is not defined.
 
-::::{admonition} Example
-:class: tip
+::::{proof:example}
 If $\bfx=[1;\: 2;\: 3]$ and $\bfy=[-2;\: 2;\: 0]$, then 
 ```{math}
 \bfx + \bfy = \begin{bmatrix} -1\\4\\3 \end{bmatrix}.
 ```
 ::::
 
-Things get a little more interesting with multiplication. We begin with {term}`scalar multiplication`, which is between a number and a vector. Each element is multiplied by the number. In this context we call a number a {term}`scalar`, since it scales all the elements equally.
+Things get a little more interesting with multiplication. We begin with **scalar multiplication`, which is between a number and a vector. Each element is multiplied by the number. In this context we call a number a {term}`scalar**, since it scales all the elements equally.
 
-::::{admonition} Example
-:class: tip
+::::{proof:example}
 If $\bfx=[1;\: 2;\: 3]$, then
 ```{math}
 3\bfx = \begin{bmatrix} 3\\6\\9 \end{bmatrix}.
@@ -42,7 +40,7 @@ Vector addition and scalar multiplication combine to give an operation we will u
 (definition-linalg-linear-combination)=
 
 ````{proof:definition} Linear combination
-Given scalars $c_1,\ldots,c_n$ and the same number of vectors $\bfx_1,\ldots,\bfx_n$, all in $\real^m$ or $\complex^m$, a {term}`linear combination` of them is
+Given scalars $c_1,\ldots,c_n$ and the same number of vectors $\bfx_1,\ldots,\bfx_n$, all in $\real^m$ or $\complex^m$, a **linear combination** of them is
 ```{math}
 c_1 \bfx_1 + c_2 \bfx_2 + \cdots c_n \bfx_n,
 ```
@@ -88,7 +86,7 @@ where we gave names to the columns. It's not hard to find the solution $\bfx=[1;
 
 <!-- ## Vector multiplication
 
-There are two kinds of multiplication between vectors. One is the {term}`inner product`, which is defined only for vectors of the same size. In the case of $\real^4$, for example,
+There are two kinds of multiplication between vectors. One is the **inner product**, which is defined only for vectors of the same size. In the case of $\real^4$, for example,
 
 ```{math}
 \bfx^T \bfy = x_1 y_1 + x_2 y_2 + x_3 y_3 + x_4y_4.
@@ -100,7 +98,7 @@ The ${}^T$ superscript means **transpose**, which converts matrix and vector row
 
 The result is a scalar (i.e., number). This is the same as the dot product of vector calculus in two or three dimensions.
 
-The other method of vector multiplication is *not* the cross product, however. It is the {term}`outer product`, which is defined for vectors of any sizes. It is easiest to demonstrate for small dimensions. If $\bfx\in\real^3$ and $\bfy\in\real^4$, then
+The other method of vector multiplication is *not* the cross product, however. It is the **outer product**, which is defined for vectors of any sizes. It is easiest to demonstrate for small dimensions. If $\bfx\in\real^3$ and $\bfy\in\real^4$, then
 
 $$
 \bfx\bfy^T = \begin{bmatrix}  x_1 y_1 & x_1y_2 & x_1 y_3 & x_1y_4 \\

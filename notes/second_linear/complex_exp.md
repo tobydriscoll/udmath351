@@ -82,10 +82,9 @@ where $|z|$ is the modulus (distance from origin in the plane). Since $\frac{z}{
 z = |z|\, e^{i\theta}.
 ```
 
-We call {eq}`secondlin-polar` the {term}`polar form` of a complex number, because it expresses $z$ as a distance from zero and an angle from the positive Re axis. Just as with any point in the plane, we can express a complex number either in Cartesian form using Re and Im parts, or in polar form using modulus and Euler's identity.
+We call {eq}`secondlin-polar` the **polar form** of a complex number, because it expresses $z$ as a distance from zero and an angle from the positive Re axis. Just as with any point in the plane, we can express a complex number either in Cartesian form using Re and Im parts, or in polar form using modulus and Euler's identity.
 
-::::{admonition} Example
-:class: tip
+::::{proof:example}
 Suppose $r$ is a positive real number. Then $-r$ lies at a distance $r$ from the origin along the negative real axis. Hence
 
 $$
@@ -101,8 +100,7 @@ $$
 Using complex numbers, then, we can take the log of a negative number. You will find that this is the case in MATLAB.
 ::::
 
-::::{admonition} Example
-:class: tip
+::::{proof:example}
 What's the square root of $i$?
 
 :::{dropdown} Solution
@@ -187,8 +185,7 @@ title!(@sprintf("a = %.2f, ω = %.2f",a,ω),xlabel="Time",ylabel="Re part",zlabe
 
 Now we can finish the story of computing solutions to homogeneous ODEs.
 
-::::{admonition} Example
-:class: tip
+::::{proof:example}
 Solve the IVP $x''+9x=0$, $x(0)=2$, $x'(0)=-12$.
 
 :::{dropdown} Solution

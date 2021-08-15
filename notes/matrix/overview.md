@@ -5,7 +5,7 @@ Linear algebra provides a convenient and general way to pose and analyze problem
 (definition-linear)=
 
 ````{proof:definition} Linear function
-A function $L$ on domain $D$ is {term}`linear` if it satisfies both of these rules:
+A function $L$ on domain $D$ is **linear** if it satisfies both of these rules:
 ```{math}
 L(cx) = c \cdot L(x) \quad \text{for all numbers $c$ and $x\in D$,}
 ```

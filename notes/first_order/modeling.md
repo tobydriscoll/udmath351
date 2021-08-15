@@ -40,14 +40,13 @@ To belabor the point, positive $a$ represents growth and negative $a$ leads to d
 
 The units of $dx/dt$ are those of $x$ divided by those of $t$. Let's write these as $X/T$. Added terms all need to have the same units, so both $f(t)$ and $a(t)x$ have those units as well. Consequently $a$ has units $1/T$, and $1/a$ has units of time.
 
-- When $a < 0$, the time $\tau=-1/a$ is the {term}`relaxation time` or *characteristic time*. If there is no forcing, then $x(\tau)= e^{-1} x(0) \approx 0.37 x(0)$.
-- In radioactivity it's common to use $t_h=-\ln(2)/a$, which is the {term}`half-life`. That's because $\exp(at_h)=1/2$, so half of the radioactive isotope is depleted in that much time.
-- Similarly, in population or another growth situation with $a > 0$, the time $t_D=\ln(2)/a$ is the {term}`doubling time`. Note that populations and interest don't grow arithmetically over fixed time intervals, like in $1,2,3,4,\ldots$, but geometrically, like $1,2,4,8,\ldots$.
+- When $a < 0$, the time $\tau=-1/a$ is the **relaxation time** or *characteristic time*. If there is no forcing, then $x(\tau)= e^{-1} x(0) \approx 0.37 x(0)$.
+- In radioactivity it's common to use $t_h=-\ln(2)/a$, which is the **half-life**. That's because $\exp(at_h)=1/2$, so half of the radioactive isotope is depleted in that much time.
+- Similarly, in population or another growth situation with $a > 0$, the time $t_D=\ln(2)/a$ is the **doubling time**. Note that populations and interest don't grow arithmetically over fixed time intervals, like in $1,2,3,4,\ldots$, but geometrically, like $1,2,4,8,\ldots$.
 
 ## First-order pharmacokinetics
 
-::::{admonition} Example
-:class: tip
+::::{proof:example}
 According to *R. Newton et al., “Plasma and salivary pharmacokinetics of caffeine in man,” European Journal of Clinical Pharmacology 21 (1981), pp. 45–52*, caffeine in the bloodstream approximately satisfies first-order kinetics, though the half-life varies a great deal from one person to the next.
 
 Suppose $t_h=6$ hours. We can calculate $a=-\ln(2)/t_h\approx -0.116$ per hour, and then the predicted effects of one cup of coffee are $x(t) = e^{-0.116t}x(0)$. You can check that an equivalent, more direct expression is
@@ -59,8 +58,7 @@ x(t) = 2^{-t/t_h} x(0).
 
 Pharmaceutical companies need to track the concentration of certain drugs throughout the body in order to determine dosage, toxicity, etc.  This is usually done via a *compartment model*, in which the body is divided into compartments and a balance law is formulated in each compartment to account for the transport, ingestion, and elimination of the drug.
 
-::::{admonition} Example
-:class: tip
+::::{proof:example}
 
 Consider a simple pill of antihistamine taken by a person.  The pill goes to the GI tract where it dissolves and the antihistamine diffuses through to the bloodstream, and it is then eliminated by chemical reactions or through the kidneys. Let $x(t)$  and $y(t)$ be the concentrations of the drug in the GI tract and the bloodstream, respectively.  Assume the rate of clearance from each compartment is proportional to the drug concentration in that compartment (i.e., first-order kinetics). Assuming the initial concentrations are $x(0)=\alpha$ and $y(0)=0$, find expressions for $x(t)$ and $y(t)$.
 
@@ -110,16 +108,15 @@ y(t) = \frac{k_1 \alpha}{k_2-k_1} \left( e^{-k_1 t} - e^{-k_2 t} \right).
 :::
 ::::
 
-## Tank reactors
+## Stirred tanks
 
-A {term}`continuously stirred tank reactor` (CSTR) appears often in chemical engineering. One ideally assumes that the contents of the tank are mixed perfectly and instantaneously at all times. Then one writes an ODE that expresses mass balance.
+A **continuously stirred tank reactor** (CSTR) appears often in chemical engineering. One ideally assumes that the contents of the tank are mixed perfectly and instantaneously at all times. Then one writes an ODE that expresses mass balance.
 
 ```{note}
 In CSTR problems the dependent variable can be either mass or concentration. Either is fine, so long as you are consistent. It's much better to understand how to apply the principle of mass conservation than to memorize formulas that might not work for how every problem is presented.
 ```
 
-::::{admonition} Example
-:class: tip
+::::{proof:example}
 A 200 L tank contains 10 kg of dye. Pure water is added at a rate of 4 L per minute, while the mixture is drained at the same rate. How much dye is in the tank after 10 minutes?
 
 :::{dropdown} Solution
@@ -133,8 +130,7 @@ So $x(t)=e^{-0.02 t}x(0)$ and $x(10)=10 e^{-0.2}$ kg.
 :::
 ::::
 
-::::{admonition} Example
-:class: tip
+::::{proof:example}
 A 300 gal capacity tank initially holds 100 gal of a brine solution at 1 lb/gal.  A stream of brine at 2 lb/gal is poured into the tank at 3 gal/min, and an exit stream of the well-mixed solution leaves the tank at 2 gal/min.  Find the amount of salt in the tank at the time it is about to overflow.
 
 :::{dropdown} Solution
@@ -194,8 +190,7 @@ x(200)=2(200+100)-\frac{100^3}{(200+100)^2}=\frac{5300}{9}\approx 589 \text{ lb.
 :::
 ::::
 
-::::{admonition} Example
-:class: tip
+::::{proof:example}
 
 A well-circulated lake contains 1000 kL of water that is initially at a concentration of 2 kg/kL of a pollutant.  Water from the effluent of a factory enters the lake at the rate of 5 kL/h with a concentration of 7 kg/kL of the pollutant.  Polluted water flows out of the lake through an outlet at the rate of 2 kL/h.  Determine the amount of pollutant in the lake as a function of time. (Ignore the fact that the lake may eventually overflow, as we are interested in a relatively short time.)
 
@@ -248,8 +243,7 @@ The usual assumption is that $k$ is constant, so the general solution is $x(t)=c
 
 Numerically you need to know three things to completely know the solution: the initial temperature, the decay rate $k$, and the environmental temperature $E$. If a word problem gives you any three pieces of relevant information, you need to convert them into these three values.
 
-::::{admonition} Example
-:class: tip
+::::{proof:example}
 A mug of coffee at 90 C is put in a room kept at 20 C. After 10 minutes the coffee has cooled by $7$ C. When will the coffee reach 60 C?
 
 :::{dropdown} Solution
@@ -289,8 +283,7 @@ $$
 
 Sometimes you don't need to find the rate constant explicitly because you can manipulate expressions to substitute for it.
 
-::::{admonition} Example
-:class: tip
+::::{proof:example}
 Suppose Fred and Wilma each pour out a mug of coffee that is at 85 degrees C. Assume that the cooling rate in a mug is proportional to the cross-section of the mug's top.Wilma's mug has a diameter that is $\sqrt{2}$ times as large as Fred's. Both mugs are left sitting out for 30 minutes in a room that is at 25${}^\circ$ C, at which point Fred's coffee is at 60 degrees. What is the temperature of Wilma's coffee at the same moment?
 
 :::{dropdown} Solution
@@ -311,5 +304,3 @@ $$
 Since we know that $x(30)=60-25$, we conclude that $y(30)=35^2/60 \approx 20.4$ C, so $W(30) = 25 + y(30) \approx 45.4$ degrees.
 :::
 ::::
-
-<div style="max-width:608px"><div style="position:relative;padding-bottom:66.118421052632%"><iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/2358381/sp/235838100/embedIframeJs/uiconf_id/43030021/partner_id/2358381?iframeembed=true&playerId=kaltura_player&entry_id=1_ighs0a5i&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_vvkhtlv5" width="608" height="402" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="Kaltura Player" style="position:absolute;top:0;left:0;width:100%;height:100%"></iframe></div></div>

@@ -5,12 +5,12 @@ jupytext:
   text_representation:
     extension: .md
     format_name: myst
-    format_version: '0.12'
-    jupytext_version: 1.5.0
+    format_version: 0.13
+    jupytext_version: 1.10.3
 kernelspec:
-  display_name: Matlab
-  language: matlab
-  name: matlab
+  display_name: Julia 1.6.1
+  language: julia
+  name: julia-1.6
 ---
 
 # Identity and inverse
@@ -54,7 +54,7 @@ Furthermore, the definition of matrix-matrix product as a concatenation of matri
 This motivates another important definition.
 
 ````{proof:definition} Identity matrix
-The $n\times n$ {term}`identity matrix` is
+The $n\times n$ **identity matrix** is
 
 ```{math}
 \meye = \begin{bmatrix} \bfe_1 & \bfe_2 & \cdots & \bfe_n \end{bmatrix} = 
@@ -81,8 +81,7 @@ We'll state the identity's key property now.
 If $\bfA$ is $m\times n$, then $\bfA = \meye_m \bfA = \bfA \meye_n$.
 ````
 
-::::{admonition} Example
-:class: tip
+::::{proof:example}
 
 Compute
 
@@ -129,13 +128,13 @@ $$
 We are now going to introduce a major simplification by narrowing to the case we are most interested in.
 
 ```{important}
-From now on, all matrices are assumed to be {term}`square`, meaning they have the same number of rows as columns.
+From now on, all matrices are assumed to be **square**, meaning they have the same number of rows as columns.
 ```
 
 Here is what we seek from a multiplicative inverse.
 
 ````{proof:definition} Inverse
-Suppose $\bfA$ is $n\times n$. An $n\times n$ matrix $\mathbf{Z}$ such that $\mathbf{Z}\bfA = \meye$ and $\bfA\mathbf{Z}=\meye$ is called the {term}`inverse` of $\bfA$, written $\mathbf{Z} = \bfA^{-1}$.
+Suppose $\bfA$ is $n\times n$. An $n\times n$ matrix $\mathbf{Z}$ such that $\mathbf{Z}\bfA = \meye$ and $\bfA\mathbf{Z}=\meye$ is called the **inverse** of $\bfA$, written $\mathbf{Z} = \bfA^{-1}$.
 ````
 
 There are some facts about inverses that we will take for granted without justification.
@@ -145,8 +144,7 @@ There are some facts about inverses that we will take for granted without justif
 2. If either $\mathbf{Z}\bfA = \meye$ or $\bfA\mathbf{Z}=\meye$ is true, then both are true and $\mathbf{Z}=\bfA^{-1}$.
 ````
 
-::::{admonition} Example
-:class: tip
+::::{proof:example}
 The matrix $\mathbf{R}(\theta) = \begin{bmatrix}
 \cos(\theta) & -\sin(\theta) \\ \sin(\theta) & \cos(\theta) 
 \end{bmatrix}$
@@ -212,8 +210,7 @@ Beyond $2\times 2$ we won't worry about computing inverses; row elimination is a
 
 A matrix of all zeros can't have an inverse, because $\bfzero\bfA$ is zero for all matrices $\bfA$. That conclusion extends what we know about a scalar $a$. Unlike the scalar case, though, there are other matrices that have no inverse.
 
-::::{admonition} Example
-:class: tip
+::::{proof:example}
 
 Show that
 
@@ -242,7 +239,7 @@ which is impossible. We conclude that $\mathbf{Z}$ cannot exist.
 ::::
 
 ````{proof:definition} Singular matrix
-A square matrix that does not have an inverse is called {term}`singular`. A matrix that does have an inverse is called {term}`invertible`, or nonsingular.
+A square matrix that does not have an inverse is called **singular`. A matrix that does have an inverse is called {term}`invertible**, or nonsingular.
 ````
 
 ```{note}
@@ -250,5 +247,3 @@ The statement "$\bfA$ is singular" for the linear system $\bfA\bfx = \bfb$ is th
 ```
 
 The next two questions for us are: How do we know when a given matrix is singular? And what happens in a linear system with a singular matrix?
-
-<div style="max-width:608px"><div style="position:relative;padding-bottom:66.118421052632%"><iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/2358381/sp/235838100/embedIframeJs/uiconf_id/43030021/partner_id/2358381?iframeembed=true&playerId=kaltura_player&entry_id=1_xd4k24fk&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_8jg5db68" width="608" height="402" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="Kaltura Player" style="position:absolute;top:0;left:0;width:100%;height:100%"></iframe></div></div>

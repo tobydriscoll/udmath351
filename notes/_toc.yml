@@ -8,11 +8,11 @@ parts:
     sections:
     - file: first_order/preview
     - file: first_order/ivp
+    - file: first_order/qualitative
     - file: first_order/separable
     - file: first_order/linear
     - file: first_order/homogeneous
     - file: first_order/variation_parameters
-    - file: first_order/undetermined_coeffs
     - file: first_order/modeling
   - file: second_linear/overview
     sections:

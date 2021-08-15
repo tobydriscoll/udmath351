@@ -25,8 +25,7 @@ where $f(t)$ is a nonzero forcing function. The first step is to find the genera
 
 The procedure is the same as for first-order problems. Using [our earlier table](`table-firstlin-MUC`), we make an educated guess at $x_p$ with some unknown coefficients that are determined through substitution into {eq}`secondlin-forced-ode`.
 
-::::{admonition} Example
-:class: tip
+::::{proof:example}
 Find a particular solution of $x'' +4x'+4x=8t^2$. 
 
 :::{dropdown} Solution
@@ -62,8 +61,7 @@ Let's try for $y'' -2y'-3y=10te^{4t}$. For much the same reasons as in the last 
 
 </example-->
 
-::::{admonition} Example
-:class: tip
+::::{proof:example}
 Find a particular solution of $x'' - 2x'-3x=10e^{4t}$. 
 
 :::{dropdown} Solution
@@ -84,8 +82,7 @@ From this it's clear that $A=2$.
 :::
 ::::
 
-::::{admonition} Example
-:class: tip
+::::{proof:example}
 Find the general solution of $x''+x'=\sin(2t)$.
 
 :::{dropdown} Solution
@@ -126,8 +123,7 @@ The examples above are the fundamental ones. There are rules for more intricate 
 We have to repeat the warning from the first time we saw this method: we have only used a subset of the complete rules, and thus occasionally it fails.
 
 (secondlin-example-noMUC)=
-::::{admonition} Example
-:class: tip
+::::{proof:example}
 
 The equation $x''+x=\cos(\omega t)$ suggests the particular solution $x_p(t)=A\cos(\omega t)+B\sin(\omega t)$. Upon substitution,
 

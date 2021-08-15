@@ -14,7 +14,7 @@ kernelspec:
 ---
 # Variation of parameters
 
-The [preceding section](homogeneous) explained how to find the general solution $x_h(t)$ of a homoegenous linear system $\bfA\bfx=\bfzero$. The next step of our [overall solution strategy](algorithm-firstlin-solve) is to find any particular solution of $\opA[x]=f$ for a given $f(t)$.
+{numref}`section-first_order-homogeneous1` explained how to find the general solution $x_h(t)$ of a homoegenous linear system $\bfA\bfx=\bfzero$. The next step of our [overall solution strategy](algorithm-linear-solve) is to find any particular solution of $\opA[x]=f$ for a given $f(t)$.
 
 The form of the homogeneous solution is
 
@@ -22,40 +22,45 @@ $$
 x_h(t) = c_1 g(t),
 $$
 
-where $c_1$ is an arbitrary constant and $g(t)$ is computed as the exponentiation of an integral. Let's see what happens if we replace the constant by an unknown function of $t$, $x_p(t)=k(t)g(t)$:
+where $c_1$ is an arbitrary constant and $g(t)$ is computed as the exponentiation of an integral. Something useful happens if we replace the constant by an unknown function of $t$. Setting $x_p(t)=k(t)g(t)$, then:
 
 \begin{align*}
-\opA[x_p] &= x_p' - a(t) x_p \\ 
-& = (k'g+kg') - a k g \\ 
-& = k'g + k(g'-ag) \\ 
-&= k'g + k\cdot\opA[g].
+\opA[x_p] &= x_p' + P(t) x_p \\ 
+& = (k'g+kg') + P k g \\ 
+& = k'g + k(g'+Pg) \\ 
+&= k'g + k\cdot\opA[g] = k'g.
 \end{align*}
 
-However, $g$ is itself a homogeneous solution, so all that remains is $k'g$. We therefore make $x_p$ a particular solution if we set $f=k'g$. This lets us solve for the unknown $k(t)$ by taking $k'(t)=f(t)/g(t)$ and integrating. The result is known as the {term}`variation of parameters` formula (or VoP formula for short). We collect all the equations here, including the homogeneous and general solutions.
+The last step occurs because $g$ is a homogeneous solution. We conclude that we can make $x_p$ as defined above a particular solution if we have $f=k'g$. This lets us solve for the unknown $k(t)$. 
+
+This technique for finding $x_p$ is known as the **variation of parameters** formula, or VoP formula for short. But we present it here along with the rest of the steps in {numref}`Algorithm {number} <algorithm-linear-solve>` as a complete method to find the general solution.
 
 (formula-firstlin-varpar)=
+````{proof:formula} Variation of parameters (VoP)
+To find a the general solution of $\opA[x]=f$, compute
 
-````{proof:formula} Variation of parameters
-To find a particular solution $x_p$ of $\opA[x]=f$, compute
 \begin{align*}
-g(t) &= \exp\left[ \int a(t)\, dt\right], \\ 
+g(t) &= \exp\left[ -\int P(t)\, dt\right], \\ 
 k(t) &= \int \frac{f(t)}{g(t)}\, dt, \\
 x_p(t) &= k(t)g(t), \\
-x(t) &= c_1g(t) + x_p(t).
+x(t) &= c_1g(t) + x_p(t) = g(t)[ c_1 + k(t) ].
 \end{align*}
 ````
 
 :::{note}
-The integration constants you would normally get from the indefinite integrals in the [VoP formula](formula-firstlin-homogeneous) can be ignored (i.e., set to zero), as they make no meaningful difference in the final result. They are "absorbed" into $c_1$.
+As before, we can ignore the integration constant in finding $g$. We can ignore it for $k$ as well, but the last line shows that it effectively comes back anyway.
 :::
 
-(example-firstlin-nonhomog)=
+:::{attention}
+It might seem like the form $x=g(t)[c_1 + k(t)]$ must be the simplest, but that isn't always the case, as the next example shows.
+:::
 
-::::{admonition} Example
-:class: tip
-Solve $3x'=12x+24t$. 
+(example-vop-one)=
+::::{proof:example}
+Solve $3x'=12x+24t$.
+
 :::{dropdown} Solution
-Rewriting the ODE as $x'-4x=8t$, we identify $a(t)=4$ and $f(t)=8t$. Then
+Rewriting the ODE in standard form as $x'-4x=8t$, we identify $P(t)=-4$ and $f(t)=8t$. Then
 
 ```{math}
 g(t) = \exp\left[ \int 4\,dt \right] = e^{4t},
@@ -67,27 +72,21 @@ and
 k(t) = \int \frac{8t}{e^{4t}}\, dt = -\frac{1}{2} (4t+1)e^{-4t},
 ```
 
-where you need integration by parts (or a computer) to perform the integral. Hence
-
-```{math}
-x_p(t) = \left[ \frac{1}{2} (4t+1)e^{-4t} \right] e^{4t} = -\frac{1}{2} (4t+1),
-```
-
-and the general solution is
+where you need integration by parts (or a computer) to perform the integral. We have $x_p=kg$ and the general solution 
 
 ```{math}
 x(t) = x_h(t) + x_p(t) = c_1 e^{4t} - \frac{1}{2} (4t+1).
 ```
 
+If we were to write this as $g(t)[c_1 + k(t)]$, then we would miss out on the cancellation of $e^{4t}$ and $e^{-4t}$ that we got above.
 :::
 ::::
 
-::::{admonition} Example
-:class: tip
-Find a particular solution of $x'=2t x + 6t$. 
+::::{proof:example}
+Find a particular solution of $x'= 2t x + 6t$. 
 
 :::{dropdown} Solution
-We start with
+Note that $\opA[x]=x'-2tx$, so $P(t)=-2t$. We compute
 
 ```{math}
 g(t) = \exp\left[ \int 2t\, dt \right] = e^{t^2}.
@@ -106,20 +105,19 @@ x_p(t) = k(t) g(t) = -3,
 ```
 
 and the general solution is $x(t)=c_1 e^{t^2}-3$.
-
 :::
 ::::
 
 
-::::{admonition} Example
-:class: tip
+::::{proof:example}
 Solve the IVP
 
 $$
 (2+t) x'= x - 1, \quad x(0) = -5.
 $$
+
 :::{dropdown} Solution
-First we put the ODE into our standard form,
+First we put the ODE into standard form,
 
 ```{math}
 x' - \frac{1}{2+t} x = -\frac{1}{2+t}.
@@ -140,7 +138,7 @@ k(t) = \int \frac{-1}{2+t} (2+t)^{-1} \, dt = (2+t)^{-1},
 so that the general solution is
 
 ```{math}
-x(t) = c_1 (2+t) + (2+t)^{-1} (2+t) = c_1(2+t)+1.
+x(t) = c_1 (2+t) + (2+t)^{-1} (2+t) = c_1(2+t) + 1.
 ```
 
 Finally, we apply the initial condition to solve for $c_1$:
@@ -154,7 +152,5 @@ Hence $x(t) = 1-3(2+t) = -5-3t.$
 ::::
 
 ```{attention}
-It takes a pretty special relationship between $a(t)$ and $f(t)$ to make the integrals in the VoP formula reasonable to do by hand. Consequently, if you are asked in an exercise to produce a solution and make a mistake, you will likely wind up with an integral that is virually impossible to evaluate.
+It takes a fairly special relationship between $P(t)$ and $f(t)$ to make the integrals in the VoP formula reasonable to do by hand. Conversely, if you are solving an exercise and find yourself faced with an impossible or really ugly integral, you likely have made some earlier mistake. 
 ```
-
-<div style="max-width:608px"><div style="position:relative;padding-bottom:66.118421052632%"><iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/2358381/sp/235838100/embedIframeJs/uiconf_id/43030021/partner_id/2358381?iframeembed=true&playerId=kaltura_player&entry_id=1_nrwftuvy&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_of55vvzh" width="608" height="402" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="Kaltura Player" style="position:absolute;top:0;left:0;width:100%;height:100%"></iframe></div></div>

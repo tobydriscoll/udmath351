@@ -16,8 +16,7 @@ where $\bfx$ is $n$-dimensional. An equivalent point of view and terminology is 
 \end{split}
 :::
 
-::::{admonition} Example
-:class: tip
+::::{proof:example}
 A famous system of three ODEs is the **Lorenz system**,
 
 :::{math}
@@ -40,8 +39,7 @@ We will be limited for now to linear problems,
 and open the discussion on nonlinear problems in the next chapter.
 
 (example-fs-twotanks)=
-::::{admonition} Example
-:class: tip
+::::{proof:example}
 
 Consider two connected tanks holding brine. Tank 1 holds 100 L, has an input of 4 L/hr of brine of concentration 3 kg/L, and an output of 6 L/hr. Tank 2 holds 200 L, has an input of 7 L/hr of brine of concentration 5 kg/L, and an output of 5 L/hr. Tank 1 pumps 1 L/hr into tank 2, and tank 2 pumps 3 L/hr into tank 1. 
 

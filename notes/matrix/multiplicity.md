@@ -5,12 +5,12 @@ jupytext:
   text_representation:
     extension: .md
     format_name: myst
-    format_version: '0.12'
-    jupytext_version: 1.5.0
+    format_version: 0.13
+    jupytext_version: 1.10.3
 kernelspec:
-  display_name: Matlab
-  language: matlab
-  name: matlab
+  display_name: Julia 1.6.1
+  language: julia
+  name: julia-1.6
 ---
 
 # Multiplicity
@@ -34,7 +34,7 @@ for positive integer exponents such that $m_1+\cdots+m_k=n$. These exponents are
 
 (definition-linalg-algmult)=
 ````{proof:definition} Algebraic multiplicity
-The {term}`algebraic multiplicity` of an eigenvalue is its multiplicity as a root of the characteristic polynomial.
+The **algebraic multiplicity** of an eigenvalue is its multiplicity as a root of the characteristic polynomial.
 ````
 
 ## Geometric multiplicity
@@ -42,8 +42,7 @@ The {term}`algebraic multiplicity` of an eigenvalue is its multiplicity as a roo
 The following example illustrates a possibility unique to eigenvalues of algebraic multiplicity greater than 1.
 
 (example-linalg-defective)=
-::::{admonition} Example
-:class: tip
+::::{proof:example}
 Find the eigenspaces of $\bfA=\twomat{4}{1}{0}{4}$.
 
 :::{dropdown} Solution
@@ -67,7 +66,7 @@ This leads us to define a second notion of multiplicity for an eigenvalue.
 
 (definition-linalg-geomult)=
 ````{proof:definition} Geometric multiplicity
-The {term}`geometric multiplicity` of an eigenvalue is the number of basis vectors in its associated eigenspace.
+The **geometric multiplicity** of an eigenvalue is the number of basis vectors in its associated eigenspace.
 ````
 
 Here is an important fact we won't try to prove.
@@ -80,15 +79,14 @@ The geometric multiplicity of an eigenvalue is at least one and less than or equ
 
 In the [above example](example-linalg-defective) we found a lone eigenvalue $\lambda_1=4$ of algebraic multiplicity 2 whose geometric multiplicity, we now see, is 1. The identity matrix is a different sort of example.
 
-::::{admonition} Example
-:class: tip
+::::{proof:example}
 The $2\times 2$ identity matrix $\meye$ has a lone eigenvalue $\lambda_1=1$ of algebraic multiplicity 2. The system $(\meye - \meye)\bfv=\bfzero$ has an RREF that is the zero matrix, so there are two free variables and two basis vectors. Hence the geometric multiplicity of $\lambda_1$ is also 2.
 ::::
 
 The distinction between these cases is significant enough to warrant yet another definition and name.
 
 ````{proof:definition} Defectiveness
-An eigenvalue $\lambda$ whose geometric multiplicity is strictly less than its algebraic multiplicity is said to be {term}`defective`. A matrix is called defective if any of its eigenvalues are defective.
+An eigenvalue $\lambda$ whose geometric multiplicity is strictly less than its algebraic multiplicity is said to be **defective**. A matrix is called defective if any of its eigenvalues are defective.
 ````
 
 As we will see later on, defective matrices often complicate the application of eigenvalue analysis. They are rare in the sense that a random matrix has zero probability of being defective, but they do play a role. Since multiplicities are always at least one, there is a simple and common case in which we are certain that a matrix is not defective.

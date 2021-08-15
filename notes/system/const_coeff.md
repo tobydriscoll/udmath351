@@ -70,8 +70,7 @@ is a fundamental matrix for $\mathbf{x}'=\mathbf{A}\mathbf{x}$. Hence the genera
 ::::
 
 (fs-ex-eigen-real)=
-::::{admonition} Example
-:class: tip
+::::{proof:example}
 
 Given that 
 
@@ -111,8 +110,7 @@ We will return later to the situation of a repeated eigenvalue.
 
 ## Complex eigenvalues
 
-::::{admonition} Example
-:class: tip
+::::{proof:example}
 Find the general solution of
 
 ```{math}

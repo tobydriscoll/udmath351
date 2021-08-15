@@ -22,7 +22,7 @@ using Plots,LaTeXStrings,Printf
 default(linewidth=2,label="")
 ```
 
-The homogeneous system $\mathbf{x}'=\mathbf{A}\mathbf{x}$ for a constant matrix $\mathbf{A}$ clearly has the constant function $\mathbf{x}(t)\equiv \boldsymbol{0}$ as a solution. We call this an {term}`equilibrium` or steady-state solution. (If $\mathbf{A}$ is singular, then there are other equilibrium points as well, but we are not interested in that peculiar case.)
+The homogeneous system $\mathbf{x}'=\mathbf{A}\mathbf{x}$ for a constant matrix $\mathbf{A}$ clearly has the constant function $\mathbf{x}(t)\equiv \boldsymbol{0}$ as a solution. We call this an **equilibrium** or steady-state solution. (If $\mathbf{A}$ is singular, then there are other equilibrium points as well, but we are not interested in that peculiar case.)
 
 ## Stability
 
@@ -30,9 +30,9 @@ Not all equilibria are alike.
 
 Imagine holding a broom by two fingers, with the bristles pointing straight down at the floor. You will not have much difficulty keeping the broom in approximately this position for a long time, even if an annoying friend comes by and jostles you a bit. 
 
-Now imagine holding the broom inverted, with the bristles pointing toward the ceiling. If you were able to *perfectly* balance the center of gravity of a *perfectly* symmetric broom above your fingers, then in principle it ought to stay there. However, the broom is not perfect, and your arm and fingers can't stay perfectly still. With effort, you might keep the broom upright for a few seconds, but not for a long time. Both the downward and upward positions of the broom are equilibria. The property that differentiates them is {term}`stability`. (We will return to the nonlinear pendulum in {numref}`section-nl-linearization`.)
+Now imagine holding the broom inverted, with the bristles pointing toward the ceiling. If you were able to *perfectly* balance the center of gravity of a *perfectly* symmetric broom above your fingers, then in principle it ought to stay there. However, the broom is not perfect, and your arm and fingers can't stay perfectly still. With effort, you might keep the broom upright for a few seconds, but not for a long time. Both the downward and upward positions of the broom are equilibria. The property that differentiates them is **stability`. (We will return to the nonlinear pendulum in {numref}`section-nl-linearization**.)
 
-Stability refers to the response of the system to a perturbation (tiny change) of its state away from an equilibrium. If the system eventually returns to the equilibrium point (in the sense of the limit $t\to\infty$), we say the equilibrium is {term}`asymptotically stable`. That is, the perturbation decays away, like with a damped linear oscillator. A weaker form of stability is explained in {numref}`section-fs-pp-center` below. If the system has tiny perturbations that grow without bound, then the equilibrium is {term}`unstable`.
+Stability refers to the response of the system to a perturbation (tiny change) of its state away from an equilibrium. If the system eventually returns to the equilibrium point (in the sense of the limit $t\to\infty$), we say the equilibrium is **asymptotically stable`. That is, the perturbation decays away, like with a damped linear oscillator. A weaker form of stability is explained in {numref}`section-fs-pp-center` below. If the system has tiny perturbations that grow without bound, then the equilibrium is {term}`unstable**.
 
 Stability of the origin depends on the eigenvalues of $\mathbf{A}$. This is most easily summarized in the special case of a $2\times 2$ real matrix with eigenvalues $\lambda_1,\lambda_2$. The major cases to be considered are summarized in the following table, leaving out some trickier edge cases when things are zero or exactly equal. The other column of the table is to be explained next.
 	
@@ -65,11 +65,11 @@ Stability of the origin depends on the eigenvalues of $\mathbf{A}$. This is most
 
 ## Phase plane
 
-In the two-dimensional case, the solutions of $\mathbf{x}'=\mathbf{A}\mathbf{x}$ can be plotted as trajectories parameterized by time in the $(x_1,x_2)$ plane, often called the {term}`phase plane`. Each of the cases in the [stability table](table-fs-stability) has a characteristic type of phase plane portrait that illustrates major aspects of solution behaviors.  
+In the two-dimensional case, the solutions of $\mathbf{x}'=\mathbf{A}\mathbf{x}$ can be plotted as trajectories parameterized by time in the $(x_1,x_2)$ plane, often called the **phase plane**. Each of the cases in the [stability table](table-fs-stability) has a characteristic type of phase plane portrait that illustrates major aspects of solution behaviors.  
 
 ### Node
 
-When the eigenvalues are real and have the same sign, the steady state is called a {term}`node`. If the sign is negative, all trajectories head into the steady state and it is stable; conversely, in the positive case it is unstable. 
+When the eigenvalues are real and have the same sign, the steady state is called a **node**. If the sign is negative, all trajectories head into the steady state and it is stable; conversely, in the positive case it is unstable. 
 
 Here is a phase plane plot for $\mathbf{A}=\twomat{-4}{-1}{-2}{-5}$, which has eigenvalues $-3$ and $-6$. 
 
@@ -115,7 +115,7 @@ The black lines show the directions of the eigenvectors. An initial state on one
 ### Saddle
 
 When the eigenvalues are real and of different signs, the steady state is called a 
-{term}`saddle`. A saddle point is always unstable. The part of the solution along the negative eigenvector decays away, but the contribution from the positive eigenvector grows with time. 
+**saddle**. A saddle point is always unstable. The part of the solution along the negative eigenvector decays away, but the contribution from the positive eigenvector grows with time. 
 
 Here is a phase plane plot for $\mathbf{A}=\twomat{-2}{-3}{-6}{-5}$, which has eigenvalues $1$ and $-8$. 
 
@@ -165,7 +165,7 @@ An initial condition exactly on the stable black line (eigenvector) will approac
 (section-fs-pp-center)=
 ### Spiral
 
-When the eigenvalues are complex conjugates with nonzero real part, the steady state is called a {term}`spiral`. If the eigenvalues are $a \pm i b$, then all solutions contain $e^{at}e^{\pm i b t}$, or equivalently, $e^{at}\cos{b t}$ and $e^{at}\sin{b t}$. The real part causes growth and instability if $a> 0$, or decay and stability if $a < 0$. The imaginary part determines the angular speed of the spiral. 
+When the eigenvalues are complex conjugates with nonzero real part, the steady state is called a **spiral**. If the eigenvalues are $a \pm i b$, then all solutions contain $e^{at}e^{\pm i b t}$, or equivalently, $e^{at}\cos{b t}$ and $e^{at}\sin{b t}$. The real part causes growth and instability if $a> 0$, or decay and stability if $a < 0$. The imaginary part determines the angular speed of the spiral. 
 
 Here is a phase plane plot for $\mathbf{A}=\twomat{1}{-2}{4}{-3}$, which has eigenvalues $-1\pm 2i$. 
 
@@ -211,7 +211,7 @@ The eigenvectors are complex and don't show up on the plot; there are no purely 
 
 ### Center
 
-The special case of imaginary eigenvalues, $\lambda=\pm i b$, is called a {term}`center`. You can think of the trajectories as spirals that are perfectly neutral — that is, circles or ellipses. These equilibria are often associated with conservation principles, such as conservation of energy. 
+The special case of imaginary eigenvalues, $\lambda=\pm i b$, is called a **center**. You can think of the trajectories as spirals that are perfectly neutral — that is, circles or ellipses. These equilibria are often associated with conservation principles, such as conservation of energy. 
 
 Here is a phase plane plot for $\mathbf{A}=\twomat{0}{-1}{4}{0}$, which has eigenvalues $\pm 2i$. 
 
@@ -252,4 +252,4 @@ ylabel('x_2')
 ```
 -->
 
-A center is on a knife edge between asymptotically stable and unstable: small perturbations do not decay away, but they also can grow only by a bounded amount. This situation might be called *weakly stable*, *neutrally stable*, or simply {term}`stable` but not asymptotically stable.
+A center is on a knife edge between asymptotically stable and unstable: small perturbations do not decay away, but they also can grow only by a bounded amount. This situation might be called *weakly stable*, *neutrally stable*, or simply **stable** but not asymptotically stable.

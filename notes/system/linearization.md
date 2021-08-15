@@ -69,7 +69,7 @@ This inspires the following definition.
 (nl-def-jacobian)=
 ::::{proof:definition} Jacobian matrix
 
-The {term}`Jacobian matrix` of the system $x'=F(x,y),\, y'=G(x,y)$ is 
+The **Jacobian matrix** of the system $x'=F(x,y),\, y'=G(x,y)$ is 
 
 :::{math}
 :label: nl-eq-jacobian
@@ -89,8 +89,7 @@ We are now right back into the phase plane we studied earlier. In particular:
 The stability of a steady state is (usually) determined by the eigenvalues of the Jacobian matrix at the steady state. 
 :::
 
-::::{admonition} Example
-:class: tip
+::::{proof:example}
 
 Let's examine the steady states of a pendulum with damping, 
 
@@ -141,8 +140,7 @@ It's obvious that $\lambda_2 < 0$. Since $\gamma^2+\frac{4g}{L} > \gamma^2$, it 
 
 The caveat on using eigenvalues for stability is when they both have zero real part, which is weakly stable in the linear sense. In such cases the details of the nonlinear terms of the system can swing the stability either way. 
 
-::::{admonition} Example
-:class: tip
+::::{proof:example}
 
 The system 
 
@@ -151,7 +149,7 @@ The system
 \frac{dy}{dt} &= -y+\frac{xy}{4}\\
 \end{align*}
 
-is called a {term}`predator–prey` equation. If species $y$ is set to zero, species $x$ would grow exponentially on its own (the prey). Similarly, species $y$ would die off on its own (predator). We assume that encounters between the species are jointly proportional to the population of each, and they subtract from the prey and add to the predators. 
+is called a **predator–prey** equation. If species $y$ is set to zero, species $x$ would grow exponentially on its own (the prey). Similarly, species $y$ would die off on its own (predator). We assume that encounters between the species are jointly proportional to the population of each, and they subtract from the prey and add to the predators. 
 
 
 We find fixed points when $3x-(x y/2)=(x y/4)-y=0$, which has two solutions, $(0,0)$ and $(4,6)$. The Jacobian matrix of the system is 

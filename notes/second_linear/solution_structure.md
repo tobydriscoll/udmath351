@@ -1,7 +1,7 @@
 # Structure of solutions
 
 ````{proof:definition} Second-order ODE
-A {term}`second-order ODE` is an equation of the form
+A **second-order ODE** is an equation of the form
 
 $$
 x'' = F(t,x,x'),
@@ -23,7 +23,7 @@ The general solution of second-order ODE has two integration constants.
 As a consequence, we note that two initial conditions are now needed to specify the integration constants to get a unique solution.
 
 ````{proof:definition} Second-order IVP
-A {term}`second-order IVP` (initial-value problem) is
+A **second-order IVP** (initial-value problem) is
 
 ```{math}
 x'' = F(t,x,x'), \quad x(a) = x_0,\, x'(a) = v_0.

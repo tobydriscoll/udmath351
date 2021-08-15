@@ -29,7 +29,7 @@ Suppose $\bfA\in\cmn{n}{n}$. If there exist a scalar $\lambda$ and a nonzero vec
 \bfA \bfv = \lambda \bfv,
 ```
 
-then $\lambda$ is an {term}`eigenvalue` of $\bfA$ with associated {term}`eigenvector` $\bfv$.
+then $\lambda$ is an **eigenvalue` of $\bfA$ with associated {term}`eigenvector** $\bfv$.
 ````
 
 If you think of $\bfA$ as acting on vectors, then an eigenvector is a direction in which the action of $\bfA$ is the same as a scalar; we have found a little one-dimensional oasis in which the behavior of $\bfA$ is easy to comprehend.
@@ -48,8 +48,7 @@ Every nonzero multiple of an eigenvector is also an eigenvector for the same eig
 
 But there can be even more ambiguity than scalar multiples.
 
-::::{admonition} Example
-:class: tip
+::::{proof:example}
 
 Let $\meye$ be an identity matrix. Then $\meye\bfx=\bfx$ for any vector $\bfx$, so every nonzero vector is an eigenvector!
 ::::
@@ -63,7 +62,7 @@ Fortunately we already have the tools we need to describe a more robust target, 
 (definition-linalg-eigenspace)=
 
 ````{proof:definition} Eigenspace
-Let $\lambda$ be an eigenvalue of $\bfA$. The {term}`eigenspace` associated with $\lambda$ is the general solution of $(\bfA-\lambda\meye)\bfx = \bfzero$.
+Let $\lambda$ be an eigenvalue of $\bfA$. The **eigenspace** associated with $\lambda$ is the general solution of $(\bfA-\lambda\meye)\bfx = \bfzero$.
 ````
 
 Eigenspaces, unlike eigenvectors, are unique. We have to be a bit careful, though, because we usually express such spaces using basis vectors, and those bases are not themselves unique. It's also not unusual for problems and discussions to use eigenvectors and just put up with the nonuniqueness.
@@ -79,7 +78,7 @@ $\lambda$ is an eigenvalue of $\bfA$ if and only if $\bfA-\lambda\meye$ is singu
 In practice the most common way to find eigenvalues by hand is through the equivalent condition $\det(\bfA-\lambda\meye)=0$. This determinant has a particular form and name.
 
 ```{proof:definition} Characteristic polynomial of a matrix
-Suppose $\bfA$ is an $n\times n$ matrix. The function $p(z) = \det(\bfA-z\meye)$ is a polynomial of degree $n$ in $z$, known as the {term}`characteristic polynomial` of $\bfA$.
+Suppose $\bfA$ is an $n\times n$ matrix. The function $p(z) = \det(\bfA-z\meye)$ is a polynomial of degree $n$ in $z$, known as the **characteristic polynomial** of $\bfA$.
 ```
 
 ````{proof:algorithm} Eigenvalues and eigenspaces
@@ -90,8 +89,7 @@ Given an $n\times n$ matrix $\bfA$:
 3. For each $\lambda_j$, find the general solution of $(\bfA-\lambda_j\meye)\bfv=\bfzero$. This is the eigenspace associated with $\lambda_j$.
 ````
 
-::::{admonition} Example
-:class: tip
+::::{proof:example}
 Find the eigenvalues and eigenspaces of
 
 ```{math}
@@ -160,8 +158,7 @@ Finding the exact roots of a cubic polynomial is not an easy matter unless the p
     - Otherwise, the vector $[\beta;\,-\alpha]$ is a basis of the eigenspace of $\lambda$.
 ```
 
-::::{admonition} Example
-:class: tip
+::::{proof:example}
 Find the eigenstuff of 
 
 ```{math}

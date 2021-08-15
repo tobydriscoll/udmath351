@@ -98,8 +98,7 @@ $$
 
 This formula is one way to avoid the rather daunting prospect of having to sum an infinite series of matrices.
 
-::::{admonition} Example
-:class: tip
+::::{proof:example}
 Given 
 
 :::{math}
@@ -132,8 +131,7 @@ $$
 
 ::::
 
-::::{admonition} Example
-:class: tip
+::::{proof:example}
 Given that 
 
 :::{math}
@@ -270,8 +268,7 @@ e^{t\mathbf{A}} = \bigl( e^{t\lambda} \meye \bigr) \,  \bigl( \mathbf{I} + t(\ma
 
 ::::
 
-::::{admonition} Example
-:class: tip
+::::{proof:example}
 Find $e^{t\mathbf{A}}$ if $\bfA=\twomat{4}{1}{0}{4}$.
 
 :::{dropdown} Solution
@@ -284,8 +281,7 @@ $$
 :::
 ::::
 
-::::{admonition} Example
-:class: tip
+::::{proof:example}
 A critically damped free oscillator with natural frequency $\omega_0$ is equivalent to a system with the matrix
 
 $$

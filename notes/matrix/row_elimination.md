@@ -19,8 +19,7 @@ You've probably solved small systems of equations by substitution. In order to s
 
 (example-gauss-elimination)=
 
-::::{admonition} Example
-:class: tip
+::::{proof:example}
 
 Use elimination to solve the $3\times 3$ system
 
@@ -67,7 +66,7 @@ x_2 + 3x_3 & = 3, \\
 :::
 ::::
 
-The process in [the preceding example](example-gauss-elimination) is most commonly known as {term}`Gaussian elimination`. (It's a misnomer, as the process was known in China thousands of years before Gauss, but never mind.) We could solve the triangular system at the end of the example by starting with the last equation to deduce that $x_3=2$. We then put that value into the second equation and can solve that for $x_2$, etc.
+The process in [the preceding example](example-gauss-elimination) is most commonly known as **Gaussian elimination**. (It's a misnomer, as the process was known in China thousands of years before Gauss, but never mind.) We could solve the triangular system at the end of the example by starting with the last equation to deduce that $x_3=2$. We then put that value into the second equation and can solve that for $x_2$, etc.
 
 Instead, though, we are going to continue to manipulate the system to get something even simpler.
 
@@ -102,7 +101,7 @@ x_2 & = -3,\\
 The system is now trivial: $x_1=1$, $x_2=-3$, and $3x_3=6$.
 ::::
 
-That was a mouthful. We can lighten the notational load by using matrices. We start with the $m\times (n+1)$ {term}`augmented matrix` $\bfG = [\bfA\:\bfb]$ that contains all the equation coefficients and right-side values. We repeat the previous process in augmented matrix form, starting from
+That was a mouthful. We can lighten the notational load by using matrices. We start with the $m\times (n+1)$ **augmented matrix** $\bfG = [\bfA\:\bfb]$ that contains all the equation coefficients and right-side values. We repeat the previous process in augmented matrix form, starting from
 
 $$
 \bfG = 
@@ -176,7 +175,7 @@ $$
 
 whose solution is obvious.
 
-The process just demonstrated is best known as *Gauss–Jordan elimination*, or more simply, {term}`row elimination`. As seen in the examples, row elimination consists of two phases, one downward (Gaussian elimination) and one upward. The goal is to put the augmented matrix into a special form.
+The process just demonstrated is best known as *Gauss–Jordan elimination*, or more simply, **row elimination**. As seen in the examples, row elimination consists of two phases, one downward (Gaussian elimination) and one upward. The goal is to put the augmented matrix into a special form.
 
 In the next section we get more formal about the process and results. For now, let's look at an example that works out differently. We solve the system having augmented matrix
 

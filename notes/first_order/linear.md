@@ -12,36 +12,46 @@ kernelspec:
   language: julia
   name: julia-1.6
 ---
-# Operators
+# Linear equations
 
-We now begin a close look at the linear case.
+We now begin a close look at the linear case. Linear problems are pretty much all we consider from this point on.
 
-(definition-firstlin-linear-ode)=
+```{index} ! linear ODE; first-order
+```
 
-````{proof:definition} First-order linear ODE
-A {term}`first-order linear ODE` is an equation of the form
+(definition-linear-ode)=
+::::{proof:definition} First-order linear ODE
+A **first-order linear ODE** is an equation of the form
 
 ```{math}
-:label: firstlin-linear-repeat
-\dd{x}{t} = a(t) x + f(t).
+:label: eq-linear-def
+a_0(t)\dd{x}{t} + a_1(t) x = g(t).
 ```
-We call $a(t)$ the {term}`coefficient function` and $f(t)$ the {term}`forcing function`. 
+The **standard form** of such a problem is 
 
-````
+:::{math}
+:label: eq-linear-standard
+\dd{x}{t} + P(t) x = f(t).
+:::
+
+We call $f(t)$ the **forcing function**. 
+::::
 
 ```{attention}
 A linear ODE has a linear dependence on the unknown (dependent) variable $x$. It may have arbitrary dependence on the independent variable $t$. Also, the solution $x$ is usually not a linear function of $t$.
 ```
 
 ```{warning}
-If presented with a linear ODE in the form $b(t)x' + c(t)x = g(t)$, you should divide through by $b$ and rearrange so that the equation is in standard form {eq}`firstlin-linear-repeat` if you want to apply one of our formulas.
+Never overlook the $a_0(t)$ in {eq}`eq-linear-def`. If you forget to divide through by it to get the standard form, everything that follows will be wrong.
 ```
-There are some strong analogies between {eq}`firstlin-linear-repeat` and the linear algebraic system $\bfA\bfx=\bfb$. Some new notation helps to clarify the similarities.
 
-(definition-firstlin-operator)=
+## Operator notation
 
-````{proof:definition} Linear operator
-A {term}`linear operator` $\opA$ is a rule for transforming functions to other functions, such that
+There is an alternate notation for {eq}`eq-linear-standard` that will help us highlight important properties of linearity.
+
+(definition-linear-operator)=
+::::{proof:definition} Linear operator
+A **linear operator** $\opA$ is a rule for transforming functions to other functions, such that
 
 \begin{align*}
 \opA[cx(t)] & =c\opA[x(t)], \\
@@ -49,27 +59,24 @@ A {term}`linear operator` $\opA$ is a rule for transforming functions to other f
 \end{align*}
 
 for all functions $x,y$ and numbers $c$.
-````
+::::
 
-```{note}
-You may recognize the two conditions in this definition as restatements of the [properties of a linear function](definition-linear). 
-```
 
-In this context we are interested in the operator
+In the present context we are interested in the operator
 
 ```{math}
-:label: firstlin-linop
-\opA[x] = x' - a(t)x,
+:label: eq-linear-operator
+\opA[x] = x' - P(t)x,
 ```
 
-whose linearity you can easily check for yourself against the definition. We can now express the ODE {eq}`firstlin-linear-repeat` simply as
+whose linearity you can easily check for yourself against the definition. We can now express the ODE {eq}`eq-linear-def` simply as
 
 $$
 \opA[x]=f.
 $$
 
-::::{admonition} Example
-:class: tip
+(example-linear-operator)=
+::::{proof:example}
 The equation
 
 $$
@@ -89,22 +96,31 @@ $$
 $$
 ::::
 
-
 ## Homogeneous solutions
 
-As with linear systems, we have a special role for the {term}`homogeneous` linear ODE $\opA[x]=0$, or
+The equation $\opA[x]=0$, or {eq}`eq-linear-standard` with zero forcing, plays a key role.
+
+::::{proof:definition} Homogeneous ODE
+A **homogeneous ODE** takes the form
 
 $$
-\dd{x}{t} = a(t)x,
+\dd{x}{t} = a(t)x.
 $$
 
-which is {eq}`firstlin-linear-repeat` with zero forcing.
+Alternatively, 
+::::
 
-````{proof:theorem} Superposition
+We have a special role 
+
+
+which is {eq}`eq-linear-def` with zero forcing.
+
+(theorem-linear-super)=
+::::{proof:theorem} Superposition
 If $x_1(t), x_2(t),\ldots x_k(t)$ are solutions of $\opA[x]=0$, then so is any linear combination $c_1x_1 + \cdots + c_kx_k$ for constants $c_j$. 
-````
+::::
 
-````{proof:proof}
+::::{proof:proof}
 Because of linearity we can write
 
 ```{math}
@@ -112,34 +128,32 @@ Because of linearity we can write
 ```
 
 By assumption, each $\opA[x_j]=0$. So the sum on the right is zero as well.
-````
+::::
+
+As a special case, if $x_1$ solves $\opA[x]=0$, then so does $c_1x_1$ for an arbitrary constant $c_1$.
 
 ## General solutions
 
-For the problem with nonzero forcing, we can follow the same script as for [general solutions of $\bfA\bfx=\bfb$](theorem-linalg-general) to get the following result.
+Problems with nonzero forcing contain the homogeneous case within them, as the following result shows.
 
-(theorem-firstlin-general)=
-
-````{proof:theorem}
+(theorem-linear-general)=
+::::{proof:theorem}
 All solutions of $\opA[x]=f$ may be written as
 
 ```{math}
 x(t) = x_h(t) + x_p(t),
 ```
-where $x_h$ is the general solution of $\opA[x]=0$ and $x_p$ is any particular solution of $\opA[x]=f$. We call this the {term}`general solution` of the linear ODE.
-````
+where $x_h$ is the general solution of $\opA[x]=0$ and $x_p$ is any particular solution of $\opA[x]=f$. We call this the **general solution** of the linear ODE.
+::::
 
 We have arrived at a solution strategy for $\opA[x]=f$.
 
-(algorithm-firstlin-solve)=
-
-````{proof:algorithm} Solution of a first-order linear ODE
+(algorithm-linear-solve)=
+::::{proof:algorithm} Solution of a first-order linear ODE
 1. Find the general solution $x_h$ of the associated homogeneous problem $\opA[x]=0$.
 2. Find any particular solution $x_p$ of the original $\opA[x]=f$.
 3. Add them.
-4. If an initial condition is given, solve for the integration constant.
-````
+4. If an initial condition is given, use it to solve for the integration constant.
+::::
 
-We elaborate on steps 1 and 2 in the next several sections.
-
-<div style="max-width:608px"><div style="position:relative;padding-bottom:66.118421052632%"><iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/2358381/sp/235838100/embedIframeJs/uiconf_id/43030021/partner_id/2358381?iframeembed=true&playerId=kaltura_player&entry_id=1_u906loy2&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_tqf4kfok" width="608" height="402" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="Kaltura Player" style="position:absolute;top:0;left:0;width:100%;height:100%"></iframe></div></div>
+Note that because of {numref}`Theorem {number} <theorem-linear-super>`, the homogeneous part $x_h$ will contain the integration constant. We elaborate on steps 1 and 2 in the next several sections.

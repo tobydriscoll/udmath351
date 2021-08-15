@@ -1,19 +1,19 @@
 # Separable equations
 
-:::{index} separable ODE
+:::{index} ! separable ODE
 :::
-All problems in the autonomous form $x'=f(x)$, and more generally in the form 
+
+All first-order problems in the autonomous form $x'=f(x)$, and more generally problems in the form 
 
 $$
-x'=f(x)g(t),
+x' = f(x)g(t),
 $$ 
 
-are called {term}`separable equations` and can be solved systematically (up to performing integrations). Rather than deriving a formula for them, it's best to just repeat a straightforward process for each new problem.
+are called **separable equations** and can be solved systematically, up to performing integrations. Rather than deriving and applying a formula for them, it's easier to just repeat a straightforward process for each new problem.
 
-::::{admonition} Example
-:class: tip
+::::{proof:example}
 
-Solve the variable growth archetype $x'=2t x$. 
+Solve the variable growth archetype ODE $x'=2t x$. 
 
 :::{dropdown} Solution
 We express $x'$ as $dx/dt$ and then isolate the variables:
@@ -26,8 +26,7 @@ Integrating both sides leads to $\ln |x| = t^2 + C$, or $|x|=A e^{t^2}$ for a po
 :::
 ::::
 
-::::{admonition} Example
-:class: tip
+::::{proof:example} 
 
 Solve $x'=t^2/(x^3-2)$, subject to $x(0)=4$.
 
@@ -56,8 +55,7 @@ Hence $C=56$.
 
 Sometimes the separable structure isn't immediately apparent, and you have to manipulate the expressions a bit.
 
-::::{admonition} Example
-:class: tip
+::::{proof:example}
 
 Find the general solution of $t x' = x - t x$. 
 
@@ -91,5 +89,3 @@ We divided the equation through by $x$ and therefore eliminated $x=0$ as a possi
 Note that this problem is also linear, so it could be approached that way as well. Of course you must get the same solution either way!
 :::
 ::::	
-
-<div style="max-width:608px"><div style="position:relative;padding-bottom:66.118421052632%"><iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/2358381/sp/235838100/embedIframeJs/uiconf_id/43030021/partner_id/2358381?iframeembed=true&playerId=kaltura_player&entry_id=1_ku9r9gn2&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_vaj9v5iq" width="608" height="402" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="Kaltura Player" style="position:absolute;top:0;left:0;width:100%;height:100%"></iframe></div></div>

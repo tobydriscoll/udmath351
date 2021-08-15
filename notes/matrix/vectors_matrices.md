@@ -18,7 +18,7 @@ kernelspec:
 The objects most of interest to us for now are *vectors* and *matrices*.
 
 ````{proof:definition} Vector
-A {term}`vector` is a finite collection of numbers called its elements. The set of all vectors with $n$ real-valued elements is denoted $\real^n$. If the elements are complex numbers, we use the name $\complex^n$. 
+A **vector** is a finite collection of numbers called its elements. The set of all vectors with $n$ real-valued elements is denoted $\real^n$. If the elements are complex numbers, we use the name $\complex^n$. 
 ````
 
 ```{warning}
@@ -30,7 +30,7 @@ I use boldfaced lowercase letters to represent vectors, and a subscript to refer
 There is one more big definition to get out of the way before we really dive in.
 
 ````{proof:definition} Matrix
-A {term}`matrix` is an $m\times n$ array of numbers called its elements. The set of all $m\times n$ matrices with real elements is denoted $\rmn{m}{n}$, and with complex elements it's $\cmn{m}{n}$. 
+A **matrix** is an $m\times n$ array of numbers called its elements. The set of all $m\times n$ matrices with real elements is denoted $\rmn{m}{n}$, and with complex elements it's $\cmn{m}{n}$. 
 ````
 
 I use boldfaced uppercase letters to represent vectors, and a pair of subscripts to refer to an individual element within one. For instance, $A_{23}$ is the element in row 2, column 3 of the matrix $\bfA$.

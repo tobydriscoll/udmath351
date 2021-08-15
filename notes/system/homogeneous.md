@@ -37,7 +37,7 @@ This is a linear algebraic system for the coefficients $c_i$. We can expect a un
 (definition-fs-fundamental)=
 ::::{proof:definition} Fundamental matrix
 
-The $n\times n$ matrix $\bfX(t)$ is a {term}`fundamental matrix` of the homogeneous system $\mathbf{x}' = \mathbf{A}(t)\mathbf{x}$ if its columns satisfy
+The $n\times n$ matrix $\bfX(t)$ is a **fundamental matrix** of the homogeneous system $\mathbf{x}' = \mathbf{A}(t)\mathbf{x}$ if its columns satisfy
 
 $$
 \mathbf{x}_j'=\mathbf{A}\mathbf{x}_j, \quad j=1,\ldots,n,
@@ -71,7 +71,7 @@ Since invertibility is important to the general solution, we should not be surpr
 (ls-df-wronskian)=
 ::::{proof:definition} Wronskian
 
-The {term}`Wronskian` of a collection of homogeneous solutions $\mathbf{x}_1,\ldots,\mathbf{x}_n$ is 
+The **Wronskian** of a collection of homogeneous solutions $\mathbf{x}_1,\ldots,\mathbf{x}_n$ is 
 
 :::{math}
 W(t) = \det\Bigl( \bigl[ \mathbf{x}_1(t) \: \cdots \: \mathbf{x}_n(t)  \bigr] \Bigr).
@@ -80,8 +80,7 @@ W(t) = \det\Bigl( \bigl[ \mathbf{x}_1(t) \: \cdots \: \mathbf{x}_n(t)  \bigr] \B
 
 Thus, a solution set with a nonzero Wronskian can be used as the columns of a fundamental matrix. 
 
-::::{admonition} Example
-:class: tip
+::::{proof:example}
 Suppose 
 
 $$

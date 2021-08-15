@@ -30,7 +30,7 @@ for $x$.
    - If also $b=0$, then every value of $x$ is a valid solution.
    - Otherwise, there are no solutions.
 
-To summarize, for nonzero $a$ there is exactly one solution, and otherwise, depending on $b$, there are either infinitely many or zero solutions. A linear system with no solutions is called {term}`inconsistent`, with the opposite being *consistent*.
+To summarize, for nonzero $a$ there is exactly one solution, and otherwise, depending on $b$, there are either infinitely many or zero solutions. A linear system with no solutions is called **inconsistent**, with the opposite being *consistent*.
 
 Our goal is to understand equations that depend linearly on multiple variables. But before even writing out what that means, let me give away the punch line: *the only possibilities are exactly the same three outcomes described above*. The main difference is that the condition "$a=0$" is modified to something else.
 
@@ -57,8 +57,7 @@ It's not hard to turn those statements into algebraic conditions. The slopes of 
    - If one equation is a multiple of the other, there are infinitely many solutions.
    - Otherwise, there are no solutions.
 
-::::{admonition} Example
-:class: tip
+::::{proof:example}
 Find all solutions to the equations
 
 \begin{align*}
@@ -90,7 +89,7 @@ A_{21} x_1 + A_{22} x_2 + \cdots + A_{2n} x_n & = b_2 \\
 A_{m1} x_1 + A_{m2} x_2 + \cdots + A_{mn} x_n & = b_m.
 \end{align*}
 
-The first index on $A_{ij}$ is the equation number, and the second is the variable number. It now seems obvious that we want to collect these numbers into an $m\times n$ matrix $\bfA$, called the {term}`coefficient matrix` of the system. We can similarly identify the two vectors
+The first index on $A_{ij}$ is the equation number, and the second is the variable number. It now seems obvious that we want to collect these numbers into an $m\times n$ matrix $\bfA$, called the **coefficient matrix** of the system. We can similarly identify the two vectors
 
 $$
 \bfx = \begin{bmatrix}
@@ -103,8 +102,7 @@ $$
 
 Now $\bfA$ and $\bfb$ are the data of the linear system, and $\bfx$ is the solution.
 
-::::{admonition} Example
-:class: tip
+::::{proof:example}
 Sometimes zeros are needed as placeholders in the coefficient matrix. In the linear system
 
 \begin{align*}

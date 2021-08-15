@@ -5,12 +5,12 @@ jupytext:
   text_representation:
     extension: .md
     format_name: myst
-    format_version: '0.12'
-    jupytext_version: 1.5.0
+    format_version: 0.13
+    jupytext_version: 1.10.3
 kernelspec:
-  display_name: Matlab
-  language: matlab
-  name: matlab
+  display_name: Julia 1.6.1
+  language: julia
+  name: julia-1.6
 ---
 
 # Detecting singularity
@@ -37,8 +37,7 @@ The [contrapositive](https://en.wikipedia.org/wiki/Contraposition) observation i
 A square matrix is singular if and only if its RREF has at least one row of zeros.
 ````
 
-::::{admonition} Example
-:class: tip
+::::{proof:example}
 Determine whether 
 
 ```{math}
@@ -70,7 +69,7 @@ This definition can be extended to create a real-valued function for square matr
 (definition-linalg-determinant)=
 
 ````{proof:definition} Determinant
-If $\bfA$ is $n\times n$, then its {term}`determinant` is
+If $\bfA$ is $n\times n$, then its **determinant** is
 
 ```{math}
 \det(\bfA) = \sum (-1)^{i+j} a_{ij} \det\bigl( \mathbf{M}_{ij} \bigr),
@@ -79,10 +78,9 @@ If $\bfA$ is $n\times n$, then its {term}`determinant` is
 where the sum is taken over any row or column of $\bfA$ and $\mathbf{M}_{ij}$ is the matrix that results from deleting row $i$ and column $j$ from $\bfA$.
 ````
 
-The definition, which is called {term}`cofactor expansion`, is recursive: the $n\times n$ case is defined in terms of the $(n-1)\times (n-1)$ case, and so on all the way back down to $2\times 2$. Since expanding along any row or column gives the same result, it can be advantageous to choose one with lots of zeros to cut down on the total computation.
+The definition, which is called **cofactor expansion**, is recursive: the $n\times n$ case is defined in terms of the $(n-1)\times (n-1)$ case, and so on all the way back down to $2\times 2$. Since expanding along any row or column gives the same result, it can be advantageous to choose one with lots of zeros to cut down on the total computation.
 
-::::{admonition} Example
-:class: tip
+::::{proof:example}
 Compute the determinant of 
 
 $$
@@ -123,7 +121,7 @@ It's the third property above that we will be using. The determinant is often th
 
 ### Cramer's Rule
 
-Even though a 2x2 inverse is easy, it's still not the most convenient way to solve a linear system $\bfA\bfx=\bfb$ by hand. There is an even faster equivalent shortcut known as {term}`Cramer's Rule`:
+Even though a 2x2 inverse is easy, it's still not the most convenient way to solve a linear system $\bfA\bfx=\bfb$ by hand. There is an even faster equivalent shortcut known as **Cramer's Rule**:
 
 \begin{align*}
 x_1 & = \frac{ \twodet{b_1}{A_{12}}{b_2}{A_{22}} }{ \det(\bfA) }\\[1ex]
@@ -132,8 +130,7 @@ x_2 & = \frac{ \twodet{A_{11}}{b_1}{A_{21}}{b_2} }{ \det(\bfA) }.
 
 Obviously this does not work if $\det(\bfA)=0$, i.e., when the matrix is singular. Instead you have to fall back on our other methods.
 
-::::{admonition} Example
-:class: tip
+::::{proof:example}
 Solve
 
 \begin{align*}

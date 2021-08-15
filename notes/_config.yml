@@ -106,7 +106,18 @@ sphinx:
     - "observation"
     - "proof"
     - "rule"
-     
+    proof_html_title_template_visit: >
+      <div class="proof-title">
+      <span class="proof-type">{{ thmtype }} {% if number %}{{number}}{% endif %}</span>
+      {% if title %}
+      <span class="proof-title-name">: &nbsp;
+      {%- endif -%}
+    proof_html_title_template_depart: >
+      {%- if title -%}
+      </span>
+      {% endif %}
+      </div>
+      
   extra_extensions:
   - sphinxcontrib.proof
 

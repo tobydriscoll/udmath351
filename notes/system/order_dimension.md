@@ -2,8 +2,7 @@
 
 We begin with a vital observation that applies to all ODEs, not just linear ones: order can be exchanged for dimension.
 
-::::{admonition} Example
-:class: tip
+::::{proof:example}
 The simple harmonic oscillator
 
 $$
@@ -33,8 +32,7 @@ u_2' &= f - 2 Z \omega_0 u_2 - \omega_0^2 u_1.
 ::::
 
 
-::::{admonition} Example
-:class: tip
+::::{proof:example}
 
 A frictionless pendulum is governed by the nonlinear equation $\theta''+ \frac{g}{L}\sin(\theta)=0$, where $\theta(t)$ is the angle made by the pendulum from the straight-down position. Define 
 
@@ -90,8 +88,7 @@ u_6' &= z''' = \gamma(t,u_1,u_2,u_3,u_4,u_5,u_6).
 
 The final expression of the new system is $\bfu' = \bff(t,\bfu)$, free of all references to the original variables $x$, $y$, and $z$.
 
-::::{admonition} Example
-:class: tip
+::::{proof:example}
 
 Two pendulums hanging from a bar and swinging in parallel planes are coupled through torsion on the bar, obeying
 
@@ -151,6 +148,6 @@ $$
 \bfu' = \twomat{0}{1}{-\omega_0^2}{-2Z\omega_0} \bfu + \twovec{0}{f},
 $$
 
-which is of the form $\bfu'=\bfA(t)\bfu + \bff(t)$. The $2\times 2$ matrix $\bfA$ here is called the {term}`coefficient matrix` of the first-order system. 
+which is of the form $\bfu'=\bfA(t)\bfu + \bff(t)$. The $2\times 2$ matrix $\bfA$ here is called the **coefficient matrix** of the first-order system. 
 
 <div style="max-width:608px"><div style="position:relative;padding-bottom:66.118421052632%"><iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/2358381/sp/235838100/embedIframeJs/uiconf_id/43030021/partner_id/2358381?iframeembed=true&playerId=kaltura_player&entry_id=1_5xft6bmd&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_tdiripx6" width="608" height="402" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="Kaltura Player" style="position:absolute;top:0;left:0;width:100%;height:100%"></iframe></div></div>

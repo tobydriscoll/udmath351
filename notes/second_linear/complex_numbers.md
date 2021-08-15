@@ -1,18 +1,3 @@
----
-jupytext:
-  cell_metadata_filter: -all
-  formats: md:myst
-  text_representation:
-    extension: .md
-    format_name: myst
-    format_version: '0.12'
-    jupytext_version: 1.5.0
-kernelspec:
-  display_name: Matlab
-  language: matlab
-  name: matlab
----
-
 # Complex numbers
 
 *For a really smart and entertaining introduction to complex numbers, I recommend [this video series](https://youtu.be/T647CGsuOVU).*
@@ -58,7 +43,7 @@ Yet something amazing happens if you do accept imaginary numbers, and their expa
 `````
 ## Basic arithmetic
 
-We can write a complex number $z\in \complex$ as $z=x+iy$, where $i^2=-1$ and $x$ and $y$ are real numbers known as the {term}`real part` and {term}`imaginary part` of $z$,
+We can write a complex number $z\in \complex$ as $z=x+iy$, where $i^2=-1$ and $x$ and $y$ are real numbers known as the **real part` and {term}`imaginary part** of $z$,
 
 ```{math}
 z = x + i y \quad \Leftrightarrow \quad x = \Re(z), \quad y = \Im(z).
@@ -66,7 +51,7 @@ z = x + i y \quad \Leftrightarrow \quad x = \Re(z), \quad y = \Im(z).
 
 Writing a complex number this way is equivalent to using rectangular or Cartesian coordinates in the plane to specify a point $(x,y)$. Thus complex numbers are on a number *plane* rather than a number line.
 
-There is a generalization of absolute value to complex numbers known as the {term}`modulus`, a real nonnegative quantity easily computed via
+There is a generalization of absolute value to complex numbers known as the **modulus**, a real nonnegative quantity easily computed via
 
 ```{math}
 |z|^2 = [\text{Re}(z)]^2 + [\text{Im}(z)]^2.
@@ -74,7 +59,7 @@ There is a generalization of absolute value to complex numbers known as the {ter
 
 Like the absolute value, $|z|$ is the distance from $z$ to the origin, and $|w-z|$ is the distance between two complex numbers. Here, though, the distances are in the plane rather than on a line.
 
-An important operation on complex numbers that has no real counterpart is the {term}`conjugate`,
+An important operation on complex numbers that has no real counterpart is the **conjugate**,
 
 ```{math}
 \bar{z} =\text{Re}(z) - i \,\text{Im}(z).
@@ -90,16 +75,14 @@ You add, subtract, and multiply complex numbers by applying the usual algebraic 
 
 This is a lot like rationalizing a denominator with square roots. 
 
-::::{admonition} Example
-:class: tip
+::::{proof:example}
 $$
 \frac{2-i}{3+2i} = \frac{2-i}{3+2i}\cdot \frac{3-2i}{3-2i}
 = \frac{6-4i-3i+2i^2}{3^2+2^2} = \frac{4-7i}{13}.
 $$
 ::::
 
-::::{admonition} Example
-:class: tip
+::::{proof:example}
 Suppose that $|z|=1$. Then 
 
 $$
@@ -127,5 +110,3 @@ For complex numbers $w$ and $z$,
 ````
 
 More to come later on complex numbers, but this will be enough for now.
-
-<div style="max-width:608px"><div style="position:relative;padding-bottom:66.118421052632%"><iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/2358381/sp/235838100/embedIframeJs/uiconf_id/43030021/partner_id/2358381?iframeembed=true&playerId=kaltura_player&entry_id=1_flswsnsm&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_wn64do5u" width="608" height="402" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="Kaltura Player" style="position:absolute;top:0;left:0;width:100%;height:100%"></iframe></div></div>

@@ -12,6 +12,7 @@ kernelspec:
   language: julia
   name: julia-1.6
 ---
+(section-first_order-ivp)=
 # Initial-value problems
 
 ```{code-cell}
@@ -20,29 +21,34 @@ using Plots,DifferentialEquations
 default(label="",linewidth=2,markersize=4)
 ```
 
-A consistent theme so far about first-order ODEs is that solutions are not unique. There is a general solution that describes a family of functions that provide all possible solutions. The manifestation of the nonuniqueness is an integration constant.
+One of the important findings in {numref}`section-first_order-preview` is that solutions of first-order ODEs are not unique. Instead, there is a *general solution* that describes a family of functions that provide all possible solutions. The manifestation of the nonuniqueness is a generalization of the usual integration constant.
 
-In scientific and engineering problems we typically have an additional constraint that picks out a single member of the solution family, i.e., a particular solution. Usually that constraint takes the form of a specified value,
+```{index} paticular solution, ! initial-value problem; with first-order ODE
+```
+
+In scientific and engineering problems we typically have an additional constraint that picks out a single member of the solution family, i. e., a **particular solution**. Usually that constraint takes the form of a specified value,
 
 $$
 x(t_0) = x_0,
 $$
 
-where $t_0$ and $x_0$ are known or used as parameters. Such a constraint combined with a first-order ODE leads to an {term}`initial-value problem`, or IVP for short:
+where $t_0$ and $x_0$ are known or used as parameters. Such a constraint combined with a first-order ODE leads to an **initial-value problem**
 
-````{proof:definition} Initial-value problem
+````{proof:definition} Initial-value problem (IVP)
 ```{math}
 \dd{x}{t} = f(t,x), \quad x(t_0) = x_0.
 ```
 ````
 
-In this case the constraint $x(t_0)=x_0$ is called an {term}`initial condition`, and it's typically implied that the problem is to be solved for $t>t_0$.
+```{index} ! initial condition
+```
 
-A solution of an IVP has to satisfy both the ODE and the initial condition. This is enough to specify the solution uniquely.
+In this case the constraint $x(t_0)=x_0$ is called an **initial condition**, and it's usually understood that the problem is to be solved for $t>t_0$.
 
-::::{admonition} Example
-:class: tip
-In the previous section we said that the general solution of $x'=ax$ is $x(t)=Ce^{at}$. If we are supplied with the initial value $x(2)=5$, then we require
+A solution of an IVP has to satisfy both the ODE and the initial condition. This is almost always enough to specify the solution uniquely.
+
+::::{proof:example}
+In {numref}`section-first_order-preview` we found that the general solution of $x'=ax$ is $x(t)=Ce^{at}$. If we are supplied with the initial value $x(2)=5$, then we require
 
 $$
 5 = x(2) = Ce^{2a},
@@ -55,7 +61,7 @@ x(t) = 5e^{-2a}\cdot e^{at} = 5e^{a(t-2)}.
 $$
 ::::
 
-A graphical interpretation of the role of an initial condition is that the general solution is a family of curves in the $(t,x)$ plane, and the initial condition is a point that the particular solution of interest must pass through.
+A graphical interpretation of the role of an initial condition is that the general solution is a family of curves in the $(t,x)$ plane, and the initial condition is a point that the particular solution of interest must pass through. Here is an illustration for $x'=1.25x$, $x(3)=20$.
 
 ```{code-cell}
 a = 1.25
@@ -71,7 +77,7 @@ title!("Picking the solution with x(3)=20")
 
 ## Numerical solutions
 
-Because an initial-value problem has a unique solution, it's a suitable target for a numerical simulation. We will use the function `ode45` to provide such numerics in MATLAB. For example, here is constant growth subject to the initial condition $x(1)=3$.
+Because an initial-value problem has a unique solution, it's a suitable target for a numerical simulation. Here's a numerical approximation of constant growth $x'=2x$, $x(1)=3$. in Julia. 
 
 ```{code-cell}
 f = (x,p,t) -> 2x
@@ -86,7 +92,7 @@ Exponential growth or decay is best plotted on a log-linear scale, where the sol
 plot(x,label="",xaxis="t",yaxis=("x",:log10),title="Constant growth rate (log scale)")
 ```
 
-Here's our example of variable growth. Note that we are not using the known exact solution, but just letting MATLAB create a numerical approximation by other means.
+Here's our example of variable growth. Note that we are not using the known exact solution, but just letting Julia create a numerical approximation by other means.
 
 ```{code-cell}
 f = (x,p,t) -> 2t*x
@@ -104,4 +110,4 @@ x = solve(ivp)
 plot(x,label="",xlabel="t",yaxis=("x",:log10),title="Nonlinear growth")
 ```
 
-The warning issued here can mean that there is a bug in the code, but in this case, it's just MATLAB noticing the finite-time blowup. In fact, it gets the true blowup time rather accurately.
+The warning issued here can mean that there is a bug in the code, but in this case, it's just Julia noticing the finite-time blowup. In fact, it gets the true blowup time rather accurately.

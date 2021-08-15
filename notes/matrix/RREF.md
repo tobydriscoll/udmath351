@@ -14,13 +14,13 @@ kernelspec:
 ---
 # RREF
 
-It's time to get more formal and precise about row elimination. We separate it into downward and upward phases.  In what follows we use the term {term}`leading nonzero` to mean the first (i.e., leftmost) entry of a row that is not zero.
+It's time to get more formal and precise about row elimination. We separate it into downward and upward phases.  In what follows we use the term **leading nonzero** to mean the first (i.e., leftmost) entry of a row that is not zero.
 
 (definition-linalg-phase1)=
 
 ````{proof:algorithm}  Row elimination downward phase
 1. Set $i=1$.
-2. Find the leftmost leading nonzero in rows $i$ and below. The column of this leading nonzero is known as the {term}`pivot column`. If no such column exists, stop.
+2. Find the leftmost leading nonzero in rows $i$ and below. The column of this leading nonzero is known as the **pivot column**. If no such column exists, stop.
 3. As necessary, swap rows and/or multiply a row by a constant to put a 1 in the pivot column of row $i$.
 4. Add multiples of row $i$ to the rows below it in order to put zeros into the pivot column.
 5. Increment $i$ and return to step 2.
@@ -54,14 +54,14 @@ free column
 
 ````{proof:definition} RREF
 
-A matrix is in {term}`RREF` (reduced row echelon form) if it meets all of these requirements:
+A matrix is in **RREF** (reduced row echelon form) if it meets all of these requirements:
 
 1. Any rows of all zeros appear below all nonzero rows.
 2. The leading nonzero of any row is a one.
 3. Every leading 1 that is lower than another leading 1 is also to the right of it.
 4. Every leading 1 is the only nonzero in its column.
 
-The columns that have leading ones are called {term}`pivot columns`. The other columns are called {term}`free columns`.
+The columns that have leading ones are called **pivot columns`. The other columns are called {term}`free columns**.
 ````
 
 Here is an example, using MATLAB to do the row operations for us. The linear system is characterized by
@@ -174,8 +174,7 @@ The RREF of an augmented matrix represents a linear system that we can solve by 
 3. Otherwise, each variable associated with a free column is assigned to a free parameter (e.g., $s$, $t$, etc.).
 4. Use the pivot columns to solve for their corresponding variables in terms of the free parameters.
 
-::::{admonition} Example
-:class: tip
+::::{proof:example}
 A linear system has an augmented matrix equivalent to the RREF
 
 $$
@@ -200,8 +199,7 @@ $$
 :::
 ::::
 
-::::{admonition} Example
-:class: tip
+::::{proof:example}
 A linear system has an augmented matrix equivalent to the RREF
 
 $$

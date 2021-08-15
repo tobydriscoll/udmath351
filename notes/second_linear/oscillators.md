@@ -94,7 +94,7 @@ x(t) & = \Re \left( c_1 e^{i\omega_0 t} \right)\\
 & = R \cos(\omega_0 t+\theta),
 \end{align*}
 
-where the last line follows from Euler's identity. This is the {term}`amplitude–phase form`,
+where the last line follows from Euler's identity. This is the **amplitude–phase form**,
 
 :::{math}
 :label: second-undamped-ampphase
@@ -111,8 +111,7 @@ $$
 
 which amounts to simple polar/Cartesian conversions.
 
-::::{admonition} Example
-:class: tip
+::::{proof:example}
 Find the solution in amplitude-phase form of $2x''+32x=0$ with $x(0)=1$, $x'(0)=-8$.
 
 :::{dropdown} Solution
@@ -133,8 +132,7 @@ Converting $(1,-2)$ to polar form gives $R=\sqrt{5}$ and $\tan \theta = -2/1$. I
 :::
 ::::
 
-::::{admonition} Example
-:class: tip
+::::{proof:example}
 Find the amplitude of the solution to $x''+9x=0$, $x(0)=-4$, $x'(0)=6$.
 
 :::{dropdown} Solution
@@ -158,7 +156,7 @@ which gives $R=\sqrt{20}=2\sqrt{5}$.
 
 # Free oscillations
 
-The most common use of second-order equations is the modeling of oscillatory or other periodic behavior. This behavior occurs in myriad contexts. When an oscillating system is not subjected to any external forces, we call it an unforced oscillator or {term}`free oscillator`.
+The most common use of second-order equations is the modeling of oscillatory or other periodic behavior. This behavior occurs in myriad contexts. When an oscillating system is not subjected to any external forces, we call it an unforced oscillator or **free oscillator**.
 
 ## Mechanical oscillator
 
@@ -169,7 +167,7 @@ An object attached to an ideal spring satisfies the ODE
 mx'' + b x' + kx = 0,
 ```
 
-where $x(t)$ is the displacement from the natural resting position, $m$ is the mass of the object, $b$ is an attenuation coefficient due to friction or mechanical damping, and $k$ is a property of the spring called the {term}`spring constant`. This constant is the ratio of the restoring force of the spring to the amount by which it is stretched or compressed.
+where $x(t)$ is the displacement from the natural resting position, $m$ is the mass of the object, $b$ is an attenuation coefficient due to friction or mechanical damping, and $k$ is a property of the spring called the **spring constant**. This constant is the ratio of the restoring force of the spring to the amount by which it is stretched or compressed.
 
 ```{attention}
 All named parameters such as $m$, $k$, and $b$ are assumed to be nonnegative unless stated otherwise.
@@ -227,10 +225,10 @@ Right away this suggests that we only need two parameters, not three, to express
 \omega_0 = \sqrt{\frac{k}{m}}, \qquad Z = \frac{b/m}{2\omega_0} = \frac{b}{\sqrt{4km}}.
 ```
 
-The parameter $\omega_0$ is known as the {term}`natural frequency`, with units of inverse time, and $Z$ is a dimensionless {term}`damping coefficient` describing the relative intensity of the damping.
+The parameter $\omega_0$ is known as the **natural frequency`, with units of inverse time, and $Z$ is a dimensionless {term}`damping coefficient** describing the relative intensity of the damping.
 
 ::::{important}
-In math we usually use *frequency* to mean the multiplier of $t$ in a sin or cos function. That is our usage. In some fields this is called {term}`angular frequency` and *frequency* is used to mean the number of cycles per time unit, as in Hz.
+In math we usually use *frequency* to mean the multiplier of $t$ in a sin or cos function. That is our usage. In some fields this is called **angular frequency** and *frequency* is used to mean the number of cycles per time unit, as in Hz.
 ::::
 
 Now the ODE of a free oscillator becomes
@@ -252,10 +250,9 @@ The discussion now splits into four cases, marked by increasing values of $Z$.
 
 ## Undamped oscillator, $Z=0$
 
-The case $x'' + \omega_0^2x = 0$ was discussed in {numref}`section-second-undamped`. It results in pure oscillation at frequency $\omega_0$. This is known as {term}`simple harmonic motion`.
+The case $x'' + \omega_0^2x = 0$ was discussed in {numref}`section-second-undamped`. It results in pure oscillation at frequency $\omega_0$. This is known as **simple harmonic motion**.
 
-::::{admonition} Example
-:class: tip
+::::{proof:example}
 When a 2 kg mass is hung on a spring, the spring stretches by 0.25 m. What is the natural frequency of the mass-spring system? Suppose the mass is pulled down 0.2 m past equilibrium and then thrown upward at 1 m/s. What is the amplitude of the motion?
 
 :::{dropdown} Solution
@@ -302,7 +299,7 @@ Define the damped frequency $\omega_d=\omega_0 \sqrt{1-Z^2}$. The amplitude–ph
 x_h(t) = R\, e^{-Z\omega_0 t} \cos( \omega_d t + \theta),
 ```
 
-where $R$ and $\theta$ are determined by the initial conditions. This solution is pseudoperiodic, combining oscillation at frequency $\omega_d < \omega_0$ inside an exponential decay envelope. We call this an {term}`underdamped oscillator`.
+where $R$ and $\theta$ are determined by the initial conditions. This solution is pseudoperiodic, combining oscillation at frequency $\omega_d < \omega_0$ inside an exponential decay envelope. We call this an **underdamped oscillator**.
 
 ## Critically damped oscillator, $Z=1$
 		
@@ -318,7 +315,7 @@ with general homogeneous solution
 x_h(t) = e^{-\omega_0 t} (c_1 + c_2 t).
 ```
 
-There is no longer any oscillation present, and we have a {term}`critically damped` system. The linear growth of $c_2 t$ doesn't make much of a difference against the exponential decay, and $x_h\to0$ as $t\to\infty$.
+There is no longer any oscillation present, and we have a **critically damped** system. The linear growth of $c_2 t$ doesn't make much of a difference against the exponential decay, and $x_h\to0$ as $t\to\infty$.
 
 ## Overdamped, $Z>1$
 
@@ -328,7 +325,7 @@ For $Z>1$ the roots are
 \lambda_{1,2} = -Z \omega_0 \pm \omega_0 \sqrt{Z^2-1},
 ```
 
-which are negative and real. This gives an exponentially decaying homogeneous solution. In this case we have an {term}`overdamped` oscillator.
+which are negative and real. This gives an exponentially decaying homogeneous solution. In this case we have an **overdamped** oscillator.
 
 ```{list-table} Damping coefficient and characteristic values
 :header-rows: 1
@@ -351,8 +348,7 @@ which are negative and real. This gives an exponentially decaying homogeneous so
   - overdamped
 ```
 
-::::{admonition} Example
-:class: tip
+::::{proof:example}
 
 A 5 kg mass is hung on a spring with constant $11$ N per m and connected to a dashpot that provides 8 N-sec per meter of resistance. Is this system underdamped, overdamped, or critically damped?
 
@@ -513,11 +509,11 @@ x(t) = \frac{1}{4\epsilon\hat{\omega}} \bigl[ 2 \sin(\epsilon t) \sin(\hat{\omeg
 = \frac{\sin(\epsilon t)}{2\epsilon \hat{\omega}} \sin(\hat{\omega} t).
 ```
 
-If $\epsilon$ is small, we can interpret this solution as an oscillation at the average frequency inside an envelope that oscillates at the much lower frequency $\epsilon$. This phenomenon is called {term}`beating` and is audible as a modulating change in volume when two instruments slightly out of tune play together. You can hear this phenomenon demonstrated in [this video](https://youtu.be/rmvDu6EY2lE?t=10), among many others.
+If $\epsilon$ is small, we can interpret this solution as an oscillation at the average frequency inside an envelope that oscillates at the much lower frequency $\epsilon$. This phenomenon is called **beating** and is audible as a modulating change in volume when two instruments slightly out of tune play together. You can hear this phenomenon demonstrated in [this video](https://youtu.be/rmvDu6EY2lE?t=10), among many others.
 
 #### Resonance
 
-{numref}`Formula {number}<formula-secondlin-nonresonant>` cannot account for the case $\omega=\omega_0$. This situation is known as {term}`resonance`. It's an idealization of pushing someone on a swing at *exactly* the right moment in each cycle.
+{numref}`Formula {number}<formula-secondlin-nonresonant>` cannot account for the case $\omega=\omega_0$. This situation is known as **resonance**. It's an idealization of pushing someone on a swing at *exactly* the right moment in each cycle.
 
 We can obtain the resonant solution by taking the limit $\epsilon\to 0$ in {eq}`secondlin-beats`. (Alternatively, we can start from scratch and use an enhanced form of the method of undetermined coefficients.) Since $\sin(\theta)/\theta \to 1$, we get the following.
 
@@ -547,7 +543,7 @@ $$
 A = \frac{1}{\omega_0^2} \cdot \frac{1}{1-\rho^2 + 2i\rho Z}.
 $$
 
-Taking the modulus of $A$ gives a quantity called the {term}`gain`,
+Taking the modulus of $A$ gives a quantity called the **gain**,
 
 $$
 g(\rho) = \frac{1}{\rule{0pt}{1em} \omega_0^2 \sqrt{\rule{0pt}{0.8em}(1-\rho^2)^2 + 4\rho^2 Z^2 } }.
@@ -574,7 +570,7 @@ A little calculus shows that as a function of $\rho$, the gain is maximized at
 \end{cases}
 ```
 
-When $0 < Z^2 < 1/2$, this value satisfies $0 < \rho_\text{max}<1$, i.e., the gain is maximized at a nonzero forcing frequency smaller than the natural frequency. We can consider this to be a {term}`pseudoresonance`.[^pseudo] The peak value of the gain at pseudoresonance is found to be
+When $0 < Z^2 < 1/2$, this value satisfies $0 < \rho_\text{max}<1$, i.e., the gain is maximized at a nonzero forcing frequency smaller than the natural frequency. We can consider this to be a **pseudoresonance**.[^pseudo] The peak value of the gain at pseudoresonance is found to be
 
 [^pseudo]: Since pure resonance cannot be observed in real physical systems, one usually refers to pseudoresonance as simply resonance in practice.
 

@@ -1,6 +1,6 @@
 # Homogeneous solutions
 
-The linear second-order problem $\opA[x]=f$ has a nice structure, but only a few such problems are straightforward to solve. We will now, and for the rest of the chapter, limit ourselves to the {term}`constant-coefficient` problem
+The linear second-order problem $\opA[x]=f$ has a nice structure, but only a few such problems are straightforward to solve. We will now, and for the rest of the chapter, limit ourselves to the **constant-coefficient** problem
 
 ```{math}
 :label: secondlin-linear-cc
@@ -41,13 +41,13 @@ for a to-be-determined value of $\lambda$. We substitute it into the ODE and get
 We therefore know that $x_h$ is a homogeneous solution provided that $\lambda^2 + b \lambda + k =0$.
 
 ````{proof:definition} Characteristic polynomial of a linear ODE
-The {term}`characteristic polynomial` of the linear operator $\opA[x]=x''+bx'+kx$ is
+The **characteristic polynomial** of the linear operator $\opA[x]=x''+bx'+kx$ is
 
 $$
 p(s) = s^2 + b s + k.
 $$
 
-Its roots are called the {term}`characteristic values` of $\opA$. For brevity, we will often refer to these as simply the **roots** of $\opA$, although this usage is not standard.
+Its roots are called the **characteristic values** of $\opA$. For brevity, we will often refer to these as simply the **roots** of $\opA$, although this usage is not standard.
 ````
 
 :::{note}
@@ -81,8 +81,7 @@ x_h(t) = e^{\lambda t} \bigl( c_1 t + c_2 \bigr).
 ```
 ````
 
-::::{admonition} Example
-:class: tip
+::::{proof:example}
 We could think of the trivial problem $x''=0$ as being linear with $b=k=0$. The characteristic polynomial is $s^2$, which makes zero a double root. So the general solution is
 
 $$
@@ -92,8 +91,7 @@ $$
 which is obvious in retrospect.
 ::::
 
-::::{admonition} Example
-:class: tip
+::::{proof:example}
 Find the general solution of $x''-x'-2x=0$.
 
 :::{dropdown} Solution
@@ -101,8 +99,7 @@ The characteristic polynomial is $s^2-s-2$, which has roots $\lambda_1=-1$, $\la
 :::
 ::::
 
-::::{admonition} Example
-:class: tip
+::::{proof:example}
 Solve the IVP $x'' - 5 x = 0$, $x(0)=6$, $x'(0)=0$.
 
 :::{dropdown} Solution

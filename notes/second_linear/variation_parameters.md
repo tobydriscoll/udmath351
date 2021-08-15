@@ -31,7 +31,7 @@ where $c_1$ is an arbitrary constant and $g(t)$ is computed as the exponentiatio
 &= k'g + k\cdot\opA[g].
 \end{align*}
 
-However, $g$ is itself a homogeneous solution, so all that remains is $k'g$. We therefore make $x_p$ a particular solution if we set $f=k'g$. This lets us solve for the unknown $k(t)$ by taking $k'(t)=f(t)/g(t)$ and integrating. The result is known as the {term}`variation of parameters` formula (or VoP formula for short). We collect all the equations here, including the homogeneous and general solutions.
+However, $g$ is itself a homogeneous solution, so all that remains is $k'g$. We therefore make $x_p$ a particular solution if we set $f=k'g$. This lets us solve for the unknown $k(t)$ by taking $k'(t)=f(t)/g(t)$ and integrating. The result is known as the **variation of parameters** formula (or VoP formula for short). We collect all the equations here, including the homogeneous and general solutions.
 
 (formula-firstlin-varpar)=
 
@@ -51,8 +51,7 @@ The integration constants you would normally get from the indefinite integrals i
 
 (example-firstlin-nonhomog)=
 
-::::{admonition} Example
-:class: tip
+::::{proof:example}
 Solve $3x'=12x+24t$. 
 :::{dropdown} Solution
 Rewriting the ODE as $x'-4x=8t$, we identify $a(t)=4$ and $f(t)=8t$. Then
@@ -82,8 +81,7 @@ x(t) = x_h(t) + x_p(t) = c_1 e^{4t} - \frac{1}{2} (4t+1).
 :::
 ::::
 
-::::{admonition} Example
-:class: tip
+::::{proof:example}
 Find a particular solution of $x'=2t x + 6t$. 
 
 :::{dropdown} Solution
@@ -111,8 +109,7 @@ and the general solution is $x(t)=c_1 e^{t^2}-3$.
 ::::
 
 
-::::{admonition} Example
-:class: tip
+::::{proof:example}
 Solve the IVP
 
 $$

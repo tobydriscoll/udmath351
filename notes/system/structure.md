@@ -4,18 +4,17 @@ The rest of this chapter is devoted to linear ODE systems.
 
 (fs-df-linsystem)=
 ::::{proof:definition} Linear system of ODEs
-A {term}`linear ODE system` is an equation of the form
+A **linear ODE system** is an equation of the form
 
 :::{math}
 :label: fs-eq-system
 \mathbf{x}' = \mathbf{A}(t)\mathbf{x} + \bff(t),
 :::
 
-where $\mathbf{x}$ is an $n$-dimensional vector, $\mathbf{A}$ is an $n\times n$ {term}`coefficient matrix`, and $\bff(t)$ is an $n$-dimensional {term}`forcing function`. If the coefficient matrix does not depend on time, the system is said to be {term}`constant-coefficient`. If given, an {term}`initial condition` of the system is a time $t_0$ and vector $\mathbf{x}_0$ such that $\mathbf{x}(t_0)=\mathbf{x}_0$. 
+where $\mathbf{x}$ is an $n$-dimensional vector, $\mathbf{A}$ is an $n\times n$ **coefficient matrix`, and $\bff(t)$ is an $n$-dimensional {term}`forcing function`. If the coefficient matrix does not depend on time, the system is said to be {term}`constant-coefficient`. If given, an {term}`initial condition** of the system is a time $t_0$ and vector $\mathbf{x}_0$ such that $\mathbf{x}(t_0)=\mathbf{x}_0$. 
 ::::
 
-::::{admonition} Example
-:class: tip
+::::{proof:example}
 
 Here is a basic model for heating in a house. Let $b(t)$ be the temperature of the basement, $m(t)$ be the temperature of the main living area, and $a(t)$ be the temperature of the attic. Suppose the ground is at a constant 10 degrees C. We use a Newtonian model to describe how the temperature of the basement evolves due to interactions with the earth and the main floor:
 

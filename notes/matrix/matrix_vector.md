@@ -38,8 +38,7 @@ In order for $\bfA\bfx$ to be defined, the number of columns in $\bfA$ has to be
 
 Note that when $\bfA$ is $m\times n$, then $\bfx$ must have dimension $n$ and $\bfA\bfx$  has dimension $m$. 
 
-::::{admonition} Example
-:class: tip
+::::{proof:example}
 
 Calculate the product
 

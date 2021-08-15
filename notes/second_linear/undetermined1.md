@@ -21,7 +21,7 @@ Variation of parameters is all that we need for linear first-order problems, but
 
 In this situation, we go through the same work as before to get the homogeneous part $x_h$, but a valid $x_p$ can be found without integration.
 
-The correct form of $x_p$ for various manifestations of $f$ are given in [the table below](table-firstlin-MUC). The capital letters are considered unknown constants that have to be determined by plugging $x_p$ into the ODE. This is what gives the method its name, the {term}`method of undetermined coefficients`.
+The correct form of $x_p$ for various manifestations of $f$ are given in [the table below](table-firstlin-MUC). The capital letters are considered unknown constants that have to be determined by plugging $x_p$ into the ODE. This is what gives the method its name, the **method of undetermined coefficients**.
 
 ```{list-table} Particular solutions for the method of undetermined coefficients.
 :header-rows: 1
@@ -39,8 +39,7 @@ The correct form of $x_p$ for various manifestations of $f$ are given in [the ta
   - $A \cos(\omega t) + B \sin(\omega t)$
 ```
 
-::::{admonition} Example
-:class: tip
+::::{proof:example}
 Find the general solution of $x'-4x=8t$.
 :::{dropdown} Solution
 
@@ -75,8 +74,7 @@ As seen in the preceding example, the forcing function $f(t)=8t$ caused us to in
 Although the results for $B_1$ and $B_0$ in the example are unique, there are different ways to derive them. For example, we could apply the identity $B_1  - 4(B_1t + B_0) = 8t$ at $t=0$ and $t=1$ to conclude that $B_1-4B_0=0$ and $-3B_1-4B_0 =8$, which lead to the same result.
 ::::
 
-::::{admonition} Example
-:class: tip
+::::{proof:example}
 Solve the IVP
 
 $$
@@ -129,8 +127,7 @@ The benefit of the MUC over our previous methods is avoiding a second integral t
 
 If the forcing function includes multiple different types of functions added together, then you can find particular solutions for the different terms separately and add them together to get the overall particular solution.
 
-::::{admonition} Example
-:class: tip
+::::{proof:example}
 Find a particular solution of  $x'+3x=6t-4e^{-t}$.
 :::{dropdown} Solution
 We can separately find particular solutions for the cases $x'+3x=6t$ and $x'+3x=-4e^{-t}$. 
@@ -153,8 +150,7 @@ x_p(t) = 2t-\frac{2}{3}-2e^{-t}.
 
 The suggestions in the [MUC table](table-firstlin-MUC) can fail if the forcing function includes the homogeneous solution $e^{at}$.
 
-::::{admonition} Example
-:class: tip
+::::{proof:example}
 Consider $x'-ax=e^{at}$. We get $x_h=c_1e^{at}$, and the table suggests
 
 ```{math}

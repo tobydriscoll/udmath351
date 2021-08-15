@@ -1,4 +1,4 @@
-# Applied Math for Engineers
+# MATH 351 Notes
 
 These are notes on MATH 351 at UD by Toby Driscoll. Copyrighted, all rights reserved.
 

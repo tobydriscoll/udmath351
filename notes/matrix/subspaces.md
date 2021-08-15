@@ -5,12 +5,12 @@ jupytext:
   text_representation:
     extension: .md
     format_name: myst
-    format_version: '0.12'
-    jupytext_version: 1.5.0
+    format_version: 0.13
+    jupytext_version: 1.10.3
 kernelspec:
-  display_name: Matlab
-  language: matlab
-  name: matlab
+  display_name: Julia 1.6.1
+  language: julia
+  name: julia-1.6
 ---
 
 # General solutions
@@ -19,7 +19,7 @@ Let's focus on the linear system $\bfA\bfx=\bfb$ for an $n\times n$ coefficient 
 
 ## Homogeneous systems
 
-We say that the linear system is {term}`homogeneous` if $\bfb=\bfzero$, that is, the system is $\bfA\bfx = \bfzero$. Here is one of those old habits you must learn to break.
+We say that the linear system is **homogeneous** if $\bfb=\bfzero$, that is, the system is $\bfA\bfx = \bfzero$. Here is one of those old habits you must learn to break.
 
 ```{warning}
 A homogeneous system $\bfA\bfx = \bfzero$ can have nonzero solutions for $\bfx$, even if $\bfA$ is not the zero matrix.
@@ -29,8 +29,7 @@ To be clear, nonzero homogeneous solutions can occur only when $\bfA$ is singula
 
 A nice feature of zero is that adding multiples of zero to it is still zero. So, if $\mathbf{R}$ is the RREF of $\bfA$, then the RREF of the augmented matrix $[\bfA;\,\bfzero]$ is just $[\mathbf{R};\,\bfzero]$. Each free column of $\mathbf{R}$ therefore introduces a free variable in the homogeneous solution.
 
-::::{admonition} Example
-:class: tip
+::::{proof:example}
 The RREF of 
 
 ```{math}
@@ -63,8 +62,7 @@ so $\bfx =\threevec{1}{-2}{1}$ for any value of $s$.
 :::
 ::::
 
-::::{admonition} Example
-:class: tip
+::::{proof:example}
 Given the equivalence  
 
 ```{math}
@@ -107,7 +105,7 @@ The preceding examples are typical in that the homogeneous solution always takes
 where the $c_j$ are arbitrary, one for each free column of the RREF, and the vectors are constant. It's no accident that this has the form of a linear combination!
 
 ````{proof:definition}
-The formula {eq}`linalg-general-homog` is called the {term}`general solution` of the homogeneous problem $\bfA\bfx=\bfzero$. We say that $\bfu_1,\ldots,\bfu_k$ form a {term}`basis` for the general solution.
+The formula {eq}`linalg-general-homog` is called the **general solution` of the homogeneous problem $\bfA\bfx=\bfzero$. We say that $\bfu_1,\ldots,\bfu_k$ form a {term}`basis** for the general solution.
 ````
 
 ```{note}
@@ -118,7 +116,7 @@ In the new terminology, we can unify the case of an invertible $\bfA$ by saying 
 
 ## Particular solution
 
-Now, let's consider the nonhomogeneous system $\bfA\bfx=\bfb$. We introduce here one of the simplest yet most confusing terms in the course. A {term}`particular solution` of the linear system $\bfA\bfx=\bfb$ is just any one solution of the problem. The only reason the term exists is to distinguish it from the *general* solution, which (as above) is an expression for *every possible* solution of the system.
+Now, let's consider the nonhomogeneous system $\bfA\bfx=\bfb$. We introduce here one of the simplest yet most confusing terms in the course. A **particular solution** of the linear system $\bfA\bfx=\bfb$ is just any one solution of the problem. The only reason the term exists is to distinguish it from the *general* solution, which (as above) is an expression for *every possible* solution of the system.
 
 (theorem-linalg-general)=
 
@@ -129,7 +127,7 @@ All solutions of $\bfA\bfx=\bfb$ may be written as
 \bfx = \bfx_h + \bfx_p,
 ```
 
-where $\bfx_h$ is the general solution of $\bfA\bfx=\bfzero$ and $\bfx_p$ is any particular solution of $\bfA\bfx=\bfb$. We call this the {term}`general solution` of the linear system $\bfA\bfx=\bfb$.
+where $\bfx_h$ is the general solution of $\bfA\bfx=\bfzero$ and $\bfx_p$ is any particular solution of $\bfA\bfx=\bfb$. We call this the **general solution** of the linear system $\bfA\bfx=\bfb$.
 ````
 
 ````{proof:proof}
@@ -144,8 +142,7 @@ Hence $\bfv-\bfx_p$ is a homogeneous solution, which means that we can write it 
 
 Hence every linear system is closely tied to its homogeneous counterpart. The general solution of $\bfA\bfx=\bfb$ requires just one solution, plus the general homogeneous solution.
 
-::::{admonition} Example
-:class: tip
+::::{proof:example}
 Find the general solution of
 
 ```{math}
