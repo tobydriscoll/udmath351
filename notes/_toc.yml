@@ -2,7 +2,7 @@ format: jb-book
 root: frontmatter
 parts:
 - caption: Scalar ODEs
-  numbered: true
+  numbered: 3
   chapters:
   - file: first_order/overview
     sections:
@@ -23,7 +23,7 @@ parts:
     - file: second_linear/undetermined
     - file: second_linear/oscillators
 - caption: Linear algebra
-  numbered: true
+  numbered: 3
   chapters:
   - file: matrix/overview
     sections:
@@ -48,7 +48,7 @@ parts:
     - file: basis/dimension
     - file: basis/change
 - caption: Linear ODE systems
-  numbered: true
+  numbered: 3
   chapters:
   - file: system/overview
     sections:
