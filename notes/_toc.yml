@@ -16,11 +16,11 @@ parts:
     - file: first_order/modeling
   - file: second_linear/overview
     sections:
-    - file: second_linear/solution_structure
-    - file: second_linear/homogeneous
-    - file: second_linear/complex_exp
-    - file: second_linear/undetermined_coeffs
+    - file: second_linear/structure
+    - file: second_linear/const_coeff
+    - file: second_linear/complex
     - file: second_linear/variation_parameters
+    - file: second_linear/undetermined
     - file: second_linear/oscillators
 - caption: Linear algebra
   numbered: true

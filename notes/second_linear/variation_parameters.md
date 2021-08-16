@@ -12,146 +12,146 @@ kernelspec:
   language: julia
   name: julia-1.6
 ---
+(section-second_linear-vop)=
 # Variation of parameters
 
-The [preceding section](homogeneous) explained how to find the general solution $x_h(t)$ of a homoegenous linear system $\bfA\bfx=\bfzero$. The next step of our [overall solution strategy](algorithm-firstlin-solve) is to find any particular solution of $\opA[x]=f$ for a given $f(t)$.
+```{index} variation of parameters
+```
+
+{numref}`section-second_linear-const_coeff` and {numref}`section-second_linear-complex` explained how to find the general solution $x_h(t)$ of a homoegenous linear system $\opA[x]=0$. We need to perform that same step for a nonhomogeneous problem $\opA[x]=f$, but then also find a particular solution of the original equation. One possibility is to adapt the *variation of parameters* technique used for first-order problems in {numref}`section-first_order-vop`.
 
 The form of the homogeneous solution is
 
 $$
-x_h(t) = c_1 g(t),
+x_h(t) = c_1 x_1(t) + c_2 x_2(t),
 $$
 
-where $c_1$ is an arbitrary constant and $g(t)$ is computed as the exponentiation of an integral. Let's see what happens if we replace the constant by an unknown function of $t$, $x_p(t)=k(t)g(t)$:
+where $x_1$ and $x_2$ are indepdendent homogeneous solutions. Now we replace the constants $c_1$ and $c_2$ with functions of $t$:
 
-\begin{align*}
-\opA[x_p] &= x_p' - a(t) x_p \\ 
-& = (k'g+kg') - a k g \\ 
-& = k'g + k(g'-ag) \\ 
-&= k'g + k\cdot\opA[g].
-\end{align*}
-
-However, $g$ is itself a homogeneous solution, so all that remains is $k'g$. We therefore make $x_p$ a particular solution if we set $f=k'g$. This lets us solve for the unknown $k(t)$ by taking $k'(t)=f(t)/g(t)$ and integrating. The result is known as the **variation of parameters** formula (or VoP formula for short). We collect all the equations here, including the homogeneous and general solutions.
-
-(formula-firstlin-varpar)=
-
-````{proof:formula} Variation of parameters
-To find a particular solution $x_p$ of $\opA[x]=f$, compute
-\begin{align*}
-g(t) &= \exp\left[ \int a(t)\, dt\right], \\ 
-k(t) &= \int \frac{f(t)}{g(t)}\, dt, \\
-x_p(t) &= k(t)g(t), \\
-x(t) &= c_1g(t) + x_p(t).
-\end{align*}
-````
-
-:::{note}
-The integration constants you would normally get from the indefinite integrals in the [VoP formula](formula-firstlin-homogeneous) can be ignored (i.e., set to zero), as they make no meaningful difference in the final result. They are "absorbed" into $c_1$.
+:::{math}
+:label: eq-vop-ansatz
+x_p(t) = u_1(t) x_1(t) + u_2(t) x_2(t).
 :::
 
-(example-firstlin-nonhomog)=
+It follows that
 
-::::{proof:example}
-Solve $3x'=12x+24t$. 
+$$
+x_p' = u_1'x_1 + u_1 x_1' + u_2'x_2 + u_2 x_2'. 
+$$ 
+
+We are trying to find a way to choose $u_1$ and $u_2$ that makes $x_p$ a particular solution. Our lives will be a lot easier if we start with the constraint
+
+:::{math}
+:label: eq-variation_parameters-eq1
+u_1'x_1 + u_2'x_2 = 0,
+:::
+
+which implies $x_p' = u_1 x_1' + u_2 x_2'$. Let's see if we can get away with that. We differentiate again to get
+
+$$
+x_p'' = u_1'x_1' + u_1 x_1'' + u_2'x_2' + u_2 x_2''.
+$$
+
+Since $\opA[x] = x'' + bx' +k$, we get
+
+$$
+\opA[x_p] = u_1 (x_1'' + bx_1' + kx_1) + u_2 (x_2'' + bx_2' + kx_2) + ( u_1'x_1' + u_2'x_2').
+$$
+
+We are in great shape now. Since $x_1$ and $x_2$ are homogeneous solutions, we just have $\opA[x_p] = u_1'x_1' + u_2'x_2'$. So we need only to introduce the additional requirement
+
+:::{math}
+:label: eq-variation_parameters-eq2
+u_1'x_1' + u_2'x_2' = f,
+:::
+
+and then $x_p$ will be the desired particular solution.
+
+Equations {eq}`eq-variation_parameters-eq1` and {eq}`eq-variation_parameters-eq2` impose
+
+$$
+x_1 u_1' + x_2 u_2' &= 0, \\ 
+x_1'u_1' + x_2'u_2' &= f.
+$$
+
+Writing $u_1'=v_1$ and $u_2'=v_2$, we see that this is a pair of linear equations for $v_1$ and $v_2$, which is routine to solve, leading to the following.
+
+(formula-variation_parameters)=
+::::{proof:formula} Variation of parameters (2nd order)
+Let 
+
+$$
+u_1' = \frac{-x_2 f}{W}, \quad u_2' = \frac{x_1 f}{W},
+$$
+
+where $W$ is the Wronskian of homogeneous solutions $x_1$ and $x_2$. Then a particular solution of $\opA[x]=f$ is 
+
+$$
+x_p(t) = u_1(t) x_1(t) + u_2(t) x_2(t).
+$$
+::::
+
+:::{note}
+Isn't it handy now that the Wronskian is never zero?
+:::
+
+:::{note}
+The integration constants for $u_1$ and $u_2$ can be taken to be zero. Any value is valid, and we need just one particular solution.
+:::
+
+(example-variation_parameters-const)=
+::::{proof:example} 
+Find a particular solution of $x'' - x = 4$. 
+
 :::{dropdown} Solution
-Rewriting the ODE as $x'-4x=8t$, we identify $a(t)=4$ and $f(t)=8t$. Then
+There's no getting around the need for the homogeneous solution here. The characteristic roots are $\pm 1$, so we take $x_1=e^t$, $x_2=e^{-t}$. Then $W=(e^t)(-e^{-t}) - (e^{-t})(e^t) = 2$, and 
 
-```{math}
-g(t) = \exp\left[ \int 4\,dt \right] = e^{4t},
-```
+$$
+u_1' = \frac{-4 e^{-t}}{-2}, \quad u_2' = \frac{4 e^{t}}{-2}.
+$$
 
-and
+From here we find $u_1 = -2e^{-t}$ and $u_2 = -2e^t$. Hence 
 
-```{math}
-k(t) = \int \frac{8t}{e^{4t}}\, dt = -\frac{1}{2} (4t+1)e^{-4t},
-```
+$$
+x_p = (-2e^{-t})(e^t) + (-2e^t)(e^{-t}) = -4.
+$$
 
-where you need integration by parts (or a computer) to perform the integral. Hence
-
-```{math}
-x_p(t) = \left[ \frac{1}{2} (4t+1)e^{-4t} \right] e^{4t} = -\frac{1}{2} (4t+1),
-```
-
-and the general solution is
-
-```{math}
-x(t) = x_h(t) + x_p(t) = c_1 e^{4t} - \frac{1}{2} (4t+1).
-```
-
+You can instantly check that this result is correct.
 :::
 ::::
 
-::::{proof:example}
-Find a particular solution of $x'=2t x + 6t$. 
+(example-variation_parameters-resonance)=
+::::{proof:example} 
+Find a particular solution of $x'' - \lambda^2 x = 2 e^{\lambda t}$. 
 
 :::{dropdown} Solution
-We start with
+The homogeneous equation has roots $\pm \lambda$. We choose $x_1=e^{\lambda t}$, $x_2=e^{-\lambda t}$. Now
 
-```{math}
-g(t) = \exp\left[ \int 2t\, dt \right] = e^{t^2}.
-```
+$$
+W = \twodet{e^{\lambda t}}{e^{-\lambda t}}{\lambda e^{\lambda t}}{-\lambda e^{-\lambda t}} = -2\lambda.
+$$
 
-Then we can compute
+This gives
 
-```{math}
-k(t) = \int \frac{6t}{e^{t^2}}\, dt  = -3 e^{-t^2}.
-```
+$$
+u_1' = \frac{ - 2 e^{-\lambda t} e^{\lambda t}}{-2\lambda}, \quad u_2' = \frac{ 2 e^{\lambda t} e^{\lambda t} }{-2\lambda}.
+$$
+
+Thus,
+
+$$
+u_1 = \frac{1}{\lambda} \int dt = \frac{t}{\lambda}, \quad 
+u_2 = -\frac{1}{\lambda} \int e^{2 \lambda t}\, dt  = -\frac{1}{2 \lambda^2} e^{2 \lambda t}.
+$$
 
 Finally,
 
-```{math}
-x_p(t) = k(t) g(t) = -3,
-```
+$$
+x_p(t) = \frac{1}{\lambda} t e^{\lambda t}  - \frac{1}{2 \lambda^2} e^{\lambda t}
+$$
 
-and the general solution is $x(t)=c_1 e^{t^2}-3$.
-
+is a particular solution. However, the second term is a constant mutiple of $x_1$, so we could drop it and still have a particular solution.
 :::
 ::::
 
-
-::::{proof:example}
-Solve the IVP
-
-$$
-(2+t) x'= x - 1, \quad x(0) = -5.
-$$
-:::{dropdown} Solution
-First we put the ODE into our standard form,
-
-```{math}
-x' - \frac{1}{2+t} x = -\frac{1}{2+t}.
-```
-
-Then
-
-```{math}
-g(t) = \exp\left[ \int \frac{1}{2+t}\, dt \right] = \exp[ \ln(2+t) ] = 2+t.
-```
-
-Next,
-
-```{math}
-k(t) = \int \frac{-1}{2+t} (2+t)^{-1} \, dt = (2+t)^{-1},
-```
-
-so that the general solution is
-
-```{math}
-x(t) = c_1 (2+t) + (2+t)^{-1} (2+t) = c_1(2+t)+1.
-```
-
-Finally, we apply the initial condition to solve for $c_1$:
-
-$$
--5 = x(0) = 2c_1+1 \quad \implies \quad c_1=-3.
-$$
-
-Hence $x(t) = 1-3(2+t) = -5-3t.$
-:::
-::::
-
-```{attention}
-It takes a pretty special relationship between $a(t)$ and $f(t)$ to make the integrals in the VoP formula reasonable to do by hand. Consequently, if you are asked in an exercise to produce a solution and make a mistake, you will likely wind up with an integral that is virually impossible to evaluate.
-```
-
-<div style="max-width:608px"><div style="position:relative;padding-bottom:66.118421052632%"><iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/2358381/sp/235838100/embedIframeJs/uiconf_id/43030021/partner_id/2358381?iframeembed=true&playerId=kaltura_player&entry_id=1_nrwftuvy&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_of55vvzh" width="608" height="402" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="Kaltura Player" style="position:absolute;top:0;left:0;width:100%;height:100%"></iframe></div></div>
+As you can see, the VoP formula is pretty great if you happen to be a robot. [Note to editor: insert CAPTCHA here.] Us humans, though, could use something a little easier, and that is coming next.

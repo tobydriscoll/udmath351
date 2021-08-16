@@ -98,22 +98,25 @@ $$
 
 ## Homogeneous solutions
 
+```{index} ! homogeneous equation
+```
+
 The equation $\opA[x]=0$, or {eq}`eq-linear-standard` with zero forcing, plays a key role.
 
 ::::{proof:definition} Homogeneous ODE
 A **homogeneous ODE** takes the form
 
 $$
-\dd{x}{t} = a(t)x.
+\dd{x}{t} + P(t)x = 0,
 $$
 
-Alternatively, 
+or $\opA[x]=0$. 
 ::::
 
-We have a special role 
+```{index} ! superposition
+```
 
-
-which is {eq}`eq-linear-def` with zero forcing.
+Linear homogeneous problems have a key property that allows turning individual solutions into sets of them. 
 
 (theorem-linear-super)=
 ::::{proof:theorem} Superposition
@@ -135,6 +138,9 @@ As a special case, if $x_1$ solves $\opA[x]=0$, then so does $c_1x_1$ for an arb
 ## General solutions
 
 Problems with nonzero forcing contain the homogeneous case within them, as the following result shows.
+
+```{index} ! general solution
+```
 
 (theorem-linear-general)=
 ::::{proof:theorem}

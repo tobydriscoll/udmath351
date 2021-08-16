@@ -12,6 +12,7 @@ kernelspec:
   language: julia
   name: julia-1.6
 ---
+(section-first_order-vop)=
 # Variation of parameters
 
 {numref}`section-first_order-homogeneous1` explained how to find the general solution $x_h(t)$ of a homoegenous linear system $\bfA\bfx=\bfzero$. The next step of our [overall solution strategy](algorithm-linear-solve) is to find any particular solution of $\opA[x]=f$ for a given $f(t)$.
