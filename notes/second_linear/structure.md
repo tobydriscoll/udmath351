@@ -75,7 +75,7 @@ The issue is that $t$ and $5t$ are not "different enough," in a way we now make 
 
 (definition-structure-independence)=
 ::::{proof:definition} Linear independence
-Functions $u_1(t),u_2(t),\ldots,u_n(t)$, are **linearly dependent** on interval $I$ if there is a way to choose constants $c_1,\ldots,c_n$, *not all zero*, such that
+Functions $u_1(t),u_2(t),\ldots,u_n(t)$ are **linearly dependent** on interval $I$ if there is a way to choose constants $c_1,\ldots,c_n$, *not all zero*, such that
 
 $$
 c_1u_1(t) + c_2u_2(t) + \cdots c_n u_n(t) = 0

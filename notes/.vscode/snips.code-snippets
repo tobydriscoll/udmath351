@@ -85,7 +85,7 @@
 	"BMatrix" : {
 		"scope": "markdown",
 		"prefix": "\\bmat",
-		"body": "\\begin{bmatrix}\n  $1\n\\end{bmatrix}"
+		"body": "\\begin{bmatrix} $1 \\end{bmatrix}$0"
 	},
 
 	"Mathbf A" : {

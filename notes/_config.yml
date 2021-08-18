@@ -80,6 +80,12 @@ sphinx:
           "Re": ["\\operatorname{Re}"]
           "Im": ["\\operatorname{Im}"]
           "ee": ["\\times 10^"]
+          "rank": ["\\operatorname{rank}"]
+          "span": ["\\operatorname{span}"]
+          "nullsp": ["\\operatorname{nullsp}"]
+          "rowsp": ["\\operatorname{rowsp}"]
+          "colsp": ["\\operatorname{colsp}"]
+          "dim": ["\\operatorname{dim}"]
       HTML-CSS:
         # styles: "{overflow-y: visible;}"
         availableFonts: []

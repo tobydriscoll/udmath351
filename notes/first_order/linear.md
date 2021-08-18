@@ -98,7 +98,7 @@ $$
 
 ## Homogeneous solutions
 
-```{index} ! homogeneous equation
+```{index} ! homogeneous; ODE
 ```
 
 The equation $\opA[x]=0$, or {eq}`eq-linear-standard` with zero forcing, plays a key role.

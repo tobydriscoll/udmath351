@@ -15,12 +15,19 @@ kernelspec:
 
 # Row elimination
 
-You've probably solved small systems of equations by substitution. In order to solve systems with more equations and variables, we systematize the idea as an elimination process. The goal of elimination is to transform the system to an equivalent one whose solution(s) we can deduce easily.
+You've probably solved small systems of equations by substitution. In order to solve systems with more equations and variables, we systematize the idea as an *elimination* process. The goal of elimination is to transform the system to an equivalent one whose solution(s) we can deduce easily. There are three "legal moves" at our disposal.
+
+(definition-row_elimination-operations)=
+::::{proof:definition} Row operations
+1. Swap the positions of two equations.
+2. Multiply an equation by a nonzero constant.
+3. Add a multiple of one equation to another equation.
+::::
+
+All of the row operations are reversible. Therefore, solutions of the system remain unchanged after a row operation.
 
 (example-gauss-elimination)=
-
 ::::{proof:example}
-
 Use elimination to solve the $3\times 3$ system
 
 \begin{align*}
@@ -31,7 +38,7 @@ x_1 - 2x_2 - x_3 & = 5.
 
 :::{dropdown} Solution
 
-The first step is to use the first equation to eliminate $x_1$ from the second and third equations. We therefore subtract 3 times equation 1 from equation 2, and 1 times equation 1 from equation 3:
+The first step is to use the first equation to eliminate $x_1$ from the second and third equations. We therefore add $-3$ times equation 1 to equation 2, and $-1$ times equation 1 to equation 3:
 
 \begin{align*}
  x_1 - x_2  - x_3  & = 2, \\
@@ -42,13 +49,13 @@ The first step is to use the first equation to eliminate $x_1$ from the second a
 This takes us to
 \begin{align*}
  x_1 - x_2  - x_3  & = 2,  \\
-x_2 + 3x_3 & = 3, \\
+x_2 + 3x_3 &= 3, \\
 -x_2 &= 3.
 \end{align*}
 
-It's tempting to grab that last equation and use it to remove $x_2$ from everything else. That certainly works, and it's what you want to do by hand. But we are aiming for a fully automatic system that works every time, so we will act as though the last equation still contains $x_3$ and is not so trivial.
+It's tempting to grab that last equation and use it to remove $x_2$ from everything else. That certainly works out here. But we are aiming for a fully automatic system that works every time, so we will act as though the last equation still might contain $x_3$ and is not so trivial.
 
-The next step of the recipe is to leave the first equation alone, and use the second to eliminate $x_2$ from all the others below it; in this case, it's just the third equation.
+The next step of the recipe is to leave the first equation alone, and use the second to eliminate $x_2$ from all the others below it.
 
 \begin{align*}
  x_1 - x_2  - x_3  & = 2, \\
@@ -56,26 +63,31 @@ x_2 + 3x_3 & = 3, \\
 (-x_2) + (x_2+3x_3)  & = 3 + 3.
 \end{align*}
 
-We now have a system in so-called *triangular* form,
+We now have a system in **triangular** form,
 
 \begin{align*}
  x_1 - x_2  - x_3  & = 2, \\
 x_2 + 3x_3 & = 3, \\
 3x_3  & = 6.
 \end{align*}
+
+We can now deduce that $x_3=2$ from the last equation. Moving up to the second equation, we then find that $x_2=3-3(2)=-3$. Finally, the first equation yields $x_1=2+(-3)+(2)=1$.
 :::
 ::::
 
-The process in [the preceding example](example-gauss-elimination) is most commonly known as **Gaussian elimination**. (It's a misnomer, as the process was known in China thousands of years before Gauss, but never mind.) We could solve the triangular system at the end of the example by starting with the last equation to deduce that $x_3=2$. We then put that value into the second equation and can solve that for $x_2$, etc.
+```{index} ! Gaussian elimination
+```
 
-Instead, though, we are going to continue to manipulate the system to get something even simpler.
+The process in {numref}`Example {number} <example-gauss-elimination>` leading to triangular system is commonly known as **Gaussian elimination**. (It's a misnomer, as the process was known at least in China thousands of years before Gauss, but never mind.) Finding the solution from the triangular form is called **backward substitution**.
+
+## Gauss-Jordan elimination
+
+An alternative to backward substitution is to transform the triangular system into something even simpler.
 
 (example-gauss-jordan)=
+::::{example} 
 
-::::{admonition} Example (continued)
-:class: tip 
-
-We continue from the end of [the preceding example](example-gauss-elimination).  Having reached the last variable and equation, we turn around and eliminate *upwards* instead:
+We continue from the end of {numref}`Example {number} <example-gauss-elimination>`.  Having reached the last variable and equation, we turn around and eliminate *upwards* instead:
 
 \begin{align*}
 (x_1 - x_2 - x_3) + \frac{1}{3}(3x_3) & = 2  +\frac{1}{3}(6), \\
@@ -90,7 +102,7 @@ x_2 & = -3,\\
 3x_3  & = 6.
 \end{align*}
 
-Continue moving upwards, to the second equation, and use it to eliminate within the one above it:
+Moving upwards to the second equation, and use it to eliminate within the one above it:
 
 \begin{align*}
 (x_1 - x_2 ) + (x_2) & = 4  + (-3),\\
@@ -98,13 +110,33 @@ x_2 & = -3,\\
 3x_3  & = 6. 
 \end{align*}
 
-The system is now trivial: $x_1=1$, $x_2=-3$, and $3x_3=6$.
+The system is now trivial: $x_1=1$, $x_2=-3$, and $x_3=2$.
 ::::
 
-That was a mouthful. We can lighten the notational load by using matrices. We start with the $m\times (n+1)$ **augmented matrix** $\bfG = [\bfA\:\bfb]$ that contains all the equation coefficients and right-side values. We repeat the previous process in augmented matrix form, starting from
+```{index} ! Gauss–Jordan elimination
+```
+
+The process above is called **Gauss–Jordan elimination**, or more simply, **row elimination**. 
+
+## Matrix form
+
+```{index} ! augmented matrix
+```
+
+Before fully generalizing the elimination process, we will lighten the notational load by using matrices. We start with the $m\times (n+1)$ **augmented matrix** $\mathbf{G} = [\bfA\:\bfb]$ that contains all the equation coefficients and right-side values. 
+
+Let's look at elimination in this form for the system
 
 $$
-\bfG = 
+x_1 - x_2 - x_3 &= 2, \\ 
+3x_1-2x_2 &= 9, \\ 
+x_1-2x_2-x_3 &= 5. 
+$$
+
+This system has the augmented matrix
+
+$$
+\mathbf{G} = 
 \begin{bmatrix}
 1 & -1 & -1 & 2 \\
 3 & -2 & 0 & 9 \\
@@ -112,13 +144,13 @@ $$
 \end{bmatrix}.
 $$
 
-(Observe that when a variable is absent from an equation, its corresponding element in $\bfG$ is zero.) To ease the arithmetic, we do the elimination in MATLAB.
+To ease the arithmetic, we do the elimination in Julia.
 
 ```{code-cell}
-G = float([1 -1 -1 2; 3 -2 0 9; 1 -2 -1 5])
+G = Rational.([1 -1 -1 2; 3 -2 0 9; 1 -2 -1 5])
 ```
 
-The first elimination step uses multiples of the first row to eliminate below it. Note that in MATLAB, `G[1,:]` refers to the entire first row of `G`, etc.
+The first elimination step uses multiples of the first row to eliminate below it. 
 
 ```{code-cell}
 G[2,:] = G[2,:] - 3*G[1,:]
@@ -175,9 +207,7 @@ $$
 
 whose solution is obvious.
 
-The process just demonstrated is best known as *Gauss–Jordan elimination*, or more simply, **row elimination**. As seen in the examples, row elimination consists of two phases, one downward (Gaussian elimination) and one upward. The goal is to put the augmented matrix into a special form.
-
-In the next section we get more formal about the process and results. For now, let's look at an example that works out differently. We solve the system having augmented matrix
+Here's an example that works out differently, starting from the augmented matrix
 
 $$
 \begin{bmatrix}

@@ -25,23 +25,21 @@ parts:
 - caption: Linear algebra
   numbered: 3
   chapters:
+  - file: linear_system/overview
+    sections:
+    - file: linear_system/problem
+    - file: linear_system/row_elimination
+    - file: linear_system/RREF
+    - file: linear_system/nullspace
   - file: matrix/overview
     sections:
-    - file: matrix/vectors_matrices
-    - file: matrix/linear_systems
-    - file: matrix/row_elimination
-    - file: matrix/RREF
-    - file: matrix/vector_algebra
-    - file: matrix/matrix_vector
-    - file: matrix/matrix_matrix
-    - file: matrix/identity_inverse
-    - file: matrix/singular
+    - file: matrix/operations
+    - file: matrix/inverse
     - file: matrix/subspaces
-  - file: eigen/overview
-    sections:
-    - file: eigen/eigenvalues
-    - file: eigen/determinants
-    - file: eigen/diagonalization
+    - file: matrix/determinants
+    - file: matrix/eigenvalues
+    - file: matrix/computing
+    - file: matrix/diagonalization
   - file: basis/overview
     sections:
     - file: basis/span_independence
@@ -50,12 +48,12 @@ parts:
 - caption: Linear ODE systems
   numbered: 3
   chapters:
-  - file: system/overview
+  - file: ode_system/overview
     sections:
-    - file: system/order_dimension
-    - file: system/structure
-    - file: system/homogeneous
-    - file: system/const_coeff
-    - file: system/phase_plane
-    - file: system/matrix_exp
-    - file: system/linearization
+    - file: ode_system/order_dimension
+    - file: ode_system/structure
+    - file: ode_system/homogeneous
+    - file: ode_system/const_coeff
+    - file: ode_system/phase_plane
+    - file: ode_system/matrix_exp
+    - file: ode_system/linearization
