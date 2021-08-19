@@ -1,0 +1,607 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>2.4. Determinants &#8212; Notes on ODEs and linear algebra</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/proof.js"></script>
+    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": {"real": ["\\mathbb{R}"], "complex": ["\\mathbb{C}"], "nat": ["\\mathbb{N}"], "integer": ["\\mathbb{Z}"], "rmn": ["\\mathbb{R}^{#1 \\times #2}", 2], "cmn": ["\\complex^{#1 \\times #2}", 2], "dd": ["\\frac{d #1}{d #2}", 2], "pp": ["\\frac{\\partial #1}{\\partial #2}", 2], "ddd": ["\\frac{d^2 #1}{d #2^2}", 2], "norm": ["\\| #1 \\|", 1], "twonorm": ["\\| #1 \\|_2", 1], "onenorm": ["\\| #1 \\|_1", 1], "infnorm": ["\\| #1 \\|_\\infty", 1], "innerprod": ["\\langle #1,#2 \\rangle", 2], "twovec": ["\\begin{bmatrix} #1 \\\\ #2 \\end{bmatrix}", 2], "threevec": ["\\begin{bmatrix} #1 \\\\ #2 \\\\ #3 \\end{bmatrix}", 3], "twomat": ["\\begin{bmatrix} #1 & #2 \\\\ #3 & #4 \\end{bmatrix}", 4], "twodet": ["\\begin{vmatrix} #1 & #2 \\\\ #3 & #4 \\end{vmatrix}", 4], "pr": ["^{(#1)}", 1], "eye": ["\\mathbf{e}_#1", 1], "meye": ["\\mathbf{I}"], "bff": ["\\mathbf{f}"], "bfx": ["\\mathbf{x}"], "bfy": ["\\mathbf{y}"], "bfz": ["\\mathbf{z}"], "bfu": ["\\mathbf{u}"], "bfv": ["\\mathbf{v}"], "bfa": ["\\mathbf{a}"], "bfb": ["\\mathbf{b}"], "bfe": ["\\mathbf{e}"], "bfA": ["\\mathbf{A}"], "bfB": ["\\mathbf{B}"], "bfX": ["\\mathbf{X}"], "bfV": ["\\mathbf{V}"], "opA": ["\\mathcal{A}"], "lx": ["\\mathcal{L}"], "bfalpha": ["\\mathbf{alpha}"], "bfdelta": ["\\mathbf{delta}"], "bfzero": ["\\boldsymbol{0}"], "diag": ["\\operatorname{diag}"], "sign": ["\\operatorname{sign}"], "Re": ["\\operatorname{Re}"], "Im": ["\\operatorname{Im}"], "ee": ["\\times 10^"], "rank": ["\\operatorname{rank}"], "span": ["\\operatorname{span}"], "nullsp": ["\\operatorname{nullsp}"], "rowsp": ["\\operatorname{rowsp}"], "colsp": ["\\operatorname{colsp}"], "dim": ["\\operatorname{dim}"]}}, "HTML-CSS": {"availableFonts": [], "preferredFont": null, "webFont": "Asana-Math"}, "tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="2.5. Eigenvalues" href="eigenvalues.html" />
+    <link rel="prev" title="2.3. Subspaces" href="subspaces.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      <h1 class="site-logo" id="site-title">Notes on ODEs and linear algebra</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../frontmatter.html">
+   MATH 351 Notes
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Scalar ODEs
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../first_order/overview.html">
+   1. First-order ODEs
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../first_order/preview.html">
+     1.1. Quick tour
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../first_order/ivp.html">
+     1.2. Initial-value problems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../first_order/qualitative.html">
+     1.3. Qualitative methods
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../first_order/separable.html">
+     1.4. Separable equations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../first_order/linear.html">
+     1.5. Linear equations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../first_order/homogeneous.html">
+     1.6. Homogeneous solutions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../first_order/variation_parameters.html">
+     1.7. Variation of parameters
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../first_order/modeling.html">
+     1.8. Modeling
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../second_linear/overview.html">
+   2. Second-order linear ODEs
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../second_linear/structure.html">
+     2.1. Structure of solutions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../second_linear/const_coeff.html">
+     2.2. Homogeneous solutions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../second_linear/complex.html">
+     2.3. Complex solutions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../second_linear/variation_parameters.html">
+     2.4. Variation of parameters
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../second_linear/undetermined.html">
+     2.5. Undetermined coefficients
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../second_linear/oscillators.html">
+     2.6. Oscillators
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Linear algebra
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../linear_system/overview.html">
+   1. Linear systems
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../linear_system/problem.html">
+     1.1. Defining the problem
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../linear_system/row_elimination.html">
+     1.2. Row elimination
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../linear_system/RREF.html">
+     1.3. RRE form
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../linear_system/nullspace.html">
+     1.4. Homogeneous systems
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="overview.html">
+   2. Matrix properties
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="operations.html">
+     2.1. Algebraic operations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="inverse.html">
+     2.2. Identity and inverse
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="subspaces.html">
+     2.3. Subspaces
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     2.4. Determinants
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="eigenvalues.html">
+     2.5. Eigenvalues
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="computing.html">
+     2.6. Computing eigenvalues and eigenspaces
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="diagonalization.html">
+     2.7. Diagonalization
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../basis/overview.html">
+   3. Basis and dimension
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../basis/span_independence.html">
+     3.1. Span and independence
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../basis/dimension.html">
+     3.2. Dimension and rank
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../basis/change.html">
+     3.3. Change of basis
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Linear ODE systems
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../ode_system/overview.html">
+   1. Linear ODE systems
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ode_system/order_dimension.html">
+     1.2. Conversion of higher-order ODEs
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ode_system/structure.html">
+     1.3. Solution structure
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ode_system/homogeneous.html">
+     1.4. Homogeneous solutions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ode_system/const_coeff.html">
+     1.5. Constant-coefficient problems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ode_system/phase_plane.html">
+     1.6. Stability and the phase plane
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ode_system/matrix_exp.html">
+     1.7. The matrix exponential
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ode_system/linearization.html">
+     1.8. Linearization
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        <a class="dropdown-buttons"
+            href="../_sources/matrix/determinants.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/matrix/determinants.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#properties">
+   2.4.1. Properties
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#cramer-s-rule">
+   2.4.2. Cramer’s Rule
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="determinants">
+<h1><span class="section-number">2.4. </span>Determinants<a class="headerlink" href="#determinants" title="Permalink to this headline">¶</a></h1>
+<p>There are many ways to characterize singular matrices, but only a few of them are computationally attractive. One that stands out is a function of square matrices called the <strong>determinant</strong>. (You probably saw some <span class="math notranslate nohighlight">\(2\times 2\)</span> and <span class="math notranslate nohighlight">\(3\times 3\)</span> determinants in vector calculus. This is the same thing.)</p>
+<p>A definition of the determinant from fundamentals is actually quite tricky. We are going to take a shortcut and “define” it by a formula for computing it. The <span class="math notranslate nohighlight">\(2\times 2\)</span> case is easy:</p>
+<div class="math notranslate nohighlight">
+\[\det\left( \twomat{a}{b}{c}{d} \right) = \twodet{a}{b}{c}{d} = ad-bc.\]</div>
+<p>This definition can be bootstrapped into a real-valued function for square matrices of any size.</p>
+<div class="proof proof-type-definition" id="id1">
+<span id="definition-linalg-determinant"></span><div class="proof-title"> <span class="proof-type">Definition 2.70</span>  <span class="proof-title-name">: &nbsp;Determinant</span>  </div><div class="proof-content">
+<p>If <span class="math notranslate nohighlight">\(\bfA\)</span> is <span class="math notranslate nohighlight">\(n\times n\)</span>, then its <strong>determinant</strong> is</p>
+<div class="math notranslate nohighlight" id="equation-eq-determinants-cofactor">
+<span class="eqno">(2.25)<a class="headerlink" href="#equation-eq-determinants-cofactor" title="Permalink to this equation">¶</a></span>\[\det(\bfA) = \sum (-1)^{i+j} a_{ij} \det\bigl( \mathbf{M}_{ij} \bigr),\]</div>
+<p>where the sum is taken over any row or column of <span class="math notranslate nohighlight">\(\bfA\)</span> and <span class="math notranslate nohighlight">\(\mathbf{M}_{ij}\)</span> is the matrix that results from deleting row <span class="math notranslate nohighlight">\(i\)</span> and column <span class="math notranslate nohighlight">\(j\)</span> from <span class="math notranslate nohighlight">\(\bfA\)</span>.</p>
+</div></div><p>The formula <a class="reference internal" href="#equation-eq-determinants-cofactor">(2.25)</a>, which is called <strong>cofactor expansion</strong>, is recursive: the <span class="math notranslate nohighlight">\(n\times n\)</span> case is defined in terms of the <span class="math notranslate nohighlight">\((n-1)\times (n-1)\)</span> case, and so on all the way back down to <span class="math notranslate nohighlight">\(2\times 2\)</span>.</p>
+<p>Since expanding along any row or column gives the same result, it can be advantageous to choose one with lots of zeros to cut down on the total computation.</p>
+<div class="proof proof-type-example" id="id2">
+<div class="proof-title"> <span class="proof-type">Example 2.71</span>  </div><div class="proof-content">
+<p>Compute the determinant of</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{bmatrix} 
+2 &amp; 0 &amp; -1 \\ -2 &amp; 3 &amp; -1 \\ 2 &amp; 0 &amp; 1
+\end{bmatrix}.
+\end{split}\]</div>
+<details class="sphinx-bs dropdown card mb-3">
+<summary class="summary-title card-header">
+Solution<div class="summary-down docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="summary-up docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="summary-content card-body docutils">
+<p class="card-text">Using cofactor expansion along the first row,</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+\begin{vmatrix} 2 &amp; 0 &amp; -1 \\ -2 &amp; 3 &amp; -1 \\ 2 &amp; 0 &amp; 1 \end{vmatrix} &amp; =  (2) \twodet{3}{-1}{0}{1} - (0) \twodet{-2}{-1}{2}{1} + (-1)\twodet{-2}{3}{2}{0}    \\
+&amp; = 2(3-0) + (-1)(0-6) = 12. \\
+\end{align*}\]</div>
+<p class="card-text">In this case it might have been a tad easier to exploit the zeros by expanding along the second column instead:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+\begin{vmatrix} 2 &amp; 0 &amp; -1 \\ -2 &amp; 3 &amp; -1 \\ 2 &amp; 0 &amp;  1 \end{vmatrix} &amp; =  -(0) \begin{vmatrix} \cdots \end{vmatrix} + (3) \twodet{2}{-1}{2}{1} - (0)\begin{vmatrix} \cdots \end{vmatrix}    \\
+&amp; = 3(2+2) = 12. \\
+\end{align*}\]</div>
+</div>
+</details></div></div><div class="section" id="properties">
+<h2><span class="section-number">2.4.1. </span>Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h2>
+<div class="proof proof-type-theorem" id="id3">
+<div class="proof-title"> <span class="proof-type">Theorem 2.72</span>  </div><div class="proof-content">
+<p>Let <span class="math notranslate nohighlight">\(\bfA\)</span> and <span class="math notranslate nohighlight">\(\bfB\)</span> be <span class="math notranslate nohighlight">\(n\times n\)</span>, and let <span class="math notranslate nohighlight">\(c\)</span> be a number. Then</p>
+<ol class="simple">
+<li><p><span class="math notranslate nohighlight">\(\det(c\bfA) = c^n \det(\bfA)\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(\det(\bfA\bfB) = \det(\bfA)\det(\bfB)\)</span>,</p></li>
+<li><p>If <span class="math notranslate nohighlight">\(\bfA\)</span> is nonsingular, <span class="math notranslate nohighlight">\(\det(\bfA^{-1})=\bigl[\det(\bfA)\bigr]^{-1}\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\det(\bfA)=0\)</span> if and only if <span class="math notranslate nohighlight">\(\bfA\)</span> is singular, and</p></li>
+</ol>
+</div></div><p>It’s the last property above that is of the greatest interest.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The determinant is often the easiest way to check by hand for the invertibility of a small matrix.</p>
+</div>
+</div>
+<div class="section" id="cramer-s-rule">
+<h2><span class="section-number">2.4.2. </span>Cramer’s Rule<a class="headerlink" href="#cramer-s-rule" title="Permalink to this headline">¶</a></h2>
+<p>Even though a 2x2 inverse is easy, it’s still not the most convenient way to solve a linear system <span class="math notranslate nohighlight">\(\bfA\bfx=\bfb\)</span> by hand. There is another shortcut known as <strong>Cramer’s Rule</strong>:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+x_1 &amp; = \frac{ \twodet{b_1}{A_{12}}{b_2}{A_{22}} }{ \det(\bfA) }\\[1ex]
+x_2 &amp; = \frac{ \twodet{A_{11}}{b_1}{A_{21}}{b_2} }{ \det(\bfA) }.
+\end{align*}\]</div>
+<p>Obviously this does not work if <span class="math notranslate nohighlight">\(\det(\bfA)=0\)</span>, i. e., when the matrix is singular. In that case, you have to fall back on row elimination.</p>
+<div class="proof proof-type-example" id="id4">
+<div class="proof-title"> <span class="proof-type">Example 2.73</span>  </div><div class="proof-content">
+<p>Solve</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+-x + 3y &amp; = 1 \\
+3x + y &amp; = 7
+\end{align*}\]</div>
+<p>by Cramer’s Rule.</p>
+<details class="sphinx-bs dropdown card mb-3">
+<summary class="summary-title card-header">
+Solution<div class="summary-down docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="summary-up docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="summary-content card-body docutils">
+<p class="card-text">Plug and play (or is it plug and pray?):</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+x &amp; = \frac{ \twodet{1}{3}{7}{1} }{ \det(\bfA) }=  \frac{ \twodet{1}{3}{7}{1} }{ \twodet{-1}{3}{3}{1} } = \frac{-20}{-10} = 2, \\
+y &amp; = \frac{ \twodet{-1}{1}{3}{7} }{ \det(\bfA) } = \frac{ \twodet{-1}{1}{3}{7} }{ \twodet{-1}{3}{3}{1} } = \frac{-10}{-10} = 1.\\
+\end{align*}\]</div>
+</div>
+</details></div></div></div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "julia-1.6"
+        },
+        kernelOptions: {
+            kernelName: "julia-1.6",
+            path: "./matrix"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'julia-1.6'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="subspaces.html" title="previous page"><span class="section-number">2.3. </span>Subspaces</a>
+    <a class='right-next' id="next-link" href="eigenvalues.html" title="next page"><span class="section-number">2.5. </span>Eigenvalues</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Tobin A. Driscoll<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

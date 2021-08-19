@@ -1,0 +1,644 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>1.4. Homogeneous systems &#8212; Notes on ODEs and linear algebra</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/proof.js"></script>
+    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": {"real": ["\\mathbb{R}"], "complex": ["\\mathbb{C}"], "nat": ["\\mathbb{N}"], "integer": ["\\mathbb{Z}"], "rmn": ["\\mathbb{R}^{#1 \\times #2}", 2], "cmn": ["\\complex^{#1 \\times #2}", 2], "dd": ["\\frac{d #1}{d #2}", 2], "pp": ["\\frac{\\partial #1}{\\partial #2}", 2], "ddd": ["\\frac{d^2 #1}{d #2^2}", 2], "norm": ["\\| #1 \\|", 1], "twonorm": ["\\| #1 \\|_2", 1], "onenorm": ["\\| #1 \\|_1", 1], "infnorm": ["\\| #1 \\|_\\infty", 1], "innerprod": ["\\langle #1,#2 \\rangle", 2], "twovec": ["\\begin{bmatrix} #1 \\\\ #2 \\end{bmatrix}", 2], "threevec": ["\\begin{bmatrix} #1 \\\\ #2 \\\\ #3 \\end{bmatrix}", 3], "twomat": ["\\begin{bmatrix} #1 & #2 \\\\ #3 & #4 \\end{bmatrix}", 4], "twodet": ["\\begin{vmatrix} #1 & #2 \\\\ #3 & #4 \\end{vmatrix}", 4], "pr": ["^{(#1)}", 1], "eye": ["\\mathbf{e}_#1", 1], "meye": ["\\mathbf{I}"], "bff": ["\\mathbf{f}"], "bfx": ["\\mathbf{x}"], "bfy": ["\\mathbf{y}"], "bfz": ["\\mathbf{z}"], "bfu": ["\\mathbf{u}"], "bfv": ["\\mathbf{v}"], "bfa": ["\\mathbf{a}"], "bfb": ["\\mathbf{b}"], "bfe": ["\\mathbf{e}"], "bfA": ["\\mathbf{A}"], "bfB": ["\\mathbf{B}"], "bfX": ["\\mathbf{X}"], "bfV": ["\\mathbf{V}"], "opA": ["\\mathcal{A}"], "lx": ["\\mathcal{L}"], "bfalpha": ["\\mathbf{alpha}"], "bfdelta": ["\\mathbf{delta}"], "bfzero": ["\\boldsymbol{0}"], "diag": ["\\operatorname{diag}"], "sign": ["\\operatorname{sign}"], "Re": ["\\operatorname{Re}"], "Im": ["\\operatorname{Im}"], "ee": ["\\times 10^"], "rank": ["\\operatorname{rank}"], "span": ["\\operatorname{span}"], "nullsp": ["\\operatorname{nullsp}"], "rowsp": ["\\operatorname{rowsp}"], "colsp": ["\\operatorname{colsp}"], "dim": ["\\operatorname{dim}"]}}, "HTML-CSS": {"availableFonts": [], "preferredFont": null, "webFont": "Asana-Math"}, "tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="2. Matrix properties" href="../matrix/overview.html" />
+    <link rel="prev" title="1.3. RRE form" href="RREF.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      <h1 class="site-logo" id="site-title">Notes on ODEs and linear algebra</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../frontmatter.html">
+   MATH 351 Notes
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Scalar ODEs
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../first_order/overview.html">
+   1. First-order ODEs
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../first_order/preview.html">
+     1.1. Quick tour
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../first_order/ivp.html">
+     1.2. Initial-value problems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../first_order/qualitative.html">
+     1.3. Qualitative methods
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../first_order/separable.html">
+     1.4. Separable equations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../first_order/linear.html">
+     1.5. Linear equations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../first_order/homogeneous.html">
+     1.6. Homogeneous solutions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../first_order/variation_parameters.html">
+     1.7. Variation of parameters
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../first_order/modeling.html">
+     1.8. Modeling
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../second_linear/overview.html">
+   2. Second-order linear ODEs
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../second_linear/structure.html">
+     2.1. Structure of solutions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../second_linear/const_coeff.html">
+     2.2. Homogeneous solutions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../second_linear/complex.html">
+     2.3. Complex solutions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../second_linear/variation_parameters.html">
+     2.4. Variation of parameters
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../second_linear/undetermined.html">
+     2.5. Undetermined coefficients
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../second_linear/oscillators.html">
+     2.6. Oscillators
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Linear algebra
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="overview.html">
+   1. Linear systems
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="problem.html">
+     1.1. Defining the problem
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="row_elimination.html">
+     1.2. Row elimination
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="RREF.html">
+     1.3. RRE form
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     1.4. Homogeneous systems
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../matrix/overview.html">
+   2. Matrix properties
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../matrix/operations.html">
+     2.1. Algebraic operations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../matrix/inverse.html">
+     2.2. Identity and inverse
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../matrix/subspaces.html">
+     2.3. Subspaces
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../matrix/eigenvalues.html">
+     2.4. Eigenvalues
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../matrix/determinants.html">
+     2.5. Determinants
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../matrix/diagonalization.html">
+     2.6. Diagonalization
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../basis/overview.html">
+   3. Basis and dimension
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../basis/span_independence.html">
+     3.1. Span and independence
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../basis/dimension.html">
+     3.2. Dimension and rank
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../basis/change.html">
+     3.3. Change of basis
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Linear ODE systems
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../ode_system/overview.html">
+   1. Linear ODE systems
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ode_system/order_dimension.html">
+     1.2. Conversion of higher-order ODEs
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ode_system/structure.html">
+     1.3. Solution structure
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ode_system/homogeneous.html">
+     1.4. Homogeneous solutions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ode_system/const_coeff.html">
+     1.5. Constant-coefficient problems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ode_system/phase_plane.html">
+     1.6. Stability and the phase plane
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ode_system/matrix_exp.html">
+     1.7. The matrix exponential
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ode_system/linearization.html">
+     1.8. Linearization
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/linear_system/nullspace.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#null-space-and-rank">
+   1.4.1. Null space and rank
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#spanning-sets">
+   1.4.2. Spanning sets
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#independence">
+   1.4.3. Independence
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="homogeneous-systems">
+<span id="section-linear-system-nullspace"></span><h1><span class="section-number">1.4. </span>Homogeneous systems<a class="headerlink" href="#homogeneous-systems" title="Permalink to this headline">¶</a></h1>
+<p>There are only three possible outcomes for a linear system, all deducible from the RRE form of the augmented matrix:</p>
+<ol class="simple">
+<li><p>There is a leading 1 in the last column, in which case there are no solutions.</p></li>
+<li><p>There are fewer pivot columns than variables, in which case there are infinitely many solutions.</p></li>
+<li><p>There is a unique solution.</p></li>
+</ol>
+<p>There is an important situation where we can rule out case 1 above.</p>
+<div class="proof proof-type-definition" id="id1">
+<span id="definition-nullspace-def"></span><span id="index-0"></span><div class="proof-title"> <span class="proof-type">Definition 1.46</span>  <span class="proof-title-name">: &nbsp;Homogeneous linear system</span>  </div><div class="proof-content">
+<p>A <strong>homogeneous</strong> linear system is one that has forcing vector <span class="math notranslate nohighlight">\(\bfb\)</span> equal to zero.</p>
+</div></div><p>As the following theorem points out, we can work with just the RRE form of the coefficient matrix <span class="math notranslate nohighlight">\(\bfA\)</span> instead of the augmented matrix of a homogeneous system.</p>
+<div class="proof proof-type-theorem" id="id2">
+<span id="theorem-nullspace-rref"></span><div class="proof-title"> <span class="proof-type">Theorem 1.47</span>  </div><div class="proof-content">
+<p>The last column of the RRE form of the augmented matrix of a homogeneous linear system is a zero vector.</p>
+</div></div><div class="proof proof-type-proof">
+<div class="proof-title"> <span class="proof-type">Proof </span>  </div><div class="proof-content">
+<p>Row operations don’t change the zeros in that column.</p>
+</div></div><div class="section" id="null-space-and-rank">
+<h2><span class="section-number">1.4.1. </span>Null space and rank<a class="headerlink" href="#null-space-and-rank" title="Permalink to this headline">¶</a></h2>
+<div class="proof proof-type-definition" id="id3">
+<span id="definition-nullspace-nullspace"></span><div class="proof-title"> <span class="proof-type">Definition 1.48</span>  </div><div class="proof-content">
+<p>The <strong>null space</strong> of a matrix <span class="math notranslate nohighlight">\(\bfA\)</span>, written <span class="math notranslate nohighlight">\(\nullsp(\bfA)\)</span>, is the set of all solutions to the homogeneous linear system with coefficient matrix <span class="math notranslate nohighlight">\(\bfA\)</span>.</p>
+</div></div><div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Sometimes the null space is called the <em>kernel</em> of the matrix.</p>
+</div>
+<p>As the name implies, the null space is our first example of what we will call a <strong>subspace</strong>. We won’t worry about that definition just yet.</p>
+<p>For a homogeneous linear system, the zero vector <span class="math notranslate nohighlight">\(\bfx=\bfzero\)</span> is always a solution; hence, the system is consistent. The question becomes whether zero is the <em>only</em> solution. Thus, we only need to look at case 2 at the beginning of the section.</p>
+<div class="proof proof-type-definition" id="id4">
+<span id="definition-nullspace-rank"></span><span id="index-1"></span><div class="proof-title"> <span class="proof-type">Definition 1.49</span>  <span class="proof-title-name">: &nbsp;Rank</span>  </div><div class="proof-content">
+<p>The <strong>rank</strong> of a matrix is the number of pivot columns in its RRE form.</p>
+</div></div><div class="proof proof-type-theorem" id="id5">
+<span id="theorem-nullspace-rank"></span><div class="proof-title"> <span class="proof-type">Theorem 1.50</span>  </div><div class="proof-content">
+<p>If <span class="math notranslate nohighlight">\(\bfA\)</span> is an <span class="math notranslate nohighlight">\(m\times n\)</span> matrix, then <span class="math notranslate nohighlight">\(\rank(\bfA) \le m\)</span> and <span class="math notranslate nohighlight">\(\rank(\bfA) \le n\)</span>.</p>
+</div></div><div class="proof proof-type-proof">
+<div class="proof-title"> <span class="proof-type">Proof </span>  </div><div class="proof-content">
+<p>Each leading one in the RRE form requires a row and column of its own.</p>
+</div></div><p>The following pretty much just follows from our definitions. (That happens a lot in linear algebra: the work is in the setup, not the punchline.)</p>
+<div class="proof proof-type-theorem" id="id6">
+<span id="theorem-nullspace-uniqueness"></span><div class="proof-title"> <span class="proof-type">Theorem 1.51</span>  </div><div class="proof-content">
+<p>A homogeneous system in <span class="math notranslate nohighlight">\(n\)</span> variables with coefficient matrix <span class="math notranslate nohighlight">\(\bfA\)</span> has a unique solution if and only if <span class="math notranslate nohighlight">\(\rank(\bfA)=n\)</span>.</p>
+</div></div><div class="proof proof-type-corollary" id="id7">
+<span id="corollary-nullspace-uniqueness"></span><div class="proof-title"> <span class="proof-type">Corollary 1.52</span>  </div><div class="proof-content">
+<p>A homogeneous linear system with more variables than equations has infinitely many solutions.</p>
+</div></div><div class="proof proof-type-proof">
+<div class="proof-title"> <span class="proof-type">Proof </span>  </div><div class="proof-content">
+<p><span class="math notranslate nohighlight">\(\rank(\bfA) \le m &lt; n\)</span>.</p>
+</div></div></div>
+<div class="section" id="spanning-sets">
+<h2><span class="section-number">1.4.2. </span>Spanning sets<a class="headerlink" href="#spanning-sets" title="Permalink to this headline">¶</a></h2>
+<p>When we do have infinitely many solutions in a homogeneous linear system, it’s nice to have a finite description of all of them. This takes us on a considerable side quest.</p>
+<div class="proof proof-type-definition" id="id8">
+<span id="definition-nullspace-linear-comb"></span><span id="index-2"></span><div class="proof-title"> <span class="proof-type">Definition 1.53</span>  <span class="proof-title-name">: &nbsp;Linear combination and span</span>  </div><div class="proof-content">
+<p>A <strong>linear combination</strong> of vectors <span class="math notranslate nohighlight">\(\bfv_1,\ldots,\bfv_k\)</span> with <strong>coefficients</strong> <span class="math notranslate nohighlight">\(c_1\ldots,c_k\)</span> is the vector</p>
+<div class="math notranslate nohighlight">
+\[
+c_1 \bfv_1 + c_2 \bfv_2 + \cdots + c_k \bfv_k.
+\]</div>
+<p>The set of all linear combinations of <span class="math notranslate nohighlight">\(\bfv_1,\ldots,\bfv_k\)</span> is known as the <strong>span</strong> of those vectors.</p>
+</div></div><p>A nontrivial null space (i. e., containing more than the zero vector) can always be described as the span of finitely many vectors.</p>
+<div class="proof proof-type-example" id="id9">
+<span id="example-nullspace-span"></span><div class="proof-title"> <span class="proof-type">Example 1.54</span>  </div><div class="proof-content">
+<p>Suppose the RRE form of a matrix <span class="math notranslate nohighlight">\(\bfA\)</span> is</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{bmatrix}
+0 &amp; 1 &amp; 4 &amp; 0 &amp; 1 \\
+0 &amp; 0 &amp; 0  &amp; 1 &amp; -3 \\
+0 &amp; 0 &amp; 0  &amp; 0 &amp; 0  \\
+0 &amp; 0 &amp; 0  &amp; 0 &amp; 0  
+\end{bmatrix}.
+\end{split}\]</div>
+<p>Recall that the augmented matrix of the homogeneous system having coefficient matrix <span class="math notranslate nohighlight">\(\bfA\)</span> has an additional zero column at the end. The pivot columns are 2 and 4, which makes <span class="math notranslate nohighlight">\(x_1=r\)</span>, <span class="math notranslate nohighlight">\(x_3=s\)</span>, and <span class="math notranslate nohighlight">\(x_5=t\)</span> free variables. The nonzero rows lead to</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+x_2 &amp;= -4s-t,\\ 
+x_4 &amp;= 3t.
+\end{split}\]</div>
+<p>One way to express a generic solution vector in the null space is by a linear combination of constant vectors:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{bmatrix}
+  r \\ -4s-t \\ s \\ 3t\\ t
+\end{bmatrix} 
+= r \begin{bmatrix}
+  1 \\ 0 \\ 0 \\ 0 \\ 0
+\end{bmatrix} 
++ s \begin{bmatrix}
+  0 \\ -4 \\ 0 \\ 1 \\ 0
+\end{bmatrix} 
++ t \begin{bmatrix}
+  0 \\ -1 \\ 0 \\ 3 \\ 1
+\end{bmatrix}.
+\end{split}\]</div>
+<p>Hence <span class="math notranslate nohighlight">\(\nullsp(\bfA)=\span(\bfv_1,\bfv_2,\bfv3)\)</span>, where the <span class="math notranslate nohighlight">\(\bfv_j\)</span> are the constant vectors above.</p>
+</div></div></div>
+<div class="section" id="independence">
+<h2><span class="section-number">1.4.3. </span>Independence<a class="headerlink" href="#independence" title="Permalink to this headline">¶</a></h2>
+<p>Now that we have a finite description of the null space, we want to refine it to make sure that it is as simple as possible. For this, we need a new take on an old friend.</p>
+<div class="proof proof-type-definition" id="id10">
+<span id="definition-nullspace-indepdendence"></span><span id="index-3"></span><div class="proof-title"> <span class="proof-type">Definition 1.55</span>  <span class="proof-title-name">: &nbsp;Linear independence</span>  </div><div class="proof-content">
+<p>Vectors <span class="math notranslate nohighlight">\(\bfv_1,\bfv_2,\ldots,\bfv_n\)</span> are <strong>linearly dependent</strong> if there is a way to choose constants <span class="math notranslate nohighlight">\(c_1,\ldots,c_n\)</span>, <em>not all zero</em>, such that</p>
+<div class="math notranslate nohighlight">
+\[
+c_1\bfv_1 + c_2\bfv_2 + \cdots c_n \bfv_n = 0.
+\]</div>
+<p>If the vectors are not linearly dependent, then they are <strong>linearly independent</strong>.</p>
+</div></div><div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Sound familiar? Stay tuned!</p>
+</div>
+<p>Dependent vectors can lengthen the description of a span without actually contributing anything.</p>
+<div class="proof proof-type-example" id="id11">
+<span id="example-nullspace-dependent"></span><div class="proof-title"> <span class="proof-type">Example 1.56</span>  </div><div class="proof-content">
+<p>The vectors <span class="math notranslate nohighlight">\(\bfv_1=\threevec{1}{0}{-2}\)</span>, <span class="math notranslate nohighlight">\(\bfv_2=\threevec{1}{0}{1}\)</span>, and <span class="math notranslate nohighlight">\(\threevec{0}{0}{-1}\)</span> are linearly dependent, because</p>
+<div class="math notranslate nohighlight">
+\[
+\bfv_1 - \bfv_2 + 3 \bfv_3 = \bfzero.
+\]</div>
+<p>Therefore, any vector in <span class="math notranslate nohighlight">\(\span(\bfv_1,\bfv_2,\bfv_3)\)</span> can be written as</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+c_1 \bfv_1 + c_2 \bfv_2 + c_3 \bfv_3 &amp;= c_1(\bfv_2 - 3 \bfv_3) + c_2 \bfv_2 + c_3 \bfv_3 \\ 
+&amp;= (c_1+c_2) \bfv_2 + (c_3- 3c_1)\bfv_3.
+\end{split}\]</div>
+<p>It’s also trivially true that any combination of <span class="math notranslate nohighlight">\(\bfv_2\)</span> and <span class="math notranslate nohighlight">\(\bfv_3\)</span> is also a combination of all three vectors. Thus, <span class="math notranslate nohighlight">\(\span(\bfv_1,\bfv_2,\bfv_3)=\span(\bfv_2,\bfv_3)\)</span>.</p>
+</div></div><div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>We could have removed <span class="math notranslate nohighlight">\(\bfv_2\)</span> or <span class="math notranslate nohighlight">\(\bfv_3\)</span> from the spanning set instead. The only requirement is that the coefficent of the removed vector can’t be zero in the linear combination of them that makes zero.</p>
+</div>
+<p>A set of vectors that both spans the null space and is linearly independent is called a <strong>basis</strong> of the null space. We’ll formalize it when we discuss subspaces more generally. For now, just know that a basis is a minimal set of vectors that can get the spanning job done.</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./linear_system"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="RREF.html" title="previous page"><span class="section-number">1.3. </span>RRE form</a>
+    <a class='right-next' id="next-link" href="../matrix/overview.html" title="next page"><span class="section-number">2. </span>Matrix properties</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Tobin A. Driscoll<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>
