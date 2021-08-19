@@ -204,6 +204,7 @@ If $\bfA$ is an $n\times n$ matrix, then each of these statements is equivalent 
 2. The linear system $\bfA\bfx=\bfb$ has a unique solution for each $\bfb$.
 3. The null space of $\bfA$ is just the zero vector.
 4. The RRE form of $\bfA$ is the identity matrix.
+5. $\rank(\bfA)=n$.
 ::::
 
 ```{note}
