@@ -40,11 +40,11 @@ parts:
     - file: matrix/eigenvalues
     - file: matrix/computing
     - file: matrix/diagonalization
-  - file: basis/overview
+  - file: space/overview
     sections:
-    - file: basis/span_independence
-    - file: basis/dimension
-    - file: basis/change
+    - file: space/vectors
+    - file: space/basis
+    - file: space/change
 - caption: Linear ODE systems
   numbered: 3
   chapters:

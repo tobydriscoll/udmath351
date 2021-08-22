@@ -226,3 +226,39 @@ Find all solutions to the linear system.
 Look at the last row of the system. It expresses the equation $0=1$, which is impossible to satisfy. Thus the system is inconsistent.
 :::
 ::::
+
+## Rank
+
+Leaving aside the actual calculation of solutions, a glance at the RRE form tells us at a glance whether the system has no solution, a unique solution, or infinitely many solutions. Because of the requirements on leading ones in the matrix, the outcomes are constrained just by how many of them there are.
+
+```{index} ! rank of a matrix
+```
+
+(definition-RREF-rank)=
+::::{proof:definition} Rank
+The **rank** of a matrix is the number of pivot columns in its RRE form, i. e., the number of leading ones.
+::::
+
+(theorem-RREF-rank)=
+::::{proof:theorem} 
+If $\bfA$ is an $m\times n$ matrix, then $\rank(\bfA) \le m$ and $\rank(\bfA) \le n$.
+::::
+:::{proof:proof}
+Each leading one in the RRE form requires a row and column of its own.
+:::
+
+(theorem-RREF-deficient)=
+::::{proof:theorem} 
+Suppose $\bfA$ is $m\times n$. If $\rank(\bfA)<n$, then the linear system $\bfA\bfx=\bfb$ cannot have a unique solution. It is inconsistent for some choices of $\bfb$ and has infinitely many solutions for some choices of $\bfb$.
+::::
+:::{proof:proof}
+Let $r=\rank(\bfA)$. Then the RRE form of $\bfA$ has is all zero in rows $r+1$ to $m$. Now augment $\bfA$ with $\bfb$ and perform the row operations that reduce $\bfA$ to RRE form. If there are any nonzeros in rows $r+1$ to $m$ of the last column, the system is inconsistent. Otherwise, the system has at least one free variable. We can start with either type of outcome and run the row elimination process backward to find a $\bfb$ that led to it.
+:::
+
+(corollary-RREF-nonunique)=
+::::{proof:corollary} 
+A linear system with more variables than equations cannot have a unique solution.
+::::
+:::{proof:proof}
+$\rank(\bfA) \le m < n$.
+::
