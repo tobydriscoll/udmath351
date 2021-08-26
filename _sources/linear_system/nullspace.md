@@ -28,7 +28,7 @@ The last column of the RRE form of the augmented matrix of a homogeneous linear 
 Row operations don't change the zeros in that column.
 :::
 
-## Null space and rank
+## Null space
 
 (definition-nullspace-nullspace)=
 ::::{proof:definition} 
@@ -43,23 +43,7 @@ As the name implies, the null space is our first example of what we will call a 
 
 For a homogeneous linear system, the zero vector $\bfx=\bfzero$ is always a solution; hence, the system is consistent. The question becomes whether zero is the *only* solution. Thus, we only need to look at case 2 at the beginning of the section.
 
-```{index} ! rank of a matrix
-```
-
-(definition-nullspace-rank)=
-::::{proof:definition} Rank
-The **rank** of a matrix is the number of pivot columns in its RRE form.
-::::
-
-(theorem-nullspace-rank)=
-::::{proof:theorem} 
-If $\bfA$ is an $m\times n$ matrix, then $\rank(\bfA) \le m$ and $\rank(\bfA) \le n$.
-::::
-:::{proof:proof}
-Each leading one in the RRE form requires a row and column of its own.
-:::
-
-The following pretty much just follows from our definitions. (That happens a lot in linear algebra: the work is in the setup, not the punchline.)
+The following pretty much just follows immediately from our definitions. (That happens a lot in linear algebra: the work is in the setup, not the punchline.)
 
 (theorem-nullspace-uniqueness)=
 ::::{proof:theorem} 

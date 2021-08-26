@@ -106,7 +106,7 @@ is equivalent to $\tan(t)=-c_1/c2$ if $c_2\neq 0$, which is impossible for all $
 
 There is a mechanical way to determine the indepdence of given functions.
 
-```{index} ! Wronskian
+```{index} ! Wronskian; of $n$ scalar functions
 ```
 
 (definition-structure-wronskian)=

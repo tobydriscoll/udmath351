@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>2.3. Subspaces &#8212; Notes on ODEs and linear algebra</title>
+    <title>4.3. Subspaces &#8212; Notes on ODEs and linear algebra</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
   <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -58,8 +58,8 @@
     <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": {"real": ["\\mathbb{R}"], "complex": ["\\mathbb{C}"], "nat": ["\\mathbb{N}"], "integer": ["\\mathbb{Z}"], "rmn": ["\\mathbb{R}^{#1 \\times #2}", 2], "cmn": ["\\complex^{#1 \\times #2}", 2], "dd": ["\\frac{d #1}{d #2}", 2], "pp": ["\\frac{\\partial #1}{\\partial #2}", 2], "ddd": ["\\frac{d^2 #1}{d #2^2}", 2], "norm": ["\\| #1 \\|", 1], "twonorm": ["\\| #1 \\|_2", 1], "onenorm": ["\\| #1 \\|_1", 1], "infnorm": ["\\| #1 \\|_\\infty", 1], "innerprod": ["\\langle #1,#2 \\rangle", 2], "twovec": ["\\begin{bmatrix} #1 \\\\ #2 \\end{bmatrix}", 2], "threevec": ["\\begin{bmatrix} #1 \\\\ #2 \\\\ #3 \\end{bmatrix}", 3], "twomat": ["\\begin{bmatrix} #1 & #2 \\\\ #3 & #4 \\end{bmatrix}", 4], "twodet": ["\\begin{vmatrix} #1 & #2 \\\\ #3 & #4 \\end{vmatrix}", 4], "pr": ["^{(#1)}", 1], "eye": ["\\mathbf{e}_#1", 1], "meye": ["\\mathbf{I}"], "bff": ["\\mathbf{f}"], "bfx": ["\\mathbf{x}"], "bfy": ["\\mathbf{y}"], "bfz": ["\\mathbf{z}"], "bfu": ["\\mathbf{u}"], "bfv": ["\\mathbf{v}"], "bfa": ["\\mathbf{a}"], "bfb": ["\\mathbf{b}"], "bfe": ["\\mathbf{e}"], "bfA": ["\\mathbf{A}"], "bfB": ["\\mathbf{B}"], "bfX": ["\\mathbf{X}"], "bfV": ["\\mathbf{V}"], "opA": ["\\mathcal{A}"], "lx": ["\\mathcal{L}"], "bfalpha": ["\\mathbf{alpha}"], "bfdelta": ["\\mathbf{delta}"], "bfzero": ["\\boldsymbol{0}"], "diag": ["\\operatorname{diag}"], "sign": ["\\operatorname{sign}"], "Re": ["\\operatorname{Re}"], "Im": ["\\operatorname{Im}"], "ee": ["\\times 10^"], "rank": ["\\operatorname{rank}"], "span": ["\\operatorname{span}"], "nullsp": ["\\operatorname{nullsp}"], "rowsp": ["\\operatorname{rowsp}"], "colsp": ["\\operatorname{colsp}"], "dim": ["\\operatorname{dim}"]}}, "HTML-CSS": {"availableFonts": [], "preferredFont": null, "webFont": "Asana-Math"}, "tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="2.4. Eigenvalues" href="eigenvalues.html" />
-    <link rel="prev" title="2.2. Identity and inverse" href="inverse.html" />
+    <link rel="next" title="4.4. Determinants" href="determinants.html" />
+    <link rel="prev" title="4.2. Identity and inverse" href="inverse.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -94,12 +94,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
- <span class="caption-text">
-  Scalar ODEs
- </span>
-</p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../first_order/overview.html">
    1. First-order ODEs
@@ -194,16 +189,9 @@
    </li>
   </ul>
  </li>
-</ul>
-<p class="caption">
- <span class="caption-text">
-  Linear algebra
- </span>
-</p>
-<ul class="current nav bd-sidenav">
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../linear_system/overview.html">
-   1. Linear systems
+   3. Linear systems
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
   <label for="toctree-checkbox-3">
@@ -213,29 +201,29 @@
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../linear_system/problem.html">
-     1.1. Defining the problem
+     3.1. Defining the problem
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../linear_system/row_elimination.html">
-     1.2. Row elimination
+     3.2. Row elimination
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../linear_system/RREF.html">
-     1.3. RRE form
+     3.3. RRE form
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../linear_system/nullspace.html">
-     1.4. Homogeneous systems
+     3.4. Homogeneous systems
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="overview.html">
-   2. Matrix properties
+   4. Matrix properties
   </a>
   <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
   <label for="toctree-checkbox-4">
@@ -245,39 +233,44 @@
   <ul class="current">
    <li class="toctree-l2">
     <a class="reference internal" href="operations.html">
-     2.1. Algebraic operations
+     4.1. Algebraic operations
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="inverse.html">
-     2.2. Identity and inverse
+     4.2. Identity and inverse
     </a>
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     2.3. Subspaces
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="eigenvalues.html">
-     2.4. Eigenvalues
+     4.3. Subspaces
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="determinants.html">
-     2.5. Determinants
+     4.4. Determinants
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="eigenvalues.html">
+     4.5. Eigenvalues
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="computing.html">
+     4.6. Computing eigenvalues and eigenspaces
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="diagonalization.html">
-     2.6. Diagonalization
+     4.7. Diagonalization
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../basis/overview.html">
-   3. Basis and dimension
+  <a class="reference internal" href="../space/overview.html">
+   5. Vector spaces
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
   <label for="toctree-checkbox-5">
@@ -286,32 +279,25 @@
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../basis/span_independence.html">
-     3.1. Span and independence
+    <a class="reference internal" href="../space/vectors.html">
+     5.1. Vectors galore
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../basis/dimension.html">
-     3.2. Dimension and rank
+    <a class="reference internal" href="../space/basis.html">
+     5.2. Basis and dimension
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../basis/change.html">
-     3.3. Change of basis
+    <a class="reference internal" href="../space/change.html">
+     5.3. Change of basis
     </a>
    </li>
   </ul>
  </li>
-</ul>
-<p class="caption">
- <span class="caption-text">
-  Linear ODE systems
- </span>
-</p>
-<ul class="nav bd-sidenav">
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../ode_system/overview.html">
-   1. Linear ODE systems
+   6. Linear ODE systems
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
   <label for="toctree-checkbox-6">
@@ -321,37 +307,37 @@
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../ode_system/order_dimension.html">
-     1.2. Conversion of higher-order ODEs
+     6.2. Conversion of higher-order ODEs
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ode_system/structure.html">
-     1.3. Solution structure
+     6.3. Solution structure
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ode_system/homogeneous.html">
-     1.4. Homogeneous solutions
+     6.4. Homogeneous solutions
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ode_system/const_coeff.html">
-     1.5. Constant-coefficient problems
+     6.5. Constant-coefficient problems
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ode_system/phase_plane.html">
-     1.6. Stability and the phase plane
+     6.6. Stability and the phase plane
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ode_system/matrix_exp.html">
-     1.7. The matrix exponential
+     6.7. The matrix exponential
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ode_system/linearization.html">
-     1.8. Linearization
+     6.8. Linearization
     </a>
    </li>
   </ul>
@@ -429,17 +415,17 @@
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#row-and-column-spaces">
-   2.3.1. Row and column spaces
+   4.3.1. Row and column spaces
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#basis">
-   2.3.2. Basis
+   4.3.2. Basis
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#dimension">
-   2.3.3. Dimension
+   4.3.3. Dimension
   </a>
  </li>
 </ul>
@@ -454,10 +440,10 @@
               <div>
                 
   <div class="section" id="subspaces">
-<span id="section-matrix-subspaces"></span><h1><span class="section-number">2.3. </span>Subspaces<a class="headerlink" href="#subspaces" title="Permalink to this headline">¶</a></h1>
-<p>We encountered the null space of a matrix in <a class="reference internal" href="../linear_system/nullspace.html#section-linear-system-nullspace"><span class="std std-numref">Section 1.4</span></a>. It’s a special case of a vital type of set.</p>
+<span id="section-matrix-subspaces"></span><h1><span class="section-number">4.3. </span>Subspaces<a class="headerlink" href="#subspaces" title="Permalink to this headline">¶</a></h1>
+<p>We encountered the null space of a matrix in <a class="reference internal" href="../linear_system/nullspace.html#section-linear-system-nullspace"><span class="std std-numref">Section 3.4</span></a>. It’s a special case of a vital type of set.</p>
 <div class="proof proof-type-definition" id="id1">
-<span id="definition-subspaces-subspace"></span><div class="proof-title"> <span class="proof-type">Definition 2.59</span>  <span class="proof-title-name">: &nbsp;Subspace</span>  </div><div class="proof-content">
+<span id="definition-subspaces-subspace"></span><div class="proof-title"> <span class="proof-type">Definition 4.20</span>  <span class="proof-title-name">: &nbsp;Subspace</span>  </div><div class="proof-content">
 <p>A <strong>subspace</strong> of <span class="math notranslate nohighlight">\(\real^n\)</span> is a set <span class="math notranslate nohighlight">\(S\)</span> satisfying:</p>
 <ol class="simple">
 <li><p>The zero vector is in <span class="math notranslate nohighlight">\(S\)</span>.</p></li>
@@ -469,11 +455,11 @@
 <p>We will be making statements about real spaces like <span class="math notranslate nohighlight">\(\real^n\)</span>, but everything also works for <span class="math notranslate nohighlight">\(\complex^n\)</span>, which turns out to be important.</p>
 </div>
 <div class="proof proof-type-example" id="id2">
-<span id="example-subspaces-plane"></span><div class="proof-title"> <span class="proof-type">Example 2.60</span>  </div><div class="proof-content">
+<span id="example-subspaces-plane"></span><div class="proof-title"> <span class="proof-type">Example 4.21</span>  </div><div class="proof-content">
 <p>The equation <span class="math notranslate nohighlight">\(x + 2y + 3z = 0\)</span> describes a plane passing through the origin in <span class="math notranslate nohighlight">\(\real^3\)</span>. It’s clear geometrically that scaling a vector in the plane leaves you in the plane, and adding vectors in the plane does as well. This is enough to show that this plane is a subspace of <span class="math notranslate nohighlight">\(\real^3\)</span>. In fact, it is the null space of the matrix <span class="math notranslate nohighlight">\(\begin{bmatrix} 1 &amp; 2 &amp; 3 \end{bmatrix}.\)</span></p>
 <p>The equation <span class="math notranslate nohighlight">\(x+y+z=1\)</span> is also a plane in <span class="math notranslate nohighlight">\(\real^3\)</span>, but it does not pass through the origin, so it cannot be a subspace. (It also fails closure for scaling and addition.)</p>
 </div></div><div class="proof proof-type-theorem" id="id3">
-<span id="theorem-subspaces-nullspace"></span><div class="proof-title"> <span class="proof-type">Theorem 2.61</span>  </div><div class="proof-content">
+<span id="theorem-subspaces-nullspace"></span><div class="proof-title"> <span class="proof-type">Theorem 4.22</span>  </div><div class="proof-content">
 <p>The null space of an <span class="math notranslate nohighlight">\(m\times n\)</span> matrix is a subspace of <span class="math notranslate nohighlight">\(\real^n\)</span>.</p>
 </div></div><div class="proof proof-type-proof">
 <div class="proof-title"> <span class="proof-type">Proof </span>  </div><div class="proof-content">
@@ -486,31 +472,31 @@ by basic algebraic properties,</p>
 <p>The derivation applies to linear combinations of any length.</p>
 </div></div><p>There is at least one easy way to generate subspaces. The following is not hard to prove.</p>
 <div class="proof proof-type-theorem" id="id4">
-<span id="theorem-subspaces-span"></span><div class="proof-title"> <span class="proof-type">Theorem 2.62</span>  </div><div class="proof-content">
+<span id="theorem-subspaces-span"></span><div class="proof-title"> <span class="proof-type">Theorem 4.23</span>  </div><div class="proof-content">
 <p>If <span class="math notranslate nohighlight">\(S=\span(\bfv_1,\ldots,\bfv_k)\)</span> for any vectors <span class="math notranslate nohighlight">\(\bfv_j\)</span> in <span class="math notranslate nohighlight">\(\real^n\)</span>, then <span class="math notranslate nohighlight">\(S\)</span> is a subspace of <span class="math notranslate nohighlight">\(\real^n\)</span>.</p>
 </div></div><div class="section" id="row-and-column-spaces">
-<h2><span class="section-number">2.3.1. </span>Row and column spaces<a class="headerlink" href="#row-and-column-spaces" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">4.3.1. </span>Row and column spaces<a class="headerlink" href="#row-and-column-spaces" title="Permalink to this headline">¶</a></h2>
 <div class="proof proof-type-definition" id="id5">
-<span id="definition-subspaces-rowcol"></span><div class="proof-title"> <span class="proof-type">Definition 2.63</span>  <span class="proof-title-name">: &nbsp;Row and column spaces</span>  </div><div class="proof-content">
+<span id="definition-subspaces-rowcol"></span><div class="proof-title"> <span class="proof-type">Definition 4.24</span>  <span class="proof-title-name">: &nbsp;Row and column spaces</span>  </div><div class="proof-content">
 <p>Let <span class="math notranslate nohighlight">\(\bfA\)</span> be an <span class="math notranslate nohighlight">\(m\times n\)</span> matrix. The <strong>row space</strong> of <span class="math notranslate nohighlight">\(\bfA\)</span>, <span class="math notranslate nohighlight">\(\rowsp(\bfA)\)</span>, is the span of the rows of <span class="math notranslate nohighlight">\(\bfA\)</span>. The <strong>column space</strong> of <span class="math notranslate nohighlight">\(\bfA\)</span>, <span class="math notranslate nohighlight">\(\colsp(\bfA)\)</span>, is the span of the columns of <span class="math notranslate nohighlight">\(\bfA\)</span>.</p>
-</div></div><p>By <a class="reference internal" href="#theorem-subspaces-span"><span class="std std-numref">Theorem 2.62</span></a>, <span class="math notranslate nohighlight">\(\rowsp(\bfA)\)</span> is a subspace of <span class="math notranslate nohighlight">\(\real^n\)</span>, and <span class="math notranslate nohighlight">\(\colsp(\bfA)\)</span> is a subspace of <span class="math notranslate nohighlight">\(\real^m\)</span>.</p>
+</div></div><p>By <a class="reference internal" href="#theorem-subspaces-span"><span class="std std-numref">Theorem 4.23</span></a>, <span class="math notranslate nohighlight">\(\rowsp(\bfA)\)</span> is a subspace of <span class="math notranslate nohighlight">\(\real^n\)</span>, and <span class="math notranslate nohighlight">\(\colsp(\bfA)\)</span> is a subspace of <span class="math notranslate nohighlight">\(\real^m\)</span>.</p>
 </div>
 <div class="section" id="basis">
-<h2><span class="section-number">2.3.2. </span>Basis<a class="headerlink" href="#basis" title="Permalink to this headline">¶</a></h2>
-<p>We defined span and independence in <a class="reference internal" href="../linear_system/nullspace.html#section-linear-system-nullspace"><span class="std std-numref">Section 1.4</span></a>. These are two great tastes that taste great together.</p>
+<h2><span class="section-number">4.3.2. </span>Basis<a class="headerlink" href="#basis" title="Permalink to this headline">¶</a></h2>
+<p>We defined span and independence in <a class="reference internal" href="../linear_system/nullspace.html#section-linear-system-nullspace"><span class="std std-numref">Section 3.4</span></a>. These are two great tastes that taste great together.</p>
 <div class="proof proof-type-definition" id="id6">
-<span id="definition-subspaces-basis"></span><div class="proof-title"> <span class="proof-type">Definition 2.64</span>  <span class="proof-title-name">: &nbsp;Basis</span>  </div><div class="proof-content">
+<span id="definition-subspaces-basis"></span><div class="proof-title"> <span class="proof-type">Definition 4.25</span>  <span class="proof-title-name">: &nbsp;Basis</span>  </div><div class="proof-content">
 <p>A <strong>basis</strong> of a subspace <span class="math notranslate nohighlight">\(S\)</span> is any set of linearly independent vectors that spans <span class="math notranslate nohighlight">\(S\)</span>.</p>
-</div></div><p>Finding a basis for a null space was demonstrated in <a class="reference internal" href="../linear_system/nullspace.html#example-nullspace-span"><span class="std std-numref">Example 1.54</span></a>. Finding these other spaces is easier:</p>
+</div></div><p>Finding a basis for a null space was demonstrated in <a class="reference internal" href="../linear_system/nullspace.html#example-nullspace-span"><span class="std std-numref">Example 3.24</span></a>. Finding these other spaces is easier:</p>
 <div class="proof proof-type-theorem" id="id7">
-<div class="proof-title"> <span class="proof-type">Theorem 2.65</span>  </div><div class="proof-content">
+<div class="proof-title"> <span class="proof-type">Theorem 4.26</span>  </div><div class="proof-content">
 <p>Let <span class="math notranslate nohighlight">\(\bfA\)</span> have the RRE form <span class="math notranslate nohighlight">\(\mathbf{E}\)</span>. Then</p>
 <ol class="simple">
 <li><p>The nonzero rows of <span class="math notranslate nohighlight">\(\mathbf{E}\)</span> are a basis for <span class="math notranslate nohighlight">\(\rowsp(\bfA)\)</span>.</p></li>
 <li><p>Columns <span class="math notranslate nohighlight">\(j_1,\ldots,j_k\)</span> of <span class="math notranslate nohighlight">\(\bfA\)</span>, where <span class="math notranslate nohighlight">\(j_1,\ldots,j_k\)</span> are the pivot columns of <span class="math notranslate nohighlight">\(\mathbf{E}\)</span>, are a basis for <span class="math notranslate nohighlight">\(\colsp(\bfA)\)</span>.</p></li>
 </ol>
 </div></div><div class="proof proof-type-example" id="id8">
-<div class="proof-title"> <span class="proof-type">Example 2.66</span>  </div><div class="proof-content">
+<div class="proof-title"> <span class="proof-type">Example 4.27</span>  </div><div class="proof-content">
 <p>Find bases for the null space, row space, and column space of</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -546,17 +532,17 @@ Solution<div class="summary-down docutils">
 </div>
 </details></div></div></div>
 <div class="section" id="dimension">
-<h2><span class="section-number">2.3.3. </span>Dimension<a class="headerlink" href="#dimension" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">4.3.3. </span>Dimension<a class="headerlink" href="#dimension" title="Permalink to this headline">¶</a></h2>
 <p>You have an intuitive idea of dimension, but it may seem hard to define rigorously. But we’re set up to do that now. First, we need the following result.</p>
 <div class="proof proof-type-theorem" id="id9">
-<span id="theorem-subspaces-dimension"></span><div class="proof-title"> <span class="proof-type">Theorem 2.67</span>  </div><div class="proof-content">
+<span id="theorem-subspaces-dimension"></span><div class="proof-title"> <span class="proof-type">Theorem 4.28</span>  </div><div class="proof-content">
 <p>Every basis for a subspace <span class="math notranslate nohighlight">\(S\)</span> has the same number of members.</p>
 </div></div><div class="proof proof-type-definition" id="id10">
-<span id="definition-subspaces-dimension"></span><span id="index-0"></span><div class="proof-title"> <span class="proof-type">Definition 2.68</span>  <span class="proof-title-name">: &nbsp;Dimension</span>  </div><div class="proof-content">
+<span id="definition-subspaces-dimension"></span><span id="index-0"></span><div class="proof-title"> <span class="proof-type">Definition 4.29</span>  <span class="proof-title-name">: &nbsp;Dimension</span>  </div><div class="proof-content">
 <p>The <strong>dimension</strong> of a subspace <span class="math notranslate nohighlight">\(S\)</span>, written <span class="math notranslate nohighlight">\(\dim(S)\)</span>, is the number of vectors in any basis of <span class="math notranslate nohighlight">\(S\)</span>.</p>
 </div></div><p>The following comes from mucking about some more with the RRE form.</p>
 <div class="proof proof-type-theorem" id="id11">
-<span id="theorem-subspaces-rank"></span><div class="proof-title"> <span class="proof-type">Theorem 2.69</span>  </div><div class="proof-content">
+<span id="theorem-subspaces-rank"></span><div class="proof-title"> <span class="proof-type">Theorem 4.30</span>  </div><div class="proof-content">
 <p>For any <span class="math notranslate nohighlight">\(m\times n\)</span> matrix <span class="math notranslate nohighlight">\(\bfA\)</span>,</p>
 <ol class="simple">
 <li><p><span class="math notranslate nohighlight">\(\rank(\bfA)=\dim(\rowsp(\bfA))=\dim(\colsp(\bfA))\)</span>.</p></li>
@@ -625,8 +611,8 @@ so $\bfx =\threevec{1}{-2}{1}$ for any value of $s$.
         
         <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="inverse.html" title="previous page"><span class="section-number">2.2. </span>Identity and inverse</a>
-    <a class='right-next' id="next-link" href="eigenvalues.html" title="next page"><span class="section-number">2.4. </span>Eigenvalues</a>
+    <a class='left-prev' id="prev-link" href="inverse.html" title="previous page"><span class="section-number">4.2. </span>Identity and inverse</a>
+    <a class='right-next' id="next-link" href="determinants.html" title="next page"><span class="section-number">4.4. </span>Determinants</a>
 
         </div>
         

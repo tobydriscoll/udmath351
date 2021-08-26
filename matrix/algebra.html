@@ -210,18 +210,23 @@
   </label>
   <ul>
    <li class="toctree-l2">
+    <a class="reference internal" href="../linear_system/problem.html">
+     1.1. Defining the problem
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="../linear_system/row_elimination.html">
-     1.4. Row elimination
+     1.2. Row elimination
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../linear_system/RREF.html">
-     1.5. RRE form
+     1.3. RRE form
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../linear_system/nullspace.html">
-     1.6. Homogeneous systems
+     1.4. Homogeneous systems
     </a>
    </li>
   </ul>
@@ -252,25 +257,30 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="eigenvalues.html">
-     2.4. Eigenvalues
+    <a class="reference internal" href="determinants.html">
+     2.4. Determinants
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="determinants.html">
-     2.5. Detecting singularity
+    <a class="reference internal" href="eigenvalues.html">
+     2.5. Eigenvalues
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="computing.html">
+     2.6. Computing eigenvalues and eigenspaces
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="diagonalization.html">
-     2.6. Diagonalization
+     2.7. Diagonalization
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../basis/overview.html">
-   3. Basis and dimension
+  <a class="reference internal" href="../space/overview.html">
+   3. Vector spaces
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
   <label for="toctree-checkbox-5">
@@ -279,17 +289,17 @@
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../basis/span_independence.html">
-     3.1. Span and independence
+    <a class="reference internal" href="../space/vectors.html">
+     3.1. Vectors galore
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../basis/dimension.html">
-     3.2. Dimension and rank
+    <a class="reference internal" href="../space/basis.html">
+     3.2. Basis and dimension
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../basis/change.html">
+    <a class="reference internal" href="../space/change.html">
      3.3. Change of basis
     </a>
    </li>
@@ -547,6 +557,10 @@
 <li><p><span class="math notranslate nohighlight">\((\bfA\bfB)^T = \bfB^T \bfA^T\)</span></p></li>
 </ol>
 </div></div><p>Only the last of these is not intuitively clear.</p>
+<div class="proof proof-type-definition" id="id4">
+<span id="definition-algebra-symmetric"></span><span id="index-1"></span><div class="proof-title"> <span class="proof-type">Definition </span>  <span class="proof-title-name">: &nbsp;Symmetric matrix</span>  </div><div class="proof-content">
+<p>An <span class="math notranslate nohighlight">\(n\times n\)</span> matrix <span class="math notranslate nohighlight">\(\bfA\)</span> is <strong>symmetric</strong> if <span class="math notranslate nohighlight">\(\bfA^T=\bfA\)</span>. Elementwise, this means <span class="math notranslate nohighlight">\(A_{ij}=A_{ji}\)</span> for all possible <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(j\)</span>.</p>
+</div></div><p>A symmetric matrix has mirror symmetry about its diagonal. Such matrices arise when elements of a system interact symmetrically, such as with gravitational or electrostatic attraction.</p>
 </div>
 </div>
 

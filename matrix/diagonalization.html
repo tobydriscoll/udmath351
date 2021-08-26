@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>2.7. Diagonalization &#8212; Notes on ODEs and linear algebra</title>
+    <title>4.7. Diagonalization &#8212; Notes on ODEs and linear algebra</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
   <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -58,8 +58,8 @@
     <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": {"real": ["\\mathbb{R}"], "complex": ["\\mathbb{C}"], "nat": ["\\mathbb{N}"], "integer": ["\\mathbb{Z}"], "rmn": ["\\mathbb{R}^{#1 \\times #2}", 2], "cmn": ["\\complex^{#1 \\times #2}", 2], "dd": ["\\frac{d #1}{d #2}", 2], "pp": ["\\frac{\\partial #1}{\\partial #2}", 2], "ddd": ["\\frac{d^2 #1}{d #2^2}", 2], "norm": ["\\| #1 \\|", 1], "twonorm": ["\\| #1 \\|_2", 1], "onenorm": ["\\| #1 \\|_1", 1], "infnorm": ["\\| #1 \\|_\\infty", 1], "innerprod": ["\\langle #1,#2 \\rangle", 2], "twovec": ["\\begin{bmatrix} #1 \\\\ #2 \\end{bmatrix}", 2], "threevec": ["\\begin{bmatrix} #1 \\\\ #2 \\\\ #3 \\end{bmatrix}", 3], "twomat": ["\\begin{bmatrix} #1 & #2 \\\\ #3 & #4 \\end{bmatrix}", 4], "twodet": ["\\begin{vmatrix} #1 & #2 \\\\ #3 & #4 \\end{vmatrix}", 4], "pr": ["^{(#1)}", 1], "eye": ["\\mathbf{e}_#1", 1], "meye": ["\\mathbf{I}"], "bff": ["\\mathbf{f}"], "bfx": ["\\mathbf{x}"], "bfy": ["\\mathbf{y}"], "bfz": ["\\mathbf{z}"], "bfu": ["\\mathbf{u}"], "bfv": ["\\mathbf{v}"], "bfa": ["\\mathbf{a}"], "bfb": ["\\mathbf{b}"], "bfe": ["\\mathbf{e}"], "bfA": ["\\mathbf{A}"], "bfB": ["\\mathbf{B}"], "bfX": ["\\mathbf{X}"], "bfV": ["\\mathbf{V}"], "opA": ["\\mathcal{A}"], "lx": ["\\mathcal{L}"], "bfalpha": ["\\mathbf{alpha}"], "bfdelta": ["\\mathbf{delta}"], "bfzero": ["\\boldsymbol{0}"], "diag": ["\\operatorname{diag}"], "sign": ["\\operatorname{sign}"], "Re": ["\\operatorname{Re}"], "Im": ["\\operatorname{Im}"], "ee": ["\\times 10^"], "rank": ["\\operatorname{rank}"], "span": ["\\operatorname{span}"], "nullsp": ["\\operatorname{nullsp}"], "rowsp": ["\\operatorname{rowsp}"], "colsp": ["\\operatorname{colsp}"], "dim": ["\\operatorname{dim}"]}}, "HTML-CSS": {"availableFonts": [], "preferredFont": null, "webFont": "Asana-Math"}, "tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="3. Basis and dimension" href="../basis/overview.html" />
-    <link rel="prev" title="2.6. Computing eigenvalues and eigenspaces" href="computing.html" />
+    <link rel="next" title="5. Vector spaces" href="../space/overview.html" />
+    <link rel="prev" title="4.6. Computing eigenvalues and eigenspaces" href="computing.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -94,12 +94,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
- <span class="caption-text">
-  Scalar ODEs
- </span>
-</p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../first_order/overview.html">
    1. First-order ODEs
@@ -194,16 +189,9 @@
    </li>
   </ul>
  </li>
-</ul>
-<p class="caption">
- <span class="caption-text">
-  Linear algebra
- </span>
-</p>
-<ul class="current nav bd-sidenav">
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../linear_system/overview.html">
-   1. Linear systems
+   3. Linear systems
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
   <label for="toctree-checkbox-3">
@@ -213,29 +201,29 @@
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../linear_system/problem.html">
-     1.1. Defining the problem
+     3.1. Defining the problem
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../linear_system/row_elimination.html">
-     1.2. Row elimination
+     3.2. Row elimination
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../linear_system/RREF.html">
-     1.3. RRE form
+     3.3. RRE form
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../linear_system/nullspace.html">
-     1.4. Homogeneous systems
+     3.4. Homogeneous systems
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="overview.html">
-   2. Matrix properties
+   4. Matrix properties
   </a>
   <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
   <label for="toctree-checkbox-4">
@@ -245,44 +233,44 @@
   <ul class="current">
    <li class="toctree-l2">
     <a class="reference internal" href="operations.html">
-     2.1. Algebraic operations
+     4.1. Algebraic operations
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="inverse.html">
-     2.2. Identity and inverse
+     4.2. Identity and inverse
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="subspaces.html">
-     2.3. Subspaces
+     4.3. Subspaces
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="determinants.html">
-     2.4. Determinants
+     4.4. Determinants
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="eigenvalues.html">
-     2.5. Eigenvalues
+     4.5. Eigenvalues
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="computing.html">
-     2.6. Computing eigenvalues and eigenspaces
+     4.6. Computing eigenvalues and eigenspaces
     </a>
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     2.7. Diagonalization
+     4.7. Diagonalization
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../basis/overview.html">
-   3. Basis and dimension
+  <a class="reference internal" href="../space/overview.html">
+   5. Vector spaces
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
   <label for="toctree-checkbox-5">
@@ -291,32 +279,25 @@
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../basis/span_independence.html">
-     3.1. Span and independence
+    <a class="reference internal" href="../space/vectors.html">
+     5.1. Vectors galore
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../basis/dimension.html">
-     3.2. Dimension and rank
+    <a class="reference internal" href="../space/basis.html">
+     5.2. Basis and dimension
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../basis/change.html">
-     3.3. Change of basis
+    <a class="reference internal" href="../space/change.html">
+     5.3. Change of basis
     </a>
    </li>
   </ul>
  </li>
-</ul>
-<p class="caption">
- <span class="caption-text">
-  Linear ODE systems
- </span>
-</p>
-<ul class="nav bd-sidenav">
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../ode_system/overview.html">
-   1. Linear ODE systems
+   6. Linear ODE systems
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
   <label for="toctree-checkbox-6">
@@ -326,37 +307,37 @@
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../ode_system/order_dimension.html">
-     1.2. Conversion of higher-order ODEs
+     6.2. Conversion of higher-order ODEs
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ode_system/structure.html">
-     1.3. Solution structure
+     6.3. Solution structure
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ode_system/homogeneous.html">
-     1.4. Homogeneous solutions
+     6.4. Homogeneous solutions
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ode_system/const_coeff.html">
-     1.5. Constant-coefficient problems
+     6.5. Constant-coefficient problems
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ode_system/phase_plane.html">
-     1.6. Stability and the phase plane
+     6.6. Stability and the phase plane
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ode_system/matrix_exp.html">
-     1.7. The matrix exponential
+     6.7. The matrix exponential
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ode_system/linearization.html">
-     1.8. Linearization
+     6.8. Linearization
     </a>
    </li>
   </ul>
@@ -437,17 +418,17 @@
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#geometric-multiplicity">
-   2.7.1. Geometric multiplicity
+   4.7.1. Geometric multiplicity
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#defectiveness">
-   2.7.2. Defectiveness
+   4.7.2. Defectiveness
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id1">
-   2.7.3. Diagonalization
+   4.7.3. Diagonalization
   </a>
  </li>
 </ul>
@@ -462,19 +443,19 @@
               <div>
                 
   <div class="section" id="diagonalization">
-<h1><span class="section-number">2.7. </span>Diagonalization<a class="headerlink" href="#diagonalization" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">4.7. </span>Diagonalization<a class="headerlink" href="#diagonalization" title="Permalink to this headline">¶</a></h1>
 <p>The eigenvalues of a matrix are the roots of its characteristic polynomial <span class="math notranslate nohighlight">\(p\)</span>. In the general <span class="math notranslate nohighlight">\(n\times n\)</span> case, we can factor <span class="math notranslate nohighlight">\(p\)</span> as</p>
 <div class="math notranslate nohighlight">
 \[p(z) = (z-\lambda_1)^{m_1}(z-\lambda_2)^{m_2}\cdots(z-\lambda_k)^{m_k},\]</div>
 <p>for positive integer exponents such that <span class="math notranslate nohighlight">\(m_1+\cdots+m_k=n\)</span>. These exponents are the multiplicities of the roots, and that idea carries to the eigenvalues as well.</p>
 <div class="proof proof-type-definition" id="id2">
-<span id="definition-linalg-algmult"></span><span id="index-0"></span><div class="proof-title"> <span class="proof-type">Definition 2.86</span>  <span class="proof-title-name">: &nbsp;Algebraic multiplicity</span>  </div><div class="proof-content">
+<span id="definition-linalg-algmult"></span><span id="index-0"></span><div class="proof-title"> <span class="proof-type">Definition 4.47</span>  <span class="proof-title-name">: &nbsp;Algebraic multiplicity</span>  </div><div class="proof-content">
 <p>The <strong>algebraic multiplicity</strong> of an eigenvalue is its multiplicity as a root of the characteristic polynomial.</p>
 </div></div><div class="section" id="geometric-multiplicity">
-<h2><span class="section-number">2.7.1. </span>Geometric multiplicity<a class="headerlink" href="#geometric-multiplicity" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">4.7.1. </span>Geometric multiplicity<a class="headerlink" href="#geometric-multiplicity" title="Permalink to this headline">¶</a></h2>
 <p>The following example illustrates a possibility for eigenvalues of algebraic multiplicity greater than 1.</p>
 <div class="proof proof-type-example" id="id3">
-<span id="example-diagonalization-defective"></span><div class="proof-title"> <span class="proof-type">Example 2.87</span>  </div><div class="proof-content">
+<span id="example-diagonalization-defective"></span><div class="proof-title"> <span class="proof-type">Example 4.48</span>  </div><div class="proof-content">
 <p>Find the eigenspaces of <span class="math notranslate nohighlight">\(\bfA=\twomat{4}{1}{0}{4}\)</span>.</p>
 <details class="sphinx-bs dropdown card mb-3">
 <summary class="summary-title card-header">
@@ -493,11 +474,11 @@ Solution<div class="summary-down docutils">
 </div>
 </details></div></div><p>This leads us to define a second notion of multiplicity for an eigenvalue.</p>
 <div class="proof proof-type-definition" id="id4">
-<span id="definition-linalg-geomult"></span><span id="index-1"></span><div class="proof-title"> <span class="proof-type">Definition 2.88</span>  <span class="proof-title-name">: &nbsp;Geometric multiplicity</span>  </div><div class="proof-content">
+<span id="definition-linalg-geomult"></span><span id="index-1"></span><div class="proof-title"> <span class="proof-type">Definition 4.49</span>  <span class="proof-title-name">: &nbsp;Geometric multiplicity</span>  </div><div class="proof-content">
 <p>The <strong>geometric multiplicity</strong> of an eigenvalue is the dimension of its associated eigenspace.</p>
 </div></div><p>Here is an important fact we won’t try to justify.</p>
 <div class="proof proof-type-theorem" id="id5">
-<div class="proof-title"> <span class="proof-type">Theorem 2.89</span>  </div><div class="proof-content">
+<div class="proof-title"> <span class="proof-type">Theorem 4.50</span>  </div><div class="proof-content">
 <p>If <span class="math notranslate nohighlight">\(\text{AM}\)</span> and <span class="math notranslate nohighlight">\(\text{GM}\)</span> are the algebraic and geometric multiplicities respectively of an eigenvalue, then</p>
 <div class="math notranslate nohighlight">
 \[
@@ -505,27 +486,27 @@ Solution<div class="summary-down docutils">
 \]</div>
 </div></div></div>
 <div class="section" id="defectiveness">
-<h2><span class="section-number">2.7.2. </span>Defectiveness<a class="headerlink" href="#defectiveness" title="Permalink to this headline">¶</a></h2>
-<p>In the <a class="reference internal" href="#example-diagonalization-defective"><span class="std std-numref">Example 2.87</span></a> we found a lone eigenvalue <span class="math notranslate nohighlight">\(\lambda_1=4\)</span> of algebraic multiplicity 2 whose geometric multiplicity is 1. The identity matrix is a different sort of example.</p>
+<h2><span class="section-number">4.7.2. </span>Defectiveness<a class="headerlink" href="#defectiveness" title="Permalink to this headline">¶</a></h2>
+<p>In the <a class="reference internal" href="#example-diagonalization-defective"><span class="std std-numref">Example 4.48</span></a> we found a lone eigenvalue <span class="math notranslate nohighlight">\(\lambda_1=4\)</span> of algebraic multiplicity 2 whose geometric multiplicity is 1. The identity matrix is a different sort of example.</p>
 <div class="proof proof-type-example" id="id6">
-<div class="proof-title"> <span class="proof-type">Example 2.90</span>  </div><div class="proof-content">
+<div class="proof-title"> <span class="proof-type">Example 4.51</span>  </div><div class="proof-content">
 <p>The <span class="math notranslate nohighlight">\(2\times 2\)</span> identity matrix <span class="math notranslate nohighlight">\(\meye\)</span> has a lone eigenvalue <span class="math notranslate nohighlight">\(\lambda_1=1\)</span> of algebraic multiplicity 2. The system <span class="math notranslate nohighlight">\((\meye - \meye)\bfv=\bfzero\)</span> has an RRE form that is the zero matrix, so there are two free variables and two basis vectors. Hence the geometric multiplicity of <span class="math notranslate nohighlight">\(\lambda_1\)</span> is also 2.</p>
 </div></div><p>The distinction between these cases is significant enough to warrant another definition.</p>
 <div class="proof proof-type-definition" id="id7">
-<span id="index-2"></span><div class="proof-title"> <span class="proof-type">Definition 2.91</span>  <span class="proof-title-name">: &nbsp;Defectiveness</span>  </div><div class="proof-content">
+<span id="index-2"></span><div class="proof-title"> <span class="proof-type">Definition 4.52</span>  <span class="proof-title-name">: &nbsp;Defectiveness</span>  </div><div class="proof-content">
 <p>An eigenvalue <span class="math notranslate nohighlight">\(\lambda\)</span> whose geometric multiplicity is strictly less than its algebraic multiplicity is said to be <strong>defective</strong>. A matrix is called defective if any of its eigenvalues are defective.</p>
 </div></div><p>As we will see later, defective matrices often complicate the application of eigenvalue analysis.</p>
 <p>Since multiplicities are always at least one, there is a simple and common case in which we are certain that a matrix is not defective.</p>
 <div class="proof proof-type-theorem" id="id8">
-<div class="proof-title"> <span class="proof-type">Theorem 2.92</span>  <span class="proof-title-name">: &nbsp;Distinct eigenvalues</span>  </div><div class="proof-content">
+<div class="proof-title"> <span class="proof-type">Theorem 4.53</span>  <span class="proof-title-name">: &nbsp;Distinct eigenvalues</span>  </div><div class="proof-content">
 <p>If <span class="math notranslate nohighlight">\(\bfA\in\cmn{n}{n}\)</span> has <span class="math notranslate nohighlight">\(n\)</span> distinct eigenvalues, then <span class="math notranslate nohighlight">\(\bfA\)</span> is not defective.</p>
 </div></div><p>For <span class="math notranslate nohighlight">\(n=2\)</span>, the possibilities in the case of algebraic multiplicity equal to 2 are easy to pin down even further.</p>
 <div class="proof proof-type-theorem" id="id9">
-<span id="thm-la-2x2defective"></span><div class="proof-title"> <span class="proof-type">Theorem 2.93</span>  <span class="proof-title-name">: &nbsp;<span class="math notranslate nohighlight">\(2\times 2\)</span> defectiveness</span>  </div><div class="proof-content">
+<span id="thm-la-2x2defective"></span><div class="proof-title"> <span class="proof-type">Theorem 4.54</span>  <span class="proof-title-name">: &nbsp;<span class="math notranslate nohighlight">\(2\times 2\)</span> defectiveness</span>  </div><div class="proof-content">
 <p>Any <span class="math notranslate nohighlight">\(\bfA\in\cmn{2}{2}\)</span> that has a single repeated eigenvalue is either defective or a multiple of the identity matrix.</p>
 </div></div></div>
 <div class="section" id="id1">
-<h2><span class="section-number">2.7.3. </span>Diagonalization<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">4.7.3. </span>Diagonalization<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <p>Suppose <span class="math notranslate nohighlight">\(\bfA\)</span> is <span class="math notranslate nohighlight">\(n\times n\)</span> and that it has eigenvalues <span class="math notranslate nohighlight">\(\lambda_1,\ldots,\lambda_n\)</span> associated with linearly independent eigenvectors <span class="math notranslate nohighlight">\(\bfv_1,\ldots,\bfv_n\)</span>. Writing out the equations <span class="math notranslate nohighlight">\(\bfA\bfv_j = \lambda_j \bfv_j\)</span> in columns, we find</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -547,20 +528,20 @@ Solution<div class="summary-down docutils">
 \end{split}\]</div>
 <p>where we defined</p>
 <div class="math notranslate nohighlight" id="equation-eq-diagonalization-vd">
-<span class="eqno">(2.26)<a class="headerlink" href="#equation-eq-diagonalization-vd" title="Permalink to this equation">¶</a></span>\[\begin{split}\bfV = \begin{bmatrix} \bfv_1 &amp;  \bfv_2 &amp; \cdots &amp; \bfv_n \end{bmatrix}, \qquad 
+<span class="eqno">(4.6)<a class="headerlink" href="#equation-eq-diagonalization-vd" title="Permalink to this equation">¶</a></span>\[\begin{split}\bfV = \begin{bmatrix} \bfv_1 &amp;  \bfv_2 &amp; \cdots &amp; \bfv_n \end{bmatrix}, \qquad 
 \mathbf{D} = \begin{bmatrix}
   \lambda_1 &amp; &amp; &amp; \\ &amp; \lambda_2  &amp; &amp; \\ &amp; &amp; \ddots &amp; \\ &amp; &amp; &amp; \lambda_n
 \end{bmatrix}.\end{split}\]</div>
 <p>Since we assumed that the columns of <span class="math notranslate nohighlight">\(\bfV\)</span> are linearly independent vectors, the column space of <span class="math notranslate nohighlight">\(\bfV\)</span> is <span class="math notranslate nohighlight">\(n\)</span>-dimensional. Hence <span class="math notranslate nohighlight">\(\rank(\bfV)=n\)</span> and <span class="math notranslate nohighlight">\(\bfV\)</span> is invertible.</p>
 <div class="proof proof-type-definition" id="id10">
-<span id="definition-diagonalization-diag"></span><span id="index-3"></span><div class="proof-title"> <span class="proof-type">Definition 2.94</span>  <span class="proof-title-name">: &nbsp;Diagonalization</span>  </div><div class="proof-content">
+<span id="definition-diagonalization-diag"></span><span id="index-3"></span><div class="proof-title"> <span class="proof-type">Definition 4.55</span>  <span class="proof-title-name">: &nbsp;Diagonalization</span>  </div><div class="proof-content">
 <p>A <strong>diagonalization</strong> of square matrix <span class="math notranslate nohighlight">\(\bfA\)</span> is the factorization</p>
 <div class="math notranslate nohighlight" id="equation-eq-diagonalization-similar">
-<span class="eqno">(2.27)<a class="headerlink" href="#equation-eq-diagonalization-similar" title="Permalink to this equation">¶</a></span>\[\bfA = \bfV \mathbf{D} \bfV^{-1},\]</div>
-<p>where (as defined in <a class="reference internal" href="#equation-eq-diagonalization-vd">(2.26)</a>) <span class="math notranslate nohighlight">\(\mathbf{D}\)</span> is a diagonal matix of eigenvalues and <span class="math notranslate nohighlight">\(\bfV\)</span> is a square matrix whose columns are corresponding eigenvectors.</p>
+<span class="eqno">(4.7)<a class="headerlink" href="#equation-eq-diagonalization-similar" title="Permalink to this equation">¶</a></span>\[\bfA = \bfV \mathbf{D} \bfV^{-1},\]</div>
+<p>where (as defined in <a class="reference internal" href="#equation-eq-diagonalization-vd">(4.6)</a>) <span class="math notranslate nohighlight">\(\mathbf{D}\)</span> is a diagonal matix of eigenvalues and <span class="math notranslate nohighlight">\(\bfV\)</span> is a square matrix whose columns are corresponding eigenvectors.</p>
 </div></div><p>What can we do about the requirement of linearly independent eigenvectors in the columns of <span class="math notranslate nohighlight">\(\bfV\)</span>? Without wading into the details, the following wraps this assumption up nicely.</p>
 <div class="proof proof-type-theorem" id="id11">
-<span id="theorem-diagonalization-diag"></span><div class="proof-title"> <span class="proof-type">Theorem 2.95</span>  </div><div class="proof-content">
+<span id="theorem-diagonalization-diag"></span><div class="proof-title"> <span class="proof-type">Theorem 4.56</span>  </div><div class="proof-content">
 <p>A matrix has a diagonalization if and only if it is not defective.</p>
 </div></div></div>
 </div>
@@ -590,8 +571,8 @@ Solution<div class="summary-down docutils">
         
         <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="computing.html" title="previous page"><span class="section-number">2.6. </span>Computing eigenvalues and eigenspaces</a>
-    <a class='right-next' id="next-link" href="../basis/overview.html" title="next page"><span class="section-number">3. </span>Basis and dimension</a>
+    <a class='left-prev' id="prev-link" href="computing.html" title="previous page"><span class="section-number">4.6. </span>Computing eigenvalues and eigenspaces</a>
+    <a class='right-next' id="next-link" href="../space/overview.html" title="next page"><span class="section-number">5. </span>Vector spaces</a>
 
         </div>
         

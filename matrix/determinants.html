@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>2.4. Determinants &#8212; Notes on ODEs and linear algebra</title>
+    <title>4.4. Determinants &#8212; Notes on ODEs and linear algebra</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
   <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -58,8 +58,8 @@
     <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": {"real": ["\\mathbb{R}"], "complex": ["\\mathbb{C}"], "nat": ["\\mathbb{N}"], "integer": ["\\mathbb{Z}"], "rmn": ["\\mathbb{R}^{#1 \\times #2}", 2], "cmn": ["\\complex^{#1 \\times #2}", 2], "dd": ["\\frac{d #1}{d #2}", 2], "pp": ["\\frac{\\partial #1}{\\partial #2}", 2], "ddd": ["\\frac{d^2 #1}{d #2^2}", 2], "norm": ["\\| #1 \\|", 1], "twonorm": ["\\| #1 \\|_2", 1], "onenorm": ["\\| #1 \\|_1", 1], "infnorm": ["\\| #1 \\|_\\infty", 1], "innerprod": ["\\langle #1,#2 \\rangle", 2], "twovec": ["\\begin{bmatrix} #1 \\\\ #2 \\end{bmatrix}", 2], "threevec": ["\\begin{bmatrix} #1 \\\\ #2 \\\\ #3 \\end{bmatrix}", 3], "twomat": ["\\begin{bmatrix} #1 & #2 \\\\ #3 & #4 \\end{bmatrix}", 4], "twodet": ["\\begin{vmatrix} #1 & #2 \\\\ #3 & #4 \\end{vmatrix}", 4], "pr": ["^{(#1)}", 1], "eye": ["\\mathbf{e}_#1", 1], "meye": ["\\mathbf{I}"], "bff": ["\\mathbf{f}"], "bfx": ["\\mathbf{x}"], "bfy": ["\\mathbf{y}"], "bfz": ["\\mathbf{z}"], "bfu": ["\\mathbf{u}"], "bfv": ["\\mathbf{v}"], "bfa": ["\\mathbf{a}"], "bfb": ["\\mathbf{b}"], "bfe": ["\\mathbf{e}"], "bfA": ["\\mathbf{A}"], "bfB": ["\\mathbf{B}"], "bfX": ["\\mathbf{X}"], "bfV": ["\\mathbf{V}"], "opA": ["\\mathcal{A}"], "lx": ["\\mathcal{L}"], "bfalpha": ["\\mathbf{alpha}"], "bfdelta": ["\\mathbf{delta}"], "bfzero": ["\\boldsymbol{0}"], "diag": ["\\operatorname{diag}"], "sign": ["\\operatorname{sign}"], "Re": ["\\operatorname{Re}"], "Im": ["\\operatorname{Im}"], "ee": ["\\times 10^"], "rank": ["\\operatorname{rank}"], "span": ["\\operatorname{span}"], "nullsp": ["\\operatorname{nullsp}"], "rowsp": ["\\operatorname{rowsp}"], "colsp": ["\\operatorname{colsp}"], "dim": ["\\operatorname{dim}"]}}, "HTML-CSS": {"availableFonts": [], "preferredFont": null, "webFont": "Asana-Math"}, "tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="2.5. Eigenvalues" href="eigenvalues.html" />
-    <link rel="prev" title="2.3. Subspaces" href="subspaces.html" />
+    <link rel="next" title="4.5. Eigenvalues" href="eigenvalues.html" />
+    <link rel="prev" title="4.3. Subspaces" href="subspaces.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -94,12 +94,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
- <span class="caption-text">
-  Scalar ODEs
- </span>
-</p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../first_order/overview.html">
    1. First-order ODEs
@@ -194,16 +189,9 @@
    </li>
   </ul>
  </li>
-</ul>
-<p class="caption">
- <span class="caption-text">
-  Linear algebra
- </span>
-</p>
-<ul class="current nav bd-sidenav">
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../linear_system/overview.html">
-   1. Linear systems
+   3. Linear systems
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
   <label for="toctree-checkbox-3">
@@ -213,29 +201,29 @@
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../linear_system/problem.html">
-     1.1. Defining the problem
+     3.1. Defining the problem
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../linear_system/row_elimination.html">
-     1.2. Row elimination
+     3.2. Row elimination
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../linear_system/RREF.html">
-     1.3. RRE form
+     3.3. RRE form
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../linear_system/nullspace.html">
-     1.4. Homogeneous systems
+     3.4. Homogeneous systems
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="overview.html">
-   2. Matrix properties
+   4. Matrix properties
   </a>
   <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
   <label for="toctree-checkbox-4">
@@ -245,44 +233,44 @@
   <ul class="current">
    <li class="toctree-l2">
     <a class="reference internal" href="operations.html">
-     2.1. Algebraic operations
+     4.1. Algebraic operations
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="inverse.html">
-     2.2. Identity and inverse
+     4.2. Identity and inverse
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="subspaces.html">
-     2.3. Subspaces
+     4.3. Subspaces
     </a>
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     2.4. Determinants
+     4.4. Determinants
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="eigenvalues.html">
-     2.5. Eigenvalues
+     4.5. Eigenvalues
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="computing.html">
-     2.6. Computing eigenvalues and eigenspaces
+     4.6. Computing eigenvalues and eigenspaces
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="diagonalization.html">
-     2.7. Diagonalization
+     4.7. Diagonalization
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../basis/overview.html">
-   3. Basis and dimension
+  <a class="reference internal" href="../space/overview.html">
+   5. Vector spaces
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
   <label for="toctree-checkbox-5">
@@ -291,32 +279,25 @@
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../basis/span_independence.html">
-     3.1. Span and independence
+    <a class="reference internal" href="../space/vectors.html">
+     5.1. Vectors galore
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../basis/dimension.html">
-     3.2. Dimension and rank
+    <a class="reference internal" href="../space/basis.html">
+     5.2. Basis and dimension
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../basis/change.html">
-     3.3. Change of basis
+    <a class="reference internal" href="../space/change.html">
+     5.3. Change of basis
     </a>
    </li>
   </ul>
  </li>
-</ul>
-<p class="caption">
- <span class="caption-text">
-  Linear ODE systems
- </span>
-</p>
-<ul class="nav bd-sidenav">
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../ode_system/overview.html">
-   1. Linear ODE systems
+   6. Linear ODE systems
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
   <label for="toctree-checkbox-6">
@@ -326,37 +307,37 @@
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../ode_system/order_dimension.html">
-     1.2. Conversion of higher-order ODEs
+     6.2. Conversion of higher-order ODEs
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ode_system/structure.html">
-     1.3. Solution structure
+     6.3. Solution structure
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ode_system/homogeneous.html">
-     1.4. Homogeneous solutions
+     6.4. Homogeneous solutions
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ode_system/const_coeff.html">
-     1.5. Constant-coefficient problems
+     6.5. Constant-coefficient problems
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ode_system/phase_plane.html">
-     1.6. Stability and the phase plane
+     6.6. Stability and the phase plane
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ode_system/matrix_exp.html">
-     1.7. The matrix exponential
+     6.7. The matrix exponential
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ode_system/linearization.html">
-     1.8. Linearization
+     6.8. Linearization
     </a>
    </li>
   </ul>
@@ -437,12 +418,12 @@
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#properties">
-   2.4.1. Properties
+   4.4.1. Properties
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#cramer-s-rule">
-   2.4.2. Cramer’s Rule
+   4.4.2. Cramer’s Rule
   </a>
  </li>
 </ul>
@@ -457,22 +438,22 @@
               <div>
                 
   <div class="section" id="determinants">
-<h1><span class="section-number">2.4. </span>Determinants<a class="headerlink" href="#determinants" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">4.4. </span>Determinants<a class="headerlink" href="#determinants" title="Permalink to this headline">¶</a></h1>
 <p>There are many ways to characterize singular matrices, but only a few of them are computationally attractive. One that stands out is a function of square matrices called the <strong>determinant</strong>. (You probably saw some <span class="math notranslate nohighlight">\(2\times 2\)</span> and <span class="math notranslate nohighlight">\(3\times 3\)</span> determinants in vector calculus. This is the same thing.)</p>
 <p>A definition of the determinant from fundamentals is actually quite tricky. We are going to take a shortcut and “define” it by a formula for computing it. The <span class="math notranslate nohighlight">\(2\times 2\)</span> case is easy:</p>
 <div class="math notranslate nohighlight">
 \[\det\left( \twomat{a}{b}{c}{d} \right) = \twodet{a}{b}{c}{d} = ad-bc.\]</div>
 <p>This definition can be bootstrapped into a real-valued function for square matrices of any size.</p>
 <div class="proof proof-type-definition" id="id1">
-<span id="definition-linalg-determinant"></span><div class="proof-title"> <span class="proof-type">Definition 2.70</span>  <span class="proof-title-name">: &nbsp;Determinant</span>  </div><div class="proof-content">
+<span id="definition-linalg-determinant"></span><div class="proof-title"> <span class="proof-type">Definition 4.31</span>  <span class="proof-title-name">: &nbsp;Determinant</span>  </div><div class="proof-content">
 <p>If <span class="math notranslate nohighlight">\(\bfA\)</span> is <span class="math notranslate nohighlight">\(n\times n\)</span>, then its <strong>determinant</strong> is</p>
 <div class="math notranslate nohighlight" id="equation-eq-determinants-cofactor">
-<span class="eqno">(2.25)<a class="headerlink" href="#equation-eq-determinants-cofactor" title="Permalink to this equation">¶</a></span>\[\det(\bfA) = \sum (-1)^{i+j} a_{ij} \det\bigl( \mathbf{M}_{ij} \bigr),\]</div>
+<span class="eqno">(4.5)<a class="headerlink" href="#equation-eq-determinants-cofactor" title="Permalink to this equation">¶</a></span>\[\det(\bfA) = \sum (-1)^{i+j} a_{ij} \det\bigl( \mathbf{M}_{ij} \bigr),\]</div>
 <p>where the sum is taken over any row or column of <span class="math notranslate nohighlight">\(\bfA\)</span> and <span class="math notranslate nohighlight">\(\mathbf{M}_{ij}\)</span> is the matrix that results from deleting row <span class="math notranslate nohighlight">\(i\)</span> and column <span class="math notranslate nohighlight">\(j\)</span> from <span class="math notranslate nohighlight">\(\bfA\)</span>.</p>
-</div></div><p>The formula <a class="reference internal" href="#equation-eq-determinants-cofactor">(2.25)</a>, which is called <strong>cofactor expansion</strong>, is recursive: the <span class="math notranslate nohighlight">\(n\times n\)</span> case is defined in terms of the <span class="math notranslate nohighlight">\((n-1)\times (n-1)\)</span> case, and so on all the way back down to <span class="math notranslate nohighlight">\(2\times 2\)</span>.</p>
+</div></div><p>The formula <a class="reference internal" href="#equation-eq-determinants-cofactor">(4.5)</a>, which is called <strong>cofactor expansion</strong>, is recursive: the <span class="math notranslate nohighlight">\(n\times n\)</span> case is defined in terms of the <span class="math notranslate nohighlight">\((n-1)\times (n-1)\)</span> case, and so on all the way back down to <span class="math notranslate nohighlight">\(2\times 2\)</span>.</p>
 <p>Since expanding along any row or column gives the same result, it can be advantageous to choose one with lots of zeros to cut down on the total computation.</p>
 <div class="proof proof-type-example" id="id2">
-<div class="proof-title"> <span class="proof-type">Example 2.71</span>  </div><div class="proof-content">
+<div class="proof-title"> <span class="proof-type">Example 4.32</span>  </div><div class="proof-content">
 <p>Compute the determinant of</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -501,9 +482,9 @@ Solution<div class="summary-down docutils">
 \end{align*}\]</div>
 </div>
 </details></div></div><div class="section" id="properties">
-<h2><span class="section-number">2.4.1. </span>Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">4.4.1. </span>Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h2>
 <div class="proof proof-type-theorem" id="id3">
-<div class="proof-title"> <span class="proof-type">Theorem 2.72</span>  </div><div class="proof-content">
+<div class="proof-title"> <span class="proof-type">Theorem 4.33</span>  </div><div class="proof-content">
 <p>Let <span class="math notranslate nohighlight">\(\bfA\)</span> and <span class="math notranslate nohighlight">\(\bfB\)</span> be <span class="math notranslate nohighlight">\(n\times n\)</span>, and let <span class="math notranslate nohighlight">\(c\)</span> be a number. Then</p>
 <ol class="simple">
 <li><p><span class="math notranslate nohighlight">\(\det(c\bfA) = c^n \det(\bfA)\)</span>,</p></li>
@@ -518,7 +499,7 @@ Solution<div class="summary-down docutils">
 </div>
 </div>
 <div class="section" id="cramer-s-rule">
-<h2><span class="section-number">2.4.2. </span>Cramer’s Rule<a class="headerlink" href="#cramer-s-rule" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">4.4.2. </span>Cramer’s Rule<a class="headerlink" href="#cramer-s-rule" title="Permalink to this headline">¶</a></h2>
 <p>Even though a 2x2 inverse is easy, it’s still not the most convenient way to solve a linear system <span class="math notranslate nohighlight">\(\bfA\bfx=\bfb\)</span> by hand. There is another shortcut known as <strong>Cramer’s Rule</strong>:</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
@@ -527,7 +508,7 @@ x_2 &amp; = \frac{ \twodet{A_{11}}{b_1}{A_{21}}{b_2} }{ \det(\bfA) }.
 \end{align*}\]</div>
 <p>Obviously this does not work if <span class="math notranslate nohighlight">\(\det(\bfA)=0\)</span>, i. e., when the matrix is singular. In that case, you have to fall back on row elimination.</p>
 <div class="proof proof-type-example" id="id4">
-<div class="proof-title"> <span class="proof-type">Example 2.73</span>  </div><div class="proof-content">
+<div class="proof-title"> <span class="proof-type">Example 4.34</span>  </div><div class="proof-content">
 <p>Solve</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
@@ -577,8 +558,8 @@ y &amp; = \frac{ \twodet{-1}{1}{3}{7} }{ \det(\bfA) } = \frac{ \twodet{-1}{1}{3}
         
         <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="subspaces.html" title="previous page"><span class="section-number">2.3. </span>Subspaces</a>
-    <a class='right-next' id="next-link" href="eigenvalues.html" title="next page"><span class="section-number">2.5. </span>Eigenvalues</a>
+    <a class='left-prev' id="prev-link" href="subspaces.html" title="previous page"><span class="section-number">4.3. </span>Subspaces</a>
+    <a class='right-next' id="next-link" href="eigenvalues.html" title="next page"><span class="section-number">4.5. </span>Eigenvalues</a>
 
         </div>
         

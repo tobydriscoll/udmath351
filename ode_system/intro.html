@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>6.6. Linearization &#8212; Notes on ODEs and linear algebra</title>
+    <title>6.1. Introduction to systems &#8212; Notes on ODEs and linear algebra</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
   <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -58,7 +58,8 @@
     <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": {"real": ["\\mathbb{R}"], "complex": ["\\mathbb{C}"], "nat": ["\\mathbb{N}"], "integer": ["\\mathbb{Z}"], "rmn": ["\\mathbb{R}^{#1 \\times #2}", 2], "cmn": ["\\complex^{#1 \\times #2}", 2], "dd": ["\\frac{d #1}{d #2}", 2], "pp": ["\\frac{\\partial #1}{\\partial #2}", 2], "ddd": ["\\frac{d^2 #1}{d #2^2}", 2], "norm": ["\\| #1 \\|", 1], "twonorm": ["\\| #1 \\|_2", 1], "onenorm": ["\\| #1 \\|_1", 1], "infnorm": ["\\| #1 \\|_\\infty", 1], "innerprod": ["\\langle #1,#2 \\rangle", 2], "twovec": ["\\begin{bmatrix} #1 \\\\ #2 \\end{bmatrix}", 2], "threevec": ["\\begin{bmatrix} #1 \\\\ #2 \\\\ #3 \\end{bmatrix}", 3], "twomat": ["\\begin{bmatrix} #1 & #2 \\\\ #3 & #4 \\end{bmatrix}", 4], "twodet": ["\\begin{vmatrix} #1 & #2 \\\\ #3 & #4 \\end{vmatrix}", 4], "pr": ["^{(#1)}", 1], "eye": ["\\mathbf{e}_#1", 1], "meye": ["\\mathbf{I}"], "bff": ["\\mathbf{f}"], "bfx": ["\\mathbf{x}"], "bfy": ["\\mathbf{y}"], "bfz": ["\\mathbf{z}"], "bfu": ["\\mathbf{u}"], "bfv": ["\\mathbf{v}"], "bfa": ["\\mathbf{a}"], "bfb": ["\\mathbf{b}"], "bfe": ["\\mathbf{e}"], "bfA": ["\\mathbf{A}"], "bfB": ["\\mathbf{B}"], "bfX": ["\\mathbf{X}"], "bfV": ["\\mathbf{V}"], "opA": ["\\mathcal{A}"], "lx": ["\\mathcal{L}"], "bfalpha": ["\\mathbf{alpha}"], "bfdelta": ["\\mathbf{delta}"], "bfzero": ["\\boldsymbol{0}"], "diag": ["\\operatorname{diag}"], "sign": ["\\operatorname{sign}"], "Re": ["\\operatorname{Re}"], "Im": ["\\operatorname{Im}"], "ee": ["\\times 10^"], "rank": ["\\operatorname{rank}"], "span": ["\\operatorname{span}"], "nullsp": ["\\operatorname{nullsp}"], "rowsp": ["\\operatorname{rowsp}"], "colsp": ["\\operatorname{colsp}"], "dim": ["\\operatorname{dim}"]}}, "HTML-CSS": {"availableFonts": [], "preferredFont": null, "webFont": "Asana-Math"}, "tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="prev" title="6.5. The matrix exponential" href="matrix_exp.html" />
+    <link rel="next" title="6.2. Structure of linear problems" href="structure.html" />
+    <link rel="prev" title="6. Linear ODE systems" href="overview.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -304,8 +305,8 @@
    </i>
   </label>
   <ul class="current">
-   <li class="toctree-l2">
-    <a class="reference internal" href="intro.html">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
      6.1. Introduction to systems
     </a>
    </li>
@@ -329,8 +330,8 @@
      6.5. The matrix exponential
     </a>
    </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
+   <li class="toctree-l2">
+    <a class="reference internal" href="linearization.html">
      6.6. Linearization
     </a>
    </li>
@@ -377,7 +378,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/ode_system/linearization.md"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/ode_system/intro.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
@@ -408,8 +409,13 @@
             <nav id="bd-toc-nav">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#stability">
-   6.6.1. Stability
+  <a class="reference internal nav-link" href="#linear-problems">
+   6.1.1. Linear problems
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#conversion-of-higher-order-odes">
+   6.1.2. Conversion of higher-order ODEs
   </a>
  </li>
 </ul>
@@ -423,125 +429,155 @@
         
               <div>
                 
-  <div class="section" id="linearization">
-<span id="section-nl-linearization"></span><h1><span class="section-number">6.6. </span>Linearization<a class="headerlink" href="#linearization" title="Permalink to this headline">¶</a></h1>
-<p>A pendulum with length <span class="math notranslate nohighlight">\(L\)</span> and angle of deflection <span class="math notranslate nohighlight">\(\theta(t)\)</span> from the vertical is governed by the nonlinear second-order equation</p>
+  <div class="section" id="introduction-to-systems">
+<h1><span class="section-number">6.1. </span>Introduction to systems<a class="headerlink" href="#introduction-to-systems" title="Permalink to this headline">¶</a></h1>
+<p>A <strong>vector-valued ODE</strong> is an equation in the form</p>
+<div class="math notranslate nohighlight" id="equation-eq-intro-vector-ode">
+<span class="eqno">(6.1)<a class="headerlink" href="#equation-eq-intro-vector-ode" title="Permalink to this equation">¶</a></span>\[\frac{d \bfx}{dt} = \bff(t,\bfx), \]</div>
+<p>where <span class="math notranslate nohighlight">\(\bfx\)</span> is an <span class="math notranslate nohighlight">\(n\)</span>-dimensional vector. An equivalent point of view and terminology is a coupled system of scalar ODEs,</p>
 <div class="math notranslate nohighlight">
-\[\ddd{\theta}{t} + \frac{g}{L} \sin(\theta) = 0,\]</div>
-<p>where <span class="math notranslate nohighlight">\(g\)</span> is gravitational acceleration. It’s standard to argue that as long as <span class="math notranslate nohighlight">\(|\theta|\)</span> remains small, a good approximation is the linear problem</p>
+\[\begin{split}\begin{split}
+\frac{dx_1}{dt} &amp;= f_1(t,x_1,\ldots,x_n),\\
+&amp; \vdots \\
+\frac{dx_n}{dt} &amp;= f_n(t,x_1,\ldots,x_n).
+\end{split}\end{split}\]</div>
+<div class="proof proof-type-example" id="id1">
+<div class="proof-title"> <span class="proof-type">Example 6.1</span>  </div><div class="proof-content">
+<p>A famous system of three ODEs is the <strong>Lorenz system</strong>,</p>
 <div class="math notranslate nohighlight">
-\[\ddd{\theta}{t} + \frac{g}{L} \theta = 0,\]</div>
-<p>because <span class="math notranslate nohighlight">\(\sin \theta \approx \theta\)</span>.  We want to get more systematic with this process.</p>
-<p>First note that we can recast the nonlinear second-order problem as a first-order system in two variables, just as we did for linear equations. Define <span class="math notranslate nohighlight">\(x=\theta\)</span> and <span class="math notranslate nohighlight">\(y=\theta'\)</span>. Then</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{align*}
-	\dd{x}{t} &amp; = y, \\
-	\dd{y}{t} &amp; = -\frac{g}{L}\sin(x).
-\end{align*}\]</div>
-<p>This trick works for any nonlinear second-order equation <span class="math notranslate nohighlight">\(\theta''=g(t,\theta,\theta')\)</span>. Thus we can focus on problems in the general form</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{align*}
-	\dd{x}{t} &amp; = F(x,y), \\
-	\dd{y}{t} &amp; = G(x,y).
-\end{align*}\]</div>
-<p>As we did with single scalar equations, we will pay close attention to steady states or fixed points of these systems. Here this means finding constants <span class="math notranslate nohighlight">\((\hat{x},\hat{y})\)</span> such that</p>
-<div class="math notranslate nohighlight">
-\[
-F(\hat{x},\hat{y})=G(\hat{x},\hat{y})=0.
-\]</div>
-<p>For the nonlinear pendulum, both <span class="math notranslate nohighlight">\((0,0)\)</span> (straight down, at rest) and <span class="math notranslate nohighlight">\((\pi,0)\)</span> (straight up, at rest) are steady states.</p>
-<p>We are interested in the stability of fixed points, i.e., the dynamics close to them. We will use linear approximations of the functions <span class="math notranslate nohighlight">\(F\)</span> and <span class="math notranslate nohighlight">\(G\)</span> near a fixed point:</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{align*}
-	F(x,y) &amp; \approx F(\hat{x},\hat{y}) + \pp{F}{x}\cdot (x-\hat{x}) + \pp{F}{y} \cdot (y-\hat{y}),\\
-	G(x,y) &amp; \approx G(\hat{x},\hat{y}) + \pp{G}{x} \cdot (x-\hat{x}) + \pp{G}{y} \cdot (y-\hat{y}),\\
-\end{align*}\]</div>
-<p>where it is understood for brevity that the partial derivatives are all evaluated at <span class="math notranslate nohighlight">\((\hat{x},\hat{y})\)</span>. Given that <span class="math notranslate nohighlight">\((\hat{x},\hat{y})\)</span> is a fixed point, <span class="math notranslate nohighlight">\(F(\hat{x},\hat{y})=G(\hat{x},\hat{y})=0\)</span>.</p>
-<p>Now define</p>
+\[\begin{split}\begin{split}
+\dot{x} &amp; = \sigma(y-x), \\
+\dot{y} &amp; = \rho x - y - x z, \\
+\dot{z} &amp; = -\beta z + x y,
+\end{split}\end{split}\]</div>
+<p>where the dots indicate time derivatives and <span class="math notranslate nohighlight">\(\sigma\)</span>, <span class="math notranslate nohighlight">\(\rho\)</span>, and <span class="math notranslate nohighlight">\(\beta\)</span> are constant parameters. Conversion to the system notation follows from the definitions <span class="math notranslate nohighlight">\(x_1=x\)</span>, <span class="math notranslate nohighlight">\(x_2=y\)</span>, and <span class="math notranslate nohighlight">\(x_3=z\)</span>, though of course the ordering is arbitrary.</p>
+</div></div><p>To define an initial-value problem, we supplement <a class="reference internal" href="#equation-eq-intro-vector-ode">(6.1)</a> with the initial condition</p>
 <div class="math notranslate nohighlight">
 \[
-u_1(t)=x(t)-\hat{x},\quad u_2(t)=y(t)-\hat{y}.
+\bfx(0) = \bfx_0.
 \]</div>
-<p>Then</p>
+<div class="section" id="linear-problems">
+<h2><span class="section-number">6.1.1. </span>Linear problems<a class="headerlink" href="#linear-problems" title="Permalink to this headline">¶</a></h2>
+<p>We will be limited to linear problems.</p>
+<div class="proof proof-type-definition" id="id2">
+<span id="definition-intro-linear-ode-system"></span><div class="proof-title"> <span class="proof-type">Definition 6.2</span>  <span class="proof-title-name">: &nbsp;Linear system of ODEs</span>  </div><div class="proof-content">
+<p>A <strong>linear ODE system</strong> is an equation of the form</p>
+<div class="math notranslate nohighlight" id="equation-eq-intro-vector-linear-ode">
+<span class="eqno">(6.2)<a class="headerlink" href="#equation-eq-intro-vector-linear-ode" title="Permalink to this equation">¶</a></span>\[\mathbf{x}' = \mathbf{A}(t)\mathbf{x} + \bff(t),\]</div>
+<p>where <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> is an <span class="math notranslate nohighlight">\(n\)</span>-dimensional vector, <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> is an <span class="math notranslate nohighlight">\(n\times n\)</span> <strong>coefficient matrix</strong>, and <span class="math notranslate nohighlight">\(\bff(t)\)</span> is an <span class="math notranslate nohighlight">\(n\)</span>-dimensional <strong>forcing function</strong>. If the coefficient matrix does not depend on time, the system is said to be <strong>constant-coefficient</strong>.</p>
+<p>If given, an <strong>initial condition</strong> of the system is a time <span class="math notranslate nohighlight">\(t_0\)</span> and vector <span class="math notranslate nohighlight">\(\mathbf{x}_0\)</span> such that <span class="math notranslate nohighlight">\(\mathbf{x}(t_0)=\mathbf{x}_0\)</span>.</p>
+</div></div><div class="proof proof-type-example" id="id3">
+<span id="example-intro-twotanks"></span><div class="proof-title"> <span class="proof-type">Example 6.3</span>  </div><div class="proof-content">
+<p>Consider two connected tanks holding brine. Tank 1 holds 100 L, has an input of 4 L/hr of brine of concentration 3 kg/L, and an output of 6 L/hr. Tank 2 holds 200 L, has an input of 7 L/hr of brine of concentration 5 kg/L, and an output of 5 L/hr. Tank 1 pumps 1 L/hr into tank 2, and tank 2 pumps 3 L/hr into tank 1.</p>
+<p>Let <span class="math notranslate nohighlight">\(x_i(t)\)</span> be the mass of salt in tank <span class="math notranslate nohighlight">\(i\)</span>. The statements above imply</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
-	\dd{u_1}{t} = \dd{x}{t} &amp; \approx \pp{F}{x} u_1 + \pp{F}{y} u_2, \\
-	\dd{u_2}{t} = \dd{y}{t} &amp; \approx \pp{G}{x} u_1 + \pp{G}{y} u_2. 
+\dd{x_1}{t} &amp; = 4\cdot 3 - 6\cdot \frac{x_1}{100} - 1\cdot \frac{x_1}{100} + 3 \cdot \frac{x_2}{200}  \\
+\dd{x_2}{t} &amp; = 7\cdot 5 - 5\cdot \frac{x_2}{200} - 3\cdot \frac{x_2}{200} +  1\cdot \frac{x_1}{100}\\
 \end{align*}\]</div>
-<p>This inspires the following definition.</p>
-<div class="proof proof-type-definition" id="id1">
-<span id="nl-def-jacobian"></span><span id="index-0"></span><div class="proof-title"> <span class="proof-type">Definition 6.26</span>  <span class="proof-title-name">: &nbsp;Jacobian matrix</span>  </div><div class="proof-content">
-<p>The <strong>Jacobian matrix</strong> of the system <span class="math notranslate nohighlight">\(x'=F(x,y),\, y'=G(x,y)\)</span> is</p>
-<div class="math notranslate nohighlight" id="equation-nl-eq-jacobian">
-<span class="eqno">(6.12)<a class="headerlink" href="#equation-nl-eq-jacobian" title="Permalink to this equation">¶</a></span>\[\mathbf{J}(x,y) = \twomat{\displaystyle \pp{F}{x}}{\displaystyle \pp{F}{y}}{\displaystyle \pp{G}{x}}{\displaystyle \pp{G}{y}}.\]</div>
-</div></div><p>The Jacobian matrix is essentially the derivative of a 2D vector field. As such, it is also a function of the variables <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span>.</p>
-<div class="section" id="stability">
-<h2><span class="section-number">6.6.1. </span>Stability<a class="headerlink" href="#stability" title="Permalink to this headline">¶</a></h2>
-<p>Let’s summarize. In the neighborhood of a fixed point <span class="math notranslate nohighlight">\((\hat{x},\hat{y})\)</span>, we can define the <em>deviation from equilibrium</em> by the variables <span class="math notranslate nohighlight">\(u_1(t)=x(t)-\hat{x}\)</span>, <span class="math notranslate nohighlight">\(u_2(t)=y(t)-\hat{y}\)</span>. These variables approximately satisfy <span class="math notranslate nohighlight">\(\mathbf{u}'=\mathbf{J}(\hat{x},\hat{y})\mathbf{u}\)</span>, which is a linear, constant-coefficient system in two dimensions. Thus, <strong>near a steady state, dynamics are mostly linear.</strong></p>
-<p>We are now right back into the phase plane we studied earlier. In particular:</p>
+<p>This is neatly expressed using linear algebra:</p>
+<div class="math notranslate nohighlight">
+\[\dd{}{t} \twovec{x_1}{x_2} = \frac{1}{200}\twomat{-14}{3}{2}{-8} \twovec{x_1}{x_2} + \twovec{12}{35}.\]</div>
+</div></div><div class="proof proof-type-example" id="id4">
+<span id="example-intro-heating"></span><div class="proof-title"> <span class="proof-type">Example 6.4</span>  </div><div class="proof-content">
+<p>Here is a basic model for heating in a house. Let <span class="math notranslate nohighlight">\(b(t)\)</span> be the temperature of the basement, <span class="math notranslate nohighlight">\(m(t)\)</span> be the temperature of the main living area, and <span class="math notranslate nohighlight">\(a(t)\)</span> be the temperature of the attic. Suppose the ground is at a constant 10 degrees C. We use a Newtonian model to describe how the temperature of the basement evolves due to interactions with the earth and the main floor:</p>
+<div class="math notranslate nohighlight">
+\[\frac{db}{dt} = -k_b (b - 10) - k_{mb} (b-m). \]</div>
+<p>Similarly, the attic interacts with the air, which we will hold at 2 degrees, and the main floor:</p>
+<div class="math notranslate nohighlight">
+\[\frac{da}{dt} = -k_a (a - 2) - k_{ma} (a-m). \]</div>
+<p>Finally, suppose the main area interacts mostly with the other levels and experiences input from a heater:</p>
+<div class="math notranslate nohighlight">
+\[\frac{dm}{dt} = -k_{mb} (m - b) - k_{ma} (m - a) + h(t).\]</div>
+<p>To write the system in vector form, we define <span class="math notranslate nohighlight">\(x_1=b\)</span>, <span class="math notranslate nohighlight">\(x_2=m\)</span>, and <span class="math notranslate nohighlight">\(x_3=a\)</span>. Then</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{d\bfx}{dt} = \threevec{(-k_b - k_{mb}) x_1  +k_{mb} x_2}{ k_{mb}x_1 -(k_{mb}+k_{ma})x_2 + k_{ma}x_3}{k_{ma}x_2  -(k_{ma}+k_a)x_3} + \threevec{10k_b}{h(t)}{2k_a}.
+\]</div>
+<p>Observe that on the right side, the terms depending on <span class="math notranslate nohighlight">\(\bfx\)</span> have been separated from the others. Hence</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\bfx' = \begin{bmatrix} -k_b-k_{mb} &amp; k_{mb} &amp; 0 \\ k_{mb} &amp; -k_{mb}-k_{ma} &amp; k_{ma} \\  0 &amp; k_{ma} &amp; -k_{ma}-k_a \end{bmatrix}  \bfx + \threevec{10k_b}{h(t)}{2k_a}.
+\end{split}\]</div>
+</div></div></div>
+<div class="section" id="conversion-of-higher-order-odes">
+<h2><span class="section-number">6.1.2. </span>Conversion of higher-order ODEs<a class="headerlink" href="#conversion-of-higher-order-odes" title="Permalink to this headline">¶</a></h2>
 <div class="proof proof-type-observation">
 <div class="proof-title"> <span class="proof-type">Observation </span>  </div><div class="proof-content">
-<p>The stability of a steady state is (usually) determined by the eigenvalues of the Jacobian matrix at the steady state.</p>
-</div></div><div class="proof proof-type-example" id="id2">
-<div class="proof-title"> <span class="proof-type">Example 6.27</span>  </div><div class="proof-content">
-<p>Let’s examine the steady states of a pendulum with damping,</p>
-<div class="math notranslate nohighlight">
-\[\ddd{\theta}{t} + \gamma \theta' + \frac{g}{L} \sin(\theta) = 0,\]</div>
-<p>with <span class="math notranslate nohighlight">\(\gamma &gt; 0\)</span>. It transforms into the first-order system</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{align*}
-	\dd{x}{t} &amp; = y, \\
-	\dd{y}{t} &amp; = -\frac{g}{L}\sin(x) - \gamma y.
-\end{align*}\]</div>
-<p>These define <span class="math notranslate nohighlight">\(F(x,y)\)</span> and <span class="math notranslate nohighlight">\(G(x,y)\)</span>. From here we note all the first partial derivatives:</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{align*}
-\pp{F}{x} = 0, &amp; \qquad \pp{F}{y} = 1,\\
-\pp{G}{x} = - \frac{g}{L}\cos(x), &amp; \qquad \pp{G}{y} = -\gamma.
-\end{align*}\]</div>
-<p>The first steady state we consider is at the origin. Here the Jacobian matrix is</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}\begin{bmatrix} 
-0 &amp; 1 \\ -g/L &amp; -\gamma
-\end{bmatrix}.\end{split}\]</div>
-<p>The eigenvalues are roots of <span class="math notranslate nohighlight">\(\lambda^2 +\gamma \lambda + \frac{g}{L}\)</span>, the same as a linear oscillator with <span class="math notranslate nohighlight">\(\omega_0 = \sqrt{g/L}\)</span> and <span class="math notranslate nohighlight">\(Z = \gamma/2\omega_0\)</span>. If <span class="math notranslate nohighlight">\(Z&lt;1\)</span>, we get a stable spiral. If <span class="math notranslate nohighlight">\(Z\ge 1\)</span>, we get a stable node. This all agrees well with our experience with a pendulum hanging straight down.</p>
-<p>The other steady state is at <span class="math notranslate nohighlight">\((\pi,0)\)</span>. Now the Jacobian is</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}\begin{bmatrix} 
-0 &amp; 1 \\ g/L &amp; -\gamma
-\end{bmatrix},\end{split}\]</div>
-<p>with characteristic polynomial <span class="math notranslate nohighlight">\(\lambda^2 + \gamma \lambda - \frac{g}{L}\)</span>. The eigenvalues are</p>
+<p>Order can be exchanged for dimension.</p>
+</div></div><div class="proof proof-type-example" id="id5">
+<div class="proof-title"> <span class="proof-type">Example 6.5</span>  </div><div class="proof-content">
+<p>The simple harmonic oscillator</p>
 <div class="math notranslate nohighlight">
 \[
-\lambda_1 = -\gamma + \sqrt{\gamma^2+4\frac{g}{L}}, \quad \lambda_2 = -\gamma - \sqrt{\gamma^2+4\frac{g}{L}}.
+x'' + 2 \zeta \omega_0 x' + \omega_0^2 x = f(t)
 \]</div>
-<p>It’s obvious that <span class="math notranslate nohighlight">\(\lambda_2 &lt; 0\)</span>. Since <span class="math notranslate nohighlight">\(\gamma^2+\frac{4g}{L} &gt; \gamma^2\)</span>, it follows that <span class="math notranslate nohighlight">\(\lambda_1 &gt; 0\)</span>. Hence this equilibrium is a saddle point.</p>
-</div></div><p>The caveat on using eigenvalues for stability is when they both have zero real part, which is weakly stable in the linear sense. In such cases the details of the nonlinear terms of the system can swing the stability either way.</p>
-<div class="proof proof-type-example" id="id3">
-<div class="proof-title"> <span class="proof-type">Example 6.28</span>  </div><div class="proof-content">
-<p>The system</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{align*}
-\frac{dx}{dt} &amp;= 3x-\frac{xy}{2}\\
-\frac{dy}{dt} &amp;= -y+\frac{xy}{4}\\
-\end{align*}\]</div>
-<p>is called a <strong>predator–prey</strong> equation. If species <span class="math notranslate nohighlight">\(y\)</span> is set to zero, species <span class="math notranslate nohighlight">\(x\)</span> would grow exponentially on its own (the prey). Similarly, species <span class="math notranslate nohighlight">\(y\)</span> would die off on its own (predator). We assume that encounters between the species are jointly proportional to the population of each, and they subtract from the prey and add to the predators.</p>
-<p>We find fixed points when <span class="math notranslate nohighlight">\(3x-(x y/2)=(x y/4)-y=0\)</span>, which has two solutions, <span class="math notranslate nohighlight">\((0,0)\)</span> and <span class="math notranslate nohighlight">\((4,6)\)</span>. The Jacobian matrix of the system is</p>
+<p>can be converted to an equivalent first-order system using the definitions</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}\mathbf{J}(x,y) = \begin{bmatrix} F_x &amp; F_y  \\ G_x &amp; G_y \end{bmatrix} = \begin{bmatrix} 3-y/2 &amp; -x/2 \\ y/4 &amp; -1+x/4 \end{bmatrix}.\end{split}\]</div>
-<p>At the origin, the Jacobian becomes</p>
+\[
+u_1 = x, \quad u_2 = x'.
+\]</div>
+<p>We can easily derive an ODE for <span class="math notranslate nohighlight">\(\bfu\)</span> without reference to <span class="math notranslate nohighlight">\(x\)</span>. First, by definition, <span class="math notranslate nohighlight">\(u_1'=u_2\)</span>. Next, <span class="math notranslate nohighlight">\(u_2' = x''\)</span>, and we can isolate <span class="math notranslate nohighlight">\(x''\)</span> in the original equation to get</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}\mathbf{J}(0,0) = \begin{bmatrix} 3 &amp; 0 \\ 0 &amp; -1 \end{bmatrix}.\end{split}\]</div>
-<p>The eigenvalues of a diagonal matrix (in fact, any triangular matrix) are the diagonal entries. Hence the origin is a saddle point.</p>
-<p>At the other steady state we have</p>
+\[
+u_2' = f - 2 \zeta \omega_0 x' - \omega_0^2 x = f - 2 \omega_0\zeta  u_2 - \omega_0^2 u_1.
+\]</div>
+<p>Hence</p>
 <div class="math notranslate nohighlight">
-\[\mathbf{J}(4,6) = \twomat{0}{-2}{3/2}{0}.\]</div>
-<p>The characteristic polynomial is <span class="math notranslate nohighlight">\(\lambda^2 + 3\)</span>, so the eigenvalues are <span class="math notranslate nohighlight">\(\pm i\sqrt{3}\)</span>. Close to the point, the orbits are impossible to tell apart from those of a linear center:</p>
-<p><img alt="linear center" src="../_images/linearized_center1.svg" /></p>
-<p>However, as we zoom out, the nonlinearity of the system makes its influence felt:</p>
-<p><img alt="nonlinear center" src="../_images/linearized_center2.svg" /></p>
-<p>For a different system, however, the nonlinearity could cause this point to be asymptotically stable or unstable.</p>
-</div></div><div style="max-width:608px"><div style="position:relative;padding-bottom:66.118421052632%"><iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/2358381/sp/235838100/embedIframeJs/uiconf_id/43030021/partner_id/2358381?iframeembed=true&playerId=kaltura_player&entry_id=1_703u26n1&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_kplxqi9v" width="608" height="402" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="Kaltura Player" style="position:absolute;top:0;left:0;width:100%;height:100%"></iframe></div></div>
+\[\begin{split}u_1' &amp;= u_2,\\
+u_2' &amp;= f - 2 \omega_0 \zeta  u_2 - \omega_0^2 u_1.\end{split}\]</div>
+<p>In vector form this is</p>
+<div class="math notranslate nohighlight">
+\[
+\bfu' = \twomat{0}{1}{-\omega_0^2}{-2 \omega_0 \zeta} \bfu + \twovec{0}{f}.
+\]</div>
+</div></div><!-- ::::{proof:example}
+A frictionless pendulum is governed by the nonlinear equation $\theta''+ \frac{g}{L}\sin(\theta)=0$, where $\theta(t)$ is the angle made by the pendulum from the straight-down position. Define 
+
+$$
+u_1=\theta, \quad u_2=\theta'.
+$$ 
+
+Then $u_1'=u_2$. Since $u_2'=\theta''$, we can use the original ODE to express it in terms of $\theta$ and $\theta'$, and hence in terms of $u_1$ and $u_2$. Altogether the system is, in vector notation, 
+
+:::{math}
+\twovec{u_1'}{u_2'} = \twovec{u_2}{- \frac{g}{L}\sin(u_1)}.
+:::
+:::: -->
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>While every high-order problem can be converted to a first-order system, the converse is not true. That is, there are first-order systems that are not equivalent to any higher-order problem.</p>
+</div>
+<p>The technique illustrated above generalizes to equations of any order, and to systems of equations of any orders (including nonlinear problems).</p>
+<!-- The formal procedure is a bit complicated to describe but fully automatic; there are no decisions to make. The key is to *include a component for each of the lower-order derivatives of each variable*, whether or not those terms appear explicitly in the original problem. Everything else flows from these definitions.
+
+::::{proof:example}
+Two pendulums hanging from a bar and swinging in parallel planes are coupled through torsion on the bar, obeying
+
+\begin{align*}
+\theta_1''+ b\theta_1' + \frac{g}{L}\sin(\theta_1) + \kappa(\theta_1-\theta_2) & = 0 \\
+\theta_2''+ b\theta_2' + \frac{g}{L}\sin(\theta_2) + \kappa(\theta_2-\theta_1) & = 0 \\
+\end{align*}
+
+Express this as a first-order system.
+
+:::{dropdown} Solution
+We define 
+
+$$
+u_1 = \theta_1, \quad u_2 = \theta_1', \quad u_3 = \theta_2, \quad u_4 = \theta_2'.
+$$
+
+Two differential equations, $u_1'=u_2$ and $u_3'=u_4$, follow immediately from these definitions. The remaining two come from substituting into the original ODEs: 
+
+\begin{align*}
+	u_2' = \theta_1'' & = - b u_2 - \frac{g}{L}\sin(u_1) - \kappa(u_1-u_3)\\
+	u_4' = \theta_2'' & = - b u_4 - \frac{g}{L}\sin(u_3) - \kappa(u_3-u_1)\\
+\end{align*}
+
+The result is a four-dimensional, first-order system $\mathbf{u}'=\mathbf{f}(t,\mathbf{u})$.
+:::
+:::: -->
 </div>
 </div>
 
@@ -570,7 +606,8 @@ u_1(t)=x(t)-\hat{x},\quad u_2(t)=y(t)-\hat{y}.
         
         <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="matrix_exp.html" title="previous page"><span class="section-number">6.5. </span>The matrix exponential</a>
+    <a class='left-prev' id="prev-link" href="overview.html" title="previous page"><span class="section-number">6. </span>Linear ODE systems</a>
+    <a class='right-next' id="next-link" href="structure.html" title="next page"><span class="section-number">6.2. </span>Structure of linear problems</a>
 
         </div>
         

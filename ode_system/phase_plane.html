@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>1.6. Stability and the phase plane &#8212; Notes on ODEs and linear algebra</title>
+    <title>6.4. Stability and the phase plane &#8212; Notes on ODEs and linear algebra</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
   <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -58,8 +58,8 @@
     <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": {"real": ["\\mathbb{R}"], "complex": ["\\mathbb{C}"], "nat": ["\\mathbb{N}"], "integer": ["\\mathbb{Z}"], "rmn": ["\\mathbb{R}^{#1 \\times #2}", 2], "cmn": ["\\complex^{#1 \\times #2}", 2], "dd": ["\\frac{d #1}{d #2}", 2], "pp": ["\\frac{\\partial #1}{\\partial #2}", 2], "ddd": ["\\frac{d^2 #1}{d #2^2}", 2], "norm": ["\\| #1 \\|", 1], "twonorm": ["\\| #1 \\|_2", 1], "onenorm": ["\\| #1 \\|_1", 1], "infnorm": ["\\| #1 \\|_\\infty", 1], "innerprod": ["\\langle #1,#2 \\rangle", 2], "twovec": ["\\begin{bmatrix} #1 \\\\ #2 \\end{bmatrix}", 2], "threevec": ["\\begin{bmatrix} #1 \\\\ #2 \\\\ #3 \\end{bmatrix}", 3], "twomat": ["\\begin{bmatrix} #1 & #2 \\\\ #3 & #4 \\end{bmatrix}", 4], "twodet": ["\\begin{vmatrix} #1 & #2 \\\\ #3 & #4 \\end{vmatrix}", 4], "pr": ["^{(#1)}", 1], "eye": ["\\mathbf{e}_#1", 1], "meye": ["\\mathbf{I}"], "bff": ["\\mathbf{f}"], "bfx": ["\\mathbf{x}"], "bfy": ["\\mathbf{y}"], "bfz": ["\\mathbf{z}"], "bfu": ["\\mathbf{u}"], "bfv": ["\\mathbf{v}"], "bfa": ["\\mathbf{a}"], "bfb": ["\\mathbf{b}"], "bfe": ["\\mathbf{e}"], "bfA": ["\\mathbf{A}"], "bfB": ["\\mathbf{B}"], "bfX": ["\\mathbf{X}"], "bfV": ["\\mathbf{V}"], "opA": ["\\mathcal{A}"], "lx": ["\\mathcal{L}"], "bfalpha": ["\\mathbf{alpha}"], "bfdelta": ["\\mathbf{delta}"], "bfzero": ["\\boldsymbol{0}"], "diag": ["\\operatorname{diag}"], "sign": ["\\operatorname{sign}"], "Re": ["\\operatorname{Re}"], "Im": ["\\operatorname{Im}"], "ee": ["\\times 10^"], "rank": ["\\operatorname{rank}"], "span": ["\\operatorname{span}"], "nullsp": ["\\operatorname{nullsp}"], "rowsp": ["\\operatorname{rowsp}"], "colsp": ["\\operatorname{colsp}"], "dim": ["\\operatorname{dim}"]}}, "HTML-CSS": {"availableFonts": [], "preferredFont": null, "webFont": "Asana-Math"}, "tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="1.7. The matrix exponential" href="matrix_exp.html" />
-    <link rel="prev" title="1.5. Constant-coefficient problems" href="const_coeff.html" />
+    <link rel="next" title="6.5. The matrix exponential" href="matrix_exp.html" />
+    <link rel="prev" title="6.3. Constant-coefficient problems" href="const_coeff.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -94,12 +94,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
- <span class="caption-text">
-  Scalar ODEs
- </span>
-</p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../first_order/overview.html">
    1. First-order ODEs
@@ -194,16 +189,9 @@
    </li>
   </ul>
  </li>
-</ul>
-<p class="caption">
- <span class="caption-text">
-  Linear algebra
- </span>
-</p>
-<ul class="nav bd-sidenav">
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../linear_system/overview.html">
-   1. Linear systems
+   3. Linear systems
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
   <label for="toctree-checkbox-3">
@@ -212,25 +200,30 @@
   </label>
   <ul>
    <li class="toctree-l2">
+    <a class="reference internal" href="../linear_system/problem.html">
+     3.1. Defining the problem
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="../linear_system/row_elimination.html">
-     1.4. Row elimination
+     3.2. Row elimination
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../linear_system/RREF.html">
-     1.5. RRE form
+     3.3. RRE form
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../linear_system/nullspace.html">
-     1.6. Homogeneous systems
+     3.4. Homogeneous systems
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../matrix/overview.html">
-   2. Matrix properties
+   4. Matrix properties
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
   <label for="toctree-checkbox-4">
@@ -240,39 +233,44 @@
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../matrix/operations.html">
-     2.1. Algebraic operations
+     4.1. Algebraic operations
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../matrix/inverse.html">
-     2.2. Identity and inverse
+     4.2. Identity and inverse
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../matrix/subspaces.html">
-     2.3. Subspaces
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../matrix/eigenvalues.html">
-     2.4. Eigenvalues
+     4.3. Subspaces
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../matrix/determinants.html">
-     2.5. Detecting singularity
+     4.4. Determinants
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../matrix/eigenvalues.html">
+     4.5. Eigenvalues
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../matrix/computing.html">
+     4.6. Computing eigenvalues and eigenspaces
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../matrix/diagonalization.html">
-     2.6. Diagonalization
+     4.7. Diagonalization
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../basis/overview.html">
-   3. Basis and dimension
+  <a class="reference internal" href="../space/overview.html">
+   5. Vector spaces
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
   <label for="toctree-checkbox-5">
@@ -281,32 +279,25 @@
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../basis/span_independence.html">
-     3.1. Span and independence
+    <a class="reference internal" href="../space/vectors.html">
+     5.1. Vectors galore
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../basis/dimension.html">
-     3.2. Dimension and rank
+    <a class="reference internal" href="../space/basis.html">
+     5.2. Basis and dimension
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../basis/change.html">
-     3.3. Change of basis
+    <a class="reference internal" href="../space/change.html">
+     5.3. Change of basis
     </a>
    </li>
   </ul>
  </li>
-</ul>
-<p class="caption">
- <span class="caption-text">
-  Linear ODE systems
- </span>
-</p>
-<ul class="current nav bd-sidenav">
  <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="overview.html">
-   1. Linear ODE systems
+   6. Linear ODE systems
   </a>
   <input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
   <label for="toctree-checkbox-6">
@@ -315,38 +306,33 @@
   </label>
   <ul class="current">
    <li class="toctree-l2">
-    <a class="reference internal" href="order_dimension.html">
-     1.2. Conversion of higher-order ODEs
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="structure.html">
-     1.3. Solution structure
+    <a class="reference internal" href="intro.html">
+     6.1. Introduction to systems
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="homogeneous.html">
-     1.4. Homogeneous solutions
+     6.2. Homogeneous solutions
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="const_coeff.html">
-     1.5. Constant-coefficient problems
+     6.3. Constant-coefficient problems
     </a>
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     1.6. Stability and the phase plane
+     6.4. Stability and the phase plane
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="matrix_exp.html">
-     1.7. The matrix exponential
+     6.5. The matrix exponential
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="linearization.html">
-     1.8. Linearization
+     6.6. Linearization
     </a>
    </li>
   </ul>
@@ -427,12 +413,12 @@
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#stability">
-   1.6.1. Stability
+   6.4.1. Stability
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#phase-plane">
-   1.6.2. Phase plane
+   6.4.2. Phase plane
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
@@ -469,17 +455,17 @@
               <div>
                 
   <div class="section" id="stability-and-the-phase-plane">
-<h1><span class="section-number">1.6. </span>Stability and the phase plane<a class="headerlink" href="#stability-and-the-phase-plane" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">6.4. </span>Stability and the phase plane<a class="headerlink" href="#stability-and-the-phase-plane" title="Permalink to this headline">¶</a></h1>
 <p>The homogeneous system <span class="math notranslate nohighlight">\(\mathbf{x}'=\mathbf{A}\mathbf{x}\)</span> for a constant matrix <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> clearly has the constant function <span class="math notranslate nohighlight">\(\mathbf{x}(t)\equiv \boldsymbol{0}\)</span> as a solution. We call this an <strong>equilibrium</strong> or steady-state solution. (If <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> is singular, then there are other equilibrium points as well, but we are not interested in that peculiar case.)</p>
 <div class="section" id="stability">
-<h2><span class="section-number">1.6.1. </span>Stability<a class="headerlink" href="#stability" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">6.4.1. </span>Stability<a class="headerlink" href="#stability" title="Permalink to this headline">¶</a></h2>
 <p>Not all equilibria are alike.</p>
 <p>Imagine holding a broom by two fingers, with the bristles pointing straight down at the floor. You will not have much difficulty keeping the broom in approximately this position for a long time, even if an annoying friend comes by and jostles you a bit.</p>
 <p>Now imagine holding the broom inverted, with the bristles pointing toward the ceiling. If you were able to <em>perfectly</em> balance the center of gravity of a <em>perfectly</em> symmetric broom above your fingers, then in principle it ought to stay there. However, the broom is not perfect, and your arm and fingers can’t stay perfectly still. With effort, you might keep the broom upright for a few seconds, but not for a long time. Both the downward and upward positions of the broom are equilibria. The property that differentiates them is <strong>stability<code class="docutils literal notranslate"><span class="pre">.</span> <span class="pre">(We</span> <span class="pre">will</span> <span class="pre">return</span> <span class="pre">to</span> <span class="pre">the</span> <span class="pre">nonlinear</span> <span class="pre">pendulum</span> <span class="pre">in</span> <span class="pre">{numref}</span></code>section-nl-linearization</strong>.)</p>
 <p>Stability refers to the response of the system to a perturbation (tiny change) of its state away from an equilibrium. If the system eventually returns to the equilibrium point (in the sense of the limit <span class="math notranslate nohighlight">\(t\to\infty\)</span>), we say the equilibrium is <strong>asymptotically stable<code class="docutils literal notranslate"><span class="pre">.</span> <span class="pre">That</span> <span class="pre">is,</span> <span class="pre">the</span> <span class="pre">perturbation</span> <span class="pre">decays</span> <span class="pre">away,</span> <span class="pre">like</span> <span class="pre">with</span> <span class="pre">a</span> <span class="pre">damped</span> <span class="pre">linear</span> <span class="pre">oscillator.</span> <span class="pre">A</span> <span class="pre">weaker</span> <span class="pre">form</span> <span class="pre">of</span> <span class="pre">stability</span> <span class="pre">is</span> <span class="pre">explained</span> <span class="pre">in</span> <span class="pre">{numref}</span></code>section-fs-pp-center<code class="docutils literal notranslate"> <span class="pre">below.</span> <span class="pre">If</span> <span class="pre">the</span> <span class="pre">system</span> <span class="pre">has</span> <span class="pre">tiny</span> <span class="pre">perturbations</span> <span class="pre">that</span> <span class="pre">grow</span> <span class="pre">without</span> <span class="pre">bound,</span> <span class="pre">then</span> <span class="pre">the</span> <span class="pre">equilibrium</span> <span class="pre">is</span> <span class="pre">{term}</span></code>unstable</strong>.</p>
 <p>Stability of the origin depends on the eigenvalues of <span class="math notranslate nohighlight">\(\mathbf{A}\)</span>. This is most easily summarized in the special case of a <span class="math notranslate nohighlight">\(2\times 2\)</span> real matrix with eigenvalues <span class="math notranslate nohighlight">\(\lambda_1,\lambda_2\)</span>. The major cases to be considered are summarized in the following table, leaving out some trickier edge cases when things are zero or exactly equal. The other column of the table is to be explained next.</p>
 <table class="table" id="table-fs-stability">
-<caption><span class="caption-number">Table 1.1 </span><span class="caption-text">Eigenvalues and stability</span><a class="headerlink" href="#table-fs-stability" title="Permalink to this table">¶</a></caption>
+<caption><span class="caption-number">Table 6.1 </span><span class="caption-text">Eigenvalues and stability</span><a class="headerlink" href="#table-fs-stability" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 33%" />
@@ -520,7 +506,7 @@
 </table>
 </div>
 <div class="section" id="phase-plane">
-<h2><span class="section-number">1.6.2. </span>Phase plane<a class="headerlink" href="#phase-plane" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">6.4.2. </span>Phase plane<a class="headerlink" href="#phase-plane" title="Permalink to this headline">¶</a></h2>
 <p>In the two-dimensional case, the solutions of <span class="math notranslate nohighlight">\(\mathbf{x}'=\mathbf{A}\mathbf{x}\)</span> can be plotted as trajectories parameterized by time in the <span class="math notranslate nohighlight">\((x_1,x_2)\)</span> plane, often called the <strong>phase plane</strong>. Each of the cases in the <a class="reference internal" href="#table-fs-stability"><span class="std std-ref">stability table</span></a> has a characteristic type of phase plane portrait that illustrates major aspects of solution behaviors.</p>
 <div class="section" id="node">
 <h3>Node<a class="headerlink" href="#node" title="Permalink to this headline">¶</a></h3>
@@ -724,8 +710,8 @@ ylabel('x_2')
         
         <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="const_coeff.html" title="previous page"><span class="section-number">1.5. </span>Constant-coefficient problems</a>
-    <a class='right-next' id="next-link" href="matrix_exp.html" title="next page"><span class="section-number">1.7. </span>The matrix exponential</a>
+    <a class='left-prev' id="prev-link" href="const_coeff.html" title="previous page"><span class="section-number">6.3. </span>Constant-coefficient problems</a>
+    <a class='right-next' id="next-link" href="matrix_exp.html" title="next page"><span class="section-number">6.5. </span>The matrix exponential</a>
 
         </div>
         

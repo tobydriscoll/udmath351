@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>1.2. Conversion of higher-order ODEs &#8212; Notes on ODEs and linear algebra</title>
+    <title>6.2. Conversion of higher-order ODEs &#8212; Notes on ODEs and linear algebra</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
   <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -58,8 +58,8 @@
     <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": {"real": ["\\mathbb{R}"], "complex": ["\\mathbb{C}"], "nat": ["\\mathbb{N}"], "integer": ["\\mathbb{Z}"], "rmn": ["\\mathbb{R}^{#1 \\times #2}", 2], "cmn": ["\\complex^{#1 \\times #2}", 2], "dd": ["\\frac{d #1}{d #2}", 2], "pp": ["\\frac{\\partial #1}{\\partial #2}", 2], "ddd": ["\\frac{d^2 #1}{d #2^2}", 2], "norm": ["\\| #1 \\|", 1], "twonorm": ["\\| #1 \\|_2", 1], "onenorm": ["\\| #1 \\|_1", 1], "infnorm": ["\\| #1 \\|_\\infty", 1], "innerprod": ["\\langle #1,#2 \\rangle", 2], "twovec": ["\\begin{bmatrix} #1 \\\\ #2 \\end{bmatrix}", 2], "threevec": ["\\begin{bmatrix} #1 \\\\ #2 \\\\ #3 \\end{bmatrix}", 3], "twomat": ["\\begin{bmatrix} #1 & #2 \\\\ #3 & #4 \\end{bmatrix}", 4], "twodet": ["\\begin{vmatrix} #1 & #2 \\\\ #3 & #4 \\end{vmatrix}", 4], "pr": ["^{(#1)}", 1], "eye": ["\\mathbf{e}_#1", 1], "meye": ["\\mathbf{I}"], "bff": ["\\mathbf{f}"], "bfx": ["\\mathbf{x}"], "bfy": ["\\mathbf{y}"], "bfz": ["\\mathbf{z}"], "bfu": ["\\mathbf{u}"], "bfv": ["\\mathbf{v}"], "bfa": ["\\mathbf{a}"], "bfb": ["\\mathbf{b}"], "bfe": ["\\mathbf{e}"], "bfA": ["\\mathbf{A}"], "bfB": ["\\mathbf{B}"], "bfX": ["\\mathbf{X}"], "bfV": ["\\mathbf{V}"], "opA": ["\\mathcal{A}"], "lx": ["\\mathcal{L}"], "bfalpha": ["\\mathbf{alpha}"], "bfdelta": ["\\mathbf{delta}"], "bfzero": ["\\boldsymbol{0}"], "diag": ["\\operatorname{diag}"], "sign": ["\\operatorname{sign}"], "Re": ["\\operatorname{Re}"], "Im": ["\\operatorname{Im}"], "ee": ["\\times 10^"], "rank": ["\\operatorname{rank}"], "span": ["\\operatorname{span}"], "nullsp": ["\\operatorname{nullsp}"], "rowsp": ["\\operatorname{rowsp}"], "colsp": ["\\operatorname{colsp}"], "dim": ["\\operatorname{dim}"]}}, "HTML-CSS": {"availableFonts": [], "preferredFont": null, "webFont": "Asana-Math"}, "tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="1.3. Solution structure" href="structure.html" />
-    <link rel="prev" title="1. Linear ODE systems" href="overview.html" />
+    <link rel="next" title="6.3. Solution structure" href="structure.html" />
+    <link rel="prev" title="6. Linear ODE systems" href="overview.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -94,12 +94,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
- <span class="caption-text">
-  Scalar ODEs
- </span>
-</p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../first_order/overview.html">
    1. First-order ODEs
@@ -194,16 +189,9 @@
    </li>
   </ul>
  </li>
-</ul>
-<p class="caption">
- <span class="caption-text">
-  Linear algebra
- </span>
-</p>
-<ul class="nav bd-sidenav">
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../linear_system/overview.html">
-   1. Linear systems
+   3. Linear systems
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
   <label for="toctree-checkbox-3">
@@ -212,25 +200,30 @@
   </label>
   <ul>
    <li class="toctree-l2">
+    <a class="reference internal" href="../linear_system/problem.html">
+     3.1. Defining the problem
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="../linear_system/row_elimination.html">
-     1.4. Row elimination
+     3.2. Row elimination
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../linear_system/RREF.html">
-     1.5. RRE form
+     3.3. RRE form
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../linear_system/nullspace.html">
-     1.6. Homogeneous systems
+     3.4. Homogeneous systems
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../matrix/overview.html">
-   2. Matrix properties
+   4. Matrix properties
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
   <label for="toctree-checkbox-4">
@@ -240,39 +233,44 @@
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../matrix/operations.html">
-     2.1. Algebraic operations
+     4.1. Algebraic operations
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../matrix/inverse.html">
-     2.2. Identity and inverse
+     4.2. Identity and inverse
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../matrix/subspaces.html">
-     2.3. Subspaces
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../matrix/eigenvalues.html">
-     2.4. Eigenvalues
+     4.3. Subspaces
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../matrix/determinants.html">
-     2.5. Detecting singularity
+     4.4. Determinants
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../matrix/eigenvalues.html">
+     4.5. Eigenvalues
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../matrix/computing.html">
+     4.6. Computing eigenvalues and eigenspaces
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../matrix/diagonalization.html">
-     2.6. Diagonalization
+     4.7. Diagonalization
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../basis/overview.html">
-   3. Basis and dimension
+  <a class="reference internal" href="../space/overview.html">
+   5. Vector spaces
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
   <label for="toctree-checkbox-5">
@@ -281,32 +279,25 @@
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../basis/span_independence.html">
-     3.1. Span and independence
+    <a class="reference internal" href="../space/vectors.html">
+     5.1. Vectors galore
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../basis/dimension.html">
-     3.2. Dimension and rank
+    <a class="reference internal" href="../space/basis.html">
+     5.2. Basis and dimension
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../basis/change.html">
-     3.3. Change of basis
+    <a class="reference internal" href="../space/change.html">
+     5.3. Change of basis
     </a>
    </li>
   </ul>
  </li>
-</ul>
-<p class="caption">
- <span class="caption-text">
-  Linear ODE systems
- </span>
-</p>
-<ul class="current nav bd-sidenav">
  <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="overview.html">
-   1. Linear ODE systems
+   6. Linear ODE systems
   </a>
   <input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
   <label for="toctree-checkbox-6">
@@ -316,37 +307,37 @@
   <ul class="current">
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     1.2. Conversion of higher-order ODEs
+     6.2. Conversion of higher-order ODEs
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="structure.html">
-     1.3. Solution structure
+     6.3. Solution structure
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="homogeneous.html">
-     1.4. Homogeneous solutions
+     6.4. Homogeneous solutions
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="const_coeff.html">
-     1.5. Constant-coefficient problems
+     6.5. Constant-coefficient problems
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="phase_plane.html">
-     1.6. Stability and the phase plane
+     6.6. Stability and the phase plane
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="matrix_exp.html">
-     1.7. The matrix exponential
+     6.7. The matrix exponential
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="linearization.html">
-     1.8. Linearization
+     6.8. Linearization
     </a>
    </li>
   </ul>
@@ -424,12 +415,12 @@
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#general-procedure">
-   1.2.1. General procedure
+   6.2.1. General procedure
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#linear-problems">
-   1.2.2. Linear problems
+   6.2.2. Linear problems
   </a>
  </li>
 </ul>
@@ -444,10 +435,10 @@
               <div>
                 
   <div class="section" id="conversion-of-higher-order-odes">
-<h1><span class="section-number">1.2. </span>Conversion of higher-order ODEs<a class="headerlink" href="#conversion-of-higher-order-odes" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">6.2. </span>Conversion of higher-order ODEs<a class="headerlink" href="#conversion-of-higher-order-odes" title="Permalink to this headline">¶</a></h1>
 <p>We begin with a vital observation that applies to all ODEs, not just linear ones: order can be exchanged for dimension.</p>
 <div class="proof proof-type-example" id="id1">
-<div class="proof-title"> <span class="proof-type">Example 1.59</span>  </div><div class="proof-content">
+<div class="proof-title"> <span class="proof-type">Example 6.3</span>  </div><div class="proof-content">
 <p>The simple harmonic oscillator</p>
 <div class="math notranslate nohighlight">
 \[
@@ -470,7 +461,7 @@ u_1' &amp;= u_2,\\
 u_2' &amp;= f - 2 Z \omega_0 u_2 - \omega_0^2 u_1.
 \end{split}\end{split}\]</div>
 </div></div><div class="proof proof-type-example" id="id2">
-<div class="proof-title"> <span class="proof-type">Example 1.60</span>  </div><div class="proof-content">
+<div class="proof-title"> <span class="proof-type">Example 6.4</span>  </div><div class="proof-content">
 <p>A frictionless pendulum is governed by the nonlinear equation <span class="math notranslate nohighlight">\(\theta''+ \frac{g}{L}\sin(\theta)=0\)</span>, where <span class="math notranslate nohighlight">\(\theta(t)\)</span> is the angle made by the pendulum from the straight-down position. Define</p>
 <div class="math notranslate nohighlight">
 \[
@@ -480,7 +471,7 @@ u_1=\theta, \quad u_2=\theta'.
 <div class="math notranslate nohighlight">
 \[\twovec{u_1'}{u_2'} = \twovec{u_2}{- \frac{g}{L}\sin(u_1)}.\]</div>
 </div></div><div class="section" id="general-procedure">
-<h2><span class="section-number">1.2.1. </span>General procedure<a class="headerlink" href="#general-procedure" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">6.2.1. </span>General procedure<a class="headerlink" href="#general-procedure" title="Permalink to this headline">¶</a></h2>
 <p>The technique illustrated above generalizes to equations of any order, and to systems of equations of any orders. The formal procedure is a bit complicated to describe but fully automatic; there are no decisions to make.</p>
 <p>We will use a template example to keep the notation under control. Suppose you are given a system in three scalar variables:</p>
 <div class="math notranslate nohighlight">
@@ -509,7 +500,7 @@ u_6' &amp;= z''' = \gamma(t,u_1,u_2,u_3,u_4,u_5,u_6).
 \end{split}\end{split}\]</div>
 <p>The final expression of the new system is <span class="math notranslate nohighlight">\(\bfu' = \bff(t,\bfu)\)</span>, free of all references to the original variables <span class="math notranslate nohighlight">\(x\)</span>, <span class="math notranslate nohighlight">\(y\)</span>, and <span class="math notranslate nohighlight">\(z\)</span>.</p>
 <div class="proof proof-type-example" id="id3">
-<div class="proof-title"> <span class="proof-type">Example 1.61</span>  </div><div class="proof-content">
+<div class="proof-title"> <span class="proof-type">Example 6.5</span>  </div><div class="proof-content">
 <p>Two pendulums hanging from a bar and swinging in parallel planes are coupled through torsion on the bar, obeying</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
@@ -544,7 +535,7 @@ u_1 = \theta_1, \quad u_2 = \theta_1', \quad u_3 = \theta_2, \quad u_4 = \theta_
 </div>
 </div>
 <div class="section" id="linear-problems">
-<h2><span class="section-number">1.2.2. </span>Linear problems<a class="headerlink" href="#linear-problems" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">6.2.2. </span>Linear problems<a class="headerlink" href="#linear-problems" title="Permalink to this headline">¶</a></h2>
 <p>When the original high-order ODE or system is linear, then its first-order equivalent is linear as well. We saw that in the first example of this section, where</p>
 <div class="math notranslate nohighlight">
 \[
@@ -552,7 +543,7 @@ x'' + 2 Z \omega_0 x' + \omega_0^2 x = f(t)
 \]</div>
 <p>can be converted to</p>
 <div class="math notranslate nohighlight" id="equation-harmonic-system">
-<span class="eqno">(1.15)<a class="headerlink" href="#equation-harmonic-system" title="Permalink to this equation">¶</a></span>\[\begin{split}\begin{split}
+<span class="eqno">(6.1)<a class="headerlink" href="#equation-harmonic-system" title="Permalink to this equation">¶</a></span>\[\begin{split}\begin{split}
 u_1' &amp;= u_2,\\
 u_2' &amp;= f - 2 Z \omega_0 u_2 - \omega_0^2 u_1.
 \end{split}\end{split}\]</div>
@@ -591,8 +582,8 @@ u_2' &amp;= f - 2 Z \omega_0 u_2 - \omega_0^2 u_1.
         
         <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="overview.html" title="previous page"><span class="section-number">1. </span>Linear ODE systems</a>
-    <a class='right-next' id="next-link" href="structure.html" title="next page"><span class="section-number">1.3. </span>Solution structure</a>
+    <a class='left-prev' id="prev-link" href="overview.html" title="previous page"><span class="section-number">6. </span>Linear ODE systems</a>
+    <a class='right-next' id="next-link" href="structure.html" title="next page"><span class="section-number">6.3. </span>Solution structure</a>
 
         </div>
         

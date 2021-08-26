@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>6. Linear ODE systems &#8212; Notes on ODEs and linear algebra</title>
+    <title>5. Vector spaces &#8212; Notes on ODEs and linear algebra</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
   <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -56,8 +56,8 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="6.1. Introduction to systems" href="intro.html" />
-    <link rel="prev" title="5.3. Change of basis" href="../space/change.html" />
+    <link rel="next" title="5.1. Vectors galore" href="vectors.html" />
+    <link rel="prev" title="4.7. Diagonalization" href="../matrix/diagonalization.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -266,71 +266,76 @@
    </li>
   </ul>
  </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../space/overview.html">
+ <li class="toctree-l1 current active has-children">
+  <a class="current reference internal" href="#">
    5. Vector spaces
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
   <label for="toctree-checkbox-5">
    <i class="fas fa-chevron-down">
    </i>
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../space/vectors.html">
+    <a class="reference internal" href="vectors.html">
      5.1. Vectors galore
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../space/basis.html">
+    <a class="reference internal" href="basis.html">
      5.2. Basis and dimension
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../space/change.html">
+    <a class="reference internal" href="change.html">
      5.3. Change of basis
     </a>
    </li>
   </ul>
  </li>
- <li class="toctree-l1 current active has-children">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../ode_system/overview.html">
    6. Linear ODE systems
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
   <label for="toctree-checkbox-6">
    <i class="fas fa-chevron-down">
    </i>
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="intro.html">
-     6.1. Introduction to systems
+    <a class="reference internal" href="../ode_system/order_dimension.html">
+     6.2. Conversion of higher-order ODEs
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="structure.html">
-     6.2. Structure of linear problems
+    <a class="reference internal" href="../ode_system/structure.html">
+     6.3. Solution structure
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="const_coeff.html">
-     6.3. Constant-coefficient problems
+    <a class="reference internal" href="../ode_system/homogeneous.html">
+     6.4. Homogeneous solutions
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="phase_plane.html">
-     6.4. Stability and the phase plane
+    <a class="reference internal" href="../ode_system/const_coeff.html">
+     6.5. Constant-coefficient problems
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="matrix_exp.html">
-     6.5. The matrix exponential
+    <a class="reference internal" href="../ode_system/phase_plane.html">
+     6.6. Stability and the phase plane
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="linearization.html">
-     6.6. Linearization
+    <a class="reference internal" href="../ode_system/matrix_exp.html">
+     6.7. The matrix exponential
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ode_system/linearization.html">
+     6.8. Linearization
     </a>
    </li>
   </ul>
@@ -376,7 +381,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/ode_system/overview.md"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/space/overview.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
@@ -409,9 +414,9 @@
         
               <div>
                 
-  <div class="section" id="linear-ode-systems">
-<h1><span class="section-number">6. </span>Linear ODE systems<a class="headerlink" href="#linear-ode-systems" title="Permalink to this headline">¶</a></h1>
-<p>Up to this point, we have dealt only with ODEs that have a scalar dependent variable. These are important to understand thoroughly, but in applications it is rare to have just one unknown. In this chapter we take our first steps to vector-valued ODEs.</p>
+  <div class="section" id="vector-spaces">
+<h1><span class="section-number">5. </span>Vector spaces<a class="headerlink" href="#vector-spaces" title="Permalink to this headline">¶</a></h1>
+<p>Maybe you noticed how some of the things we did with linear ODEs, such as linear combination and independence, resurfaced in linear algebra. In fact, we can go beyond the usual idea of “vectors” to include other things that behave similarly, including functions.</p>
 <div class="toctree-wrapper compound">
 </div>
 </div>
@@ -429,7 +434,7 @@
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./ode_system"
+            path: "./space"
         },
         predefinedOutput: true
     }
@@ -441,8 +446,8 @@
         
         <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="../space/change.html" title="previous page"><span class="section-number">5.3. </span>Change of basis</a>
-    <a class='right-next' id="next-link" href="intro.html" title="next page"><span class="section-number">6.1. </span>Introduction to systems</a>
+    <a class='left-prev' id="prev-link" href="../matrix/diagonalization.html" title="previous page"><span class="section-number">4.7. </span>Diagonalization</a>
+    <a class='right-next' id="next-link" href="vectors.html" title="next page"><span class="section-number">5.1. </span>Vectors galore</a>
 
         </div>
         

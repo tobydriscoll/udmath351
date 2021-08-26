@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>6.6. Linearization &#8212; Notes on ODEs and linear algebra</title>
+    <title>5.1. Vectors galore &#8212; Notes on ODEs and linear algebra</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
   <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -58,7 +58,8 @@
     <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": {"real": ["\\mathbb{R}"], "complex": ["\\mathbb{C}"], "nat": ["\\mathbb{N}"], "integer": ["\\mathbb{Z}"], "rmn": ["\\mathbb{R}^{#1 \\times #2}", 2], "cmn": ["\\complex^{#1 \\times #2}", 2], "dd": ["\\frac{d #1}{d #2}", 2], "pp": ["\\frac{\\partial #1}{\\partial #2}", 2], "ddd": ["\\frac{d^2 #1}{d #2^2}", 2], "norm": ["\\| #1 \\|", 1], "twonorm": ["\\| #1 \\|_2", 1], "onenorm": ["\\| #1 \\|_1", 1], "infnorm": ["\\| #1 \\|_\\infty", 1], "innerprod": ["\\langle #1,#2 \\rangle", 2], "twovec": ["\\begin{bmatrix} #1 \\\\ #2 \\end{bmatrix}", 2], "threevec": ["\\begin{bmatrix} #1 \\\\ #2 \\\\ #3 \\end{bmatrix}", 3], "twomat": ["\\begin{bmatrix} #1 & #2 \\\\ #3 & #4 \\end{bmatrix}", 4], "twodet": ["\\begin{vmatrix} #1 & #2 \\\\ #3 & #4 \\end{vmatrix}", 4], "pr": ["^{(#1)}", 1], "eye": ["\\mathbf{e}_#1", 1], "meye": ["\\mathbf{I}"], "bff": ["\\mathbf{f}"], "bfx": ["\\mathbf{x}"], "bfy": ["\\mathbf{y}"], "bfz": ["\\mathbf{z}"], "bfu": ["\\mathbf{u}"], "bfv": ["\\mathbf{v}"], "bfa": ["\\mathbf{a}"], "bfb": ["\\mathbf{b}"], "bfe": ["\\mathbf{e}"], "bfA": ["\\mathbf{A}"], "bfB": ["\\mathbf{B}"], "bfX": ["\\mathbf{X}"], "bfV": ["\\mathbf{V}"], "opA": ["\\mathcal{A}"], "lx": ["\\mathcal{L}"], "bfalpha": ["\\mathbf{alpha}"], "bfdelta": ["\\mathbf{delta}"], "bfzero": ["\\boldsymbol{0}"], "diag": ["\\operatorname{diag}"], "sign": ["\\operatorname{sign}"], "Re": ["\\operatorname{Re}"], "Im": ["\\operatorname{Im}"], "ee": ["\\times 10^"], "rank": ["\\operatorname{rank}"], "span": ["\\operatorname{span}"], "nullsp": ["\\operatorname{nullsp}"], "rowsp": ["\\operatorname{rowsp}"], "colsp": ["\\operatorname{colsp}"], "dim": ["\\operatorname{dim}"]}}, "HTML-CSS": {"availableFonts": [], "preferredFont": null, "webFont": "Asana-Math"}, "tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="prev" title="6.5. The matrix exponential" href="matrix_exp.html" />
+    <link rel="next" title="5.2. Basis and dimension" href="basis.html" />
+    <link rel="prev" title="5. Vector spaces" href="overview.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -267,71 +268,76 @@
    </li>
   </ul>
  </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../space/overview.html">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="overview.html">
    5. Vector spaces
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
   <label for="toctree-checkbox-5">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../space/vectors.html">
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
      5.1. Vectors galore
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../space/basis.html">
+    <a class="reference internal" href="basis.html">
      5.2. Basis and dimension
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../space/change.html">
+    <a class="reference internal" href="change.html">
      5.3. Change of basis
     </a>
    </li>
   </ul>
  </li>
- <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="overview.html">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../ode_system/overview.html">
    6. Linear ODE systems
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
   <label for="toctree-checkbox-6">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul class="current">
+  <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="intro.html">
-     6.1. Introduction to systems
+    <a class="reference internal" href="../ode_system/order_dimension.html">
+     6.2. Conversion of higher-order ODEs
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="structure.html">
-     6.2. Structure of linear problems
+    <a class="reference internal" href="../ode_system/structure.html">
+     6.3. Solution structure
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="const_coeff.html">
-     6.3. Constant-coefficient problems
+    <a class="reference internal" href="../ode_system/homogeneous.html">
+     6.4. Homogeneous solutions
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="phase_plane.html">
-     6.4. Stability and the phase plane
+    <a class="reference internal" href="../ode_system/const_coeff.html">
+     6.5. Constant-coefficient problems
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="matrix_exp.html">
-     6.5. The matrix exponential
+    <a class="reference internal" href="../ode_system/phase_plane.html">
+     6.6. Stability and the phase plane
     </a>
    </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
-     6.6. Linearization
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ode_system/matrix_exp.html">
+     6.7. The matrix exponential
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ode_system/linearization.html">
+     6.8. Linearization
     </a>
    </li>
   </ul>
@@ -375,9 +381,12 @@
 
     <div class="dropdown-buttons">
         <!-- ipynb file if we had a myst markdown file -->
-        
+        <a class="dropdown-buttons"
+            href="../_sources/space/vectors.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/ode_system/linearization.md"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/space/vectors.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
@@ -408,8 +417,13 @@
             <nav id="bd-toc-nav">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#stability">
-   6.6.1. Stability
+  <a class="reference internal nav-link" href="#definition">
+   5.1.1. Definition
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#span-and-independence">
+   5.1.2. Span and independence
   </a>
  </li>
 </ul>
@@ -423,126 +437,101 @@
         
               <div>
                 
-  <div class="section" id="linearization">
-<span id="section-nl-linearization"></span><h1><span class="section-number">6.6. </span>Linearization<a class="headerlink" href="#linearization" title="Permalink to this headline">¶</a></h1>
-<p>A pendulum with length <span class="math notranslate nohighlight">\(L\)</span> and angle of deflection <span class="math notranslate nohighlight">\(\theta(t)\)</span> from the vertical is governed by the nonlinear second-order equation</p>
-<div class="math notranslate nohighlight">
-\[\ddd{\theta}{t} + \frac{g}{L} \sin(\theta) = 0,\]</div>
-<p>where <span class="math notranslate nohighlight">\(g\)</span> is gravitational acceleration. It’s standard to argue that as long as <span class="math notranslate nohighlight">\(|\theta|\)</span> remains small, a good approximation is the linear problem</p>
-<div class="math notranslate nohighlight">
-\[\ddd{\theta}{t} + \frac{g}{L} \theta = 0,\]</div>
-<p>because <span class="math notranslate nohighlight">\(\sin \theta \approx \theta\)</span>.  We want to get more systematic with this process.</p>
-<p>First note that we can recast the nonlinear second-order problem as a first-order system in two variables, just as we did for linear equations. Define <span class="math notranslate nohighlight">\(x=\theta\)</span> and <span class="math notranslate nohighlight">\(y=\theta'\)</span>. Then</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{align*}
-	\dd{x}{t} &amp; = y, \\
-	\dd{y}{t} &amp; = -\frac{g}{L}\sin(x).
-\end{align*}\]</div>
-<p>This trick works for any nonlinear second-order equation <span class="math notranslate nohighlight">\(\theta''=g(t,\theta,\theta')\)</span>. Thus we can focus on problems in the general form</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{align*}
-	\dd{x}{t} &amp; = F(x,y), \\
-	\dd{y}{t} &amp; = G(x,y).
-\end{align*}\]</div>
-<p>As we did with single scalar equations, we will pay close attention to steady states or fixed points of these systems. Here this means finding constants <span class="math notranslate nohighlight">\((\hat{x},\hat{y})\)</span> such that</p>
+  <div class="section" id="vectors-galore">
+<h1><span class="section-number">5.1. </span>Vectors galore<a class="headerlink" href="#vectors-galore" title="Permalink to this headline">¶</a></h1>
+<p>Many of the conclusions we have seen in linear algebra ultimately depend only on the idea of linear combinations. But there are objects other than collections of <span class="math notranslate nohighlight">\(n\)</span> numbers that can play the linear combination game.</p>
+<div class="proof proof-type-example" id="id1">
+<span id="example-vectors-matrix"></span><div class="proof-title"> <span class="proof-type">Example 5.1</span>  </div><div class="proof-content">
+<p>For fixed <span class="math notranslate nohighlight">\(m\)</span> and <span class="math notranslate nohighlight">\(n\)</span>, any collection of <span class="math notranslate nohighlight">\(m\times n\)</span> matrices <span class="math notranslate nohighlight">\(vv,\ldots,\bfA_k\)</span> can be combined as</p>
 <div class="math notranslate nohighlight">
 \[
-F(\hat{x},\hat{y})=G(\hat{x},\hat{y})=0.
+\bfB = c_1 \bfA_1 + c_2 \bfA_2 + \cdots + c_k \bfA_k,
 \]</div>
-<p>For the nonlinear pendulum, both <span class="math notranslate nohighlight">\((0,0)\)</span> (straight down, at rest) and <span class="math notranslate nohighlight">\((\pi,0)\)</span> (straight up, at rest) are steady states.</p>
-<p>We are interested in the stability of fixed points, i.e., the dynamics close to them. We will use linear approximations of the functions <span class="math notranslate nohighlight">\(F\)</span> and <span class="math notranslate nohighlight">\(G\)</span> near a fixed point:</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{align*}
-	F(x,y) &amp; \approx F(\hat{x},\hat{y}) + \pp{F}{x}\cdot (x-\hat{x}) + \pp{F}{y} \cdot (y-\hat{y}),\\
-	G(x,y) &amp; \approx G(\hat{x},\hat{y}) + \pp{G}{x} \cdot (x-\hat{x}) + \pp{G}{y} \cdot (y-\hat{y}),\\
-\end{align*}\]</div>
-<p>where it is understood for brevity that the partial derivatives are all evaluated at <span class="math notranslate nohighlight">\((\hat{x},\hat{y})\)</span>. Given that <span class="math notranslate nohighlight">\((\hat{x},\hat{y})\)</span> is a fixed point, <span class="math notranslate nohighlight">\(F(\hat{x},\hat{y})=G(\hat{x},\hat{y})=0\)</span>.</p>
-<p>Now define</p>
-<div class="math notranslate nohighlight">
-\[
-u_1(t)=x(t)-\hat{x},\quad u_2(t)=y(t)-\hat{y}.
-\]</div>
-<p>Then</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{align*}
-	\dd{u_1}{t} = \dd{x}{t} &amp; \approx \pp{F}{x} u_1 + \pp{F}{y} u_2, \\
-	\dd{u_2}{t} = \dd{y}{t} &amp; \approx \pp{G}{x} u_1 + \pp{G}{y} u_2. 
-\end{align*}\]</div>
-<p>This inspires the following definition.</p>
-<div class="proof proof-type-definition" id="id1">
-<span id="nl-def-jacobian"></span><span id="index-0"></span><div class="proof-title"> <span class="proof-type">Definition 6.26</span>  <span class="proof-title-name">: &nbsp;Jacobian matrix</span>  </div><div class="proof-content">
-<p>The <strong>Jacobian matrix</strong> of the system <span class="math notranslate nohighlight">\(x'=F(x,y),\, y'=G(x,y)\)</span> is</p>
-<div class="math notranslate nohighlight" id="equation-nl-eq-jacobian">
-<span class="eqno">(6.12)<a class="headerlink" href="#equation-nl-eq-jacobian" title="Permalink to this equation">¶</a></span>\[\mathbf{J}(x,y) = \twomat{\displaystyle \pp{F}{x}}{\displaystyle \pp{F}{y}}{\displaystyle \pp{G}{x}}{\displaystyle \pp{G}{y}}.\]</div>
-</div></div><p>The Jacobian matrix is essentially the derivative of a 2D vector field. As such, it is also a function of the variables <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span>.</p>
-<div class="section" id="stability">
-<h2><span class="section-number">6.6.1. </span>Stability<a class="headerlink" href="#stability" title="Permalink to this headline">¶</a></h2>
-<p>Let’s summarize. In the neighborhood of a fixed point <span class="math notranslate nohighlight">\((\hat{x},\hat{y})\)</span>, we can define the <em>deviation from equilibrium</em> by the variables <span class="math notranslate nohighlight">\(u_1(t)=x(t)-\hat{x}\)</span>, <span class="math notranslate nohighlight">\(u_2(t)=y(t)-\hat{y}\)</span>. These variables approximately satisfy <span class="math notranslate nohighlight">\(\mathbf{u}'=\mathbf{J}(\hat{x},\hat{y})\mathbf{u}\)</span>, which is a linear, constant-coefficient system in two dimensions. Thus, <strong>near a steady state, dynamics are mostly linear.</strong></p>
-<p>We are now right back into the phase plane we studied earlier. In particular:</p>
-<div class="proof proof-type-observation">
-<div class="proof-title"> <span class="proof-type">Observation </span>  </div><div class="proof-content">
-<p>The stability of a steady state is (usually) determined by the eigenvalues of the Jacobian matrix at the steady state.</p>
+<p>resulting in another <span class="math notranslate nohighlight">\(m\times n\)</span> matrix.</p>
 </div></div><div class="proof proof-type-example" id="id2">
-<div class="proof-title"> <span class="proof-type">Example 6.27</span>  </div><div class="proof-content">
-<p>Let’s examine the steady states of a pendulum with damping,</p>
-<div class="math notranslate nohighlight">
-\[\ddd{\theta}{t} + \gamma \theta' + \frac{g}{L} \sin(\theta) = 0,\]</div>
-<p>with <span class="math notranslate nohighlight">\(\gamma &gt; 0\)</span>. It transforms into the first-order system</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{align*}
-	\dd{x}{t} &amp; = y, \\
-	\dd{y}{t} &amp; = -\frac{g}{L}\sin(x) - \gamma y.
-\end{align*}\]</div>
-<p>These define <span class="math notranslate nohighlight">\(F(x,y)\)</span> and <span class="math notranslate nohighlight">\(G(x,y)\)</span>. From here we note all the first partial derivatives:</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{align*}
-\pp{F}{x} = 0, &amp; \qquad \pp{F}{y} = 1,\\
-\pp{G}{x} = - \frac{g}{L}\cos(x), &amp; \qquad \pp{G}{y} = -\gamma.
-\end{align*}\]</div>
-<p>The first steady state we consider is at the origin. Here the Jacobian matrix is</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}\begin{bmatrix} 
-0 &amp; 1 \\ -g/L &amp; -\gamma
-\end{bmatrix}.\end{split}\]</div>
-<p>The eigenvalues are roots of <span class="math notranslate nohighlight">\(\lambda^2 +\gamma \lambda + \frac{g}{L}\)</span>, the same as a linear oscillator with <span class="math notranslate nohighlight">\(\omega_0 = \sqrt{g/L}\)</span> and <span class="math notranslate nohighlight">\(Z = \gamma/2\omega_0\)</span>. If <span class="math notranslate nohighlight">\(Z&lt;1\)</span>, we get a stable spiral. If <span class="math notranslate nohighlight">\(Z\ge 1\)</span>, we get a stable node. This all agrees well with our experience with a pendulum hanging straight down.</p>
-<p>The other steady state is at <span class="math notranslate nohighlight">\((\pi,0)\)</span>. Now the Jacobian is</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}\begin{bmatrix} 
-0 &amp; 1 \\ g/L &amp; -\gamma
-\end{bmatrix},\end{split}\]</div>
-<p>with characteristic polynomial <span class="math notranslate nohighlight">\(\lambda^2 + \gamma \lambda - \frac{g}{L}\)</span>. The eigenvalues are</p>
+<span id="example-vectors-symmetric"></span><div class="proof-title"> <span class="proof-type">Example 5.2</span>  </div><div class="proof-content">
+<p>Any <span class="math notranslate nohighlight">\(2\times 2\)</span> symmetric matrix can be written in the form <span class="math notranslate nohighlight">\(\twomat{a}{b}{b}{c}\)</span>. If we combine two such matrices, we get</p>
 <div class="math notranslate nohighlight">
 \[
-\lambda_1 = -\gamma + \sqrt{\gamma^2+4\frac{g}{L}}, \quad \lambda_2 = -\gamma - \sqrt{\gamma^2+4\frac{g}{L}}.
+k_1 \twomat{a}{b}{b}{c} + k_2 \twomat{d}{f}{f}{g} = \twomat{k_1a+k_2d}{k_1b+k_2f}{k_1b+k_2f}{k_1c + k_2g},
 \]</div>
-<p>It’s obvious that <span class="math notranslate nohighlight">\(\lambda_2 &lt; 0\)</span>. Since <span class="math notranslate nohighlight">\(\gamma^2+\frac{4g}{L} &gt; \gamma^2\)</span>, it follows that <span class="math notranslate nohighlight">\(\lambda_1 &gt; 0\)</span>. Hence this equilibrium is a saddle point.</p>
-</div></div><p>The caveat on using eigenvalues for stability is when they both have zero real part, which is weakly stable in the linear sense. In such cases the details of the nonlinear terms of the system can swing the stability either way.</p>
-<div class="proof proof-type-example" id="id3">
-<div class="proof-title"> <span class="proof-type">Example 6.28</span>  </div><div class="proof-content">
-<p>The system</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{align*}
-\frac{dx}{dt} &amp;= 3x-\frac{xy}{2}\\
-\frac{dy}{dt} &amp;= -y+\frac{xy}{4}\\
-\end{align*}\]</div>
-<p>is called a <strong>predator–prey</strong> equation. If species <span class="math notranslate nohighlight">\(y\)</span> is set to zero, species <span class="math notranslate nohighlight">\(x\)</span> would grow exponentially on its own (the prey). Similarly, species <span class="math notranslate nohighlight">\(y\)</span> would die off on its own (predator). We assume that encounters between the species are jointly proportional to the population of each, and they subtract from the prey and add to the predators.</p>
-<p>We find fixed points when <span class="math notranslate nohighlight">\(3x-(x y/2)=(x y/4)-y=0\)</span>, which has two solutions, <span class="math notranslate nohighlight">\((0,0)\)</span> and <span class="math notranslate nohighlight">\((4,6)\)</span>. The Jacobian matrix of the system is</p>
+<p>which is another symmetric matrix. The same is true for longer linear combinations.</p>
+</div></div><div class="proof proof-type-definition" id="id3">
+<span id="definition-vectors-polynomial"></span><div class="proof-title"> <span class="proof-type">Definition 5.3</span>  <span class="proof-title-name">: &nbsp;Polynomials</span>  </div><div class="proof-content">
+<p>Let <span class="math notranslate nohighlight">\(\mathcal{P}_n\)</span> stand for the set of all polynomials of degree <span class="math notranslate nohighlight">\(n\)</span> or less.</p>
+</div></div><div class="proof proof-type-example" id="id4">
+<span id="example-vectors-polynomial"></span><div class="proof-title"> <span class="proof-type">Example 5.4</span>  </div><div class="proof-content">
+<p>If <span class="math notranslate nohighlight">\(p\)</span> and <span class="math notranslate nohighlight">\(q\)</span> are both polynomials of degree <span class="math notranslate nohighlight">\(n\)</span> or less, then <span class="math notranslate nohighlight">\(c_1p + c_2q\)</span> is also in <span class="math notranslate nohighlight">\(\mathcal{P}_2\)</span>.</p>
+</div></div><div class="proof proof-type-example" id="id5">
+<span id="example-vectors-smooth"></span><div class="proof-title"> <span class="proof-type">Example 5.5</span>  </div><div class="proof-content">
+<p>Let <span class="math notranslate nohighlight">\(\mathcal{C}\)</span> denote the set of all real-valued functions that are infinitely differentiable on the real line. If <span class="math notranslate nohighlight">\(f\in \mathcal{C}\)</span> and <span class="math notranslate nohighlight">\(c\)</span> is a real number, define <span class="math notranslate nohighlight">\(cf\)</span> as the function</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}\mathbf{J}(x,y) = \begin{bmatrix} F_x &amp; F_y  \\ G_x &amp; G_y \end{bmatrix} = \begin{bmatrix} 3-y/2 &amp; -x/2 \\ y/4 &amp; -1+x/4 \end{bmatrix}.\end{split}\]</div>
-<p>At the origin, the Jacobian becomes</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}\mathbf{J}(0,0) = \begin{bmatrix} 3 &amp; 0 \\ 0 &amp; -1 \end{bmatrix}.\end{split}\]</div>
-<p>The eigenvalues of a diagonal matrix (in fact, any triangular matrix) are the diagonal entries. Hence the origin is a saddle point.</p>
-<p>At the other steady state we have</p>
-<div class="math notranslate nohighlight">
-\[\mathbf{J}(4,6) = \twomat{0}{-2}{3/2}{0}.\]</div>
-<p>The characteristic polynomial is <span class="math notranslate nohighlight">\(\lambda^2 + 3\)</span>, so the eigenvalues are <span class="math notranslate nohighlight">\(\pm i\sqrt{3}\)</span>. Close to the point, the orbits are impossible to tell apart from those of a linear center:</p>
-<p><img alt="linear center" src="../_images/linearized_center1.svg" /></p>
-<p>However, as we zoom out, the nonlinearity of the system makes its influence felt:</p>
-<p><img alt="nonlinear center" src="../_images/linearized_center2.svg" /></p>
-<p>For a different system, however, the nonlinearity could cause this point to be asymptotically stable or unstable.</p>
-</div></div><div style="max-width:608px"><div style="position:relative;padding-bottom:66.118421052632%"><iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/2358381/sp/235838100/embedIframeJs/uiconf_id/43030021/partner_id/2358381?iframeembed=true&playerId=kaltura_player&entry_id=1_703u26n1&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_kplxqi9v" width="608" height="402" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="Kaltura Player" style="position:absolute;top:0;left:0;width:100%;height:100%"></iframe></div></div>
+\[
+(cf)(x) = c\cdot f(x).
+\]</div>
+<p>With this rule, a linear combination of functions in <span class="math notranslate nohighlight">\(\mathcal{C}\)</span> is also infinitely differentiable and thus belongs in <span class="math notranslate nohighlight">\(\mathcal{C}\)</span>.</p>
+</div></div><div class="section" id="definition">
+<h2><span class="section-number">5.1.1. </span>Definition<a class="headerlink" href="#definition" title="Permalink to this headline">¶</a></h2>
+<div class="proof proof-type-definition" id="id6">
+<span id="definition-vectors-space"></span><span id="index-0"></span><div class="proof-title"> <span class="proof-type">Definition 5.6</span>  <span class="proof-title-name">: &nbsp;Vector space</span>  </div><div class="proof-content">
+<p>Let <span class="math notranslate nohighlight">\(V\)</span> be a set with rules for mutliplication by real numbers and addition of set members. If every linear combination of members of <span class="math notranslate nohighlight">\(V\)</span> results in another member of <span class="math notranslate nohighlight">\(V\)</span>, we call <span class="math notranslate nohighlight">\(V\)</span> a <strong>vector space</strong>. In this context, the numbers that multiply set elements in a linear combination are called <strong>scalars</strong>. Any vector space <span class="math notranslate nohighlight">\(S\)</span> that is a subset of another vector space <span class="math notranslate nohighlight">\(V\)</span> is called a <strong>subspace</strong> of <span class="math notranslate nohighlight">\(V\)</span>. A vector space is a subspace of itself.</p>
+</div></div><div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>I have omitted some technical details about how addition and scalar multiplication are supposed to behave; we will only consider the “natural” versions of those operations, which behave properly.</p>
 </div>
+<p>All of the examples above are vector spaces. Not every set we could pick will be one.</p>
+<div class="proof proof-type-example" id="id7">
+<span id="example-vectors-badpoly"></span><div class="proof-title"> <span class="proof-type">Example 5.7</span>  </div><div class="proof-content">
+<p>Suppose <span class="math notranslate nohighlight">\(S\)</span> is the set of all polynomials of degree 3. Since, for example,</p>
+<div class="math notranslate nohighlight">
+\[
+(x^3+x+1) + (-x^3+x^2)
+\]</div>
+<p>is not a polynomial of degree 3, <span class="math notranslate nohighlight">\(S\)</span> is not closed under linear combinations.</p>
+</div></div><div class="proof proof-type-example" id="id8">
+<span id="example-vectors-affine"></span><div class="proof-title"> <span class="proof-type">Example 5.8</span>  </div><div class="proof-content">
+<p>Let <span class="math notranslate nohighlight">\(S\)</span> be the set of all vectors in <span class="math notranslate nohighlight">\(\real^2\)</span> such that <span class="math notranslate nohighlight">\(x_1+x_2=1\)</span>. Since, for example,</p>
+<div class="math notranslate nohighlight">
+\[
+[1,0] + [0,1] = [1,1]
+\]</div>
+<p>is not in <span class="math notranslate nohighlight">\(S\)</span>, <span class="math notranslate nohighlight">\(S\)</span> is not a vector space.</p>
+</div></div><p>There is one easy way of detecting some sets that aren’t vector spaces.</p>
+<div class="proof proof-type-theorem" id="id9">
+<span id="theorem-vectors-zero"></span><div class="proof-title"> <span class="proof-type">Theorem 5.9</span>  </div><div class="proof-content">
+<p>If <span class="math notranslate nohighlight">\(V\)</span> is a nonempty vector space, then the zero vector is in <span class="math notranslate nohighlight">\(V\)</span>.</p>
+</div></div><div class="proof proof-type-proof">
+<div class="proof-title"> <span class="proof-type">Proof </span>  </div><div class="proof-content">
+<p>Let <span class="math notranslate nohighlight">\(\bfv\)</span> be any member of <span class="math notranslate nohighlight">\(V\)</span>. Then <span class="math notranslate nohighlight">\(1\cdot \bfv + (-1)\cdot \bfv\)</span> will be zero.</p>
+</div></div></div>
+<div class="section" id="span-and-independence">
+<h2><span class="section-number">5.1.2. </span>Span and independence<a class="headerlink" href="#span-and-independence" title="Permalink to this headline">¶</a></h2>
+<p>Our previous definitions of span and independence refer only to linear combinations of vectors, so they can be applied directly to more abstract vector spaces.</p>
+<div class="proof proof-type-example" id="id10">
+<span id="example-vectors-spanp2"></span><div class="proof-title"> <span class="proof-type">Example 5.10</span>  </div><div class="proof-content">
+<p>The polynomials <span class="math notranslate nohighlight">\(p(x)=1\)</span> and <span class="math notranslate nohighlight">\(q(x)=x^2\)</span> are vectors in the space <span class="math notranslate nohighlight">\(\mathcal{P}_2\)</span>. Their span is</p>
+<div class="math notranslate nohighlight">
+\[
+\span(p,q) = c_1p(x) + c_2 q(x) = c_1 + c_2x^2,
+\]</div>
+<p>which is the subset of all even functions in <span class="math notranslate nohighlight">\(\mathcal{P}_2\)</span>.</p>
+</div></div><p>Span is a common way to generate subspaces.</p>
+<div class="proof proof-type-theorem" id="id11">
+<span id="theorem-vectors-span"></span><div class="proof-title"> <span class="proof-type">Theorem 5.11</span>  </div><div class="proof-content">
+<p>Let <span class="math notranslate nohighlight">\(\bfv_1,\ldots,\bfv_k\)</span> be members of vector space <span class="math notranslate nohighlight">\(V\)</span>. Define <span class="math notranslate nohighlight">\(S=\span(\bfv_1,\ldots,\bfv_k)\)</span>. Then:</p>
+<ol class="simple">
+<li><p><span class="math notranslate nohighlight">\(S\)</span> is a subspace.</p></li>
+<li><p>Any vector space that contains <span class="math notranslate nohighlight">\(\bfv_1,\ldots,\bfv_k\)</span> also contains <span class="math notranslate nohighlight">\(S\)</span>.</p></li>
+</ol>
+</div></div><div class="proof proof-type-example" id="id12">
+<span id="example-vectors-monomial"></span><div class="proof-title"> <span class="proof-type">Example 5.12</span>  </div><div class="proof-content">
+<p>The vectors <span class="math notranslate nohighlight">\(1,x,\ldots,x^n\)</span> clearly form a spanning set for <span class="math notranslate nohighlight">\(\mathcal{P}_n\)</span>. Suppose that scalars <span class="math notranslate nohighlight">\(c_0,\ldots,c_n\)</span> are chosen so that</p>
+<div class="math notranslate nohighlight">
+\[
+p = c_0(1) + c_1(x) + \cdots + c_n(x^n)
+\]</div>
+<p>satisfies <span class="math notranslate nohighlight">\(p(x)=0\)</span> for all real <span class="math notranslate nohighlight">\(x\)</span>. The Fundamental Theorem of Algebra states that a polynomial of degree <span class="math notranslate nohighlight">\(n\)</span> has at most <span class="math notranslate nohighlight">\(n\)</span> real roots, so the only possibility is <span class="math notranslate nohighlight">\(p\)</span> is the zero polynomial. This implies that <span class="math notranslate nohighlight">\(c_0=c_1=\cdots=c_n=0\)</span>. Hence <span class="math notranslate nohighlight">\(1,x,\ldots,x^n\)</span> are linearly indepdendent in <span class="math notranslate nohighlight">\(\mathcal{P}_2\)</span>.</p>
+</div></div></div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -554,23 +543,24 @@ u_1(t)=x(t)-\hat{x},\quad u_2(t)=y(t)-\hat{y}.
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "python"
+            mode: "julia-1.6"
         },
         kernelOptions: {
-            kernelName: "python3",
-            path: "./ode_system"
+            kernelName: "julia-1.6",
+            path: "./space"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'python3'</script>
+    <script>kernelName = 'julia-1.6'</script>
 
               </div>
               
         
         <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="matrix_exp.html" title="previous page"><span class="section-number">6.5. </span>The matrix exponential</a>
+    <a class='left-prev' id="prev-link" href="overview.html" title="previous page"><span class="section-number">5. </span>Vector spaces</a>
+    <a class='right-next' id="next-link" href="basis.html" title="next page"><span class="section-number">5.2. </span>Basis and dimension</a>
 
         </div>
         

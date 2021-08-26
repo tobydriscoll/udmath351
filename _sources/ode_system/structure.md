@@ -1,67 +1,13 @@
-# Solution structure
+# Structure of linear problems
 
-The rest of this chapter is devoted to linear ODE systems.
-
-(fs-df-linsystem)=
-::::{proof:definition} Linear system of ODEs
-A **linear ODE system** is an equation of the form
-
-:::{math}
-:label: fs-eq-system
-\mathbf{x}' = \mathbf{A}(t)\mathbf{x} + \bff(t),
+:::{attention}
+You need to read and write carefully when in vector-land. In particular, note that $\mathbf{x}_1$ refers to the first vector of a collection, while $x_1$ means the first component of a vector $\mathbf{x}$.
 :::
 
-where $\mathbf{x}$ is an $n$-dimensional vector, $\mathbf{A}$ is an $n\times n$ **coefficient matrix`, and $\bff(t)$ is an $n$-dimensional {term}`forcing function`. If the coefficient matrix does not depend on time, the system is said to be {term}`constant-coefficient`. If given, an {term}`initial condition** of the system is a time $t_0$ and vector $\mathbf{x}_0$ such that $\mathbf{x}(t_0)=\mathbf{x}_0$. 
-::::
+Virtually all of the theoretical statements we made about the scalar linear problem $x'=a(t)x+f(t)$ can be remade with boldface/capital letters for the linear system $\mathbf{x}'=\mathbf{A}(t)\mathbf{x}+\bff(t)$. Those statements relied mainly on linearity. Most notably:
 
-::::{proof:example}
-
-Here is a basic model for heating in a house. Let $b(t)$ be the temperature of the basement, $m(t)$ be the temperature of the main living area, and $a(t)$ be the temperature of the attic. Suppose the ground is at a constant 10 degrees C. We use a Newtonian model to describe how the temperature of the basement evolves due to interactions with the earth and the main floor:
-
-:::{math}
-\frac{db}{dt} = -k_b (b - 10) - k_{mb} (b-m). 
-:::
-
-Similarly, the attic interacts with the air, which we will hold at 2 degrees, and the main floor:
-
-:::{math}
-\frac{da}{dt} = -k_a (a - 2) - k_{ma} (a-m). 
-:::
-
-Finally, suppose the main area interacts mostly with the other levels and experiences input from a heater:
-
-:::{math}
-\frac{dm}{dt} = -k_{mb} (m - b) - k_{ma} (m - a) + h(t).
-:::
-
-Write the entire system in the form $\mathbf{x}' = \mathbf{A} \mathbf{x} + \bff(t)$. That is, identify what $\mathbf{A}$ and $\bff(t)$ must be based on the above equations. 
-
-:::{dropdown} Solution
-
-We define $x_1=b$, $x_2=m$, and $x_3=a$. Then
-
-$$
-\frac{d\bfx}{dt} = \threevec{(-k_b - k_{mb}) x_1  +k_{mb} x_2}{ k_{mb}x_1 -(k_{mb}+k_{ma})x_2 + k_{ma}x_3}{k_{ma}x_2  -(k_{ma}+k_a)x_3} + \threevec{10k_b}{h(t)}{2k_a}.
-$$
-
-Observe that on the right side, the terms depending on $\bfx$ have been separated from the others. Hence
-
-$$
-\bfx' = \begin{bmatrix} -k_b-k_{mb} & k_{mb} & 0 \\ k_{mb} & -k_{mb}-k_{ma} & k_{ma} \\  0 & k_{ma} & -k_{ma}-k_a \end{bmatrix}  \bfx + \threevec{10k_b}{h(t)}{2k_a}.
-$$
-
-We conclude that 
-
-$$
-\mathbf{A} = \begin{bmatrix} -k_b-k_{mb} & k_{mb} & 0 \\ k_{mb} & -k_{mb}-k_{ma} & k_{ma} \\  0 & k_{ma} & -k_{ma}-k_a \end{bmatrix}, \quad \bff = \threevec{10k_b}{h(t)}{2k_a}.
-$$
-:::
-::::
-
-It's not a stretch to say that virtually all of the general statements we made about the scalar linear problem $x'=a(t)x+f(t)$ can be remade with boldface/capital letters for the linear system $\mathbf{x}'=\mathbf{A}(t)\mathbf{x}+\bff(t)$. Those statements relied mainly on linearity. Thus,
-
-(theorem-fs-general)=
-::::{proof:theorem} General solutions of first-order linear system
+(theorem-intro-general-system)=
+::::{proof:theorem} General solution of first-order linear system
 Every solution of 
 
 $$
@@ -79,4 +25,127 @@ where $\mathbf{x}_h$ is the general solution of $\mathbf{x}'=\mathbf{A}(t)\mathb
 
 Once again, then, we look first at the homogeneous system with no forcing term, and then for particular solutions of the original problem.
 
-<div style="max-width:608px"><div style="position:relative;padding-bottom:66.118421052632%"><iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/2358381/sp/235838100/embedIframeJs/uiconf_id/43030021/partner_id/2358381?iframeembed=true&playerId=kaltura_player&entry_id=1_eomv4d4r&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_75etck4k" width="608" height="402" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="Kaltura Player" style="position:absolute;top:0;left:0;width:100%;height:100%"></iframe></div></div>
+## Homogeneous equations 
+
+Given 
+:::{math}
+:label: eq-structure-homog
+\mathbf{x}' = \mathbf{A}(t)\mathbf{x}, 
+:::
+
+where $\mathbf{x}\in\mathbb{R}^{n}$ and $\mathbf{A}\in\mathbb{R}^{n\times n}$, we can easily show in the usual way that any linear combination of solutions is also a solution. In fact, we have a new way of stating this result.
+
+```{index} ! solution space
+```
+
+(definition-structure-space)=
+::::{proof:definition} Solution space
+The set of all solutions of a homogeneous equation $\mathbf{x}' = \mathbf{A}(t)\mathbf{x}$ is a subspace of differentiable functions called the **solution space**.
+::::
+
+Our first major goal is to find a basis for the solution space.
+
+## Fundamental matrix
+
+Suppose $\mathbf{x}_1,\ldots,\mathbf{x}_m$ are homogeneous solutions of {eq}`eq-structure-homog`, and that we use a linear combination of them to satisfy an initial condition $\mathbf{x}(0)=\mathbf{x}_0$: 
+
+:::{math}
+	c_1 \mathbf{x}_1(0) + \cdots + c_m \mathbf{x}_m(0) = \mathbf{x}_0.
+:::
+
+Using the equivalence of linear combination with matrix-vector multiplication, we define the $n\times m$ matrix
+
+:::{math}
+:label: eq-structure-fundamental
+\bfX(t) = \bigl[ \mathbf{x}_1(t) \; \mathbf{x}_2(t) \; \cdots \; \mathbf{x}_m(t)  \bigr],
+:::
+
+so that 
+
+:::{math}
+\bfX(0) \begin{bmatrix} c_1 \\ c_2 \\ \vdots \\ c_m \end{bmatrix} = \mathbf{x}_0.
+:::
+
+This is a linear algebraic system for the coefficients $c_i$. We can expect a unique solution if and only if $m=n$ and $\bfX(0)$ is invertible.  
+
+```{index} ! fundamental matrix
+```
+
+(definition-structure-fundamental)=
+::::{proof:definition} Fundamental matrix
+The $n\times n$ matrix $\bfX(t)$ is a **fundamental matrix** of the homogeneous system $\mathbf{x}' = \mathbf{A}(t)\mathbf{x}$ if its columns satisfy
+
+:::{math}
+:label: eq-structure-columns
+\mathbf{x}_j'=\mathbf{A}\mathbf{x}_j, \quad j=1,\ldots,n,
+:::
+
+and $\bfX(t)$ is invertible at all times in an open interval $I$ where $\bfA$ is continuous.
+::::
+
+:::{note}
+A homogeneous system does not have a unique fundamental matrix.
+:::
+
+Because matrix multiplication can be interpreted columnwise, a statement equivalent to {eq}`eq-structure-columns` is 
+
+$$
+\bfX'=\bfA\bfX.
+$$
+
+The fundamental matrix gives all we need for the general homogeneous solution.
+
+::::{proof:theorem}
+If $\bfX$ is a fundamental matrix for $\bfx'=\bfA(t)\bfx$, then the general solution of this system is 
+
+$$
+\bfx_h = \mathbf{x}(t)=\mathbf{X}(t)\mathbf{c},
+$$ 
+
+for an arbitrary constant vector $\mathbf{c}$. 
+::::
+
+## Wronskian
+
+Since invertibility is required for a fundamental matrix, we should not be surprised to see its determinant popping up. 
+
+```{index} ! Wronskian; for vector-valued functions
+```
+
+(definition-structure-wronskian)=
+::::{proof:definition} Wronskian
+
+Let $\mathbf{x}_1,\ldots,\mathbf{x}_n$ be a collection of vector-valued functions where each $\bfx_i$ is $n$-dimensional. Their **Wronskian** is
+
+:::{math}
+W(t) = \det\Bigl( \bigl[ \mathbf{x}_1(t) \: \cdots \: \mathbf{x}_n(t)  \bigr] \Bigr).
+:::
+::::
+
+(theorem-structure-wronskian)=
+::::{proof:theorem} 
+If $\mathbf{x}_1,\ldots,\mathbf{x}_n$ are solutions of {eq}`eq-structure-homog`, they are linearly independent in interval $I$ where $\bfA(t)$ is continuous if and only if their Wronksian is nonzero at any $t\in I$.
+::::
+
+::::{proof:example}
+Suppose we have two solutions
+
+$$
+\mathbf{x}_1(t)=e^{\lambda_1 t}\mathbf{v}_1, \quad \mathbf{x}_2(t)=e^{\lambda_2 t}\mathbf{v}_2,
+$$
+
+where $\mathbf{v}_1$ and $\mathbf{v}_2$ are columns of an invertible $2\times 2$ constant matrix. Show that the Wronskian of these solutions is nonzero at all times.
+
+:::{dropdown} Solution
+Say $\mathbf{v}_1=[a,\,c]$ and $\mathbf{v}_2=[b,\,d]$. Then 
+
+\begin{align*}
+W(t) & = \det\Bigl( \bigl[ \mathbf{x}_1(t) \: \mathbf{x}_2(t)  \bigr] \Bigr)\\
+& = \twodet{a e^{\lambda_1 t}}{be^{\lambda_2 t}}{c e^{\lambda_1 t}}{d e^{\lambda_2 t}}\\
+& = e^{t(\lambda_1+\lambda_2)} (ad-bc) =  e^{t(\lambda_1+\lambda_2)} \det\Bigl(\bigl[\mathbf{v}_1\: \mathbf{v}_2\bigr]\Bigr) \\
+\end{align*}
+
+The exponential function is never zero, and the problem statement guarantees that the last determinant is nonzero. Hence $W$ is nonzero as well. 
+:::
+::::
+

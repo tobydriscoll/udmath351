@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>1.7. The matrix exponential &#8212; Notes on ODEs and linear algebra</title>
+    <title>6.5. The matrix exponential &#8212; Notes on ODEs and linear algebra</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
   <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -58,8 +58,8 @@
     <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": {"real": ["\\mathbb{R}"], "complex": ["\\mathbb{C}"], "nat": ["\\mathbb{N}"], "integer": ["\\mathbb{Z}"], "rmn": ["\\mathbb{R}^{#1 \\times #2}", 2], "cmn": ["\\complex^{#1 \\times #2}", 2], "dd": ["\\frac{d #1}{d #2}", 2], "pp": ["\\frac{\\partial #1}{\\partial #2}", 2], "ddd": ["\\frac{d^2 #1}{d #2^2}", 2], "norm": ["\\| #1 \\|", 1], "twonorm": ["\\| #1 \\|_2", 1], "onenorm": ["\\| #1 \\|_1", 1], "infnorm": ["\\| #1 \\|_\\infty", 1], "innerprod": ["\\langle #1,#2 \\rangle", 2], "twovec": ["\\begin{bmatrix} #1 \\\\ #2 \\end{bmatrix}", 2], "threevec": ["\\begin{bmatrix} #1 \\\\ #2 \\\\ #3 \\end{bmatrix}", 3], "twomat": ["\\begin{bmatrix} #1 & #2 \\\\ #3 & #4 \\end{bmatrix}", 4], "twodet": ["\\begin{vmatrix} #1 & #2 \\\\ #3 & #4 \\end{vmatrix}", 4], "pr": ["^{(#1)}", 1], "eye": ["\\mathbf{e}_#1", 1], "meye": ["\\mathbf{I}"], "bff": ["\\mathbf{f}"], "bfx": ["\\mathbf{x}"], "bfy": ["\\mathbf{y}"], "bfz": ["\\mathbf{z}"], "bfu": ["\\mathbf{u}"], "bfv": ["\\mathbf{v}"], "bfa": ["\\mathbf{a}"], "bfb": ["\\mathbf{b}"], "bfe": ["\\mathbf{e}"], "bfA": ["\\mathbf{A}"], "bfB": ["\\mathbf{B}"], "bfX": ["\\mathbf{X}"], "bfV": ["\\mathbf{V}"], "opA": ["\\mathcal{A}"], "lx": ["\\mathcal{L}"], "bfalpha": ["\\mathbf{alpha}"], "bfdelta": ["\\mathbf{delta}"], "bfzero": ["\\boldsymbol{0}"], "diag": ["\\operatorname{diag}"], "sign": ["\\operatorname{sign}"], "Re": ["\\operatorname{Re}"], "Im": ["\\operatorname{Im}"], "ee": ["\\times 10^"], "rank": ["\\operatorname{rank}"], "span": ["\\operatorname{span}"], "nullsp": ["\\operatorname{nullsp}"], "rowsp": ["\\operatorname{rowsp}"], "colsp": ["\\operatorname{colsp}"], "dim": ["\\operatorname{dim}"]}}, "HTML-CSS": {"availableFonts": [], "preferredFont": null, "webFont": "Asana-Math"}, "tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="1.8. Linearization" href="linearization.html" />
-    <link rel="prev" title="1.6. Stability and the phase plane" href="phase_plane.html" />
+    <link rel="next" title="6.6. Linearization" href="linearization.html" />
+    <link rel="prev" title="6.4. Stability and the phase plane" href="phase_plane.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -94,12 +94,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
- <span class="caption-text">
-  Scalar ODEs
- </span>
-</p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../first_order/overview.html">
    1. First-order ODEs
@@ -194,16 +189,9 @@
    </li>
   </ul>
  </li>
-</ul>
-<p class="caption">
- <span class="caption-text">
-  Linear algebra
- </span>
-</p>
-<ul class="nav bd-sidenav">
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../linear_system/overview.html">
-   1. Linear systems
+   3. Linear systems
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
   <label for="toctree-checkbox-3">
@@ -212,25 +200,30 @@
   </label>
   <ul>
    <li class="toctree-l2">
+    <a class="reference internal" href="../linear_system/problem.html">
+     3.1. Defining the problem
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="../linear_system/row_elimination.html">
-     1.4. Row elimination
+     3.2. Row elimination
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../linear_system/RREF.html">
-     1.5. RRE form
+     3.3. RRE form
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../linear_system/nullspace.html">
-     1.6. Homogeneous systems
+     3.4. Homogeneous systems
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../matrix/overview.html">
-   2. Matrix properties
+   4. Matrix properties
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
   <label for="toctree-checkbox-4">
@@ -240,39 +233,44 @@
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../matrix/operations.html">
-     2.1. Algebraic operations
+     4.1. Algebraic operations
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../matrix/inverse.html">
-     2.2. Identity and inverse
+     4.2. Identity and inverse
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../matrix/subspaces.html">
-     2.3. Subspaces
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../matrix/eigenvalues.html">
-     2.4. Eigenvalues
+     4.3. Subspaces
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../matrix/determinants.html">
-     2.5. Detecting singularity
+     4.4. Determinants
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../matrix/eigenvalues.html">
+     4.5. Eigenvalues
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../matrix/computing.html">
+     4.6. Computing eigenvalues and eigenspaces
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../matrix/diagonalization.html">
-     2.6. Diagonalization
+     4.7. Diagonalization
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../basis/overview.html">
-   3. Basis and dimension
+  <a class="reference internal" href="../space/overview.html">
+   5. Vector spaces
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
   <label for="toctree-checkbox-5">
@@ -281,32 +279,25 @@
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../basis/span_independence.html">
-     3.1. Span and independence
+    <a class="reference internal" href="../space/vectors.html">
+     5.1. Vectors galore
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../basis/dimension.html">
-     3.2. Dimension and rank
+    <a class="reference internal" href="../space/basis.html">
+     5.2. Basis and dimension
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../basis/change.html">
-     3.3. Change of basis
+    <a class="reference internal" href="../space/change.html">
+     5.3. Change of basis
     </a>
    </li>
   </ul>
  </li>
-</ul>
-<p class="caption">
- <span class="caption-text">
-  Linear ODE systems
- </span>
-</p>
-<ul class="current nav bd-sidenav">
  <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="overview.html">
-   1. Linear ODE systems
+   6. Linear ODE systems
   </a>
   <input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
   <label for="toctree-checkbox-6">
@@ -315,38 +306,33 @@
   </label>
   <ul class="current">
    <li class="toctree-l2">
-    <a class="reference internal" href="order_dimension.html">
-     1.2. Conversion of higher-order ODEs
+    <a class="reference internal" href="intro.html">
+     6.1. Introduction to systems
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="structure.html">
-     1.3. Solution structure
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="homogeneous.html">
-     1.4. Homogeneous solutions
+     6.2. Structure of linear problems
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="const_coeff.html">
-     1.5. Constant-coefficient problems
+     6.3. Constant-coefficient problems
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="phase_plane.html">
-     1.6. Stability and the phase plane
+     6.4. Stability and the phase plane
     </a>
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     1.7. The matrix exponential
+     6.5. The matrix exponential
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="linearization.html">
-     1.8. Linearization
+     6.6. Linearization
     </a>
    </li>
   </ul>
@@ -424,22 +410,22 @@
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#definition">
-   1.7.1. Definition
+   6.5.1. Definition
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#connection-to-fundamental-matrices">
-   1.7.2. Connection to fundamental matrices
+   6.5.2. Connection to fundamental matrices
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#defective-matrix-case">
-   1.7.3. Defective matrix case
+   6.5.3. Defective matrix case
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#propagators">
-   1.7.4. Propagators
+   6.5.4. Propagators
   </a>
  </li>
 </ul>
@@ -454,7 +440,7 @@
               <div>
                 
   <div class="section" id="the-matrix-exponential">
-<h1><span class="section-number">1.7. </span>The matrix exponential<a class="headerlink" href="#the-matrix-exponential" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">6.5. </span>The matrix exponential<a class="headerlink" href="#the-matrix-exponential" title="Permalink to this headline">¶</a></h1>
 <p>As we well know by now, the solution of the scalar linear IVP <span class="math notranslate nohighlight">\(x'=ax\)</span>, <span class="math notranslate nohighlight">\(x(0)=x_0\)</span> is</p>
 <div class="math notranslate nohighlight">
 \[
@@ -467,16 +453,16 @@ x(t) = e^{at} x_0.
 \]</div>
 <p>Funny you should ask.</p>
 <div class="section" id="definition">
-<h2><span class="section-number">1.7.1. </span>Definition<a class="headerlink" href="#definition" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">6.5.1. </span>Definition<a class="headerlink" href="#definition" title="Permalink to this headline">¶</a></h2>
 <p>We know the Taylor series</p>
 <div class="math notranslate nohighlight">
 \[e^{at} = 1 + at + \frac{1}{2!}(at)^2 + \frac{1}{3!} (at)^3 + \cdots.\]</div>
 <p>This series can be generalized directly to a square matrix <span class="math notranslate nohighlight">\(\mathbf{A}\)</span>, for which integer powers are possible:</p>
 <div class="math notranslate nohighlight" id="equation-fs-eq-matrixexp">
-<span class="eqno">(1.22)<a class="headerlink" href="#equation-fs-eq-matrixexp" title="Permalink to this equation">¶</a></span>\[e^{t\mathbf{A}} = \mathbf{I} + t\mathbf{A} + \frac{1}{2!}t^2 \mathbf{A}^2 + \frac{1}{3!} t^3 \mathbf{A}^3 + \cdots.\]</div>
+<span class="eqno">(6.10)<a class="headerlink" href="#equation-fs-eq-matrixexp" title="Permalink to this equation">¶</a></span>\[e^{t\mathbf{A}} = \mathbf{I} + t\mathbf{A} + \frac{1}{2!}t^2 \mathbf{A}^2 + \frac{1}{3!} t^3 \mathbf{A}^3 + \cdots.\]</div>
 <p>Let’s not worry too much about whether this converges (it does). What are its properties?</p>
 <div class="proof proof-type-theorem" id="id1">
-<span id="fs-thm-matrixexp"></span><div class="proof-title"> <span class="proof-type">Theorem 1.74</span>  <span class="proof-title-name">: &nbsp;Matrix exponential</span>  </div><div class="proof-content">
+<span id="fs-thm-matrixexp"></span><div class="proof-title"> <span class="proof-type">Theorem 6.17</span>  <span class="proof-title-name">: &nbsp;Matrix exponential</span>  </div><div class="proof-content">
 <p>Let <span class="math notranslate nohighlight">\(\mathbf{A},\mathbf{B}\)</span> be <span class="math notranslate nohighlight">\(n\times n\)</span> matrices. Then</p>
 <ol class="simple">
 <li><p><span class="math notranslate nohighlight">\(e^{t\mathbf{A}}=\mathbf{I}\)</span> if <span class="math notranslate nohighlight">\(t=0\)</span>,</p></li>
@@ -485,10 +471,10 @@ x(t) = e^{at} x_0.
 <li><p><span class="math notranslate nohighlight">\(e^{(s+t)\mathbf{A}} = e^{s\bfA} \cdot e^{t\bfA} = e^{t\bfA} \cdot e^{s\bfA}\)</span></p></li>
 <li><p>If <span class="math notranslate nohighlight">\(\mathbf{A}\mathbf{B}=\mathbf{B}\mathbf{A}\)</span>, then <span class="math notranslate nohighlight">\(e^{t(\mathbf{A}+\mathbf{B})} = e^{t\mathbf{A}}\cdot e^{t\mathbf{B}} = e^{t\mathbf{B}}\cdot e^{t\mathbf{A}}\)</span>.</p></li>
 </ol>
-</div></div><p>These conclusions follow pretty easily from the series definition <a class="reference internal" href="#equation-fs-eq-matrixexp">(1.22)</a>. They are all essential to what we normally expect from an exponential function, although in the last case we had to restrict the applicability.</p>
+</div></div><p>These conclusions follow pretty easily from the series definition <a class="reference internal" href="#equation-fs-eq-matrixexp">(6.10)</a>. They are all essential to what we normally expect from an exponential function, although in the last case we had to restrict the applicability.</p>
 <p>From these properties we can make the connection to the IVP.</p>
 <div class="proof proof-type-theorem" id="id2">
-<div class="proof-title"> <span class="proof-type">Theorem 1.75</span>  </div><div class="proof-content">
+<div class="proof-title"> <span class="proof-type">Theorem 6.18</span>  </div><div class="proof-content">
 <p>If <span class="math notranslate nohighlight">\(\bfA\)</span> is a constant square matrix, then</p>
 <div class="math notranslate nohighlight">
 \[
@@ -510,7 +496,7 @@ x(t) = e^{at} x_0.
 <p>using property 1 above.</p>
 </div></div></div>
 <div class="section" id="connection-to-fundamental-matrices">
-<h2><span class="section-number">1.7.2. </span>Connection to fundamental matrices<a class="headerlink" href="#connection-to-fundamental-matrices" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">6.5.2. </span>Connection to fundamental matrices<a class="headerlink" href="#connection-to-fundamental-matrices" title="Permalink to this headline">¶</a></h2>
 <p>We already had a solution procedure for <span class="math notranslate nohighlight">\(\mathbf{x}'=\mathbf{A} \mathbf{x}\)</span> with <span class="math notranslate nohighlight">\(\bfx(0)=\bfx_0\)</span>. We use a fundamental matrix to write the general solution <span class="math notranslate nohighlight">\(\bfx = \mathbf{X}(t) \mathbf{c}\)</span>, then apply the initial condition to get</p>
 <div class="math notranslate nohighlight">
 \[
@@ -523,7 +509,7 @@ x(t) = e^{at} x_0.
 \]</div>
 <p>Since the solution of an IVP is unique (and the matrices here are invertible), we get the following useful result.</p>
 <div class="proof proof-type-formula" id="id3">
-<div class="proof-title"> <span class="proof-type">Formula 1.76</span>  <span class="proof-title-name">: &nbsp;Matrix exponential</span>  </div><div class="proof-content">
+<div class="proof-title"> <span class="proof-type">Formula 6.19</span>  <span class="proof-title-name">: &nbsp;Matrix exponential</span>  </div><div class="proof-content">
 <p>If <span class="math notranslate nohighlight">\(\mathbf{X}(t)\)</span> is any fundamental matrix for <span class="math notranslate nohighlight">\(\bfx'=\bfA\bfx\)</span>, then</p>
 <div class="math notranslate nohighlight">
 \[
@@ -531,7 +517,7 @@ e^{t\bfA} = \mathbf{X}(t) \mathbf{X}(0)^{-1}.
 \]</div>
 </div></div><p>This formula is one way to avoid the rather daunting prospect of having to sum an infinite series of matrices.</p>
 <div class="proof proof-type-example" id="id4">
-<div class="proof-title"> <span class="proof-type">Example 1.77</span>  </div><div class="proof-content">
+<div class="proof-title"> <span class="proof-type">Example 6.20</span>  </div><div class="proof-content">
 <p>Given</p>
 <div class="math notranslate nohighlight">
 \[\mathbf{A} = \twomat{1}{1}{4}{1}\]</div>
@@ -562,7 +548,7 @@ e^{t\mathbf{A}} = \frac{1}{4} \twomat{e^{3t}}{e^{-t}}{2e^{3t}}{-2e^{-t}}
 \]</div>
 </div>
 </details></div></div><div class="proof proof-type-example" id="id5">
-<div class="proof-title"> <span class="proof-type">Example 1.78</span>  </div><div class="proof-content">
+<div class="proof-title"> <span class="proof-type">Example 6.21</span>  </div><div class="proof-content">
 <p>Given that</p>
 <div class="math notranslate nohighlight">
 \[\mathbf{A} = \twomat{1}{-1}{5}{-3}\]</div>
@@ -653,11 +639,11 @@ Whee! -->
 </div>
 </details></div></div></div>
 <div class="section" id="defective-matrix-case">
-<h2><span class="section-number">1.7.3. </span>Defective matrix case<a class="headerlink" href="#defective-matrix-case" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">6.5.3. </span>Defective matrix case<a class="headerlink" href="#defective-matrix-case" title="Permalink to this headline">¶</a></h2>
 <p>There is one situation in <span class="math notranslate nohighlight">\(\bfx'=\bfA \bfx\)</span> for which we have not yet produced a fundamental matrix in the constant-coefficient case: when <span class="math notranslate nohighlight">\(\bfA\)</span> is defective. It’s complicated to spell out what happens in full generality, but it’s easily managed for the <span class="math notranslate nohighlight">\(2\times 2\)</span> case.</p>
-<p><code class="xref std std-numref docutils literal notranslate"><span class="pre">Theorem</span> <span class="pre">{number}</span></code> states that for a <span class="math notranslate nohighlight">\(2\times 2\)</span> matrix with a repeated eigenvalue, the matrix is either a multiple of the identity, or defective. In the latter case, something useful happens, which we state without proof.</p>
+<p><a class="reference internal" href="../matrix/diagonalization.html#thm-la-2x2defective"><span class="std std-numref">Theorem 4.54</span></a> states that for a <span class="math notranslate nohighlight">\(2\times 2\)</span> matrix with a repeated eigenvalue, the matrix is either a multiple of the identity, or defective. In the latter case, something useful happens, which we state without proof.</p>
 <div class="proof proof-type-theorem" id="id6">
-<div class="proof-title"> <span class="proof-type">Theorem 1.79</span>  </div><div class="proof-content">
+<div class="proof-title"> <span class="proof-type">Theorem 6.22</span>  </div><div class="proof-content">
 <p>If <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> is a defective <span class="math notranslate nohighlight">\(2\times 2\)</span> matrix with double eigenvalue <span class="math notranslate nohighlight">\(\lambda\)</span>, then <span class="math notranslate nohighlight">\((\mathbf{A}-\lambda \mathbf{I})^2= \boldsymbol{0}\)</span>.</p>
 </div></div><p>Note that by part 5 of the matrix exponential properties theorem above,</p>
 <div class="math notranslate nohighlight">
@@ -677,11 +663,11 @@ e^{t(\mathbf{A}-\lambda \mathbf{I})} = \mathbf{I} + t(\mathbf{A}-\lambda \mathbf
 \]</div>
 <p>Thus we arrive at the following.</p>
 <div class="proof proof-type-formula" id="id7">
-<div class="proof-title"> <span class="proof-type">Formula 1.80</span>  <span class="proof-title-name">: &nbsp;Matrix exponential for <span class="math notranslate nohighlight">\(2\times 2\)</span> defective</span>  </div><div class="proof-content">
+<div class="proof-title"> <span class="proof-type">Formula 6.23</span>  <span class="proof-title-name">: &nbsp;Matrix exponential for <span class="math notranslate nohighlight">\(2\times 2\)</span> defective</span>  </div><div class="proof-content">
 <div class="math notranslate nohighlight" id="equation-ls-2x2exp-defective">
-<span class="eqno">(1.23)<a class="headerlink" href="#equation-ls-2x2exp-defective" title="Permalink to this equation">¶</a></span>\[e^{t\mathbf{A}} = \bigl( e^{t\lambda} \meye \bigr) \,  \bigl( \mathbf{I} + t(\mathbf{A}-\lambda \mathbf{I}) \bigr)  =  e^{t\lambda} \bigl( \mathbf{I} + t(\mathbf{A}-\lambda \mathbf{I}) \bigr).\]</div>
+<span class="eqno">(6.11)<a class="headerlink" href="#equation-ls-2x2exp-defective" title="Permalink to this equation">¶</a></span>\[e^{t\mathbf{A}} = \bigl( e^{t\lambda} \meye \bigr) \,  \bigl( \mathbf{I} + t(\mathbf{A}-\lambda \mathbf{I}) \bigr)  =  e^{t\lambda} \bigl( \mathbf{I} + t(\mathbf{A}-\lambda \mathbf{I}) \bigr).\]</div>
 </div></div><div class="proof proof-type-example" id="id8">
-<div class="proof-title"> <span class="proof-type">Example 1.81</span>  </div><div class="proof-content">
+<div class="proof-title"> <span class="proof-type">Example 6.24</span>  </div><div class="proof-content">
 <p>Find <span class="math notranslate nohighlight">\(e^{t\mathbf{A}}\)</span> if <span class="math notranslate nohighlight">\(\bfA=\twomat{4}{1}{0}{4}\)</span>.</p>
 <details class="sphinx-bs dropdown card mb-3">
 <summary class="summary-title card-header">
@@ -698,7 +684,7 @@ e^{t\mathbf{A}} =  e^{4t} \bigl() \mathbf{I} + t\, \twomat{0}{1}{0}{0} \bigr)
 \]</div>
 </div>
 </details></div></div><div class="proof proof-type-example" id="id9">
-<div class="proof-title"> <span class="proof-type">Example 1.82</span>  </div><div class="proof-content">
+<div class="proof-title"> <span class="proof-type">Example 6.25</span>  </div><div class="proof-content">
 <p>A critically damped free oscillator with natural frequency <span class="math notranslate nohighlight">\(\omega_0\)</span> is equivalent to a system with the matrix</p>
 <div class="math notranslate nohighlight">
 \[
@@ -722,7 +708,7 @@ e^{-t\omega_0}[ c_1 (1+t\omega_0) + c_2 t],
 <p>which is equivalent to the general solution we saw before for this problem, <span class="math notranslate nohighlight">\(e^{-t\omega_0}(c_1+c_2t)\)</span>.</p>
 </div></div></div>
 <div class="section" id="propagators">
-<h2><span class="section-number">1.7.4. </span>Propagators<a class="headerlink" href="#propagators" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">6.5.4. </span>Propagators<a class="headerlink" href="#propagators" title="Permalink to this headline">¶</a></h2>
 <p>Obviously the formulas lead to some intense algebra for particular examples, even in the <span class="math notranslate nohighlight">\(2\times 2\)</span> case. A computer can handle it, but the elementwise expressions get tediously long in all but special cases.</p>
 <p>The theoretical implications are more significant. The interpretation of <span class="math notranslate nohighlight">\(e^{t\bfA}\)</span> in the ODE context is that it transforms a vector initial condition to the solution vector at a time <span class="math notranslate nohighlight">\(t\)</span>. This is a linear operator; the solutions of linear equations behave linearly.</p>
 <p>Property 3 above implies that to invert that transformation, you can use <span class="math notranslate nohighlight">\(e^{-t\bfA}\)</span>, which is the same as running the ODE in “negative time.” More formally, it’s a statement about <em>time reversibility</em>.</p>
@@ -756,8 +742,8 @@ e^{-t\omega_0}[ c_1 (1+t\omega_0) + c_2 t],
         
         <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="phase_plane.html" title="previous page"><span class="section-number">1.6. </span>Stability and the phase plane</a>
-    <a class='right-next' id="next-link" href="linearization.html" title="next page"><span class="section-number">1.8. </span>Linearization</a>
+    <a class='left-prev' id="prev-link" href="phase_plane.html" title="previous page"><span class="section-number">6.4. </span>Stability and the phase plane</a>
+    <a class='right-next' id="next-link" href="linearization.html" title="next page"><span class="section-number">6.6. </span>Linearization</a>
 
         </div>
         

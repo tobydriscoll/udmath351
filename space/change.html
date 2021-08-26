@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>4.1. Algebraic operations &#8212; Notes on ODEs and linear algebra</title>
+    <title>5.3. Change of basis &#8212; Notes on ODEs and linear algebra</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
   <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -58,8 +58,8 @@
     <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": {"real": ["\\mathbb{R}"], "complex": ["\\mathbb{C}"], "nat": ["\\mathbb{N}"], "integer": ["\\mathbb{Z}"], "rmn": ["\\mathbb{R}^{#1 \\times #2}", 2], "cmn": ["\\complex^{#1 \\times #2}", 2], "dd": ["\\frac{d #1}{d #2}", 2], "pp": ["\\frac{\\partial #1}{\\partial #2}", 2], "ddd": ["\\frac{d^2 #1}{d #2^2}", 2], "norm": ["\\| #1 \\|", 1], "twonorm": ["\\| #1 \\|_2", 1], "onenorm": ["\\| #1 \\|_1", 1], "infnorm": ["\\| #1 \\|_\\infty", 1], "innerprod": ["\\langle #1,#2 \\rangle", 2], "twovec": ["\\begin{bmatrix} #1 \\\\ #2 \\end{bmatrix}", 2], "threevec": ["\\begin{bmatrix} #1 \\\\ #2 \\\\ #3 \\end{bmatrix}", 3], "twomat": ["\\begin{bmatrix} #1 & #2 \\\\ #3 & #4 \\end{bmatrix}", 4], "twodet": ["\\begin{vmatrix} #1 & #2 \\\\ #3 & #4 \\end{vmatrix}", 4], "pr": ["^{(#1)}", 1], "eye": ["\\mathbf{e}_#1", 1], "meye": ["\\mathbf{I}"], "bff": ["\\mathbf{f}"], "bfx": ["\\mathbf{x}"], "bfy": ["\\mathbf{y}"], "bfz": ["\\mathbf{z}"], "bfu": ["\\mathbf{u}"], "bfv": ["\\mathbf{v}"], "bfa": ["\\mathbf{a}"], "bfb": ["\\mathbf{b}"], "bfe": ["\\mathbf{e}"], "bfA": ["\\mathbf{A}"], "bfB": ["\\mathbf{B}"], "bfX": ["\\mathbf{X}"], "bfV": ["\\mathbf{V}"], "opA": ["\\mathcal{A}"], "lx": ["\\mathcal{L}"], "bfalpha": ["\\mathbf{alpha}"], "bfdelta": ["\\mathbf{delta}"], "bfzero": ["\\boldsymbol{0}"], "diag": ["\\operatorname{diag}"], "sign": ["\\operatorname{sign}"], "Re": ["\\operatorname{Re}"], "Im": ["\\operatorname{Im}"], "ee": ["\\times 10^"], "rank": ["\\operatorname{rank}"], "span": ["\\operatorname{span}"], "nullsp": ["\\operatorname{nullsp}"], "rowsp": ["\\operatorname{rowsp}"], "colsp": ["\\operatorname{colsp}"], "dim": ["\\operatorname{dim}"]}}, "HTML-CSS": {"availableFonts": [], "preferredFont": null, "webFont": "Asana-Math"}, "tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="4.2. Identity and inverse" href="inverse.html" />
-    <link rel="prev" title="4. Matrix properties" href="overview.html" />
+    <link rel="next" title="6. Linear ODE systems" href="../ode_system/overview.html" />
+    <link rel="prev" title="5.2. Basis and dimension" href="basis.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -221,75 +221,75 @@
    </li>
   </ul>
  </li>
- <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="overview.html">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../matrix/overview.html">
    4. Matrix properties
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
   <label for="toctree-checkbox-4">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul class="current">
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
-     4.1. Algebraic operations
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="inverse.html">
-     4.2. Identity and inverse
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="subspaces.html">
-     4.3. Subspaces
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="determinants.html">
-     4.4. Determinants
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="eigenvalues.html">
-     4.5. Eigenvalues
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="computing.html">
-     4.6. Computing eigenvalues and eigenspaces
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="diagonalization.html">
-     4.7. Diagonalization
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../space/overview.html">
-   5. Vector spaces
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
-  <label for="toctree-checkbox-5">
    <i class="fas fa-chevron-down">
    </i>
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../space/vectors.html">
+    <a class="reference internal" href="../matrix/operations.html">
+     4.1. Algebraic operations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../matrix/inverse.html">
+     4.2. Identity and inverse
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../matrix/subspaces.html">
+     4.3. Subspaces
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../matrix/determinants.html">
+     4.4. Determinants
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../matrix/eigenvalues.html">
+     4.5. Eigenvalues
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../matrix/computing.html">
+     4.6. Computing eigenvalues and eigenspaces
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../matrix/diagonalization.html">
+     4.7. Diagonalization
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="overview.html">
+   5. Vector spaces
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="vectors.html">
      5.1. Vectors galore
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../space/basis.html">
+    <a class="reference internal" href="basis.html">
      5.2. Basis and dimension
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../space/change.html">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
      5.3. Change of basis
     </a>
    </li>
@@ -382,11 +382,11 @@
     <div class="dropdown-buttons">
         <!-- ipynb file if we had a myst markdown file -->
         <a class="dropdown-buttons"
-            href="../_sources/matrix/operations.ipynb"><button type="button"
+            href="../_sources/space/change.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/matrix/operations.md"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/space/change.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
@@ -417,45 +417,14 @@
             <nav id="bd-toc-nav">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#matrix-times-vector">
-   4.1.1. Matrix times vector
+  <a class="reference internal nav-link" href="#coordinates">
+   5.3.1. Coordinates
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#properties">
-     Properties
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#connection-to-linear-systems">
-     Connection to linear systems
-    </a>
-   </li>
-  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#matrix-multiplication">
-   4.1.2. Matrix multiplication
+  <a class="reference internal nav-link" href="#change-of-basis-matrix">
+   5.3.2. Change of basis matrix
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id1">
-     Properties
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#transpose">
-   4.1.3. Transpose
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id2">
-     Properties
-    </a>
-   </li>
-  </ul>
  </li>
 </ul>
 
@@ -468,162 +437,127 @@
         
               <div>
                 
-  <div class="section" id="algebraic-operations">
-<h1><span class="section-number">4.1. </span>Algebraic operations<a class="headerlink" href="#algebraic-operations" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="matrix-times-vector">
-<h2><span class="section-number">4.1.1. </span>Matrix times vector<a class="headerlink" href="#matrix-times-vector" title="Permalink to this headline">¶</a></h2>
-<p>The idea of linear combinations, as defined in <a class="reference internal" href="../linear_system/nullspace.html#definition-nullspace-linear-comb"><span class="std std-numref">Definition 3.23</span></a>, serves as the foundation of multiplication between a matrix and a vector.</p>
-<div class="proof proof-type-definition" id="id3">
-<span id="definition-operations-matvec"></span><span id="index-0"></span><div class="proof-title"> <span class="proof-type">Definition 4.1</span>  <span class="proof-title-name">: &nbsp;Matrix times vector</span>  </div><div class="proof-content">
-<p>Given <span class="math notranslate nohighlight">\(\bfA\in\cmn{m}{n}\)</span> and <span class="math notranslate nohighlight">\(\bfx\in\complex^{n}\)</span>, the product <span class="math notranslate nohighlight">\(\bfA\bfx\)</span> is defined as</p>
-<div class="math notranslate nohighlight" id="equation-eq-operations-matvec">
-<span class="eqno">(4.1)<a class="headerlink" href="#equation-eq-operations-matvec" title="Permalink to this equation">¶</a></span>\[\bfA\bfx = x_1 \bfa_1 + x_2 \bfa_2 + \cdots + x_n \bfa_n = \sum_{j=1}^n x_j \bfa_j,\]</div>
-<p>where <span class="math notranslate nohighlight">\(\bfa_j\)</span> refers to the <span class="math notranslate nohighlight">\(j\)</span>th column of <span class="math notranslate nohighlight">\(\bfA\)</span>.</p>
-</div></div><div class="admonition attention">
+  <div class="section" id="change-of-basis">
+<span id="section-space-change"></span><h1><span class="section-number">5.3. </span>Change of basis<a class="headerlink" href="#change-of-basis" title="Permalink to this headline">¶</a></h1>
+<p>In the examples of <a class="reference internal" href="basis.html#section-space-basis"><span class="std std-numref">Section 5.2</span></a> we saw that questions about (finite-dimensional) abstract vector spaces can be intepreted in terms of ordinary vectors and matrices. The link between the different forms is the expression of vectors in terms of a basis.</p>
+<div class="section" id="coordinates">
+<h2><span class="section-number">5.3.1. </span>Coordinates<a class="headerlink" href="#coordinates" title="Permalink to this headline">¶</a></h2>
+<div class="proof proof-type-definition" id="id1">
+<span id="definition-basis-coordinates"></span><span id="index-0"></span><div class="proof-title"> <span class="proof-type">Definition 5.18</span>  <span class="proof-title-name">: &nbsp;Coordinates</span>  </div><div class="proof-content">
+<p>Suppose <span class="math notranslate nohighlight">\(\bfv_1,\ldots,\bfv_k\)</span> is a basis <span class="math notranslate nohighlight">\(\mathcal{B}\)</span> of vector space <span class="math notranslate nohighlight">\(V\)</span>. If <span class="math notranslate nohighlight">\(\bfu\in \mathcal{B}\)</span> satisfies</p>
+<div class="math notranslate nohighlight">
+\[
+\bfu = c_1 \bfv_1 + \cdots + c_k\bfv_k,
+\]</div>
+<p>then <span class="math notranslate nohighlight">\(c_1,\ldots,c_k\)</span> are the <strong>coordinates</strong> of <span class="math notranslate nohighlight">\(\bfu\)</span> with respect to <span class="math notranslate nohighlight">\(\mathcal{B}\)</span>, and we write</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+[\bfu]_\mathcal{B} = \begin{bmatrix}
+  c_1 \\ \vdots \\ c_k
+\end{bmatrix}.
+\end{split}\]</div>
+</div></div><div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Although we often write a basis as a set, and ordering of members doesn’t matter to a set, the ordering <em>does</em> matter when it comes to the coordinates, so be careful.</p>
+</div>
+<p>The coordinates of the polynomial <span class="math notranslate nohighlight">\(a+bx+cx^2\)</span> in <span class="math notranslate nohighlight">\(\mathcal{P}_2\)</span> are simply <span class="math notranslate nohighlight">\([a,b,c]\)</span>. For nonstandard bases, a little work is required.</p>
+<div class="proof proof-type-example" id="id2">
+<span id="example-change-coordinates"></span><div class="proof-title"> <span class="proof-type">Example 5.19</span>  </div><div class="proof-content">
+<p>Find the coordinates of <span class="math notranslate nohighlight">\(2+2x\)</span> in terms of the basis <span class="math notranslate nohighlight">\(\mathcal{B}\)</span> given by <span class="math notranslate nohighlight">\(1-x\)</span>, <span class="math notranslate nohighlight">\(1+x^2\)</span>, <span class="math notranslate nohighlight">\(x+2x^2\)</span>.</p>
+<details class="sphinx-bs dropdown card mb-3">
+<summary class="summary-title card-header">
+Solution<div class="summary-down docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="summary-up docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="summary-content card-body docutils">
+<p class="card-text">We have to express the given vector as a linear combination of the members of the basis:</p>
+<div class="math notranslate nohighlight">
+\[
+2+2x = c_1(1-x) + c_2(1+x^2) + c_3(x+2x^2).
+\]</div>
+<p class="card-text">We can easily turn this into a linear system by matching powers of <span class="math notranslate nohighlight">\(x\)</span>. But instead note that if we call the standard basis <span class="math notranslate nohighlight">\(\mathcal{T}\)</span>, then</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+[2+2x]_\mathcal{T} &amp;= c_1[1-x]_\mathcal{T} + c_2[1+x^2]_\mathcal{T} + c_3[x+2x^2]_\mathcal{T} \\ 
+\threevec{2}{2}{0} &amp;= c_1\threevec{1}{-1}{0} + c_2\threevec{1}{0}{1} + c_3\threevec{0}{1}{2} \\ 
+&amp;= \begin{bmatrix}
+  1 &amp; 1 &amp; 0 \\ -1 &amp; 0 &amp; 1 \\ 0 &amp; 1 &amp; 2
+\end{bmatrix} \threevec{c_1}{c_2}{c_3}.
+\end{split}\]</div>
+<p class="card-text">Solving the linear system gives <span class="math notranslate nohighlight">\([2+2x]_\mathcal{B} = \mathbf{c} = [-6,8,-4]\)</span>.</p>
+</div>
+</details></div></div><div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When working in <span class="math notranslate nohighlight">\(\real^n\)</span>, there is a subtle technical distinction between a vector and its coordinates in the standard basis. For example, if <span class="math notranslate nohighlight">\(\mathcal{B}\)</span> is the standard basis of <span class="math notranslate nohighlight">\(\real^2\)</span>, and <span class="math notranslate nohighlight">\(\bfv = 3\bfe_1 - 4 \bfe_2\)</span>, then we can say <span class="math notranslate nohighlight">\([\bfv]_\mathcal{B} = [3,-4]\)</span>, but it’s slightly improper to say that <span class="math notranslate nohighlight">\(\bfv = [3,-4]\)</span>. Rather than avoid this natural and convenient expression, however, we’ll just pause here to acknowledge that it bends the rules a bit.</p>
+</div>
+</div>
+<div class="section" id="change-of-basis-matrix">
+<h2><span class="section-number">5.3.2. </span>Change of basis matrix<a class="headerlink" href="#change-of-basis-matrix" title="Permalink to this headline">¶</a></h2>
+<p>Suppose <span class="math notranslate nohighlight">\(\mathcal{B}\)</span> is a basis of <span class="math notranslate nohighlight">\(\real^n\)</span> consisting of vectors <span class="math notranslate nohighlight">\(\bfv_1,\ldots,\bfv_n\)</span>. If <span class="math notranslate nohighlight">\(\bfu\in \real^n\)</span> has coordinate vector <span class="math notranslate nohighlight">\([\bfu]_\mathcal{B} = \mathbf{c}\)</span>, this means that</p>
+<div class="math notranslate nohighlight">
+\[
+\bfu = c_1 \bfv_1 + \cdots c_n \bfv_n.
+\]</div>
+<p>If we let <span class="math notranslate nohighlight">\(\mathcal{T}\)</span> stand for the standard basis of <span class="math notranslate nohighlight">\(\real^n\)</span>, then it’s also true that</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+[\bfu]_\mathcal{T} &amp;= c_1 [\bfv_1]_\mathcal{T} + \cdots c_n [\bfv_n]_\mathcal{T} \\ 
+&amp;= \bigl[ [\bfv_1]_\mathcal{T}\; [\bfv_2]_\mathcal{T}\;  \cdots\; [\bfv_n]_\mathcal{T} \bigr] \cdot \mathbf{c} \\ 
+&amp;= \bfV [\bfu]_\mathcal{B}.
+\end{split}\]</div>
+<p>That is, by letting <span class="math notranslate nohighlight">\(\bfV\)</span> be the columnwise expression of the members of <span class="math notranslate nohighlight">\(\mathcal{B}\)</span> in terms of basis <span class="math notranslate nohighlight">\(\mathcal{T}\)</span>, we find that left-multiplication by <span class="math notranslate nohighlight">\(\bfV\)</span> transforms <span class="math notranslate nohighlight">\(\mathcal{B}\)</span>-coordinates to <span class="math notranslate nohighlight">\(\mathcal{T}\)</span>-coordinates. It follows that also</p>
+<div class="math notranslate nohighlight">
+\[
+[\bfu]_\mathcal{B} = \bfV^{-1} [\bfu]_\mathcal{T}.
+\]</div>
+<p>We can be certain that the inverse exists, because the members of <span class="math notranslate nohighlight">\(\mathcal{B}\)</span> are independent.</p>
+<p>The textbook uses the notation <span class="math notranslate nohighlight">\(\bfV = \mathbf{P}_{\mathcal{T}←\mathcal{B}}\)</span> and <span class="math notranslate nohighlight">\(\bfV^{-1} = \mathbf{P}_{\mathcal{B}←\mathcal{T}}\)</span> to mean a <strong>change of basis matrix</strong>. But I prefer to write</p>
+<div class="math notranslate nohighlight">
+\[
+[\mathcal{B}]_\mathcal{T}
+\]</div>
+<p>for the matrix <span class="math notranslate nohighlight">\(\bfV\)</span> above. It means both to express the members of <span class="math notranslate nohighlight">\(\mathcal{B}\)</span> in terms of <span class="math notranslate nohighlight">\(\mathcal{T}\)</span>, and to transform a <span class="math notranslate nohighlight">\(\mathcal{B}\)</span>-coordinate vector to <span class="math notranslate nohighlight">\(\mathcal{T}\)</span>-coordinates. We summarize two key properties in this notation. While we started the discussion with <span class="math notranslate nohighlight">\(\real^n\)</span> as the vector space and <span class="math notranslate nohighlight">\(\mathcal{T}\)</span> as the standard basis, those assumptions are not necessary.</p>
+<div class="proof proof-type-theorem" id="id3">
+<span id="theorem-change-cob"></span><div class="proof-title"> <span class="proof-type">Theorem 5.20</span>  </div><div class="proof-content">
+<p>Suppose <span class="math notranslate nohighlight">\(\mathcal{B}\)</span> and <span class="math notranslate nohighlight">\(\mathcal{C}\)</span> are bases of vector space <span class="math notranslate nohighlight">\(V\)</span>. Let <span class="math notranslate nohighlight">\([\mathcal{B}]_\mathcal{C}\)</span> be the matrix whose columns are the <span class="math notranslate nohighlight">\(\mathcal{C}\)</span>-coefficients of the members of <span class="math notranslate nohighlight">\(\mathcal{B}\)</span>. Then for any <span class="math notranslate nohighlight">\(\bfv\in V\)</span>,</p>
+<div class="math notranslate nohighlight" id="equation-eq-change-system">
+<span class="eqno">(5.1)<a class="headerlink" href="#equation-eq-change-system" title="Permalink to this equation">¶</a></span>\[ [\bfv]_\mathcal{C} = [\mathcal{B}]_\mathcal{C} [\bfv]_\mathcal{B}.\]</div>
+<p>Moreover,</p>
+<div class="math notranslate nohighlight" id="equation-eq-change-inverse">
+<span class="eqno">(5.2)<a class="headerlink" href="#equation-eq-change-inverse" title="Permalink to this equation">¶</a></span>\[[\mathcal{C}]_\mathcal{B} = [\mathcal{B}]_\mathcal{C}^{-1}.\]</div>
+</div></div><div class="proof proof-type-example" id="id4">
+<span id="example-change-cob1"></span><div class="proof-title"> <span class="proof-type">Example 5.21</span>  </div><div class="proof-content">
+<p>The coefficent matrix appearing in <a class="reference internal" href="#example-change-coordinates"><span class="std std-numref">Example 5.19</span></a> is the matrix <span class="math notranslate nohighlight">\([\mathcal{B}]_\mathcal{T}\)</span> for that problem.</p>
+</div></div><div class="proof proof-type-example" id="id5">
+<span id="example-change-cob2"></span><div class="proof-title"> <span class="proof-type">Example 5.22</span>  </div><div class="proof-content">
+<p>Both <span class="math notranslate nohighlight">\(\mathcal{B}=(1,1-x)\)</span> and <span class="math notranslate nohighlight">\(\mathcal{C}=(1+x,x)\)</span> are bases of <span class="math notranslate nohighlight">\(\mathcal{P}_2\)</span>. Find the matrix that transforms <span class="math notranslate nohighlight">\(\mathcal{C}\)</span>-coordinates to <span class="math notranslate nohighlight">\(\mathcal{B}\)</span>-coordinates.</p>
+<details class="sphinx-bs dropdown card mb-3">
+<summary class="summary-title card-header">
+Solution<div class="summary-down docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="summary-up docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="summary-content card-body docutils">
+<p class="card-text">It may be easiest to use the standard basis <span class="math notranslate nohighlight">\(\mathcal{T}=(1,x)\)</span> as an intermediary, because that is how both bases in the problem are expressed. We have</p>
+<div class="math notranslate nohighlight">
+\[
+[\mathcal{B}]_\mathcal{T} = \twomat{1}{1}{0}{-1}, \qquad [\mathcal{C}]_\mathcal{T} = \twomat{1}{0}{1}{1}.
+\]</div>
+<p class="card-text">For any vector <span class="math notranslate nohighlight">\(\bfv\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[
+[\bfv]_\mathcal{B} = [\mathcal{T}]_\mathcal{B} [\bfv]_\mathcal{T} =  [\mathcal{T}]_\mathcal{B} \, [\mathcal{C}]_\mathcal{T} [\bfv]_\mathcal{C}.
+\]</div>
+<p class="card-text">Hence</p>
+<div class="math notranslate nohighlight">
+\[
+[\mathcal{C}]_\mathcal{B} = [\mathcal{T}]_\mathcal{B} \, [\mathcal{C}]_\mathcal{T} = \twomat{1}{1}{0}{-1}^{-1} \twomat{1}{0}{1}{1} = \twomat{2}{1}{-1}{-1}
+\]</div>
+</div>
+</details></div></div><div class="admonition attention">
 <p class="admonition-title">Attention</p>
-<p>In order for <span class="math notranslate nohighlight">\(\bfA\bfx\)</span> to be defined, the number of columns in <span class="math notranslate nohighlight">\(\bfA\)</span> has to be the same as the number of elements in <span class="math notranslate nohighlight">\(\bfx\)</span>.</p>
-</div>
-<p>Note that when <span class="math notranslate nohighlight">\(\bfA\)</span> is <span class="math notranslate nohighlight">\(m\times n\)</span>, then <span class="math notranslate nohighlight">\(\bfx\)</span> must be in <span class="math notranslate nohighlight">\(\real^n\)</span> or <span class="math notranslate nohighlight">\(\complex^n\)</span>, and <span class="math notranslate nohighlight">\(\bfA\bfx\)</span> has dimension <span class="math notranslate nohighlight">\(m\)</span>.</p>
-<div class="proof proof-type-example" id="id4">
-<div class="proof-title"> <span class="proof-type">Example 4.2</span>  </div><div class="proof-content">
-<p>Calculate the product</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}\begin{bmatrix} 
-1 &amp; -1 &amp; -1 \\ 3 &amp; -2 &amp; 0 \\ 1 &amp; -2 &amp; -1 \end{bmatrix} \threevec{-1}{2}{-1}.\end{split}\]</div>
-<details class="sphinx-bs dropdown card mb-3">
-<summary class="summary-title card-header">
-Solution<div class="summary-down docutils">
-<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
-<div class="summary-up docutils">
-<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
-</summary><div class="summary-content card-body docutils">
-<p class="card-text">The product is equivalent to</p>
-<div class="math notranslate nohighlight">
-\[(-1) \threevec{1}{3}{1} + (2) \threevec{-1}{-2}{-2} + (-1) \threevec{-1}{0}{-1} = \threevec{-2}{-7}{-4}.\]</div>
-<p class="card-text">We don’t often write out the product in this much detail. Instead we “zip together” the rows of the matrix with the entries of the vector:</p>
-<div class="math notranslate nohighlight">
-\[\threevec{(-1)(1)+(2)(-1)+(-1)(-1)}{(-1)(3)+(2)(-2)+(-1)(0)}{(-1)(1)+(2)(-2)+(-1)(-1)}  = \threevec{-2}{-7}{-4}.\]</div>
-<p class="card-text">You might recognize the “zip” expressions in this vector as dot products from vector calculus.</p>
-</div>
-</details></div></div><div class="section" id="properties">
-<h3>Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h3>
-<p>What justifies calling this operation multiplication? In large part, it’s the natural distributive properties</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{align*}
-\bfA(\bfx+\bfy) &amp; =  \bfA\bfx + \bfA\bfy,\\
-(\bfA+\bfB)\bfx &amp; =  \bfA\bfx + \bfB\bfx,
-\end{align*}\]</div>
-<p>which can be checked with a little effort. It’s also true that <span class="math notranslate nohighlight">\(\bfA(c\bfx)=c(\bfA\bfx)\)</span> for any scalar <span class="math notranslate nohighlight">\(c\)</span>. However, there is a big departure from multiplication as we usually know it.</p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>Matrix-vector products are not commutative. In fact, <span class="math notranslate nohighlight">\(\bfx\bfA\)</span> is not defined even when <span class="math notranslate nohighlight">\(\bfA\bfx\)</span> is.</p>
-</div>
-</div>
-<div class="section" id="connection-to-linear-systems">
-<h3>Connection to linear systems<a class="headerlink" href="#connection-to-linear-systems" title="Permalink to this headline">¶</a></h3>
-<p>The following observation finally brings us back around to the introduction of linear systems through the insultingly simple scalar equation <span class="math notranslate nohighlight">\(ax=b\)</span>.</p>
-<div class="proof proof-type-observation">
-<div class="proof-title"> <span class="proof-type">Observation </span>  </div><div class="proof-content">
-<p>The linear system with coefficient matrix <span class="math notranslate nohighlight">\(\bfA\)</span>, right-side vector <span class="math notranslate nohighlight">\(\bfb\)</span>, and solution <span class="math notranslate nohighlight">\(\bfx\)</span> is equivalent to the equation <span class="math notranslate nohighlight">\(\bfA\bfx=\bfb\)</span>.</p>
-</div></div><p>Bringing together more of our definitions:</p>
-<div class="proof proof-type-theorem" id="id5">
-<div class="proof-title"> <span class="proof-type">Theorem 4.3</span>  </div><div class="proof-content">
-<ol class="simple">
-<li><p>The linear system <span class="math notranslate nohighlight">\(\bfA\bfx=\bfb\)</span> is consistent if and only if <span class="math notranslate nohighlight">\(\bfb\)</span> is in the span of the columns of <span class="math notranslate nohighlight">\(\bfA\)</span>.</p></li>
-<li><p>The null space of a matrix contains nonzero vectors if and only if the columns of the matrix are linearly dependent.</p></li>
-</ol>
-</div></div></div>
-</div>
-<div class="section" id="matrix-multiplication">
-<h2><span class="section-number">4.1.2. </span>Matrix multiplication<a class="headerlink" href="#matrix-multiplication" title="Permalink to this headline">¶</a></h2>
-<p>We can think of vectors as a special kind of matrix, and accordingly we can generalize matrix-vector products to matrix-matrix products. There are many equivalent ways to define these products. Here is the one we start with.</p>
-<div class="proof proof-type-definition" id="id6">
-<div class="proof-title"> <span class="proof-type">Definition 4.4</span>  <span class="proof-title-name">: &nbsp;Matrix times matrix</span>  </div><div class="proof-content">
-<p>If <span class="math notranslate nohighlight">\(\bfA\)</span> is <span class="math notranslate nohighlight">\(m\times n\)</span> and <span class="math notranslate nohighlight">\(\bfB\)</span> is <span class="math notranslate nohighlight">\(n\times p\)</span>, then the product <span class="math notranslate nohighlight">\(\bfA\bfB\)</span> is defined as</p>
-<div class="math notranslate nohighlight" id="equation-matrix-mult">
-<span class="eqno">(4.2)<a class="headerlink" href="#equation-matrix-mult" title="Permalink to this equation">¶</a></span>\[\bfA\mathbf{B}
-= \bfA \begin{bmatrix} \mathbf{b}_1 &amp; \mathbf{b}_2 &amp; \cdots &amp; \mathbf{b}_p \end{bmatrix}
-= \begin{bmatrix} \bfA\mathbf{b}_1 &amp; \bfA\mathbf{b}_2 &amp; \cdots &amp; \bfA\mathbf{b}_p \end{bmatrix}.\]</div>
-</div></div><p>In words, a matrix-matrix product is the horizontal concatenation of matrix-vector products involving the columns of the right-hand matrix.</p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>In order to define <span class="math notranslate nohighlight">\(\bfA\bfB\)</span>, we require that the number of columns in <span class="math notranslate nohighlight">\(\bfA\)</span> is the same as the number of rows in <span class="math notranslate nohighlight">\(\bfB\)</span>. That is, the <em>inner dimensions</em> must agree. The result has size determined by the <em>outer dimensions</em> of the original matrices.</p>
-</div>
-<p>When we compute a matrix product by hand, we usually don’t write out the above. Instead we use a more compact definition for the individual entries of <span class="math notranslate nohighlight">\(\mathbf{C} = \bfA\bfB\)</span>,</p>
-<div class="math notranslate nohighlight" id="equation-matrix-mult-element">
-<span class="eqno">(4.3)<a class="headerlink" href="#equation-matrix-mult-element" title="Permalink to this equation">¶</a></span>\[C_{ij} = \sum_{k=1}^n a_{ik}b_{kj}, \qquad i=1,\ldots,m, \quad j=1,\ldots,p.\]</div>
-<p>The sum to get a single <span class="math notranslate nohighlight">\(C_{ij}\)</span> is what we called a “zip”, or essentially a dot product, of row <span class="math notranslate nohighlight">\(i\)</span> from <span class="math notranslate nohighlight">\(\bfA\)</span> with column <span class="math notranslate nohighlight">\(j\)</span> from <span class="math notranslate nohighlight">\(\bfB\)</span>.</p>
-<div class="proof proof-type-example" id="id7">
-<div class="proof-title"> <span class="proof-type">Example 4.5</span>  </div><div class="proof-content">
-<p>Find <span class="math notranslate nohighlight">\(\mathbf{A}\mathbf{B}\)</span> if</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}\bfA = \begin{bmatrix}
-1 &amp; -1 \\ 0 &amp; 2 \\ -3 &amp; 1
-\end{bmatrix}, \qquad
-\mathbf{B} = \begin{bmatrix}
-2 &amp; -1 &amp; 0 &amp; 4 \\ 1 &amp; 1 &amp; 3 &amp; 2
-\end{bmatrix}.\end{split}\]</div>
-<details class="sphinx-bs dropdown card mb-3">
-<summary class="summary-title card-header">
-Solution<div class="summary-down docutils">
-<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
-<div class="summary-up docutils">
-<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
-</summary><div class="summary-content card-body docutils">
-<p class="card-text">Using <a class="reference internal" href="#equation-matrix-mult-element">(4.3)</a>,</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{align*}
-\bfA\mathbf{B} &amp;= \begin{bmatrix}
-(1)(2) + (-1)(1) &amp; (1)(-1) + (-1)(1) &amp; (1)(0) + (-1)(3) &amp; (1)(4) + (-1)(2) \\
-(0)(2) + (2)(1) &amp; (0)(-1) + (2)(1) &amp; (0)(0) + (2)(3) &amp; (0)(4) + (2)(2) \\
-(-3)(2) + (1)(1) &amp; (-3)(-1) + (1)(1) &amp; (-3)(0) + (1)(3) &amp; (-3)(4) + (1)(2)
-\end{bmatrix} \\
-&amp; = \begin{bmatrix}
-1 &amp; -2 &amp; -3 &amp; 2 \\ 2 &amp; 2 &amp; 6 &amp; 4 \\ -5 &amp; 4 &amp; 3 &amp; -10
-\end{bmatrix}
-\end{align*}\]</div>
-<p class="card-text">Observe that</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}\bfA \begin{bmatrix} 2 \\ 1 \end{bmatrix} = 2 \begin{bmatrix} 1 \\ 0 \\ -3
-\end{bmatrix} + 1 \begin{bmatrix} -1 \\ 2 \\ 1 \end{bmatrix}
-= \begin{bmatrix} 1 \\ 2 \\ -5 \end{bmatrix},\end{split}\]</div>
-<p class="card-text">and so on.</p>
-</div>
-</details></div></div><div class="section" id="id1">
-<h3>Properties<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
-<p>First, the bad news.</p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>Matrix multiplication is not commutative. If <span class="math notranslate nohighlight">\(\bfA\bfB\)</span> is defined, then <span class="math notranslate nohighlight">\(\bfB\bfA\)</span> may not be, and even if it is, it may not equal <span class="math notranslate nohighlight">\(\bfA\bfB\)</span>. Put another way, you cannot simply change the order of the terms in a matrix product without some explicit justification.</p>
-</div>
-<p>Fortunately, other familiar and handy properties of multiplication do come along for the ride:</p>
-<ol class="simple">
-<li><p><span class="math notranslate nohighlight">\((\bfA\bfB)\mathbf{C}=\bfA(\bfB \mathbf{C})\qquad\)</span>  (association)</p></li>
-<li><p><span class="math notranslate nohighlight">\(\bfA(\bfB+\mathbf{C}) = \bfA\bfB + \bfA\mathbf{C}\qquad\)</span>  (right distribution)</p></li>
-<li><p><span class="math notranslate nohighlight">\((\bfA+\bfB)\mathbf{C} = \bfA\mathbf{C} + \bfB\mathbf{C}\qquad\)</span>   (left distribution)</p></li>
-</ol>
-<p>These properties are easy to demonstrate computationally. (But keep in mind that a numerical demonstration, or an algebraic one at particular sizes, is not a general proof.)</p>
-</div>
-</div>
-<div class="section" id="transpose">
-<h2><span class="section-number">4.1.3. </span>Transpose<a class="headerlink" href="#transpose" title="Permalink to this headline">¶</a></h2>
-<p>Here’s a curious operation that we won’t be using much, but it is important enough to know about.</p>
-<div class="proof proof-type-definition" id="id8">
-<span id="definition-algebra-transpose"></span><span id="index-1"></span><div class="proof-title"> <span class="proof-type">Definition 4.6</span>  <span class="proof-title-name">: &nbsp;Transpose of a matrix</span>  </div><div class="proof-content">
-<p>The <strong>transpose</strong> of <span class="math notranslate nohighlight">\(m\times n\)</span> matrix <span class="math notranslate nohighlight">\(\bfA\)</span>, whose elements are <span class="math notranslate nohighlight">\(A_{ij}\)</span>, is the <span class="math notranslate nohighlight">\(n\times m\)</span> matrix <span class="math notranslate nohighlight">\(\bfA^T\)</span> with elements <span class="math notranslate nohighlight">\(A_{ji}\)</span>.</p>
-</div></div><p>When taking the transpose, rows become columns, and vice versa.</p>
-<div class="section" id="id2">
-<h3>Properties<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
-<div class="proof proof-type-theorem" id="id9">
-<span id="theorem-algebra-transpose"></span><div class="proof-title"> <span class="proof-type">Theorem 4.7</span>  </div><div class="proof-content">
-<p>If <span class="math notranslate nohighlight">\(\bfA\)</span> and <span class="math notranslate nohighlight">\(\bfB\)</span> are matrices of compatible sizes, and <span class="math notranslate nohighlight">\(c\)</span> is a number, then</p>
-<ol class="simple">
-<li><p><span class="math notranslate nohighlight">\((\bfA^T)^T = \bfA\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\((\bfA+\bfB)^T = \bfA^T + \bfB^T\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\((c\bfA^T) = c(\bfA^T)\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\((\bfA\bfB)^T = \bfB^T \bfA^T\)</span></p></li>
-</ol>
-</div></div><p>Only the last of these is not intuitively clear.</p>
+<p>There’s not a whole lot going on, but it can get confusing. Right-to-left in the example above, multiplying by <span class="math notranslate nohighlight">\([\mathcal{C}]_\mathcal{T}\)</span> gets you from <span class="math notranslate nohighlight">\(\mathcal{C}\)</span>-coordinates to <span class="math notranslate nohighlight">\(\mathcal{T}\)</span>-coordinates, and then multiplying by <span class="math notranslate nohighlight">\([\mathcal{B}]_\mathcal{T}^{-1}\)</span> takes you from <span class="math notranslate nohighlight">\(\mathcal{T}\)</span> to <span class="math notranslate nohighlight">\(\mathcal{B}\)</span>. The notation works by “cancelling” normal scripts with subscripts.</p>
 </div>
 </div>
 </div>
@@ -641,7 +575,7 @@ Solution<div class="summary-down docutils">
         },
         kernelOptions: {
             kernelName: "julia-1.6",
-            path: "./matrix"
+            path: "./space"
         },
         predefinedOutput: true
     }
@@ -653,8 +587,8 @@ Solution<div class="summary-down docutils">
         
         <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="overview.html" title="previous page"><span class="section-number">4. </span>Matrix properties</a>
-    <a class='right-next' id="next-link" href="inverse.html" title="next page"><span class="section-number">4.2. </span>Identity and inverse</a>
+    <a class='left-prev' id="prev-link" href="basis.html" title="previous page"><span class="section-number">5.2. </span>Basis and dimension</a>
+    <a class='right-next' id="next-link" href="../ode_system/overview.html" title="next page"><span class="section-number">6. </span>Linear ODE systems</a>
 
         </div>
         

@@ -82,3 +82,12 @@ If $\bfA$ and $\bfB$ are matrices of compatible sizes, and $c$ is a number, then
 
 Only the last of these is not intuitively clear.
 
+```{index} ! symmetric matrix
+```
+
+(definition-algebra-symmetric)=
+::::{proof:definition} Symmetric matrix
+An $n\times n$ matrix $\bfA$ is **symmetric** if $\bfA^T=\bfA$. Elementwise, this means $A_{ij}=A_{ji}$ for all possible $i$ and $j$.
+::::
+
+A symmetric matrix has mirror symmetry about its diagonal. Such matrices arise when elements of a system interact symmetrically, such as with gravitational or electrostatic attraction.
