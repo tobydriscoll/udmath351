@@ -37,7 +37,7 @@ These are notes on MATH 351 at UD by Toby Driscoll. Copyrighted, all rights rese
 | Oct 1  | **EXAM 1**                                       | Goals A1–A13, B1–B10 |                    |
 | Oct 4  | [Elimination/RRE form](linear_system/RREF)       | 2.2                  |                    |
 | Oct 6  | [RRE form](linear_system/RREF)                   | 2.2                  |                    |
-| Oct 8  | [Homogeneous systems](linear_system/homogeneous) | 2.2, 2.3             |                    |
+| Oct 8  | [Homogeneous systems](linear_system/nullspace)   | 2.2, 2.3             |                    |
 | Oct 11 | [Algebraic operations](matrix/operations)        | 3.1                  |                    |
 | Oct 13 | [Algebraic operations](matrix/operations)        | 3.1, 3.2             |                    |
 | Oct 18 | [Identity and inverse](matrix/inverse)           | 3.3                  |                    |
