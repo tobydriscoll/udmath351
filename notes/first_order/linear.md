@@ -66,7 +66,7 @@ In the present context we are interested in the operator
 
 ```{math}
 :label: eq-linear-operator
-\opA[x] = x' - P(t)x,
+\opA[x] = x' + P(t)x,
 ```
 
 whose linearity you can easily check for yourself against the definition. We can now express the ODE {eq}`eq-linear-def` simply as
