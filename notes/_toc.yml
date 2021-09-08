@@ -1,59 +1,51 @@
 format: jb-book
 root: frontmatter
-parts:
-- caption: Scalar ODEs
+options:
   numbered: 3
-  chapters:
-  - file: first_order/overview
-    sections:
-    - file: first_order/preview
-    - file: first_order/ivp
-    - file: first_order/qualitative
-    - file: first_order/separable
-    - file: first_order/linear
-    - file: first_order/homogeneous
-    - file: first_order/variation_parameters
-    - file: first_order/modeling
-  - file: second_linear/overview
-    sections:
-    - file: second_linear/structure
-    - file: second_linear/const_coeff
-    - file: second_linear/complex
-    - file: second_linear/variation_parameters
-    - file: second_linear/undetermined
-    - file: second_linear/oscillators
-- caption: Linear algebra
-  numbered: 3
-  chapters:
-  - file: linear_system/overview
-    sections:
-    - file: linear_system/problem
-    - file: linear_system/row_elimination
-    - file: linear_system/RREF
-    - file: linear_system/nullspace
-  - file: matrix/overview
-    sections:
-    - file: matrix/operations
-    - file: matrix/inverse
-    - file: matrix/subspaces
-    - file: matrix/determinants
-    - file: matrix/eigenvalues
-    - file: matrix/computing
-    - file: matrix/diagonalization
-  - file: space/overview
-    sections:
-    - file: space/vectors
-    - file: space/basis
-    - file: space/change
-- caption: Linear ODE systems
-  numbered: 3
-  chapters:
-  - file: ode_system/overview
-    sections:
-    - file: ode_system/order_dimension
-    - file: ode_system/structure
-    - file: ode_system/homogeneous
-    - file: ode_system/const_coeff
-    - file: ode_system/phase_plane
-    - file: ode_system/matrix_exp
-    - file: ode_system/linearization
+chapters:
+- file: first_order/overview
+  sections:
+  - file: first_order/preview
+  - file: first_order/ivp
+  - file: first_order/qualitative
+  - file: first_order/separable
+  - file: first_order/linear
+  - file: first_order/homogeneous
+  - file: first_order/variation_parameters
+  - file: first_order/modeling
+- file: second_linear/overview
+  sections:
+  - file: second_linear/structure
+  - file: second_linear/const_coeff
+  - file: second_linear/complex
+  - file: second_linear/variation_parameters
+  - file: second_linear/undetermined
+  - file: second_linear/oscillators
+- file: linear_system/overview
+  sections:
+  - file: linear_system/problem
+  - file: linear_system/row_elimination
+  - file: linear_system/RREF
+  - file: linear_system/nullspace
+- file: matrix/overview
+  sections:
+  - file: matrix/operations
+  - file: matrix/inverse
+  - file: matrix/subspaces
+  - file: matrix/determinants
+  - file: matrix/eigenvalues
+  - file: matrix/computing
+  - file: matrix/diagonalization
+- file: space/overview
+  sections:
+  - file: space/vectors
+  - file: space/basis
+  - file: space/change
+- file: ode_system/overview
+  sections:
+  - file: ode_system/intro
+  - file: ode_system/structure
+  - file: ode_system/const_coeff
+  - file: ode_system/phase_plane
+  - file: ode_system/matrix_exp
+  - file: ode_system/linearization
