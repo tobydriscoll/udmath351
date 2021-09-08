@@ -49,3 +49,4 @@ chapters:
   - file: ode_system/phase_plane
   - file: ode_system/matrix_exp
   - file: ode_system/linearization
+- file: genindex
