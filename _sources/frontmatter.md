@@ -11,7 +11,7 @@ These are notes on MATH 351 at UD by Toby Driscoll. Copyrighted, all rights rese
 | Sep 1  | [Intro](first_order/preview)                                | --    |                    |
 | Sep 1  | [IVPs](first_order/ivp)                                     | --    |                    |
 | Sep 3  | [Qualitative methods](first_order/qualitative)              | 2.1   |                    |
-| Sep 3  | [Separable equations](first_order/separable)                | 2.2   |                    |
+| Sep 8  | [Separable equations](first_order/separable)                | 2.2   |                    |
 | Sep 8  | [Linear equations](first_order/linear)                      | 2.3   |                    |
 | Sep 10 | [Homogeneous problems](first_order/homogeneous)             | (2.3) |                    |
 | Sep 10 | [Variation of parameters](first_order/variation_parameters) | (2.3) |                    |
