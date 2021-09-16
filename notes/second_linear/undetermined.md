@@ -155,9 +155,7 @@ The examples above are the fundamental ones. If you have a forcing function that
 
 ## Limitations
 
-There are rules for more intricate combinations of the same functions, but we won't go into them. At some point the calculus/algebra becomes pretty intense.
-
-Furthermore, we are not going to cover a refinement of the rules necessary in certain cases where the naive approach fails.
+There are rules for more complicated combinations of the same functions, but we won't go into them. At some point the calculus/algebra becomes pretty intense. Furthermore, we are not going to cover a refinement of the rules necessary in certain circumstances where our simplified version fails.
 
 (example-undetermined-resonance)=
 ::::{proof:example}
@@ -170,16 +168,17 @@ $$
 which leads to the conclusion that $B=0$ and, if $\omega^2 \neq 1$, $A=1/(1-\omega^2)$. However, if $\omega = 1$, the substitution would leave us with $0=\cos(t)$, which is impossible to satisfy for all $t$.
 ::::
 
-The failure of {numref}`Example {number} <example-undetermined-resonance>` at $\omega = 1$ was due to the fact that the $x_p$ we tried is actually a homogeneous solution. This is not too hard to fix within the method, but we will just defer to variation of parameters for such cases. 
+The failure of {numref}`Example {number} <example-undetermined-resonance>` at $\omega = 1$ was due to the fact that the $x_p$ we tried is actually a homogeneous solution. This is not too hard to fix, but a general description is not worth the effort; we can always fall back to variation of parameters. 
 
+(example-undetermined-resonance-fix)=
 ::::{proof:example}
-We can make the tricky case $x''+x=\cos(t)$ quite easy by relating it to complex exponentials. Since $\cos(t)$ is the real part of $e^{it}$, the solution we seek is the real part of any particular solution of 
+We can make the tricky case $x''+x=\cos(t)$ from {numref}`Example {number} <example-undetermined-resonance>` quite easy by relating it to complex exponentials. Since $\cos(t)$ is the real part of $e^{it}$, it follows that the solution we seek is the real part of any particular solution of 
 
 $$
 x'' + x = e^{it}.
 $$
 
-Referring to {numref}`Example {number} <example-variation_parameters-resonance>` with $\lambda=i$, we found a particular solution in this case is
+Referring to {numref}`Example {number} <example-variation_parameters-resonance>` with $\lambda=i$, we use variation of parameters to find the particular solution
 
 $$
 \frac{1}{2i} t e^{i t} = -\frac{i}{2}t [\cos(t) + i\sin (t)].
