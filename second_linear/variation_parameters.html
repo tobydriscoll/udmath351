@@ -464,9 +464,9 @@ x_1'u_1' + x_2'u_2' &amp;= f.
 <p>Let</p>
 <div class="math notranslate nohighlight">
 \[
-u_1' = \frac{-x_2 f}{W}, \quad u_2' = \frac{x_1 f}{W},
+u_1 = \int \frac{-x_2 f}{W}\, dt, \quad u_2 = \int \frac{x_1 f}{W}\, dt,
 \]</div>
-<p>where <span class="math notranslate nohighlight">\(W\)</span> is the Wronskian of homogeneous solutions <span class="math notranslate nohighlight">\(x_1\)</span> and <span class="math notranslate nohighlight">\(x_2\)</span>. Then a particular solution of <span class="math notranslate nohighlight">\(\opA[x]=f\)</span> is</p>
+<p>where <span class="math notranslate nohighlight">\(W\)</span> is the Wronskian of independent homogeneous solutions <span class="math notranslate nohighlight">\(x_1\)</span> and <span class="math notranslate nohighlight">\(x_2\)</span>. Then a particular solution of <span class="math notranslate nohighlight">\(\opA[x]=f\)</span> is</p>
 <div class="math notranslate nohighlight">
 \[
 x_p(t) = u_1(t) x_1(t) + u_2(t) x_2(t).
@@ -503,7 +503,7 @@ x_p = (-2e^{-t})(e^t) + (-2e^t)(e^{-t}) = -4.
 </div>
 </details></div></div><div class="proof proof-type-example" id="id3">
 <span id="example-variation-parameters-resonance"></span><div class="proof-title"> <span class="proof-type">Example 2.30</span>  </div><div class="proof-content">
-<p>Find a particular solution of <span class="math notranslate nohighlight">\(x'' - \lambda^2 x = 2 e^{\lambda t}\)</span>.</p>
+<p>Find a particular solution of <span class="math notranslate nohighlight">\(x'' - \lambda^2 x = 2 e^{\lambda t}\)</span>, where <span class="math notranslate nohighlight">\(\lambda\neq 0\)</span>.</p>
 <details class="sphinx-bs dropdown card mb-3">
 <summary class="summary-title card-header">
 Solution<div class="summary-down docutils">

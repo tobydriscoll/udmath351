@@ -491,7 +491,7 @@ x'' = F(t,x,x'),
 <p>Consider again the trivial problem <span class="math notranslate nohighlight">\(x''=0\)</span>. It’s certainly true that <span class="math notranslate nohighlight">\(x=t\)</span> and <span class="math notranslate nohighlight">\(x=5t\)</span> are different solutions of this equation. So it would be tempting to write the general solution of this homogeneous problem as</p>
 <div class="math notranslate nohighlight">
 \[
-c_1\cdot (t) + c2\cdot (5t)
+c_1\cdot (t) + c_2\cdot (5t)
 \]</div>
 <p>for arbitrary constants <span class="math notranslate nohighlight">\(c_1\)</span> and <span class="math notranslate nohighlight">\(c_2\)</span>. While this expression does always give a solution, it doesn’t give all of them, such as <span class="math notranslate nohighlight">\(x=2\)</span>.</p>
 <p>The issue is that <span class="math notranslate nohighlight">\(t\)</span> and <span class="math notranslate nohighlight">\(5t\)</span> are not “different enough,” in a way we now make precise.</p>
@@ -559,17 +559,17 @@ W(t) = \twodet{\cos(t)}{\sin(t)}{-\sin(t)}{\cos(t)} = \cos^2(t) + \sin^2(t) = 1,
 <p id="index-3">Now we can state precisely what goes into a general solution in the linear, second-order case.</p>
 <div class="proof proof-type-theorem" id="id9">
 <span id="theorem-structure-general"></span><div class="proof-title"> <span class="proof-type">Theorem 2.9</span>  </div><div class="proof-content">
-<p>Suppose <span class="math notranslate nohighlight">\(x_1\)</span> and <span class="math notranslate nohighlight">\(x_2\)</span> are linearly independent solutions of the second-order linear problem <span class="math notranslate nohighlight">\(\opA[]=0\)</span>. Then the general solution of <span class="math notranslate nohighlight">\(\opA[]=0\)</span> is</p>
+<p>Suppose <span class="math notranslate nohighlight">\(x_1\)</span> and <span class="math notranslate nohighlight">\(x_2\)</span> are linearly independent solutions of the second-order linear problem <span class="math notranslate nohighlight">\(\opA[x]=0\)</span>. Then the general solution of <span class="math notranslate nohighlight">\(\opA[x]=0\)</span> is</p>
 <div class="math notranslate nohighlight">
 \[
 x(t) = c_1 x_1(t) + c_2 x_2(t),
 \]</div>
-<p>where <span class="math notranslate nohighlight">\(c_1\)</span> and <span class="math notranslate nohighlight">\(c_2\)</span> are arbitrary constants. Furthermore, the general solution of the nonhomogeneous problem <span class="math notranslate nohighlight">\(\opA[]=f\)</span> is</p>
+<p>where <span class="math notranslate nohighlight">\(c_1\)</span> and <span class="math notranslate nohighlight">\(c_2\)</span> are arbitrary constants. Furthermore, the general solution of the nonhomogeneous problem <span class="math notranslate nohighlight">\(\opA[x]=f\)</span> is</p>
 <div class="math notranslate nohighlight">
 \[
 x(t) = x_h(t) + x_p(t),
 \]</div>
-<p>where <span class="math notranslate nohighlight">\(x_h\)</span> is the general homogeneous solution and <span class="math notranslate nohighlight">\(x_p\)</span> is any one particular solution of <span class="math notranslate nohighlight">\(\opA[]=f\)</span>.</p>
+<p>where <span class="math notranslate nohighlight">\(x_h\)</span> is the general homogeneous solution and <span class="math notranslate nohighlight">\(x_p\)</span> is any one particular solution of <span class="math notranslate nohighlight">\(\opA[x]=f\)</span>.</p>
 </div></div></div>
 </div>
 

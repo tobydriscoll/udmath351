@@ -570,8 +570,7 @@ x(t) = c_1 + c_2 e^{-t} - \frac{1}{10}\cos(2t) - \frac{1}{5}\sin(2t).
 </details></div></div><p>The examples above are the fundamental ones. If you have a forcing function that is a sum of terms from <a class="reference internal" href="#table-undetermined-forcing"><span class="std std-numref">Table 2.1</span></a>, then you can treat each term separately as above and add together the particular solutions found.</p>
 <div class="section" id="limitations">
 <h2><span class="section-number">2.5.1. </span>Limitations<a class="headerlink" href="#limitations" title="Permalink to this headline">¶</a></h2>
-<p>There are rules for more intricate combinations of the same functions, but we won’t go into them. At some point the calculus/algebra becomes pretty intense.</p>
-<p>Furthermore, we are not going to cover a refinement of the rules necessary in certain cases where the naive approach fails.</p>
+<p>There are rules for more complicated combinations of the same functions, but we won’t go into them. At some point the calculus/algebra becomes pretty intense. Furthermore, we are not going to cover a refinement of the rules necessary in certain circumstances where our simplified version fails.</p>
 <div class="proof proof-type-example" id="id5">
 <span id="example-undetermined-resonance"></span><div class="proof-title"> <span class="proof-type">Example 2.35</span>  </div><div class="proof-content">
 <p>The equation <span class="math notranslate nohighlight">\(x''+x=\cos(\omega t)\)</span> suggests the particular solution <span class="math notranslate nohighlight">\(x_p(t)=A\cos(\omega t)+B\sin(\omega t)\)</span>. Upon substitution,</p>
@@ -580,15 +579,15 @@ x(t) = c_1 + c_2 e^{-t} - \frac{1}{10}\cos(2t) - \frac{1}{5}\sin(2t).
 [-\omega^2 A\cos(\omega t) - \omega^2 B\sin(\omega t) ] + [ A\cos(\omega t) + B\sin(\omega t)] =\cos(\omega t),
 \]</div>
 <p>which leads to the conclusion that <span class="math notranslate nohighlight">\(B=0\)</span> and, if <span class="math notranslate nohighlight">\(\omega^2 \neq 1\)</span>, <span class="math notranslate nohighlight">\(A=1/(1-\omega^2)\)</span>. However, if <span class="math notranslate nohighlight">\(\omega = 1\)</span>, the substitution would leave us with <span class="math notranslate nohighlight">\(0=\cos(t)\)</span>, which is impossible to satisfy for all <span class="math notranslate nohighlight">\(t\)</span>.</p>
-</div></div><p>The failure of <a class="reference internal" href="#example-undetermined-resonance"><span class="std std-numref">Example 2.35</span></a> at <span class="math notranslate nohighlight">\(\omega = 1\)</span> was due to the fact that the <span class="math notranslate nohighlight">\(x_p\)</span> we tried is actually a homogeneous solution. This is not too hard to fix within the method, but we will just defer to variation of parameters for such cases.</p>
+</div></div><p>The failure of <a class="reference internal" href="#example-undetermined-resonance"><span class="std std-numref">Example 2.35</span></a> at <span class="math notranslate nohighlight">\(\omega = 1\)</span> was due to the fact that the <span class="math notranslate nohighlight">\(x_p\)</span> we tried is actually a homogeneous solution. This is not too hard to fix, but a general description is not worth the effort; we can always fall back to variation of parameters.</p>
 <div class="proof proof-type-example" id="id6">
-<div class="proof-title"> <span class="proof-type">Example 2.36</span>  </div><div class="proof-content">
-<p>We can make the tricky case <span class="math notranslate nohighlight">\(x''+x=\cos(t)\)</span> quite easy by relating it to complex exponentials. Since <span class="math notranslate nohighlight">\(\cos(t)\)</span> is the real part of <span class="math notranslate nohighlight">\(e^{it}\)</span>, the solution we seek is the real part of any particular solution of</p>
+<span id="example-undetermined-resonance-fix"></span><div class="proof-title"> <span class="proof-type">Example 2.36</span>  </div><div class="proof-content">
+<p>We can make the tricky case <span class="math notranslate nohighlight">\(x''+x=\cos(t)\)</span> from <a class="reference internal" href="#example-undetermined-resonance"><span class="std std-numref">Example 2.35</span></a> quite easy by relating it to complex exponentials. Since <span class="math notranslate nohighlight">\(\cos(t)\)</span> is the real part of <span class="math notranslate nohighlight">\(e^{it}\)</span>, it follows that the solution we seek is the real part of any particular solution of</p>
 <div class="math notranslate nohighlight">
 \[
 x'' + x = e^{it}.
 \]</div>
-<p>Referring to <a class="reference internal" href="variation_parameters.html#example-variation-parameters-resonance"><span class="std std-numref">Example 2.30</span></a> with <span class="math notranslate nohighlight">\(\lambda=i\)</span>, we found a particular solution in this case is</p>
+<p>Referring to <a class="reference internal" href="variation_parameters.html#example-variation-parameters-resonance"><span class="std std-numref">Example 2.30</span></a> with <span class="math notranslate nohighlight">\(\lambda=i\)</span>, we use variation of parameters to find the particular solution</p>
 <div class="math notranslate nohighlight">
 \[
 \frac{1}{2i} t e^{i t} = -\frac{i}{2}t [\cos(t) + i\sin (t)].

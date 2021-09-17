@@ -81,10 +81,10 @@ Writing $u_1'=v_1$ and $u_2'=v_2$, we see that this is a pair of linear equation
 Let 
 
 $$
-u_1' = \frac{-x_2 f}{W}, \quad u_2' = \frac{x_1 f}{W},
+u_1 = \int \frac{-x_2 f}{W}\, dt, \quad u_2 = \int \frac{x_1 f}{W}\, dt,
 $$
 
-where $W$ is the Wronskian of homogeneous solutions $x_1$ and $x_2$. Then a particular solution of $\opA[x]=f$ is 
+where $W$ is the Wronskian of independent homogeneous solutions $x_1$ and $x_2$. Then a particular solution of $\opA[x]=f$ is 
 
 $$
 x_p(t) = u_1(t) x_1(t) + u_2(t) x_2(t).
@@ -122,7 +122,7 @@ You can instantly check that this result is correct.
 
 (example-variation_parameters-resonance)=
 ::::{proof:example} 
-Find a particular solution of $x'' - \lambda^2 x = 2 e^{\lambda t}$. 
+Find a particular solution of $x'' - \lambda^2 x = 2 e^{\lambda t}$, where $\lambda\neq 0$. 
 
 :::{dropdown} Solution
 The homogeneous equation has roots $\pm \lambda$. We choose $x_1=e^{\lambda t}$, $x_2=e^{-\lambda t}$. Now
