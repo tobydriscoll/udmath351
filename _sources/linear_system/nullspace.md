@@ -21,7 +21,7 @@ A **homogeneous** linear system is one that has forcing vector $\bfb$ equal to z
 As the following theorem points out, we can work with just the RRE form of the coefficient matrix $\bfA$ instead of the augmented matrix of a homogeneous system.
 
 (theorem-nullspace-rref)=
-::::{proof:theorem} 
+::::{proof:theorem}
 The last column of the RRE form of the augmented matrix of a homogeneous linear system is a zero vector.
 ::::
 :::{proof:proof}
@@ -31,7 +31,7 @@ Row operations don't change the zeros in that column.
 ## Null space
 
 (definition-nullspace-nullspace)=
-::::{proof:definition} 
+::::{proof:definition}
 The **null space** of a matrix $\bfA$, written $\nullsp(\bfA)$, is the set of all solutions to the homogeneous linear system with coefficient matrix $\bfA$.
 ::::
 
@@ -46,12 +46,12 @@ For a homogeneous linear system, the zero vector $\bfx=\bfzero$ is always a solu
 The following pretty much just follows immediately from our definitions. (That happens a lot in linear algebra: the work is in the setup, not the punchline.)
 
 (theorem-nullspace-uniqueness)=
-::::{proof:theorem} 
+::::{proof:theorem}
 A homogeneous system in $n$ variables with coefficient matrix $\bfA$ has a unique solution if and only if $\rank(\bfA)=n$.
 ::::
 
 (corollary-nullspace-uniqueness)=
-::::{proof:corollary} 
+::::{proof:corollary}
 A homogeneous linear system with more variables than equations has infinitely many solutions.
 ::::
 :::{proof:proof}
@@ -67,34 +67,71 @@ When we do have infinitely many solutions in a homogeneous linear system, it's n
 
 (definition-nullspace-linear-comb)=
 ::::{proof:definition} Linear combination and span
-A **linear combination** of vectors $\bfv_1,\ldots,\bfv_k$ with **coefficients** $c_1\ldots,c_k$ is the vector
+A **linear combination** of vectors $\bfv_1, \ldots, \bfv_k$ with **coefficients** $c_1,\ldots,c_k$ is the vector
 
 $$
 c_1 \bfv_1 + c_2 \bfv_2 + \cdots + c_k \bfv_k.
 $$
 
-The set of all linear combinations of $\bfv_1,\ldots,\bfv_k$ is known as the **span** of those vectors.
+The set of all linear combinations of $\bfv_1,\ldots,\bfv_k$ is known as the **span** of those vectors. The span of an empty set is the set consisting of only the zero vector.
 ::::
+
+Statements about linear combinations can be transformed into statements about linear systems of equations.
+
+(example-nullspace-combo)=
+::::{proof:example}
+Show that $\bfv=[1,4,3]$ is in the span of $\bfu_1=[1,-2,-1]$ and $\bfu_2=[3,0,1]$. (That is, $\bfv$ can be written as a linear combination of these two vectors.)
+:::{dropdown} Solution
+Suppose that $\bfv = c_1 \bfu_1 + c_2 \bfu_2$. Looking at each component of this vector equation, we conclude that
+
+$$
+  c_1 + 3c_2 &= 1 \\
+  -2c_1 + 0c_2 &= 4 \\
+  -c_1 + c_2 &= 3,
+$$
+
+which is a linear system with augmented matrix
+
+$$
+\begin{bmatrix}
+  1 & 3 & 1 \\ -2 & 0 & 4 \\ -1 & 1 & 3
+\end{bmatrix}.
+$$
+
+The RRE form of this matrix is
+
+$$
+\begin{bmatrix}
+ 1 & 0 & -2 \\
+ 0 & 1 & 1 \\
+ 0 & 0 & 0 \\
+\end{bmatrix},
+$$
+
+which is consistent. In fact, the unique solution is $c_2=1$, $c_1=2$.
+:::
+::::
+
 
 A nontrivial null space (i. e., containing more than the zero vector) can always be described as the span of finitely many vectors.
 
 (example-nullspace-span)=
-::::{proof:example} 
-Suppose the RRE form of a matrix $\bfA$ is 
+::::{proof:example}
+Suppose the RRE form of a matrix $\bfA$ is
 
 $$
 \begin{bmatrix}
 0 & 1 & 4 & 0 & 1 \\
 0 & 0 & 0  & 1 & -3 \\
 0 & 0 & 0  & 0 & 0  \\
-0 & 0 & 0  & 0 & 0  
+0 & 0 & 0  & 0 & 0
 \end{bmatrix}.
 $$
 
 Recall that the augmented matrix of the homogeneous system having coefficient matrix $\bfA$ has an additional zero column at the end. The pivot columns are 2 and 4, which makes $x_1=r$, $x_3=s$, and $x_5=t$ free variables. The nonzero rows lead to
 
 $$
-x_2 &= -4s-t,\\ 
+x_2 &= -4s-t,\\
 x_4 &= 3t.
 $$
 
@@ -103,13 +140,13 @@ One way to express a generic solution vector in the null space is by a linear co
 $$
 \begin{bmatrix}
   r \\ -4s-t \\ s \\ 3t\\ t
-\end{bmatrix} 
+\end{bmatrix}
 = r \begin{bmatrix}
   1 \\ 0 \\ 0 \\ 0 \\ 0
-\end{bmatrix} 
+\end{bmatrix}
 + s \begin{bmatrix}
   0 \\ -4 \\ 0 \\ 1 \\ 0
-\end{bmatrix} 
+\end{bmatrix}
 + t \begin{bmatrix}
   0 \\ -1 \\ 0 \\ 3 \\ 1
 \end{bmatrix}.
@@ -140,28 +177,69 @@ If the vectors are not linearly dependent, then they are **linearly independent*
 Sound familiar? Stay tuned!
 :::
 
-Dependent vectors can lengthen the description of a span without actually contributing anything.
+Because linear combinations are equivalent to linear systems, statements about linear independence are equivalent to statements about homogeneous linear systems, and therefore about null spaces.
 
 (example-nullspace-dependent)=
-::::{proof:example} 
-The vectors $\bfv_1=\threevec{1}{0}{-2}$, $\bfv_2=\threevec{1}{0}{1}$, and $\threevec{0}{0}{-1}$ are linearly dependent, because
+::::{proof:example}
+Determine whether the vectors $\bfv_1=\threevec{1}{0}{-2}$, $\bfv_2=\threevec{1}{0}{1}$, and $\threevec{0}{0}{-1}$ are linearly independent.
+:::{dropdown} Solution
+These vectors are dependent if, and only if, we can find $c_1,c_2,c_3$, not all zero, such that
+
+$$
+c_1 \bfv_1 + c_2 \bfv_2 + c_3 \bfv_3 = \bfzero.
+$$
+
+Equating components on the two sides of this equation leads to the linear system with augmented matrix
+
+$$
+\begin{bmatrix}
+  1 & 1 & 0 & 0 \\ 0 & 0 & 0 & 0 \\ -2 & 1 & -1 & 0
+\end{bmatrix}.
+$$
+
+The RRE form of this system is
+
+$$
+\begin{bmatrix}
+ 1 & 0 & \frac{1}{3} & 0 \\
+ 0 & 1 & -\frac{1}{3} & 0 \\
+ 0 & 0 & 0 & 0 \\
+\end{bmatrix},
+$$
+
+whose solutions are $[-t/3,t/3,t]$ for all $t$. Since there are nonzero solutions to the linear system, the original set of vectors is linearly dependent.
+:::
+::::
+
+The result of the preceding example is worth stating on the record. It's basically just a fusion of equivalent terminology.
+
+(theorem-nullspace-dependence)=
+::::{proof:theorem}
+Suppose $\bfv_1,\ldots,\bfv_k$ are vectors in $\real^n$, and let $\bfA$ be the matrix whose columns are $\bfv_1,\ldots,\bfv_k$. Then these vectors are linearly dependent if and only if $\bfA$ has a null space containing more than the zero vector.
+::::
+
+Dependent vectors can lengthen the description of a spanned space without actually contributing any information.
+
+(example-nullspace-dependentspan)=
+::::{proof:example}
+The result of {numref}`Example {number} <example-nullspace-dependent>` is that $\bfv_1=\threevec{1}{0}{-2}$, $\bfv_2=\threevec{1}{0}{1}$, and $\threevec{0}{0}{-1}$ are linearly dependent. For instance,
 
 $$
 \bfv_1 - \bfv_2 + 3 \bfv_3 = \bfzero.
 $$
 
-Therefore, any vector in $\span(\bfv_1,\bfv_2,\bfv_3)$ can be written as 
+Therefore, any vector in $\span(\bfv_1,\bfv_2,\bfv_3)$ can be written as
 
 $$
-c_1 \bfv_1 + c_2 \bfv_2 + c_3 \bfv_3 &= c_1(\bfv_2 - 3 \bfv_3) + c_2 \bfv_2 + c_3 \bfv_3 \\ 
+c_1 \bfv_1 + c_2 \bfv_2 + c_3 \bfv_3 &= c_1(\bfv_2 - 3 \bfv_3) + c_2 \bfv_2 + c_3 \bfv_3 \\
 &= (c_1+c_2) \bfv_2 + (c_3- 3c_1)\bfv_3.
 $$
 
-It's also trivially true that any combination of $\bfv_2$ and $\bfv_3$ is also a combination of all three vectors. Thus, $\span(\bfv_1,\bfv_2,\bfv_3)=\span(\bfv_2,\bfv_3)$.
+Hence $\span(\bfv_1,\bfv_2,\bfv_3) = \span(\bfv_2,\bfv_3)$.
 ::::
 
 :::{note}
-We could have removed $\bfv_2$ or $\bfv_3$ from the spanning set instead. The only requirement is that the coefficent of the removed vector can't be zero in the linear combination of them that makes zero.
+In {numref}`Example {number} <example-nullspace-dependentspan>`, we could have removed $\bfv_2$ or $\bfv_3$ from the spanning set instead without changing the spanned result. The only requirement is that the coefficient of the removed vector is not zero in the linear combination of them that makes zero.
 :::
 
-A set of vectors that both spans the null space and is linearly independent is called a **basis** of the null space. We'll formalize it when we discuss subspaces more generally. For now, just know that a basis is a minimal set of vectors that can get the spanning job done.
+A set of vectors that both spans the null space and is linearly independent is called a **basis** of the null space. We'll formalize that idea when we discuss subspaces more generally. For now, just know that a basis is a minimal set of vectors that can get the spanning job done.

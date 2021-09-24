@@ -215,16 +215,16 @@ Define the damped frequency
 \omega_d=\omega_0 \sqrt{1-\zeta^2}.
 :::
 
-The amplitude–phase form {eq}`eq-oscillators-amp-phase` easily generalizes to
+The unforced part of the solution is
 
 ```{math}
 :label: eq-oscillators-transient
-x_h(t) = R\, e^{- \omega_0 \zeta t} \cos( \omega_d t - \phi),
+x_h(t) = e^{- \omega_0 \zeta t} [ c_1 \cos( \omega_d t) + c_2 \sin(\omega_d t) ].
 ```
 
-where $R$ and $\phi$ are determined by the initial conditions. This solution is pseudoperiodic, combining oscillation at frequency $\omega_d < \omega_0$ inside an exponential decay envelope. We call this an **underdamped oscillator**.
+This solution is pseudoperiodic, combining oscillation at frequency $\omega_d < \omega_0$ inside an exponential decay envelope. We call this an **underdamped oscillator**. The homogeneous solution {eq}`eq-oscillators-transient` is also called a **transient solution**, because it vanishes as $t \to \infty$. 
 
-The homogeneous solution {eq}`eq-oscillators-transient` is also called a **transient solution**, because it vanishes as $t \to \infty$. If harmonic forcing $f(t)=\cos(\omega t)$ is added, then it determines the long-term behavior $x_p=A\cos(\omega t - \theta)$, where
+If harmonic forcing $f(t)=\cos(\omega t)$ is added, then it determines the long-term steady behavior $x_p=A\cos(\omega t - \theta)$, where
 
 :::{math}
 :label: eq-oscillators-gain
@@ -333,7 +333,7 @@ from which we identify the natural frequency
 The damping coefficient is therefore
 
 ```{math}
-  Z = \frac{1.6}{2\omega_0} \approx 0.539.
+  \zeta = \frac{1.6}{2\omega_0} \approx 0.539.
 ```
 
 Since this value is less than one, the system is underdamped.
@@ -354,16 +354,16 @@ We derived the governing ODE $x'' + 1.6 x' + 2.2 x = 0$. The roots are the roots
 (The imaginary part is smaller than the natural frequency found in the last example, as it must be.) Choosing the sin-cos form of the general solution, we have
 
 $$
-x_h(t) = a_1 e^{-0.8 t} \cos(1.249 t) + a_2 e^{-0.8 t} \sin(1.249 t).
+x_h(t) = c_1 e^{-0.8 t} \cos(1.249 t) + c_2 e^{-0.8 t} \sin(1.249 t).
 $$
 
 We apply the initial conditions $x(0)=0$, $x'(0)=-0.5$ to find
 
 \begin{align*}
-0 & = x_h(0) = a_1, \\ 
--0.5 & = x_h'(0) = a_1( -0.8 ) + a_2 (1.249 ),
+0 & = x_h(0) = c_1, \\ 
+-0.5 & = x_h'(0) = c_1( -0.8 ) + c_2 (1.249 ),
 \end{align*}
 
-thus $a_2 = -0.4003$. The motion is therefore given by $x(t)=-0.4003\, e^{-0.8 t} \sin(1.249 t)$.
+thus $c_2 = -0.4003$. The motion is therefore given by $x(t)=-0.4003\, e^{-0.8 t} \sin(1.249 t)$.
 :::
 ::::

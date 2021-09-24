@@ -605,11 +605,11 @@ x_p(t) = \frac{1}{2 \omega_0} t \sin(\omega_0 t),
 <p>Define the damped frequency</p>
 <div class="math notranslate nohighlight" id="equation-eq-oscillators-damped">
 <span class="eqno">(2.17)<a class="headerlink" href="#equation-eq-oscillators-damped" title="Permalink to this equation">¶</a></span>\[\omega_d=\omega_0 \sqrt{1-\zeta^2}.\]</div>
-<p>The amplitude–phase form <a class="reference internal" href="#equation-eq-oscillators-amp-phase">(2.16)</a> easily generalizes to</p>
+<p>The unforced part of the solution is</p>
 <div class="math notranslate nohighlight" id="equation-eq-oscillators-transient">
-<span class="eqno">(2.18)<a class="headerlink" href="#equation-eq-oscillators-transient" title="Permalink to this equation">¶</a></span>\[x_h(t) = R\, e^{- \omega_0 \zeta t} \cos( \omega_d t - \phi),\]</div>
-<p>where <span class="math notranslate nohighlight">\(R\)</span> and <span class="math notranslate nohighlight">\(\phi\)</span> are determined by the initial conditions. This solution is pseudoperiodic, combining oscillation at frequency <span class="math notranslate nohighlight">\(\omega_d &lt; \omega_0\)</span> inside an exponential decay envelope. We call this an <strong>underdamped oscillator</strong>.</p>
-<p>The homogeneous solution <a class="reference internal" href="#equation-eq-oscillators-transient">(2.18)</a> is also called a <strong>transient solution</strong>, because it vanishes as <span class="math notranslate nohighlight">\(t \to \infty\)</span>. If harmonic forcing <span class="math notranslate nohighlight">\(f(t)=\cos(\omega t)\)</span> is added, then it determines the long-term behavior <span class="math notranslate nohighlight">\(x_p=A\cos(\omega t - \theta)\)</span>, where</p>
+<span class="eqno">(2.18)<a class="headerlink" href="#equation-eq-oscillators-transient" title="Permalink to this equation">¶</a></span>\[x_h(t) = e^{- \omega_0 \zeta t} [ c_1 \cos( \omega_d t) + c_2 \sin(\omega_d t) ].\]</div>
+<p>This solution is pseudoperiodic, combining oscillation at frequency <span class="math notranslate nohighlight">\(\omega_d &lt; \omega_0\)</span> inside an exponential decay envelope. We call this an <strong>underdamped oscillator</strong>. The homogeneous solution <a class="reference internal" href="#equation-eq-oscillators-transient">(2.18)</a> is also called a <strong>transient solution</strong>, because it vanishes as <span class="math notranslate nohighlight">\(t \to \infty\)</span>.</p>
+<p>If harmonic forcing <span class="math notranslate nohighlight">\(f(t)=\cos(\omega t)\)</span> is added, then it determines the long-term steady behavior <span class="math notranslate nohighlight">\(x_p=A\cos(\omega t - \theta)\)</span>, where</p>
 <div class="math notranslate nohighlight" id="equation-eq-oscillators-gain">
 <span class="eqno">(2.19)<a class="headerlink" href="#equation-eq-oscillators-gain" title="Permalink to this equation">¶</a></span>\[A = \frac{1}{\rule{0pt}{1em} \sqrt{\rule{0pt}{0.8em}(\omega_0^2-\omega^2)^2 + 4\omega_0^2\omega^2 \zeta^2 } }\]</div>
 <p>The value <span class="math notranslate nohighlight">\(A\)</span> is known as the <strong>gain</strong> of the oscillator; it is the ratio of amplitudes of the steady response and the forcing. A little calculus shows that as a function of <span class="math notranslate nohighlight">\(\omega\)</span>, the gain is maximized at</p>
@@ -713,7 +713,7 @@ Solution<div class="summary-down docutils">
 \[  \omega_0 = \sqrt{2.2} \approx 1.483 \text{s}^{-1}.\]</div>
 <p class="card-text">The damping coefficient is therefore</p>
 <div class="math notranslate nohighlight">
-\[  Z = \frac{1.6}{2\omega_0} \approx 0.539.\]</div>
+\[  \zeta = \frac{1.6}{2\omega_0} \approx 0.539.\]</div>
 <p class="card-text">Since this value is less than one, the system is underdamped.</p>
 </div>
 </details></div></div><div class="proof proof-type-example" id="id3">
@@ -732,15 +732,15 @@ Solution<div class="summary-down docutils">
 <p class="card-text">(The imaginary part is smaller than the natural frequency found in the last example, as it must be.) Choosing the sin-cos form of the general solution, we have</p>
 <div class="math notranslate nohighlight">
 \[
-x_h(t) = a_1 e^{-0.8 t} \cos(1.249 t) + a_2 e^{-0.8 t} \sin(1.249 t).
+x_h(t) = c_1 e^{-0.8 t} \cos(1.249 t) + c_2 e^{-0.8 t} \sin(1.249 t).
 \]</div>
 <p class="card-text">We apply the initial conditions <span class="math notranslate nohighlight">\(x(0)=0\)</span>, <span class="math notranslate nohighlight">\(x'(0)=-0.5\)</span> to find</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
-0 &amp; = x_h(0) = a_1, \\ 
--0.5 &amp; = x_h'(0) = a_1( -0.8 ) + a_2 (1.249 ),
+0 &amp; = x_h(0) = c_1, \\ 
+-0.5 &amp; = x_h'(0) = c_1( -0.8 ) + c_2 (1.249 ),
 \end{align*}\]</div>
-<p class="card-text">thus <span class="math notranslate nohighlight">\(a_2 = -0.4003\)</span>. The motion is therefore given by <span class="math notranslate nohighlight">\(x(t)=-0.4003\, e^{-0.8 t} \sin(1.249 t)\)</span>.</p>
+<p class="card-text">thus <span class="math notranslate nohighlight">\(c_2 = -0.4003\)</span>. The motion is therefore given by <span class="math notranslate nohighlight">\(x(t)=-0.4003\, e^{-0.8 t} \sin(1.249 t)\)</span>.</p>
 </div>
 </details></div></div></div>
 </div>
