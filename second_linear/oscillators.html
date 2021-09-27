@@ -553,7 +553,7 @@ e^{i\omega_0 t},\, e^{-i\omega_0 t}
 \]</div>
 <p id="index-1">Either way, these describe pure oscillation at frequency <span class="math notranslate nohighlight">\(\omega_0\)</span>. This is known as <strong>simple harmonic motion</strong>. A particularly useful third form is the <strong>amplitude–phase form</strong></p>
 <div class="math notranslate nohighlight" id="equation-eq-oscillators-amp-phase">
-<span class="eqno">(2.16)<a class="headerlink" href="#equation-eq-oscillators-amp-phase" title="Permalink to this equation">¶</a></span>\[x_h(t) = R\cos(\omega_0 t-\phi),\]</div>
+<span class="eqno">(2.16)<a class="headerlink" href="#equation-eq-oscillators-amp-phase" title="Permalink to this equation">¶</a></span>\[x_h(t) = R\cos(\omega_0 t+\phi),\]</div>
 <p>where constants <span class="math notranslate nohighlight">\(R\)</span> and <span class="math notranslate nohighlight">\(\phi\)</span> can be used to satisfy initial conditions.</p>
 <div class="proof proof-type-example" id="id1">
 <div class="proof-title"> <span class="proof-type">Example 2.37</span>  </div><div class="proof-content">
@@ -577,7 +577,7 @@ x'' + 4g x   = 0.
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
 -0.2 &amp; = x(0) = R\cos(\phi) \\
-1 &amp; = x'(0) = -\omega_0 R\sin(\phi).
+1 &amp; = x'(0) = \omega_0 R\sin(\phi).
 \end{align*}\]</div>
 <p class="card-text">Therefore,</p>
 <div class="math notranslate nohighlight">
@@ -590,7 +590,7 @@ x'' + 4g x   = 0.
 x_p(t) = \frac{1}{\omega_0^2-\omega^2} \cos(\omega t),
 \]</div>
 <p>provided <span class="math notranslate nohighlight">\(\omega\neq \omega_0\)</span>. Note that the harmonic amplitude grows without bound as <span class="math notranslate nohighlight">\(\omega\to \omega_0\)</span>.</p>
-<p id="index-2">If the forcing is exactly at the natural frequency, then the situtation is like that of <a class="reference internal" href="variation_parameters.html#example-variation-parameters-resonance"><span class="std std-numref">Example 2.30</span></a>:</p>
+<p id="index-2">If the forcing is exactly at the natural frequency, then the situation is like that of <a class="reference internal" href="variation_parameters.html#example-variation-parameters-resonance"><span class="std std-numref">Example 2.30</span></a>:</p>
 <div class="math notranslate nohighlight">
 \[
 x_p(t) = \frac{1}{2 \omega_0} t \sin(\omega_0 t),
@@ -609,7 +609,7 @@ x_p(t) = \frac{1}{2 \omega_0} t \sin(\omega_0 t),
 <div class="math notranslate nohighlight" id="equation-eq-oscillators-transient">
 <span class="eqno">(2.18)<a class="headerlink" href="#equation-eq-oscillators-transient" title="Permalink to this equation">¶</a></span>\[x_h(t) = e^{- \omega_0 \zeta t} [ c_1 \cos( \omega_d t) + c_2 \sin(\omega_d t) ].\]</div>
 <p>This solution is pseudoperiodic, combining oscillation at frequency <span class="math notranslate nohighlight">\(\omega_d &lt; \omega_0\)</span> inside an exponential decay envelope. We call this an <strong>underdamped oscillator</strong>. The homogeneous solution <a class="reference internal" href="#equation-eq-oscillators-transient">(2.18)</a> is also called a <strong>transient solution</strong>, because it vanishes as <span class="math notranslate nohighlight">\(t \to \infty\)</span>.</p>
-<p>If harmonic forcing <span class="math notranslate nohighlight">\(f(t)=\cos(\omega t)\)</span> is added, then it determines the long-term steady behavior <span class="math notranslate nohighlight">\(x_p=A\cos(\omega t - \theta)\)</span>, where</p>
+<p>If harmonic forcing <span class="math notranslate nohighlight">\(f(t)=\cos(\omega t)\)</span> is added, then it determines the steady-state behavior <span class="math notranslate nohighlight">\(x_s=A\cos(\omega t + \theta)\)</span>, where</p>
 <div class="math notranslate nohighlight" id="equation-eq-oscillators-gain">
 <span class="eqno">(2.19)<a class="headerlink" href="#equation-eq-oscillators-gain" title="Permalink to this equation">¶</a></span>\[A = \frac{1}{\rule{0pt}{1em} \sqrt{\rule{0pt}{0.8em}(\omega_0^2-\omega^2)^2 + 4\omega_0^2\omega^2 \zeta^2 } }\]</div>
 <p>The value <span class="math notranslate nohighlight">\(A\)</span> is known as the <strong>gain</strong> of the oscillator; it is the ratio of amplitudes of the steady response and the forcing. A little calculus shows that as a function of <span class="math notranslate nohighlight">\(\omega\)</span>, the gain is maximized at</p>
@@ -617,7 +617,7 @@ x_p(t) = \frac{1}{2 \omega_0} t \sin(\omega_0 t),
 <span class="eqno">(2.20)<a class="headerlink" href="#equation-eq-oscillators-rhomax" title="Permalink to this equation">¶</a></span>\[\begin{split}\omega_\text{max} = \begin{cases} 
 \omega_0 \sqrt{1-2\zeta^2}, &amp; \text{ if } 0 &lt; \zeta^2 &lt; \frac{1}{2},\\ 0, &amp; \text{ if } \frac{1}{2} \le \zeta^2.
 \end{cases}\end{split}\]</div>
-<p>If the damping coefficient <span class="math notranslate nohighlight">\(\zeta\)</span> is small but finite, then, we have a pseudoresonance of finite amplitude at a frequency just a bit less than the natural frequency. The following figure shows the gain as a function of driving frequency and damping when <span class="math notranslate nohighlight">\(\omega_0=1\)</span>. The black curve shows the maximal driving frequency at any given <span class="math notranslate nohighlight">\(\zeta\)</span>.</p>
+<p>Therefore, if the damping coefficient <span class="math notranslate nohighlight">\(\zeta\)</span> is small but finite, we have a pseudoresonance of finite amplitude at a frequency just a bit less than the natural frequency. The following figure shows the gain as a function of driving frequency and damping when <span class="math notranslate nohighlight">\(\omega_0=1\)</span>. The black curve shows the maximal driving frequency at any given <span class="math notranslate nohighlight">\(\zeta\)</span>.</p>
 <div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">ω</span> <span class="o">=</span> <span class="n">range</span><span class="p">(</span><span class="mf">1e-3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="n">length</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
