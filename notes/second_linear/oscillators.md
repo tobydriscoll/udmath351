@@ -143,7 +143,7 @@ Either way, these describe pure oscillation at frequency $\omega_0$. This is kno
 
 :::{math}
 :label: eq-oscillators-amp-phase
-x_h(t) = R\cos(\omega_0 t-\phi),
+x_h(t) = R\cos(\omega_0 t+\phi),
 :::
 
 where constants $R$ and $\phi$ can be used to satisfy initial conditions. 
@@ -168,7 +168,7 @@ We can apply the initial conditions directly to the phase–amplitude form:
 
 \begin{align*}
 -0.2 & = x(0) = R\cos(\phi) \\
-1 & = x'(0) = -\omega_0 R\sin(\phi).
+1 & = x'(0) = \omega_0 R\sin(\phi).
 \end{align*}
 
 Therefore,
@@ -192,7 +192,7 @@ provided $\omega\neq \omega_0$. Note that the harmonic amplitude grows without b
 ```{index} ! resonance
 ```
 
-If the forcing is exactly at the natural frequency, then the situtation is like that of {numref}`Example {number} <example-variation_parameters-resonance>`:
+If the forcing is exactly at the natural frequency, then the situation is like that of {numref}`Example {number} <example-variation_parameters-resonance>`:
 
 $$
 x_p(t) = \frac{1}{2 \omega_0} t \sin(\omega_0 t),
@@ -215,16 +215,16 @@ Define the damped frequency
 \omega_d=\omega_0 \sqrt{1-\zeta^2}.
 :::
 
-The amplitude–phase form {eq}`eq-oscillators-amp-phase` easily generalizes to
+The unforced part of the solution is
 
 ```{math}
 :label: eq-oscillators-transient
-x_h(t) = R\, e^{- \omega_0 \zeta t} \cos( \omega_d t - \phi),
+x_h(t) = e^{- \omega_0 \zeta t} [ c_1 \cos( \omega_d t) + c_2 \sin(\omega_d t) ].
 ```
 
-where $R$ and $\phi$ are determined by the initial conditions. This solution is pseudoperiodic, combining oscillation at frequency $\omega_d < \omega_0$ inside an exponential decay envelope. We call this an **underdamped oscillator**.
+This solution is pseudoperiodic, combining oscillation at frequency $\omega_d < \omega_0$ inside an exponential decay envelope. We call this an **underdamped oscillator**. The homogeneous solution {eq}`eq-oscillators-transient` is also called a **transient solution**, because it vanishes as $t \to \infty$. 
 
-The homogeneous solution {eq}`eq-oscillators-transient` is also called a **transient solution**, because it vanishes as $t \to \infty$. If harmonic forcing $f(t)=\cos(\omega t)$ is added, then it determines the long-term behavior $x_p=A\cos(\omega t - \theta)$, where
+If harmonic forcing $f(t)=\cos(\omega t)$ is added, then it determines the steady-state behavior $x_s=A\cos(\omega t + \theta)$, where
 
 :::{math}
 :label: eq-oscillators-gain
@@ -240,7 +240,7 @@ The value $A$ is known as the **gain** of the oscillator; it is the ratio of amp
 \end{cases}
 ```
 
-If the damping coefficient $\zeta$ is small but finite, then, we have a pseudoresonance of finite amplitude at a frequency just a bit less than the natural frequency. The following figure shows the gain as a function of driving frequency and damping when $\omega_0=1$. The black curve shows the maximal driving frequency at any given $\zeta$. 
+Therefore, if the damping coefficient $\zeta$ is small but finite, we have a pseudoresonance of finite amplitude at a frequency just a bit less than the natural frequency. The following figure shows the gain as a function of driving frequency and damping when $\omega_0=1$. The black curve shows the maximal driving frequency at any given $\zeta$. 
 
 ```{code-cell} 
 ---
@@ -333,7 +333,7 @@ from which we identify the natural frequency
 The damping coefficient is therefore
 
 ```{math}
-  Z = \frac{1.6}{2\omega_0} \approx 0.539.
+  \zeta = \frac{1.6}{2\omega_0} \approx 0.539.
 ```
 
 Since this value is less than one, the system is underdamped.
@@ -354,16 +354,16 @@ We derived the governing ODE $x'' + 1.6 x' + 2.2 x = 0$. The roots are the roots
 (The imaginary part is smaller than the natural frequency found in the last example, as it must be.) Choosing the sin-cos form of the general solution, we have
 
 $$
-x_h(t) = a_1 e^{-0.8 t} \cos(1.249 t) + a_2 e^{-0.8 t} \sin(1.249 t).
+x_h(t) = c_1 e^{-0.8 t} \cos(1.249 t) + c_2 e^{-0.8 t} \sin(1.249 t).
 $$
 
 We apply the initial conditions $x(0)=0$, $x'(0)=-0.5$ to find
 
 \begin{align*}
-0 & = x_h(0) = a_1, \\ 
--0.5 & = x_h'(0) = a_1( -0.8 ) + a_2 (1.249 ),
+0 & = x_h(0) = c_1, \\ 
+-0.5 & = x_h'(0) = c_1( -0.8 ) + c_2 (1.249 ),
 \end{align*}
 
-thus $a_2 = -0.4003$. The motion is therefore given by $x(t)=-0.4003\, e^{-0.8 t} \sin(1.249 t)$.
+thus $c_2 = -0.4003$. The motion is therefore given by $x(t)=-0.4003\, e^{-0.8 t} \sin(1.249 t)$.
 :::
 ::::

@@ -63,7 +63,7 @@ The second-order problem does bring in a new wrinkle with the homogeneous soluti
 Consider again the trivial problem $x''=0$. It's certainly true that $x=t$ and $x=5t$ are different solutions of this equation. So it would be tempting to write the general solution of this homogeneous problem as 
 
 $$
-c_1\cdot (t) + c2\cdot (5t)
+c_1\cdot (t) + c_2\cdot (5t)
 $$
 
 for arbitrary constants $c_1$ and $c_2$. While this expression does always give a solution, it doesn't give all of them, such as $x=2$. 
@@ -161,17 +161,17 @@ Now we can state precisely what goes into a general solution in the linear, seco
 
 (theorem-structure-general)=
 ::::{proof:theorem} 
-Suppose $x_1$ and $x_2$ are linearly independent solutions of the second-order linear problem $\opA[]=0$. Then the general solution of $\opA[]=0$ is  
+Suppose $x_1$ and $x_2$ are linearly independent solutions of the second-order linear problem $\opA[x]=0$. Then the general solution of $\opA[x]=0$ is  
 
 $$
 x(t) = c_1 x_1(t) + c_2 x_2(t),
 $$
 
-where $c_1$ and $c_2$ are arbitrary constants. Furthermore, the general solution of the nonhomogeneous problem $\opA[]=f$ is
+where $c_1$ and $c_2$ are arbitrary constants. Furthermore, the general solution of the nonhomogeneous problem $\opA[x]=f$ is
 
 $$
 x(t) = x_h(t) + x_p(t),
 $$
 
-where $x_h$ is the general homogeneous solution and $x_p$ is any one particular solution of $\opA[]=f$.
+where $x_h$ is the general homogeneous solution and $x_p$ is any one particular solution of $\opA[x]=f$.
 ::::
