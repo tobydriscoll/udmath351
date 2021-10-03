@@ -449,11 +449,11 @@
 </ol>
 <p>There is an important situation where we can rule out case 1 above.</p>
 <div class="proof proof-type-definition" id="id1">
-<span id="definition-nullspace-def"></span><span id="index-0"></span><div class="proof-title"> <span class="proof-type">Definition 3.18</span>  <span class="proof-title-name">: &nbsp;Homogeneous linear system</span>  </div><div class="proof-content">
+<span id="definition-nullspace-def"></span><span id="index-0"></span><div class="proof-title"> <span class="proof-type">Definition 3.19</span>  <span class="proof-title-name">: &nbsp;Homogeneous linear system</span>  </div><div class="proof-content">
 <p>A <strong>homogeneous</strong> linear system is one that has forcing vector <span class="math notranslate nohighlight">\(\bfb\)</span> equal to zero.</p>
 </div></div><p>As the following theorem points out, we can work with just the RRE form of the coefficient matrix <span class="math notranslate nohighlight">\(\bfA\)</span> instead of the augmented matrix of a homogeneous system.</p>
 <div class="proof proof-type-theorem" id="id2">
-<span id="theorem-nullspace-rref"></span><div class="proof-title"> <span class="proof-type">Theorem 3.19</span>  </div><div class="proof-content">
+<span id="theorem-nullspace-rref"></span><div class="proof-title"> <span class="proof-type">Theorem 3.20</span>  </div><div class="proof-content">
 <p>The last column of the RRE form of the augmented matrix of a homogeneous linear system is a zero vector.</p>
 </div></div><div class="proof proof-type-proof">
 <div class="proof-title"> <span class="proof-type">Proof </span>  </div><div class="proof-content">
@@ -461,7 +461,7 @@
 </div></div><div class="section" id="null-space">
 <h2><span class="section-number">3.4.1. </span>Null space<a class="headerlink" href="#null-space" title="Permalink to this headline">¶</a></h2>
 <div class="proof proof-type-definition" id="id3">
-<span id="definition-nullspace-nullspace"></span><div class="proof-title"> <span class="proof-type">Definition 3.20</span>  </div><div class="proof-content">
+<span id="definition-nullspace-nullspace"></span><div class="proof-title"> <span class="proof-type">Definition 3.21</span>  </div><div class="proof-content">
 <p>The <strong>null space</strong> of a matrix <span class="math notranslate nohighlight">\(\bfA\)</span>, written <span class="math notranslate nohighlight">\(\nullsp(\bfA)\)</span>, is the set of all solutions to the homogeneous linear system with coefficient matrix <span class="math notranslate nohighlight">\(\bfA\)</span>.</p>
 </div></div><div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -471,10 +471,10 @@
 <p>For a homogeneous linear system, the zero vector <span class="math notranslate nohighlight">\(\bfx=\bfzero\)</span> is always a solution; hence, the system is consistent. The question becomes whether zero is the <em>only</em> solution. Thus, we only need to look at case 2 at the beginning of the section.</p>
 <p>The following pretty much just follows immediately from our definitions. (That happens a lot in linear algebra: the work is in the setup, not the punchline.)</p>
 <div class="proof proof-type-theorem" id="id4">
-<span id="theorem-nullspace-uniqueness"></span><div class="proof-title"> <span class="proof-type">Theorem 3.21</span>  </div><div class="proof-content">
+<span id="theorem-nullspace-uniqueness"></span><div class="proof-title"> <span class="proof-type">Theorem 3.22</span>  </div><div class="proof-content">
 <p>A homogeneous system in <span class="math notranslate nohighlight">\(n\)</span> variables with coefficient matrix <span class="math notranslate nohighlight">\(\bfA\)</span> has a unique solution if and only if <span class="math notranslate nohighlight">\(\rank(\bfA)=n\)</span>.</p>
 </div></div><div class="proof proof-type-corollary" id="id5">
-<span id="corollary-nullspace-uniqueness"></span><div class="proof-title"> <span class="proof-type">Corollary 3.22</span>  </div><div class="proof-content">
+<span id="corollary-nullspace-uniqueness"></span><div class="proof-title"> <span class="proof-type">Corollary 3.23</span>  </div><div class="proof-content">
 <p>A homogeneous linear system with more variables than equations has infinitely many solutions.</p>
 </div></div><div class="proof proof-type-proof">
 <div class="proof-title"> <span class="proof-type">Proof </span>  </div><div class="proof-content">
@@ -484,7 +484,7 @@
 <h2><span class="section-number">3.4.2. </span>Spanning sets<a class="headerlink" href="#spanning-sets" title="Permalink to this headline">¶</a></h2>
 <p>When we do have infinitely many solutions in a homogeneous linear system, it’s nice to have a finite description of all of them. This takes us on a considerable side quest.</p>
 <div class="proof proof-type-definition" id="id6">
-<span id="definition-nullspace-linear-comb"></span><span id="index-1"></span><div class="proof-title"> <span class="proof-type">Definition 3.23</span>  <span class="proof-title-name">: &nbsp;Linear combination and span</span>  </div><div class="proof-content">
+<span id="definition-nullspace-linear-comb"></span><span id="index-1"></span><div class="proof-title"> <span class="proof-type">Definition 3.24</span>  <span class="proof-title-name">: &nbsp;Linear combination and span</span>  </div><div class="proof-content">
 <p>A <strong>linear combination</strong> of vectors <span class="math notranslate nohighlight">\(\bfv_1, \ldots, \bfv_k\)</span> with <strong>coefficients</strong> <span class="math notranslate nohighlight">\(c_1,\ldots,c_k\)</span> is the vector</p>
 <div class="math notranslate nohighlight">
 \[
@@ -493,7 +493,7 @@ c_1 \bfv_1 + c_2 \bfv_2 + \cdots + c_k \bfv_k.
 <p>The set of all linear combinations of <span class="math notranslate nohighlight">\(\bfv_1,\ldots,\bfv_k\)</span> is known as the <strong>span</strong> of those vectors. The span of an empty set is the set consisting of only the zero vector.</p>
 </div></div><p>Statements about linear combinations can be transformed into statements about linear systems of equations.</p>
 <div class="proof proof-type-example" id="id7">
-<span id="example-nullspace-combo"></span><div class="proof-title"> <span class="proof-type">Example 3.24</span>  </div><div class="proof-content">
+<span id="example-nullspace-combo"></span><div class="proof-title"> <span class="proof-type">Example 3.25</span>  </div><div class="proof-content">
 <p>Show that <span class="math notranslate nohighlight">\(\bfv=[1,4,3]\)</span> is in the span of <span class="math notranslate nohighlight">\(\bfu_1=[1,-2,-1]\)</span> and <span class="math notranslate nohighlight">\(\bfu_2=[3,0,1]\)</span>. (That is, <span class="math notranslate nohighlight">\(\bfv\)</span> can be written as a linear combination of these two vectors.)</p>
 <details class="sphinx-bs dropdown card mb-3">
 <summary class="summary-title card-header">
@@ -529,7 +529,7 @@ Solution<div class="summary-down docutils">
 </div>
 </details></div></div><p>A nontrivial null space (i. e., containing more than the zero vector) can always be described as the span of finitely many vectors.</p>
 <div class="proof proof-type-example" id="id8">
-<span id="example-nullspace-span"></span><div class="proof-title"> <span class="proof-type">Example 3.25</span>  </div><div class="proof-content">
+<span id="example-nullspace-span"></span><div class="proof-title"> <span class="proof-type">Example 3.26</span>  </div><div class="proof-content">
 <p>Suppose the RRE form of a matrix <span class="math notranslate nohighlight">\(\bfA\)</span> is</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -568,7 +568,7 @@ x_4 &amp;= 3t.
 <h2><span class="section-number">3.4.3. </span>Independence<a class="headerlink" href="#independence" title="Permalink to this headline">¶</a></h2>
 <p>Now that we have a finite description of the null space, we want to refine it to make sure that it is as simple as possible. For this, we need a new take on an old friend.</p>
 <div class="proof proof-type-definition" id="id9">
-<span id="definition-nullspace-indepdendence"></span><span id="index-2"></span><div class="proof-title"> <span class="proof-type">Definition 3.26</span>  <span class="proof-title-name">: &nbsp;Linear independence</span>  </div><div class="proof-content">
+<span id="definition-nullspace-indepdendence"></span><span id="index-2"></span><div class="proof-title"> <span class="proof-type">Definition 3.27</span>  <span class="proof-title-name">: &nbsp;Linear independence</span>  </div><div class="proof-content">
 <p>Vectors <span class="math notranslate nohighlight">\(\bfv_1,\bfv_2,\ldots,\bfv_n\)</span> are <strong>linearly dependent</strong> if there is a way to choose constants <span class="math notranslate nohighlight">\(c_1,\ldots,c_n\)</span>, <em>not all zero</em>, such that</p>
 <div class="math notranslate nohighlight">
 \[
@@ -581,7 +581,7 @@ c_1\bfv_1 + c_2\bfv_2 + \cdots c_n \bfv_n = 0.
 </div>
 <p>Because linear combinations are equivalent to linear systems, statements about linear independence are equivalent to statements about homogeneous linear systems, and therefore about null spaces.</p>
 <div class="proof proof-type-example" id="id10">
-<span id="example-nullspace-dependent"></span><div class="proof-title"> <span class="proof-type">Example 3.27</span>  </div><div class="proof-content">
+<span id="example-nullspace-dependent"></span><div class="proof-title"> <span class="proof-type">Example 3.28</span>  </div><div class="proof-content">
 <p>Determine whether the vectors <span class="math notranslate nohighlight">\(\bfv_1=\threevec{1}{0}{-2}\)</span>, <span class="math notranslate nohighlight">\(\bfv_2=\threevec{1}{0}{1}\)</span>, and <span class="math notranslate nohighlight">\(\threevec{0}{0}{-1}\)</span> are linearly independent.</p>
 <details class="sphinx-bs dropdown card mb-3">
 <summary class="summary-title card-header">
@@ -615,12 +615,12 @@ c_1 \bfv_1 + c_2 \bfv_2 + c_3 \bfv_3 = \bfzero.
 </div>
 </details></div></div><p>The result of the preceding example is worth stating on the record. It’s basically just a fusion of equivalent terminology.</p>
 <div class="proof proof-type-theorem" id="id11">
-<span id="theorem-nullspace-dependence"></span><div class="proof-title"> <span class="proof-type">Theorem 3.28</span>  </div><div class="proof-content">
+<span id="theorem-nullspace-dependence"></span><div class="proof-title"> <span class="proof-type">Theorem 3.29</span>  </div><div class="proof-content">
 <p>Suppose <span class="math notranslate nohighlight">\(\bfv_1,\ldots,\bfv_k\)</span> are vectors in <span class="math notranslate nohighlight">\(\real^n\)</span>, and let <span class="math notranslate nohighlight">\(\bfA\)</span> be the matrix whose columns are <span class="math notranslate nohighlight">\(\bfv_1,\ldots,\bfv_k\)</span>. Then these vectors are linearly dependent if and only if <span class="math notranslate nohighlight">\(\bfA\)</span> has a null space containing more than the zero vector.</p>
 </div></div><p>Dependent vectors can lengthen the description of a spanned space without actually contributing any information.</p>
 <div class="proof proof-type-example" id="id12">
-<span id="example-nullspace-dependentspan"></span><div class="proof-title"> <span class="proof-type">Example 3.29</span>  </div><div class="proof-content">
-<p>The result of <a class="reference internal" href="#example-nullspace-dependent"><span class="std std-numref">Example 3.27</span></a> is that <span class="math notranslate nohighlight">\(\bfv_1=\threevec{1}{0}{-2}\)</span>, <span class="math notranslate nohighlight">\(\bfv_2=\threevec{1}{0}{1}\)</span>, and <span class="math notranslate nohighlight">\(\threevec{0}{0}{-1}\)</span> are linearly dependent. For instance,</p>
+<span id="example-nullspace-dependentspan"></span><div class="proof-title"> <span class="proof-type">Example 3.30</span>  </div><div class="proof-content">
+<p>The result of <a class="reference internal" href="#example-nullspace-dependent"><span class="std std-numref">Example 3.28</span></a> is that <span class="math notranslate nohighlight">\(\bfv_1=\threevec{1}{0}{-2}\)</span>, <span class="math notranslate nohighlight">\(\bfv_2=\threevec{1}{0}{1}\)</span>, and <span class="math notranslate nohighlight">\(\threevec{0}{0}{-1}\)</span> are linearly dependent. For instance,</p>
 <div class="math notranslate nohighlight">
 \[
 \bfv_1 - \bfv_2 + 3 \bfv_3 = \bfzero.
@@ -634,7 +634,7 @@ c_1 \bfv_1 + c_2 \bfv_2 + c_3 \bfv_3 &amp;= c_1(\bfv_2 - 3 \bfv_3) + c_2 \bfv_2 
 <p>Hence <span class="math notranslate nohighlight">\(\span(\bfv_1,\bfv_2,\bfv_3) = \span(\bfv_2,\bfv_3)\)</span>.</p>
 </div></div><div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>In <a class="reference internal" href="#example-nullspace-dependentspan"><span class="std std-numref">Example 3.29</span></a>, we could have removed <span class="math notranslate nohighlight">\(\bfv_2\)</span> or <span class="math notranslate nohighlight">\(\bfv_3\)</span> from the spanning set instead without changing the spanned result. The only requirement is that the coefficient of the removed vector is not zero in the linear combination of them that makes zero.</p>
+<p>In <a class="reference internal" href="#example-nullspace-dependentspan"><span class="std std-numref">Example 3.30</span></a>, we could have removed <span class="math notranslate nohighlight">\(\bfv_2\)</span> or <span class="math notranslate nohighlight">\(\bfv_3\)</span> from the spanning set instead without changing the spanned result. The only requirement is that the coefficient of the removed vector is not zero in the linear combination of them that makes zero.</p>
 </div>
 <p>A set of vectors that both spans the null space and is linearly independent is called a <strong>basis</strong> of the null space. We’ll formalize that idea when we discuss subspaces more generally. For now, just know that a basis is a minimal set of vectors that can get the spanning job done.</p>
 </div>

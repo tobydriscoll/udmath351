@@ -499,7 +499,31 @@ x_2 + 3x_3 &amp; = 3, \\
 <div class="section" id="gauss-jordan-elimination">
 <h2><span class="section-number">3.2.1. </span>Gauss-Jordan elimination<a class="headerlink" href="#gauss-jordan-elimination" title="Permalink to this headline">¶</a></h2>
 <p>An alternative to backward substitution is to transform the triangular system into something even simpler.</p>
-<p id="index-1">The process above is called <strong>Gauss–Jordan elimination</strong>, or more simply, <strong>row elimination</strong>.</p>
+<div class="proof proof-type-example" id="id3">
+<span id="example-gauss-jordan"></span><div class="proof-title"> <span class="proof-type">Example 3.8</span>  </div><div class="proof-content">
+<p>We continue from the end of <a class="reference internal" href="#example-gauss-elimination"><span class="std std-numref">Example 3.7</span></a>.  Having reached the last variable and equation, we turn around and eliminate <em>upwards</em> instead:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+(x_1 - x_2 - x_3) + \frac{1}{3}(3x_3) &amp; = 2  +\frac{1}{3}(6), \\
+(x_2 + 3x_3) - (3x_3) &amp; = 3 - (6),\\
+3x_3  &amp; = 6.
+\end{align*}\]</div>
+<p>This leaves the system as</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+ x_1  -x_2 &amp; = 4,\\
+x_2 &amp; = -3,\\
+3x_3  &amp; = 6.
+\end{align*}\]</div>
+<p>Moving upwards to the second equation, and use it to eliminate within the one above it:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+(x_1 - x_2 ) + (x_2) &amp; = 4  + (-3),\\
+x_2 &amp; = -3,\\
+3x_3  &amp; = 6. 
+\end{align*}\]</div>
+<p>The system is now trivial: <span class="math notranslate nohighlight">\(x_1=1\)</span>, <span class="math notranslate nohighlight">\(x_2=-3\)</span>, and <span class="math notranslate nohighlight">\(x_3=2\)</span>.</p>
+</div></div><p id="index-1">The process above is called <strong>Gauss–Jordan elimination</strong>, or more simply, <strong>row elimination</strong>.</p>
 </div>
 <div class="section" id="matrix-form">
 <h2><span class="section-number">3.2.2. </span>Matrix form<a class="headerlink" href="#matrix-form" title="Permalink to this headline">¶</a></h2>

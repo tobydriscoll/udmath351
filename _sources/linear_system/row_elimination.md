@@ -85,7 +85,7 @@ The process in {numref}`Example {number} <example-gauss-elimination>` leading to
 An alternative to backward substitution is to transform the triangular system into something even simpler.
 
 (example-gauss-jordan)=
-::::{example} 
+::::{proof:example} 
 
 We continue from the end of {numref}`Example {number} <example-gauss-elimination>`.  Having reached the last variable and equation, we turn around and eliminate *upwards* instead:
 
