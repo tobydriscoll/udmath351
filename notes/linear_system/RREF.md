@@ -14,7 +14,11 @@ kernelspec:
 ---
 # RRE form
 
-It's time to get more formal and precise about row elimination. We separate it into downward and upward phases.  In what follows we use the term **leading nonzero** to mean the first (i.e., leftmost) entry of a row that is not zero.
+It's time to get more formal and precise about row elimination. 
+
+Previously we used row operations going top to bottom on the rows, left to right with the columns, to put the augmented matrix into triangular form. We refer to this process now as the *downward phase* of elimination.
+
+In what follows we use the term **leading nonzero** to mean the first (i.e., leftmost) entry of a row that is not zero.
 
 (definition-linalg-phase1)=
 ::::{proof:algorithm}  Row elimination downward phase
@@ -25,7 +29,7 @@ It's time to get more formal and precise about row elimination. We separate it i
 5. Increment $i$ and return to step 2.
 ::::
 
-At the end of the downward phase, the augmented matrix has a pretty simple form. However, it's not the cleanest form to work with theoretically, so we continue.
+At the end of the downward phase, the augmented matrix is triangular. However, it's not the cleanest form to work with theoretically, so we continue.
 
 (definition-linalg-phase2)=
 ::::{proof:algorithm} Row elimination upward phase
