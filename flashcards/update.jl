@@ -1,4 +1,4 @@
-using CSV,DataFrames,JSON
+using CSV,DataFrames,JSON,Random
 
 df = CSV.File("flashcards.csv") |> DataFrame
 # n = size(df,1)
@@ -9,7 +9,7 @@ df = CSV.File("flashcards.csv") |> DataFrame
 # end
 out = [ r[[:front,:back]] for r in eachrow(df) ]
 open("flashcards.json","w") do io 
-    JSON.print(io,out)
+    JSON.print(io,shuffle(out))
 end
 
 CSV.write("credits.csv",combine(groupby(df,:author),nrow))
