@@ -1,1 +1,1 @@
-[{"Front":"Gauss-Jordan elimination","Back":"reduction of a matrix to its equivalent RRE form"},{"Front":"augmented matrix","Back":"horizontal concatenation of a coefficient matrix with the right-side vector"},{"Front":"rank","Back":"number of leading ones in the RRE form of a matrix"}]
+[{"front":"Gauss-Jordan elimination","back":"reduction of a matrix to its equivalent RRE form"},{"front":"augmented matrix","back":"horizontal concatenation of a coefficient matrix with the right-side vector"},{"front":"rank","back":"number of leading ones in the RRE form of a matrix"}]

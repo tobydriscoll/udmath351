@@ -7,9 +7,9 @@ df = CSV.File("flashcards.csv") |> DataFrame
 #     out[i]["front"] = df.Front[i]
 #     out[i]["back"] = df.Back[i]
 # end
-out = [ r[[:Front,:Back]] for r in eachrow(df) ]
+out = [ r[[:front,:back]] for r in eachrow(df) ]
 open("flashcards.json","w") do io 
     JSON.print(io,out)
 end
 
-CSV.write("credits.csv",combine(groupby(df,:Name),nrow))
+CSV.write("credits.csv",combine(groupby(df,:author),nrow))
