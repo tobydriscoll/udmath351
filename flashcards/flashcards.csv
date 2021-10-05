@@ -1,4 +1,4 @@
 front,back,author
 "Gauss-Jordan elimination","reduction of a matrix to its equivalent RRE form",Driscoll
 "augmented matrix","horizontal concatenation of a coefficient matrix with the right-side vector",Driscoll
-rank,"number of leading ones in the RRE form of a matrix",Driscoll
+"$x' + P(t)x = f(t)$","standard form of a 1st order linear ODE",Driscoll
