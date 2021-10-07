@@ -4,3 +4,33 @@ augmented matrix,horizontal concatenation of a coefficient matrix with the right
 rank,number of leading ones in the RRE form of a matrix,Driscoll
 x' + P(t)x = f(t),standard form of a 1st order linear ODE,Driscoll
 row reduction/Gaussian elimination,use of row operations to reduce a matrix to triangular form,McGinley
+Free variable ,A variable that does not correspond to a pivot column,Cavagnaro
+Scalar multiplication,"A x B where A is a scalar and B is a vector, resulting in a vector ",Cavagnaro
+Linear independence,A set of vectors is linearly independent if the vector equation x1v1 + x2v2 + … + xnvn = 0 has only the trivial solution x1 = x2 = … = xn = 0,Cavagnaro
+Linear dependence ,A set of vectors is linearly dependent if the vector equation x1v1 + x2v2 + … + xnvn = 0 has more than one trivial solution,Cavagnaro
+Algebraic multiplicity,Multiplicity of an eigenvalue as a root of the characteristic polynomial,Cavagnaro 
+Geometric multiplicity ,Dimension of the eigenspace associated with one eigenvalue,Cavagnaro 
+Linear combination,"Vectors v1, v2, …, vk (same dimension); coefficients c1, c2, …, vk; c1v1 + c2v2 + … + ckvk is a linear combination ",Cavagnaro
+Column space ,The column space of C (C is a matrix a x b) is the sub space of R^a spanned by the columns C,Cavagnaro
+Null space,The null space of C (C is a matrix a x b) is the sub space of R^b consisting of all solutions of the homogeneous equation C(x)=0,Cavagnaro
+Span,"Span(v1,…,vk) = all possible linear combinations ",Cavagnaro
+linear system,"has coefficient matrix A, right side vector b. if b = 0, the system is homoegenous",Epstein
+backward subsitution,solving a triangular form (found from gaussian elimination) from the bottom row upwards,Epstein
+general linear system form,am1(x1) + am2(x2) + ... + amn(xn) = bm,Epstein
+inconsistent linear system,"no solutions, lines never meet in a geometric view of equations",Epstein
+underdamped,"oscillator with complex roots, 0 < ζ < 1",Epstein
+critically damped,"oscillator with double root, ζ = 1",Epstein
+overdamped,"oscillator with distinct negative roots, 1 < ζ",Epstein
+hooke's law,"F=-kx, k = spring constant",Epstein
+wronskian,determinant used to determine independence of functions,Epstein
+euler's formula,e^(it) =  cos(t) + isin(t),Epstein
+abel's theorem,"for linear ODEs, if the wronskian = 0 it is dependent, if it doesn't equal 0 it is independent",Epstein
+m x n,"size of a matrix: m represents the number of rows, n represents the number of columns and the number of variables",Epstein
+Consistent Linear System ,"A linear system that has at least one solution is called consistent. Otherwise, it is inconsistent.",Hehn
+Row Operations ,(1) Swap the positions of two equations; (2) Multiply an equation by a nonzero constant; (3) Add a multiple of one equation to another equation.,Hehn
+RRE Form,A matrix is in RRE form (reduced row-echelon form) if it meets all of these requirements: (1) Any rows of all zeros appear below all nonzero rows; (2) The leading nonzero of any row is a one; (3) Every leading 1 that is lower than another leading 1 is also to the right of it; (3) Every leading 1 is the only nonzero in its column.,Hehn
+Pivot Columns,The columns of a matrix in RRE form that have leading ones. ,Hehn
+Free Columns,The columns of a matrix in RRE form that do not have leading ones.,Hehn
+Asymptotically Stable ,"The steady state x̂ is asymptotically stable if there is a positive number 𝛿 such that the limit as t approaches infinity of x(t, X) = x̂ whenever |X - x̂| < 𝛿 .",Hehn
+Stability,"The steady state x̂ is said to be stable if, for any 𝜖 > 0, you can ensure that |x(t, X) - x̂| < 𝜖 for all time whenever |X - x̂| < 𝛿, where 𝛿 depends on 𝜖. If there is no such way to choose 𝛿, then x̂ is unstable. ",Hehn
+Simple Stability Test,"If f '(x̂) < 0, then x̂ is asymptotically stable. If f '(x̂) > 0, then x̂ is unstable. f '(x̂) = 0 is ambiguous, so another analysis is needed in order to determine its stability. ",Hehn
