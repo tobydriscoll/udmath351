@@ -449,13 +449,13 @@
 \[p(z) = (z-\lambda_1)^{m_1}(z-\lambda_2)^{m_2}\cdots(z-\lambda_k)^{m_k},\]</div>
 <p>for positive integer exponents such that <span class="math notranslate nohighlight">\(m_1+\cdots+m_k=n\)</span>. These exponents are the multiplicities of the roots, and that idea carries to the eigenvalues as well.</p>
 <div class="proof proof-type-definition" id="id2">
-<span id="definition-linalg-algmult"></span><span id="index-0"></span><div class="proof-title"> <span class="proof-type">Definition 4.47</span>  <span class="proof-title-name">: &nbsp;Algebraic multiplicity</span>  </div><div class="proof-content">
+<span id="definition-linalg-algmult"></span><span id="index-0"></span><div class="proof-title"> <span class="proof-type">Definition 4.48</span>  <span class="proof-title-name">: &nbsp;Algebraic multiplicity</span>  </div><div class="proof-content">
 <p>The <strong>algebraic multiplicity</strong> of an eigenvalue is its multiplicity as a root of the characteristic polynomial.</p>
 </div></div><div class="section" id="geometric-multiplicity">
 <h2><span class="section-number">4.7.1. </span>Geometric multiplicity<a class="headerlink" href="#geometric-multiplicity" title="Permalink to this headline">¶</a></h2>
 <p>The following example illustrates a possibility for eigenvalues of algebraic multiplicity greater than 1.</p>
 <div class="proof proof-type-example" id="id3">
-<span id="example-diagonalization-defective"></span><div class="proof-title"> <span class="proof-type">Example 4.48</span>  </div><div class="proof-content">
+<span id="example-diagonalization-defective"></span><div class="proof-title"> <span class="proof-type">Example 4.49</span>  </div><div class="proof-content">
 <p>Find the eigenspaces of <span class="math notranslate nohighlight">\(\bfA=\twomat{4}{1}{0}{4}\)</span>.</p>
 <details class="sphinx-bs dropdown card mb-3">
 <summary class="summary-title card-header">
@@ -474,11 +474,11 @@ Solution<div class="summary-down docutils">
 </div>
 </details></div></div><p>This leads us to define a second notion of multiplicity for an eigenvalue.</p>
 <div class="proof proof-type-definition" id="id4">
-<span id="definition-linalg-geomult"></span><span id="index-1"></span><div class="proof-title"> <span class="proof-type">Definition 4.49</span>  <span class="proof-title-name">: &nbsp;Geometric multiplicity</span>  </div><div class="proof-content">
+<span id="definition-linalg-geomult"></span><span id="index-1"></span><div class="proof-title"> <span class="proof-type">Definition 4.50</span>  <span class="proof-title-name">: &nbsp;Geometric multiplicity</span>  </div><div class="proof-content">
 <p>The <strong>geometric multiplicity</strong> of an eigenvalue is the dimension of its associated eigenspace.</p>
 </div></div><p>Here is an important fact we won’t try to justify.</p>
 <div class="proof proof-type-theorem" id="id5">
-<div class="proof-title"> <span class="proof-type">Theorem 4.50</span>  </div><div class="proof-content">
+<div class="proof-title"> <span class="proof-type">Theorem 4.51</span>  </div><div class="proof-content">
 <p>If <span class="math notranslate nohighlight">\(\text{AM}\)</span> and <span class="math notranslate nohighlight">\(\text{GM}\)</span> are the algebraic and geometric multiplicities respectively of an eigenvalue, then</p>
 <div class="math notranslate nohighlight">
 \[
@@ -487,22 +487,22 @@ Solution<div class="summary-down docutils">
 </div></div></div>
 <div class="section" id="defectiveness">
 <h2><span class="section-number">4.7.2. </span>Defectiveness<a class="headerlink" href="#defectiveness" title="Permalink to this headline">¶</a></h2>
-<p>In the <a class="reference internal" href="#example-diagonalization-defective"><span class="std std-numref">Example 4.48</span></a> we found a lone eigenvalue <span class="math notranslate nohighlight">\(\lambda_1=4\)</span> of algebraic multiplicity 2 whose geometric multiplicity is 1. The identity matrix is a different sort of example.</p>
+<p>In the <a class="reference internal" href="#example-diagonalization-defective"><span class="std std-numref">Example 4.49</span></a> we found a lone eigenvalue <span class="math notranslate nohighlight">\(\lambda_1=4\)</span> of algebraic multiplicity 2 whose geometric multiplicity is 1. The identity matrix is a different sort of example.</p>
 <div class="proof proof-type-example" id="id6">
-<div class="proof-title"> <span class="proof-type">Example 4.51</span>  </div><div class="proof-content">
+<div class="proof-title"> <span class="proof-type">Example 4.52</span>  </div><div class="proof-content">
 <p>The <span class="math notranslate nohighlight">\(2\times 2\)</span> identity matrix <span class="math notranslate nohighlight">\(\meye\)</span> has a lone eigenvalue <span class="math notranslate nohighlight">\(\lambda_1=1\)</span> of algebraic multiplicity 2. The system <span class="math notranslate nohighlight">\((\meye - \meye)\bfv=\bfzero\)</span> has an RRE form that is the zero matrix, so there are two free variables and two basis vectors. Hence the geometric multiplicity of <span class="math notranslate nohighlight">\(\lambda_1\)</span> is also 2.</p>
 </div></div><p>The distinction between these cases is significant enough to warrant another definition.</p>
 <div class="proof proof-type-definition" id="id7">
-<span id="index-2"></span><div class="proof-title"> <span class="proof-type">Definition 4.52</span>  <span class="proof-title-name">: &nbsp;Defectiveness</span>  </div><div class="proof-content">
+<span id="index-2"></span><div class="proof-title"> <span class="proof-type">Definition 4.53</span>  <span class="proof-title-name">: &nbsp;Defectiveness</span>  </div><div class="proof-content">
 <p>An eigenvalue <span class="math notranslate nohighlight">\(\lambda\)</span> whose geometric multiplicity is strictly less than its algebraic multiplicity is said to be <strong>defective</strong>. A matrix is called defective if any of its eigenvalues are defective.</p>
 </div></div><p>As we will see later, defective matrices often complicate the application of eigenvalue analysis.</p>
 <p>Since multiplicities are always at least one, there is a simple and common case in which we are certain that a matrix is not defective.</p>
 <div class="proof proof-type-theorem" id="id8">
-<div class="proof-title"> <span class="proof-type">Theorem 4.53</span>  <span class="proof-title-name">: &nbsp;Distinct eigenvalues</span>  </div><div class="proof-content">
+<div class="proof-title"> <span class="proof-type">Theorem 4.54</span>  <span class="proof-title-name">: &nbsp;Distinct eigenvalues</span>  </div><div class="proof-content">
 <p>If <span class="math notranslate nohighlight">\(\bfA\in\cmn{n}{n}\)</span> has <span class="math notranslate nohighlight">\(n\)</span> distinct eigenvalues, then <span class="math notranslate nohighlight">\(\bfA\)</span> is not defective.</p>
 </div></div><p>For <span class="math notranslate nohighlight">\(n=2\)</span>, the possibilities in the case of algebraic multiplicity equal to 2 are easy to pin down even further.</p>
 <div class="proof proof-type-theorem" id="id9">
-<span id="thm-la-2x2defective"></span><div class="proof-title"> <span class="proof-type">Theorem 4.54</span>  <span class="proof-title-name">: &nbsp;<span class="math notranslate nohighlight">\(2\times 2\)</span> defectiveness</span>  </div><div class="proof-content">
+<span id="thm-la-2x2defective"></span><div class="proof-title"> <span class="proof-type">Theorem 4.55</span>  <span class="proof-title-name">: &nbsp;<span class="math notranslate nohighlight">\(2\times 2\)</span> defectiveness</span>  </div><div class="proof-content">
 <p>Any <span class="math notranslate nohighlight">\(\bfA\in\cmn{2}{2}\)</span> that has a single repeated eigenvalue is either defective or a multiple of the identity matrix.</p>
 </div></div></div>
 <div class="section" id="id1">
@@ -528,20 +528,20 @@ Solution<div class="summary-down docutils">
 \end{split}\]</div>
 <p>where we defined</p>
 <div class="math notranslate nohighlight" id="equation-eq-diagonalization-vd">
-<span class="eqno">(4.6)<a class="headerlink" href="#equation-eq-diagonalization-vd" title="Permalink to this equation">¶</a></span>\[\begin{split}\bfV = \begin{bmatrix} \bfv_1 &amp;  \bfv_2 &amp; \cdots &amp; \bfv_n \end{bmatrix}, \qquad 
+<span class="eqno">(4.7)<a class="headerlink" href="#equation-eq-diagonalization-vd" title="Permalink to this equation">¶</a></span>\[\begin{split}\bfV = \begin{bmatrix} \bfv_1 &amp;  \bfv_2 &amp; \cdots &amp; \bfv_n \end{bmatrix}, \qquad 
 \mathbf{D} = \begin{bmatrix}
   \lambda_1 &amp; &amp; &amp; \\ &amp; \lambda_2  &amp; &amp; \\ &amp; &amp; \ddots &amp; \\ &amp; &amp; &amp; \lambda_n
 \end{bmatrix}.\end{split}\]</div>
 <p>Since we assumed that the columns of <span class="math notranslate nohighlight">\(\bfV\)</span> are linearly independent vectors, the column space of <span class="math notranslate nohighlight">\(\bfV\)</span> is <span class="math notranslate nohighlight">\(n\)</span>-dimensional. Hence <span class="math notranslate nohighlight">\(\rank(\bfV)=n\)</span> and <span class="math notranslate nohighlight">\(\bfV\)</span> is invertible.</p>
 <div class="proof proof-type-definition" id="id10">
-<span id="definition-diagonalization-diag"></span><span id="index-3"></span><div class="proof-title"> <span class="proof-type">Definition 4.55</span>  <span class="proof-title-name">: &nbsp;Diagonalization</span>  </div><div class="proof-content">
+<span id="definition-diagonalization-diag"></span><span id="index-3"></span><div class="proof-title"> <span class="proof-type">Definition 4.56</span>  <span class="proof-title-name">: &nbsp;Diagonalization</span>  </div><div class="proof-content">
 <p>A <strong>diagonalization</strong> of square matrix <span class="math notranslate nohighlight">\(\bfA\)</span> is the factorization</p>
 <div class="math notranslate nohighlight" id="equation-eq-diagonalization-similar">
-<span class="eqno">(4.7)<a class="headerlink" href="#equation-eq-diagonalization-similar" title="Permalink to this equation">¶</a></span>\[\bfA = \bfV \mathbf{D} \bfV^{-1},\]</div>
-<p>where (as defined in <a class="reference internal" href="#equation-eq-diagonalization-vd">(4.6)</a>) <span class="math notranslate nohighlight">\(\mathbf{D}\)</span> is a diagonal matix of eigenvalues and <span class="math notranslate nohighlight">\(\bfV\)</span> is a square matrix whose columns are corresponding eigenvectors.</p>
+<span class="eqno">(4.8)<a class="headerlink" href="#equation-eq-diagonalization-similar" title="Permalink to this equation">¶</a></span>\[\bfA = \bfV \mathbf{D} \bfV^{-1},\]</div>
+<p>where (as defined in <a class="reference internal" href="#equation-eq-diagonalization-vd">(4.7)</a>) <span class="math notranslate nohighlight">\(\mathbf{D}\)</span> is a diagonal matix of eigenvalues and <span class="math notranslate nohighlight">\(\bfV\)</span> is a square matrix whose columns are corresponding eigenvectors.</p>
 </div></div><p>What can we do about the requirement of linearly independent eigenvectors in the columns of <span class="math notranslate nohighlight">\(\bfV\)</span>? Without wading into the details, the following wraps this assumption up nicely.</p>
 <div class="proof proof-type-theorem" id="id11">
-<span id="theorem-diagonalization-diag"></span><div class="proof-title"> <span class="proof-type">Theorem 4.56</span>  </div><div class="proof-content">
+<span id="theorem-diagonalization-diag"></span><div class="proof-title"> <span class="proof-type">Theorem 4.57</span>  </div><div class="proof-content">
 <p>A matrix has a diagonalization if and only if it is not defective.</p>
 </div></div></div>
 </div>

@@ -414,18 +414,13 @@
             <nav id="bd-toc-nav">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#row-and-column-spaces">
-   4.3.1. Row and column spaces
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#basis">
-   4.3.2. Basis
+   4.3.1. Basis
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#dimension">
-   4.3.3. Dimension
+   4.3.2. Dimension
   </a>
  </li>
 </ul>
@@ -443,7 +438,7 @@
 <span id="section-matrix-subspaces"></span><h1><span class="section-number">4.3. </span>Subspaces<a class="headerlink" href="#subspaces" title="Permalink to this headline">¶</a></h1>
 <p>We encountered the null space of a matrix in <a class="reference internal" href="../linear_system/nullspace.html#section-linear-system-nullspace"><span class="std std-numref">Section 3.4</span></a>. It’s a special case of a vital type of set.</p>
 <div class="proof proof-type-definition" id="id1">
-<span id="definition-subspaces-subspace"></span><div class="proof-title"> <span class="proof-type">Definition 4.20</span>  <span class="proof-title-name">: &nbsp;Subspace</span>  </div><div class="proof-content">
+<span id="definition-subspaces-subspace"></span><div class="proof-title"> <span class="proof-type">Definition 4.21</span>  <span class="proof-title-name">: &nbsp;Subspace</span>  </div><div class="proof-content">
 <p>A <strong>subspace</strong> of <span class="math notranslate nohighlight">\(\real^n\)</span> is a set <span class="math notranslate nohighlight">\(S\)</span> satisfying:</p>
 <ol class="simple">
 <li><p>The zero vector is in <span class="math notranslate nohighlight">\(S\)</span>.</p></li>
@@ -452,14 +447,14 @@
 </div></div><p>The second property above is called <em>closure under linear combination</em>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>We will be making statements about real spaces like <span class="math notranslate nohighlight">\(\real^n\)</span>, but everything also works for <span class="math notranslate nohighlight">\(\complex^n\)</span>, which turns out to be important.</p>
+<p>We will be making statements about real spaces like <span class="math notranslate nohighlight">\(\real^n\)</span>, but everything also works for <span class="math notranslate nohighlight">\(\complex^n\)</span>, which turns out to be important soon.</p>
 </div>
 <div class="proof proof-type-example" id="id2">
-<span id="example-subspaces-plane"></span><div class="proof-title"> <span class="proof-type">Example 4.21</span>  </div><div class="proof-content">
+<span id="example-subspaces-plane"></span><div class="proof-title"> <span class="proof-type">Example 4.22</span>  </div><div class="proof-content">
 <p>The equation <span class="math notranslate nohighlight">\(x + 2y + 3z = 0\)</span> describes a plane passing through the origin in <span class="math notranslate nohighlight">\(\real^3\)</span>. It’s clear geometrically that scaling a vector in the plane leaves you in the plane, and adding vectors in the plane does as well. This is enough to show that this plane is a subspace of <span class="math notranslate nohighlight">\(\real^3\)</span>. In fact, it is the null space of the matrix <span class="math notranslate nohighlight">\(\begin{bmatrix} 1 &amp; 2 &amp; 3 \end{bmatrix}.\)</span></p>
 <p>The equation <span class="math notranslate nohighlight">\(x+y+z=1\)</span> is also a plane in <span class="math notranslate nohighlight">\(\real^3\)</span>, but it does not pass through the origin, so it cannot be a subspace. (It also fails closure for scaling and addition.)</p>
 </div></div><div class="proof proof-type-theorem" id="id3">
-<span id="theorem-subspaces-nullspace"></span><div class="proof-title"> <span class="proof-type">Theorem 4.22</span>  </div><div class="proof-content">
+<span id="theorem-subspaces-nullspace"></span><div class="proof-title"> <span class="proof-type">Theorem 4.23</span>  </div><div class="proof-content">
 <p>The null space of an <span class="math notranslate nohighlight">\(m\times n\)</span> matrix is a subspace of <span class="math notranslate nohighlight">\(\real^n\)</span>.</p>
 </div></div><div class="proof proof-type-proof">
 <div class="proof-title"> <span class="proof-type">Proof </span>  </div><div class="proof-content">
@@ -472,31 +467,29 @@ by basic algebraic properties,</p>
 <p>The derivation applies to linear combinations of any length.</p>
 </div></div><p>There is at least one easy way to generate subspaces. The following is not hard to prove.</p>
 <div class="proof proof-type-theorem" id="id4">
-<span id="theorem-subspaces-span"></span><div class="proof-title"> <span class="proof-type">Theorem 4.23</span>  </div><div class="proof-content">
+<span id="theorem-subspaces-span"></span><div class="proof-title"> <span class="proof-type">Theorem 4.24</span>  </div><div class="proof-content">
 <p>If <span class="math notranslate nohighlight">\(S=\span(\bfv_1,\ldots,\bfv_k)\)</span> for any vectors <span class="math notranslate nohighlight">\(\bfv_j\)</span> in <span class="math notranslate nohighlight">\(\real^n\)</span>, then <span class="math notranslate nohighlight">\(S\)</span> is a subspace of <span class="math notranslate nohighlight">\(\real^n\)</span>.</p>
-</div></div><div class="section" id="row-and-column-spaces">
-<h2><span class="section-number">4.3.1. </span>Row and column spaces<a class="headerlink" href="#row-and-column-spaces" title="Permalink to this headline">¶</a></h2>
+</div></div><p>In addition to the null space, there are two other subspaces closely associated with a matrix.</p>
 <div class="proof proof-type-definition" id="id5">
-<span id="definition-subspaces-rowcol"></span><div class="proof-title"> <span class="proof-type">Definition 4.24</span>  <span class="proof-title-name">: &nbsp;Row and column spaces</span>  </div><div class="proof-content">
+<span id="definition-subspaces-rowcol"></span><div class="proof-title"> <span class="proof-type">Definition 4.25</span>  <span class="proof-title-name">: &nbsp;Row and column spaces</span>  </div><div class="proof-content">
 <p>Let <span class="math notranslate nohighlight">\(\bfA\)</span> be an <span class="math notranslate nohighlight">\(m\times n\)</span> matrix. The <strong>row space</strong> of <span class="math notranslate nohighlight">\(\bfA\)</span>, <span class="math notranslate nohighlight">\(\rowsp(\bfA)\)</span>, is the span of the rows of <span class="math notranslate nohighlight">\(\bfA\)</span>. The <strong>column space</strong> of <span class="math notranslate nohighlight">\(\bfA\)</span>, <span class="math notranslate nohighlight">\(\colsp(\bfA)\)</span>, is the span of the columns of <span class="math notranslate nohighlight">\(\bfA\)</span>.</p>
-</div></div><p>By <a class="reference internal" href="#theorem-subspaces-span"><span class="std std-numref">Theorem 4.23</span></a>, <span class="math notranslate nohighlight">\(\rowsp(\bfA)\)</span> is a subspace of <span class="math notranslate nohighlight">\(\real^n\)</span>, and <span class="math notranslate nohighlight">\(\colsp(\bfA)\)</span> is a subspace of <span class="math notranslate nohighlight">\(\real^m\)</span>.</p>
-</div>
+</div></div><p>By <a class="reference internal" href="#theorem-subspaces-span"><span class="std std-numref">Theorem 4.24</span></a>, <span class="math notranslate nohighlight">\(\rowsp(\bfA)\)</span> is a subspace of <span class="math notranslate nohighlight">\(\real^n\)</span>, and <span class="math notranslate nohighlight">\(\colsp(\bfA)\)</span> is a subspace of <span class="math notranslate nohighlight">\(\real^m\)</span>.</p>
 <div class="section" id="basis">
-<h2><span class="section-number">4.3.2. </span>Basis<a class="headerlink" href="#basis" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">4.3.1. </span>Basis<a class="headerlink" href="#basis" title="Permalink to this headline">¶</a></h2>
 <p>We defined span and independence in <a class="reference internal" href="../linear_system/nullspace.html#section-linear-system-nullspace"><span class="std std-numref">Section 3.4</span></a>. These are two great tastes that taste great together.</p>
 <div class="proof proof-type-definition" id="id6">
-<span id="definition-subspaces-basis"></span><div class="proof-title"> <span class="proof-type">Definition 4.25</span>  <span class="proof-title-name">: &nbsp;Basis</span>  </div><div class="proof-content">
+<span id="definition-subspaces-basis"></span><div class="proof-title"> <span class="proof-type">Definition 4.26</span>  <span class="proof-title-name">: &nbsp;Basis</span>  </div><div class="proof-content">
 <p>A <strong>basis</strong> of a subspace <span class="math notranslate nohighlight">\(S\)</span> is any set of linearly independent vectors that spans <span class="math notranslate nohighlight">\(S\)</span>.</p>
-</div></div><p>Finding a basis for a null space was demonstrated in <a class="reference internal" href="../linear_system/nullspace.html#example-nullspace-span"><span class="std std-numref">Example 3.25</span></a>. Finding these other spaces is easier:</p>
+</div></div><p>Finding a basis for a null space was demonstrated in <a class="reference internal" href="../linear_system/nullspace.html#example-nullspace-span"><span class="std std-numref">Example 3.26</span></a>. Finding these other spaces is easier:</p>
 <div class="proof proof-type-theorem" id="id7">
-<div class="proof-title"> <span class="proof-type">Theorem 4.26</span>  </div><div class="proof-content">
+<div class="proof-title"> <span class="proof-type">Theorem 4.27</span>  </div><div class="proof-content">
 <p>Let <span class="math notranslate nohighlight">\(\bfA\)</span> have the RRE form <span class="math notranslate nohighlight">\(\mathbf{E}\)</span>. Then</p>
 <ol class="simple">
 <li><p>The nonzero rows of <span class="math notranslate nohighlight">\(\mathbf{E}\)</span> are a basis for <span class="math notranslate nohighlight">\(\rowsp(\bfA)\)</span>.</p></li>
 <li><p>Columns <span class="math notranslate nohighlight">\(j_1,\ldots,j_k\)</span> of <span class="math notranslate nohighlight">\(\bfA\)</span>, where <span class="math notranslate nohighlight">\(j_1,\ldots,j_k\)</span> are the pivot columns of <span class="math notranslate nohighlight">\(\mathbf{E}\)</span>, are a basis for <span class="math notranslate nohighlight">\(\colsp(\bfA)\)</span>.</p></li>
 </ol>
 </div></div><div class="proof proof-type-example" id="id8">
-<div class="proof-title"> <span class="proof-type">Example 4.27</span>  </div><div class="proof-content">
+<div class="proof-title"> <span class="proof-type">Example 4.28</span>  </div><div class="proof-content">
 <p>Find bases for the null space, row space, and column space of</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -532,20 +525,21 @@ Solution<div class="summary-down docutils">
 </div>
 </details></div></div></div>
 <div class="section" id="dimension">
-<h2><span class="section-number">4.3.3. </span>Dimension<a class="headerlink" href="#dimension" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">4.3.2. </span>Dimension<a class="headerlink" href="#dimension" title="Permalink to this headline">¶</a></h2>
 <p>You have an intuitive idea of dimension, but it may seem hard to define rigorously. But we’re set up to do that now. First, we need the following result.</p>
 <div class="proof proof-type-theorem" id="id9">
-<span id="theorem-subspaces-dimension"></span><div class="proof-title"> <span class="proof-type">Theorem 4.28</span>  </div><div class="proof-content">
+<span id="theorem-subspaces-dimension"></span><div class="proof-title"> <span class="proof-type">Theorem 4.29</span>  </div><div class="proof-content">
 <p>Every basis for a subspace <span class="math notranslate nohighlight">\(S\)</span> has the same number of members.</p>
 </div></div><div class="proof proof-type-definition" id="id10">
-<span id="definition-subspaces-dimension"></span><span id="index-0"></span><div class="proof-title"> <span class="proof-type">Definition 4.29</span>  <span class="proof-title-name">: &nbsp;Dimension</span>  </div><div class="proof-content">
+<span id="definition-subspaces-dimension"></span><span id="index-0"></span><div class="proof-title"> <span class="proof-type">Definition 4.30</span>  <span class="proof-title-name">: &nbsp;Dimension</span>  </div><div class="proof-content">
 <p>The <strong>dimension</strong> of a subspace <span class="math notranslate nohighlight">\(S\)</span>, written <span class="math notranslate nohighlight">\(\dim(S)\)</span>, is the number of vectors in any basis of <span class="math notranslate nohighlight">\(S\)</span>.</p>
 </div></div><p>The following comes from mucking about some more with the RRE form.</p>
 <div class="proof proof-type-theorem" id="id11">
-<span id="theorem-subspaces-rank"></span><div class="proof-title"> <span class="proof-type">Theorem 4.30</span>  </div><div class="proof-content">
+<span id="theorem-subspaces-rank"></span><div class="proof-title"> <span class="proof-type">Theorem 4.31</span>  </div><div class="proof-content">
 <p>For any <span class="math notranslate nohighlight">\(m\times n\)</span> matrix <span class="math notranslate nohighlight">\(\bfA\)</span>,</p>
 <ol class="simple">
-<li><p><span class="math notranslate nohighlight">\(\rank(\bfA)=\dim(\rowsp(\bfA))=\dim(\colsp(\bfA))\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\rank(\bfA)=\dim(\rowsp(\bfA))=\dim(\colsp(\bfA))\)</span>, the number of pivot variables in <span class="math notranslate nohighlight">\(\operatorname{RREF(\mathbf{A})}\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\dim(\nullsp(\bfA))\)</span> is the number of free variables in <span class="math notranslate nohighlight">\(\operatorname{RREF(\mathbf{A})}\)</span>.</p></li>
 <li><p><span class="math notranslate nohighlight">\(\rank(\bfA) + \dim(\nullsp(\bfA)) = n\)</span>.</p></li>
 </ol>
 </div></div><!-- 

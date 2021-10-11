@@ -533,6 +533,7 @@ Solution<div class="summary-down docutils">
 <p>Suppose the RRE form of a matrix <span class="math notranslate nohighlight">\(\bfA\)</span> is</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
+\mathbf{R} = 
 \begin{bmatrix}
 0 &amp; 1 &amp; 4 &amp; 0 &amp; 1 \\
 0 &amp; 0 &amp; 0  &amp; 1 &amp; -3 \\
@@ -540,11 +541,11 @@ Solution<div class="summary-down docutils">
 0 &amp; 0 &amp; 0  &amp; 0 &amp; 0
 \end{bmatrix}.
 \end{split}\]</div>
-<p>Recall that the augmented matrix of the homogeneous system having coefficient matrix <span class="math notranslate nohighlight">\(\bfA\)</span> has an additional zero column at the end. The pivot columns are 2 and 4, which makes <span class="math notranslate nohighlight">\(x_1=r\)</span>, <span class="math notranslate nohighlight">\(x_3=s\)</span>, and <span class="math notranslate nohighlight">\(x_5=t\)</span> free variables. The nonzero rows lead to</p>
+<p>Therefore, the RRE form of the augmented matrix <span class="math notranslate nohighlight">\([\mathbf{A}\: \boldsymbol{0}]\)</span> is <span class="math notranslate nohighlight">\([\mathbf{R}\: \boldsymbol{0}]\)</span>. The pivot columns are 2 and 4, which makes <span class="math notranslate nohighlight">\(x_1=r\)</span>, <span class="math notranslate nohighlight">\(x_3=s\)</span>, and <span class="math notranslate nohighlight">\(x_5=t\)</span> free variables. The nonzero rows lead to</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-x_2 &amp;= -4s-t,\\
-x_4 &amp;= 3t.
+x_2 + 4x_3 + x_5 &amp;= 0 &amp;\quad ⇒ \quad x_2 &amp;= -4s-t,\\
+x_4 -3x_5 &amp;= 0 &amp; \quad ⇒ \quad x_4 &amp;= 3t.
 \end{split}\]</div>
 <p>One way to express a generic solution vector in the null space is by a linear combination of constant vectors:</p>
 <div class="math notranslate nohighlight">
@@ -560,9 +561,9 @@ x_4 &amp;= 3t.
 \end{bmatrix}
 + t \begin{bmatrix}
   0 \\ -1 \\ 0 \\ 3 \\ 1
-\end{bmatrix}.
+\end{bmatrix} = r\bfv_1 + s\bfv_2 + t\bfv_3 .
 \end{split}\]</div>
-<p>Hence <span class="math notranslate nohighlight">\(\nullsp(\bfA)=\span(\bfv_1,\bfv_2,\bfv3)\)</span>, where the <span class="math notranslate nohighlight">\(\bfv_j\)</span> are the constant vectors above.</p>
+<p>Hence <span class="math notranslate nohighlight">\(\nullsp(\bfA)=\span(\bfv_1,\bfv_2,\bfv_3)\)</span>, where the <span class="math notranslate nohighlight">\(\bfv_j\)</span> are the constant vectors above.</p>
 </div></div></div>
 <div class="section" id="independence">
 <h2><span class="section-number">3.4.3. </span>Independence<a class="headerlink" href="#independence" title="Permalink to this headline">¶</a></h2>
@@ -582,7 +583,7 @@ c_1\bfv_1 + c_2\bfv_2 + \cdots c_n \bfv_n = 0.
 <p>Because linear combinations are equivalent to linear systems, statements about linear independence are equivalent to statements about homogeneous linear systems, and therefore about null spaces.</p>
 <div class="proof proof-type-example" id="id10">
 <span id="example-nullspace-dependent"></span><div class="proof-title"> <span class="proof-type">Example 3.28</span>  </div><div class="proof-content">
-<p>Determine whether the vectors <span class="math notranslate nohighlight">\(\bfv_1=\threevec{1}{0}{-2}\)</span>, <span class="math notranslate nohighlight">\(\bfv_2=\threevec{1}{0}{1}\)</span>, and <span class="math notranslate nohighlight">\(\threevec{0}{0}{-1}\)</span> are linearly independent.</p>
+<p>Determine whether the vectors <span class="math notranslate nohighlight">\(\bfv_1=\threevec{1}{0}{-2}\)</span>, <span class="math notranslate nohighlight">\(\bfv_2=\threevec{1}{0}{1}\)</span>, and <span class="math notranslate nohighlight">\(\bfv_3 = \threevec{0}{0}{-1}\)</span> are linearly independent.</p>
 <details class="sphinx-bs dropdown card mb-3">
 <summary class="summary-title card-header">
 Solution<div class="summary-down docutils">
@@ -620,7 +621,7 @@ c_1 \bfv_1 + c_2 \bfv_2 + c_3 \bfv_3 = \bfzero.
 </div></div><p>Dependent vectors can lengthen the description of a spanned space without actually contributing any information.</p>
 <div class="proof proof-type-example" id="id12">
 <span id="example-nullspace-dependentspan"></span><div class="proof-title"> <span class="proof-type">Example 3.30</span>  </div><div class="proof-content">
-<p>The result of <a class="reference internal" href="#example-nullspace-dependent"><span class="std std-numref">Example 3.28</span></a> is that <span class="math notranslate nohighlight">\(\bfv_1=\threevec{1}{0}{-2}\)</span>, <span class="math notranslate nohighlight">\(\bfv_2=\threevec{1}{0}{1}\)</span>, and <span class="math notranslate nohighlight">\(\threevec{0}{0}{-1}\)</span> are linearly dependent. For instance,</p>
+<p>The result of <a class="reference internal" href="#example-nullspace-dependent"><span class="std std-numref">Example 3.28</span></a> is that <span class="math notranslate nohighlight">\(\bfv_1=\threevec{1}{0}{-2}\)</span>, <span class="math notranslate nohighlight">\(\bfv_2=\threevec{1}{0}{1}\)</span>, and <span class="math notranslate nohighlight">\(\bfv_3 = \threevec{0}{0}{-1}\)</span> are linearly dependent. For instance,</p>
 <div class="math notranslate nohighlight">
 \[
 \bfv_1 - \bfv_2 + 3 \bfv_3 = \bfzero.

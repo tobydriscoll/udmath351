@@ -13,7 +13,7 @@ A **subspace** of $\real^n$ is a set $S$ satisfying:
 The second property above is called *closure under linear combination*. 
 
 :::{note}
-We will be making statements about real spaces like $\real^n$, but everything also works for $\complex^n$, which turns out to be important.
+We will be making statements about real spaces like $\real^n$, but everything also works for $\complex^n$, which turns out to be important soon.
 :::
 
 (example-subspaces-plane)=
@@ -45,7 +45,7 @@ There is at least one easy way to generate subspaces. The following is not hard 
 If $S=\span(\bfv_1,\ldots,\bfv_k)$ for any vectors $\bfv_j$ in $\real^n$, then $S$ is a subspace of $\real^n$.
 ::::
 
-## Row and column spaces
+In addition to the null space, there are two other subspaces closely associated with a matrix.
 
 (definition-subspaces-rowcol)=
 ::::{proof:definition} Row and column spaces
@@ -128,8 +128,9 @@ The following comes from mucking about some more with the RRE form.
 (theorem-subspaces-rank)=
 ::::{proof:theorem} 
 For any $m\times n$ matrix $\bfA$, 
-1. $\rank(\bfA)=\dim(\rowsp(\bfA))=\dim(\colsp(\bfA))$.
-2. $\rank(\bfA) + \dim(\nullsp(\bfA)) = n$.
+1. $\rank(\bfA)=\dim(\rowsp(\bfA))=\dim(\colsp(\bfA))$, the number of pivot variables in $\operatorname{RREF(\mathbf{A})}$.
+2. $\dim(\nullsp(\bfA))$ is the number of free variables in $\operatorname{RREF(\mathbf{A})}$.
+3. $\rank(\bfA) + \dim(\nullsp(\bfA)) = n$.
 ::::
 
 

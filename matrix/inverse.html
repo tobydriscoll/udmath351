@@ -444,6 +444,20 @@
   <a class="reference internal nav-link" href="#computing-the-inverse">
    4.2.5. Computing the inverse
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#diagonal-matrix">
+     Diagonal matrix
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#times-2">
+     <span class="math notranslate nohighlight">
+      \(2\times 2\)
+     </span>
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -462,13 +476,13 @@
 <div class="section" id="identity-matrix">
 <h2><span class="section-number">4.2.1. </span>Identity matrix<a class="headerlink" href="#identity-matrix" title="Permalink to this headline">¶</a></h2>
 <p>Suppose we are given an <span class="math notranslate nohighlight">\(m\times n\)</span> matrix <span class="math notranslate nohighlight">\(\bfA\)</span>. Writing its columns as the vectors <span class="math notranslate nohighlight">\(\bfa_1,\ldots,\bfa_n\)</span>, we can make the rather obvious observations</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{align*}
+<div class="math notranslate nohighlight">
+\[\begin{split}
 \bfa_1 &amp;= 1\cdot \bfa_1 + 0 \cdot \bfa_2 + \cdots + 0\cdot \bfa_n,\\
 \bfa_2 &amp;= 0\cdot \bfa_1 + 1 \cdot \bfa_2 + \cdots + 0\cdot \bfa_n,\\
 &amp;\; \vdots \\
 \bfa_n &amp;= 0\cdot \bfa_1 + 0 \cdot \bfa_2 + \cdots + 1\cdot \bfa_n.
-\end{align*}\]</div>
+\end{split}\]</div>
 <p>The purpose in using these expressions is to interpret them as linear combinations, and thus as matrix-vector products. Let’s define <span class="math notranslate nohighlight">\(\bfe_j\)</span> for <span class="math notranslate nohighlight">\(j=1,\ldots,n\)</span> as follows.</p>
 <div class="proof proof-type-definition" id="id1">
 <span id="index-0"></span><div class="proof-title"> <span class="proof-type">Definition 4.8</span>  <span class="proof-title-name">: &nbsp;Standard vectors</span>  </div><div class="proof-content">
@@ -480,12 +494,12 @@
 <div class="math notranslate nohighlight">
 \[\bfa_j = \bfA \bfe_j, \quad j=1,\ldots,n.\]</div>
 <p>Furthermore, we can use the definition of matrix products as a concatenation of matrix-vector products to derive</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{align*}
+<div class="math notranslate nohighlight">
+\[\begin{split}
 \bfA &amp;= \begin{bmatrix} \bfa_1 &amp; \bfa_2 &amp; \cdots &amp; \bfa_n \end{bmatrix} \\
 	&amp;=  \begin{bmatrix} \bfA\bfe_1 &amp; \bfA\bfe_2 &amp; \cdots &amp; \bfA\bfe_n \end{bmatrix}\\
 	&amp;=  \bfA \begin{bmatrix} \bfe_1 &amp; \bfe_2 &amp; \cdots &amp; \bfe_n \end{bmatrix}.
-\end{align*}\]</div>
+\end{split}\]</div>
 <div class="proof proof-type-definition" id="id2">
 <span id="index-1"></span><div class="proof-title"> <span class="proof-type">Definition 4.9</span>  <span class="proof-title-name">: &nbsp;Identity matrix</span>  </div><div class="proof-content">
 <p>The <span class="math notranslate nohighlight">\(n\times n\)</span> <strong>identity matrix</strong> is</p>
@@ -561,8 +575,8 @@ Solution<div class="summary-down docutils">
 <svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
 </summary><div class="summary-content card-body docutils">
 <p class="card-text">All we need to do is to check that the product (in either order) is the identity matrix:</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{align*}
+<div class="math notranslate nohighlight">
+\[\begin{split}
 \mathbf{R}(-\theta)\mathbf{R}(\theta) &amp;= \begin{bmatrix}
 \cos(-\theta) &amp; -\sin(-\theta) \\ \sin(-\theta) &amp; \cos(-\theta) 
 \end{bmatrix} \begin{bmatrix}
@@ -577,7 +591,7 @@ Solution<div class="summary-down docutils">
 \cos^2(\theta)+\sin^2(\theta) &amp; -\cos(\theta)\sin(\theta) + \sin(\theta)\cos(\theta) \\
   -\sin(\theta)\cos(\theta) + \cos(\theta)\sin(\theta)  &amp; \sin^2(\theta) + \cos^2(\theta) 
 \end{bmatrix} = \meye.
-\end{align*}\]</div>
+\end{split}\]</div>
 </div>
 </details></div></div><div class="section" id="properties">
 <h3>Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h3>
@@ -649,16 +663,28 @@ Solution<div class="summary-down docutils">
 <div class="math notranslate nohighlight">
 \[\bfA^{-1} \bfb =  \bfA^{-1}(\bfA\bfx)= (\bfA^{-1}\bfA) \bfx= \meye \bfx = \bfx.\]</div>
 <p>Since the inverse is unique, <span class="math notranslate nohighlight">\(\bfx\)</span> is unique as well.</p>
-</div></div></div>
+</div></div><p>The solution formula <span class="math notranslate nohighlight">\(\bfx=\bfA^{-1}\bfb\)</span> from the proof of <a class="reference internal" href="#theorem-ftla1"><span class="std std-numref">Theorem 4.18</span></a> is theoretically valuable but impossible to apply to specific system without knowing how to calculate the matrix inverse. In general, doing so is harder than just doing row elimination on a linear system, so it’s not a useful algorithm.</p>
+</div>
 <div class="section" id="computing-the-inverse">
 <h2><span class="section-number">4.2.5. </span>Computing the inverse<a class="headerlink" href="#computing-the-inverse" title="Permalink to this headline">¶</a></h2>
-<p>The solution formula <span class="math notranslate nohighlight">\(\bfx=\bfA^{-1}\bfb\)</span> from the proof of <a class="reference internal" href="#theorem-ftla1"><span class="std std-numref">Theorem 4.18</span></a> is incomplete without knowing how to calculate the matrix inverse. Doing so in general is harder than just doing row elimination on the original linear system. But in the <span class="math notranslate nohighlight">\(2\times 2\)</span> case the inverse is so easy that it’s worth committing to memory.</p>
+<p>There is a method for computing the inverse based on row elimination. But there is little cause for using it in practice. We will just look at some edge cases where the inverse is easy to find.</p>
+<div class="section" id="diagonal-matrix">
+<h3>Diagonal matrix<a class="headerlink" href="#diagonal-matrix" title="Permalink to this headline">¶</a></h3>
+<p>A <strong>diagonal matrix</strong> has zero elements everywhere the row index is different from the column index. If any diagonal element is zero, then the matrix is singular. Otherwise, its inverse is trivial, thanks to how matrix multiplication is defined.</p>
 <div class="proof proof-type-formula" id="id12">
-<span id="formula-linalg-inverse2by2"></span><span id="index-4"></span><div class="proof-title"> <span class="proof-type">Formula 4.19</span>  <span class="proof-title-name">: &nbsp;Inverse of <span class="math notranslate nohighlight">\(2\times 2\)</span></span>  </div><div class="proof-content">
+<span id="formula-linalg-inversediag"></span><div class="proof-title"> <span class="proof-type">Formula 4.19</span>  <span class="proof-title-name">: &nbsp;Inverse of a diagonal matrix</span>  </div><div class="proof-content">
+<div class="math notranslate nohighlight" id="equation-linalg-inversediag">
+<span class="eqno">(4.4)<a class="headerlink" href="#equation-linalg-inversediag" title="Permalink to this equation">¶</a></span>\[\begin{split}\begin{bmatrix} a_{11} &amp; &amp; &amp; \\  &amp; a_{22} &amp; &amp; \\ &amp; &amp; \ddots &amp; \\ &amp; &amp; &amp; a_{nn} \end{bmatrix}^{-1} = \begin{bmatrix} \frac{1}{a_{11}} &amp; &amp; &amp; \\  &amp; \frac{1}{a_{22}} &amp; &amp; \\ &amp; &amp; \ddots &amp; \\ &amp; &amp; &amp; \frac{1}{a_{nn}} \end{bmatrix}\end{split}\]</div>
+</div></div></div>
+<div class="section" id="times-2">
+<h3><span class="math notranslate nohighlight">\(2\times 2\)</span><a class="headerlink" href="#times-2" title="Permalink to this headline">¶</a></h3>
+<p>In the <span class="math notranslate nohighlight">\(2\times 2\)</span> case the inverse is easy enough to memorize.</p>
+<div class="proof proof-type-formula" id="id13">
+<span id="formula-linalg-inverse2by2"></span><span id="index-4"></span><div class="proof-title"> <span class="proof-type">Formula 4.20</span>  <span class="proof-title-name">: &nbsp;Inverse of <span class="math notranslate nohighlight">\(2\times 2\)</span></span>  </div><div class="proof-content">
 <div class="math notranslate nohighlight" id="equation-linalg-inverse2by2">
-<span class="eqno">(4.4)<a class="headerlink" href="#equation-linalg-inverse2by2" title="Permalink to this equation">¶</a></span>\[\begin{split}\begin{bmatrix} a &amp; b \\ c &amp; d \end{bmatrix}^{-1} = \frac{1}{ad-bc}\: \begin{bmatrix} d &amp; -b \\ -c &amp; a \end{bmatrix}.\end{split}\]</div>
+<span class="eqno">(4.5)<a class="headerlink" href="#equation-linalg-inverse2by2" title="Permalink to this equation">¶</a></span>\[\begin{split}\begin{bmatrix} a &amp; b \\ c &amp; d \end{bmatrix}^{-1} = \frac{1}{ad-bc}\: \begin{bmatrix} d &amp; -b \\ -c &amp; a \end{bmatrix}.\end{split}\]</div>
 <p>This formula breaks down if <span class="math notranslate nohighlight">\(ad=bc\)</span>, in which case the matrix is singular.</p>
-</div></div><p>Beyond <span class="math notranslate nohighlight">\(2\times 2\)</span> we won’t bother with computing inverses.</p>
+</div></div></div>
 </div>
 </div>
 

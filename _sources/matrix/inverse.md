@@ -6,12 +6,12 @@ You solve $ax=b$ for nonzero $a$ without thinking about it: $x=b/a$. If we do br
 
 Suppose we are given an $m\times n$ matrix $\bfA$. Writing its columns as the vectors $\bfa_1,\ldots,\bfa_n$, we can make the rather obvious observations
 
-\begin{align*}
+$$
 \bfa_1 &= 1\cdot \bfa_1 + 0 \cdot \bfa_2 + \cdots + 0\cdot \bfa_n,\\
 \bfa_2 &= 0\cdot \bfa_1 + 1 \cdot \bfa_2 + \cdots + 0\cdot \bfa_n,\\
 &\; \vdots \\
 \bfa_n &= 0\cdot \bfa_1 + 0 \cdot \bfa_2 + \cdots + 1\cdot \bfa_n.
-\end{align*}
+$$
 
 The purpose in using these expressions is to interpret them as linear combinations, and thus as matrix-vector products. Let's define $\bfe_j$ for $j=1,\ldots,n$ as follows.
 
@@ -32,11 +32,11 @@ Now we can write
 
 Furthermore, we can use the definition of matrix products as a concatenation of matrix-vector products to derive
 
-\begin{align*}
+$$
 \bfA &= \begin{bmatrix} \bfa_1 & \bfa_2 & \cdots & \bfa_n \end{bmatrix} \\
 	&=  \begin{bmatrix} \bfA\bfe_1 & \bfA\bfe_2 & \cdots & \bfA\bfe_n \end{bmatrix}\\
 	&=  \bfA \begin{bmatrix} \bfe_1 & \bfe_2 & \cdots & \bfe_n \end{bmatrix}.
-\end{align*}
+$$
 
 ```{index} ! identity matrix
 ```
@@ -56,9 +56,9 @@ The $n\times n$ **identity matrix** is
 ```
 ::::
 
-::::{note}
+```{note}
 Sometimes, when we need to indicate the size of the identity, we use a subscript, as in $\meye_4$ to represent the $4\times 4$ case. Usually, though, it's implied by the context.
-::::
+```
 
 ::::{proof:theorem} Multiplicative identity
 If $\bfA$ is $m\times n$, then $\bfA = \meye_m \bfA = \bfA \meye_n$.
@@ -113,7 +113,7 @@ Suppose $\bfA$ is a square matrix. A matrix $\mathbf{Z}$ of the same size such t
 
 Verifying whether a given matrix is the inverse of another matrix is simply a matter of multiplying them together and seeing if the result is an identity matrix.
 
-::::{proof:example}
+````{proof:example}
 The matrix $\mathbf{R}(\theta) = \begin{bmatrix}
 \cos(\theta) & -\sin(\theta) \\ \sin(\theta) & \cos(\theta) 
 \end{bmatrix}$
@@ -122,7 +122,7 @@ performs rotation in the plane around the origin by angle $\theta$. Show that $\
 :::{dropdown} Solution
 All we need to do is to check that the product (in either order) is the identity matrix:
 
-\begin{align*}
+$$
 \mathbf{R}(-\theta)\mathbf{R}(\theta) &= \begin{bmatrix}
 \cos(-\theta) & -\sin(-\theta) \\ \sin(-\theta) & \cos(-\theta) 
 \end{bmatrix} \begin{bmatrix}
@@ -137,9 +137,9 @@ All we need to do is to check that the product (in either order) is the identity
 \cos^2(\theta)+\sin^2(\theta) & -\cos(\theta)\sin(\theta) + \sin(\theta)\cos(\theta) \\
   -\sin(\theta)\cos(\theta) + \cos(\theta)\sin(\theta)  & \sin^2(\theta) + \cos^2(\theta) 
 \end{bmatrix} = \meye.
-\end{align*} 
+$$
 :::
-::::
+````
 
 ### Properties
 
@@ -221,9 +221,26 @@ We'll only look at statement 1 implying statement 2. Let $\bfx$ be any vector th
 Since the inverse is unique, $\bfx$ is unique as well.
 ::::
 
+The solution formula $\bfx=\bfA^{-1}\bfb$ from the proof of {numref}`Theorem {number} <theorem-FTLA1>` is theoretically valuable but impossible to apply to specific system without knowing how to calculate the matrix inverse. In general, doing so is harder than just doing row elimination on a linear system, so it's not a useful algorithm. 
 ## Computing the inverse
 
-The solution formula $\bfx=\bfA^{-1}\bfb$ from the proof of {numref}`Theorem {number} <theorem-FTLA1>` is incomplete without knowing how to calculate the matrix inverse. Doing so in general is harder than just doing row elimination on the original linear system. But in the $2\times 2$ case the inverse is so easy that it's worth committing to memory.
+There is a method for computing the inverse based on row elimination. But there is little cause for using it in practice. We will just look at some edge cases where the inverse is easy to find.
+
+### Diagonal matrix
+
+A **diagonal matrix** has zero elements everywhere the row index is different from the column index. If any diagonal element is zero, then the matrix is singular. Otherwise, its inverse is trivial, thanks to how matrix multiplication is defined.
+
+(formula-linalg-inversediag)=
+::::{proof:formula} Inverse of a diagonal matrix
+
+```{math}
+:label: linalg-inversediag
+\begin{bmatrix} a_{11} & & & \\  & a_{22} & & \\ & & \ddots & \\ & & & a_{nn} \end{bmatrix}^{-1} = \begin{bmatrix} \frac{1}{a_{11}} & & & \\  & \frac{1}{a_{22}} & & \\ & & \ddots & \\ & & & \frac{1}{a_{nn}} \end{bmatrix}
+```
+::::
+
+### $2\times 2$
+In the $2\times 2$ case the inverse is easy enough to memorize.
 
 ```{index} ! inverse of a matrix; $2\times 2$ case
 ```
@@ -238,6 +255,4 @@ The solution formula $\bfx=\bfA^{-1}\bfb$ from the proof of {numref}`Theorem {nu
 
 This formula breaks down if $ad=bc$, in which case the matrix is singular. 
 ::::
-
-Beyond $2\times 2$ we won't bother with computing inverses.
 

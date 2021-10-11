@@ -445,7 +445,7 @@
 </div>
 <p>The importance and usefulness of the following definition won’t be apparent for a while.</p>
 <div class="proof proof-type-definition" id="id1">
-<span id="definition-linalg-eigen"></span><span id="index-0"></span><div class="proof-title"> <span class="proof-type">Definition 4.35</span>  <span class="proof-title-name">: &nbsp;Eigenvalue and eigenvector</span>  </div><div class="proof-content">
+<span id="definition-linalg-eigen"></span><span id="index-0"></span><div class="proof-title"> <span class="proof-type">Definition 4.36</span>  <span class="proof-title-name">: &nbsp;Eigenvalue and eigenvector</span>  </div><div class="proof-content">
 <p>Suppose <span class="math notranslate nohighlight">\(\bfA\in\cmn{n}{n}\)</span>. If there exist a number <span class="math notranslate nohighlight">\(\lambda\)</span> and a nonzero vector <span class="math notranslate nohighlight">\(\bfv\)</span> such that</p>
 <div class="math notranslate nohighlight">
 \[\bfA \bfv = \lambda \bfv,\]</div>
@@ -497,24 +497,24 @@
 </div>
 <p>But there can be even more ambiguity.</p>
 <div class="proof proof-type-example" id="id2">
-<div class="proof-title"> <span class="proof-type">Example 4.36</span>  </div><div class="proof-content">
+<div class="proof-title"> <span class="proof-type">Example 4.37</span>  </div><div class="proof-content">
 <p>Let <span class="math notranslate nohighlight">\(\meye\)</span> be an identity matrix. Then <span class="math notranslate nohighlight">\(\meye\bfx=\bfx\)</span> for any vector <span class="math notranslate nohighlight">\(\bfx\)</span>, so every nonzero vector is an eigenvector!</p>
 </div></div><p>Fortunately we already have the tools we need to describe a more robust target, based on the very simple reformulation</p>
 <div class="math notranslate nohighlight">
 \[\bfzero=\bfA\bfv-\lambda\bfv=(\bfA-\lambda\meye)\bfv.\]</div>
 <p>The requirement of an eigenvector to be nonzero, combined with <a class="reference internal" href="inverse.html#theorem-ftla1"><span class="std std-numref">Theorem 4.18</span></a>, leads to the following crucial conclusion.</p>
 <div class="proof proof-type-theorem" id="id3">
-<span id="theorem-eigenvalues-singular"></span><div class="proof-title"> <span class="proof-type">Theorem 4.37</span>  </div><div class="proof-content">
+<span id="theorem-eigenvalues-singular"></span><div class="proof-title"> <span class="proof-type">Theorem 4.38</span>  </div><div class="proof-content">
 <p><span class="math notranslate nohighlight">\(\lambda\)</span> is an eigenvalue of <span class="math notranslate nohighlight">\(\bfA\)</span> if and only if <span class="math notranslate nohighlight">\(\bfA-\lambda\meye\)</span> is singular.</p>
 </div></div><div class="proof proof-type-definition" id="id4">
-<span id="definition-linalg-eigenspace"></span><span id="index-1"></span><div class="proof-title"> <span class="proof-type">Definition 4.38</span>  <span class="proof-title-name">: &nbsp;Eigenspace</span>  </div><div class="proof-content">
+<span id="definition-linalg-eigenspace"></span><span id="index-1"></span><div class="proof-title"> <span class="proof-type">Definition 4.39</span>  <span class="proof-title-name">: &nbsp;Eigenspace</span>  </div><div class="proof-content">
 <p>Let <span class="math notranslate nohighlight">\(\lambda\)</span> be an eigenvalue of <span class="math notranslate nohighlight">\(\bfA\)</span>. The <strong>eigenspace</strong> associated with <span class="math notranslate nohighlight">\(\lambda\)</span> is the null space of <span class="math notranslate nohighlight">\((\bfA-\lambda\meye)\bfx\)</span>.</p>
 </div></div><p>Eigenspaces, unlike eigenvectors, are uniquely associated with their eigenvalues. We have to be a bit careful, though, because we usually express such spaces using basis vectors, and those bases are <em>not</em> themselves unique. It’s also common in problems and discussions to use eigenvectors and silently ignore the nonuniqueness.</p>
 </div>
 <div class="section" id="properties">
 <h2><span class="section-number">4.5.2. </span>Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h2>
 <div class="proof proof-type-theorem" id="id5">
-<span id="theorem-eigenvalues-properties"></span><div class="proof-title"> <span class="proof-type">Theorem 4.39</span>  </div><div class="proof-content">
+<span id="theorem-eigenvalues-properties"></span><div class="proof-title"> <span class="proof-type">Theorem 4.40</span>  </div><div class="proof-content">
 <ol class="simple">
 <li><p>If <span class="math notranslate nohighlight">\(\lambda\)</span> is an eigenvalue of <span class="math notranslate nohighlight">\(\bfA\)</span>, then <span class="math notranslate nohighlight">\(c\lambda\)</span> is an eigenvalue of <span class="math notranslate nohighlight">\(c\bfA\)</span> with the same eigenvectors.</p></li>
 <li><p>If <span class="math notranslate nohighlight">\(\lambda\)</span> is an eigenvalue of <span class="math notranslate nohighlight">\(\bfA\)</span>, then <span class="math notranslate nohighlight">\(\lambda-c\)</span> is an eigenvalue of <span class="math notranslate nohighlight">\(\bfA-c\meye\)</span> with the same eigenvectors.</p></li>
@@ -523,7 +523,7 @@
 </ol>
 </div></div><p>Formally for part 3 of the theorem, a matrix is <strong>upper triangular</strong> if <span class="math notranslate nohighlight">\(A_{ij}=0\)</span> whenever <span class="math notranslate nohighlight">\(i&gt;j\)</span>, and it is <strong>lower triangular</strong> if <span class="math notranslate nohighlight">\(A_{ij}=0\)</span> whenever <span class="math notranslate nohighlight">\(i&lt;j\)</span>.</p>
 <div class="proof proof-type-example" id="id6">
-<span id="example-eigenvalues-triangular"></span><div class="proof-title"> <span class="proof-type">Example 4.40</span>  </div><div class="proof-content">
+<span id="example-eigenvalues-triangular"></span><div class="proof-title"> <span class="proof-type">Example 4.41</span>  </div><div class="proof-content">
 <p>Find the eigenvalues and eigenspaces of
 <span class="math notranslate nohighlight">\(\bfA = \begin{bmatrix} -2 &amp; 4 &amp; 0 \\ 0 &amp; 1 &amp; -3 \\ 0 &amp; 0 &amp; -2 \end{bmatrix}.\)</span></p>
 <details class="sphinx-bs dropdown card mb-3">
