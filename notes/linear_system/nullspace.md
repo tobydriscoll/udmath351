@@ -120,6 +120,7 @@ A nontrivial null space (i. e., containing more than the zero vector) can always
 Suppose the RRE form of a matrix $\bfA$ is
 
 $$
+\mathbf{R} = 
 \begin{bmatrix}
 0 & 1 & 4 & 0 & 1 \\
 0 & 0 & 0  & 1 & -3 \\
@@ -128,11 +129,11 @@ $$
 \end{bmatrix}.
 $$
 
-Recall that the augmented matrix of the homogeneous system having coefficient matrix $\bfA$ has an additional zero column at the end. The pivot columns are 2 and 4, which makes $x_1=r$, $x_3=s$, and $x_5=t$ free variables. The nonzero rows lead to
+Therefore, the RRE form of the augmented matrix $[\mathbf{A}\: \boldsymbol{0}]$ is $[\mathbf{R}\: \boldsymbol{0}]$. The pivot columns are 2 and 4, which makes $x_1=r$, $x_3=s$, and $x_5=t$ free variables. The nonzero rows lead to
 
 $$
-x_2 &= -4s-t,\\
-x_4 &= 3t.
+x_2 + 4x_3 + x_5 &= 0 &\quad ⇒ \quad x_2 &= -4s-t,\\
+x_4 -3x_5 &= 0 & \quad ⇒ \quad x_4 &= 3t.
 $$
 
 One way to express a generic solution vector in the null space is by a linear combination of constant vectors:
@@ -149,10 +150,10 @@ $$
 \end{bmatrix}
 + t \begin{bmatrix}
   0 \\ -1 \\ 0 \\ 3 \\ 1
-\end{bmatrix}.
+\end{bmatrix} = r\bfv_1 + s\bfv_2 + t\bfv_3 .
 $$
 
-Hence $\nullsp(\bfA)=\span(\bfv_1,\bfv_2,\bfv3)$, where the $\bfv_j$ are the constant vectors above.
+Hence $\nullsp(\bfA)=\span(\bfv_1,\bfv_2,\bfv_3)$, where the $\bfv_j$ are the constant vectors above.
 ::::
 
 ## Independence
@@ -181,7 +182,7 @@ Because linear combinations are equivalent to linear systems, statements about l
 
 (example-nullspace-dependent)=
 ::::{proof:example}
-Determine whether the vectors $\bfv_1=\threevec{1}{0}{-2}$, $\bfv_2=\threevec{1}{0}{1}$, and $\threevec{0}{0}{-1}$ are linearly independent.
+Determine whether the vectors $\bfv_1=\threevec{1}{0}{-2}$, $\bfv_2=\threevec{1}{0}{1}$, and $\bfv_3 = \threevec{0}{0}{-1}$ are linearly independent.
 :::{dropdown} Solution
 These vectors are dependent if, and only if, we can find $c_1,c_2,c_3$, not all zero, such that
 
@@ -222,7 +223,7 @@ Dependent vectors can lengthen the description of a spanned space without actual
 
 (example-nullspace-dependentspan)=
 ::::{proof:example}
-The result of {numref}`Example {number} <example-nullspace-dependent>` is that $\bfv_1=\threevec{1}{0}{-2}$, $\bfv_2=\threevec{1}{0}{1}$, and $\threevec{0}{0}{-1}$ are linearly dependent. For instance,
+The result of {numref}`Example {number} <example-nullspace-dependent>` is that $\bfv_1=\threevec{1}{0}{-2}$, $\bfv_2=\threevec{1}{0}{1}$, and $\bfv_3 = \threevec{0}{0}{-1}$ are linearly dependent. For instance,
 
 $$
 \bfv_1 - \bfv_2 + 3 \bfv_3 = \bfzero.

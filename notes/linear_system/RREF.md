@@ -253,7 +253,7 @@ Each leading one in the RRE form requires a row and column of its own.
 
 (theorem-RREF-deficient)=
 ::::{proof:theorem} 
-Suppose $\bfA$ is $m\times n$. If $\rank(\bfA)<n$, then the linear system $\bfA\bfx=\bfb$ cannot have a unique solution. It is inconsistent for some choices of $\bfb$ and has infinitely many solutions for some choices of $\bfb$.
+Suppose $\bfA$ is $m\times n$. If $\rank(\bfA)<n$, then the linear system with augmented matrix $[\bfA\: \bfb]$ cannot have a unique solution. It is inconsistent for some choices of $\bfb$ and has infinitely many solutions for other choices of $\bfb$.
 ::::
 :::{proof:proof}
 Let $r=\rank(\bfA)$. Then the RRE form of $\bfA$ has is all zero in rows $r+1$ to $m$. Now augment $\bfA$ with $\bfb$ and perform the row operations that reduce $\bfA$ to RRE form. If there are any nonzeros in rows $r+1$ to $m$ of the last column, the system is inconsistent. Otherwise, the system has at least one free variable. We can start with either type of outcome and run the row elimination process backward to find a $\bfb$ that led to it.

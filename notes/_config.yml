@@ -83,6 +83,7 @@ sphinx:
           "rank": ["\\operatorname{rank}"]
           "span": ["\\operatorname{span}"]
           "nullsp": ["\\operatorname{nullsp}"]
+          "nullity": ["\\operatorname{nullity}"]
           "rowsp": ["\\operatorname{rowsp}"]
           "colsp": ["\\operatorname{colsp}"]
           "dim": ["\\operatorname{dim}"]
