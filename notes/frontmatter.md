@@ -10,39 +10,39 @@ These are notes on MATH 351 at UD by Toby Driscoll. Copyrighted, all rights rese
 | ------ | ----------------------------------------------------------- | ----- | ------------------ |
 | Sep 1  | [Intro](first_order/preview)                                | --    |                    |
 | Sep 1  | [IVPs](first_order/ivp)                                     | --    |                    |
-| Sep 3  | [Qualitative methods](first_order/qualitative)              | 2.1   |                    |
-| Sep 8  | [Separable equations](first_order/separable)                | 2.2   |                    |
-| Sep 8  | [Linear equations](first_order/linear)                      | 2.3   |                    |
+| Sep 3  | [Qualitative methods](first_order/qualitative)              | 2.1   |   21, 24                 |
+| Sep 8  | [Separable equations](first_order/separable)                | 2.2   |   5, 6, 7, 10, 2                 |
+| Sep 8  | [Linear equations](first_order/linear)                      | 2.3   |   3, 6, 7, 11, 25, 29   |
 | Sep 10 | [Homogeneous problems](first_order/homogeneous)             | (2.3) |                    |
 | Sep 10 | [Variation of parameters](first_order/variation_parameters) | (2.3) |                    |
-| Sep 13 | [Modeling](first_order/modeling)                            | 2.7   |                    |
+| Sep 13 | [Modeling](first_order/modeling)                            | 2.7   |  1, 3, 5, 15, 23, 27                  |
 
 ### Second-order ODEs
 
 | Date   | Section                                                       | Zill | Suggested practice |
 | ------ | ------------------------------------------------------------- | ---- | ------------------ |
-| Sep 15 | [Structure of solutions](second_linear/structure)             | 3.1  |                    |
-| Sep 17 | [Constant-coefficient problems](second_linear/const_coeff)    | 3.3  |                    |
+| Sep 15 | [Structure of solutions](second_linear/structure)             | 3.1  |  16, 17, 21           |
+| Sep 17 | [Constant-coefficient problems](second_linear/const_coeff)    | 3.3  |  1-14, 29, 33, 49, 51                  |
 | Sep 17 | [Complex solutions](second_linear/complex)                    | 3.3  |                    |
-| Sep 20 | [Variation of parameters](second_linear/variation_parameters) | 3.5  |                    |
-| Sep 22 | [Undetermined coefficients](second_linear/undetermined)       | 3.4  |                    |
-| Sep 24 | [Oscillators](second_linear/oscillators)                      | 3.8  |                    |
+| Sep 20 | [Variation of parameters](second_linear/variation_parameters) | 3.5  |   3, 5, 10, 16                 |
+| Sep 22 | [Undetermined coefficients](second_linear/undetermined)       | 3.4  |    1, 3, 5, 8, 31                |
+| Sep 24 | [Oscillators](second_linear/oscillators)                      | 3.8  |   1,  6, 27, 31, 33, 43, 44                 |
 
 ### Linear algebra
 
 | Date   | Section                                          | Poole                | Suggested practice |
 | ------ | ------------------------------------------------ | -------------------- | ------------------ |
-| Sep 27 | [Intro to linear systems](linear_system/problem) | 2.1                  |                    |
-| Sep 29 | [Row elimination](linear_system/row_elimination) | 2.2                  |                    |
+| Sep 27 | [Intro to linear systems](linear_system/problem) | 2.1                  |  1-5, 19, 20, 21, 27-30, 31            |
+| Sep 29 | [Row elimination](linear_system/row_elimination) | 2.2                  |   1-8 (RRE only), 9-14 (RRE only), 25-28, 35-38, 40-41  |
 | Oct 1  | **EXAM 1**                                       | Goals A1–A13, B1–B10 |                    |
 | Oct 4  | [Elimination/RRE form](linear_system/RREF)       | 2.2                  |                    |
 | Oct 6  | [RRE form](linear_system/RREF)                   | 2.2                  |                    |
-| Oct 8  | [Homogeneous systems](linear_system/nullspace)   | 2.2, 2.3             |                    |
-| Oct 11 | [Algebraic operations](matrix/operations)        | 3.1                  |                    |
-| Oct 13 | [Algebraic operations](matrix/operations)        | 3.1, 3.2             |                    |
-| Oct 18 | [Identity and inverse](matrix/inverse)           | 3.3                  |                    |
-| Oct 20 | [Subspaces](matrix/subspaces)                    | 3.5                  |                    |
-| Oct 22 | [Determinants](matrix/determinants)              | 4.2                  |                    |
+| Oct 8  | [Homogeneous systems](linear_system/nullspace)   | 2.2, 2.3             |   1-4, 7, 9, 11, 22-27                 |
+| Oct 11 | [Algebraic operations](matrix/operations)        | 3.1                  |  1, 3, 5, 7, 11, 21-22, 40    |
+| Oct 13 | [Algebraic operations](matrix/operations)        | 3.1, 3.2             |   23, 28     |
+| Oct 18 | [Identity and inverse](matrix/inverse)           | 3.3                  |   1-4 (any method), 13a,  42a, 43a       |
+| Oct 20 | [Subspaces](matrix/subspaces)                    | 3.5                  | (no row spaces) 11-12, 17-20, 27-28, 35-38, 43, 45-46     |
+| Oct 22 | [Determinants](matrix/determinants)              | 4.2                  |   7-12, 45, 47, 49, 50, 57-58  |
 | Oct 25 | [Eigenvalues (properties)](matrix/eigenvalues)   | 4.1                  |                    |
 | Oct 27 | [Eigenvalues (computing)](matrix/computing)      | 4.3                  |                    |
 | Oct 29 | [Diagonalization](matrix/diagonalization)        | 4.4                  |                    |
@@ -65,6 +65,14 @@ These are notes on MATH 351 at UD by Toby Driscoll. Copyrighted, all rights rese
 | Dec 6  | [Linearization](ode_system/linearization)           | 11.3      |                    |
 | Dec 8  |                                                     |           |                    |
 | Dec 10 |                                                     |           |                    |
+
+## End-of-chapter review problems
+
+Note: Both textbooks have dedicated chapter review problems. 
+
+* Zill, Chapter 1 Review: 7-12, 25, 35-36
+* Zill, Chapter 2 Review: 5 (skip semi-stable), 13, 26a, 30, 32
+* Poole, Chapter 2 Review: 2, 3, 4, 7, 10, 12, 13, 15, 19
 
 ## Learning goals
 
