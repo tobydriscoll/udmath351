@@ -45,10 +45,10 @@ These are notes on MATH 351 at UD by Toby Driscoll. Copyrighted, all rights rese
 | Oct 22 | [Determinants](matrix/determinants)              | 4.2                  |   7-12, 45, 47, 49, 50, 57-58  |
 | Oct 25 | [Eigenvalues (properties)](matrix/eigenvalues)   | 4.1                  |                    |
 | Oct 27 | [Eigenvalues (computing)](matrix/computing)      | 4.3                  |                    |
-| Oct 29 | [Diagonalization](matrix/diagonalization)        | 4.4                  |                    |
+| Oct 29 |  Review       | 4.4                  |                    |
 | Nov 1  | **EXAM 2**                                       | Goals C1–C7, D1–D12  |                    |
-| Nov 3  | [Similarity](matrix/similarity)                  | 4.4                  |                    |
-| Nov 5  | [Vector spaces](space/spaces)                    | 6.1                  |                    |
+| Nov 3  | [Diagonalization](matrix/diagonalization)                  | 4.4                  |                    |
+| Nov 5  | [Vector spaces](space/vectors)                    | 6.1                  |                    |
 | Nov 8  | [Span, independence, basis](space/basis)         | 6.1, 6.2             |                    |
 | Nov 10 | [Change of basis](space/change)                  | 6.3                  |                    |
 ### Linear ODE systems
@@ -64,7 +64,7 @@ These are notes on MATH 351 at UD by Toby Driscoll. Copyrighted, all rights rese
 | Dec 3  | [Matrix exponential](ode_system/exp)                | 10.4      |                    |
 | Dec 6  | [Linearization](ode_system/linearization)           | 11.3      |                    |
 | Dec 8  |                                                     |           |                    |
-| Dec 10 |                                                     |           |                    |
+| Dec 10 |   Review                                     |           |                    |
 
 ## End-of-chapter review problems
 
