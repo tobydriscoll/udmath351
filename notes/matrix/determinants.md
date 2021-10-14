@@ -75,7 +75,7 @@ Let $\bfA$ and $\bfB$ be $n\times n$, and let $c$ be a number. Then
 1. $\det(c\bfA) = c^n \det(\bfA)$,
 2. $\det(\bfA\bfB) = \det(\bfA)\det(\bfB)$,
 3. If $\bfA$ is nonsingular, $\det(\bfA^{-1})=\bigl[\det(\bfA)\bigr]^{-1}$.
-4. $\det(\bfA)=0$ if and only if $\bfA$ is singular, and
+4. $\det(\bfA)=0$ if and only if $\bfA$ is singular.
 ::::
 
 It's the last property above that is of the greatest interest. 
@@ -89,8 +89,8 @@ The determinant is often the easiest way to check by hand for the invertibility 
 Even though a 2x2 inverse is easy, it's still not the most convenient way to solve a linear system $\bfA\bfx=\bfb$ by hand. There is another shortcut known as **Cramer's Rule**:
 
 \begin{align*}
-x_1 & = \frac{ \twodet{b_1}{A_{12}}{b_2}{A_{22}} }{ \det(\bfA) }\\[1ex]
-x_2 & = \frac{ \twodet{A_{11}}{b_1}{A_{21}}{b_2} }{ \det(\bfA) }.
+x_1 & = \frac{ \twodet{b_1}{a_{12}}{b_2}{a_{22}} }{ \det(\bfA) }\\[1ex]
+x_2 & = \frac{ \twodet{a_{11}}{b_1}{a_{21}}{b_2} }{ \det(\bfA) }.
 \end{align*}
 
 Obviously this does not work if $\det(\bfA)=0$, i. e., when the matrix is singular. In that case, you have to fall back on row elimination.
