@@ -516,12 +516,12 @@
 <div class="proof proof-type-theorem" id="id5">
 <span id="theorem-eigenvalues-properties"></span><div class="proof-title"> <span class="proof-type">Theorem 4.45</span>  </div><div class="proof-content">
 <ol class="simple">
-<li><p>If <span class="math notranslate nohighlight">\(\lambda\)</span> is an eigenvalue of <span class="math notranslate nohighlight">\(\bfA\)</span>, then <span class="math notranslate nohighlight">\(c\lambda\)</span> is an eigenvalue of <span class="math notranslate nohighlight">\(c\bfA\)</span> with the same eigenvectors.</p></li>
-<li><p>If <span class="math notranslate nohighlight">\(\lambda\)</span> is an eigenvalue of <span class="math notranslate nohighlight">\(\bfA\)</span>, then <span class="math notranslate nohighlight">\(\lambda-c\)</span> is an eigenvalue of <span class="math notranslate nohighlight">\(\bfA-c\meye\)</span> with the same eigenvectors.</p></li>
+<li><p>If <span class="math notranslate nohighlight">\(\lambda\)</span> is an eigenvalue of <span class="math notranslate nohighlight">\(\bfA\)</span>, then <span class="math notranslate nohighlight">\(c\lambda\)</span> is an eigenvalue of <span class="math notranslate nohighlight">\(c\bfA\)</span> with the same eigenspace.</p></li>
+<li><p>If <span class="math notranslate nohighlight">\(\lambda\)</span> is an eigenvalue of <span class="math notranslate nohighlight">\(\bfA\)</span>, then <span class="math notranslate nohighlight">\(\lambda-c\)</span> is an eigenvalue of <span class="math notranslate nohighlight">\(\bfA-c\meye\)</span> with the same eigenspace.</p></li>
 <li><p>If <span class="math notranslate nohighlight">\(\bfA\)</span> is a triangular square matrix, then its eigenvalues are its diagonal elements.</p></li>
 <li><p>A matrix is singular if and only if <span class="math notranslate nohighlight">\(0\)</span> is among its eigenvalues.</p></li>
 </ol>
-</div></div><p>Formally for part 3 of the theorem, a matrix is <strong>upper triangular</strong> if <span class="math notranslate nohighlight">\(A_{ij}=0\)</span> whenever <span class="math notranslate nohighlight">\(i&gt;j\)</span>, and it is <strong>lower triangular</strong> if <span class="math notranslate nohighlight">\(A_{ij}=0\)</span> whenever <span class="math notranslate nohighlight">\(i&lt;j\)</span>.</p>
+</div></div><p>Formally for part 3 of the theorem, a matrix is <strong>upper triangular</strong> if <span class="math notranslate nohighlight">\(a_{ij}=0\)</span> whenever <span class="math notranslate nohighlight">\(i&gt;j\)</span>, and it is <strong>lower triangular</strong> if <span class="math notranslate nohighlight">\(a_{ij}=0\)</span> whenever <span class="math notranslate nohighlight">\(i&lt;j\)</span>.</p>
 <div class="proof proof-type-example" id="id6">
 <span id="example-eigenvalues-triangular"></span><div class="proof-title"> <span class="proof-type">Example 4.46</span>  </div><div class="proof-content">
 <p>Find the eigenvalues and eigenspaces of
@@ -533,14 +533,14 @@ Solution<div class="summary-down docutils">
 <div class="summary-up docutils">
 <svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
 </summary><div class="summary-content card-body docutils">
-<p class="card-text">Because the matrix is upper triangular, we see right away that its eigenvalues are <span class="math notranslate nohighlight">\(\lambda_1=-2\)</span> and <span class="math notranslate nohighlight">\(\lambda_2=1\)</span>. The eigenspace for <span class="math notranslate nohighlight">\(\lamnda_1\)</span> is the null space of</p>
+<p class="card-text">Because the matrix is upper triangular, we see right away that its eigenvalues are <span class="math notranslate nohighlight">\(\lambda_1=-2\)</span> and <span class="math notranslate nohighlight">\(\lambda_2=1\)</span>. The eigenspace for <span class="math notranslate nohighlight">\(\lambda_1\)</span> is the null space of</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \bfA - (-2)\meye = \begin{bmatrix} 0 &amp; 4 &amp; 0 \\ 0 &amp; 3 &amp; -3 \\ 0 &amp; 0 &amp; 0 \end{bmatrix}
 \quad \overset{\text{RREF}}{\Longrightarrow} \quad 
 \begin{bmatrix} 0 &amp; 1 &amp; 0 \\ 0 &amp; 0 &amp; 1 \\ 0 &amp; 0 &amp; 0 \end{bmatrix}.
 \end{split}\]</div>
-<p class="card-text">Since the solution of a homogeneous system with this matrix is <span class="math notranslate nohighlight">\(x_1=t\)</span>, <span class="math notranslate nohighlight">\(x_2=x_3=0\)</span>, the basis for this eigenspace is thus <span class="math notranslate nohighlight">\([1,0,0]\)</span>. The eigenspace for <span class="math notranslate nohighlight">\(\lamnda_2\)</span> is the null space of</p>
+<p class="card-text">Since the solution of a homogeneous system with this matrix is <span class="math notranslate nohighlight">\(x_1=t\)</span>, <span class="math notranslate nohighlight">\(x_2=x_3=0\)</span>, the basis for this eigenspace is thus <span class="math notranslate nohighlight">\([1,0,0]\)</span>. The eigenspace for <span class="math notranslate nohighlight">\(\lambda_2\)</span> is the null space of</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \bfA - (1)\meye = \begin{bmatrix} -3 &amp; 4 &amp; 0 \\ 0 &amp; 0 &amp; -3 \\ 0 &amp; 0 &amp; -3 \end{bmatrix}

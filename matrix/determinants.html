@@ -490,7 +490,7 @@ Solution<div class="summary-down docutils">
 <li><p><span class="math notranslate nohighlight">\(\det(c\bfA) = c^n \det(\bfA)\)</span>,</p></li>
 <li><p><span class="math notranslate nohighlight">\(\det(\bfA\bfB) = \det(\bfA)\det(\bfB)\)</span>,</p></li>
 <li><p>If <span class="math notranslate nohighlight">\(\bfA\)</span> is nonsingular, <span class="math notranslate nohighlight">\(\det(\bfA^{-1})=\bigl[\det(\bfA)\bigr]^{-1}\)</span>.</p></li>
-<li><p><span class="math notranslate nohighlight">\(\det(\bfA)=0\)</span> if and only if <span class="math notranslate nohighlight">\(\bfA\)</span> is singular, and</p></li>
+<li><p><span class="math notranslate nohighlight">\(\det(\bfA)=0\)</span> if and only if <span class="math notranslate nohighlight">\(\bfA\)</span> is singular.</p></li>
 </ol>
 </div></div><p>It’s the last property above that is of the greatest interest.</p>
 <div class="admonition note">
@@ -503,8 +503,8 @@ Solution<div class="summary-down docutils">
 <p>Even though a 2x2 inverse is easy, it’s still not the most convenient way to solve a linear system <span class="math notranslate nohighlight">\(\bfA\bfx=\bfb\)</span> by hand. There is another shortcut known as <strong>Cramer’s Rule</strong>:</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
-x_1 &amp; = \frac{ \twodet{b_1}{A_{12}}{b_2}{A_{22}} }{ \det(\bfA) }\\[1ex]
-x_2 &amp; = \frac{ \twodet{A_{11}}{b_1}{A_{21}}{b_2} }{ \det(\bfA) }.
+x_1 &amp; = \frac{ \twodet{b_1}{a_{12}}{b_2}{a_{22}} }{ \det(\bfA) }\\[1ex]
+x_2 &amp; = \frac{ \twodet{a_{11}}{b_1}{a_{21}}{b_2} }{ \det(\bfA) }.
 \end{align*}\]</div>
 <p>Obviously this does not work if <span class="math notranslate nohighlight">\(\det(\bfA)=0\)</span>, i. e., when the matrix is singular. In that case, you have to fall back on row elimination.</p>
 <div class="proof proof-type-example" id="id4">

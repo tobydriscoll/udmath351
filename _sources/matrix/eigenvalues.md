@@ -121,13 +121,13 @@ Eigenspaces, unlike eigenvectors, are uniquely associated with their eigenvalues
 
 (theorem-eigenvalues-properties)=
 ::::{proof:theorem} 
-1. If $\lambda$ is an eigenvalue of $\bfA$, then $c\lambda$ is an eigenvalue of $c\bfA$ with the same eigenvectors.
-2. If $\lambda$ is an eigenvalue of $\bfA$, then $\lambda-c$ is an eigenvalue of $\bfA-c\meye$ with the same eigenvectors.
+1. If $\lambda$ is an eigenvalue of $\bfA$, then $c\lambda$ is an eigenvalue of $c\bfA$ with the same eigenspace.
+2. If $\lambda$ is an eigenvalue of $\bfA$, then $\lambda-c$ is an eigenvalue of $\bfA-c\meye$ with the same eigenspace.
 3. If $\bfA$ is a triangular square matrix, then its eigenvalues are its diagonal elements.
 4. A matrix is singular if and only if $0$ is among its eigenvalues.
 ::::
 
-Formally for part 3 of the theorem, a matrix is **upper triangular** if $A_{ij}=0$ whenever $i>j$, and it is **lower triangular** if $A_{ij}=0$ whenever $i<j$.
+Formally for part 3 of the theorem, a matrix is **upper triangular** if $a_{ij}=0$ whenever $i>j$, and it is **lower triangular** if $a_{ij}=0$ whenever $i<j$.
 
 (example-eigenvalues-triangular)=
 ::::{proof:example} 
@@ -135,7 +135,7 @@ Find the eigenvalues and eigenspaces of
 $\bfA = \begin{bmatrix} -2 & 4 & 0 \\ 0 & 1 & -3 \\ 0 & 0 & -2 \end{bmatrix}.$
 
 :::{dropdown} Solution
-Because the matrix is upper triangular, we see right away that its eigenvalues are $\lambda_1=-2$ and $\lambda_2=1$. The eigenspace for $\lamnda_1$ is the null space of 
+Because the matrix is upper triangular, we see right away that its eigenvalues are $\lambda_1=-2$ and $\lambda_2=1$. The eigenspace for $\lambda_1$ is the null space of 
 
 $$
 \bfA - (-2)\meye = \begin{bmatrix} 0 & 4 & 0 \\ 0 & 3 & -3 \\ 0 & 0 & 0 \end{bmatrix}
@@ -143,7 +143,7 @@ $$
 \begin{bmatrix} 0 & 1 & 0 \\ 0 & 0 & 1 \\ 0 & 0 & 0 \end{bmatrix}.
 $$
 
-Since the solution of a homogeneous system with this matrix is $x_1=t$, $x_2=x_3=0$, the basis for this eigenspace is thus $[1,0,0]$. The eigenspace for $\lamnda_2$ is the null space of 
+Since the solution of a homogeneous system with this matrix is $x_1=t$, $x_2=x_3=0$, the basis for this eigenspace is thus $[1,0,0]$. The eigenspace for $\lambda_2$ is the null space of 
 
 $$
 \bfA - (1)\meye = \begin{bmatrix} -3 & 4 & 0 \\ 0 & 0 & -3 \\ 0 & 0 & -3 \end{bmatrix}
