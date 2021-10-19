@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>5.1. Vectors galore &#8212; Notes on ODEs and linear algebra</title>
+    <title>4.8. Solving matrix problems &#8212; Notes on ODEs and linear algebra</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
   <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -58,8 +58,8 @@
     <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": {"real": ["\\mathbb{R}"], "complex": ["\\mathbb{C}"], "nat": ["\\mathbb{N}"], "integer": ["\\mathbb{Z}"], "rmn": ["\\mathbb{R}^{#1 \\times #2}", 2], "cmn": ["\\complex^{#1 \\times #2}", 2], "dd": ["\\frac{d #1}{d #2}", 2], "pp": ["\\frac{\\partial #1}{\\partial #2}", 2], "ddd": ["\\frac{d^2 #1}{d #2^2}", 2], "aug": ["\\left|\\right."], "norm": ["\\| #1 \\|", 1], "twonorm": ["\\| #1 \\|_2", 1], "onenorm": ["\\| #1 \\|_1", 1], "infnorm": ["\\| #1 \\|_\\infty", 1], "innerprod": ["\\langle #1,#2 \\rangle", 2], "twovec": ["\\begin{bmatrix} #1 \\\\ #2 \\end{bmatrix}", 2], "threevec": ["\\begin{bmatrix} #1 \\\\ #2 \\\\ #3 \\end{bmatrix}", 3], "twomat": ["\\begin{bmatrix} #1 & #2 \\\\ #3 & #4 \\end{bmatrix}", 4], "twodet": ["\\begin{vmatrix} #1 & #2 \\\\ #3 & #4 \\end{vmatrix}", 4], "pr": ["^{(#1)}", 1], "eye": ["\\mathbf{e}_#1", 1], "meye": ["\\mathbf{I}"], "bff": ["\\mathbf{f}"], "bfx": ["\\mathbf{x}"], "bfy": ["\\mathbf{y}"], "bfz": ["\\mathbf{z}"], "bfu": ["\\mathbf{u}"], "bfv": ["\\mathbf{v}"], "bfa": ["\\mathbf{a}"], "bfb": ["\\mathbf{b}"], "bfe": ["\\mathbf{e}"], "bfA": ["\\mathbf{A}"], "bfB": ["\\mathbf{B}"], "bfX": ["\\mathbf{X}"], "bfV": ["\\mathbf{V}"], "opA": ["\\mathcal{A}"], "lx": ["\\mathcal{L}"], "bfalpha": ["\\mathbf{alpha}"], "bfdelta": ["\\mathbf{delta}"], "bfzero": ["\\boldsymbol{0}"], "diag": ["\\operatorname{diag}"], "sign": ["\\operatorname{sign}"], "Re": ["\\operatorname{Re}"], "Im": ["\\operatorname{Im}"], "ee": ["\\times 10^"], "rank": ["\\operatorname{rank}"], "span": ["\\operatorname{span}"], "nullsp": ["\\operatorname{nullsp}"], "nullity": ["\\operatorname{nullity}"], "rowsp": ["\\operatorname{rowsp}"], "colsp": ["\\operatorname{colsp}"], "dim": ["\\operatorname{dim}"]}}, "HTML-CSS": {"availableFonts": [], "preferredFont": null, "webFont": "Asana-Math"}, "tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="5.2. Basis and dimension" href="basis.html" />
-    <link rel="prev" title="5. Vector spaces" href="overview.html" />
+    <link rel="next" title="5. Vector spaces" href="../space/overview.html" />
+    <link rel="prev" title="4.7. Diagonalization" href="diagonalization.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -221,80 +221,80 @@
    </li>
   </ul>
  </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../matrix/overview.html">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="overview.html">
    4. Matrix properties
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
   <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="operations.html">
+     4.1. Algebraic operations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="inverse.html">
+     4.2. Identity and inverse
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="subspaces.html">
+     4.3. Subspaces
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="determinants.html">
+     4.4. Determinants
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="eigenvalues.html">
+     4.5. Eigenvalues
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="computing.html">
+     4.6. Computing eigenvalues and eigenspaces
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="diagonalization.html">
+     4.7. Diagonalization
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     4.8. Solving matrix problems
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../space/overview.html">
+   5. Vector spaces
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
    <i class="fas fa-chevron-down">
    </i>
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../matrix/operations.html">
-     4.1. Algebraic operations
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../matrix/inverse.html">
-     4.2. Identity and inverse
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../matrix/subspaces.html">
-     4.3. Subspaces
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../matrix/determinants.html">
-     4.4. Determinants
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../matrix/eigenvalues.html">
-     4.5. Eigenvalues
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../matrix/computing.html">
-     4.6. Computing eigenvalues and eigenspaces
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../matrix/diagonalization.html">
-     4.7. Diagonalization
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../matrix/problems.html">
-     4.8. Solving problems about vectors and linear systems
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="overview.html">
-   5. Vector spaces
-  </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
-  <label for="toctree-checkbox-5">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul class="current">
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
+    <a class="reference internal" href="../space/vectors.html">
      5.1. Vectors galore
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="basis.html">
+    <a class="reference internal" href="../space/basis.html">
      5.2. Basis and dimension
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="change.html">
+    <a class="reference internal" href="../space/change.html">
      5.3. Change of basis
     </a>
    </li>
@@ -386,12 +386,9 @@
 
     <div class="dropdown-buttons">
         <!-- ipynb file if we had a myst markdown file -->
-        <a class="dropdown-buttons"
-            href="../_sources/space/vectors.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
+        
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/space/vectors.md"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/matrix/problems.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
@@ -416,24 +413,6 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show">
             
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
-            </div>
-            <nav id="bd-toc-nav">
-                <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#definition">
-   5.1.1. Definition
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#span-and-independence">
-   5.1.2. Span and independence
-  </a>
- </li>
-</ul>
-
-            </nav>
         </div>
     </div>
 </div>
@@ -442,101 +421,105 @@
         
               <div>
                 
-  <div class="section" id="vectors-galore">
-<h1><span class="section-number">5.1. </span>Vectors galore<a class="headerlink" href="#vectors-galore" title="Permalink to this headline">¶</a></h1>
-<p>Many of the conclusions we have seen in linear algebra ultimately depend only on the idea of linear combinations. But there are objects other than collections of <span class="math notranslate nohighlight">\(n\)</span> numbers that can play the linear combination game.</p>
-<div class="proof proof-type-example" id="id1">
-<span id="example-vectors-matrix"></span><div class="proof-title"> <span class="proof-type">Example 5.1</span>  </div><div class="proof-content">
-<p>For fixed <span class="math notranslate nohighlight">\(m\)</span> and <span class="math notranslate nohighlight">\(n\)</span>, any collection of <span class="math notranslate nohighlight">\(m\times n\)</span> matrices <span class="math notranslate nohighlight">\(vv,\ldots,\bfA_k\)</span> can be combined as</p>
+  <div class="section" id="solving-matrix-problems">
+<h1><span class="section-number">4.8. </span>Solving matrix problems<a class="headerlink" href="#solving-matrix-problems" title="Permalink to this headline">¶</a></h1>
+<p>There is always a natural correspondence between a collection of vectors and the matrix having those vectors as columns:</p>
 <div class="math notranslate nohighlight">
-\[
-\bfB = c_1 \bfA_1 + c_2 \bfA_2 + \cdots + c_k \bfA_k,
+\[ 
+    \bfa_1,\bfa_2,\ldots,\bfa_n \text{ in } \real^m 
+    \quad \Longleftrightarrow \quad 
+    \bfA = \bigl[\, \bfa_1 \; \bfa_2 \; \cdots \; \bfa_n \bigr] \text{ in } \rmn{m}{n}
 \]</div>
-<p>resulting in another <span class="math notranslate nohighlight">\(m\times n\)</span> matrix.</p>
-</div></div><div class="proof proof-type-example" id="id2">
-<span id="example-vectors-symmetric"></span><div class="proof-title"> <span class="proof-type">Example 5.2</span>  </div><div class="proof-content">
-<p>Any <span class="math notranslate nohighlight">\(2\times 2\)</span> symmetric matrix can be written in the form <span class="math notranslate nohighlight">\(\twomat{a}{b}{b}{c}\)</span>. If we combine two such matrices, we get</p>
-<div class="math notranslate nohighlight">
-\[
-k_1 \twomat{a}{b}{b}{c} + k_2 \twomat{d}{f}{f}{g} = \twomat{k_1a+k_2d}{k_1b+k_2f}{k_1b+k_2f}{k_1c + k_2g},
-\]</div>
-<p>which is another symmetric matrix. The same is true for longer linear combinations.</p>
-</div></div><div class="proof proof-type-definition" id="id3">
-<span id="definition-vectors-polynomial"></span><div class="proof-title"> <span class="proof-type">Definition 5.3</span>  <span class="proof-title-name">: &nbsp;Polynomials</span>  </div><div class="proof-content">
-<p>Let <span class="math notranslate nohighlight">\(\mathcal{P}_n\)</span> stand for the set of all polynomials of degree <span class="math notranslate nohighlight">\(n\)</span> or less.</p>
-</div></div><div class="proof proof-type-example" id="id4">
-<span id="example-vectors-polynomial"></span><div class="proof-title"> <span class="proof-type">Example 5.4</span>  </div><div class="proof-content">
-<p>If <span class="math notranslate nohighlight">\(p\)</span> and <span class="math notranslate nohighlight">\(q\)</span> are both polynomials of degree <span class="math notranslate nohighlight">\(n\)</span> or less, then <span class="math notranslate nohighlight">\(c_1p + c_2q\)</span> is also in <span class="math notranslate nohighlight">\(\mathcal{P}_2\)</span>.</p>
-</div></div><div class="proof proof-type-example" id="id5">
-<span id="example-vectors-smooth"></span><div class="proof-title"> <span class="proof-type">Example 5.5</span>  </div><div class="proof-content">
-<p>Let <span class="math notranslate nohighlight">\(\mathcal{C}\)</span> denote the set of all real-valued functions that are infinitely differentiable on the real line. If <span class="math notranslate nohighlight">\(f\in \mathcal{C}\)</span> and <span class="math notranslate nohighlight">\(c\)</span> is a real number, define <span class="math notranslate nohighlight">\(cf\)</span> as the function</p>
-<div class="math notranslate nohighlight">
-\[
-(cf)(x) = c\cdot f(x).
-\]</div>
-<p>With this rule, a linear combination of functions in <span class="math notranslate nohighlight">\(\mathcal{C}\)</span> is also infinitely differentiable and thus belongs in <span class="math notranslate nohighlight">\(\mathcal{C}\)</span>.</p>
-</div></div><div class="section" id="definition">
-<h2><span class="section-number">5.1.1. </span>Definition<a class="headerlink" href="#definition" title="Permalink to this headline">¶</a></h2>
-<div class="proof proof-type-definition" id="id6">
-<span id="definition-vectors-space"></span><span id="index-0"></span><div class="proof-title"> <span class="proof-type">Definition 5.6</span>  <span class="proof-title-name">: &nbsp;Vector space</span>  </div><div class="proof-content">
-<p>Let <span class="math notranslate nohighlight">\(V\)</span> be a set with rules for mutliplication by real numbers and addition of set members. If every linear combination of members of <span class="math notranslate nohighlight">\(V\)</span> results in another member of <span class="math notranslate nohighlight">\(V\)</span>, we call <span class="math notranslate nohighlight">\(V\)</span> a <strong>vector space</strong>. In this context, the numbers that multiply set elements in a linear combination are called <strong>scalars</strong>. Any vector space <span class="math notranslate nohighlight">\(S\)</span> that is a subset of another vector space <span class="math notranslate nohighlight">\(V\)</span> is called a <strong>subspace</strong> of <span class="math notranslate nohighlight">\(V\)</span>. A vector space is a subspace of itself.</p>
-</div></div><div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>I have omitted some technical details about how addition and scalar multiplication are supposed to behave; we will only consider the “natural” versions of those operations, which behave properly.</p>
-</div>
-<p>All of the examples above are vector spaces. Not every set we could pick will be one.</p>
-<div class="proof proof-type-example" id="id7">
-<span id="example-vectors-badpoly"></span><div class="proof-title"> <span class="proof-type">Example 5.7</span>  </div><div class="proof-content">
-<p>Suppose <span class="math notranslate nohighlight">\(S\)</span> is the set of all polynomials of degree 3. Since, for example,</p>
-<div class="math notranslate nohighlight">
-\[
-(x^3+x+1) + (-x^3+x^2)
-\]</div>
-<p>is not a polynomial of degree 3, <span class="math notranslate nohighlight">\(S\)</span> is not closed under linear combinations.</p>
-</div></div><div class="proof proof-type-example" id="id8">
-<span id="example-vectors-affine"></span><div class="proof-title"> <span class="proof-type">Example 5.8</span>  </div><div class="proof-content">
-<p>Let <span class="math notranslate nohighlight">\(S\)</span> be the set of all vectors in <span class="math notranslate nohighlight">\(\real^2\)</span> such that <span class="math notranslate nohighlight">\(x_1+x_2=1\)</span>. Since, for example,</p>
-<div class="math notranslate nohighlight">
-\[
-[1,0] + [0,1] = [1,1]
-\]</div>
-<p>is not in <span class="math notranslate nohighlight">\(S\)</span>, <span class="math notranslate nohighlight">\(S\)</span> is not a vector space.</p>
-</div></div><p>There is one easy way of detecting some sets that aren’t vector spaces.</p>
-<div class="proof proof-type-theorem" id="id9">
-<span id="theorem-vectors-zero"></span><div class="proof-title"> <span class="proof-type">Theorem 5.9</span>  </div><div class="proof-content">
-<p>If <span class="math notranslate nohighlight">\(V\)</span> is a nonempty vector space, then the zero vector is in <span class="math notranslate nohighlight">\(V\)</span>.</p>
-</div></div><div class="proof proof-type-proof">
-<div class="proof-title"> <span class="proof-type">Proof </span>  </div><div class="proof-content">
-<p>Let <span class="math notranslate nohighlight">\(\bfv\)</span> be any member of <span class="math notranslate nohighlight">\(V\)</span>. Then <span class="math notranslate nohighlight">\(1\cdot \bfv + (-1)\cdot \bfv\)</span> will be zero.</p>
-</div></div></div>
-<div class="section" id="span-and-independence">
-<h2><span class="section-number">5.1.2. </span>Span and independence<a class="headerlink" href="#span-and-independence" title="Permalink to this headline">¶</a></h2>
-<p>Our previous definitions of span and independence refer only to linear combinations of vectors, so they can be applied directly to more abstract vector spaces.</p>
-<div class="proof proof-type-example" id="id10">
-<span id="example-vectors-spanp2"></span><div class="proof-title"> <span class="proof-type">Example 5.10</span>  </div><div class="proof-content">
-<p>The polynomials <span class="math notranslate nohighlight">\(p(x)=1\)</span> and <span class="math notranslate nohighlight">\(q(x)=x^2\)</span> are vectors in the space <span class="math notranslate nohighlight">\(\mathcal{P}_2\)</span>. Their span is</p>
-<div class="math notranslate nohighlight">
-\[
-\span(p,q) = c_1p(x) + c_2 q(x) = c_1 + c_2x^2,
-\]</div>
-<p>which is the subset of all even functions in <span class="math notranslate nohighlight">\(\mathcal{P}_2\)</span>.</p>
-</div></div><p>Span is a common way to generate subspaces.</p>
-<div class="proof proof-type-theorem" id="id11">
-<span id="theorem-vectors-span"></span><div class="proof-title"> <span class="proof-type">Theorem 5.11</span>  </div><div class="proof-content">
-<p>Let <span class="math notranslate nohighlight">\(\bfv_1,\ldots,\bfv_k\)</span> be members of vector space <span class="math notranslate nohighlight">\(V\)</span>. Define <span class="math notranslate nohighlight">\(S=\span(\bfv_1,\ldots,\bfv_k)\)</span>. Then:</p>
-<ol class="simple">
-<li><p><span class="math notranslate nohighlight">\(S\)</span> is a subspace.</p></li>
-<li><p>Any vector space that contains <span class="math notranslate nohighlight">\(\bfv_1,\ldots,\bfv_k\)</span> also contains <span class="math notranslate nohighlight">\(S\)</span>.</p></li>
-</ol>
-</div></div><div class="proof proof-type-example" id="id12">
-<span id="example-vectors-monomial"></span><div class="proof-title"> <span class="proof-type">Example 5.12</span>  </div><div class="proof-content">
-<p>The vectors <span class="math notranslate nohighlight">\(1,x,\ldots,x^n\)</span> clearly form a spanning set for <span class="math notranslate nohighlight">\(\mathcal{P}_n\)</span>. Suppose that scalars <span class="math notranslate nohighlight">\(c_0,\ldots,c_n\)</span> are chosen so that</p>
-<div class="math notranslate nohighlight">
-\[
-p = c_0(1) + c_1(x) + \cdots + c_n(x^n)
-\]</div>
-<p>satisfies <span class="math notranslate nohighlight">\(p(x)=0\)</span> for all real <span class="math notranslate nohighlight">\(x\)</span>. The Fundamental Theorem of Algebra states that a polynomial of degree <span class="math notranslate nohighlight">\(n\)</span> has at most <span class="math notranslate nohighlight">\(n\)</span> real roots, so the only possibility is <span class="math notranslate nohighlight">\(p\)</span> is the zero polynomial. This implies that <span class="math notranslate nohighlight">\(c_0=c_1=\cdots=c_n=0\)</span>. Hence <span class="math notranslate nohighlight">\(1,x,\ldots,x^n\)</span> are linearly indepdendent in <span class="math notranslate nohighlight">\(\mathcal{P}_2\)</span>.</p>
-</div></div></div>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Problem</p></th>
+<th class="head"><p></p></th>
+<th class="head"><p>Strategy</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Solve linear system with augmented matrix <span class="math notranslate nohighlight">\([\bfA \:\aug \: \bfb]\)</span></p></td>
+<td><p></p></td>
+<td><p>Reduce to RRE</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p><strong>OR</strong></p></td>
+<td><p>(<span class="math notranslate nohighlight">\(2\times 2\)</span> case) Cramer’s Rule</p></td>
+</tr>
+<tr class="row-even"><td><p>Is linear system <span class="math notranslate nohighlight">\([\bfA \:\aug \: \bfb]\)</span> inconsistent?</p></td>
+<td><p></p></td>
+<td><p>Does <span class="math notranslate nohighlight">\(\text{RRE}([\bfA \:\aug \: \bfb])\)</span> have a leading 1 in the last column?</p></td>
+</tr>
+<tr class="row-odd"><td><p>Is <span class="math notranslate nohighlight">\(\bfb\)</span> in <span class="math notranslate nohighlight">\(\span(\bfa_1,\ldots,\bfa_n)\)</span>?</p></td>
+<td><p></p></td>
+<td><p>Is linear system <span class="math notranslate nohighlight">\([\bfA \:\aug \: \bfb]\)</span> consistent?</p></td>
+</tr>
+<tr class="row-even"><td><p>Solve linear system <span class="math notranslate nohighlight">\(\bfA\bfx=\bfb\)</span></p></td>
+<td><p></p></td>
+<td><p>Solve linear system with augmented matrix <span class="math notranslate nohighlight">\([\bfA \:\aug \: \bfb]\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>Express <span class="math notranslate nohighlight">\(\bfb\)</span> as a linear combination of <span class="math notranslate nohighlight">\(\bfa_1,\ldots,\bfa_n\)</span></p></td>
+<td><p></p></td>
+<td><p>Solve linear system <span class="math notranslate nohighlight">\(\bfA\bfx=\bfb\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>Are <span class="math notranslate nohighlight">\(\bfa_1,\ldots,\bfa_n\)</span> independent?</p></td>
+<td><p></p></td>
+<td><p>Does the nullity of <span class="math notranslate nohighlight">\(\bfA\)</span> equal zero?</p></td>
+</tr>
+<tr class="row-odd"><td><p>Compute matrix product</p></td>
+<td><p></p></td>
+<td><p>Dot products of rows and columns</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p><strong>OR</strong></p></td>
+<td><p>Linear combinations of columns</p></td>
+</tr>
+<tr class="row-odd"><td><p>Find matrix inverse</p></td>
+<td><p></p></td>
+<td><p>Diagonal or <span class="math notranslate nohighlight">\(2\times 2\)</span> formula, or a trick</p></td>
+</tr>
+<tr class="row-even"><td><p>Find basis of <span class="math notranslate nohighlight">\(\nullsp(\bfA)\)</span></p></td>
+<td><p></p></td>
+<td><p>Solve <span class="math notranslate nohighlight">\(\bfA \bfx = \bfzero\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>Find basis of <span class="math notranslate nohighlight">\(\colsp(\bfA)\)</span></p></td>
+<td><p></p></td>
+<td><p>Reduce <span class="math notranslate nohighlight">\(\bfA\)</span> to RRE</p></td>
+</tr>
+<tr class="row-even"><td><p>Find basis of <span class="math notranslate nohighlight">\(\span(\bfa_1,\ldots,\bfa_n)\)</span></p></td>
+<td><p></p></td>
+<td><p>Find basis of <span class="math notranslate nohighlight">\(\colsp(\bfA)\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>Find rank or nullity of <span class="math notranslate nohighlight">\(\bfA\)</span></p></td>
+<td><p></p></td>
+<td><p>Count leading/free variables in RRE</p></td>
+</tr>
+<tr class="row-even"><td><p>Compute determinant</p></td>
+<td><p></p></td>
+<td><p>Cofactor expansion</p></td>
+</tr>
+<tr class="row-odd"><td><p>Do <span class="math notranslate nohighlight">\(\bfa_1,\ldots,\bfa_n\)</span> span <span class="math notranslate nohighlight">\(\real^m\)</span>?</p></td>
+<td><p></p></td>
+<td><p>Does <span class="math notranslate nohighlight">\(\rank(\bfA)=m\)</span>?</p></td>
+</tr>
+<tr class="row-even"><td><p>Is <span class="math notranslate nohighlight">\(\bfA\)</span> singular? (<span class="math notranslate nohighlight">\(m=n\)</span> only)</p></td>
+<td><p></p></td>
+<td><p>Is the determinant of <span class="math notranslate nohighlight">\(\bfA\)</span> zero?</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p><strong>OR</strong></p></td>
+<td><p>Is <span class="math notranslate nohighlight">\(\rank(\bfA) &lt; n\)</span>?</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p><strong>OR</strong></p></td>
+<td><p>Is <span class="math notranslate nohighlight">\(\nullity(\bfA) &gt; 0\)</span>?</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p><strong>OR</strong></p></td>
+<td><p>Does <span class="math notranslate nohighlight">\(\bfA\)</span> have a zero eigenvalue?</p></td>
+</tr>
+</tbody>
+</table>
 </div>
 
     <script type="text/x-thebe-config">
@@ -548,24 +531,24 @@ p = c_0(1) + c_1(x) + \cdots + c_n(x^n)
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "julia-1.6"
+            mode: "python"
         },
         kernelOptions: {
-            kernelName: "julia-1.6",
-            path: "./space"
+            kernelName: "python3",
+            path: "./matrix"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'julia-1.6'</script>
+    <script>kernelName = 'python3'</script>
 
               </div>
               
         
         <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="overview.html" title="previous page"><span class="section-number">5. </span>Vector spaces</a>
-    <a class='right-next' id="next-link" href="basis.html" title="next page"><span class="section-number">5.2. </span>Basis and dimension</a>
+    <a class='left-prev' id="prev-link" href="diagonalization.html" title="previous page"><span class="section-number">4.7. </span>Diagonalization</a>
+    <a class='right-next' id="next-link" href="../space/overview.html" title="next page"><span class="section-number">5. </span>Vector spaces</a>
 
         </div>
         

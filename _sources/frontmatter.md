@@ -64,7 +64,7 @@ These are notes on MATH 351 at UD by Toby Driscoll. Copyrighted, all rights rese
 | Dec 3  | [Matrix exponential](ode_system/exp)                | 10.4      |                    |
 | Dec 6  | [Linearization](ode_system/linearization)           | 11.3      |                    |
 | Dec 8  |                                                     |           |                    |
-| Dec 10 |                                                     |           |                    |
+| Dec 10 |   Review                                     |           |                    |
 
 ## End-of-chapter review problems
 
