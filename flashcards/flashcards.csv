@@ -34,3 +34,20 @@ Free Columns,The columns of a matrix in RRE form that do not have leading ones.,
 Asymptotically Stable ,"The steady state x̂ is asymptotically stable if there is a positive number 𝛿 such that the limit as t approaches infinity of x(t, X) = x̂ whenever |X - x̂| < 𝛿 .",Hehn
 Stability,"The steady state x̂ is said to be stable if, for any 𝜖 > 0, you can ensure that |x(t, X) - x̂| < 𝜖 for all time whenever |X - x̂| < 𝛿, where 𝛿 depends on 𝜖. If there is no such way to choose 𝛿, then x̂ is unstable. ",Hehn
 Simple Stability Test,"If f '(x̂) < 0, then x̂ is asymptotically stable. If f '(x̂) > 0, then x̂ is unstable. f '(x̂) = 0 is ambiguous, so another analysis is needed in order to determine its stability. ",Hehn
+Reduced Row Echelon Form ,In each row the leading coeficcient is a leading 1; each column containg a 1 has zeros in all of its other entry points,Gordon
+Complex Solutions,"If the soultion is to the function factored has lamda equal to a negative root, the soultion is a complex number; imaginary i",Gordon 
+General Homogenous Equation ,"𝑥ℎ(𝑡)=𝑒𝑎𝑡[𝑏1cos(𝜔𝑡)+𝑏2sin(𝜔𝑡)],",Gordon
+Variation of Parameters Second Order ODE,x(p)t=u1(t)x1(t) + u2(t)x2(t),Gordon
+A=Ao^kt  /  A=Ao^-kt,Growth and Decay Formulas ,Gordon
+Homogenous ODE ,𝑑𝑥𝑑𝑡+𝑃(𝑡)𝑥=0,Gordon
+x(t)=xh(𝑡)+xp(t) ,General Soultion ODE,Gordon
+row echelon form,all rows with only zeros are put at the bottom of the matrix; the first nonzero term in each row is in a diagonal from the first nonzero term from the row above,Cavagnaro
+equivalent linear systems,Equivalent if and only if they have the same set of solutions ,Cavagnaro
+General solution for nonlinear graph ,x(t)=1/C-t,Haas
+seperable equations,x'=f(x)g(t),Haas
+Differential equations ,"An equation involving an unknown function y=f(x) and one or more of its derivative. Ex: dx/dt=f(t,x) in this case x is the dependent variable while t is the independent variable",Martin
+autonomous differential equation,a system of ordinary differential equations which does not explicitly depend on the independent variable,Martin
+Slope Field,a graphical representation of the solutions to a first-order differential equation of a scalar function,Martin
+equilibrium solution,a solution to a differential equation whose derivative is zero everywhere,Martin
+Super position Principle- Homogeneous ,the sum of two or more solutions of a homogeneous linear differential equation is also a solution,Martin
+Particular Solution,"the most general form of the solution of a differential equation, containing arbitrary constants",Martin
