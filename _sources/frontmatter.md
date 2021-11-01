@@ -43,11 +43,11 @@ These are notes on MATH 351 at UD by Toby Driscoll. Copyrighted, all rights rese
 | Oct 18 | [Identity and inverse](matrix/inverse)           | 3.3                  |   1-4 (any method), 13a,  42a, 43a       |
 | Oct 20 | [Subspaces](matrix/subspaces)                    | 3.5                  | (no row spaces) 11-12, 17-20, 27-28, 35-38, 43, 45-46     |
 | Oct 22 | [Determinants](matrix/determinants)              | 4.2                  |   7-12, 45, 47, 49, 50, 57-58  |
-| Oct 25 | [Eigenvalues (properties)](matrix/eigenvalues)   | 4.1                  |                    |
-| Oct 27 | [Eigenvalues (computing)](matrix/computing)      | 4.3                  |                    |
+| Oct 25 | [Eigenvalues (properties)](matrix/eigenvalues)   | 4.1                  |   1-4, 11-12, 27-28, 36  |
+| Oct 27 | [Eigenvalues (computing)](matrix/computing)      | 4.3                  |   1-3, 10, 23                  |
 | Oct 29 |  Review       | 4.4                  |                    |
-| Nov 1  | **EXAM 2**                                       | Goals C1–C7, D1–D12  |                    |
-| Nov 3  | [Diagonalization](matrix/diagonalization)                  | 4.4                  |                    |
+| Nov 1  | [Diagonalization](matrix/diagonalization)                  | 4.4                  |  5-6, 8-10, 17, 19   |
+| Nov 3  | **EXAM 2**                                       | Goals C1–C7, D1–D12  |                    |
 | Nov 5  | [Vector spaces](space/vectors)                    | 6.1                  |                    |
 | Nov 8  | [Span, independence, basis](space/basis)         | 6.1, 6.2             |                    |
 | Nov 10 | [Change of basis](space/change)                  | 6.3                  |                    |
