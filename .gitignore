@@ -2,3 +2,5 @@ notes/_build/
 notes/Manifest.toml
 notes/second_linear/tmp.gif
 flashcards/credits.csv
+.ipynb_checkpoints/Untitled-checkpoint.ipynb
+notes/ode_system/.ipynb_checkpoints/test-checkpoint.ipynb
