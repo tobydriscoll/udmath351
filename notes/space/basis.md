@@ -22,7 +22,7 @@ Here is a formal definition that we postponed when talking about matrices.
 ```
 (definition-vectors-basis)=
 ::::{proof:definition} 
-A linearly independent set of vectors that spans vector space $V$ is called a **basis** of $V$
+A linearly independent set of vectors that spans vector space $V$ is called a **basis** of $V$.
 ::::
 
 Since questions about span and independence always reduce to questions about linear combinations, they can be converted into statements about linear systems, at which point we can use the tools from Chapter 4.
@@ -125,10 +125,10 @@ A number of important vector spaces have a **standard basis**. These include
 * For $\real^n$: vectors $\bfe_1,\ldots,\bfe_n$ that are the columns of an $n\times n$ identity matrix:
 
 $$
-\bfe_1 = \begin{bmatrix} 1 \\ 0 \\ 0 \vdots \\ 0 \end{bmatrix}, \quad 
-\bfe_2 = \begin{bmatrix} 0 \\ 1 \\ 0 \vdots \\ 0 \end{bmatrix}, \quad 
+\bfe_1 = \begin{bmatrix} 1 \\ 0 \\ 0 \\ \vdots \\ 0 \end{bmatrix}, \quad 
+\bfe_2 = \begin{bmatrix} 0 \\ 1 \\ 0 \\ \vdots \\ 0 \end{bmatrix}, \quad 
 \cdots, \quad
-\bfe_n = \begin{bmatrix} 0 \\ 0 \\ 0 \vdots \\ 1 \end{bmatrix}.
+\bfe_n = \begin{bmatrix} 0 \\ 0 \\ 0 \\ \vdots \\ 1 \end{bmatrix}.
 $$
 
 * For $m\times n$ matrices: the $mn$ matrices that are zero in every element except for 1 in one position. (These come from unstacking the standard vectors of $\real^{mn}$.)
