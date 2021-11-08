@@ -48,9 +48,9 @@ These are notes on MATH 351 at UD by Toby Driscoll. Copyrighted, all rights rese
 | Oct 29 |  Review       | 4.4                  |                    |
 | Nov 1  | [Diagonalization](matrix/diagonalization)                  | 4.4                  |  5-6, 8-10, 17, 19   |
 | Nov 3  | **EXAM 2**                                       | Goals C1–C7, D1–D12  |                    |
-| Nov 5  | [Vector spaces](space/vectors)                    | 6.1                  |                    |
-| Nov 8  | [Span, independence, basis](space/basis)         | 6.1, 6.2             |                    |
-| Nov 10 | [Change of basis](space/change)                  | 6.3                  |                    |
+| Nov 5  | [Vector spaces](space/vectors)                    | 6.1                  | 1, 2, 9, 28, 31, 35, 36, 51-52, 53-54   |
+| Nov 8  | [Span, independence, basis](space/basis)         | 6.1, 6.2             |  1-3, 5-7, 18-19, 22-24, 28-29, 51-52  |
+| Nov 10 | [Change of basis](space/change)                  | 6.3                  |  1-3, 5-7   |
 ### Linear ODE systems
 
 | Date   | Section                                             | Zill      | Suggested practice |
