@@ -466,15 +466,15 @@
                 
   <div class="section" id="stability-and-the-phase-plane">
 <h1><span class="section-number">6.4. </span>Stability and the phase plane<a class="headerlink" href="#stability-and-the-phase-plane" title="Permalink to this headline">¶</a></h1>
-<p>The homogeneous system <span class="math notranslate nohighlight">\(\mathbf{x}'=\mathbf{A}\mathbf{x}\)</span> for a constant matrix <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> clearly has the constant function <span class="math notranslate nohighlight">\(\mathbf{x}(t)\equiv \boldsymbol{0}\)</span> as a solution. We call this an <strong>equilibrium</strong> or steady-state solution. (If <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> is singular, then there are other equilibrium points as well, but we are not interested in that peculiar case.)</p>
+<p>The homogeneous system <span class="math notranslate nohighlight">\(\mathbf{x}'=\mathbf{A}\mathbf{x}\)</span> for a constant matrix <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> clearly has the constant function <span class="math notranslate nohighlight">\(\mathbf{x}(t)\equiv \bfzero\)</span> as a solution. We call this an <strong>equilibrium</strong> or steady-state solution. (If <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> is singular, then there are other equilibrium points as well, but we are not interested in that peculiar case.)</p>
 <div class="section" id="stability">
 <h2><span class="section-number">6.4.1. </span>Stability<a class="headerlink" href="#stability" title="Permalink to this headline">¶</a></h2>
 <p>Not all equilibria are alike.</p>
 <p>Imagine holding a broom by two fingers, with the bristles pointing straight down at the floor. You will not have much difficulty keeping the broom in approximately this position for a long time, even if an annoying friend comes by and jostles you a bit.</p>
-<p>Now imagine holding the broom inverted, with the bristles pointing toward the ceiling. If you were able to <em>perfectly</em> balance the center of gravity of a <em>perfectly</em> symmetric broom above your fingers, then in principle it ought to stay there. However, the broom is not perfect, and your arm and fingers can’t stay perfectly still. With effort, you might keep the broom upright for a few seconds, but not for a long time. Both the downward and upward positions of the broom are equilibria. The property that differentiates them is <strong>stability<code class="docutils literal notranslate"><span class="pre">.</span> <span class="pre">(We</span> <span class="pre">will</span> <span class="pre">return</span> <span class="pre">to</span> <span class="pre">the</span> <span class="pre">nonlinear</span> <span class="pre">pendulum</span> <span class="pre">in</span> <span class="pre">{numref}</span></code>section-nl-linearization</strong>.)</p>
-<p>Stability refers to the response of the system to a perturbation (tiny change) of its state away from an equilibrium. If the system eventually returns to the equilibrium point (in the sense of the limit <span class="math notranslate nohighlight">\(t\to\infty\)</span>), we say the equilibrium is <strong>asymptotically stable<code class="docutils literal notranslate"><span class="pre">.</span> <span class="pre">That</span> <span class="pre">is,</span> <span class="pre">the</span> <span class="pre">perturbation</span> <span class="pre">decays</span> <span class="pre">away,</span> <span class="pre">like</span> <span class="pre">with</span> <span class="pre">a</span> <span class="pre">damped</span> <span class="pre">linear</span> <span class="pre">oscillator.</span> <span class="pre">A</span> <span class="pre">weaker</span> <span class="pre">form</span> <span class="pre">of</span> <span class="pre">stability</span> <span class="pre">is</span> <span class="pre">explained</span> <span class="pre">in</span> <span class="pre">{numref}</span></code>section-fs-pp-center<code class="docutils literal notranslate"> <span class="pre">below.</span> <span class="pre">If</span> <span class="pre">the</span> <span class="pre">system</span> <span class="pre">has</span> <span class="pre">tiny</span> <span class="pre">perturbations</span> <span class="pre">that</span> <span class="pre">grow</span> <span class="pre">without</span> <span class="pre">bound,</span> <span class="pre">then</span> <span class="pre">the</span> <span class="pre">equilibrium</span> <span class="pre">is</span> <span class="pre">{term}</span></code>unstable</strong>.</p>
+<p>Now imagine holding the broom inverted, with the bristles pointing toward the ceiling. If you were able to <em>perfectly</em> balance the center of gravity of a <em>perfectly</em> symmetric broom above your fingers, then in principle it ought to stay there. However, the broom is not perfect, and your arm and fingers can’t stay perfectly still. With effort, you might keep the broom upright for a few seconds, but not for a long time. Both the downward and upward positions of the broom are equilibria. The property that differentiates them is <strong>stability</strong>. (We will return to the nonlinear pendulum in {numref}`section-nl-linearization**.)</p>
+<p>Stability refers to the response of the system to a perturbation (tiny change) of its state away from an equilibrium. If the system eventually returns to the equilibrium point (in the sense of the limit <span class="math notranslate nohighlight">\(t\to\infty\)</span>), we say the equilibrium is <strong>asymptotically stable</strong>. That is, the perturbation decays away, like with a damped linear oscillator. A weaker form of stability is explained at the end of the section. If the system has tiny perturbations that grow without bound, then the equilibrium is <strong>unstable</strong>.</p>
 <p>Stability of the origin depends on the eigenvalues of <span class="math notranslate nohighlight">\(\mathbf{A}\)</span>. This is most easily summarized in the special case of a <span class="math notranslate nohighlight">\(2\times 2\)</span> real matrix with eigenvalues <span class="math notranslate nohighlight">\(\lambda_1,\lambda_2\)</span>. The major cases to be considered are summarized in the following table, leaving out some trickier edge cases when things are zero or exactly equal. The other column of the table is to be explained next.</p>
-<table class="table" id="table-fs-stability">
+<span id="table-phase-plane-stability"></span><table class="table" id="table-fs-stability">
 <caption><span class="caption-number">Table 6.1 </span><span class="caption-text">Eigenvalues and stability</span><a class="headerlink" href="#table-fs-stability" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col style="width: 33%" />
@@ -517,47 +517,52 @@
 </div>
 <div class="section" id="phase-plane">
 <h2><span class="section-number">6.4.2. </span>Phase plane<a class="headerlink" href="#phase-plane" title="Permalink to this headline">¶</a></h2>
-<p>In the two-dimensional case, the solutions of <span class="math notranslate nohighlight">\(\mathbf{x}'=\mathbf{A}\mathbf{x}\)</span> can be plotted as trajectories parameterized by time in the <span class="math notranslate nohighlight">\((x_1,x_2)\)</span> plane, often called the <strong>phase plane</strong>. Each of the cases in the <a class="reference internal" href="#table-fs-stability"><span class="std std-ref">stability table</span></a> has a characteristic type of phase plane portrait that illustrates major aspects of solution behaviors.</p>
+<p>In the two-dimensional case, the solutions of <span class="math notranslate nohighlight">\(\mathbf{x}'=\mathbf{A}\mathbf{x}\)</span> can be plotted as trajectories parameterized by time in the <span class="math notranslate nohighlight">\((x_1,x_2)\)</span> plane, often called the <strong>phase plane</strong>. Each of the cases in the <a class="reference internal" href="#table-phase-plane-stability"><span class="std std-numref">Table 6.1</span></a> has a characteristic type of phase plane portrait that illustrates major aspects of solution behaviors.</p>
 <div class="section" id="node">
 <h3>Node<a class="headerlink" href="#node" title="Permalink to this headline">¶</a></h3>
 <p>When the eigenvalues are real and have the same sign, the steady state is called a <strong>node</strong>. If the sign is negative, all trajectories head into the steady state and it is stable; conversely, in the positive case it is unstable.</p>
 <p>Here is a phase plane plot for <span class="math notranslate nohighlight">\(\mathbf{A}=\twomat{-4}{-1}{-2}{-5}\)</span>, which has eigenvalues <span class="math notranslate nohighlight">\(-3\)</span> and <span class="math notranslate nohighlight">\(-6\)</span>.</p>
-<!-- 
-```{code-cell}
----
-tags: [hide-input]
----
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">4</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span> <span class="o">-</span><span class="mi">2</span> <span class="o">-</span><span class="mi">5</span><span class="p">]</span>
+<span class="n">λ</span><span class="p">,</span><span class="n">V</span> <span class="o">=</span> <span class="n">eigen</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
 
-A = [-4 -1; -2 -5]
-λ,V = eigen(A)
+<span class="c"># plot eigenvectors</span>
+<span class="n">P</span> <span class="o">=</span> <span class="n">Point2</span><span class="o">.</span><span class="p">(</span><span class="n">eachcol</span><span class="p">(</span><span class="n">V</span><span class="p">))</span>
+<span class="n">fig</span><span class="p">,</span><span class="n">ax</span><span class="p">,</span><span class="n">scat</span> <span class="o">=</span> <span class="n">lines</span><span class="p">([</span><span class="o">-</span><span class="mi">5</span><span class="n">P</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="mi">5</span><span class="n">P</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">Point2</span><span class="p">([</span><span class="nb">NaN</span><span class="p">,</span><span class="nb">NaN</span><span class="p">]),</span><span class="o">-</span><span class="mi">5</span><span class="n">P</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span><span class="mi">5</span><span class="n">P</span><span class="p">[</span><span class="mi">2</span><span class="p">]],</span><span class="n">color</span><span class="o">=</span><span class="ss">:black</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+    <span class="n">axis</span> <span class="o">=</span> <span class="p">(</span><span class="n">xlabel</span> <span class="o">=</span> <span class="s">&quot;x₁&quot;</span><span class="p">,</span><span class="n">ylabel</span> <span class="o">=</span> <span class="s">&quot;x₂&quot;</span><span class="p">)</span> <span class="p">)</span>
 
-scatter([0],[0],m=(5,:red))
+<span class="n">colr</span> <span class="o">=</span> <span class="n">cgrad</span><span class="p">(</span><span class="ss">:seaborn_colorblind</span><span class="p">)[</span><span class="mi">1</span><span class="o">:</span><span class="mi">8</span><span class="p">]</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">range</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">300</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">zeros</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">300</span><span class="p">)</span>
+<span class="n">xa</span> <span class="o">=</span> <span class="kt">Point2</span><span class="p">{</span><span class="kt">Float64</span><span class="p">}[]</span>
+<span class="n">da</span> <span class="o">=</span> <span class="kt">Point2</span><span class="p">{</span><span class="kt">Float64</span><span class="p">}[]</span>
+<span class="n">ab</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="k">for</span> <span class="n">theta</span> <span class="k">in</span> <span class="mi">2</span><span class="nb">pi</span><span class="o">*</span><span class="p">(</span><span class="mf">0.5</span><span class="o">:</span><span class="mf">23.5</span><span class="p">)</span><span class="o">/</span><span class="mi">24</span>
+	<span class="k">for</span> <span class="n">j</span> <span class="k">in</span> <span class="mi">1</span><span class="o">:</span><span class="n">length</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+		<span class="n">X</span> <span class="o">=</span> <span class="n">exp</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">*</span><span class="n">A</span><span class="p">);</span>
+		<span class="n">x</span><span class="p">[</span><span class="o">:</span><span class="p">,</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">X</span><span class="o">*</span><span class="p">[</span> <span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">),</span> <span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span> <span class="p">];</span>
+	<span class="k">end</span>
+	<span class="n">lines!</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="o">:</span><span class="p">],</span><span class="n">x</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="o">:</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="n">colr</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+  <span class="n">push!</span><span class="p">(</span><span class="n">xa</span><span class="p">,</span><span class="n">Point2</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="o">:</span><span class="p">,</span><span class="n">ab</span><span class="p">]))</span>
+  <span class="n">push!</span><span class="p">(</span><span class="n">da</span><span class="p">,</span><span class="n">Point2</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="o">:</span><span class="p">,</span><span class="n">ab</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">x</span><span class="p">[</span><span class="o">:</span><span class="p">,</span><span class="n">ab</span><span class="p">]))</span>
+<span class="k">end</span>
 
-x1 = x2 = collect(-1:0.2:1)
-v = A*[x1 x2]'
-sz = size(x1);
-#quiver(x1,x2,reshape(v[1,:],sz),reshape(v[2,:],sz))
+<span class="n">arrows!</span><span class="p">(</span><span class="n">xa</span><span class="p">,</span><span class="mi">1</span><span class="n">da</span><span class="p">,</span><span class="n">linecolor</span><span class="o">=</span><span class="n">colr</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">arrowsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">scatter!</span><span class="p">([</span><span class="mi">0</span><span class="p">],[</span><span class="mi">0</span><span class="p">],</span><span class="n">markersize</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="ss">:red</span><span class="p">)</span>
 
-# plot eigenvectors
-plot!(5*[-V[1,:];V[1,:]],5*[-V[2,:];V[2,:]],'k','linew',2)
+<span class="n">limits!</span><span class="p">(</span><span class="mf">1.1</span><span class="o">*</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">...</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">title</span> <span class="o">=</span> <span class="p">(</span><span class="s">&quot;stable node&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">aspect</span> <span class="o">=</span> <span class="n">DataAspect</span><span class="p">()</span>
 
-% plot trajectories
-colr = get(gca,'colororder');
-t = linspace(0,10,300);
-for theta = 2*pi*(0:23)/24
-	for j = 1:length(t)
-		X = expm(t(j)*A);
-		x(:,j) = X*[ cos(theta); sin(theta) ];
-	end
-	plot(x[1,:],x[2,:],'linew',1.5,'color',colr[1,:])
-end
-
-axis([-1.1 1.1 -1.1 1.1]), axis square
-title('stable node')
-xlabel('x_1')
-ylabel('x_2')		
-```
- -->
+<span class="n">fig</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/phase_plane_3_0.png" src="../_images/phase_plane_3_0.png" />
+</div>
+</div>
 <p>The black lines show the directions of the eigenvectors. An initial state on one of those lines stays on it forever. Other initial conditions follow a path tending to become parallel to eigenvector <span class="math notranslate nohighlight">\(\mathbf{v}_1\)</span>, since the other component decays out more quickly. The plot for <span class="math notranslate nohighlight">\(-\mathbf{A}\)</span> would just reverse all of the arrows and show an unstable steady state.</p>
 </div>
 <div class="section" id="saddle">
@@ -565,131 +570,141 @@ ylabel('x_2')
 <p>When the eigenvalues are real and of different signs, the steady state is called a
 <strong>saddle</strong>. A saddle point is always unstable. The part of the solution along the negative eigenvector decays away, but the contribution from the positive eigenvector grows with time.</p>
 <p>Here is a phase plane plot for <span class="math notranslate nohighlight">\(\mathbf{A}=\twomat{-2}{-3}{-6}{-5}\)</span>, which has eigenvalues <span class="math notranslate nohighlight">\(1\)</span> and <span class="math notranslate nohighlight">\(-8\)</span>.</p>
-<!-- 
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">2</span> <span class="o">-</span><span class="mi">3</span><span class="p">;</span> <span class="o">-</span><span class="mi">6</span> <span class="o">-</span><span class="mi">5</span><span class="p">]</span>
+<span class="n">λ</span><span class="p">,</span><span class="n">V</span> <span class="o">=</span> <span class="n">eigen</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
 
-```{code-cell}
----
-tags: [hide-input]
----
-A = [-2 -3; -6 -5];
-[V,D] = eig(A);
-lam = diag(D);
+<span class="c"># plot eigenvectors</span>
+<span class="n">P</span> <span class="o">=</span> <span class="n">Point2</span><span class="o">.</span><span class="p">(</span><span class="n">eachcol</span><span class="p">(</span><span class="n">V</span><span class="p">))</span>
+<span class="n">fig</span><span class="p">,</span><span class="n">ax</span><span class="p">,</span><span class="n">scat</span> <span class="o">=</span> <span class="n">lines</span><span class="p">([</span><span class="o">-</span><span class="mi">5</span><span class="n">P</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="mi">5</span><span class="n">P</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">Point2</span><span class="p">([</span><span class="nb">NaN</span><span class="p">,</span><span class="nb">NaN</span><span class="p">]),</span><span class="o">-</span><span class="mi">5</span><span class="n">P</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span><span class="mi">5</span><span class="n">P</span><span class="p">[</span><span class="mi">2</span><span class="p">]],</span><span class="n">color</span><span class="o">=</span><span class="ss">:black</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+    <span class="n">axis</span> <span class="o">=</span> <span class="p">(</span><span class="n">xlabel</span> <span class="o">=</span> <span class="s">&quot;x₁&quot;</span><span class="p">,</span><span class="n">ylabel</span> <span class="o">=</span> <span class="s">&quot;x₂&quot;</span><span class="p">)</span> <span class="p">)</span>
 
-clf
-plot(0,0,'r.','markersize',18)
-hold on
+<span class="n">colr</span> <span class="o">=</span> <span class="n">cgrad</span><span class="p">(</span><span class="ss">:seaborn_colorblind</span><span class="p">)[</span><span class="mi">1</span><span class="o">:</span><span class="mi">8</span><span class="p">]</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">range</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">300</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">zeros</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">300</span><span class="p">)</span>
+<span class="n">xa</span> <span class="o">=</span> <span class="kt">Point2</span><span class="p">{</span><span class="kt">Float64</span><span class="p">}[]</span>
+<span class="n">da</span> <span class="o">=</span> <span class="kt">Point2</span><span class="p">{</span><span class="kt">Float64</span><span class="p">}[]</span>
+<span class="n">ab</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="k">for</span> <span class="n">theta</span> <span class="k">in</span> <span class="mi">2</span><span class="nb">pi</span><span class="o">*</span><span class="p">(</span><span class="mf">0.5</span><span class="o">:</span><span class="mf">23.5</span><span class="p">)</span><span class="o">/</span><span class="mi">24</span>
+	<span class="k">for</span> <span class="n">j</span> <span class="k">in</span> <span class="mi">1</span><span class="o">:</span><span class="n">length</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+		<span class="n">X</span> <span class="o">=</span> <span class="n">exp</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">*</span><span class="n">A</span><span class="p">);</span>
+		<span class="n">x</span><span class="p">[</span><span class="o">:</span><span class="p">,</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">X</span><span class="o">*</span><span class="p">[</span> <span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">),</span> <span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span> <span class="p">];</span>
+	<span class="k">end</span>
+	<span class="n">lines!</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="o">:</span><span class="p">],</span><span class="n">x</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="o">:</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="n">colr</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+  <span class="n">push!</span><span class="p">(</span><span class="n">xa</span><span class="p">,</span><span class="n">Point2</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="o">:</span><span class="p">,</span><span class="n">ab</span><span class="p">]))</span>
+  <span class="n">push!</span><span class="p">(</span><span class="n">da</span><span class="p">,</span><span class="n">Point2</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="o">:</span><span class="p">,</span><span class="n">ab</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">x</span><span class="p">[</span><span class="o">:</span><span class="p">,</span><span class="n">ab</span><span class="p">]))</span>
+<span class="k">end</span>
 
-% plot directions
-[x1,x2] = meshgrid(-1:.2:1);
-v = A*[x1(:)';x2(:)'];
-sz = size(x1);
-quiver(x1,x2,reshape(v[1,:],sz),reshape(v[2,:],sz))
+<span class="n">arrows!</span><span class="p">(</span><span class="n">xa</span><span class="p">,</span><span class="mi">1</span><span class="n">da</span><span class="p">,</span><span class="n">linecolor</span><span class="o">=</span><span class="n">colr</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">arrowsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">scatter!</span><span class="p">([</span><span class="mi">0</span><span class="p">],[</span><span class="mi">0</span><span class="p">],</span><span class="n">markersize</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="ss">:red</span><span class="p">)</span>
 
-% plot eigenvectors
-plot(5*[-V[1,:];V[1,:]],5*[-V[2,:];V[2,:]],'k','linew',2)
+<span class="n">limits!</span><span class="p">(</span><span class="mf">1.1</span><span class="o">*</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">...</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">title</span> <span class="o">=</span> <span class="p">(</span><span class="s">&quot;saddle&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">aspect</span> <span class="o">=</span> <span class="n">DataAspect</span><span class="p">()</span>
 
-% plot trajectories
-colr = get(gca,'colororder');
-t = linspace(0,10,300);
-for theta = 2*pi*(0:23)/24
-	for j = 1:length(t)
-		X = expm(t(j)*A);
-		x(:,j) = X*[ cos(theta); sin(theta) ];
-	end
-	plot(x[1,:],x[2,:],'linew',1.5,'color',colr[1,:])
-end
-
-axis([-1.1 1.1 -1.1 1.1]), axis square
-title('saddle')
-xlabel('x_1')
-ylabel('x_2')
-```
--->
+<span class="n">fig</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/phase_plane_5_0.png" src="../_images/phase_plane_5_0.png" />
+</div>
+</div>
 <p>An initial condition exactly on the stable black line (eigenvector) will approach the origin, but anything else ends up shooting away more or less in the direction of the unstable eigenvector.</p>
 </div>
 <div class="section" id="spiral">
 <span id="section-fs-pp-center"></span><h3>Spiral<a class="headerlink" href="#spiral" title="Permalink to this headline">¶</a></h3>
 <p>When the eigenvalues are complex conjugates with nonzero real part, the steady state is called a <strong>spiral</strong>. If the eigenvalues are <span class="math notranslate nohighlight">\(a \pm i b\)</span>, then all solutions contain <span class="math notranslate nohighlight">\(e^{at}e^{\pm i b t}\)</span>, or equivalently, <span class="math notranslate nohighlight">\(e^{at}\cos{b t}\)</span> and <span class="math notranslate nohighlight">\(e^{at}\sin{b t}\)</span>. The real part causes growth and instability if <span class="math notranslate nohighlight">\(a&gt; 0\)</span>, or decay and stability if <span class="math notranslate nohighlight">\(a &lt; 0\)</span>. The imaginary part determines the angular speed of the spiral.</p>
 <p>Here is a phase plane plot for <span class="math notranslate nohighlight">\(\mathbf{A}=\twomat{1}{-2}{4}{-3}\)</span>, which has eigenvalues <span class="math notranslate nohighlight">\(-1\pm 2i\)</span>.</p>
-<!-- 
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span> <span class="o">-</span><span class="mi">2</span><span class="p">;</span> <span class="mi">4</span> <span class="o">-</span><span class="mi">3</span><span class="p">];</span>
+<span class="n">λ</span><span class="p">,</span><span class="n">V</span> <span class="o">=</span> <span class="n">eigen</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
 
-```{code-cell}
----
-tags: [hide-input]
----
-A = [1 -2; 4 -3];
-[V,D] = eig(A);
-lam = diag(D);
+<span class="c"># plot eigenvectors</span>
+<span class="n">P</span> <span class="o">=</span> <span class="n">Point2</span><span class="o">.</span><span class="p">(</span><span class="n">eachcol</span><span class="p">(</span><span class="n">V</span><span class="p">))</span>
+<span class="n">fig</span><span class="p">,</span><span class="n">ax</span><span class="p">,</span><span class="n">scat</span> <span class="o">=</span> <span class="n">lines</span><span class="p">([</span><span class="nb">NaN</span><span class="p">],[</span><span class="nb">NaN</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="ss">:black</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+    <span class="n">axis</span> <span class="o">=</span> <span class="p">(</span><span class="n">xlabel</span> <span class="o">=</span> <span class="s">&quot;x₁&quot;</span><span class="p">,</span><span class="n">ylabel</span> <span class="o">=</span> <span class="s">&quot;x₂&quot;</span><span class="p">)</span> <span class="p">)</span>
 
-clf
-plot(0,0,'r.','markersize',18)
-hold on
+<span class="n">colr</span> <span class="o">=</span> <span class="n">cgrad</span><span class="p">(</span><span class="ss">:seaborn_colorblind</span><span class="p">)[</span><span class="mi">1</span><span class="o">:</span><span class="mi">8</span><span class="p">]</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">range</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">300</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">zeros</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">300</span><span class="p">)</span>
+<span class="n">xa</span> <span class="o">=</span> <span class="kt">Point2</span><span class="p">{</span><span class="kt">Float64</span><span class="p">}[]</span>
+<span class="n">da</span> <span class="o">=</span> <span class="kt">Point2</span><span class="p">{</span><span class="kt">Float64</span><span class="p">}[]</span>
+<span class="n">ab</span> <span class="o">=</span> <span class="mi">50</span>
+<span class="k">for</span> <span class="n">theta</span> <span class="k">in</span> <span class="mi">2</span><span class="nb">pi</span><span class="o">*</span><span class="p">(</span><span class="mf">0.5</span><span class="o">:</span><span class="mf">6.5</span><span class="p">)</span><span class="o">/</span><span class="mi">7</span>
+	<span class="k">for</span> <span class="n">j</span> <span class="k">in</span> <span class="mi">1</span><span class="o">:</span><span class="n">length</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+		<span class="n">X</span> <span class="o">=</span> <span class="n">exp</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">*</span><span class="n">A</span><span class="p">);</span>
+		<span class="n">x</span><span class="p">[</span><span class="o">:</span><span class="p">,</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">X</span><span class="o">*</span><span class="p">[</span> <span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">),</span> <span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span> <span class="p">];</span>
+	<span class="k">end</span>
+	<span class="n">lines!</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="o">:</span><span class="p">],</span><span class="n">x</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="o">:</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="n">colr</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+  <span class="n">push!</span><span class="p">(</span><span class="n">xa</span><span class="p">,</span><span class="n">Point2</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="o">:</span><span class="p">,</span><span class="n">ab</span><span class="p">]))</span>
+  <span class="n">push!</span><span class="p">(</span><span class="n">da</span><span class="p">,</span><span class="n">Point2</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="o">:</span><span class="p">,</span><span class="n">ab</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">x</span><span class="p">[</span><span class="o">:</span><span class="p">,</span><span class="n">ab</span><span class="p">]))</span>
+<span class="k">end</span>
 
-% plot directions
-[x1,x2] = meshgrid(-1:.2:1);
-v = A*[x1(:)';x2(:)'];
-sz = size(x1);
-quiver(x1,x2,reshape(v[1,:],sz),reshape(v[2,:],sz))
+<span class="n">arrows!</span><span class="p">(</span><span class="n">xa</span><span class="p">,</span><span class="mi">1</span><span class="n">da</span><span class="p">,</span><span class="n">linecolor</span><span class="o">=</span><span class="n">colr</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">arrowsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">scatter!</span><span class="p">([</span><span class="mi">0</span><span class="p">],[</span><span class="mi">0</span><span class="p">],</span><span class="n">markersize</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="ss">:red</span><span class="p">)</span>
 
-% plot trajectories
-colr = get(gca,'colororder');
-t = linspace(0,7,300);
-for theta = 2*pi*(0:6)/7
-	for j = 1:length(t)
-		X = expm(t(j)*A);
-		x(:,j) = X*[ cos(theta); sin(theta) ];
-	end
-	plot(x[1,:],x[2,:],'linew',1.5,'color',colr[1,:])
-end
+<span class="n">limits!</span><span class="p">(</span><span class="mf">1.1</span><span class="o">*</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">...</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">title</span> <span class="o">=</span> <span class="p">(</span><span class="s">&quot;spiral&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">aspect</span> <span class="o">=</span> <span class="n">DataAspect</span><span class="p">()</span>
 
-axis([-1.2 1.2 -1.2 1.2]), axis square
-title('stable spiral')
-xlabel('x_1')
-ylabel('x_2')
-```
--->
+<span class="n">fig</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/phase_plane_7_0.png" src="../_images/phase_plane_7_0.png" />
+</div>
+</div>
 <p>The eigenvectors are complex and don’t show up on the plot; there are no purely linear trajectories as in the other cases.</p>
 </div>
 <div class="section" id="center">
 <h3>Center<a class="headerlink" href="#center" title="Permalink to this headline">¶</a></h3>
 <p>The special case of imaginary eigenvalues, <span class="math notranslate nohighlight">\(\lambda=\pm i b\)</span>, is called a <strong>center</strong>. You can think of the trajectories as spirals that are perfectly neutral — that is, circles or ellipses. These equilibria are often associated with conservation principles, such as conservation of energy.</p>
 <p>Here is a phase plane plot for <span class="math notranslate nohighlight">\(\mathbf{A}=\twomat{0}{-1}{4}{0}\)</span>, which has eigenvalues <span class="math notranslate nohighlight">\(\pm 2i\)</span>.</p>
-<!-- 
-```{code-cell}
----
-tags: [hide-input]
----
-A = [0 -1; 4 0];
-[V,D] = eig(A);
-lam = diag(D);
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span> <span class="mi">4</span> <span class="mi">0</span><span class="p">];</span>
+<span class="n">λ</span><span class="p">,</span><span class="n">V</span> <span class="o">=</span> <span class="n">eigen</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
 
-clf
-plot(0,0,'r.','markersize',18)
-hold on
+<span class="c"># plot eigenvectors</span>
+<span class="n">P</span> <span class="o">=</span> <span class="n">Point2</span><span class="o">.</span><span class="p">(</span><span class="n">eachcol</span><span class="p">(</span><span class="n">V</span><span class="p">))</span>
+<span class="n">fig</span><span class="p">,</span><span class="n">ax</span><span class="p">,</span><span class="n">scat</span> <span class="o">=</span> <span class="n">lines</span><span class="p">([</span><span class="nb">NaN</span><span class="p">],[</span><span class="nb">NaN</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="ss">:black</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+    <span class="n">axis</span> <span class="o">=</span> <span class="p">(</span><span class="n">xlabel</span> <span class="o">=</span> <span class="s">&quot;x₁&quot;</span><span class="p">,</span><span class="n">ylabel</span> <span class="o">=</span> <span class="s">&quot;x₂&quot;</span><span class="p">)</span> <span class="p">)</span>
 
-% plot directions
-[x1,x2] = meshgrid(-1:.2:1);
-v = A*[x1(:)';x2(:)'];
-sz = size(x1);
-quiver(x1,x2,reshape(v[1,:],sz),reshape(v[2,:],sz))
+<span class="n">colr</span> <span class="o">=</span> <span class="n">cgrad</span><span class="p">(</span><span class="ss">:seaborn_colorblind</span><span class="p">)[</span><span class="mi">1</span><span class="o">:</span><span class="mi">8</span><span class="p">]</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">300</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">zeros</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">300</span><span class="p">)</span>
+<span class="n">xa</span> <span class="o">=</span> <span class="kt">Point2</span><span class="p">{</span><span class="kt">Float64</span><span class="p">}[]</span>
+<span class="n">da</span> <span class="o">=</span> <span class="kt">Point2</span><span class="p">{</span><span class="kt">Float64</span><span class="p">}[]</span>
+<span class="n">ab</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="k">for</span> <span class="n">r</span> <span class="o">=</span> <span class="mf">0.15</span><span class="o">:</span><span class="mf">0.1</span><span class="o">:</span><span class="mf">0.55</span>
+	<span class="k">for</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">1</span><span class="o">:</span><span class="n">length</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+		<span class="n">X</span> <span class="o">=</span> <span class="n">exp</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">*</span><span class="n">A</span><span class="p">);</span>
+		<span class="n">x</span><span class="p">[</span><span class="o">:</span><span class="p">,</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">X</span><span class="o">*</span><span class="p">[</span><span class="n">r</span><span class="p">;</span> <span class="mi">0</span><span class="p">];</span>
+	<span class="k">end</span>
+	<span class="n">lines!</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="o">:</span><span class="p">],</span><span class="n">x</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="o">:</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="n">colr</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">push!</span><span class="p">(</span><span class="n">xa</span><span class="p">,</span><span class="n">Point2</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="o">:</span><span class="p">,</span><span class="n">ab</span><span class="p">]))</span>
+    <span class="n">push!</span><span class="p">(</span><span class="n">da</span><span class="p">,</span><span class="n">Point2</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="o">:</span><span class="p">,</span><span class="n">ab</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">x</span><span class="p">[</span><span class="o">:</span><span class="p">,</span><span class="n">ab</span><span class="p">]))</span>
+<span class="k">end</span>
 
-% plot trajectories
-colr = get(gca,'colororder');
-t = linspace(0,7,300);
-for r = 0.15:0.1:0.55
-	for j = 1:length(t)
-		X = expm(t(j)*A);
-		x(:,j) = X*[r; 0];
-	end
-	plot(x[1,:],x[2,:],'linew',1.5,'color',colr[1,:])
-end
+<span class="n">arrows!</span><span class="p">(</span><span class="n">xa</span><span class="p">,</span><span class="mi">1</span><span class="n">da</span><span class="p">,</span><span class="n">linecolor</span><span class="o">=</span><span class="n">colr</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">arrowsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">scatter!</span><span class="p">([</span><span class="mi">0</span><span class="p">],[</span><span class="mi">0</span><span class="p">],</span><span class="n">markersize</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="ss">:red</span><span class="p">)</span>
 
-axis([-1.2 1.2 -1.2 1.2]), axis square
-title('center')
-xlabel('x_1')
-ylabel('x_2')
-```
--->
+<span class="n">limits!</span><span class="p">(</span><span class="mf">1.2</span><span class="o">*</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">...</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">title</span> <span class="o">=</span> <span class="p">(</span><span class="s">&quot;center&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">aspect</span> <span class="o">=</span> <span class="n">DataAspect</span><span class="p">()</span>
+
+<span class="n">fig</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/phase_plane_9_0.png" src="../_images/phase_plane_9_0.png" />
+</div>
+</div>
 <p>A center is on a knife edge between asymptotically stable and unstable: small perturbations do not decay away, but they also can grow only by a bounded amount. This situation might be called <em>weakly stable</em>, <em>neutrally stable</em>, or simply <strong>stable</strong> but not asymptotically stable.</p>
 </div>
 </div>
@@ -704,16 +719,16 @@ ylabel('x_2')
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "julia-1.6"
+            mode: "julia-1.7"
         },
         kernelOptions: {
-            kernelName: "julia-1.6",
+            kernelName: "julia-1.7",
             path: "./ode_system"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'julia-1.6'</script>
+    <script>kernelName = 'julia-1.7'</script>
 
               </div>
               

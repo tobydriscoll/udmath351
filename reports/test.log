@@ -17,50 +17,22 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-A = [-2 -3; -6 -5];
-λ,V = eigen(A)
-
-# plot eigenvectors
-P = Point2.(eachcol(V))
-fig,ax,scat = lines([-5P[1],5P[1],Point2([NaN,NaN]),-5P[2],5P[2]],color=:black,linewidth=3,
-    axis = (xlabel = L"x_1",ylabel = L"x_2") )
-
-colr = cgrad(:seaborn_colorblind)[1:8]
-t = range(-0.5,10,300)
-x = zeros(2,300)
-xa = Point2{Float64}[]
-da = Point2{Float64}[]
-ab = 20
-for theta in 2pi*(0.5:23.5)/24
-	for j in 1:length(t)
-		X = exp(t[j]*A);
-		x[:,j] = X*[ cos(theta), sin(theta) ];
-	end
-	lines!(x[1,:],x[2,:],color=colr[1])
-  push!(xa,Point2(x[:,ab]))
-  push!(da,Point2(x[:,ab+1]-x[:,ab]))
-end
-
-arrows!(xa,1da)
-scatter!([0],[0],markersize=10,color=:red)
-
-limits!(1.1*[-1,1,-1,1]...)
-ax.title = ("stable node")
-ax.aspect = DataAspect()
-
-fig
+using Makie,LaTeXStrings,Printf,LinearAlgebra
+default(linewidth=2,label="")
 ------------------
 
-LoadError: UndefVarError: @L_str not defined
-in expression starting at In[2]:7
+ArgumentError: Package Makie not found in current path:
+- Run `import Pkg; Pkg.add("Makie")` to install the Makie package.
+
 
 Stacktrace:
- [1] top-level scope
-   @ :0
+ [1] require(into::Module, mod::Symbol)
+   @ Base ./loading.jl:967
  [2] eval
    @ ./boot.jl:373 [inlined]
  [3] include_string(mapexpr::typeof(REPL.softscope), mod::Module, code::String, filename::String)
    @ Base ./loading.jl:1196
-LoadError: LoadError: UndefVarError: @L_str not defined
-in expression starting at In[2]:7
+LoadError: ArgumentError: Package Makie not found in current path:
+- Run `import Pkg; Pkg.add("Makie")` to install the Makie package.
+
 
