@@ -252,3 +252,16 @@ fig
 ```
 
 A center is on a knife edge between asymptotically stable and unstable: small perturbations do not decay away, but they also can grow only by a bounded amount. This situation might be called *weakly stable*, *neutrally stable*, or simply **stable** but not asymptotically stable.
+
+## Trace/determinant
+
+The **trace** of a square matrix is the sum of its diagonal entries. In the $2\times 2$ case, the trace $\tau$ and determinant $\Delta$ completely determine the eigenvalues, and therefore they determine the nature of the phase portrait, as shown in {numref}`fig-phase_plane-TD`.
+
+```{figure} TD-phase.png
+---
+name: fig-phase_plane-TD
+---
+Phase portrait type based on trace $\tau$ and determinant $\Delta$ of a $2\times 2$ matrix. (Figure from Zill's book.)
+```
+
+You can safely ignore the "degenerate" cases along $\tau=4\Delta^2$. One easy takeaway is that the fixed point is stable if $\tau \le 0$ ans $\Delta \ge 0$, and unstable otherwise.

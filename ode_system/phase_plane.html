@@ -453,6 +453,11 @@
    </li>
   </ul>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#trace-determinant">
+   6.4.3. Trace/determinant
+  </a>
+ </li>
 </ul>
 
             </nav>
@@ -707,6 +712,15 @@
 </div>
 <p>A center is on a knife edge between asymptotically stable and unstable: small perturbations do not decay away, but they also can grow only by a bounded amount. This situation might be called <em>weakly stable</em>, <em>neutrally stable</em>, or simply <strong>stable</strong> but not asymptotically stable.</p>
 </div>
+</div>
+<div class="section" id="trace-determinant">
+<h2><span class="section-number">6.4.3. </span>Trace/determinant<a class="headerlink" href="#trace-determinant" title="Permalink to this headline">¶</a></h2>
+<p>The <strong>trace</strong> of a square matrix is the sum of its diagonal entries. In the <span class="math notranslate nohighlight">\(2\times 2\)</span> case, the trace <span class="math notranslate nohighlight">\(\tau\)</span> and determinant <span class="math notranslate nohighlight">\(\Delta\)</span> completely determine the eigenvalues, and therefore they determine the nature of the phase portrait, as shown in <a class="reference internal" href="#fig-phase-plane-td"><span class="std std-numref">Fig. 6.1</span></a>.</p>
+<div class="figure align-default" id="fig-phase-plane-td">
+<img alt="../_images/TD-phase.png" src="../_images/TD-phase.png" />
+<p class="caption"><span class="caption-number">Fig. 6.1 </span><span class="caption-text">Phase portrait type based on trace <span class="math notranslate nohighlight">\(\tau\)</span> and determinant <span class="math notranslate nohighlight">\(\Delta\)</span> of a <span class="math notranslate nohighlight">\(2\times 2\)</span> matrix. (Figure from Zill’s book.)</span><a class="headerlink" href="#fig-phase-plane-td" title="Permalink to this image">¶</a></p>
+</div>
+<p>You can safely ignore the “degenerate” cases along <span class="math notranslate nohighlight">\(\tau=4\Delta^2\)</span>. One easy takeaway is that the fixed point is stable if <span class="math notranslate nohighlight">\(\tau \le 0\)</span> ans <span class="math notranslate nohighlight">\(\Delta \ge 0\)</span>, and unstable otherwise.</p>
 </div>
 </div>
 
