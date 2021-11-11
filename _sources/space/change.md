@@ -124,12 +124,12 @@ Moreover,
 
 (example-change-cob1)=
 ::::{proof:example} 
-The coefficent matrix appearing in {numref}`Example {number} <example-change-coordinates>` is the matrix $[\mathcal{B}]_\mathcal{T}$ for that problem.
+The coefficient matrix appearing in {numref}`Example {number} <example-change-coordinates>` is the matrix $[\mathcal{B}]_\mathcal{T}$ for that problem.
 ::::
 
 (example-change-cob2)=
 ::::{proof:example} 
-Both $\mathcal{B}=(1,1-x)$ and $\mathcal{C}=(1+x,x)$ are bases of $\mathcal{P}_2$. Find the matrix that transforms $\mathcal{C}$-coordinates to $\mathcal{B}$-coordinates.
+Both $\mathcal{B}=(1,1-x)$ and $\mathcal{C}=(1+x,x)$ are bases of $\mathcal{P}_1$. Find the matrix that transforms $\mathcal{C}$-coordinates to $\mathcal{B}$-coordinates.
 
 :::{dropdown} Solution
 It may be easiest to use the standard basis $\mathcal{T}=(1,x)$ as an intermediary, because that is how both bases in the problem are expressed. We have

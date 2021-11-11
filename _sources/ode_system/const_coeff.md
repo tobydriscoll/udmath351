@@ -27,7 +27,7 @@ $$
 \bfx(t) = e^{\lambda t} \bfv.
 $$
 
-## General solution
+## Homogeneous solution
 
 Counting algebraic multiplicities, we know that $\mathbf{A}$ has eigenvalues $\lambda_1,\ldots,\lambda_n$. Say that we have eigenvectors $\mathbf{v}_1,\ldots,\mathbf{v}_n$ to go with them. Then we have $n$ homogeneous solutions
 
@@ -35,28 +35,28 @@ Counting algebraic multiplicities, we know that $\mathbf{A}$ has eigenvalues $\l
 \mathbf{x}_j(t) = e^{t \lambda_j} \mathbf{v}_j, \quad j=1,\ldots,n.
 :::
 
-Our next move is to form
+Our next move is to determine whether
 
 $$
-\bfX(t) = \bigl[ \mathbf{x}_1(t) \; \mathbf{x}_2(t) \; \cdots \; \mathbf{x}_m(t)  \bigr]
+\bigl[ \mathbf{x}_1(t) \; \mathbf{x}_2(t) \; \cdots \; \mathbf{x}_m(t)  \bigr]
 $$
 
-and determine whether this is a fundamental matrix. According to [Abel's theorem](theorem-fs-abel), we can ask that question at any value of $t$, including $t=0$. So the key issue is whether 
+is a fundamental matrix. According to [Abel's theorem](theorem-fs-abel), we can ask that question at any value of $t$, including $t=0$. So the key issue is whether 
 
 :::{math}
 :label: eigenmat
-\bfV = \bigl[ \mathbf{v}_1 \; \mathbf{v}_2 \; \cdots \; \mathbf{v}_m  \bigr]
+\bfV = \bigl[ \mathbf{v}_1 \; \mathbf{v}_2 \; \cdots \; \mathbf{v}_n  \bigr]
 :::
 
 is invertible. If so, then we have the ingredients of the general homogeneous solution.
 
-(theorem-fs-eigensolution)=
+(theorem-cc-eigensolution)=
 ::::{proof:theorem} Solution by eigenvectors
 Let $\mathbf{A}$ have eigenvalues $\lambda_1,\ldots,\lambda_n$ and corresponding eigenvectors $\mathbf{v}_1,\ldots,\mathbf{v}_n$. If the matrix $\bfV$ in {eq}`eigenmat` is invertible, then
 
 :::{math}
 :label: fs-eq-eigenfundamental
-\bfX(t) = \begin{bmatrix} 
+\fundm(t) = \begin{bmatrix} 
 e^{t \lambda_1} \mathbf{v}_1 & \cdots & e^{t \lambda_n} \mathbf{v}_n
 \end{bmatrix}
 :::
@@ -65,9 +65,11 @@ is a fundamental matrix for $\mathbf{x}'=\mathbf{A}\mathbf{x}$. Hence the genera
 
 :::{math}
 :label: eq-cc-eigengeneral
-\mathbf{x}(t) = \bfX(t)\mathbf{c} = c_1 e^{t \lambda_1} \mathbf{v}_1 + \cdots + c_n e^{t \lambda_n} \mathbf{v}_n.
+\mathbf{x}(t) = \fundm(t)\mathbf{c} = c_1 e^{t \lambda_1} \mathbf{v}_1 + \cdots + c_n e^{t \lambda_n} \mathbf{v}_n.
 :::
 ::::
+
+The condition that $\bfV$ be invertible is identical to $\bfA$ being diagonalizable. Solutions for defective matrices will have to wait for now.
 
 (fs-ex-eigen-real)=
 ::::{proof:example}
@@ -184,50 +186,6 @@ for arbitrary real $a_1$ and $a_2$.
 ::::
 
 The essence of the example is that to convert the solution to an entirely real expression, decompose the complex eigensolution into real and imaginary parts. 
-## Diagonalization
-
-There is a high-level point of view equivalent to the examples above. Suppose $\bfA$ has a diagonalization $\bfA=\bfV \mathbf{D}\bfV^{-1}$, where $\bfV$ has eigenvector columns and $\mathbf{D}$ is a diagonal matrix of the eigenvalues. Then the ODE is equivalent to
-
-$$
-\bfV^{-1} \bfx' &= \bfV^{-1}(\bfV \mathbf{D}\bfV^{-1}) \bfx \\ 
-&= (\bfV^{-1}\bfV) \mathbf{D}\bfV^{-1} \bfx \\ 
-&= \mathbf{D} (\bfV^{-1} \bfx). 
-$$
-
-Hence if we define $\bfy = \bfV^{-1}\bfx$, we get the diagonal system
-
-$$
-\bfy' = \mathbf{D} \bfy.
-$$
-
-Since multiplication by $\bfV^{-1}$ performs a change of basis from standard to eigenvector coordinates, we can say that **the dynamics of the ODE in eigenvector coordinates are diagonal**. The significance of diagonality is that the new system is just a collection of decoupled scalar equations,
-
-$$
-y_i' = \lambda_i y_i, \quad i=1,\ldots,n.
-$$
-
-These are trivial to solve:
-
-<!-- $$
-\bfy(t) = \begin{bmatrix}
-  e^{\lambda_1 t} & & & \\ & e^{\lambda_2 t} & & \\ & & \ddots & \\ & & & e^{\lambda_n t}
-\end{bmatrix} \mathbf{c}.
-$$ -->
-
-$$
-y_i(t) = c_i e^{\lambda_i t}, \quad i=1,\ldots,n.
-$$
-
-Finally, since $\bfy = \bfV^{-1}\bfx$ we have $\bfx = \bfV\bfy$, and we can change back to standard coordinates to get $\bfx(t)$:
-
-$$
-\bfx(t) &= \bigl[ \mathbf{v}_1 \; \mathbf{v}_2 \; \cdots \; \mathbf{v}_n  \bigr] \begin{bmatrix}
-  c_1 e^{\lambda_1 t} \\ c_2 e^{\lambda_2 t} \\ \vdots \\ c_n e^{\lambda_n t}
-\end{bmatrix}\\ 
-&= c_1 e^{\lambda_1 t}\mathbf{v}_1  + \cdots + c_n e^{\lambda_n t}\mathbf{v}_n.
-$$
-
-This is just an alternate interpretation of {eq}`eq-cc-eigengeneral`.
 
 
 % ## The oscillator reloaded

@@ -14,22 +14,101 @@ $$
 
 Funny you should ask. 
 
-## Definition
+## Diagonalization
 
-We know the Taylor series 
+Let's review the process of solving $\mathbf{x}'=\mathbf{A} \mathbf{x}$ using {numref}`Theorem {number} <theorem-cc-eigensolution>`. If $\bfA$ has a diagonalization $\bfA=\bfV \mathbf{D}\bfV^{-1}$, where $\bfV$ has eigenvector columns and $\mathbf{D}$ is a diagonal matrix of the eigenvalues, then the general solution is
+
+$$
+\bfx(t) = c_1 e^{t \lambda_1} \mathbf{v}_1 + \cdots + c_n e^{t \lambda_n} \mathbf{v}_n = \bfV \bfE(t) \bfc,
+$$
+
+for a constant vector $\bfc$, where
+
+$$
+\bfE(t) = \begin{bmatrix} e^{t \lambda_1} & & & \\ & e^{t \lambda_2} & & \\ & & \ddots & \\ & & & e^{t \lambda_n} \end{bmatrix}.
+$$
+
+If we also have an initial condition $\bfx(0)=\bfx_0$, then 
+
+$$
+\bfx_0 = \bfx(0) = \bfV \bfE(0) \bfc = \bfV \bfc,
+$$
+
+so that $\bfc = \bfV^{-1} \bfx_0$. Hence the IVP solution is
+
+$$
+\bfx(t) = \bfV \bfE(t) \bfV^{-1} \bfx_0.
+$$
+
+The matrix $\bfV \bfE(t) \bfV^{-1}$ is essentially a special fundamental matrix $\fundm$ for which $\fundm(0)=\meye$, which makes it especially convenient for an IVP.
+
+## Change of basis
+
+Given the diagonalization $\bfA=\bfV \mathbf{D}\bfV^{-1}$, we can rewrite the ODE $\bfx'=\bfA\bfx$ as 
+
+$$
+\bfx'=\bfV \mathbf{D}\bfV^{-1} \bfx.
+$$
+
+We multiply by $\bfV^{-1}$ on the left and, observing that $\bfV$ and its inverse are constant with respect to time, we get
+
+$$
+(\bfV^{-1} \bfx)'= \mathbf{D} (\bfV^{-1} \bfx) \quad \Rightarrow \quad  \bfy' = \mathbf{D} \bfy,
+$$
+
+where we defined
+
+$$
+\bfy = \bfV^{-1}\bfx.
+$$
+
+Note that $\bfy$ is simply the coordinate vector for $\bfx$ in the basis of eigenvectors. The diagonal system $\bfy' = \mathbf{D} \bfy$ completely decouples into $n$ scalar equations
+
+$$
+y_i' = \lambda_i y_i, \quad i=1,\ldots,n.
+$$
+
+These are trivial to solve:
+
+<!-- $$
+\bfy(t) = \begin{bmatrix}
+  e^{\lambda_1 t} & & & \\ & e^{\lambda_2 t} & & \\ & & \ddots & \\ & & & e^{\lambda_n t}
+\end{bmatrix} \mathbf{c}.
+$$ -->
+
+$$
+y_i(t) = e^{\lambda_i t}y_i(0), \quad i=1,\ldots,n, \Longrightarrow \bfy = \bfE(t) \bfy(0).
+$$
+
+Changing back to standard coordinates returns us again to 
+
+$$
+\bfx(t) = \bfV \bfE(t) \bfV^{-1} \bfx(0).
+$$
+
+## Power series
+
+The matrix $\bfE(t)$ has a nice structure:
+
+$$
+\bfE(t) &= \diagm{1 + (\lambda_1 t) + \frac{1}{2!} (\lambda_1 t)^2 + \cdots }{1 + (\lambda_2 t) + \frac{1}{2!} (\lambda_2 t)^2 + \cdots }{1 + (\lambda_n t) + \frac{1}{2!} (\lambda_n t)^2 + \cdots }\\ 
+&= \diagm{1}{1}{1} + t \diagm{\lambda_1}{\lambda_2}{\lambda_n} + \frac{t^2}{2!} \diagm{\lambda_1^2}{\lambda_2^2}{\lambda_n^2} + \cdots.
+$$
+
+The simplicity of the diagonal matrix $\bfD$ lets us write
+
+$$
+\bfE(t) = \meye + t\bfD + \frac{t^2}{2!}\bfD^2 + \cdots.
+$$
+
+This strongly hints at the definition 
 
 :::{math}
-e^{at} = 1 + at + \frac{1}{2!}(at)^2 + \frac{1}{3!} (at)^3 + \cdots.
+:label: eq-matrix_exp-series
+e^{t\mathbf{A}} = \mathbf{I} + t\mathbf{A} + \frac{1}{2!}t^2 \mathbf{A}^2 + \frac{1}{3!} t^3 \mathbf{A}^3 + \cdots
 :::
 
-This series can be generalized directly to a square matrix $\mathbf{A}$, for which integer powers are possible:
-
-:::{math}
-:label: fs-eq-matrixexp
-e^{t\mathbf{A}} = \mathbf{I} + t\mathbf{A} + \frac{1}{2!}t^2 \mathbf{A}^2 + \frac{1}{3!} t^3 \mathbf{A}^3 + \cdots.
-:::
-
-Let's not worry too much about whether this converges (it does). What are its properties? 
+for a square matrix $\bfA$, so that $\bfE(t) = e^{t\bfD}$. Let's not worry too much about whether this series converges (it does). What are its properties? 
 
 (fs-thm-matrixexp)=
 ::::{proof:theorem} Matrix exponential
@@ -42,7 +121,7 @@ Let $\mathbf{A},\mathbf{B}$ be $n\times n$ matrices. Then
 5. If $\mathbf{A}\mathbf{B}=\mathbf{B}\mathbf{A}$, then $e^{t(\mathbf{A}+\mathbf{B})} = e^{t\mathbf{A}}\cdot e^{t\mathbf{B}} = e^{t\mathbf{B}}\cdot e^{t\mathbf{A}}$.
 ::::
 
-These conclusions follow pretty easily from the series definition {eq}`fs-eq-matrixexp`. They are all essential to what we normally expect from an exponential function, although in the last case we had to restrict the applicability.
+These conclusions follow pretty easily from the series definition {eq}`eq-matrix_exp-series`. They are all essential to what we normally expect from an exponential function, although in the last case we have a new restriction.
 
 From these properties we can make the connection to the IVP.
 
@@ -72,211 +151,32 @@ $$
 using property 1 above.
 ```
 
-## Connection to fundamental matrices
+## Computation
 
-We already had a solution procedure for $\mathbf{x}'=\mathbf{A} \mathbf{x}$ with $\bfx(0)=\bfx_0$. We use a fundamental matrix to write the general solution $\bfx = \mathbf{X}(t) \mathbf{c}$, then apply the initial condition to get 
+Summing the infinite series of matrices in {eq}`eq-matrix_exp-series` seems a daunting project. Fortunately we have a number of ways to avoid that.
 
-$$
-\mathbf{x}_0 = \mathbf{x}(0) = \mathbf{X}(0) \mathbf{c}.
-$$
+### Diagonal matrix
 
-This is a linear system that can be solved for $\mathbf{c}$ using a matrix inverse, leading to
+As derived above, if $\bfD$ is diagonal with $\lambda_1,\ldots,\lambda_n$ on the diagonal, then $e^{t\bfD}$ is diagonal with $e^{t\lambda_1},\ldots,e^{t\lambda_n}$ on the diagonal.
 
-$$
-\bfx(t) = \mathbf{X}(t) \mathbf{X}(0)^{-1} \bfx_0.
-$$
+### (Shifted) nilpotent matrix
 
-Since the solution of an IVP is unique (and the matrices here are invertible), we get the following useful result.
-
-::::{proof:formula} Matrix exponential
-If $\mathbf{X}(t)$ is any fundamental matrix for $\bfx'=\bfA\bfx$, then 
-
-$$
-e^{t\bfA} = \mathbf{X}(t) \mathbf{X}(0)^{-1}.
-$$
-::::
-
-This formula is one way to avoid the rather daunting prospect of having to sum an infinite series of matrices.
-
-::::{proof:example}
-Given 
-
-:::{math}
-\mathbf{A} = \twomat{1}{1}{4}{1}
-:::
-
-and the eigenpairs $\lambda_1=3$, $\mathbf{v}_1 = \twovec{1}{2}$ and $\lambda_2=-1$, $\mathbf{v}_2=\twovec{1}{-2}$, find $e^{t\mathbf{A}}$.
-
-:::{dropdown} Solution
-We start with the fundamental matrix
-
-$$
-\mathbf{X}(t) = \begin{bmatrix} e^{3t} \mathbf{v}_1 & e^{-t} \mathbf{v}_2 \end{bmatrix}
-= \twomat{e^{3t}}{e^{-t}}{2e^{3t}}{-2e^{-t}}.
-$$
-
-Now we find
-
-$$
-\mathbf{X}(0)^{-1} = \twomat{1}{1}{2}{-2}^{-1} = \frac{1}{-4} \twomat{-2}{-1}{-2}{1}.
-$$
-
-Thus
-
-$$
-e^{t\mathbf{A}} = \frac{1}{4} \twomat{e^{3t}}{e^{-t}}{2e^{3t}}{-2e^{-t}} 
-\twomat{2}{1}{2}{-1} = \frac{1}{4} \twomat{2e^{3t}+2e^{-t}}{e^{3t}-e^{-t}}{4e^{3t}-4e^{-t}}{2e^{3t}+2e^{-t}} .
-$$
-:::
-
-::::
-
-::::{proof:example}
-Given that 
-
-:::{math}
-\mathbf{A} = \twomat{1}{-1}{5}{-3}
-:::
-
-has the eigenpairs 
-
-:::{math}
-\lambda = -1\pm i, \; \mathbf{v} = \twovec{1}{2\mp i},
-:::
-
-find $e^{t\bfA}$ and the solution of the IVP $\bfx'=\mathbf{A}\bfx$, $\bfx(0)=\twovec{2}{1}$.
-
-:::{dropdown} Solution
-For $\lambda=-1+ i$, an eigenvector is
-
-$$
-\twovec{1}{2} + i\,\twovec{0}{-1}.
-$$
-
-Therefore we can construct a fundamental matrix from the columns
-
-$$
-\bfx_1(t) = e^{-t} \left(\cos(t) \twovec{1}{2} - \sin(t) \twovec{0}{-1}\right), \qquad \bfx_2(t) = e^{-t} \left(\cos(t) \twovec{0}{-1} + \sin(t) \twovec{1}{2}\right).
-$$
-
-Hence
-
-$$
-\mathbf{X}(0)^{-1} = \twomat{1}{0}{2}{-1}^{\,-1} = -1 \twomat{-1}{0}{-2}{1} = \twomat{1}{0}{2}{-1}.
-$$
-
-We can now compute
-
-\begin{align*}
-e^{t\bfA} &= e^{-t}\twomat{\cos(t)}{\sin(t)}{2\cos(t)+\sin(t)}{2\sin(t)-\cos(t)} \twomat{1}{0}{2}{-1}\\[0.5ex]
-& = e^{-t}\twomat{\cos(t)+2\sin(t)}{-\sin(t)}{5\sin(t)}{\cos(t)-2\sin(t)}.
-\end{align*}
-
-Finally, then,
-
-$$
-\bfx(t) = e^{t\bfA} \bfx(0) = e^{-t}\twomat{\cos(t)+2\sin(t)}{-\sin(t)}{5\sin(t)}{\cos(t)-2\sin(t)} \twovec{2}{1} = e^{-t} \twovec{2\cos(t)+2\sin(t)}{\cos(t)+8\sin(t)}. 
-$$
-
-<!-- Begin with 
-
-$$
-\mathbf{X}(t) = e^{-t} \twomat{e^{it}}{e^{-it}}{(2-i)e^{it}}{(2+i)e^{-it}},
-$$
-
-from which
-
-$$
-\mathbf{X}(0)^{-1} =\twomat{1}{1}{2-i}{2+i}^{-1} = \frac{1}{2+i-2+i}\, \twomat{2+i}{-1}{-2+i}{1} = \frac{i}{2}\, \twomat{-2-i}{1}{2-i}{-1}.
-$$
-
-Then 
-
-\begin{align*}
-e^{t \mathbf{A}} & = \frac{i}{2} e^{-t} \,\twomat{e^{it}}{e^{-it}}{(2-i)e^{it}}{(2+i)e^{-it}}\, \twomat{-2-i}{1}{2-i}{-1} \\[1mm]
-& = \frac{i}{2}e^{-t}\,  \twomat{-(2+i)e^{it}+(2-i) e^{-it}}{e^{it}-e^{-it}}{-(2-i)(2+i)e^{it}+(2+i)(2-i) e^{-it}}{(2-i)e^{it}-(2+i) e^{-it}}.
-\end{align*}
-
-Fear not! Each element of the matrix has the same form,
-
-$$
-z - \overline{z} = 2i \operatorname{Im}(z).
-$$
-
-We can factor out the $2i$, combining it with the $i/2$ in front, and then just compute an imaginary part for each element. For instance,
-
-$$
--(2+i)e^{it} = (-2-i)[ \cos(t)+i\sin(t) ] = [ \text{real stuff} ] + i[ -\cos(t) -2\sin(t) ].
-$$
-
-Following this template, we get
-
-$$
-e^{t \mathbf{A}} = -e^{-t} \twomat{-\cos(t)-2\sin(t)}{\sin(t)}{-5\sin(t)}{-\cos(t)+2\sin(t)}.
-$$
-
-Finally, the IVP solution is
-
-$$
-\begin{split}
-\bfx(t) = e^{t \mathbf{A}} \bfx_0 &= -e^{-t} \twomat{-\cos(t)-2\sin(t)}{\sin(t)}{-5\sin(t)}{-\cos(t)+2\sin(t)} \twovec{2}{1} \\[2mm]
-&= e^{-t} \, \twovec{2\cos(t)+3\sin(t)}{\cos(t) + 8\sin(t)}.
-\end{split}
-$$
-
-Whee! -->
-:::
-::::
-
-## Defective matrix case
-
-There is one situation in $\bfx'=\bfA \bfx$ for which we have not yet produced a fundamental matrix in the constant-coefficient case: when $\bfA$ is defective. It's complicated to spell out what happens in full generality, but it's easily managed for the $2\times 2$ case.
-
-{numref}`Theorem {number}<thm-la-2x2defective>` states that for a $2\times 2$ matrix with a repeated eigenvalue, the matrix is either a multiple of the identity, or defective. In the latter case, something useful happens, which we state without proof.
-
-:::{proof:theorem}
-If $\mathbf{A}$ is a defective $2\times 2$ matrix with double eigenvalue $\lambda$, then $(\mathbf{A}-\lambda \mathbf{I})^2= \boldsymbol{0}$.
-:::
-
-Note that by part 5 of the matrix exponential properties theorem above,
-
-$$
-e^{t\mathbf{A}} = e^{t\lambda\mathbf{I}} \,  e^{t(\mathbf{A}-\lambda \mathbf{I})}.
-$$
-
-For the first right-side term we get
-
-$$
-e^{t\lambda\mathbf{I}} = \mathbf{I} + t\lambda \mathbf{I} + \frac{1}{2!}(t\lambda)^2 \mathbf{I}^2 + \cdots = \bigl(1 + t\lambda + \frac{1}{2!}(t\lambda)^2 + \cdots\bigr)\, \mathbf{I} = 
-e^{t\lambda} \mathbf{I},
-$$
-
-and for the second term we get a power series that truncates after two terms:
-
-$$
-e^{t(\mathbf{A}-\lambda \mathbf{I})} = \mathbf{I} + t(\mathbf{A}-\lambda \mathbf{I}) + \frac{1}{2!}t^2 (\mathbf{A}-\lambda \mathbf{I})^2 + \cdots.
-$$
-
-Thus we arrive at the following.
-
-::::{proof:formula} Matrix exponential for $2\times 2$ defective
-
-:::{math}
-:label: ls-2x2exp-defective
-e^{t\mathbf{A}} = \bigl( e^{t\lambda} \meye \bigr) \,  \bigl( \mathbf{I} + t(\mathbf{A}-\lambda \mathbf{I}) \bigr)  =  e^{t\lambda} \bigl( \mathbf{I} + t(\mathbf{A}-\lambda \mathbf{I}) \bigr).
-:::
-
-::::
+A **nilpotent** matrix $\bfA$ satisfies $\bfA^k=\bfzero$ for some integer $k$. If all the eigenvalues of a matrix equal a single number $\lambda$, then $(\bfA-\lambda\meye)$ is nilpotent. This fact can be used to make the series truncate finitely.
 
 ::::{proof:example}
 Find $e^{t\mathbf{A}}$ if $\bfA=\twomat{4}{1}{0}{4}$.
 
 :::{dropdown} Solution
-You can check that $\lambda=4$ is the only eigenvalue, with algebraic multiplicity equal to 2. By inspection, then, it is defective. Hence
+You can check that $\lambda=4$ is the only eigenvalue, with algebraic multiplicity equal to 2. Let $\bfB=\bfA-4\meye$. You can easily calculate that $\bfB^2=\bfzero$, so  
 
 $$
-e^{t\mathbf{A}} =  e^{4t} \bigl() \mathbf{I} + t\, \twomat{0}{1}{0}{0} \bigr)
-= e^{4t} \twomat{1}{t}{0}{1}.
+e^{t\bfB} = \meye + t \bfB = \twomat{1}{t}{0}{1}.
+$$
+
+From the exponential properties we have 
+
+$$
+e^{t\bfA}=e^{t\bfb+4t\meye} = e^{4t\meye} \, e^{\bfB} = e^{4t} \twomat{1}{t}{0}{1}. 
 $$
 :::
 ::::
@@ -309,14 +209,193 @@ $$
 which is equivalent to the general solution we saw before for this problem, $e^{-t\omega_0}(c_1+c_2t)$.
 ::::
 
-## Propagators
+### Fundamental matrix
 
-Obviously the formulas lead to some intense algebra for particular examples, even in the $2\times 2$ case. A computer can handle it, but the elementwise expressions get tediously long in all but special cases. 
+::::{proof:formula} Matrix exponential by fundamental matrix
+If $\fundm(t)$ is any fundamental matrix for $\bfx'=\bfA\bfx$, then 
 
-The theoretical implications are more significant. The interpretation of $e^{t\bfA}$ in the ODE context is that it transforms a vector initial condition to the solution vector at a time $t$. This is a linear operator; the solutions of linear equations behave linearly.
+$$
+e^{t\bfA} = \fundm(t) \fundm(0)^{-1}.
+$$
+::::
 
-Property 3 above implies that to invert that transformation, you can use $e^{-t\bfA}$, which is the same as running the ODE in "negative time." More formally, it's a statement about *time reversibility*. 
+::::{proof:example}
+Given 
 
-Property 4 above implies that the evolution at time $t+s$ is equivalent to evolving by time $t$, then by time $s$ (or vice versa). This is a statement about *time invariance*. A linear equation with a non-constant coefficient matrix also has a propagator matrix, but it's not a matrix exponential, and the time invariance is broken.
+:::{math}
+\mathbf{A} = \twomat{1}{1}{4}{1}
+:::
 
-<div style="max-width:608px"><div style="position:relative;padding-bottom:66.118421052632%"><iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/2358381/sp/235838100/embedIframeJs/uiconf_id/43030021/partner_id/2358381?iframeembed=true&playerId=kaltura_player&entry_id=1_iqs5c09n&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_3i9rs19c" width="608" height="402" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="Kaltura Player" style="position:absolute;top:0;left:0;width:100%;height:100%"></iframe></div></div>
+and the eigenpairs $\lambda_1=3$, $\mathbf{v}_1 = \twovec{1}{2}$ and $\lambda_2=-1$, $\mathbf{v}_2=\twovec{1}{-2}$, find $e^{t\mathbf{A}}$.
+
+:::{dropdown} Solution
+We start with the fundamental matrix
+
+$$
+\fundm(t) = \begin{bmatrix} e^{3t} \mathbf{v}_1 & e^{-t} \mathbf{v}_2 \end{bmatrix}
+= \twomat{e^{3t}}{e^{-t}}{2e^{3t}}{-2e^{-t}}.
+$$
+
+Now we find
+
+$$
+\fundm(0)^{-1} = \twomat{1}{1}{2}{-2}^{-1} = \frac{1}{-4} \twomat{-2}{-1}{-2}{1}.
+$$
+
+Thus
+
+$$
+e^{t\mathbf{A}} = \frac{1}{4} \twomat{e^{3t}}{e^{-t}}{2e^{3t}}{-2e^{-t}} 
+\twomat{2}{1}{2}{-1} = \frac{1}{4} \twomat{2e^{3t}+2e^{-t}}{e^{3t}-e^{-t}}{4e^{3t}-4e^{-t}}{2e^{3t}+2e^{-t}} .
+$$
+:::
+::::
+
+### Diagonalization
+
+We derived the formula $e^{t\bfA} = \bfV e^{t\bfD} \bfV^{-1}$. If the diagonalization is fully known, this is handy, but otherwise it's no easier than using the fundamental matrix method above.
+
+### Polynomial representation
+
+Thanks to a result known as the Cayley–Hamilton theorem, the following is true. 
+
+::::{proof:formula} Matrix exponential by polynomial
+If $\bfA$ has eigenvalues $\lambda_1,\ldots,\lambda_n$, then there exist functions $c_0(t),\ldots,c_{n-1}(t)$ such that if we define
+
+:::{math}
+:label: eq-matrix_exp-polydef
+f(t,z) = c_0(t) + c_1(t) z + \cdots + c_{n-1}(t) z,
+:::
+
+then
+
+:::{math}
+:label: eq-matrix_exp-polylam
+f(t,\lambda_k) = e^{t\lambda_k}, \qquad k=1,\ldots,n,
+:::
+
+and
+
+:::{math}
+:label: eq-matrix_exp-polymat
+e^{t\bfA} = f(t,\bfA) = c_0(t)\meye + c_1(t)\bfA + \cdots + c_{n-1}(t)\bfA^{n-1}.
+:::
+::::
+
+The idea is to use the eigenvalues to define the linear system in {eq}`eq-matrix_exp-polylam`, which is solved to determine the $c_k(t)$ functions. The matrix exponential is then computed from {eq}`eq-matrix_exp-polymat`. The eigenvectors aren't needed at all. 
+
+::::{proof:example}
+Given that
+
+$$
+\mathbf{A} = \twomat{1}{1}{4}{1}
+$$
+
+has eigenvalues $\lambda_1=3$ and $\lambda_2=-1$, find $e^{t\bfA}$. 
+
+:::{dropdown} Solution
+We write out {eq}`eq-matrix_exp-polylam`:
+
+$$
+c_0 + 3c_1 &= e^{3t}   \\ 
+c_0 - c_1 &= e^{-t}.
+$$
+
+Cramer's rule leads to
+
+$$
+c_0 = \frac{-e^{3t}-3e^{-t}}{-4}, \qquad c_1 = \frac{e^{-t}-e^{3t}}{-4}. 
+$$
+
+Inserting these into {eq}`eq-matrix_exp-polymat` gives
+
+$$
+e^{t\bfA} &= \frac{e^{3t}+3e^{-t}}{4}\, \meye + \frac{e^{3t}-e^{-t}}{4} \, \bfA \\ 
+&= \frac{1}{4}\twomat{2(e^{3t}+e^{-t})}{e^{3t}-e^{-t}}{4(e^{3t}-e^{-t})}{2(e^{3t}+e^{-t})}.
+$$
+:::
+::::
+
+The process is modified a bit for complex eigenvalues. Note that the $c_k$ functions in {eq}`eq-matrix_exp-polydef` must be real.
+
+::::{proof:example}
+Given that 
+
+:::{math}
+\mathbf{A} = \twomat{1}{-1}{5}{-3}
+:::
+
+has eigenvalues $-1\pm i$, find $e^{t\bfA}$ and the solution of the IVP $\bfx'=\mathbf{A}\bfx$, $\bfx(0)=\twovec{2}{1}$.
+
+:::{dropdown} Solution
+
+Rather than writing out {eq}`eq-matrix_exp-polylam` for both conjugate eigenvalues, we use just one and apply Euler's formula to take the real and imaginary parts:
+
+$$
+e^{-t+it} = c_0 + c_1 (-1+i) \quad \Rightarrow \quad e^{-t}\cos(t) = c_0 - c_1, \quad e^{-t}\sin(t) = c_1.
+$$
+
+This gives us $c_1=e^{-t}\sin(t)$ and $c_0 = e^{-t}[\cos(t)+\sin(t)]$. Thus,
+
+$$
+e^{t\bfA} &= e^{-t}[\cos(t)+\sin(t)]\, \meye + e^{-t}\sin(t)\, \bfA \\ 
+&= e^{-t}\twomat{\cos(t)+2\sin(t)}{-\sin(t)}{5\sin(t)}{\cos(t)-2\sin(t)}.
+$$
+
+The solution of the IVP is then
+
+$$
+\bfx(t) = e^{t\bfA} \bfx(0) = e^{-t}\twomat{\cos(t)+2\sin(t)}{-\sin(t)}{5\sin(t)}{\cos(t)-2\sin(t)} \twovec{2}{1} = e^{-t} \twovec{2\cos(t)+2\sin(t)}{\cos(t)+8\sin(t)}. 
+$$
+:::
+::::
+
+The process also to be modified if there are repeated eigenvalues. Suppose $\lambda_1=\lambda_2$ has algebraic multiplicity 2. In that case, the second equation in the linear system {eq}`eq-matrix_exp-polylam` is a duplicate of the first. We replace it with 
+
+$$
+\pp{f}{z}(t,\lambda_1) = \pp{}{z} \bigl[ e^{tz}  \bigr]_{z=\lambda_1} = t e^{\lambda_1 t}.
+$$
+
+If $\lambda_1=\lambda_2=\lambda_3$, then the first three equations are 
+
+$$
+f(\lambda_1) &= e^{\lambda_1 t} \\ 
+f_z(\lambda_1) &= t e^{\lambda_1 t} \\ 
+f_{zz}(\lambda_1) &= t^2 e^{\lambda_1 t}.
+$$
+
+In principle, the method generalizes to any algebraic multiplicity.
+
+(example-matrix_exp-repeat)=
+::::{proof:example} 
+The matrix $\bfA = \begin{bmatrix} {2}& {1}& {1}\\ {1} & {2} & {1}\\ {-2}& {-2} & {-1} \end{bmatrix}$ has a triple eigenvalue $\lambda_1=1$. Find $e^{t\bfA}$.
+
+:::{dropdown} Solution
+The system to solve is
+
+$$
+c_0 + \lambda_1 c_1 + \lambda_1^2 c_2 &= e^{\lambda_1 t} \\ 
+c_1 + 2\lambda_1 c_2 &= t e^{\lambda_1 t} \\ 
+2c_2 &= t^2 e^{\lambda_1 t},
+$$
+
+which is 
+
+$$
+c_0 + c_1 + c_2 &= e^{t} \\ 
+c_1 + 2 c_2 &= te^{t} \\ 
+2 c_2 &= t^2e^{t}.
+$$
+
+This has solution $c_0 = \left(1-t+\frac{1}{2}t^2\right)e^t$, $c_1=(t-t^2)e^t$, $c_2=\frac{1}{2} t^2 e^{t}$. To finish the problem we calculate
+
+$$
+e^t \left[ \left(1-t+\frac{1}{2}t^2\right) \meye + (t-t^2)\bfA + \frac{1}{2} t^2 \bfA^2 \right] = e^t \begin{bmatrix} 
+ t+1 & t & t \\
+ t & t+1 & t \\
+ -2 t & -2 t & 1-2 t \\
+\end{bmatrix}.
+$$
+:::
+::::
+

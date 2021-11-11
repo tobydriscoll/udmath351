@@ -55,15 +55,15 @@ These are notes on MATH 351 at UD by Toby Driscoll. Copyrighted, all rights rese
 
 | Date   | Section                                             | Zill      | Suggested practice |
 | ------ | --------------------------------------------------- | --------- | ------------------ |
-| Nov 12 | [Linear ODE systems](ode_system/intro)              | 10.1      |                    |
-| Nov 15 | [Solution structure](ode_system/structure)          | 10.1      |                    |
+| Nov 12 | [ODE systems](ode_system/intro)              | 10.1      |                    |
+| Nov 15 | [Linear ODE systems](ode_system/structure)          | 10.1      |                    |
 | Nov 17 | [Homogeneous c-c systems](ode_system/const_coeff)   | 10.2      |                    |
 | Nov 19 | [Phase plane and stability](ode_system/phase_plane) | 11.2      |                    |
-| Nov 29 | [Diagonalization](ode_system/diagonal)              | 10.3      |                    |
+| Nov 29 | Review                                              |           |                    |
 | Dec 1  | **EXAM 3**                                          | Goals TBD |                    |
-| Dec 3  | [Matrix exponential](ode_system/exp)                | 10.4      |                    |
-| Dec 6  | [Linearization](ode_system/linearization)           | 11.3      |                    |
-| Dec 8  |                                                     |           |                    |
+| Dec 3  | [Matrix exponential](ode_system/matrx_exp)          | 10.4      |                    |
+| Dec 6  | Matrix exponential                                  | 10.4      |                    |
+| Dec 8  | [Linearization](ode_system/linearization)           | 11.3      |                    |
 | Dec 10 |   Review                                     |           |                    |
 
 ## End-of-chapter review problems
