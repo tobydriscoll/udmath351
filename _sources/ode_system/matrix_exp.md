@@ -159,9 +159,31 @@ Summing the infinite series of matrices in {eq}`eq-matrix_exp-series` seems a da
 
 As derived above, if $\bfD$ is diagonal with $\lambda_1,\ldots,\lambda_n$ on the diagonal, then $e^{t\bfD}$ is diagonal with $e^{t\lambda_1},\ldots,e^{t\lambda_n}$ on the diagonal.
 
-### (Shifted) nilpotent matrix
+### Nilpotent matrix
 
-A **nilpotent** matrix $\bfA$ satisfies $\bfA^k=\bfzero$ for some integer $k$. If all the eigenvalues of a matrix equal a single number $\lambda$, then $(\bfA-\lambda\meye)$ is nilpotent. This fact can be used to make the series truncate finitely.
+A **nilpotent** matrix $\bfA$ satisfies $\bfA^k=\bfzero$ for some integer $k$. (Equivalently, a nilpotent matrix has all zero eigenvalues.) For a nilpotent matrix, the infinite series for the matrix exponential truncates trivially.
+
+(example-matrix_exp-nilpotent)=
+::::{proof:example} 
+Find $e^{t\bfA}$ if $\bfA= \begin{bmatrix} 0 & 1 & 2 \\ 0 & 0 & 1 \\ 0 & 0 & 0 \end{bmatrix}$.
+
+:::{dropdown} Solution
+The matrix is triangular and evidently has all zero eigenvalues. We get
+
+$$
+e^{t\mathbf{A}} &= \mathbf{I} + t\mathbf{A} + \frac{1}{2!}t^2 \mathbf{A}^2 + \frac{1}{3!} t^3 \mathbf{A}^3 + \cdots \\ 
+&= \begin{bmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{bmatrix} + t \begin{bmatrix} 0 & 1 & 2 \\ 0 & 0 & 1 \\ 0 & 0 & 0 \end{bmatrix} + t^2 \begin{bmatrix} 0 & 0 & 1 \\ 0 & 0 & 0 \\ 0 & 0 & 0 \end{bmatrix},
+$$
+
+since $\bfA^3=\bfzero$. This simplifies to
+
+$$
+e^{t\mathbf{A}} = \begin{bmatrix} 1 & t & 2t+t^2 \\ 0 & 1 & t \\ 0 & 0 & 1 \end{bmatrix}  & 1 & 2 \\ 0 & 0 & 1 \\ 0 & 0 & 0 \end{bmatrix}.
+$$
+:::
+::::
+
+<!-- If all the eigenvalues of a matrix equal a single number $\lambda$, then $(\bfA-\lambda\meye)$ is nilpotent. This fact can be used to make the series truncate finitely.
 
 ::::{proof:example}
 Find $e^{t\mathbf{A}}$ if $\bfA=\twomat{4}{1}{0}{4}$.
@@ -179,35 +201,7 @@ $$
 e^{t\bfA}=e^{t\bfb+4t\meye} = e^{4t\meye} \, e^{\bfB} = e^{4t} \twomat{1}{t}{0}{1}. 
 $$
 :::
-::::
-
-::::{proof:example}
-A critically damped free oscillator with natural frequency $\omega_0$ is equivalent to a system with the matrix
-
-$$
-\bfA = \twomat{0}{1}{-\omega_0^2}{-2\omega_0}.
-$$
-
-The characteristic polynomial is $\lambda^2 + 2\omega_0\lambda + \omega_0^2$, which has the double root $\lambda=-\omega_0$. Clearly this matrix is not a multiple of $\meye$, so it is defective. We compute
-
-$$
-\bfA - \lambda\meye = \twomat{\omega_0}{1}{-\omega_0^2}{-\omega_0}.
-$$
-
-This gives the exponential
-
-$$
-e^{t\mathbf{A}} = e^{-t\omega_0} \twomat{1+t\omega_0}{t}{-t\omega_0^2}{1-t\omega_0},
-$$
-
-which is a fundamental matrix. The oscillator position is the first component of the general solution,
-
-$$
-e^{-t\omega_0}[ c_1 (1+t\omega_0) + c_2 t],
-$$
-
-which is equivalent to the general solution we saw before for this problem, $e^{-t\omega_0}(c_1+c_2t)$.
-::::
+:::: -->
 
 ### Fundamental matrix
 
@@ -350,13 +344,43 @@ $$
 :::
 ::::
 
-The process also to be modified if there are repeated eigenvalues. Suppose $\lambda_1=\lambda_2$ has algebraic multiplicity 2. In that case, the second equation in the linear system {eq}`eq-matrix_exp-polylam` is a duplicate of the first. We replace it with 
+The process also must be modified if there are repeated eigenvalues. Suppose $\lambda_1=\lambda_2$ has algebraic multiplicity 2. In that case, the second equation in the linear system {eq}`eq-matrix_exp-polylam` is a duplicate of the first. We replace it with 
 
-$$
+:::{math}
+:label: eq-matrix_exp-polyder
 \pp{f}{z}(t,\lambda_1) = \pp{}{z} \bigl[ e^{tz}  \bigr]_{z=\lambda_1} = t e^{\lambda_1 t}.
+:::
+
+::::{proof:example}
+A critically damped free oscillator with natural frequency $\omega_0$ is equivalent to an ODE system with the matrix
+
+$$
+\bfA = \twomat{0}{1}{-\omega_0^2}{-2\omega_0}.
 $$
 
-If $\lambda_1=\lambda_2=\lambda_3$, then the first three equations are 
+The characteristic polynomial is $z^2 + 2\omega_0z + \omega_0^2$, which has the double root $\lambda=-\omega_0$. We apply {eq}`eq-matrix_exp-polylam` and {eq}`eq-matrix_exp-polyder` to get the system
+
+$$
+c_0 - \omega_0 c_1 &= e^{-\omega_0 t} \\
+c_1 &= te^{-\omega_0 t}.
+$$
+
+From this we get $c_1 = te^{-\omega_0 t}$, $c_0 = (1+\omega_0 t)e^{-\omega_0 t}$. Hence
+
+$$
+e^{t\bfA} = e^{-\omega_0 t}(1+\omega_0 t)\, \meye + te^{-\omega_0 t}\, \bfA = e^{-\omega_0 t} \twomat{1+\omega_0 t}{t}{-\omega_0^2 t}{1-\omega_0t}.
+$$
+
+The oscillator position is the first component of the general solution,
+
+$$
+e^{-t\omega_0}[ C_1 (1+t\omega_0) + C_2 t],
+$$
+
+which is equivalent to the general solution we saw before for this problem.
+::::
+
+If $\lambda_1=\lambda_2=\lambda_3$, then the first three equations of {eq}`eq-matrix_exp-polylam` become 
 
 $$
 f(\lambda_1) &= e^{\lambda_1 t} \\ 
