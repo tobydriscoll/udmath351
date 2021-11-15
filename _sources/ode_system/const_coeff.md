@@ -38,7 +38,7 @@ Counting algebraic multiplicities, we know that $\mathbf{A}$ has eigenvalues $\l
 Our next move is to determine whether
 
 $$
-\bigl[ \mathbf{x}_1(t) \; \mathbf{x}_2(t) \; \cdots \; \mathbf{x}_m(t)  \bigr]
+\bigl[ \mathbf{x}_1(t) \; \mathbf{x}_2(t) \; \cdots \; \mathbf{x}_n(t)  \bigr]
 $$
 
 is a fundamental matrix. According to [Abel's theorem](theorem-fs-abel), we can ask that question at any value of $t$, including $t=0$. So the key issue is whether 
@@ -69,7 +69,7 @@ is a fundamental matrix for $\mathbf{x}'=\mathbf{A}\mathbf{x}$. Hence the genera
 :::
 ::::
 
-The condition that $\bfV$ be invertible is identical to $\bfA$ being diagonalizable. Solutions for defective matrices will have to wait for now.
+We are guaranteed an invertible  $\bfV$ can be found if (and only if) $\bfA$ is diagonalizable. Solutions for defective matrices will have to wait for now.
 
 (fs-ex-eigen-real)=
 ::::{proof:example}
@@ -110,7 +110,6 @@ We can often skip the singularity check in the previous example.
 If the eigenvalues of $\bfA$ are distinct, then their corresponding eigenvectors are the columns of an invertible matrix.
 :::
 
-We will return later to the situation of a repeated eigenvalue. 
 
 ## Complex eigenvalues
 
@@ -150,32 +149,16 @@ $$
 \bfx(t) = c_1 e^{(1+i)t} \twovec{1}{i} + c_2 e^{(1-i)t} \twovec{1}{-i}.
 $$
 
-If we expect a real solution (because of real initial values, say), then $c_2 = \overline{c_1}$ and we can instead write
+If we expect a real solution (because of real initial values, say), then $c_2 = \overline{c_1}$ and the result is real.
+
+Instead, we use Euler's formula to write out 
 
 $$
-\begin{split}
-\bfx(t) &= \Re \left[ c_1 e^{(1+i)t} \twovec{1}{i} \right] \\
-&= e^t \Re \left[ c_1 e^{it} \twovec{1}{i} \right].
-\end{split}
+e^{(1+i)t} \twovec{1}{i} = e^t \twovec{\cos t + i \sin t}{i\cos t - \sin t} 
+= e^t \twovec{\cos t}{-\sin t} + i e^t \twovec{\sin t}{\cos t}.
 $$
 
-Heading toward a completely real form, decompose $c_1= a_1 - i a_2$ and note that
-
-$$
-e^{it} \twovec{1}{i} = \twovec{\cos t + i \sin t}{i\cos t - \sin t} 
-= \twovec{\cos t}{-\sin t} + i \twovec{\sin t}{\cos t}.
-$$
-
-Then
-
-$$
-\begin{split}
-c_1 &= (a_1 -i a_2)\left(\twovec{\cos t}{-\sin t} + i \twovec{\sin t}{\cos t} \right) \\
-&= a_1 \twovec{\cos t}{-\sin t} + a_2 \twovec{\sin t}{\cos t} + \cdots,
-\end{split}
-$$
-
-where everything omitted is purely imaginary. Since we only want the real part, we get
+The real and imaginary parts of the last line are independent real solutions, and 
 
 $$
 \bfx(t) = a_1 e^t \twovec{\cos t}{-\sin t} + a_2 e^t \twovec{\sin t}{\cos t}
@@ -185,27 +168,38 @@ for arbitrary real $a_1$ and $a_2$.
 :::
 ::::
 
-The essence of the example is that to convert the solution to an entirely real expression, decompose the complex eigensolution into real and imaginary parts. 
+## The oscillator reloaded 
 
+Earlier we showed that the harmonic oscillator
 
-% ## The oscillator reloaded
+$$
+u'' + 2 Z \omega_0 u' + \omega_0^2 u = 0
+$$
 
-% In an [earlier section](order_dimension.md) we showed that the harmonic oscillator
+can be converted to the constant-coefficient system
 
-% $$
-% u'' + 2 Z \omega_0 u' + \omega_0^2 u = 0
-% $$
+$$
+\bfx' = \twomat{0}{1}{-\omega_0^2}{-2Z\omega_0} \bfx.
+$$
 
-% can be converted to the constant-coefficient system
+via $x_1=u$, $x_2=u'$. The eigenvalues of the coefficient matrix are the roots of the characteristic polynomial
 
-% $$
-% \bfx' = \twomat{0}{1}{-\omega_0^2}{-2Z\omega_0} \bfx.
-% $$
+$$
+\twodet{-z}{1}{-\omega_0^2}{-2 \zeta \omega_0-z} = z^2 + 2 \zeta \omega_0 z + \omega_0^2.
+$$
 
-% via $x_1=u$, $x_2=u'$. The eigenvalues of the coefficient matrix are the roots of the characteristic polynomial
+This is identical to what we called the characteristic polynomial of the oscillator ODE! That is, the characteristic values we used there are the eigenvalues here. 
 
-% $$
-% \twodet{-\lambda}{1}{-\omega_0^2}{-2 Z\omega_0-\lambda} = \lambda^2 + 2 Z\omega_0 \lambda + \omega_0^2.
-% $$
+In the underdamped case $\zeta < 1$, for instance, the eigenvalues are complex: $\lambda = -\zeta \omega_0 \pm i \omega_d$, where $\omega_d=\omega_0 \sqrt{1-\zeta^2}$. The first eigenvalue $\lambda_1$ has eigenvector
 
-% This is also what we called the characteristic polynomial of the oscillator ODE! That is, the characteristic values we used there are the eigenvalues here. The exponential solutions we saw before also come from the first component of the general vector solution. To repeat, all second-order problems are really first-order systems in a cheap disguise.
+$$
+\twovec{1}{\lambda_1}.
+$$
+
+If we want the general solution of just the original $u$ variable, then we only need the first component of the eigenvector, and the general solution combines the real and imaginary parts of $e^{\lambda_1 t}$:
+
+$$
+u(t) = x_1(t) = a_1 e^{-\zeta \omega_0t} \cos(\omega_d t) + a_2 e^{-\zeta \omega_0t} \sin(\omega_d t).
+$$
+
+Again, the second-order problem is fully covered by the equivalent first-order system.
