@@ -58,9 +58,9 @@ These are notes on MATH 351 at UD by Toby Driscoll. Copyrighted, all rights rese
 | Nov 12 | [ODE systems](ode_system/intro)              | (10.1)      |                    |
 | Nov 15 | [Linear ODE systems](ode_system/structure)          | 10.1      |   1-6, 7, 11-12, 17-19    |
 | Nov 17 | [Homogeneous c-c systems](ode_system/const_coeff)   | 10.2      | 1, 5-6, 10, 31, 35-37   |
-| Nov 19 | [Phase plane and stability](ode_system/phase_plane) | 11.2      |                    |
+| Nov 19 | [Phase plane and stability](ode_system/phase_plane) | 11.2      |  1-5 (part a), 9-16, 19    |
 | Nov 29 | Review                                              |           |                    |
-| Dec 1  | **EXAM 3**                                          | Goals TBD |                    |
+| Dec 1  | **EXAM 3**                                          | Goals D13–17, E1–5, F1–5 |                    |
 | Dec 3  | [Matrix exponential](ode_system/matrix_exp)          | 10.5      |  2, 6, 19-21, 25      |
 | Dec 6  | Matrix exponential                                  |         |                    |
 | Dec 8  | [Linearization](ode_system/linearization)           | 11.3      |                    |
@@ -128,21 +128,29 @@ Note: Both textbooks have dedicated chapter review problems.
 11. Compute the determinant of a small matrix.
 12. Use a determinant to determine whether a matrix is singular.
 13. Apply the definition and properties of eigenvalues and eigenvectors.
-14. Compute eigenvalues and eigenspaces of a 2x2 matrix or certain 3x3 matrices. 
-15. Compute algebraic and geometric multiplicities of an eigenvalue.
+14. Compute eigenvalues and eigenspaces of 2x2 matrices and certain 3x3 matrices. 
+15. Find the algebraic and geometric multiplicities of an eigenvalue.
 16. Determine whether an eigenvalue or matrix is defective.
 17. Express a nondefective matrix in terms of its diagonalization.
 
 ### E. Vector spaces
 
+1. Relate the abstract vector spaces $\mathbb{R}^{m\times n}$ and $\mathcal{P}_n$ to $\mathbb{R}^n$.
+2. Determine whether given vectors in an abstract space are linearly independent.
+3. Determine whether a given vector lies in the span of other vectors in an abstract space.
+4. Compute the coordinates of a given vector in a given basis.
+5. Compute a change-of-basis matrix between two given bases.
+
 ### F. Linear ODE systems
 
-<!-- 1. Write a linear ODE system in matrix-vector form.
+1. Write a linear ODE system in matrix-vector form.
 2. Describe the properties of a fundamental matrix.
 3. Compute a Wronskian and use it to determine the independence of solutions.
-4. Solve a constant-coefficient system by eigenvalues and eigenvectors (nondefective case).
-5. Interpret complex exponentials and convert a complex solution form to a real form.
+4. Solve a constant-coefficient homogeneous system by eigenvalues and eigenvectors (nondefective case).
+5. Replace a complex homogeneous solution form by a real form.
 6. Deduce the stability and character of the origin in a homogeneous linear system from its eigenvalues or a phase plane diagram.
-7. Compute the exponential of a 2x2 matrix, and use it to solve an IVP.
-8. Use variation of parameters to find a particular solution.
- -->
+7. Compute a matrix exponential using a fundamental matrix.
+8. Compute a matrix exponential using a diagonalization.
+9. Compute a 2x2 or 3x3 matrix exponential using the polynomial method (including defective case).
+10. Use a matrix exponential to solve an IVP.
+
