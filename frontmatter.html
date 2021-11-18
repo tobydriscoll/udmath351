@@ -54,6 +54,8 @@
         const thebe_selector_output = ".output"
     </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": {"real": ["\\mathbb{R}"], "complex": ["\\mathbb{C}"], "nat": ["\\mathbb{N}"], "integer": ["\\mathbb{Z}"], "rmn": ["\\mathbb{R}^{#1 \\times #2}", 2], "cmn": ["\\complex^{#1 \\times #2}", 2], "dd": ["\\frac{d #1}{d #2}", 2], "pp": ["\\frac{\\partial #1}{\\partial #2}", 2], "ddd": ["\\frac{d^2 #1}{d #2^2}", 2], "aug": ["\\left|\\right."], "norm": ["\\| #1 \\|", 1], "diagm": ["\\begin{bmatrix} #1 & & & \\\\ & #2 & & \\\\ & & \\ddots & \\\\ & & & #3 \\end{bmatrix}", 3], "twonorm": ["\\| #1 \\|_2", 1], "onenorm": ["\\| #1 \\|_1", 1], "infnorm": ["\\| #1 \\|_\\infty", 1], "innerprod": ["\\langle #1,#2 \\rangle", 2], "twovec": ["\\begin{bmatrix} #1 \\\\ #2 \\end{bmatrix}", 2], "threevec": ["\\begin{bmatrix} #1 \\\\ #2 \\\\ #3 \\end{bmatrix}", 3], "twomat": ["\\begin{bmatrix} #1 & #2 \\\\ #3 & #4 \\end{bmatrix}", 4], "twodet": ["\\begin{vmatrix} #1 & #2 \\\\ #3 & #4 \\end{vmatrix}", 4], "pr": ["^{(#1)}", 1], "eye": ["\\mathbf{e}_#1", 1], "meye": ["\\mathbf{I}"], "bff": ["\\mathbf{f}"], "bfx": ["\\mathbf{x}"], "bfy": ["\\mathbf{y}"], "bfz": ["\\mathbf{z}"], "bfu": ["\\mathbf{u}"], "bfv": ["\\mathbf{v}"], "bfa": ["\\mathbf{a}"], "bfb": ["\\mathbf{b}"], "bfc": ["\\mathbf{c}"], "bfe": ["\\mathbf{e}"], "bfA": ["\\mathbf{A}"], "bfB": ["\\mathbf{B}"], "bfD": ["\\mathbf{D}"], "bfE": ["\\mathbf{E}"], "bfX": ["\\mathbf{X}"], "bfV": ["\\mathbf{V}"], "opA": ["\\mathcal{A}"], "fundm": ["\\boldsymbol{\\Phi}"], "lx": ["\\mathcal{L}"], "bfalpha": ["\\mathbf{alpha}"], "bfdelta": ["\\mathbf{delta}"], "bfzero": ["\\boldsymbol{0}"], "diag": ["\\operatorname{diag}"], "sign": ["\\operatorname{sign}"], "Re": ["\\operatorname{Re}"], "Im": ["\\operatorname{Im}"], "ee": ["\\times 10^"], "rank": ["\\operatorname{rank}"], "span": ["\\operatorname{span}"], "nullsp": ["\\operatorname{nullsp}"], "nullity": ["\\operatorname{nullity}"], "rowsp": ["\\operatorname{rowsp}"], "colsp": ["\\operatorname{colsp}"], "dim": ["\\operatorname{dim}"]}}, "HTML-CSS": {"availableFonts": [], "preferredFont": null, "webFont": "Asana-Math"}, "tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="1. First-order ODEs" href="first_order/overview.html" />
@@ -745,7 +747,7 @@
 </tr>
 <tr class="row-odd"><td><p>Dec 1</p></td>
 <td><p><strong>EXAM 3</strong></p></td>
-<td><p>Goals TBD</p></td>
+<td><p>Goals D13–17, E1–5, F1–5</p></td>
 <td><p></p></td>
 </tr>
 <tr class="row-even"><td><p>Dec 3</p></td>
@@ -844,26 +846,36 @@
 <li><p>Compute the determinant of a small matrix.</p></li>
 <li><p>Use a determinant to determine whether a matrix is singular.</p></li>
 <li><p>Apply the definition and properties of eigenvalues and eigenvectors.</p></li>
-<li><p>Compute eigenvalues and eigenspaces of a 2x2 matrix or certain 3x3 matrices.</p></li>
-<li><p>Compute algebraic and geometric multiplicities of an eigenvalue.</p></li>
+<li><p>Compute eigenvalues and eigenspaces of 2x2 matrices and certain 3x3 matrices.</p></li>
+<li><p>Find the algebraic and geometric multiplicities of an eigenvalue.</p></li>
 <li><p>Determine whether an eigenvalue or matrix is defective.</p></li>
 <li><p>Express a nondefective matrix in terms of its diagonalization.</p></li>
 </ol>
 </div>
 <div class="section" id="e-vector-spaces">
 <h3>E. Vector spaces<a class="headerlink" href="#e-vector-spaces" title="Permalink to this headline">¶</a></h3>
+<ol class="simple">
+<li><p>Relate the abstract vector spaces <span class="math notranslate nohighlight">\(\mathbb{R}^{m\times n}\)</span> and <span class="math notranslate nohighlight">\(\mathcal{P}_n\)</span> to <span class="math notranslate nohighlight">\(\mathbb{R}^n\)</span>.</p></li>
+<li><p>Determine whether given vectors in an abstract space are linearly independent.</p></li>
+<li><p>Determine whether a given vector lies in the span of other vectors in an abstract space.</p></li>
+<li><p>Compute the coordinates of a given vector in a given basis.</p></li>
+<li><p>Compute a change-of-basis matrix between two given bases.</p></li>
+</ol>
 </div>
 <div class="section" id="f-linear-ode-systems">
 <h3>F. Linear ODE systems<a class="headerlink" href="#f-linear-ode-systems" title="Permalink to this headline">¶</a></h3>
-<!-- 1. Write a linear ODE system in matrix-vector form.
-2. Describe the properties of a fundamental matrix.
-3. Compute a Wronskian and use it to determine the independence of solutions.
-4. Solve a constant-coefficient system by eigenvalues and eigenvectors (nondefective case).
-5. Interpret complex exponentials and convert a complex solution form to a real form.
-6. Deduce the stability and character of the origin in a homogeneous linear system from its eigenvalues or a phase plane diagram.
-7. Compute the exponential of a 2x2 matrix, and use it to solve an IVP.
-8. Use variation of parameters to find a particular solution.
- -->
+<ol class="simple">
+<li><p>Write a linear ODE system in matrix-vector form.</p></li>
+<li><p>Describe the properties of a fundamental matrix.</p></li>
+<li><p>Compute a Wronskian and use it to determine the independence of solutions.</p></li>
+<li><p>Solve a constant-coefficient homogeneous system by eigenvalues and eigenvectors (nondefective case).</p></li>
+<li><p>Replace a complex homogeneous solution form by a real form.</p></li>
+<li><p>Deduce the stability and character of the origin in a homogeneous linear system from its eigenvalues or a phase plane diagram.</p></li>
+<li><p>Compute a matrix exponential using a fundamental matrix.</p></li>
+<li><p>Compute a matrix exponential using a diagonalization.</p></li>
+<li><p>Compute a 2x2 or 3x3 matrix exponential using the polynomial method (including defective case).</p></li>
+<li><p>Use a matrix exponential to solve an IVP.</p></li>
+</ol>
 </div>
 </div>
 <div class="toctree-wrapper compound">
