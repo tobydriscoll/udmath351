@@ -178,7 +178,11 @@ $$
 since $\bfA^3=\bfzero$. This simplifies to
 
 $$
-e^{t\mathbf{A}} = \begin{bmatrix} 1 & t & 2t+t^2 \\ 0 & 1 & t \\ 0 & 0 & 1 \end{bmatrix}  & 1 & 2 \\ 0 & 0 & 1 \\ 0 & 0 & 0 \end{bmatrix}.
+e^{t\mathbf{A}} = \begin{bmatrix} 
+1 & t & 2t+t^2 \\ 
+0 & 1 & t \\ 
+0 & 0 & 1 
+\end{bmatrix}.
 $$
 :::
 ::::
