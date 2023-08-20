@@ -904,7 +904,7 @@ where $b$ and $k$ are constants, and $f$ appears in @tbl-undetermined-forcing.
 Corresponding to each $f$ in @tbl-undetermined-forcing is a specific form for $x_p$ containing one or more constants (given by capital letters) that must be deduced by substituting into the particular ODE under consideration. This procedure is what gives the method its name, the **method of undetermined coefficients**.
 
 ::::{#exm-undetermined-const} 
-Rework @Example {number} <example-variation_parameters-const>, finding a particular solution of $x'' - x = 4$. 
+Rework @exm-variation_parameters-cons, finding a particular solution of $x'' - x = 4$. 
 
 :::{.solution}
 The forcing function is a polynomial of degree zero, so $x_p$ should be as well. Let $x_p=A.$ Then it is a solution if
@@ -1003,7 +1003,7 @@ $$
 :::
 ::::
 
-The examples above are the fundamental ones. If you have a forcing function that is a sum of terms from @table-undetermined-forcing, then you can treat each term separately as above and add together the particular solutions found.
+The examples above are the fundamental ones. If you have a forcing function that is a sum of terms from @tbl-undetermined-forcing, then you can treat each term separately as above and add together the particular solutions found.
 
 ### Limitations
 
@@ -1019,16 +1019,16 @@ $$
 which leads to the conclusion that $B=0$ and, if $\omega^2 \neq 1$, $A=1/(1-\omega^2)$. However, if $\omega = 1$, the substitution would leave us with $0=\cos(t)$, which is impossible to satisfy for all $t$.
 ::::
 
-The failure of @Example {number} <example-undetermined-resonance> at $\omega = 1$ was due to the fact that the $x_p$ we tried is actually a homogeneous solution. This is not too hard to fix, but a general description is not worth the effort; we can always fall back to variation of parameters. 
+The failure of @exm-undetermined-resonance at $\omega = 1$ was due to the fact that the $x_p$ we tried is actually a homogeneous solution. This is not too hard to fix, but a general description is not worth the effort; we can always fall back to variation of parameters. 
 
 ::::{#exm-undetermined-resonance-fix}
-We can make the tricky case $x''+x=\cos(t)$ from @Example {number} <example-undetermined-resonance> quite easy by relating it to complex exponentials. Since $\cos(t)$ is the real part of $e^{it}$, it follows that the solution we seek is the real part of any particular solution of 
+We can make the tricky case $x''+x=\cos(t)$ from @exm-undetermined-resonance quite easy by relating it to complex exponentials. Since $\cos(t)$ is the real part of $e^{it}$, it follows that the solution we seek is the real part of any particular solution of 
 
 $$
 x'' + x = e^{it}.
 $$
 
-Referring to @Example {number} <example-variation_parameters-resonance> with $\lambda=i$, we use variation of parameters to find the particular solution
+Referring to @exm-variation_parameters-resonance with $\lambda=i$, we use variation of parameters to find the particular solution
 
 $$
 \frac{1}{2i} t e^{i t} = -\frac{i}{2}t [\cos(t) + i\sin (t)].
@@ -1063,7 +1063,7 @@ All named parameters such as $m$, $k$, and $b$ are assumed to be nonnegative unl
 :::
 
 :::{.callout-note}
-Equation @eq-oscillators-free applies equally well to horizontal and vertical oscillations. Gravity does not appear in the vertical case because it is accounted for by measuring $x$ from the static equilibrium position.
+@eq-oscillators-free applies equally well to horizontal and vertical oscillations. Gravity does not appear in the vertical case because it is accounted for by measuring $x$ from the static equilibrium position.
 :::
 
 If given, initial values for @eq-oscillators-free supply the initial position and initial velocity, which determine the solution uniquely.
