@@ -18,8 +18,8 @@ latex:
     targetname: notes351.tex
 
 kernelspec:
-  name: julia-1.6
-  display_name: Julia 1.6
+  name: julia-1.9
+  display_name: Julia 1.9
   language: julia
   
 execute:
@@ -32,7 +32,7 @@ html:
 
 sphinx:
   config:
-    mathjax_config:
+    mathjax3_config:
       TeX:
         Macros:
           "real": ["\\mathbb{R}"]

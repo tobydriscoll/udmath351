@@ -2,35 +2,35 @@
 
 These are notes on MATH 351 at UD by Toby Driscoll. Copyrighted, all rights reserved.
 
-## Schedule for Fall 2021
+## Schedule for Fall 2023
 
 ### First-order ODEs
 
 | Date   | Section                                                     | Zill  | Suggested practice |
 | ------ | ----------------------------------------------------------- | ----- | ------------------ |
-| Sep 1  | [Intro](first_order/preview)                                | --    |                    |
-| Sep 1  | [IVPs](first_order/ivp)                                     | --    |                    |
-| Sep 3  | [Qualitative methods](first_order/qualitative)              | 2.1   |   21, 24                 |
-| Sep 8  | [Separable equations](first_order/separable)                | 2.2   |   5, 6, 7, 10, 2                 |
-| Sep 8  | [Linear equations](first_order/linear)                      | 2.3   |   3, 6, 7, 11, 25, 29   |
-| Sep 10 | [Homogeneous problems](first_order/homogeneous)             | (2.3) |                    |
-| Sep 10 | [Variation of parameters](first_order/variation_parameters) | (2.3) |                    |
-| Sep 13 | [Modeling](first_order/modeling)                            | 2.7   |  1, 3, 5, 15, 23, 27                  |
+| Aug 30  | [Intro](first_order/preview)                                | --    |                    |
+| Aug 30  | [IVPs](first_order/ivp)                                     | --    |                    |
+| Sep 1  | [Qualitative methods](first_order/qualitative)              | 2.1   |   21, 24                 |
+| Sep 6  | [Separable equations](first_order/separable)                | 2.2   |   5, 6, 7, 10, 2                 |
+| Sep 6  | [Linear equations](first_order/linear)                      | 2.3   |   3, 6, 7, 11, 25, 29   |
+| Sep 8 | [Homogeneous problems](first_order/homogeneous)             | (2.3) |                    |
+| Sep 8 | [Variation of parameters](first_order/variation_parameters) | (2.3) |                    |
+| Sep 11 | [Modeling](first_order/modeling)                            | 2.7   |  1, 3, 5, 15, 23, 27                  |
 
 ### Second-order ODEs
 
 | Date   | Section                                                       | Zill | Suggested practice |
 | ------ | ------------------------------------------------------------- | ---- | ------------------ |
-| Sep 15 | [Structure of solutions](second_linear/structure)             | 3.1  |  16, 17, 21           |
-| Sep 17 | [Constant-coefficient problems](second_linear/const_coeff)    | 3.3  |  1-14, 29, 33, 49, 51                  |
-| Sep 17 | [Complex solutions](second_linear/complex)                    | 3.3  |                    |
-| Sep 20 | [Variation of parameters](second_linear/variation_parameters) | 3.5  |   3, 5, 10, 16                 |
-| Sep 22 | [Undetermined coefficients](second_linear/undetermined)       | 3.4  |    1, 3, 5, 8, 31                |
-| Sep 24 | [Oscillators](second_linear/oscillators)                      | 3.8  |   1,  6, 27, 31, 33, 43, 44                 |
+| Sep 13 | [Structure of solutions](second_linear/structure)             | 3.1  |  16, 17, 21           |
+| Sep 15 | [Constant-coefficient problems](second_linear/const_coeff)    | 3.3  |  1-14, 29, 33, 49, 51                  |
+| Sep 15 | [Complex solutions](second_linear/complex)                    | 3.3  |                    |
+| Sep 18 | [Variation of parameters](second_linear/variation_parameters) | 3.5  |   3, 5, 10, 16                 |
+| Sep 20 | [Undetermined coefficients](second_linear/undetermined)       | 3.4  |    1, 3, 5, 8, 31                |
+| Sep 22 | [Oscillators](second_linear/oscillators)                      | 3.8  |   1,  6, 27, 31, 33, 43, 44                 |
 
 ### Linear algebra
 
-| Date   | Section                                          | Poole                | Suggested practice |
+<!-- | Date   | Section                                          | Poole                | Suggested practice |
 | ------ | ------------------------------------------------ | -------------------- | ------------------ |
 | Sep 27 | [Intro to linear systems](linear_system/problem) | 2.1                  |  1-5, 19, 20, 21, 27-30, 31            |
 | Sep 29 | [Row elimination](linear_system/row_elimination) | 2.2                  |   1-8 (RRE only), 9-14 (RRE only), 25-28, 35-38, 40-41  |
@@ -50,10 +50,11 @@ These are notes on MATH 351 at UD by Toby Driscoll. Copyrighted, all rights rese
 | Nov 3  | **EXAM 2**                                       | Goals C1–C7, D1–D12  |                    |
 | Nov 5  | [Vector spaces](space/vectors)                    | 6.1                  | 1, 2, 9, 28, 31, 35, 36, 51-52, 53-54   |
 | Nov 8  | [Span, independence, basis](space/basis)         | 6.1, 6.2             |  1-3, 5-7, 18-19, 22-24, 28-29, 51-52  |
-| Nov 10 | [Change of basis](space/change)                  | 6.3                  |  1-3, 5-7   |
+| Nov 10 | [Change of basis](space/change)                  | 6.3                  |  1-3, 5-7   | -->
+
 ### Linear ODE systems
 
-| Date   | Section                                             | Zill      | Suggested practice |
+<!-- | Date   | Section                                             | Zill      | Suggested practice |
 | ------ | --------------------------------------------------- | --------- | ------------------ |
 | Nov 12 | [ODE systems](ode_system/intro)              | (10.1)      |                    |
 | Nov 15 | [Linear ODE systems](ode_system/structure)          | 10.1      |   1-6, 7, 11-12, 17-19    |
@@ -64,7 +65,7 @@ These are notes on MATH 351 at UD by Toby Driscoll. Copyrighted, all rights rese
 | Dec 3  | [Matrix exponential](ode_system/matrix_exp)          | 10.5      |  2, 6, 19-21, 25      |
 | Dec 6  | Matrix exponential                                  |         |                    |
 | Dec 8  | [Linearization](ode_system/linearization)           | 11.3      |                    |
-| Dec 10 |   Review                                     |           |                    |
+| Dec 10 |   Review                                     |           |                    | -->
 
 ## End-of-chapter review problems
 
