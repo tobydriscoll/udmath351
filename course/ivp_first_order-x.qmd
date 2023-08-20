@@ -1,0 +1,1208 @@
+---
+title: First-order IVPs
+format:
+  html:
+    code-fold: true
+jupyter:
+  jupytext:
+    cell_metadata_filter: '-all'
+    text_representation:
+      extension: .qmd
+      format_name: quarto
+      format_version: '1.0'
+      jupytext_version: 1.15.0
+  kernelspec:
+    display_name: Julia 1.9
+    language: julia
+    name: julia-1.9
+---
+
+# First-order IVPs
+
+::: {.content-visible unless-format="pdf"}
+{{< include _macros.qmd >}}
+:::
+
+```{julia}
+using Plots, DifferentialEquations
+default(label="", linewidth=2, markersize=4)
+```
+
+For this part of the course we will be concerned with a **first-order ODE** (ordinary differential equation) written in the standard form
+
+$$
+\dd{x}{t} = f(t,x) 
+$$ {#eq-preview-standard}
+
+<!-- ```{index} !dependent variable, !independent variable
+``` -->
+
+We call $x$ the **dependent variable** and $t$ the **independent variable**. We use these particular variable names for theoretical discussion, but in practice the variables could be named anything. The term *first-order* indicates that only the first derivative appears and not $x''$, $x'''$, etc.
+
+Given $f(t,x)$, the goal is to find the unknown function $x(t)$. A **solution**  to the ODE is a function $x(t)$ that makes @eq-preview-standard a true equation when inserted. Finding solutions usually takes some effort, and for most realistic problems it cannot be done at all. However, if someone proposes a solution, it's easy to check whether that is the case: substitute it into the ODE and manipulate it until you can ascertain whether the equation holds. Some examples follow below.
+
+## Case studies {#sec-first-order-preview}
+
+Rather than getting bogged down with generalities right away, let's dive in to some illustrative archetypes of first-order equations.
+
+### Constant change
+
+You won't find an ODE easier than
+
+$$
+\dd{x}{t} = a, 
+$$ {#eq-preview-constant-change}
+
+where $a$ is a constant. What kind of function has a constant derivative? A linear function. The solution is $x(t) = at + C$, where $C$ is an arbitrary constant. In words, the ODE says the solution has a constant rate of change, and therefore the solution must have a constant slope.
+
+This problem is a special case of
+
+$$
+\dd{x}{t} = f(t).
+$$
+
+Unlike in the general ODE @eq-preview-standard, the function $f$ here does not depend on the unknown solution. Therefore, the solution is an indefinite integral: $x(t) = \int f(t) \, dt$. As usual, the indefinite integration implies an arbitrary constant. As simple as this problem is, it reveals an important fact.
+
+::: {.callout-note}
+Solutions of ODEs are not necessarily unique.
+:::
+
+Now let's move one rung up the ladder of complexity.
+
+### Constant growth
+
+Suppose $x(t)$ represents a quantity of something that reproduces itself at a constant rate. In addition to biological agents such as bacteria and infected individuals, this could be upvoted memes on a social network, for example. Mathematically we have a fixed growth rate per capita, i.e.,
+
+$$
+\frac{1}{x} \dd{x}{t} = a
+$$
+
+for a positive constant $a$. This gives the ODE
+
+$$
+\dd{x}{t} = ax \qquad (a > 0). 
+$$ {#eq-preview-const-growth}
+
+<!-- ```{index} ! parameter
+``` -->
+
+:::: {.callout-tip}
+A named quantity such as $a$ that is neither the independent nor the dependent variable is often called a **parameter**. A parameter is assumed to be constant unless it is otherwise written, e.g., as $a(t)$, to show the dependence on $t$. A common convention is to make parameters be positive where reasonable. In that case, a negative value would include an explicit sign such as in $-a$.
+::::
+
+It's trivial to check that
+
+$$
+x(t) = C e^{at} 
+$$ {#eq-preview-const-growth-solution}
+
+is a solution for any constant $C$. This reveals unbounded exponential growth in the solution as $t\to\infty$.
+
+<!-- ```{index} general solution
+``` -->
+
+Again we get an integration constant, but this time it appears multiplicatively rather than additively. That is, the **general solution** @eq-preview-const-growth-solution of the ODE is an entire family of functions, parameterized by $C$, describing many individual particular solutions. 
+
+### Constant decay
+
+Now consider
+
+$$
+\dd{x}{t} = -ax  \qquad (a > 0). 
+$$  {#eq-preview-const-decay}
+
+This is constant per capita decay, which is true of radioactive isotopes and organism populations dying faster than they can breed. The general solution is 
+
+$$
+x(t) = C e^{-at},
+$$
+
+which is exponential decay to zero as $t\to\infty$.
+
+<!-- ```{index} ! autonomous equation
+``` -->
+
+In this and the preceding archetype, the function $f$ in @eq-preview-standard depends only on the solution $x$ and not explicitly on the independent variable $t$. Such an ODE is called **autonomous** or time-invariant.
+
+### Variable growth/decay
+
+This case is **non-autonomous**, also called **time-varying** or **variable-coefficient**. Comparing
+
+$$
+\dd{x}{t} = 2tx
+$$ {#eq-preview-var-growth}
+
+to constant growth, $x'=ax$, we could say that $2t$ plays the role of the growth rate $a$ here. In other words, this is a situation of *accelerating* growth. The general solution is
+
+$$
+x(t) = C e^{t^2}, 
+$$ {#eq-preview-var-growth-solution}
+
+which grows superexponentially as $t\to\infty$. 
+
+:::{#exm-preview-var-growth}
+Substituting @eq-preview-var-growth-solution into @eq-preview-var-growth yields
+
+$$
+\begin{align*}
+\frac{d}{dt} \left( C e^{t^2} \right) &= 2t \left(C e^{t^2} \right), \\ 
+C \left(2t e^{t^2} \right) &= 2t \left( C e^{t^2} \right),
+\end{align*}
+$$
+
+which is evidently true. Hence we have established @eq-preview-var-growth-solution as a solution for any constant $C$. 
+:::
+
+More general variable growth looks like $x'=a(t)x$. If $a$ changes sign, the character of the equation flips between momentary growth and decay.
+
+
+<!-- ```{index} linear ODE; first-order
+``` -->
+
+:::: {.callout-important}
+All of the examples so far in this section have an ODE in the form
+
+$$
+\dd{x}{t} = a(t) x + b(t),
+$$ {#eq-preview-linear}
+
+in which the dependent variable appears (if at all) just as itself to the first power. This is called a **linear** first-order ODE, because the dependence on $x$ is linear. 
+::::
+
+
+### Nonlinear growth
+Our final archetype is nonlinear. Comparing
+
+$$
+\dd{x}{t} = x^2 
+$$ {#eq-preview-nonlinear}
+
+to constant growth $x'=ax$, it is irresistable to interpret this equation as a growth process whose rate at any instant is the momentary value of the solution itself. This suggests a kind of runaway feedback loop.
+
+The general solution is
+
+$$
+x(t) = \frac{1}{C-t}. 
+$$ {#eq-preview-nonlinear-solution}
+
+::::{#exm-preview-nonlinear}
+The derivative of @eq-preview-nonlinear-solution leads to
+
+$$
+\dd{x}{t} = -(C-t)^{-2}\cdot \dd{}{t}(C-t) = (C-t)^{-2} = x^2.
+$$
+
+This proves we have a solution of @eq-preview-nonlinear.
+::::
+
+<!-- ```{index} finite-time singularity
+``` -->
+
+Note that for $C>0$ in @eq-preview-nonlinear, $x(t)\to \infty$ as $t\to C^{-1}$. This is a *finite-time blowup*, which we did not observe in any of the linear growth processes.
+
+::: {.callout-note}
+You would be excused for questioning the validity of a mathematical model that leads to an infinite result in finite time. But this particular ODE describes, for instance, the evolution of the slope of the line of sight to an airplane flying straight over you. When the airplane is directly overhead, the slope is infinite. So while the model becomes mathematically invalid at that moment, it does describe a concrete physical situation.
+:::
+
+That concludes the movie trailer for first-order equations. We'll have our hands full understanding how to solve linear problems, so we will not return to nonlinear problems for a while.
+
+## Initial-value problems
+
+One of the important findings in @sec-first-order-preview is that solutions of first-order ODEs are not unique. Instead, there is a *general solution* that describes a family of functions that provide all possible solutions. The manifestation of the nonuniqueness is a generalization of the usual integration constant.
+
+<!-- ```{index} paticular solution, ! initial-value problem; with first-order ODE
+``` -->
+
+In scientific and engineering problems we typically have an additional constraint that picks out a single member of the solution family, i. e., a **particular solution**. Usually that constraint takes the form of a specified value,
+
+$$
+x(t_0) = x_0,
+$$
+
+where $t_0$ and $x_0$ are known or used as parameters. Such a constraint combined with a first-order ODE leads to an **initial-value problem**
+
+:::: {#def-ivp} 
+# Initial-value problem, IVP
+$$
+\dd{x}{t} = f(t,x), \quad x(t_0) = x_0.
+$$ {#eq-def-ivp}
+::::
+
+<!-- ```{index} ! initial condition
+``` -->
+
+In this case the constraint $x(t_0)=x_0$ is called an **initial condition**, and it's usually understood that the problem is to be solved for $t>t_0$.
+
+A solution of an IVP has to satisfy both the ODE and the initial condition. This is almost always enough to specify the solution uniquely.
+
+:::: {#exm-ivp1-solve}
+In @sec-first-order-preview we found that the general solution of $x'=ax$ is $x(t)=Ce^{at}$. If we are supplied with the initial value $x(2)=5$, then we require
+
+$$
+5 = x(2) = Ce^{2a},
+$$
+
+in which case $C=5e^{-2a}$. Thus the solution to this IVP is
+
+$$
+x(t) = 5e^{-2a}\cdot e^{at} = 5e^{a(t-2)}.
+$$
+::::
+
+A graphical interpretation of the role of an initial condition is that the general solution is a family of curves in the $(t,x)$ plane, and the initial condition is a point that the particular solution of interest must pass through. 
+
+:::: {#exm-ivp1-plot} 
+
+Here is an illustration of how an initial condition $x(3)=20$ selects one solution of $x'=1.25x$.
+
+```{julia}
+a = 1.25
+plt = plot(xaxis=("t"),yaxis=("x",(-60,60)))
+for C in (-3:3)/3
+    plot!(t -> C*exp(a*t),1,4)
+end
+
+scatter!([3],[20],m=(8,:black))
+plot!(t->20exp(a*(t-3)),1,4,l=(2.5,:black))
+title!("Picking the solution with x(3)=20")
+```
+::::
+
+### Numerical solutions
+
+Because an initial-value problem has a unique solution, it's a suitable target for a numerical simulation. This is how virtually all IVPs are solved in practice.
+
+::::{#exm-ivp1-numerical}
+# Constant growth
+Here's a numerical approximation of constant growth $x'=2x$, $x(1)=3$. in Julia.
+
+```{julia}
+f = (x,p,t) -> 2x
+ivp = ODEProblem(f,3.,(1.,5.))
+x = solve(ivp)
+plot(x,label="",xlabel="t",ylabel="x",title="Constant growth rate")
+```
+
+Exponential growth or decay is best plotted on a log-linear scale, where the solution becomes a straight line.
+
+```{julia}
+plot(x,label="",xaxis="t",yaxis=("x",:log10),title="Constant growth rate (log scale)")
+```
+::::
+
+
+Here's our example of variable growth. Note that we are not using the known exact solution, but just letting Julia create a numerical approximation by other means.
+
+```{julia}
+f = (x,p,t) -> 2t*x
+ivp = ODEProblem(f,1.,(0.,5.))
+x = solve(ivp)
+plot(x,label="",xlabel="t",yaxis=("x",:log10),title="Growing growth rate")
+```
+
+Even on the log scale, the solution bends upward, showing superexponential growth. Finally, here is the nonlinear feedback problem.
+
+```{julia}
+f = (x,p,t) -> x^2
+ivp = ODEProblem(f,0.5,(0.,4.))
+x = solve(ivp)
+plot(x,label="",xlabel="t",yaxis=("x",:log10),title="Nonlinear growth")
+```
+
+The warning issued by Julia above can mean that there is a bug in the code, but in this case, it's just Julia noticing the finite-time blowup. In fact, it gets the true blowup time rather accurately.
+
+## Qualitative methods
+
+
+Exact solutions of ODEs are few and far-between. There are a number of tools that can be used to gain insight about an ODE without knowing or producing a solution. These are grouped together under the name of **qualitative methods**.
+
+### Direction field
+
+In the scalar equation $x'=f(t,x)$, $f$ gives the slope of any solution at any point in the $(t,x)$ plane. Hence, while it is usually not trivial to draw curves for the solutions, it is straightforward to draw the instantaneous slopes of them. Here is a basic Julia function for it.
+
+
+```{julia}
+function dirfield(f,tlims,xlims)
+    t = range(tlims...,length=16)
+    x = range(xlims...,length=16)
+    T = vec([t for t in t, x in x])
+    X = vec([x for t in t, x in x])
+    F = f.(T,X)
+
+    avg = sum( @. sqrt(F^2+1) ) / length(F)
+    scale = 0.05*max(tlims[2]-tlims[1],xlims[2]-xlims[1])/avg
+    quiver( T,X,quiver=(ones(size(F))*scale,F*scale) )
+end;
+```
+
+For instance, the *logistic equation* $x'=ax-bx^2$ can be visualized for $a=3$, $b=2$ via
+
+```{julia}
+f = (t, x) -> 3x - 2x^2
+dirfield(f, [0,2], [0,1.6])
+title!("Direction field of 3x-2x²")
+```
+
+```{index} autonomous equation
+```
+
+Since this equation is autonomous, the picture above is the same along every vertical line. 
+
+Here is a direction field for $x'=t-x^2$. Note that the arrows are horizontal along the sideways parabola $t=x^2$, because that is where the slope is zero.
+
+```{julia}
+f = (t, x) -> t - x^2
+dirfield(f, [-1,2], [-2,2])
+title!("Direction field of t-x²")
+```
+
+### Autonomous equations
+
+An autonomous first-order ODE is of the form $x'=f(x)$. The term means that the problem doesn't depend on any external factors; it is entirely self-contained.
+
+<!-- :::{index} steady state
+:::
+:::{index} equilibrium
+::: -->
+
+A value $\hat{x}$ that satisfies $f(\hat{x})=0$ clearly makes the constant function $x(t)\equiv \hat{x}$ a solution. 
+
+:::{#def-qualitative-equilibrium} 
+# Steady state / Equilibrium
+For the autonomous ODE $x'=f(x)$, any value $\hat{x}$ that is a root of $f$ is called a **steady state**,  **equilibrium value**, **fixed point**, or **critical point**. 
+:::
+<!-- 
+:::{index} stability
+::: -->
+
+One of the most important characteristics of each steady state is its **stability**. Let $x(t,X)$ be the solution of the initial-value problem
+
+$$
+\frac{d x}{d t}=f(x), \quad x(0)=X.
+$$
+
+::::{#def-qualitative-asymptotic} 
+# Asymptotic stability
+The steady state $\hat{x}$ is said to be **asymptotically stable** if there is a positive number $\delta$ such that 
+
+$$
+\lim_{t\to\infty} x(t,X) = \hat{x}
+$$
+
+whenever $|X-\hat{x}|< \delta$. 
+::::
+
+In words, asymptotic stability means that if you start close enough to $\hat{x}$, then you end up there as $t \to \infty$. There is a weaker form of the property that is a bit more difficult to parse.
+
+::::{#def-qualitative-stability} Stability
+The steady state $\hat{x}$ is said to be {term}`stable` if, for any $\epsilon>0$, you can ensure that $|x(t,X)-\hat{x}|<\epsilon$ for all time whenever $|X-\hat{x}|<\delta$, where $\delta$ depends on $\epsilon$. If there is no such way to choose $\delta$, then $\hat{x}$ is **unstable**.
+::::
+
+<!-- :::{index} phase line diagram
+::: -->
+One tool for discriminating between stable and unstable equilibria is a **phase diagram**. 
+
+::::{#exm-qualitative-equilibria} 
+
+Consider the ODE $x'=x-x^3$. We will start by graphing $f(x)=x-x^3$.
+
+![PL diagram 1](pldiag1.svg)
+
+The equilibrium solutions occur at the crossings of the $x$-axis in the plot, where $dx/dt=0$. 
+
+![PL diagram 2](pldiag2.svg)
+
+Now we highlight those parts of the plot where the graph is above the $x$-axis, i.e., where $dx/dt > 0$. 
+
+![PL diagram 3](pldiag3.svg)
+
+Imagine that the solution is represented by a point $x(t)$ sliding along the $x$-axis. Under the highlighted regions, this point has to be sliding rightward, because $x'>0$ there.
+
+![PL diagram 4](pldiag4.svg)
+
+Similarly, on the remaining segments of the $x$-axis, the solution must be sliding leftward. 
+
+![PL diagram 5](pldiag5.svg)
+
+Graphically it is now clear that the steady states at $x=\pm 1$ are stable, while the one at $x=0$ is unstable.
+::::
+
+A simple analytical test for stability is:
+
+- If $f'(\hat{x})<0$, then $\hat{x}$ is asymptotically stable.
+- If $f'(\hat{x})>0$, then $\hat{x}$ is unstable.
+
+As you might surmise, the case $f'(\hat{x})=0$ is ambiguous, and another analysis is needed to reveal the stability.
+
+## Separable equations
+<!-- 
+:::{index} ! separable ODE
+::: -->
+
+All first-order problems in the autonomous form $x'=f(x)$, and more generally problems in the form 
+
+$$
+x' = f(x)g(t),
+$$ 
+
+are called **separable equations** and can be solved systematically, up to performing integrations. Rather than deriving and applying a formula for them, it's easier to just repeat a straightforward process for each new problem.
+
+::::{proof:example}
+
+Solve the variable growth archetype ODE $x'=2t x$. 
+
+:::{.solution}
+We express $x'$ as $dx/dt$ and then isolate the variables:
+
+$$
+\frac{d x}{x} = 2t\,d t.
+$$
+
+Integrating both sides leads to $\ln |x| = t^2 + C$, or $|x|=A e^{t^2}$ for a positive constant $A$ (since it is the exponential of a real constant). Taking the absolute value off of $x$ means that $A$ can be negative as well. Also, $A=0$ clearly leads to a solution. Finally, we conclude that $x=Ce^{t^2}$ for arbitrary $C$.
+:::
+::::
+
+::::{proof:example} 
+
+Solve $x'=t^2/(x^3-2)$, subject to $x(0)=4$.
+
+:::{.solution}
+Separation and integration lead to
+
+$$
+\int x^3\, dx = \int t^2\, dt,
+$$
+
+or 
+
+$$
+\frac{1}{4}x^4 - 2x  = C + \frac{1}{3}t^3.
+$$
+
+We could work hard to try to solve explicitly for $x$, but it's probably best to leave it in implicit form. This is a common limitation of separable solutions. Even in implicit form, though, we can solve for the arbitrary constant by setting $x=4$ and $t=0$ in the implicit equation, leading to
+
+$$
+4^4/4 - 2 \cdot 4 = C + 0.
+$$
+
+Hence $C=56$.
+:::
+::::
+
+Sometimes the separable structure isn't immediately apparent, and you have to manipulate the expressions a bit.
+
+::::{proof:example}
+
+Find the general solution of $t x' = x - t x$. 
+
+:::{.solution}
+Nothing happens until you see that you can factor out $x$ on the right side. Then we have
+
+$$ 
+\dd{x}{t} = \frac{x(1-t)}{t},
+$$
+
+or
+
+$$
+\frac{dx}{x} = (t^{-1}-1)\,dt.
+$$
+
+Thus $\ln|x| = \ln|t|-t+C$, or 
+
+$$
+|x| = e^C |t| e^{-t}.
+$$ 
+
+Once we take off the absolute values, we have
+
+$$
+x= \pm A t e^{-t} \quad (A>0).
+$$ 
+
+We divided the equation through by $x$ and therefore eliminated $x=0$ as a possibility, so we need to check that separately. We easily see that $x\equiv 0$ is a steady state, so $A=0$ is allowed as well in our solution formula.
+
+Note that this problem is also linear, so it could be approached that way as well. Of course you must get the same solution either way!
+:::
+::::
+
+## Linear equations
+
+We now begin a close look at the linear case. Linear problems are pretty much all we consider from this point on.
+
+```{index} ! linear ODE; first-order
+```
+
+(definition-linear-ode)=
+::::{proof:definition} First-order linear ODE
+A **first-order linear ODE** is an equation of the form
+
+```{math}
+:label: eq-linear-def
+a_0(t)\dd{x}{t} + a_1(t) x = g(t).
+```
+The **standard form** of such a problem is 
+
+:::{math}
+:label: eq-linear-standard
+\dd{x}{t} + P(t) x = f(t).
+:::
+
+We call $f(t)$ the **forcing function**. 
+::::
+
+```{attention}
+A linear ODE has a linear dependence on the unknown (dependent) variable $x$. It may have arbitrary dependence on the independent variable $t$. Also, the solution $x$ is usually not a linear function of $t$.
+```
+
+```{warning}
+Never overlook the $a_0(t)$ in {eq}`eq-linear-def`. If you forget to divide through by it to get the standard form, everything that follows will be wrong.
+```
+
+### Operator notation
+
+There is an alternate notation for {eq}`eq-linear-standard` that will help us highlight important properties of linearity.
+
+(definition-linear-operator)=
+::::{proof:definition} Linear operator
+A **linear operator** $\opA$ is a rule for transforming functions to other functions, such that
+
+\begin{align*}
+\opA[cx(t)] & =c\opA[x(t)], \\
+\opA[x(t) + y(t)] &= \opA[x(t)] + \opA[y(t)],
+\end{align*}
+
+for all functions $x,y$ and numbers $c$.
+::::
+
+
+In the present context we are interested in the operator
+
+```{math}
+:label: eq-linear-operator
+\opA[x] = x' + P(t)x,
+```
+
+whose linearity you can easily check for yourself against the definition. We can now express the ODE {eq}`eq-linear-def` simply as
+
+$$
+\opA[x]=f.
+$$
+
+(example-linear-operator)=
+::::{proof:example}
+The equation
+
+$$
+t x' = \sin(t) - x
+$$
+
+is linear. To write it in operator form, we rearrange to
+
+$$
+x' + \frac{1}{t}x = \frac{\sin(t)}{t}.
+$$
+
+Thus the linear operator for this ODE is $\opA[x]=x' + \tfrac{1}{t}x$, and the ODE is 
+
+$$
+\opA[x] =  \frac{\sin(t)}{t}.
+$$
+::::
+
+## Homogeneous solutions
+
+```{index} ! homogeneous; ODE
+```
+
+The equation $\opA[x]=0$, or {eq}`eq-linear-standard` with zero forcing, plays a key role.
+
+::::{proof:definition} Homogeneous ODE
+A **homogeneous ODE** takes the form
+
+$$
+\dd{x}{t} + P(t)x = 0,
+$$
+
+or $\opA[x]=0$. 
+::::
+
+```{index} ! superposition
+```
+
+Linear homogeneous problems have a key property that allows turning individual solutions into sets of them. 
+
+(theorem-linear-super)=
+::::{proof:theorem} Superposition
+If $x_1(t), x_2(t),\ldots x_k(t)$ are solutions of $\opA[x]=0$, then so is any linear combination $c_1x_1 + \cdots + c_kx_k$ for constants $c_j$. 
+::::
+
+::::{proof:proof}
+Because of linearity we can write
+
+```{math}
+\opA[c_1x_1 + \cdots + c_kx_k] = c_1\opA[x_1] + \cdots + c_k\opA[x_k].
+```
+
+By assumption, each $\opA[x_j]=0$. So the sum on the right is zero as well.
+::::
+
+As a special case, if $x_1$ solves $\opA[x]=0$, then so does $c_1x_1$ for an arbitrary constant $c_1$.
+
+## General solutions
+
+Problems with nonzero forcing contain the homogeneous case within them, as the following result shows.
+
+<!-- ```{index} ! general solution
+``` -->
+
+(theorem-linear-general)=
+::::{proof:theorem}
+All solutions of $\opA[x]=f$ may be written as
+
+```{math}
+x(t) = x_h(t) + x_p(t),
+```
+where $x_h$ is the general solution of $\opA[x]=0$ and $x_p$ is any particular solution of $\opA[x]=f$. We call this the **general solution** of the linear ODE.
+::::
+
+We have arrived at a solution strategy for $\opA[x]=f$.
+
+(algorithm-linear-solve)=
+::::{proof:algorithm} Solution of a first-order linear ODE
+1. Find the general solution $x_h$ of the associated homogeneous problem $\opA[x]=0$.
+2. Find any particular solution $x_p$ of the original $\opA[x]=f$.
+3. Add them.
+4. If an initial condition is given, use it to solve for the integration constant.
+::::
+
+Note that because of {numref}`Theorem {number} <theorem-linear-super>`, the homogeneous part $x_h$ will contain the integration constant. We elaborate on steps 1 and 2 in the next several sections.
+
+## Homogeneous equations
+
+(section-first_order-homogeneous1)=
+
+Step one of our [overall solution strategy](algorithm-linear-solve) is to solve the homogeneous problem $\opA[x]=0$, or
+
+:::{math}
+:label: eq-homogeneous-ode
+\dd{x}{t} + P(t) x = 0.
+:::
+
+We know that the solution of $x=ax$ for constant $a$ is $x(t)=\exp(at)$. Let's guess that the solution is exponential in this case as well: 
+
+$$
+x(t) = \exp\bigl[q(t)\bigr],
+$$
+
+for some $q(t)$ yet to be determined. Note that 
+
+$$
+x'(t) = q'(t) e^{\,q(t)} = q'(t) x.
+$$
+
+If this is to be a solution of {eq}`eq-homogeneous-ode`, all we need is that $q'(t)=-P(t)$. This is solved by simple integration. To summarize:
+
+(formula-homogeneous1-solution)=
+````{proof:formula} Solution of $x'+P(t)x=0$
+$$
+q(t) &= - \int P(t) \, dt, \\
+x(t) &= c_1 \exp\bigl[q(t)\bigr].
+$$
+````
+
+:::{note}
+We can ignore the integration constant that arises from finding $q$ in {numref}`Formula {number} <formula-homogeneous1-solution>`. It would just end up being absorbed into the $c_1$ whose existence is already known thanks to the linearity plus homogeneity.
+:::
+
+::::{proof:example}
+Solve $x'=\sin(t) x$. 
+
+:::{dropdown} Solution
+We integrate $P(t)=-\sin(t)$ to get $\cos(t)$. Hence
+
+$$
+q(t) = - \cos(t).
+$$
+
+The general solution is thus 
+
+```{math}
+x(t) = c_1 \exp[ -\cos(t) ].
+```
+:::
+::::
+
+::::{proof:example}
+Solve the homogeneous IVP
+
+$$
+t x' = 2x, \quad x(2) = 12.
+$$
+
+:::{dropdown} Solution
+First we rewrite the ODE in standard form as 
+
+$$
+x' - \frac{2x}{t} = 0,
+$$
+
+from which we see that $P(t)=-2/t$. We first find the general solution by integration:
+
+$$
+x(t) = c_1 \exp\left[ \int 2t^{-1}\, dt \right] = c_1 \exp\bigl[2\ln(t)\bigr] = c_1 t^2.
+$$
+
+To eliminate the integration constant, we apply the initial condition:
+
+$$
+12 = x_h(2) = c_1\cdot 2^2.
+$$
+
+Hence $x(t) = 3t^2$.
+:::
+::::
+
+## Variation of parameters
+
+
+(section-first_order-vop)=
+
+{numref}`section-first_order-homogeneous1` explained how to find the general solution $x_h(t)$ of a homoegenous linear system $\bfA\bfx=\bfzero$. The next step of our [overall solution strategy](algorithm-linear-solve) is to find any particular solution of $\opA[x]=f$ for a given $f(t)$.
+
+The form of the homogeneous solution is
+
+$$
+x_h(t) = c_1 g(t),
+$$
+
+where $c_1$ is an arbitrary constant and $g(t)$ is computed as the exponentiation of an integral. Something useful happens if we replace the constant by an unknown function of $t$. Setting $x_p(t)=k(t)g(t)$, then:
+
+$$
+\begin{align*}
+\opA[x_p] &= x_p' + P(t) x_p \\ 
+& = (k'g+kg') + P k g \\ 
+& = k'g + k(g'+Pg) \\ 
+&= k'g + k\cdot\opA[g] = k'g.
+\end{align*}
+$$
+
+The last step occurs because $g$ is a homogeneous solution. We conclude that we can make $x_p$ as defined above a particular solution if we have $f=k'g$. This lets us solve for the unknown $k(t)$. 
+
+This technique for finding $x_p$ is known as the **variation of parameters** formula, or VoP formula for short. But we present it here along with the rest of the steps in {numref}`Algorithm {number} <algorithm-linear-solve>` as a complete method to find the general solution.
+
+(formula-firstlin-varpar)=
+````{proof:formula} Variation of parameters (VoP)
+To find a the general solution of $\opA[x]=f$, compute
+
+$$
+\begin{align*}
+g(t) &= \exp\left[ -\int P(t)\, dt\right], \\ 
+k(t) &= \int \frac{f(t)}{g(t)}\, dt, \\
+x_p(t) &= k(t)g(t), \\
+x(t) &= c_1g(t) + x_p(t) = g(t)[ c_1 + k(t) ].
+\end{align*}
+$$
+````
+
+:::{note}
+As before, we can ignore the integration constant in finding $g$. We can ignore it for $k$ as well, but the last line shows that it effectively comes back anyway.
+:::
+
+:::{attention}
+It might seem like the form $x=g(t)[c_1 + k(t)]$ must be the simplest, but that isn't always the case, as the next example shows.
+:::
+
+(example-vop-one)=
+::::{proof:example}
+Solve $3x'=12x+24t$.
+
+:::{dropdown} Solution
+Rewriting the ODE in standard form as $x'-4x=8t$, we identify $P(t)=-4$ and $f(t)=8t$. Then
+
+```{math}
+g(t) = \exp\left[ \int 4\,dt \right] = e^{4t},
+```
+
+and
+
+```{math}
+k(t) = \int \frac{8t}{e^{4t}}\, dt = -\frac{1}{2} (4t+1)e^{-4t},
+```
+
+where you need integration by parts (or a computer) to perform the integral. We have $x_p=kg$ and the general solution 
+
+```{math}
+x(t) = x_h(t) + x_p(t) = c_1 e^{4t} - \frac{1}{2} (4t+1).
+```
+
+If we were to write this as $g(t)[c_1 + k(t)]$, then we would miss out on the cancellation of $e^{4t}$ and $e^{-4t}$ that we got above.
+:::
+::::
+
+::::{proof:example}
+Find a particular solution of $x'= 2t x + 6t$. 
+
+:::{dropdown} Solution
+Note that $\opA[x]=x'-2tx$, so $P(t)=-2t$. We compute
+
+```{math}
+g(t) = \exp\left[ \int 2t\, dt \right] = e^{t^2}.
+```
+
+Then we can compute
+
+```{math}
+k(t) = \int \frac{6t}{e^{t^2}}\, dt  = -3 e^{-t^2}.
+```
+
+Finally,
+
+```{math}
+x_p(t) = k(t) g(t) = -3,
+```
+
+and the general solution is $x(t)=c_1 e^{t^2}-3$.
+:::
+::::
+
+
+::::{proof:example}
+Solve the IVP
+
+$$
+(2+t) x'= x - 1, \quad x(0) = -5.
+$$
+
+:::{dropdown} Solution
+First we put the ODE into standard form,
+
+```{math}
+x' - \frac{1}{2+t} x = -\frac{1}{2+t}.
+```
+
+Then
+
+```{math}
+g(t) = \exp\left[ \int \frac{1}{2+t}\, dt \right] = \exp[ \ln(2+t) ] = 2+t.
+```
+
+Next,
+
+```{math}
+k(t) = \int \frac{-1}{2+t} (2+t)^{-1} \, dt = (2+t)^{-1},
+```
+
+so that the general solution is
+
+```{math}
+x(t) = c_1 (2+t) + (2+t)^{-1} (2+t) = c_1(2+t) + 1.
+```
+
+Finally, we apply the initial condition to solve for $c_1$:
+
+$$
+-5 = x(0) = 2c_1+1 \quad \implies \quad c_1=-3.
+$$
+
+Hence $x(t) = 1-3(2+t) = -5-3t.$
+:::
+::::
+
+```{attention}
+It takes a fairly special relationship between $P(t)$ and $f(t)$ to make the integrals in the VoP formula reasonable to do by hand. Conversely, if you are solving an exercise and find yourself faced with an impossible or really ugly integral, you likely have made some earlier mistake. 
+```
+
+## Modeling
+
+
+First-order ODEs are often used to model situations of growth and decay. The linear problem $x'=ax+f(t)$ is a prototype for many important problems:
+
+Population
+: Number $x(t)$ of organisms has a constant net per-capita birth (or death) rate.
+
+Interest
+: Money amount $x(t)$ grows at fixed positive interest rate $a$.
+
+Radioactivity
+: Mass $x(t)$ of a radioactive isotope decays ($a < 0$).
+
+Pharmacokinetics
+: Amount or concentration $x(t)$ of a drug being metabolized in the body.
+
+Newtonian cooling or heating
+: Temerature difference $x(t)$ between object and environment decays to zero ($a<0$).
+
+```{note}
+In practice, interest rates may be quoted yearly, or quarterly, or according to any other finite time period. The rate in an ODE model is the *continuously compounded* rate.
+```
+
+To belabor the point, positive $a$ represents growth and negative $a$ leads to decay. In some contexts the rate $a$ is constant, but this need not be the case.
+
+The units of $dx/dt$ are those of $x$ divided by those of $t$. Let's write these as $X/T$. Added terms all need to have the same units, so both $f(t)$ and $a(t)x$ have those units as well. Consequently $a$ has units $1/T$, and $1/a$ has units of time.
+
+- When $a < 0$, the time $\tau=-1/a$ is the **relaxation time** or *characteristic time*. If there is no forcing, then $x(\tau)= e^{-1} x(0) \approx 0.37 x(0)$.
+- In radioactivity it's common to use $t_h=-\ln(2)/a$, which is the **half-life**. That's because $\exp(at_h)=1/2$, so half of the radioactive isotope is depleted in that much time.
+- Similarly, in population or another growth situation with $a > 0$, the time $t_D=\ln(2)/a$ is the **doubling time**. Note that populations and interest don't grow arithmetically over fixed time intervals, like in $1,2,3,4,\ldots$, but geometrically, like $1,2,4,8,\ldots$.
+
+## First-order pharmacokinetics
+
+::::{proof:example}
+According to *R. Newton et al., “Plasma and salivary pharmacokinetics of caffeine in man,” European Journal of Clinical Pharmacology 21 (1981), pp. 45–52*, caffeine in the bloodstream approximately satisfies first-order kinetics, though the half-life varies a great deal from one person to the next.
+
+Suppose $t_h=6$ hours. We can calculate $a=-\ln(2)/t_h\approx -0.116$ per hour, and then the predicted effects of one cup of coffee are $x(t) = e^{-0.116t}x(0)$. You can check that an equivalent, more direct expression is
+
+```{math}
+x(t) = 2^{-t/t_h} x(0).
+```
+::::
+
+Pharmaceutical companies need to track the concentration of certain drugs throughout the body in order to determine dosage, toxicity, etc.  This is usually done via a *compartment model*, in which the body is divided into compartments and a balance law is formulated in each compartment to account for the transport, ingestion, and elimination of the drug.
+
+::::{proof:example}
+
+Consider a simple pill of antihistamine taken by a person.  The pill goes to the GI tract where it dissolves and the antihistamine diffuses through to the bloodstream, and it is then eliminated by chemical reactions or through the kidneys. Let $x(t)$  and $y(t)$ be the concentrations of the drug in the GI tract and the bloodstream, respectively.  Assume the rate of clearance from each compartment is proportional to the drug concentration in that compartment (i.e., first-order kinetics). Assuming the initial concentrations are $x(0)=\alpha$ and $y(0)=0$, find expressions for $x(t)$ and $y(t)$.
+
+:::{dropdown} Solution
+Using the given assumptions and mass balances we obtain the system
+
+\begin{align*}
+\frac{dx}{dt} & =-k_1 x, \quad x(0)=\alpha,\\
+\frac{dy}{dt} & = k_1 x - k_2y, \quad y(0)=0.
+\end{align*}
+
+Although this takes the form of a system of two equations for two dependent variables, we can solve them in series. The first equation makes no reference to $y$, so its solution is $x(t)=\alpha \exp(-k_1 t)$. Thus the second ODE becomes
+
+```{math}
+y' + k_2 y = k_1 \alpha e^{-k_1t}.
+```
+
+The homogeneous solution is $y_h(t)=c_1e^{-k_2 t}$, and we will use the method of undetermined coefficients here. The particular solution should take the form
+
+$$
+y_p(t)=B e^{-k_1 t}
+$$
+
+This gets plugged into the ODE to obtain
+
+```{math}
+(-k_1B e^{-k_1t}) + k_2 (B e^{-k_1 t}) = k_1 \alpha e^{-k_1t},
+```
+
+which implies $B=k_1 \alpha/(k_2-k_1)$, provided the rate constants are different. (If not, we would switch to VoP.) Thus
+
+```{math}
+y(t) = c_1e^{-k_2 t} + \frac{k_1 \alpha}{k_2-k_1} e^{-k_1 t}. 
+```
+
+We find the unknown $c_1$ through the condition
+
+```{math}
+0 = y(0) = c_1 + \frac{k_1 \alpha}{k_2-k_1},
+```
+
+and finally
+
+```{math}
+y(t) = \frac{k_1 \alpha}{k_2-k_1} \left( e^{-k_1 t} - e^{-k_2 t} \right).
+```
+:::
+::::
+
+## Stirred tanks
+
+A **continuously stirred tank reactor** (CSTR) appears often in chemical engineering. One ideally assumes that the contents of the tank are mixed perfectly and instantaneously at all times. Then one writes an ODE that expresses mass balance.
+
+```{note}
+In CSTR problems the dependent variable can be either mass or concentration. Either is fine, so long as you are consistent. It's much better to understand how to apply the principle of mass conservation than to memorize formulas that might not work for how every problem is presented.
+```
+
+::::{proof:example}
+A 200 L tank contains 10 kg of dye. Pure water is added at a rate of 4 L per minute, while the mixture is drained at the same rate. How much dye is in the tank after 10 minutes?
+
+:::{dropdown} Solution
+Let $x(t)$ be the mass of dye in the tank. The trick is to realize how rapidly it is being removed, and that depends on the time-varying concentration, $x(t)/200$. Specifically,
+
+```{math}
+\dd{x}{t} = - \frac{4 \text{ L}}{\text{minute}} \cdot \frac{x\, \text{ kg}}{200\, \text{ L}} = -0.02 x \text{ kg/min}.
+```
+
+So $x(t)=e^{-0.02 t}x(0)$ and $x(10)=10 e^{-0.2}$ kg.
+:::
+::::
+
+::::{proof:example}
+A 300 gal capacity tank initially holds 100 gal of a brine solution at 1 lb/gal.  A stream of brine at 2 lb/gal is poured into the tank at 3 gal/min, and an exit stream of the well-mixed solution leaves the tank at 2 gal/min.  Find the amount of salt in the tank at the time it is about to overflow.
+
+:::{dropdown} Solution
+To write a rate equation for the amount $x(t)$ of salt in the tank at time $t$, we use the principle of conservation of mass. We assume no reaction takes place in the tank, so that up to the moment of overflow we have
+
+```{math}
+\text{rate of change of } x = \text{(rate of salt in)} - \text{(rate of salt out)}.
+```
+
+Let $V(t)=$ the volume of the mixture at time $t$. Then
+
+\begin{align*}
+\text{rate of salt in} & = 2 \text{ lb/gal }\times 3 \text{ gal/min }= 6 \text{ lb/min}\\
+\text{rate of salt out} & = \frac{x}{V} \text{ lb/gal }\times 2 \text{ gal/min }= \frac{2}{V}\,x \text{ lb/min.}
+\end{align*}
+
+Hence
+
+```{math}
+\frac{dx}{dt} = 6 -  \frac{2}{V}\,x.
+```
+
+But the volume of the mixture changes as well (rate of change = rate in - rate out):
+
+```{math}
+\frac{dV}{dt}= 3 - 2 = 1 \text{ gal/min } \; \Rightarrow\; V(t) = (t+100) \text{ gal, } 
+```
+
+where we have used the initial volume (100 gal) for the constant of integration.  Note that the time for overflow is when $V=300$ gal, i.e. 200 min.
+
+The initial amount of salt in the tank is 100 lb.  Using the volume expression, we obtain an IVP for $x(t)$, namely
+
+\begin{align*}
+\frac{dx}{dt} & = 6 -  \frac{2}{t+100} x,\quad 0\lt t \le 200,\\
+x(0) & = 100.
+\end{align*}
+
+The ODE in standard form is
+
+```{math}
+x' + \frac{2}{t+100}x = 6,
+```
+
+which can be solved by variation of parameters:
+
+\begin{align*}
+g(t) & =\exp\left(\int -\frac{2}{t+100}\,dt\right)=(t+100)^{-2}, \\
+k(t) & = \int  6(t+100)^2\, dt = 2(t+100)^3,  \\
+x(t) & = c_1(t+100)^{-2} + 2(t+100)^{3-2}.
+\end{align*}
+
+Using the initial condition, we obtain $c_1=-100^3$. The time of overflow is $t=200$ min, so finally we get
+
+```{math}
+x(200)=2(200+100)-\frac{100^3}{(200+100)^2}=\frac{5300}{9}\approx 589 \text{ lb.}
+```
+:::
+::::
+
+::::{proof:example}
+
+A well-circulated lake contains 1000 kL of water that is initially at a concentration of 2 kg/kL of a pollutant.  Water from the effluent of a factory enters the lake at the rate of 5 kL/h with a concentration of 7 kg/kL of the pollutant.  Polluted water flows out of the lake through an outlet at the rate of 2 kL/h.  Determine the amount of pollutant in the lake as a function of time. (Ignore the fact that the lake may eventually overflow, as we are interested in a relatively short time.)
+
+:::{dropdown} Solution
+It's clear that given the net fluid inflow rate of 3 kL/h, the lake volume is given by $V(t)=1000 + 3t$ kL at time $t$ hours. Let $x(t)$ be the mass of pollutant in the lake at $t$ hours in kg/kL. Mass conservation implies
+
+```{math}
+\frac{dx}{dt} \text{ kg/h} = (5)(7) \text{ kg/h} - 2 \frac{x}{V} \text{ kg/h},
+```
+
+or
+
+```{math}
+x' + \frac{2x}{3t+1000}  = 35.
+```
+
+This equation readily solved through variation of parameters:
+
+\begin{align*}
+g(t) & =\exp\left(\int -\frac{2}{3t+1000}\,dt\right)=(3t+1000)^{-2/3}, \\
+k(t) & = \int  35(3t+1000)^{2/3} \, dt = 7(3t+1000)^{5/3},  \\
+x(t) & = c_1(3t+1000)^{-2/3} + 7(3t+1000).
+\end{align*}
+
+The initial condition is that $x(0)/V(0)=2$, so
+
+```{math}
+2 = \frac{c_1\cdot(1000)^{-2/3} + 7000}{1000},
+```
+
+which implies $c_1=-5(1000)^{5/3}=-5\times 10^5$. Thus
+
+```{math}
+x(t)=7(3t+1000) - \frac{5\times 10^5}{(3t+1000)^{2/3}} \; \text{kg/kL.}
+```
+:::
+::::
+
+## Cooling and heating
+
+There are formulas to plug and play for this type of problem, but these are not hard to solve directly if you understand how to interpret them.
+
+Suppose an object is put into an environment that is held at constant tempertature $E$. Let $T(t)$ be the temperature of the object. The Newton Cooling Law (which applies equally to heating) states that the difference between $T$ and $E$ decreases at a constant decay rate. Mathematically, if we define $x(t) = T(t) - E$, then
+
+$$
+\dd{x}{t} = -k x, \qquad (k>0).
+$$
+
+The usual assumption is that $k$ is constant, so the general solution is $x(t)=c_1 e^{-kt}$. Remember that this is the temperature *difference*, so to get the object's temperature, you need to use $T(t) = E + x(t)$.
+
+Numerically you need to know three things to completely know the solution: the initial temperature, the decay rate $k$, and the environmental temperature $E$. If a word problem gives you any three pieces of relevant information, you need to convert them into these three values.
+
+::::{proof:example}
+A mug of coffee at 90 C is put in a room kept at 20 C. After 10 minutes the coffee has cooled by $7$ C. When will the coffee reach 60 C?
+
+:::{dropdown} Solution
+In terms of the notation above, we have $E=20$, $T(0)=90$, and $T(10)=90-7=83$. The cooling rate is not yet known. So we have $x(t)=T(t)-20$ and the IVP
+
+```{math}
+x' = -kx,\quad x(0)=90-20.
+```
+
+This has solution $x(t)=70e^{-kt}$. Now we use the given value of $x(10)=83-20$ to deduce
+
+$$
+63 = 70 e^{-10k} \quad \Rightarrow \quad k = \frac{1}{10} \ln\left( \frac{70}{63} \right).
+$$
+
+(There's no need to calculate a numerical value for $k$, though if you do, keep at least 4 significant digits for safety. It's a positive value because we put a negative sign into the ODE.)
+
+The problem asks us to find the value of the time $s$ such that $T(s)=60$, which implies $x(s)=40$. Thus
+
+$$
+40 = x(s) = 70 \exp(-sk),
+$$
+
+which leads to
+
+$$
+sk = \ln \left( \frac{70}{40} \right).
+$$
+
+Finally,
+
+$$
+s = 10 \frac{\ln(7/4)}{\ln(10/9)} \approx 53.1 \text{ min}.
+$$
+:::
+::::
+
+Sometimes you don't need to find the rate constant explicitly because you can manipulate expressions to substitute for it.
+
+::::{proof:example}
+Suppose Fred and Wilma each pour out a mug of coffee that is at 85 degrees C. Assume that the cooling rate in a mug is proportional to the cross-section of the mug's top.Wilma's mug has a diameter that is $\sqrt{2}$ times as large as Fred's. Both mugs are left sitting out for 30 minutes in a room that is at 25${}^\circ$ C, at which point Fred's coffee is at 60 degrees. What is the temperature of Wilma's coffee at the same moment?
+
+:::{dropdown} Solution
+Suppose Fred's mug has cooling rate $k$. Since area is proportional to diameter squared, Wilma's mug has a cooling rate $2k$. Define $F(t)$ and $W(t)$ to be the temperatures of the two coffees, and let $x(t)=F(t)-25$, $y(t)=W(t)-25$. We know that $F(0) = W(0) = 85$, or
+
+$$
+x(0) = y(0) = 60.
+$$
+
+Now $x'=-kx$, so $x(t)=60e^{-kt}$. We could use $F(30)=60$ to find $k$ and proceed from there, but there is a clever shortcut.
+
+Note that $y'=-2ky$, so $y(t)=60e^{-2kt}$. Hence
+
+$$
+y(t) = 60 \bigl( e^{-kt} \bigr)^2 = 60 \bigl( x(t)/60 \bigr)^2 = \frac{x(t)^2}{60}.
+$$
+
+Since we know that $x(30)=60-25$, we conclude that $y(30)=35^2/60 \approx 20.4$ C, so $W(30) = 25 + y(30) \approx 45.4$ degrees.
+:::
+::::
+

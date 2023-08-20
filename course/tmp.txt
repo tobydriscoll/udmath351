@@ -1,0 +1,4 @@
+```{math}
+:label: eq-homogeneous-ode
+\dd{x}{t} + P(t) x = 0.
+```

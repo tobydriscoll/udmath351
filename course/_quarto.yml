@@ -1,0 +1,37 @@
+project:
+  type: book
+
+book:
+  title: "Notes for Math 351 @ UD"
+  author: "Toby Driscoll"
+  date: "8/12/2023"
+  chapters:
+    - index.qmd
+    - ivp_first_order.qmd
+    - ivp_second_order.qmd
+  sidebar: 
+    footer: "Copyright 2023 by Toby Driscoll"
+  page-footer:
+    left: 
+      - text: "Math 351 @ UD"
+    right: 
+      - text: "Toby Driscoll"
+ 
+bibliography: references.bib
+
+execute: 
+  cache: true
+  warning: false
+  kernelspec:
+    name: "julia-1.9"
+    language: "julia"
+    display_name: "Julia-1.9"
+
+format:
+  html:
+    theme:
+      - spacelab
+      - tweaks.scss
+    include-in-header: header.html
+  pdf:
+    documentclass: scrreprt
