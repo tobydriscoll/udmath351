@@ -35,5 +35,12 @@ format:
       - spacelab
       - tweaks.scss
     include-in-header: header.html
-  pdf:
-    documentclass: scrreprt
+  # pdf:
+  #   documentclass: scrreprt
+  #   papersize: letter
+  #   include-in-header: _macros.tex
+  #   geometry: 
+  #     - top=1.5in
+  #     - left=1.25in
+  #     - right=1.25in
+  #     - bottom=1.25in

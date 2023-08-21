@@ -1,0 +1,1178 @@
+---
+format:
+  html:
+    code-fold: true
+jupyter:
+  jupytext:
+    cell_metadata_filter: '-all'
+    text_representation:
+      extension: .qmd
+      format_name: quarto
+      format_version: '1.0'
+      jupytext_version: 1.15.0
+  kernelspec:
+    display_name: Julia 1.9
+    language: julia
+    name: julia-1.9
+---
+
+# Matrix algebra
+
+::: {.content-visible unless-format="pdf"}
+{{< include _macros.qmd >}}
+:::
+
+```{julia}
+using Plots, LinearAlgebra, LaTeXStrings
+default(label="", linewidth=3, markersize=4, size=(500,320))
+```
+
+Matrices support addition, subtraction, and scalar multiplication just as vectors do, by acting elementwise. But things get more complicated when we start considering how to multiply matrices and vectors together.
+
+## Multiplication
+
+Here is **how NOT to multiply two matrices**:
+
+$$
+\twomat{1}{2}{-2}{0} \twomat{3}{-4}{-1}{2} = \twomat{1\cdot 3}{2\cdot(-4)}{(-2)\cdot (-1)}{0\cdot 2}. 
+$$
+
+Technically, the above is called a *Hadamard product*, and it actually does come in handy sometimes. But it is less than 1/1000th as important as a different, less-obvious definition of multiplication that is tied to deep mathematical structure.
+
+### Matrix times vector
+
+The idea of linear combinations, as defined in @def-nullspace-linear-comb, serves as the foundation of multiplication between a matrix and a vector.
+
+::::{#def-operations-matvec}
+# Matrix times vector
+Given $\bfA\in\cmn{m}{n}$ and $\bfx\in\complex^{n}$, the product $\bfA\bfx$ is defined as
+
+$$
+\bfA\bfx = x_1 \bfa_1 + x_2 \bfa_2 + \cdots + x_n \bfa_n = \sum_{j=1}^n x_j \bfa_j,
+$$ {#eq-operations-matvec}
+
+where $\bfa_j$ refers to the $j$th column of $\bfA$.
+::::
+
+:::{.callout-attention}
+In order for $\bfA\bfx$ to be defined, the number of columns in $\bfA$ has to be the same as the number of elements in $\bfx$. 
+:::
+
+Note that when $\bfA$ is $m\times n$, then $\bfx$ must be in $\real^n$ or $\complex^n$, and $\bfA\bfx$ has dimension $m$. 
+
+::::{#exm-}
+Calculate the product
+
+$$
+\begin{bmatrix} 
+1 & -1 & -1 \\ 3 & -2 & 0 \\ 1 & -2 & -1 \end{bmatrix} \threevec{-1}{2}{-1}.
+$$
+
+:::{.solution}
+The product is equivalent to
+
+$$
+(-1) \threevec{1}{3}{1} + (2) \threevec{-1}{-2}{-2} + (-1) \threevec{-1}{0}{-1} = \threevec{-2}{-7}{-4}.
+$$
+
+We don't often write out the product in this much detail. Instead we "zip together" the rows of the matrix with the entries of the vector:
+
+$$
+\threevec{(-1)(1)+(2)(-1)+(-1)(-1)}{(-1)(3)+(2)(-2)+(-1)(0)}{(-1)(1)+(2)(-2)+(-1)(-1)}  = \threevec{-2}{-7}{-4}.
+$$
+
+You might recognize the "zip" expressions in this vector as dot products from vector calculus.
+:::
+::::
+
+#### Properties
+
+What justifies calling this operation multiplication? In large part, it's the natural distributive properties
+
+$$
+\begin{split}
+\bfA(\bfx+\bfy) & =  \bfA\bfx + \bfA\bfy,\\
+(\bfA+\bfB)\bfx & =  \bfA\bfx + \bfB\bfx,
+\end{split}
+$$
+
+which can be checked with a little effort. It's also true that $\bfA(c\bfx)=c(\bfA\bfx)$ for any scalar $c$. However, there is a big departure from multiplication as we usually know it.
+
+:::{.callout-warning}
+Matrix-vector products are not commutative. In fact, $\bfx\bfA$ is not defined even when $\bfA\bfx$ is.
+:::
+
+#### Connection to linear systems
+
+The following observation finally brings us back around to the introduction of linear systems through the insultingly simple scalar equation $ax=b$. 
+
+::::{#thm}
+The linear system with coefficient matrix $\bfA$, forcing vector $\bfb$, and solution $\bfx$ is equivalent to the equation $\bfA\bfx=\bfb$.
+::::
+
+Bringing together more of our definitions:
+
+::::{#thm-}
+1. The linear system $\bfA\bfx=\bfb$ is consistent if and only if $\bfb$ is in the span of the columns of $\bfA$.
+2. The null space of a matrix contains nonzero vectors if and only if the columns of the matrix are linearly dependent.
+::::
+
+### Matrix-matrix multiplication
+
+We can think of vectors as a special kind of matrix, and accordingly we can generalize matrix-vector products to matrix-matrix products. There are many equivalent ways to define these products. Here is the one we start with.
+
+::::{#def-operations-matmat} 
+# Matrix times matrix
+If $\bfA$ is $m\times n$ and $\bfB$ is $n\times p$, then the product $\bfA\bfB$ is defined as
+
+$$
+:label: matrix-mult
+\bfA\mathbf{B}
+= \bfA \begin{bmatrix} \mathbf{b}_1 & \mathbf{b}_2 & \cdots & \mathbf{b}_p \end{bmatrix}
+= \begin{bmatrix} \bfA\mathbf{b}_1 & \bfA\mathbf{b}_2 & \cdots & \bfA\mathbf{b}_p \end{bmatrix}.
+$$
+::::
+
+In words, a matrix-matrix product is the horizontal concatenation of matrix-vector products involving the columns of the right-hand matrix.
+
+:::{.callout-warning}
+In order to define $\bfA\bfB$, we require that the number of columns in $\bfA$ is the same as the number of rows in $\bfB$. That is, the *inner dimensions* must agree. The result has size determined by the *outer dimensions* of the original matrices.
+:::
+
+When we compute a matrix product by hand, we usually don't write out the above. Instead we use a more compact definition for the individual entries of $\mathbf{C} = \bfA\bfB$,
+
+$$
+C_{ij} = \sum_{k=1}^n a_{ik}b_{kj}, \qquad i=1,\ldots,m, \quad j=1,\ldots,p.
+$$ {#eq-matrix-mult-element}
+
+The sum to get a single $C_{ij}$ is what we called a "zip", or essentially a dot product, of row $i$ from $\bfA$ with column $j$ from $\bfB$.
+
+::::{#exm-}
+Find $\mathbf{A}\mathbf{B}$ if
+
+$$
+\bfA = \begin{bmatrix}
+1 & -1 \\ 0 & 2 \\ -3 & 1
+\end{bmatrix}, \qquad
+\mathbf{B} = \begin{bmatrix}
+2 & -1 & 0 & 4 \\ 1 & 1 & 3 & 2
+\end{bmatrix}.
+$$
+
+:::{.solution}
+Using @eq-matrix-mult-element,
+
+$$
+\begin{split}
+\bfA\mathbf{B} &= \begin{bmatrix}
+(1)(2) + (-1)(1) & (1)(-1) + (-1)(1) & (1)(0) + (-1)(3) & (1)(4) + (-1)(2) \\
+(0)(2) + (2)(1) & (0)(-1) + (2)(1) & (0)(0) + (2)(3) & (0)(4) + (2)(2) \\
+(-3)(2) + (1)(1) & (-3)(-1) + (1)(1) & (-3)(0) + (1)(3) & (-3)(4) + (1)(2)
+\end{bmatrix} \\
+& = \begin{bmatrix}
+1 & -2 & -3 & 2 \\ 2 & 2 & 6 & 4 \\ -5 & 4 & 3 & -10
+\end{bmatrix}
+\end{split}.
+$$
+
+Observe that
+
+$$
+\bfA \begin{bmatrix} 2 \\ 1 \end{bmatrix} = 2 \begin{bmatrix} 1 \\ 0 \\ -3
+\end{bmatrix} + 1 \begin{bmatrix} -1 \\ 2 \\ 1 \end{bmatrix}
+= \begin{bmatrix} 1 \\ 2 \\ -5 \end{bmatrix},
+$$
+
+and so on.
+:::
+::::
+
+#### Properties
+
+First, the bad news. 
+
+:::{.callout-warning}
+Matrix multiplication is not commutative. If $\bfA\bfB$ is defined, then $\bfB\bfA$ may not be, and even if it is, it may not equal $\bfA\bfB$. Put another way, you cannot simply change the order of the terms in a matrix product without some explicit justification.
+:::
+
+Fortunately, other familiar and handy properties of multiplication do come along for the ride:
+
+1. $(\bfA\bfB)\mathbf{C}=\bfA(\bfB \mathbf{C})\qquad$  (association)
+2. $\bfA(\bfB+\mathbf{C}) = \bfA\bfB + \bfA\mathbf{C}\qquad$  (right distribution)
+3. $(\bfA+\bfB)\mathbf{C} = \bfA\mathbf{C} + \bfB\mathbf{C}\qquad$   (left distribution)
+
+These properties are easy to demonstrate computationally. (But keep in mind that a numerical demonstration, or an algebraic one at particular sizes, is not a general proof.) 
+
+## Transpose
+
+Here's a curious operation that we won't be using much, but it is important enough to know about.
+
+(definition-algebra-transpose)=
+::::{#def-} Transpose of a matrix
+The **transpose** of $m\times n$ matrix $\bfA$, whose elements are $A_{ij}$, is the $n\times m$ matrix $\bfA^T$ with elements $A_{ji}$.
+::::
+
+When taking the transpose, rows become columns, and vice versa.
+
+### Properties
+
+(theorem-algebra-transpose)=
+::::{#thm-} 
+If $\bfA$ and $\bfB$ are matrices of compatible sizes, and $c$ is a number, then
+1. $(\bfA^T)^T = \bfA$
+2. $(\bfA+\bfB)^T = \bfA^T + \bfB^T$
+3. $(c\bfA^T) = c(\bfA^T)$
+4. $(\bfA\bfB)^T = \bfB^T \bfA^T$
+::::
+
+Only the last of these is not intuitively clear.
+
+## Identity and inverse 
+
+You solve $ax=b$ for nonzero $a$ without thinking about it: $x=b/a$. If we do break it down a little, we can see that when we multiply both sides of $ax=b$ by the number $1/a$, then on the left the terms $1/a$ and $a$ combine to give $1$, and $1x=x$. So the key to the solution is the presence of a *multiplicative identity* value $1$, and the existence of the *multiplicative inverse* $1/a$ when $a\neq 0$. These two items are also a way to discuss the vector case $\bfA\bfx=\bfb$.
+
+### Identity matrix
+
+Suppose we are given an $m\times n$ matrix $\bfA$. Writing its columns as the vectors $\bfa_1,\ldots,\bfa_n$, we can make the rather obvious observations
+
+$$
+\begin{split}
+\bfa_1 &= 1\cdot \bfa_1 + 0 \cdot \bfa_2 + \cdots + 0\cdot \bfa_n,\\
+\bfa_2 &= 0\cdot \bfa_1 + 1 \cdot \bfa_2 + \cdots + 0\cdot \bfa_n,\\
+&\; \vdots \\
+\bfa_n &= 0\cdot \bfa_1 + 0 \cdot \bfa_2 + \cdots + 1\cdot \bfa_n.
+\end{split}
+$$
+
+The purpose in using these expressions is to interpret them as linear combinations, and thus as matrix-vector products. Let's define $\bfe_j$ for $j=1,\ldots,n$ as follows.
+
+::::{#def-} 
+# Standard vectors
+$$
+\text{$i$th component of }\bfe_j = \begin{cases} 1, & i=j, \\ 0, & i\neq j. \end{cases}
+$$
+::::
+
+Now we can write
+
+$$
+\bfa_j = \bfA \bfe_j, \quad j=1,\ldots,n.
+$$
+
+Furthermore, we can use the definition of matrix products as a concatenation of matrix-vector products to derive
+
+$$
+\begin{split}
+    \bfA &= \begin{bmatrix} \bfa_1 & \bfa_2 & \cdots & \bfa_n \end{bmatrix} \\
+	&=  \begin{bmatrix} \bfA\bfe_1 & \bfA\bfe_2 & \cdots & \bfA\bfe_n \end{bmatrix}\\
+	&=  \bfA \begin{bmatrix} \bfe_1 & \bfe_2 & \cdots & \bfe_n \end{bmatrix}.
+\end{split}
+$$
+
+::::{#def-}
+# Identity matrix
+The $n\times n$ **identity matrix** is
+
+$$
+\meye = \begin{bmatrix} \bfe_1 & \bfe_2 & \cdots & \bfe_n \end{bmatrix} = 
+	\begin{bmatrix}
+	1 & 0 & \cdots & 0 & 0 \\
+	0 & 1 & \cdots & 0 & 0 \\
+	& & \ddots & & \\
+	0 & 0 & \cdots & 1 & 0 \\
+	0 & 0 & \cdots & 0 & 1
+	\end{bmatrix}.
+$$
+::::
+
+:::{.callout-note}
+Sometimes, when we need to indicate the size of the identity, we use a subscript, as in $\meye_4$ to represent the $4\times 4$ case. Usually, though, it's implied by the context.
+:::
+
+::::{#thm-} 
+# Multiplicative identity
+If $\bfA$ is $m\times n$, then $\bfA = \meye_m \bfA = \bfA \meye_n$.
+::::
+
+::::{#exm-}
+Compute
+
+$$
+\begin{bmatrix}
+7 & -2 & 11 \\ 1131 & \pi & -\sqrt{13}
+\end{bmatrix}
+\begin{bmatrix}
+2 & 0 & 0 \\ 0 & 2 & 0 \\ 0 & 0 & 2
+\end{bmatrix}.
+$$
+
+:::{.solution}
+You can grind through the multiplication algorithm, of course, but there is a shortcut:
+
+$$
+\begin{split}
+    \begin{bmatrix} 7 & -2 & 11 \\ 1131 & \pi & -\sqrt{13} \end{bmatrix}
+    \begin{bmatrix} 2 & 0 & 0 \\ 0 & 2 & 0 \\ 0 & 0 & 2 \end{bmatrix}
+    & = \begin{bmatrix} 7 & -2 & 11 \\ 1131 & \pi & -\sqrt{13} \end{bmatrix} 
+    \left( 2 \begin{bmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{bmatrix} \right) \\
+    & = 2 \begin{bmatrix} 7 & -2 & 11 \\ 1131 & \pi & -\sqrt{13} \end{bmatrix} \cdot \meye \\ 
+    & = \begin{bmatrix} 14 & -4 & 22 \\ 2262 & 2\pi & -2\sqrt{13} \end{bmatrix}.
+\end{split}
+$$
+:::
+::::
+
+### Inverse
+
+We are now going to introduce a major simplification.
+
+::::{#def-inverse-square} 
+# Square matrix
+A **square** matrix has the same number of rows as columns.
+::::
+
+Here is what we seek from a multiplicative inverse.
+
+::::{#def-} 
+# Inverse
+Suppose $\bfA$ is a square matrix. A matrix $\mathbf{Z}$ of the same size such that $\mathbf{Z}\bfA = \meye$ and $\bfA\mathbf{Z}=\meye$ is called the **inverse** of $\bfA$, written $\mathbf{Z} = \bfA^{-1}$. In this case we say $\bfA$ is **invertible**. A matrix that has no inverse is **singular**.
+::::
+
+Verifying whether a given matrix is the inverse of another matrix is simply a matter of multiplying them together and seeing if the result is an identity matrix.
+
+::::{#exm-}
+The matrix $\mathbf{R}(\theta) = \begin{bmatrix}
+\cos(\theta) & -\sin(\theta) \\ \sin(\theta) & \cos(\theta) 
+\end{bmatrix}$
+performs rotation in the plane around the origin by angle $\theta$. Show that $\mathbf{R}(-\theta)$ is the inverse of $\mathbf{R}(\theta)$.
+
+:::{.solution}
+All we need to do is to check that the produc, in either order, is the identity matrix:
+
+$$
+\begin{split}
+\mathbf{R}(-\theta)\mathbf{R}(\theta) &= \begin{bmatrix}
+\cos(-\theta) & -\sin(-\theta) \\ \sin(-\theta) & \cos(-\theta) 
+\end{bmatrix} \begin{bmatrix}
+\cos(\theta) & -\sin(\theta) \\ \sin(\theta) & \cos(\theta) 
+\end{bmatrix} \\ 
+&= \begin{bmatrix}
+\cos(\theta) & \sin(\theta) \\ -\sin(\theta) & \cos(\theta) 
+\end{bmatrix} \begin{bmatrix}
+\cos(\theta) & -\sin(\theta) \\ \sin(\theta) & \cos(\theta) 
+\end{bmatrix} \\ 
+ &= \begin{bmatrix}
+\cos^2(\theta)+\sin^2(\theta) & -\cos(\theta)\sin(\theta) + \sin(\theta)\cos(\theta) \\
+  -\sin(\theta)\cos(\theta) + \cos(\theta)\sin(\theta)  & \sin^2(\theta) + \cos^2(\theta) 
+\end{bmatrix} = \meye.
+\end{split}
+$$
+:::
+::::
+
+#### Properties
+
+There are some facts about inverses that we will take for granted without justification.
+
+::::{#thm-}
+1. If $\bfA$ is invertible, the inverse is unique.
+2. If either $\mathbf{Z}\bfA = \meye$ or $\bfA\mathbf{Z}=\meye$ is true, then both are true and $\mathbf{Z}=\bfA^{-1}$.
+3. $(\bfA^{-1})^{-1} = \bfA$; that is, $\bfA$ is the inverse of $\bfA^{-1}$.
+4. If $\bfA$ is invertible and $c$ is a nonzero number, then $(c\bfA)^{-1}= \dfrac{1}{c}\bfA^{-1}$.
+5. If $\bfA$ and $\bfB$ are invertible and the same size, then $\bfA\bfB$ is invertible, and
+
+$$
+(\bfA\bfB)^{-1} = \bfB^{-1}\bfA^{-1}.
+$$
+::::
+
+The last identity above is easy to get wrong, so it bears restatement in words. The following also holds for products of three or more invertible matrices.
+
+:::{.callout-attention}
+The inverse of a product is the product of the inverses *in the reverse order*.
+:::
+
+### Singular matrices
+
+Since a matrix of zeros times any matrix of compatible size is also a matrix of zeros, a zero matrix is singular—no inverse is possible. That much is the same as with numbers. However, there is a major difference with matrices.
+
+:::{.callout-attention}
+Some nonzero matrices are singular.
+:::
+
+::::{#exm-inverse-singular} 
+Let $\bfA = \twomat{0}{0}{1}{0}$. Suppose that 
+
+$$
+\meye = \twomat{a}{b}{c}{d} \bfA = \twomat{b}{0}{d}{0}.
+$$
+
+This is clearly impossible.
+::::
+
+::::{#exm-} 
+Again let $\bfA = \twomat{0}{0}{1}{0}$. Note that 
+
+$$
+\bfA^2 = \twomat{0}{0}{1}{0} \cdot \twomat{0}{0}{1}{0} = \twomat{0}{0}{0}{0}.
+$$
+
+As a result, when you see $\bfA\bfB = \bfzero$, you cannot just "cancel out" the $\bfA$ to conclude $\bfB=\bfzero$. However, if $\bfA$ is invertible, then $\bfB=\bfA^{-1}\cdot \bfzero = \bfzero$ is true. 
+::::
+
+## Fundamental Theorem
+
+The following theorem is in every linear algebra course, but it does not have a universally accepted name.
+
+::::{#thm-FTLA1} 
+# Fundamental Theorem of Linear Algebra, FTLA
+If $\bfA$ is an $n\times n$ matrix, then each of these statements is equivalent to all of the others.
+
+1. $\bfA$ is invertible.
+2. The linear system $\bfA\bfx=\bfb$ has a unique solution for each $\bfb$.
+3. The null space of $\bfA$ is just the zero vector.
+4. The RRE form of $\bfA$ is the identity matrix.
+5. $\rank(\bfA)=n$.
+::::
+
+:::{.callout-note}
+The statement "$\bfA$ is singular" for the linear system $\bfA\bfx = \bfb$ is the multidimensional equivalent of "$a$ is zero" in the 1D problem $ax=b$. For a singular matrix, a unique solution is impossible–the system has either no solution or infinitely many of them.
+:::
+
+::::{.proof}
+We'll only look at statement 1 implying statement 2. Let $\bfx$ be any vector that solves $\bfb=\bfA\bfx$. Multiply both sides on the left by $\bfA^{-1}$. Then
+
+$$
+\bfA^{-1} \bfb =  \bfA^{-1}(\bfA\bfx)= (\bfA^{-1}\bfA) \bfx= \meye \bfx = \bfx.
+$$
+
+Since the inverse is unique, $\bfx$ is unique as well.
+::::
+
+## Computing the inverse
+
+The solution formula $\bfx=\bfA^{-1}\bfb$ from the proof of @thm-FTLA1 is theoretically valuable but impossible to apply to specific system without knowing how to calculate the matrix inverse. In general, doing so is harder than just doing row elimination on a linear system, so it's not a useful algorithm. 
+
+There is a method for computing the inverse based on row elimination. But there is little cause for using it in practice. We will just look at some particular cases where the inverse is very easy to find.
+
+### Diagonal matrix
+
+A **diagonal matrix** has zero elements everywhere the row index is different from the column index. If any diagonal element is zero, then the matrix is singular. Otherwise, its inverse is trivial, thanks to how matrix multiplication is defined.
+
+::::{#thm-linalg-inversediag} 
+# Inverse of a diagonal matrix
+
+$$
+\begin{bmatrix} a_{11} & & & \\  & a_{22} & & \\ & & \ddots & \\ & & & a_{nn} \end{bmatrix}^{-1} = \begin{bmatrix} \frac{1}{a_{11}} & & & \\  & \frac{1}{a_{22}} & & \\ & & \ddots & \\ & & & \frac{1}{a_{nn}} \end{bmatrix}
+$$ {#eq-linalg-inversediag}
+::::
+
+### $2\times 2$
+In the $2\times 2$ case the inverse is easy enough to memorize.
+
+::::{#thm-linalg-inverse2by2} 
+# Inverse of $2\times 2$
+
+$$
+\begin{bmatrix} a & b \\ c & d \end{bmatrix}^{-1} = \frac{1}{ad-bc}\: \begin{bmatrix} d & -b \\ -c & a \end{bmatrix}.
+$$ {#eq-linalg-inverse2by2}
+
+This formula breaks down if $ad=bc$, in which case the matrix is singular. 
+::::
+
+## Subspaces {#sec-matrix-subspaces}
+
+We encountered the null space of a matrix in @sec-linsys-nullspace. It's a special case of a vital type of set.
+
+::::{#def-subspaces-subspace}
+# Subspace
+A **subspace** of $\real^n$ is a set $S$ satisfying:
+1. The zero vector is in $S$.
+2. Every linear combination of vectors in $S$ is also in $S$.
+::::
+
+The second property above is called *closure under linear combination*. 
+
+:::{.callout-note}
+We will be making statements about real spaces like $\real^n$, but everything also works for $\complex^n$, which turns out to be important soon.
+:::
+
+::::{#exm-subspaces-plane} 
+The equation $x + 2y + 3z = 0$ describes a plane passing through the origin in $\real^3$. It's clear geometrically that scaling a vector in the plane leaves you in the plane, and adding vectors in the plane does as well. This is enough to show that this plane is a subspace of $\real^3$. In fact, it is the null space of the matrix $\begin{bmatrix} 1 & 2 & 3 \end{bmatrix}.$
+
+The equation $x+y+z=1$ is also a plane in $\real^3$, but it does not pass through the origin, so it cannot be a subspace. (It also fails closure for scaling and addition.)
+::::
+
+::::{#thm-subspaces-nullspace} 
+The null space of an $m\times n$ matrix is a subspace of $\real^n$.
+::::
+
+::::{.proof}
+Let $S=\nullsp(\bfA)$. If $\bfu$ and $\bfv$ are in $S$, then by definition, $\bfA\bfu = \bfA\bfv = \bfzero$. Then
+by basic algebraic properties,
+
+$$
+\bfA( c_1 \bfu + c_2 \bfv) = c_1 \bfA \bfu + c_2 \bfA \bfv = \bfzero.
+$$
+
+The derivation applies to linear combinations of any length.
+::::
+
+There is at least one easy way to generate subspaces. The following is not hard to prove.
+
+::::{#thm-subspaces-span} 
+If $S=\span(\bfv_1,\ldots,\bfv_k)$ for any vectors $\bfv_j$ in $\real^n$, then $S$ is a subspace of $\real^n$.
+::::
+
+In addition to the null space, there is another important subspace closely associated with a matrix.
+
+::::{#def-subspaces-rowcol} 
+# Column space
+Let $\bfA$ be an $m\times n$ matrix. The **column space** of $\bfA$, $\colsp(\bfA)$, is the span of the columns of $\bfA$. 
+::::
+
+By @thm-subspaces-span, $\colsp(\bfA)$ is a subspace of $\real^m$. 
+
+### Basis
+
+Span and independence are two great tastes that taste great together.
+
+::::{#def-subspaces-basis}
+#  Basis
+A **basis** of a subspace $S$ is any set of linearly independent vectors that spans $S$.
+::::
+
+Finding a basis for a null space was demonstrated in @exm-nullspace-span. The column space is also found from the RRE form.
+
+:::{#thm-}
+Let $\bfA$ have RRE form with pivot columns numbered $j_1,\ldots,j_r$. Then columns $j_1,\ldots,j_r$ of $\bfA$ are a basis for $\colsp(\bfA)$.
+:::
+
+::::{#exm-subspaces-colnull}
+Find bases for the null space and column space of   
+
+$$
+\bfA = \begin{bmatrix} 
+1 & 2 & 0 & -4 \\
+-2 & -4 & 1 & 9 \\
+-3 & -6 & 1 & 13 \\
+-2 & -4 & 0 & 8   
+\end{bmatrix}. 
+$$
+
+:::{.solution}
+You can compute that the RRE form of $\bfA$ is 
+
+$$
+\begin{bmatrix} 
+1 & 2 & 0 & -4 \\
+0 & 0 & 1 & 1 \\
+0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0   
+ \end{bmatrix}.
+$$
+
+To get a basis for $\colsp(\bfA)$ we choose columns 1 and 3 of $\bfA$, i. e., $\{[1,-2,-3,-2],  [0,1,1,0] \}$. 
+
+The homogeneous system $\bfA\bfx = \bfzero$ has free variables $x_2=s$, $x_4=t$. Solving for the other variables gives the solution set
+
+$$
+\bfx = s \begin{bmatrix} -2 \\ 1 \\ 0 \\ 0 \end{bmatrix} + t \begin{bmatrix} 4 \\ 0 \\ -1 \\ 1 \end{bmatrix},
+$$
+
+which makes $\{[-2,1,0,0],[4,0,-1,1]  \}$ a basis for $\nullsp(\bfA)$.
+:::
+::::
+
+::::{#exm-subspaces-findbasis}
+Find a basis for span of the vectors $\bfv_1=[1,-2,-3,-2]$, $\bfv_2=[2,-4,-6,-4]$, $\bfv_3=[0,1,1,0]$, $\bfv_4=[-4,9,13,8]$.
+
+:::{.solution}
+If we put the given vectors in columns of a matrix, then their span is equivalent to the column space of the matrix:
+
+$$
+\colsp\left( 
+\begin{bmatrix} 
+1 & 2 & 0 & -4 \\
+-2 & -4 & 1 & 9 \\
+-3 & -6 & 1 & 13 \\
+-2 & -4 & 0 & 8   
+\end{bmatrix}
+\right).
+$$
+
+This is the same matrix whose column space was found in @exm-subspaces-colnull. Columns 1 and 3 are the pivot columns, and we get the basis $\bfv_1,\bfv_3$ as before. 
+:::
+::::
+
+### Dimension
+
+You have an intuitive idea of dimension, but it may seem hard to define rigorously. We're set up to do that now. First, we need the following result.
+
+::::{#thm-subspaces-dimension} 
+Every basis for a subspace $S$ has the same number of members. 
+::::
+
+::::{#def-subspaces-dimension} 
+# Dimension
+The **dimension** of a subspace $S$, written $\dim(S)$, is the number of vectors in any basis of $S$.
+::::
+
+As you would expect, $\dim(\real^n)=n$. The only way to have $k$ independent vectors that span a subspace $S$ is if $k=\dim(S)$. More specifically:
+
+::::{#thm-} 
+Suppose $V$ is a set of $k$ vectors in subspace $S$.
+
+1. If $k < \dim(S)$, then $V$ cannot span $S$.
+2. If $k > \dim(S)$, then $V$ cannot be linearly independent.
+3. Suppose $k=\dim(S)$. If $V$ is independent or if $V$ spans $S$, then $V$ is a basis for $S$.
+::::
+
+::::{#exm-subspaces-dimension} 
+Determine whether the vectors $\bfv_1=[3,2,1]$, $\bfv_2=[0,-1,2]$, $\bfv_3=[1,1,1]$ are a basis of $\real^3$. 
+
+:::{.solution}
+We find a basis for their span by putting them as columns of a matrix, then looking for the column space. The RRE form of this matrix is a $3\times 3$ identity, so every column is a pivot column. The original three vectors form a basis for their span, so they are independent. Since there are 3 of them, they are also a basis of $\real^3$.
+:::
+::::
+
+Earlier we defined rank as the number of pivot columns in the RRE form of the matrix. So now we have 
+
+::::{#thm-subspaces-rank} 
+For any $m\times n$ matrix $\bfA$, $\rank(\bfA)=\dim(\colsp(\bfA))$.
+::::
+
+The dimension of the null space also gets its own name. 
+
+::::{#def-subspaces-nullity}
+# Nullity
+The **nullity** of a matrix $\bfA$, written $\nullity(\bfA)$, is the dimension of $\nullsp(\bfA)$.
+::::
+
+Each free variable in the RRE form contributes a vector to the basis of $\nullsp(\bfA)$. That leads to the following.
+The following comes from mucking about some more with the RRE form.
+
+::::{#thm-subspaces-nullity} 
+For any $m\times n$ matrix $\bfA$, 
+1. $\dim(\nullsp(\bfA))$ is the number of free variables in the RRE form of $\mathbf{A}$.
+2. $\rank(\bfA) + \nullity(\bfA) = n$.
+::::
+
+## Determinants
+
+There are many ways to characterize singular matrices, but only a few of them are computationally attractive. One that stands out is a function of square matrices called the **determinant**. (You probably saw some $2\times 2$ and $3\times 3$ determinants in vector calculus. This is the same thing.)
+
+A definition of the determinant from fundamentals is actually quite tricky. We are going to take a shortcut and define it by a formula for computing it. The $2\times 2$ case is easy:
+
+$$
+\det\left( \twomat{a}{b}{c}{d} \right) = \twodet{a}{b}{c}{d} = ad-bc.
+$$
+
+This definition can be bootstrapped into a real-valued function for square matrices of any size. 
+
+::::{#def-linalg-determinant}
+# Determinant
+If $\bfA$ is $n\times n$, then its **determinant** is
+
+$$
+\det(\bfA) = \sum (-1)^{i+j} a_{ij} \det\bigl( \mathbf{M}_{ij} \bigr),
+$$ {#eq-determinants-cofactor}
+
+where the sum is taken over any row or column of $\bfA$ and $\mathbf{M}_{ij}$ is the matrix that results from deleting row $i$ and column $j$ from $\bfA$.
+::::
+
+The formula @eq-determinants-cofactor, which is called **cofactor expansion**, is recursive: the $n\times n$ case is defined in terms of the $(n-1)\times (n-1)$ case, and so on all the way back down to $2\times 2$. 
+
+Since expanding along any row or column gives the same result, it can be advantageous to choose one with lots of zeros to cut down on the total computation.
+
+::::{#exm-}
+Compute the determinant of 
+
+$$
+\begin{bmatrix} 
+2 & 0 & -1 \\ -2 & 3 & -1 \\ 2 & 0 & 1
+\end{bmatrix}.
+$$
+
+:::{.solution}
+Using cofactor expansion along the first row,
+
+$$
+\begin{split}
+\begin{vmatrix} 2 & 0 & -1 \\ -2 & 3 & -1 \\ 2 & 0 & 1 \end{vmatrix} & =  (2) \twodet{3}{-1}{0}{1} - (0) \twodet{-2}{-1}{2}{1} + (-1)\twodet{-2}{3}{2}{0}    \\
+& = 2(3-0) + (-1)(0-6) = 12. \\
+\end{split}
+$$
+
+In this case it might have been a tad easier to exploit the zeros by expanding along the second column instead:
+
+$$
+\begin{split}
+\begin{vmatrix} 2 & 0 & -1 \\ -2 & 3 & -1 \\ 2 & 0 &  1 \end{vmatrix} & =  -(0) \begin{vmatrix} \cdots \end{vmatrix} + (3) \twodet{2}{-1}{2}{1} - (0)\begin{vmatrix} \cdots \end{vmatrix}    \\
+& = 3(2+2) = 12. \\
+\end{split}
+$$
+:::
+::::
+
+### Properties
+
+::::{#thm-}
+Let $\bfA$ and $\bfB$ be $n\times n$, and let $c$ be a number. Then
+
+1. $\det(c\bfA) = c^n \det(\bfA)$,
+2. $\det(\bfA\bfB) = \det(\bfA)\det(\bfB)$,
+3. If $\bfA$ is nonsingular, $\det(\bfA^{-1})=\bigl[\det(\bfA)\bigr]^{-1}$.
+4. $\det(\bfA)=0$ if and only if $\bfA$ is singular.
+::::
+
+It's the last property above that is of the greatest interest. 
+
+:::{.callout-note}
+The determinant is often the easiest way to check by hand for the invertibility of a small matrix.
+:::
+
+### Cramer's Rule
+
+Even though a 2x2 inverse is easy, it's still not the most convenient way to solve a linear system $\bfA\bfx=\bfb$ by hand. There is another shortcut known as **Cramer's Rule**:
+
+\begin{split}
+x_1 & = \frac{ \twodet{b_1}{a_{12}}{b_2}{a_{22}} }{ \det(\bfA) }\\[1ex]
+x_2 & = \frac{ \twodet{a_{11}}{b_1}{a_{21}}{b_2} }{ \det(\bfA) }.
+\end{split}
+
+Obviously this does not work if $\det(\bfA)=0$, i. e., when the matrix is singular. In that case, you have to fall back on row elimination.
+
+::::{#exm-}
+Solve
+
+\begin{split}
+-x + 3y & = 1 \\
+3x + y & = 7
+\end{split}
+
+by Cramer's Rule.
+
+:::{.solution}
+Plug and play (or is it plug and pray?):
+
+\begin{split}
+x & = \frac{ \twodet{1}{3}{7}{1} }{ \det(\bfA) }=  \frac{ \twodet{1}{3}{7}{1} }{ \twodet{-1}{3}{3}{1} } = \frac{-20}{-10} = 2, \\
+y & = \frac{ \twodet{-1}{1}{3}{7} }{ \det(\bfA) } = \frac{ \twodet{-1}{1}{3}{7} }{ \twodet{-1}{3}{3}{1} } = \frac{-10}{-10} = 1.\\
+\end{split}.
+:::
+::::
+
+## Eigenvalues
+
+:::{.callout-important}
+For the rest of the chapter, we deal with square matrices only.
+:::
+
+The importance and usefulness of the following definition won't be apparent for a while.
+
+
+::::{#def-linalg-eigen} Eigenvalue and eigenvector
+Suppose $\bfA\in\cmn{n}{n}$. If there exist a number $\lambda$ and a nonzero vector $\bfv$ such that
+
+$$
+\bfA \bfv = \lambda \bfv,
+$$
+
+then $\lambda$ is an **eigenvalue** of $\bfA$ with associated **eigenvector** $\bfv$.
+::::
+
+If you think of $\bfA$ as acting on vectors, then an eigenvector is a direction in which the action of $\bfA$ is one-dimensional.
+
+For example, let $\bfA = -\dfrac{1}{6}\twomat{1}{5}{10}{-4}$. For any value of $\theta$, $\bfx = [\cos\theta,\sin\theta]$ is a vector in $\real^2$ in the direction of $\theta$. If we choose the direction randomly, then there is no special relationship between $\bfx$ (blue) and $\bfA\bfx$ (red). But in two special directions, the result $\bfA\bfx$ is parallel to $\bfx$. For these directions, $\bfx$ is an eigenvector, and the corresponding eigenvalue is either $1.5$ or $-1$.
+
+```{julia}
+V = [-2 1;4 1]
+D = [1.5 0;0 -1]
+A = V*D/V
+
+plot(size=(600,200),layout=(1,3),frame=:zerolines,aspect_ratio=1,xticks=[],yticks=[],xlims=[-1,1],ylims=1.4*[-1,1])
+t = (0:360)*2pi/360
+
+plot!(cos.(t),sin.(t),color=RGBA(0,0,0,.5),l=1,subplot=1)
+x = normalize([-1,-0.4])
+y = A*x
+plot!([0,x[1]],[0,x[2]],color=:darkblue,l=3,arrow=true,subplot=1)
+annotate!(x[1]/2+.1,x[2]/2-0.2,L"\mathbf{x}",color=:darkblue,subplot=1)
+plot!([0,y[1]],[0,y[2]],color=:red,l=3,arrow=true,subplot=1)
+annotate!(y[1]/2+.33,y[2]/2-0.1,L"\mathbf{Ax}",color=:red,subplot=1)
+
+plot!(cos.(t),sin.(t),color=RGBA(0,0,0,.5),l=1,subplot=2)
+x = normalize([-2,4])
+y = A*x
+plot!([0,y[1]],[0,y[2]],color=:red,l=3,arrow=true,subplot=2)
+plot!([0,x[1]],[0,x[2]],color=:darkblue,l=3,arrow=true,subplot=2)
+
+plot!(cos.(t),sin.(t),color=RGBA(0,0,0,.5),l=1,subplot=3)
+x = normalize([1,1])
+y = A*x
+plot!([0,y[1]],[0,y[2]],color=:red,l=3,arrow=true,subplot=3)
+plot!([0,x[1]],[0,x[2]],color=:darkblue,l=3,arrow=true,subplot=3)
+```
+
+### Eigenspaces
+
+An eigenvalue is a clean, well-defined target. Eigenvectors are a little slipperier. For starters, if $\bfA\bfv=\lambda\bfv$, then
+
+$$
+\bfA(c\bfv) = c(\bfA\bfv)=c(\lambda\bfv)=\lambda(c\bfv).
+$$
+
+:::{#thm-}
+Every nonzero multiple of an eigenvector is also an eigenvector at the same eigenvalue.
+:::
+
+But there can be even more ambiguity:
+
+::::{#exm-}
+Let $\meye$ be an identity matrix. Then $\meye\bfx=\bfx$ for any vector $\bfx$, so every nonzero vector is an eigenvector!
+::::
+
+Fortunately we already have the tools we need to describe a more robust target, based on the very simple reformulation
+
+$$
+\bfzero=\bfA\bfv-\lambda\bfv=(\bfA-\lambda\meye)\bfv.
+$$
+
+The requirement of an eigenvector to be nonzero, combined with @thm-FTLA1, leads to the following crucial conclusion.
+
+::::{#thm-eigenvalues-singular}
+$\lambda$ is an eigenvalue of $\bfA$ if and only if $\bfA-\lambda\meye$ is singular.
+::::
+
+::::{#def-linalg-eigenspace}
+# Eigenspace
+Let $\lambda$ be an eigenvalue of $\bfA$. The **eigenspace** associated with $\lambda$ is the null space of $(\bfA-\lambda\meye)\bfx$.
+::::
+
+Eigenspaces, unlike eigenvectors, are uniquely associated with their eigenvalues. We have to be a bit careful, though, because we usually express such spaces using basis vectors, and those bases are *not* themselves unique. It's also common in problems and discussions to use eigenvectors and silently ignore the nonuniqueness.
+
+### Properties
+
+::::{#thm-eigenvalues-properties}
+Suppose $\bfA$ is a square matrix.
+
+1. If $\lambda$ is an eigenvalue of $\bfA$, then $c\lambda$ is an eigenvalue of $c\bfA$ with the same eigenspace.
+2. If $\lambda$ is an eigenvalue of $\bfA$, then $\lambda-c$ is an eigenvalue of $\bfA-c\meye$ with the same eigenspace.
+3. If $\bfA$ is a triangular square matrix, then its eigenvalues are its diagonal elements.
+4. A matrix is singular if and only if $0$ is among its eigenvalues.
+::::
+
+Formally for part 3 of the theorem, a matrix is **upper triangular** if $a_{ij}=0$ whenever $i>j$, and it is **lower triangular** if $a_{ij}=0$ whenever $i<j$.
+
+::::{#exm-eigenvalues-triangular} 
+Find the eigenvalues and eigenspaces of 
+$\bfA = \begin{bmatrix} -2 & 4 & 0 \\ 0 & 1 & -3 \\ 0 & 0 & -2 \end{bmatrix}.$
+
+:::{.solution}
+Because the matrix is upper triangular, we see right away that its eigenvalues are $\lambda_1=-2$ and $\lambda_2=1$. The eigenspace for $\lambda_1$ is the null space of 
+
+$$
+\bfA - (-2)\meye = \begin{bmatrix} 0 & 4 & 0 \\ 0 & 3 & -3 \\ 0 & 0 & 0 \end{bmatrix}
+\quad \overset{\text{RREF}}{\Longrightarrow} \quad 
+\begin{bmatrix} 0 & 1 & 0 \\ 0 & 0 & 1 \\ 0 & 0 & 0 \end{bmatrix}.
+$$
+
+Since the solution of a homogeneous system with this matrix is $x_1=t$, $x_2=x_3=0$, the basis for this eigenspace is thus $[1,0,0]$. The eigenspace for $\lambda_2$ is the null space of 
+
+$$
+\bfA - (1)\meye = \begin{bmatrix} -3 & 4 & 0 \\ 0 & 0 & -3 \\ 0 & 0 & -3 \end{bmatrix}
+\quad \overset{\text{RREF}}{\Longrightarrow} \quad 
+\begin{bmatrix} 1 & -\frac{4}{3} & 0 \\ 0 & 0 & 1 \\ 0 & 0 & 0 \end{bmatrix}.
+$$
+
+A basis for this eigenspace is $[\frac{4}{3},1,0]$, though a more convenient choice is $[4,3,0]$.
+:::
+::::
+
+## Computing eigenvalues 
+
+The most common way to find eigenvalues by hand is to use the determinant to detect when $\bfA-\lambda\meye$ is singular, as required by @thm-eigenvalues-singular. This determinant has a particular form and name.
+
+:::{#def-matrix-charpoly}
+# Characteristic polynomial of a matrix
+Suppose $\bfA$ is an $n\times n$ matrix. The function $p(z) = \det(\bfA-z\meye)$ is a polynomial of degree $n$ in $z$ called the **characteristic polynomial** of $\bfA$.
+:::
+
+::::{#thm-} 
+# Eigenvalues and eigenspaces
+Given an $n\times n$ matrix $\bfA$:
+
+1. Find the characteristic polynomial $p$ of $\bfA$.
+2. Let $\lambda_1,\ldots,\lambda_k$ be the distinct roots of $p$. These are the eigenvalues. (If $k<n$, it's because one or more roots has multiplicity greater than 1.)
+3. For each $\lambda_j$, find the general solution of $(\bfA-\lambda_j\meye)\bfv=\bfzero$. This is the eigenspace associated with $\lambda_j$.
+::::
+
+::::{#exm-}
+Find the eigenvalues and eigenspaces of
+
+$$
+\bfA = \begin{bmatrix} 1 & 1 \\ 4 & 1 \end{bmatrix}.
+$$
+
+:::{.solution}
+Start by computing the characteristic polynomial:
+
+$$
+\det \left(\twomat{1}{1}{4}{1} - \twomat{\lambda}{0}{0}{\lambda} \right) = \twodet{1-\lambda}{1}{4}{1-\lambda} = (1-\lambda)^2 - 4 = \lambda^2-2\lambda-3.
+$$
+
+We find eigenvalues by finding its roots, in this case $\lambda_1=3$ and $\lambda_2=-1$. 
+
+For $\lambda_1=3$,
+
+$$
+\bfA-3 \meye = \twomat{-2}{1}{4}{-2} \quad \overset{\text{RREF}}{\Longrightarrow} \quad \twomat{1}{-1/2}{0}{0}.
+$$
+
+The homogeneous solution can be expressed as $x_1=s/2$, $x_2=s$, or $\bfx=s\cdot[1/2;\,1]$. So $[1/2;\,1]$ is a basis for this eigenspace. Since eigenvectors can be rescaled at will, we prefer to use $\twovec{1}{2}$ as the basis vector.
+
+For $\lambda_2=-1$,
+
+$$
+\bfA+ \meye = \twomat{2}{1}{4}{2} \quad \overset{\text{RREF}}{\Longrightarrow} \quad \twomat{1}{1/2}{0}{0},
+$$
+
+leading to the eigenspace basis $[-1/2;\,1]$ or equivalently, $\twovec{-1}{2}$.
+:::
+::::
+
+Because eigenvalues are the roots of the characteristic polynomials, real matrices can have complex eigenvalues occurring in conjugate pairs. We catch a little break from the following fact. 
+
+:::{#thm-}
+If $\bfv$ is an eigenvector for a complex eigenvalue $\lambda$ of a real matrix, then its conjugate $\overline{\bfv}$ is an eigenvector for $\overline{\lambda}$.
+:::
+
+::::{#exm-eigenvalues-complex} 
+Find eigenvalues and eigenspaces of $\bfA = \begin{bmatrix} 0 & 0 & 6 \\ 0 & 0 & -3 \\ -3 & -3 & 0 \end{bmatrix}.$
+
+:::{.solution}
+
+$$
+\det(\bfA - z\meye) = \begin{vmatrix}
+  -z & 0 & 6 \\ 0 & -z & -3 \\ -3 & -3 & -z
+\end{vmatrix}
+= -z(z^2-9) + 6(-3z) = -z(z^2+18-9) = -z(z+3i)(z-3i),
+$$
+
+which gives us $\lambda_1=0$, $\lambda_2=3i$, $\lambda_3=-3i$. 
+
+The eigenspace for $\lambda_1$ is the null space of
+
+$$
+\bfA - (0)\meye = \begin{bmatrix} 0 & 0 & 6 \\ 0 & 0 & -3 \\ -3 & -3 & 0 \end{bmatrix}
+\quad \overset{\text{RREF}}{\Longrightarrow} \quad 
+\begin{bmatrix} 1 & 1 & 0 \\ 0 & 0 & 1 \\ 0 & 0 & 0 \end{bmatrix}.
+$$
+
+The only free column is the second, and a basis for this eigenspace is $[-1,1,0]$.
+
+The eigenspace for $\lambda_2$ is the null space of
+
+$$
+\bfA - (3i)\meye = \begin{bmatrix} -3i & 0 & 6 \\ 0 & -3i & -3 \\ -3 & -3 & -3i \end{bmatrix}
+\quad \overset{\text{RREF}}{\Longrightarrow} \quad 
+\begin{bmatrix} 1 & 0 & 2i \\ 0 & 1 & -i \\ 0 & 0 & 0 \end{bmatrix}.
+$$
+
+The third column is free, and a basis for this eigenspace is $[-2i,i,1]$.
+
+Because $\lambda_3$ is the conjugate of $\lambda_2$, its eigenspace has basis $[2i,-i,1]$.
+:::
+::::
+
+### Eigenvectors for $2\times 2$
+
+Finding the exact roots of a cubic polynomial is rarely easy. Thus most of our hand computations will be for $2\times 2$ matrices. This allows some shortcuts.
+
+Suppose $\lambda$ is known to be an eigenvalue of $\bfA$. Then $\bfA-\lambda\meye$ must be singular, and its RRE form has at least one free column. In the $2\times 2$ case, row elimination must therefore zero out the second row entirely, which spares us from having to do the process at all.
+
+In summary, we can deduce the following.
+
+:::{#thm-}
+# Eigenvectors for $2\times 2$
+Given an eigenvalue $\lambda$ of $2\times 2$ matrix $\bfA$, let the first row of $\bfA-\lambda\meye$ be written as the vector $[\alpha,\beta]$. 
+
+- If $\alpha=\beta=0$, then $\bfA-\lambda\meye$ is a zero matrix and all of $\complex^2$ is the eigenspace of $\lambda$.
+- Otherwise, the vector $[\beta;\,-\alpha]$ is a basis of the eigenspace of $\lambda$.
+:::
+
+::::{#exm-}
+Find the eigenstuff of 
+
+$$
+\bfA = \twomat{1}{1}{-1}{1}.
+$$
+
+:::{.solution}
+We start by finding eigenvalues. 
+
+$$
+\det(\bfA - \lambda \meye) = \twodet{1-\lambda}{1}{-1}{1-\lambda} = (1-\lambda)^2 + 1.
+$$
+
+The eigenvalues are therefore roots of $\lambda^2 - 2\lambda + 2$, or 
+
+$$
+\lambda = 1 \pm \sqrt{1-2} = 1 \pm i.
+$$
+
+This is our first case of a real matrix that has complex eigenvalues. We continue as always, only using complex arithmetic.
+
+The eigenspace for $\lambda_1=1+i$ is the homogeneous solution of 
+
+$$
+\bfA - (1+i) \meye = \twomat{-i}{1}{-1}{-i}.
+$$
+
+To find a basis we just use the first row as explained above, getting $\twovec{1}{i}$. 
+
+Since the matrix is real, a basis for the other eigenspace can be found by conjugating this one to get $\twovec{1}{-i}$.
+:::
+::::
+
+## Diagonalization 
+
+The eigenvalues of a matrix are the roots of its characteristic polynomial $p$. In the general $n\times n$ case, we can factor $p$ as
+
+$$
+p(z) = (z-\lambda_1)^{m_1}(z-\lambda_2)^{m_2}\cdots(z-\lambda_k)^{m_k},
+$$
+
+for positive integer exponents such that $m_1+\cdots+m_k=n$. These exponents are the multiplicities of the roots, and that idea carries to the eigenvalues as well.
+
+::::{#def-linalg-algmult}
+# Algebraic multiplicity
+The **algebraic multiplicity** of an eigenvalue is its multiplicity as a root of the characteristic polynomial.
+::::
+
+### Geometric multiplicity
+
+The following example illustrates a possibility for eigenvalues of algebraic multiplicity greater than 1.
+
+::::{#exm-diagonalization-defective}
+Find the eigenspaces of $\bfA=\twomat{4}{1}{0}{4}$.
+
+:::{.solution}
+The characteristic polynomial is 
+
+$$
+\twodet{4-\lambda}{1}{0}{4-\lambda} = (4-\lambda)^2,
+$$
+
+so the double root $\lambda_1=4$ is the only eigenvalue. Since
+
+$$
+\bfA - 4\meye = \twomat{0}{1}{0}{0},
+$$
+
+the eigenspace has basis $\twovec{1}{0}$.
+:::
+::::
+
+This leads us to define a second notion of multiplicity for an eigenvalue. 
+
+::::{#def-linalg-geomult}
+# Geometric multiplicity
+The **geometric multiplicity** of an eigenvalue is the dimension of its associated eigenspace.
+::::
+
+Here is an important fact we won't try to justify.
+
+::::{#thm-}
+If $\text{AM}$ and $\text{GM}$ are the algebraic and geometric multiplicities respectively of an eigenvalue, then 
+
+$$
+1 \le \text{GM} \le \text{AM}.
+$$
+::::
+
+### Defectiveness
+
+In the @exm-diagonalization-defective we found a lone eigenvalue $\lambda_1=4$ of algebraic multiplicity 2 whose geometric multiplicity is 1. The identity matrix is a different sort of example.
+
+::::{#exm-}
+The $2\times 2$ identity matrix $\meye$ has a lone eigenvalue $\lambda_1=1$ of algebraic multiplicity 2. The system $(\meye - \meye)\bfv=\bfzero$ has an RRE form that is the zero matrix, so there are two free variables and two basis vectors. Hence the geometric multiplicity of $\lambda_1$ is also 2.
+::::
+
+The distinction between these cases is significant enough to warrant another definition.
+
+
+::::{#def-}
+# Defectiveness
+An eigenvalue $\lambda$ whose geometric multiplicity is strictly less than its algebraic multiplicity is said to be **defective**. A matrix is called defective if any of its eigenvalues are defective.
+::::
+
+As we will see later, defective matrices often complicate the application of eigenvalue analysis. 
+
+Since multiplicities are always at least one, there is a simple and common case in which we are certain that a matrix is not defective.
+
+::::{#thm-}
+# Distinct eigenvalues
+If $\bfA\in\cmn{n}{n}$ has $n$ distinct eigenvalues, then $\bfA$ is not defective.
+::::
+
+For $n=2$, the possibilities in the case of algebraic multiplicity equal to 2 are easy to pin down even further. 
+
+::::{#thm-la-2x2defective}
+# $2\times 2$ defectiveness
+Any $\bfA\in\cmn{2}{2}$ that has a single repeated eigenvalue is either defective or a multiple of the identity matrix. 
+::::
+
+### Diagonalization
+
+Suppose $\bfA$ is $n\times n$ and that it has eigenvalues $\lambda_1,\ldots,\lambda_n$ associated with linearly independent eigenvectors $\bfv_1,\ldots,\bfv_n$. Writing out the equations $\bfA\bfv_j = \lambda_j \bfv_j$ in columns, we find
+
+$$
+\begin{split}
+\begin{bmatrix}
+  \bfA \bfv_1 & \bfA \bfv_2 & \cdots & \bfA \bfv_n
+\end{bmatrix}
+&= \begin{bmatrix}
+  \lambda_1 \bfv_1 & \lambda_2 \bfv_2 & \cdots & \lambda_n \bfv_n
+\end{bmatrix} \\ 
+\bfA \begin{bmatrix}
+  \bfv_1 & \bfv_2 & \cdots & \bfv_n
+\end{bmatrix}
+&= \begin{bmatrix}
+  \bfv_1 &  \bfv_2 & \cdots & \bfv_n
+\end{bmatrix} \begin{bmatrix}
+  \lambda_1 & & & \\ & \lambda_2  & & \\ & & \ddots & \\ & & & \lambda_n
+\end{bmatrix} \\ 
+\bfA \bfV &= \bfV \mathbf{D},
+\end{split}
+$$
+
+where we defined
+
+$$
+\bfV = \begin{bmatrix} \bfv_1 &  \bfv_2 & \cdots & \bfv_n \end{bmatrix}, \qquad 
+\mathbf{D} = \begin{bmatrix}
+  \lambda_1 & & & \\ & \lambda_2  & & \\ & & \ddots & \\ & & & \lambda_n
+\end{bmatrix}.
+$$ {#eq-diagonalization-VD}
+
+Since we assumed that the columns of $\bfV$ are linearly independent vectors, the column space of $\bfV$ is $n$-dimensional. Hence $\rank(\bfV)=n$ and $\bfV$ is invertible. 
+
+::::{#def-diagonalization-diag}
+# Diagonalization
+A **diagonalization** of square matrix $\bfA$ is the factorization
+
+$$
+\bfA = \bfV \mathbf{D} \bfV^{-1},
+$$ {#eq-diagonalization-similar}
+
+where (as defined in @eq-diagonalization-VD) $\mathbf{D}$ is a diagonal matix of eigenvalues and $\bfV$ is a square matrix whose columns are corresponding eigenvectors.
+::::
+
+What can we do about the requirement of linearly independent eigenvectors in the columns of $\bfV$? Without wading into the details, the following wraps this assumption up nicely.
+
+::::{#thm-diagonalization-diag} 
+A matrix has a diagonalization if and only if it is not defective.
+::::
+

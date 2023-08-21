@@ -18,6 +18,8 @@ $$
     \newcommand{\bfy}{\mathbf{y}}
     \newcommand{\bfz}{\mathbf{z}}
     \newcommand{\bfA}{\mathbf{A}}
+    \newcommand{\bfB}{\mathbf{B}}
+    \newcommand{\bfV}{\mathbf{V}}
     \newcommand{\bfW}{\mathbf{W}}
     \newcommand{\bfX}{\mathbf{X}}
     \newcommand{\bfzero}{\boldsymbol{0}}
@@ -40,8 +42,8 @@ $$
     \newcommand{\threevec}[3]{\begin{bmatrix} #1 \\ #2 \\ #3 \end{bmatrix}}
     \newcommand{\twomat}[4]{\begin{bmatrix} #1 & #2 \\ #3 & #4 \end{bmatrix}}
     \newcommand{\twodet}[4]{\begin{vmatrix} #1 & #2 \\ #3 & #4 \end{vmatrix}}
-    \newcommand{\eye}[1]{\mathbf{e}_#1"}
-    \newcommand{\meye}[1]{\mathbf{I}"}
+    \newcommand{\eye}[1]{\mathbf{e}_#1}
+    \newcommand{\meye}{\mathbf{I}}
     \newcommand{\diag}{\operatorname{diag}}
     \newcommand{\sign}{\operatorname{sign}}
     \newcommand{\dist}{\operatorname{dist}}
@@ -55,7 +57,7 @@ $$
     \newcommand{\nullity}{\operatorname{nullity}}
     \newcommand{\rowsp}{\operatorname{rowsp}}
     \newcommand{\colsp}{\operatorname{colsp}}
-    \newcommand{\dim}{\operatorname{dim}}
+    % \newcommand{\dimen}{\operatorname{dim}}
     \newcommand{\augmat}[2]{\left[ #1 \;\middle|\; #2 \right]}
 $$
 :::
