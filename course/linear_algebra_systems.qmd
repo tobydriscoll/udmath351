@@ -1,0 +1,933 @@
+---
+format:
+  html:
+    code-fold: true
+jupyter:
+  jupytext:
+    cell_metadata_filter: '-all'
+    text_representation:
+      extension: .qmd
+      format_name: quarto
+      format_version: '1.0'
+      jupytext_version: 1.15.0
+  kernelspec:
+    display_name: Julia 1.9
+    language: julia
+    name: julia-1.9
+---
+
+# Linear algebraic equations
+
+::: {.content-visible unless-format="pdf"}
+{{< include _macros.qmd >}}
+:::
+
+```{julia}
+using Plots, DifferentialEquations
+default(label="", linewidth=3, markersize=4, size=(500,320))
+```
+
+## Overview 
+
+It might feel silly, but let's review what it means to solve the linear equation
+
+$$ax = b$$
+
+for $x$.
+
+- If $a\neq 0$, there is a unique solution, $x=b/a$.
+- Otherwise,
+   - If also $b=0$, then every value of $x$ is a valid solution.
+   - Otherwise, there are no solutions.
+
+It turns out that no matter how many equations and variables we have, the only three possibilites are the ones above: zero, one, or infinitely many solutions. The main difference is that the condition "$a=0$" has to be generalized.
+
+::::{#def-linsys-consistent} 
+# Consistent linear system
+A linear system that has at least one solution is called **consistent**. Otherwise, it is **inconsistent**.
+::::
+
+### Two variables
+
+Going one more baby step to two equations in two variables, we want to solve
+
+$$
+\begin{align*}
+ax + by &= f, \\
+cx + dy &= g.
+\end{align*}
+$$
+
+There is some easy geometric intuition here. Each equation represents a straight line in the plane, and solving both equations simultaneously means finding an intersection of these lines. Our cases above translate directly into:
+
+- If the lines are not parallel, there is a unique solution.
+- Otherwise,
+   - If the lines are identical, there are infinitely many solutions.
+   - Otherwise, there are no solutions.
+
+It's not hard to turn those statements into algebraic conditions. The slopes of the two lines are (ignoring infinities for a moment) $-a/b$ and $-c/d$, and we can say the slopes are equal if and only if $ad=bc$.
+
+- If $ad \neq bc$, there is a single solution.
+- Otherwise,
+   - If one equation is a multiple of the other, there are infinitely many solutions.
+   - Otherwise, there are no solutions.
+
+::::{#exm-}
+Find all solutions to the equations
+
+$$
+\begin{align*}
+x - 3y & = 1, \\
+-2x + 6y & = 2.
+\end{align*}
+$$
+
+:::{.solution}
+We identify $(a,b,c,d)=(1,-3,-2,6)$, and $ad-bc=6-6=0$. So we know there is not a unique solution (i.e., the lines are parallel). Dividing the second equation by $-2$ leads to the equivalent system
+
+$$
+\begin{align*}
+x - 3y & = 1, \\
+x - 3y & = -1.
+\end{align*}
+$$
+
+It's now clear that there is no way to satisfy both equations simultaneously. The system is inconsistent.
+:::
+::::
+
+### General case
+
+Time to put on our big-kid pants. For $m$ equations in $n$ variables, we need to use subscripts rather than different letters for everything.
+
+::::{#def-linsys-system}
+A **linear-algebraic system**, usually just written **linear system**, is the set of simultaneous equations
+$$
+\begin{align*}
+A_{11} x_1 + A_{12} x_2 + \cdots + A_{1n} x_n & = b_1 \\
+A_{21} x_1 + A_{22} x_2 + \cdots + A_{2n} x_n & = b_2 \\
+& \vdots \\
+A_{m1} x_1 + A_{m2} x_2 + \cdots + A_{mn} x_n & = b_m,
+\end{align*}
+$$ {#eq-linsys-def}
+where all the $A_{ij}$ and $b_i$ are assumed to be known. A **solution** of the system is a list of values $x_1,\ldots,x_n$ that makes all the equations true. 
+::::
+
+We want to gather similar elements in @eq-linsys-def into collective mathematical objects.
+
+::::{#def-linsys-vector} 
+# Vector
+A **vector** is a finite collection of numbers known as its **elements**. The set of all vectors with $n$ real-valued elements is denoted $\real^n$. If the elements are complex numbers, we use the symbol $\complex^n$. 
+::::
+
+I use boldfaced lowercase letters to represent vectors, and a subscript to refer to an individual element within one. For instance, $x_3$ is the third element of a vector $\bfx$. 
+
+Next, we come to the doubly-indexed values $A_{ij}$. The first index is the equation number, and the second corresponds to the variable number. This implies a 2D table or array of values.
+
+::::{#def-linsys-matrix} 
+# Matrix
+A **matrix** is an $m\times n$ array of numbers known as its **elements**. The set of all $m\times n$ matrices with real elements is denoted $\rmn{m}{n}$, and with complex elements it's $\cmn{m}{n}$. 
+::::
+
+I use boldfaced uppercase letters to represent matrices, and a pair of subscripts to refer to an individual element within one. For instance, $A_{23}$ is the element in row 2, column 3 of the matrix $\bfA$.
+
+:::{.callout-important}
+Matrix subscripts are always in the order row first, column second. (This is the opposite of Excel---which is just one of myriad reasons that Excel is evil.)
+:::
+
+In the context of @eq-linsys-def, we call the $m\times n$ matrix $\bfA$ the **coefficient matrix** of the linear system. 
+
+::: {.callout-important}
+The rows of the coefficient matrix correspond to the equations in the linear system, and the columns correspond to the variables of the system.
+:::
+
+The vector $\bfb\in\real^m$ implied in @eq-linsys-def doesn't have a standard name, but I will call it the **forcing vector** by analogy with linear ODEs. Altogether, $\bfA$ and $\bfb$ are the data of the linear system, and the vector $\bfx \in \real^{n}$ is the solution.
+
+::::{#exm-}
+Sometimes zeros are needed as placeholders in the coefficient matrix. In the linear system
+
+$$
+\begin{align*}
+  x_1 - x_2 + 3 x_3 &= 4,\\
+  2x_2 + 5x_4 &= -1,
+\end{align*}
+$$
+
+the coefficient matrix is $2\times 4$, 
+
+$$
+\bfA =
+\begin{bmatrix}
+1 & -1 & 3 & 0 \\ 0 & 2 & 0 & 5
+\end{bmatrix},
+$$
+
+and the right-side vector is $\twovec{4}{-1}$.
+::::
+
+:::{.callout-note}
+We can regard a vector $\bfx \in \real^n$ as also being a matrix, in two ways: as a member of $\rmn{1}{n}$, making it a **row vector**, or as a member of $\rmn{n}{1}$, making it a **column vector**. Our default is that when we want to interpret a named vector as a matrix, it's a column vector. Note, however, that Python assumes a row vector, MATLAB lets you choose either, and Julia considers it a column vector. It's a mess that can lead to frustrating errors in computer codes.
+:::
+
+## Row elimintation
+
+You've probably solved small systems of equations by substitution. In order to solve systems with more equations and variables, we systematize this idea as an *elimination algorithm*. The goal of elimination is to transform the system to an equivalent one whose solution(s) we can deduce easily. There are three legal moves in this game:
+
+::::{#def-row_elimination-operations} 
+# Row operations
+1. Swap the positions of two equations.
+2. Multiply an equation by a nonzero constant.
+3. Add a multiple of one equation to another equation.
+::::
+
+::: {.callout-note}
+Recall that the equations of a linear system correspond to rows of the coefficient matrix $\bfA$ and forcing vector $\bfb$, hence the name "row operations."
+:::
+
+All the row operations are reversible. Therefore, *solutions of a linear system remain unchanged after a row operation.*
+
+:::::{#exm-gauss-elimination}
+Use elimination to solve the $3\times 3$ system
+
+$$
+\begin{align*}
+x_1 - x_2  - x_3 & = 2, \\
+3x_1 - 2x_2 & = 9, \\
+x_1 - 2x_2 - x_3 & = 5.
+\end{align*}
+$$
+::::{.solution}
+The first step is to use the first equation to eliminate $x_1$ from the second and third equations. We therefore add $-3$ times equation 1 to equation 2, and $-1$ times equation 1 to equation 3:
+
+$$
+\begin{align*}
+ x_1 - x_2  - x_3  & = 2, \\
+(3x_1 - 2x_2) - 3(x_1 - x_2  - x_3) & = 9 - 3(2),\\
+(x_1 - 2x_2 - x_3) - 1(x_1 - x_2  - x_3) & = 5 - 1(2) .
+\end{align*}
+$$
+
+This takes us to
+$$
+\begin{align*}
+ x_1 - x_2  - x_3  & = 2,  \\
+x_2 + 3x_3 &= 3, \\
+-x_2 &= 3.
+\end{align*}
+$$
+
+::: {.callout-note}
+It's tempting to grab that last equation above and use it to remove $x_2$ from everything else. That move certainly works out here. But in the context of a fully automatic algorithm that works every time, we will continue as though the last equation still might contain a dependence on $x_3$. 
+:::
+
+Next, we leave the first equation alone and use the second to eliminate $x_2$ from all the others below it.
+
+$$
+\begin{align*}
+ x_1 - x_2  - x_3  & = 2, \\
+x_2 + 3x_3 & = 3, \\
+(-x_2) + (x_2+3x_3)  & = 3 + 3.
+\end{align*}
+$$
+
+We now have a system in **triangular** form,
+
+$$
+\begin{align*}
+ x_1 - x_2  - x_3  & = 2, \\
+x_2 + 3x_3 & = 3, \\
+3x_3  & = 6.
+\end{align*}
+$$
+
+We can now deduce that $x_3=2$ from the last equation. Moving up to the second equation, we then find that $x_2=3-3(2)=-3$. Finally, the first equation yields $x_1=2+(-3)+(2)=1$.
+::::
+:::::
+
+The process in @exm-gauss-elimination leading to triangular system is commonly known as **Gaussian elimination**. (It's a poor name, as the process was known at least in China thousands of years before Gauss.) Finding the solution from the triangular form is called **backward substitution**.
+
+### Gauss-Jordan elimination
+
+An alternative to backward substitution is to transform the triangular system into something even simpler.
+
+::::{#exm-gauss-jordan} 
+We continue from the end of @exm-gauss-elimination.  Having reached the last variable and equation, we turn around and eliminate *upwards* instead:
+
+$$
+\begin{align*}
+(x_1 - x_2 - x_3) + \frac{1}{3}(3x_3) & = 2  +\frac{1}{3}(6), \\
+(x_2 + 3x_3) - (3x_3) & = 3 - (6),\\
+3x_3  & = 6.
+\end{align*}
+$$
+
+This leaves the system as
+$$
+\begin{align*}
+ x_1  -x_2 & = 4,\\
+x_2 & = -3,\\
+3x_3  & = 6.
+\end{align*}
+$$
+
+Moving upwards to the second equation, and use it to eliminate within the one above it:
+
+$$
+\begin{align*}
+(x_1 - x_2 ) + (x_2) & = 4  + (-3),\\
+x_2 & = -3,\\
+3x_3  & = 6. 
+\end{align*}
+$$
+The system is now trivial: $x_1=1$, $x_2=-3$, and $x_3=2$.
+::::
+
+The process above is called **Gauss–Jordan elimination**, or more simply, **row elimination**. 
+
+### Matrix form
+
+Before generalizing the elimination process, we will lighten the notational load by using matrices. 
+
+::::{#def-linsys-augmented}
+The **augmented matrix** of the linear system @eq-linsys-def is the $m\times (n+1)$ matrix $\mathbf{G} = \augmat{\bfA}{\bfb}$.
+::::
+
+We start with  that contains all the equation coefficients and right-side values. 
+
+Let's look at elimination in this form for the system
+
+$$
+\begin{align*}
+x_1 - x_2 - x_3 &= 2, \\ 
+3x_1-2x_2 &= 9, \\ 
+x_1-2x_2-x_3 &= 5. 
+\end{align*}
+$$
+
+This system has the augmented matrix
+
+$$
+\mathbf{G} = 
+\begin{bmatrix}
+1 & -1 & -1 & 2 \\
+3 & -2 & 0 & 9 \\
+1 & -2 & -1 & 5
+\end{bmatrix}.
+$$
+
+To ease the arithmetic, we do the elimination in Julia.
+
+```{julia}
+G = Rational.([1 -1 -1 2; 3 -2 0 9; 1 -2 -1 5])
+```
+
+The first elimination step uses multiples of the first row to eliminate below it.
+
+```{julia}
+G[2,:] = G[2,:] - 3*G[1,:]
+G
+```
+
+```{julia}
+G[3,:] = G[3,:] - 1*G[1,:]
+G
+```
+
+Next we use the second row to eliminate below it.
+
+```{julia}
+G[3,:] -= (-1)*G[2,:]
+G
+```
+
+Having reached the last row, we turn around and use it to eliminate above it in column 3.
+
+```{julia}
+G[2,:] -= 1*G[3,:]
+G
+```
+
+```{julia}
+G[1,:] -= (-1/3)*G[3,:]
+G
+```
+
+We move up to the second row and eliminate above that in column 2.
+
+```{julia}
+G[1,:] -= (-1)*G[2,:]
+G
+```
+
+Finally, to be super pedantic, we normalize the last row by its leading nonzero.
+
+```{julia}
+G[3,:] = G[3,:]/G[3,3]
+G
+```
+
+The result is the augmented matrix of the system
+
+$$
+\begin{matrix}
+x_1 & & &= &1 \\
+& x_2 & &= &-3 \\
+& & x_3 &= &2,
+\end{matrix}
+$$
+
+whose solution is obvious.
+
+Here's an example that works out differently, starting from the augmented matrix
+
+$$
+\begin{bmatrix}
+1 & 1 & -1 & 4 \\
+1 & 2 & 2 & 3 \\
+2 & 1 & -5 & 9
+\end{bmatrix}.
+$$
+
+First, we use multiples of the first row to eliminate in the first column below it.
+
+```{julia}
+G = [ 1 1 -1 4; 1 2 2 3; 2 1 -5 9]
+G[2,:] = G[2,:] - 1*G[1,:]
+G[3,:] = G[3,:] - 2*G[1,:]
+G
+```
+
+Now use a multiple of the second row to put a zero underneath it in column 2.
+
+```{julia}
+G[3,:] -= (-1)*G[2,:]
+G
+```
+
+We have reached the last row, and it's time to turn around and eliminate upwards. But because the last row is entirely zero, it can't make changes to the rows above it. So we skip that and move up to the second row, eliminating upwards in the second column.
+
+```{julia}
+G[1,:] -= 1*G[2,:]
+G
+```
+
+This is as simple as we can get things. The last row is telling us the astounding fact that $0=0$—i.e., nothing at all. The other two rows imply
+
+$$
+\begin{align*}
+x_1 &= 5 + 4x_3, \\
+x_2 &= -1 - 3x_3.
+\end{align*}
+$$
+
+Since the third row gave us no information, we take the attitude that $x_3$ is unrestricted. That is,
+$$
+\begin{align*}
+x_1 &= 5 + 4s, \\
+x_2 &= -1 - 3s, \\
+x_3 &= s.
+\end{align*}
+$$
+
+is a solution for any value of $s$, and we have an infinite family of solutions.
+
+## RREF 
+
+It's time to get more formal and precise about row elimination. 
+
+We perform elimination on the augmented matrix. Previously we used row operations going top to bottom on the rows, left to right with the columns, to put the matrix into triangular form. We refer to this process now as the *downward phase* of elimination.
+
+::::{#def-rref-leading}
+The **leading nonzero** of a matrix row is the leftmost nonzero element of that row.
+::::
+
+::::{#thm-linalg-phase1}  
+# Row elimination downward phase
+1. Set $i=1$.
+2. Find the leftmost leading nonzero in rows $i$ and below. The column of this leading nonzero is known as the **pivot column**. If no such column exists, stop.
+3. As necessary, swap rows and/or multiply a row by a constant to put a 1 in the pivot column of row $i$.
+4. Add multiples of row $i$ to the rows below it in order to introduce zeros into the pivot column.
+5. Increment $i$ and return to step 2.
+::::
+
+At the end of the downward phase, the augmented matrix is triangular, which is enough for solving a single system through backward substitution. However, it's not the cleanest form to work with theoretically, so we continue.
+
+::::{#thm-linalg-phase2} 
+# Row elimination upward phase
+1. Set $i=m$ (the number of equations).
+2. Use multiples of row $i$ to put zeros above the leading 1 in that row.
+3. Decrement $i$. If $i> 1$, return to step 2.
+::::
+
+At the end of the upward phase, the matrix has been put into a form that we define formally here.
+
+::::{#def-linalg-RREF} 
+# RRE form
+
+A matrix is in **RRE form** (reduced row-echelon form) if it meets all of these requirements:
+
+1. Any rows of all zeros appear below all nonzero rows.
+2. The leading nonzero of any row is a one.
+3. Every leading 1 that is lower than another leading 1 is also to the right of it.
+4. Every leading 1 is the only nonzero in its column.
+
+The columns that have leading ones are called **pivot columns**. The other columns are called **free columns**.
+::::
+
+There are two things that make RRE form useful. One is that it makes a unique target we can always reach:
+
+::::{#thm-RREF-unique} 
+Every matrix is equivalent to a unique matrix in RRE form.
+::::
+
+The other useful fact is that RRE form completely exposes everything we want to know about a linear system. In fact, everything else we will do theoretically with matrices comes back to the RRE form.
+
+### Extended example
+
+Here is an example of reduction to RRE form for a linear system 
+
+$$
+\bfA = \begin{bmatrix}
+2 & 0 & 4 & 3 \\ -2 & 0 & 2 & -13 \\ -4 & 5 & -7 & -10 \\ 1 & 15 & 2 & -4.5
+\end{bmatrix}, \qquad 
+\bfb = \begin{bmatrix}
+4\\40\\9\\29
+\end{bmatrix}.
+$$
+
+```{julia}
+A = [
+     2    0    4    3 
+    -2    0    2  -13
+    -4    5   -7  -10 
+     1   15    2   -4.5
+    ];
+b = [ 4, 40, 9, 29 ];
+
+S = [A b]
+```
+
+We start at the top, working downward and rightward. In the first row, the leading nonzero occurs in column 1, which is the pivot column for this row. We normalize this row so that the leading nonzero is a 1.
+
+```{julia}
+S[1,:] = S[1,:]/S[1,1]
+S
+```
+
+Now multiples of row 1 are added to the rows below it in order to put zeros in the first column.
+
+```{julia}
+S[2,:] = S[2,:] - S[2,1]*S[1,:]
+S[3,:] = S[3,:] - S[3,1]*S[1,:]
+S[4,:] = S[4,:] - S[4,1]*S[1,:]
+S
+```
+
+Looking at rows 2 to 4, we see that the leftmost nonzero occurs in column 2. Since row 2 has a zero there, we swap rows 2 and 3 to bring a nonzero up.
+
+```{julia}
+S[2:3,:] = S[[3,2],:]
+S
+```
+
+Now we normalize row 2 so that the leading nonzero is a 1.
+
+```{julia}
+S[2,:] = S[2,:]/S[2,2]
+S
+```
+
+Multiples of row 2 are now used to put zeros below it in the pivot column.
+
+```{julia}
+S[3,:] = S[3,:] - S[3,2]*S[2,:]
+S[4,:] = S[4,:] - S[4,2]*S[2,:]
+S
+```
+
+Rows 3 and 4 have a pivot in column 3, and we only need to normalize row 3 to make it 1. Then we subtract a multiple of row 3 from row 4 to put a zero beneath it.
+
+```{julia}
+S[3,:] = S[3,:]/S[3,3];
+S[4,:] = S[4,:] - S[4,3]*S[3,:]
+S
+```
+
+We complete the downward phase by normalizing row 4 to get a leading 1.
+
+```{julia}
+S[4,:] = S[4,:]/S[4,4]
+S
+```
+
+Now we turn around for the upward phase. The leading 1 in row 4 needs to have zeros above it. We accomplish that by subtracting multiples of row 4 from the others.
+
+```{julia}
+S[3,:] = S[3,:] - S[3,4]*S[4,:]
+S[2,:] = S[2,:] - S[2,4]*S[4,:]
+S[1,:] = S[1,:] - S[1,4]*S[4,:]
+S
+```
+
+We move up to row 3 and use multiples of it to put zeros above its leading 1.
+
+```{julia}
+S[2,:] = S[2,:] - S[2,3]*S[3,:]
+S[1,:] = S[1,:] - S[1,3]*S[3,:]
+S
+```
+
+The last move is to use a multiple of row 2 to put a zero above its leading 1. As it has played out in this example, this line of code changes nothing because the position was already zero.
+
+```{julia}
+S[1,:] = S[1,:] - S[1,2]*S[2,:]
+S
+```
+
+This matrix is in RREF. We interpret it as the trivial linear system
+
+$$
+\begin{align*}
+x_1 &= -3,\\ x_2 &= 1,\\ x_3 &= 4, \\ x_4 &= -2.
+\end{align*}
+$$
+
+:::{.callout-tip}
+You can [use Wolfram Alpha]("https://www.wolframalpha.com/input/?i=rref%20%7B%7B1%2C2%2C3%7D%2C%7B4%2C5%2C6%7D%2C%7B7%2C8%2C9%7D%7D") for finding the RRE form of a matrix.
+:::
+
+::: {.callout-caution}
+While MATLAB has an `rref` command, it should not be relied on. It isn't really MATLAB's fault; the RRE form is a terrible target for numerical computations, because it is infinitely sensitive to rounding errors, and MATLAB calculates using numerical approximations for speed.
+:::
+
+### Solution from the RRE form
+
+The RRE form of an augmented matrix represents a linear system that we can solve by inspection:
+
+1. Ignore all zero rows.
+2. If a leading one occurs in the last column, the system is inconsistent.
+3. Otherwise, each variable associated with a free column is assigned to a free parameter (e.g., $s$, $t$, etc.).
+4. Use the pivot columns to solve for their corresponding variables in terms of the free parameters.
+
+::::{#exm-RREF-multiple}
+A linear system has an augmented matrix equivalent to the RRE form
+
+$$
+\begin{bmatrix}
+0 & 1 & -3 & 0 & 2 \\
+0 & 0 & 0  & 1 & -4 \\
+0 & 0 & 0  & 0 & 0  \\
+0 & 0 & 0  & 0 & 0  
+\end{bmatrix}.
+$$
+
+Find all solutions to the linear system.
+
+:::{.solution}
+The last two rows have no information and can be ignored. Columns 2 and 4 are pivot columns. We give variables from the other columns arbitrary values, $x_1=s$ and $x_3=t$. The pivot variables are solved in terms of these to get $x_2=2+3t$ and $x_4=-4$. All solutions are expressed as the vector
+
+$$
+\bfx = \begin{bmatrix}
+s \\ 2+3t \\ t \\ -4
+\end{bmatrix}, \qquad s,t\in \real.
+$$
+:::
+::::
+
+::::{#exm-}
+A linear system has an augmented matrix equivalent to the RRE form
+
+$$
+\begin{bmatrix}
+1 & 0 & -4 & 0 & 0 \\
+0 & 1 & 1  & 0 & 0 \\
+0 & 0 & 0  & 1 & 0  \\
+0 & 0 & 0  & 0 & 1
+\end{bmatrix}.
+$$
+
+Find all solutions to the linear system.
+
+:::{.solution}
+Look at the last row of the system. It expresses the equation $0=1$, which is impossible to satisfy. Thus the system is inconsistent.
+:::
+::::
+
+### Rank
+
+Leaving aside the actual calculation of solutions, a glance at the RRE form tells us instantly whether the system has no solution, a unique solution, or infinitely many solutions. Because of the requirements on leading ones in the RREF definition, the outcomes are constrained simply by how many of those ones there are.
+
+::::{#def-RREF-rank} 
+# Rank
+The **rank** of a matrix is the number of pivot columns in its RRE form, i. e., the number of leading ones.
+::::
+
+::::{#thm-RREF-rank} 
+If $\bfA$ is an $m\times n$ matrix, then $\rank(\bfA) \le m$ and $\rank(\bfA) \le n$.
+::::
+:::{.proof}
+Each leading one in the RRE form requires a row and column of its own.
+:::
+
+::::{#thm-RREF-deficient} 
+Suppose $\bfA$ is $m\times n$. If $\rank(\bfA)<n$, then the linear system with augmented matrix $\augmat{\bfA\}{\bfb}$ cannot have a unique solution. It is inconsistent for some choices of $\bfb$ and has infinitely many solutions for other choices of $\bfb$.
+::::
+:::{.proof}
+Let $r=\rank(\bfA)$. Then the RRE form of $\bfA$ has all zero elements in rows $r+1$ to $m$. Now augment $\bfA$ with $\bfb$ and perform the row operations that reduce $\bfA$ to RRE form. If there are any nonzeros in rows $r+1$ to $m$ of the last column, the system is inconsistent. Otherwise, the system has at least one free variable. We can start with either type of outcome and run the row elimination process backward to find a $\bfb$ that led to it.
+:::
+
+::::{#cor-RREF-nonunique} 
+A linear system with more variables than equations cannot have a unique solution.
+::::
+:::{.proof}
+$\rank(\bfA) \le m < n$.
+:::
+
+## Nullspaces 
+
+There are only three possible outcomes for a linear system, all deducible from the RRE form of the augmented matrix:
+
+1. There is a leading 1 in the last column, in which case there are no solutions.
+2. There are fewer pivot columns than variables, in which case there are infinitely many solutions.
+3. There is a unique solution.
+
+There is an important situation where we can rule out case 1 above.
+
+::::{#def-nullspace-def} 
+# Homogeneous linear system
+A **homogeneous** linear system is one that has forcing vector $\bfb$ equal to zero.
+::::
+
+As the following theorem points out, we can work with just the RRE form of the coefficient matrix $\bfA$ instead of the augmented matrix of a homogeneous system.
+
+::::{#thm-nullspace-rref}
+For a homogeneous linear system, the last column of the RRE form of the augmented matrix is a zero vector.
+::::
+:::{.proof}
+Row operations can't change the zeros in that column.
+:::
+
+### Null space
+
+::::{#def-nullspace-nullspace}
+The **null space** of a matrix $\bfA$, written $\nullsp(\bfA)$, is the set of all solutions to the homogeneous linear system with coefficient matrix $\bfA$.
+::::
+
+:::{.callout-note}
+Sometimes the null space is called the *kernel* of the matrix.
+:::
+
+<!-- As the name implies, the null space is our first example of what we will call a *subspace*. We won't worry about that definition just yet. -->
+
+For a homogeneous linear system, the zero vector $\bfx=\bfzero$ is always a solution. The only interesting question is whether zero is the *only* solution. Thus, we only need to look at case 2 from the beginning of this section.
+
+The following follows immediately from our definitions. (That happens a lot in linear algebra: all the work is in the setup, not the punchline.)
+
+::::{#thm-nullspace-uniquenes}
+A homogeneous system in $n$ variables with coefficient matrix $\bfA$ has a unique solution if and only if $\rank(\bfA)=n$.
+::::
+
+::::{#cor-nullspace-uniqueness}
+A homogeneous linear system with more variables than equations has infinitely many solutions.
+::::
+:::{.proof}
+$\rank(\bfA) \le m < n$.
+:::
+
+### Spanning sets
+
+When we do have infinitely many solutions in a homogeneous linear system, it's nice to have a finite description of all of them. This takes us on a considerable side quest.
+
+::::{#def-nullspace-linear-comb} 
+# Linear combination and span
+A **linear combination** of vectors $\bfv_1, \ldots, \bfv_k$ with **coefficients** $c_1,\ldots,c_k$ is the vector
+
+$$
+c_1 \bfv_1 + c_2 \bfv_2 + \cdots + c_k \bfv_k.
+$$
+
+The set of all linear combinations of $\bfv_1,\ldots,\bfv_k$ is known as the **span** of those vectors. The span of an empty set is the set consisting of only the zero vector.
+::::
+
+Statements about linear combinations can be transformed into statements about linear systems of equations.
+
+::::{#exm-nullspace-combo}
+Show that $\bfv=[1,4,3]$ is in the span of $\bfu_1=[1,-2,-1]$ and $\bfu_2=[3,0,1]$. (That is, $\bfv$ can be written as a linear combination of these two vectors.)
+
+:::{.solution}
+Suppose that $\bfv = c_1 \bfu_1 + c_2 \bfu_2$. Looking at each component of this vector equation, we conclude that
+
+$$
+\begin{align*}
+  c_1 + 3c_2 &= 1 \\
+  -2c_1 + 0c_2 &= 4 \\
+  -c_1 + c_2 &= 3,
+\end{align*}
+$$
+
+which is a linear system with augmented matrix
+
+$$
+\augmat{
+\begin{matrix}
+  1 & 3  \\ -2 & 0  \\ -1 & 1 
+\end{matrix}}{
+    \begin{matrix}
+   1 \\  4 \\  3
+\end{matrix}}
+$$
+
+The RRE form of this matrix is
+
+$$
+\augmat{
+\begin{matrix}
+  1 & 0  \\ 0 & 1  \\ 0 & 0
+\end{matrix}}{
+    \begin{matrix}
+   -2 \\  1 \\  0
+\end{matrix}
+}
+$$
+
+which is consistent. In fact, the unique solution is $c_2=1$, $c_1=2$.
+:::
+::::
+
+A nontrivial null space (i. e., containing more than the zero vector) can always be described as the span of finitely many vectors.
+
+::::{#exm-nullspace-span}
+Suppose the RRE form of a matrix $\bfA$ is
+
+$$
+\mathbf{R} = 
+\begin{bmatrix}
+0 & 1 & 4 & 0 & 1 \\
+0 & 0 & 0  & 1 & -3 \\
+0 & 0 & 0  & 0 & 0  \\
+0 & 0 & 0  & 0 & 0
+\end{bmatrix}.
+$$
+
+Therefore, the RRE form of the augmented matrix $\augmat{\mathbf{A}}{\boldsymbol{0}}$ is $\augmat{\mathbf{R}}{\boldsymbol{0}}$. The pivot columns are 2 and 4, which makes $x_1=r$, $x_3=s$, and $x_5=t$ free variables. The nonzero rows lead to
+
+$$
+\begin{align*}
+x_2 + 4x_3 + x_5 &= 0 &\quad ⇒ \quad x_2 &= -4s-t,\\
+x_4 -3x_5 &= 0 & \quad ⇒ \quad x_4 &= 3t.
+\end{align*}
+$$
+
+One way to express a generic solution vector in the null space is by a linear combination of constant vectors:
+
+$$
+\begin{bmatrix}
+  r \\ -4s-t \\ s \\ 3t\\ t
+\end{bmatrix}
+= r \begin{bmatrix}
+  1 \\ 0 \\ 0 \\ 0 \\ 0
+\end{bmatrix}
++ s \begin{bmatrix}
+  0 \\ -4 \\ 0 \\ 1 \\ 0
+\end{bmatrix}
++ t \begin{bmatrix}
+  0 \\ -1 \\ 0 \\ 3 \\ 1
+\end{bmatrix} = r\bfv_1 + s\bfv_2 + t\bfv_3 .
+$$
+
+Hence $\nullsp(\bfA)=\span(\bfv_1,\bfv_2,\bfv_3)$, where the $\bfv_j$ are the constant vectors above.
+::::
+
+### Independence
+
+Now that we have a finite description of the null space, we want to refine it to make sure that it is as simple as possible. For this, we need a new take on an old friend.
+
+::::{#def-nullspace-indepdendence}
+# Linear independence
+Vectors $\bfv_1,\bfv_2,\ldots,\bfv_n$ are **linearly dependent** if there is a way to choose constants $c_1,\ldots,c_n$, *not all zero*, such that
+
+$$
+c_1\bfv_1 + c_2\bfv_2 + \cdots c_n \bfv_n = 0.
+$$
+
+If the vectors are not linearly dependent, then they are **linearly independent**.
+::::
+
+:::{.callout-note}
+Sound familiar? Stay tuned!
+:::
+
+Because linear combinations are equivalent to linear systems, statements about linear independence are equivalent to statements about homogeneous linear systems, and therefore about null spaces.
+
+::::{#exm-nullspace-dependent}
+Determine whether the vectors $\bfv_1=\threevec{1}{0}{-2}$, $\bfv_2=\threevec{1}{0}{1}$, and $\bfv_3 = \threevec{0}{0}{-1}$ are linearly independent.
+:::{.solution}
+These vectors are dependent if, and only if, we can find $c_1,c_2,c_3$, not all zero, such that
+
+$$
+c_1 \bfv_1 + c_2 \bfv_2 + c_3 \bfv_3 = \bfzero.
+$$
+
+Equating components on the two sides of this equation leads to the linear system with augmented matrix
+
+$$
+\augmat{
+    \begin{matrix}
+    1 & 1 & 0  \\ 0 & 0 & 0  \\ -2 & 1 & -1 
+    \end{matrix}}{
+\begin{matrix}
+    0 \\  0 \\  0
+    \end{matrix}
+}
+$$
+
+The RRE form of this system is
+
+$$
+\augmat{
+    \begin{matrix}
+    1 & 0 & \frac{1}{3}  \\ 0 & 1 & -\frac{1}{3}  \\ 0 & 0 & 0
+    \end{matrix}}{
+\begin{matrix}
+    0 \\  0 \\  0
+    \end{matrix}
+}
+$$
+
+whose solutions are $[-t/3,t/3,t]$ for all $t$. Since there are nonzero solutions to the linear system, the original set of vectors is linearly dependent.
+:::
+::::
+
+The result of the preceding example is worth stating on the record. It's basically just a fusion of equivalent terminology.
+
+::::{#thm-nullspace-dependence}
+Suppose $\bfv_1,\ldots,\bfv_k$ are vectors in $\real^n$, and let $\bfA$ be the matrix whose columns are $\bfv_1,\ldots,\bfv_k$. Then these vectors are linearly dependent if and only if $\bfA$ has a null space containing more than the zero vector.
+::::
+
+Dependent vectors can lengthen the description of a spanned space without actually contributing any information.
+
+::::{#exm-nullspace-dependentspan}
+The result of @exm-nullspace-dependent is that $\bfv_1=\threevec{1}{0}{-2}$, $\bfv_2=\threevec{1}{0}{1}$, and $\bfv_3 = \threevec{0}{0}{-1}$ are linearly dependent. For instance,
+
+$$
+\bfv_1 - \bfv_2 + 3 \bfv_3 = \bfzero.
+$$
+
+Therefore, any vector in $\span(\bfv_1,\bfv_2,\bfv_3)$ can be written as
+
+$$
+\begin{align*}
+c_1 \bfv_1 + c_2 \bfv_2 + c_3 \bfv_3 &= c_1(\bfv_2 - 3 \bfv_3) + c_2 \bfv_2 + c_3 \bfv_3 \\
+&= (c_1+c_2) \bfv_2 + (c_3- 3c_1)\bfv_3.
+\end{align*}
+$$
+
+Hence $\span(\bfv_1,\bfv_2,\bfv_3) = \span(\bfv_2,\bfv_3)$.
+::::
+
+:::{.callout-note}
+In @exm-nullspace-dependentspan, we could have removed $\bfv_2$ or $\bfv_3$ from the spanning set instead without changing the spanned result. The only requirement is that the coefficient of the removed vector is not zero in the linear combination of them that makes zero.
+:::
+
+A set of vectors that both spans the null space and is linearly independent is called a **basis** of the null space. We'll formalize that idea when we discuss subspaces more generally. For now, just know that a basis is a minimal set of vectors that can get the spanning job done.
+

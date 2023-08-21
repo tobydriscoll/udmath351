@@ -6,6 +6,7 @@ $$
     \newcommand{\nat}{\mathbb{N}}
     \newcommand{\integer}{\mathbb{Z}}
     \newcommand{\bfa}{\mathbf{a}}
+    \newcommand{\bfb}{\mathbf{b}}
     \newcommand{\bfe}{\mathbf{e}}
     \newcommand{\bfh}{\mathbf{h}}
     \newcommand{\bfp}{\mathbf{p}}
@@ -21,12 +22,9 @@ $$
     \newcommand{\bfX}{\mathbf{X}}
     \newcommand{\bfzero}{\boldsymbol{0}}
     \newcommand{\bfmu}{\boldsymbol{\mu}}
-    \newcommand{\TP}{\text{TP}}
-    \newcommand{\TN}{\text{TN}}
-    \newcommand{\FP}{\text{FP}}
-    \newcommand{\FN}{\text{FN}}
     \newcommand{\opA}{\mathcal{A}}
     \newcommand{\rmn}[2]{\mathbb{R}^{#1 \times #2}}
+    \newcommand{\cmn}[2]{\mathbb{C}^{#1 \times #2}}
     \newcommand{\dd}[2]{\frac{d #1}{d #2}}
     \newcommand{\ddd}[2]{\frac{d^2 #1}{d #2^2}}
     \newcommand{\pp}[2]{\frac{\partial #1}{\partial #2}}
@@ -37,13 +35,13 @@ $$
     \newcommand{\infnorm}[1]{\norm{#1}_\infty}
     \newcommand{\innerprod}[2]{\langle #1,#2 \rangle}
     \newcommand{\pr}[1]{^{(#1)}}
-    \newcommand{diagm}[3]{\begin{bmatrix} #1 & & & \\ & #2 & & \\ & & \ddots & \\ & & & #3 \end{bmatrix}}
-    \newcommand{twovec}[2]{\begin{bmatrix} #1 \\ #2 \end{bmatrix}}
-    \newcommand{threevec}[3]{\begin{bmatrix} #1 \\ #2 \\ #3 \end{bmatrix}}
-    \newcommand{twomat}[4]{\begin{bmatrix} #1 & #2 \\ #3 & #4 \end{bmatrix}}
-    \newcommand{twodet}[4]{\begin{vmatrix} #1 & #2 \\ #3 & #4 \end{vmatrix}}
-    \newcommand{eye}[1]{\mathbf{e}_#1"}
-    \newcommand{meye}[1]{\mathbf{I}"}
+    \newcommand{\diagm}[3]{\begin{bmatrix} #1 & & & \\ & #2 & & \\ & & \ddots & \\ & & & #3 \end{bmatrix}}
+    \newcommand{\twovec}[2]{\begin{bmatrix} #1 \\ #2 \end{bmatrix}}
+    \newcommand{\threevec}[3]{\begin{bmatrix} #1 \\ #2 \\ #3 \end{bmatrix}}
+    \newcommand{\twomat}[4]{\begin{bmatrix} #1 & #2 \\ #3 & #4 \end{bmatrix}}
+    \newcommand{\twodet}[4]{\begin{vmatrix} #1 & #2 \\ #3 & #4 \end{vmatrix}}
+    \newcommand{\eye}[1]{\mathbf{e}_#1"}
+    \newcommand{\meye}[1]{\mathbf{I}"}
     \newcommand{\diag}{\operatorname{diag}}
     \newcommand{\sign}{\operatorname{sign}}
     \newcommand{\dist}{\operatorname{dist}}
@@ -51,8 +49,13 @@ $$
     \newcommand{\ee}{\times 10^}
     \newcommand{\floor}[1]{\lfloor#1\rfloor}
     \newcommand{\argmin}{\operatorname{argmin}}
-    \newcommand{\E}[1]{\operatorname{\mathbb{E}}\left[\mathstrut #1\right]}
-    \newcommand{\Cov}{\operatorname{Cov}}
-    \newcommand{\logit}{\operatorname{logit}}
+    \newcommand{\rank}{\operatorname{rank}}
+    \newcommand{\span}{\operatorname{span}}
+    \newcommand{\nullsp}{\operatorname{nullsp}}
+    \newcommand{\nullity}{\operatorname{nullity}}
+    \newcommand{\rowsp}{\operatorname{rowsp}}
+    \newcommand{\colsp}{\operatorname{colsp}}
+    \newcommand{\dim}{\operatorname{dim}}
+    \newcommand{\augmat}[2]{\left[ #1 \;\middle|\; #2 \right]}
 $$
 :::

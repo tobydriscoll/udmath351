@@ -1,4 +1,4 @@
-lines = join(readlines("ivp_second_order.qmd", keep=true));
+lines = join(readlines("linear_algebra_systems.qmd", keep=true));
 
 lines = replace(lines, ":::{proof:theorem}" => ":::{#thm-}")
 lines = replace(lines, ":::{proof:definition}"=> ":::{#def-}")

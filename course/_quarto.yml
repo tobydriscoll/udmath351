@@ -9,6 +9,7 @@ book:
     - index.qmd
     - ivp_first_order.qmd
     - ivp_second_order.qmd
+    - linear_algebra_systems.qmd
   sidebar: 
     footer: "Copyright 2023 by Toby Driscoll"
   page-footer:
