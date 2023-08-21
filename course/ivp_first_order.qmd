@@ -282,7 +282,7 @@ Is there any point to an ODE whose solution blows up in a finite time? Maybe. Th
 
 That concludes our bus tour of first-order equations. It's time to get serious about solving some of them.
 
-## Initial-value problems
+## Initial-value problems 
 
 One of the important findings in @sec-first-order-preview is that solutions of first-order ODEs are not unique. The manifestation of the nonuniqueness is the presence of an integration constant, and we get a **general solution** that describes a family of functions that provide all possible solutions. 
 
@@ -470,7 +470,9 @@ title!("Direction field of t-x²")
 Note that the arrows are horizontal along the sideways parabola $t=x^2$, because that is where the slope is zero.
 ::::
 
-### Autonomous equations
+### Equilibria
+
+Many problems describe a self-contained system. For example, a small pendulum operates the same regardless of what time of day you first push on it. 
 
 ::::{#def-autonomous-autonomous}
 # Autonomous ODE
@@ -481,21 +483,12 @@ $$
 $$ {#eq-autonomous-autonomous}
 ::::
 
-The name means that the problem doesn't depend on any external factors---it is entirely self-contained.
-
-
 ::: {.callout-important}
 An ODE is autonomous if, and only if, its direction field looks the same along every vertical line in the $(t,x)$ plane.
 This can be seen, for example, in @exm-qualitative-logistic.
 :::
 
-
-<!-- :::{index} steady state
-:::
-:::{index} equilibrium
-::: -->
-
-Suppose that $\hat{x}$ is a root of the function $f$, that is,  it satisfies $f(\hat{x})=0$. Then the constant function $x(t)\equiv \hat{x}$ a solution of @eq-autonomous-autonomous. 
+Suppose that $\hat{x}$ is a root of the function $f$, that is, it satisfies $f(\hat{x})=0$. Then the constant function $x(t)\equiv \hat{x}$ a solution of @eq-autonomous-autonomous. 
 
 :::{#def-qualitative-equilibrium} 
 # Steady state / Equilibrium
@@ -509,39 +502,15 @@ For the autonomous ODE $x'=f(x)$, any root $\hat{x}$ of $f$ is called a **steady
 When you see one concept with a lot of different names, pay attention. It was important enough to have been discovered multiple times.
 :::
 
-One of the most important characteristics of each steady state is its **stability**. Let $x(t,X)$ be the solution of the initial-value problem
+One of the most important characteristics of each steady state is its **stability**. Imagine slicing a globe in half and laying a marble at the bottom inside the southern hemisphere. That marble should lay still in an equilibrium state. If you nudge the marble a little, it will oscillate but eventually come back to rest at the bottom of the hemisphere. We call this an **asymptotically stable** equilibrium---if the system is perturbed gently enough, solutions return to the equilibrium.
 
-$$
-\frac{d x}{d t}=f(x), \quad x(0)=X.
-$$
+Now suppose you put down the northern hemisphere with the equator on the surface of a table. If you can place the marble perfectly at the north pole, it should stay there, in principle; it should experience a purely downward force. In practice, though, this is probably impossible to achieve, because any deviation from perfect symmetry in the globe, marble, or placement will cause the marble to roll away from the pole. We call this pole an **unstable** equilibrium.
 
-::::{#def-qualitative-asymptotic} 
-# Asymptotic stability
-The steady state $\hat{x}$ is said to be **asymptotically stable** if there is a positive number $\delta$ such that 
+The major difference between asymptotically stable and unstable equilibria in the real world is that usually, only the asymptotically stable ones are observable. It's easy to dangle a broom downward practically forever using just two fingers, but try that with the broom pointing upward!
 
-$$
-\lim_{t\to\infty} x(t,X) = \hat{x}
-$$
+(There are other classes of equilibria, but they are much less frequently encountered.)
 
-whenever $|X-\hat{x}|< \delta$. 
-::::
-
-While the mathematical definition of asymptotic stability looks technical, it simply means that if you start close enough to $\hat{x}$, then you go back to it in the limit $t \to \infty$. 
-
-There is a weaker form of the property that is a bit more subtle:
-
-::::{#def-qualitative-stability}
-#  Stability
-The steady state $\hat{x}$ is said to be **stable** if, for any $\epsilon>0$, you can ensure that $|x(t,X)-\hat{x}|<\epsilon$ for all time whenever $|X-\hat{x}|<\delta$, where $\delta$ depends on $\epsilon$. If there is no such way to choose $\delta$, then $\hat{x}$ is **unstable**.
-::::
-
-::: {.callout-important}
-If an equilibrium value is asymptotically stable, then it is stable. But the converse is not always true.
-:::
-
-<!-- :::{index} phase line diagram
-::: -->
-One tool for discriminating between stable and unstable equilibria is a **phase diagram**. 
+It's usually quite easy to determine the stability of an equilibrium point without finding solutions. 
 
 ::::{#exm-qualitative-equilibria} 
 
@@ -565,15 +534,15 @@ Similarly, on the remaining segments of the $x$-axis, the solution must be slidi
 
 ![PL diagram 5](pldiag5.svg)
 
-Graphically it is now clear that the steady states at $x=\pm 1$ are stable, while the one at $x=0$ is unstable.
+Graphically it is now clear that the steady states at $x=\pm 1$ are asymptotically stable, while the one at $x=0$ is unstable.
 ::::
 
-A simple analytical test for stability is:
+If the function $f$ is differentiable, there is also a simple analytical test:
 
 - If $f'(\hat{x})<0$, then $\hat{x}$ is asymptotically stable.
 - If $f'(\hat{x})>0$, then $\hat{x}$ is unstable.
 
-As you might surmise, the case $f'(\hat{x})=0$ is ambiguous, and another analysis is needed to reveal the stability.
+As you might surmise, the case $f'(\hat{x})=0$ is ambiguous, and additional analysis is needed to reveal the stability.
 
 ## Separable equations
 <!-- 
