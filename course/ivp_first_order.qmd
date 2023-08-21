@@ -223,10 +223,10 @@ which grows superexponentially as $t\to\infty$.
 Substituting @eq-preview-var-growth-solution into @eq-preview-var-growth yields
 
 $$
-\begin{align*}
+\begin{split}
 \frac{d}{dt} \left( C e^{t^2} \right) &= 2t \left(C e^{t^2} \right), \\ 
 C \left(2t e^{t^2} \right) &= 2t \left( C e^{t^2} \right),
-\end{align*}
+\end{split}
 $$
 
 which is evidently true. Hence we have established @eq-preview-var-growth-solution as a solution for any constant $C$. 
@@ -756,10 +756,10 @@ There is an alternate notation for @eq-linear-standard that will help us highlig
 # Linear operator
 A **linear operator** $\opA$ is a rule for transforming functions to other functions, such that
 
-\begin{align*}
+\begin{split}
 \opA[cx(t)] & =c\opA[x(t)], \\
 \opA[x(t) + y(t)] &= \opA[x(t)] + \opA[y(t)],
-\end{align*}
+\end{split}
 
 for all functions $x$ and $y$ and numbers $c$.
 ::::
@@ -892,10 +892,10 @@ If this is to be a solution of @eq-homogeneous-ode, all we need is that $q'(t)=-
 ::::{#thm-homogeneous1-solution} 
 # Solution of $x'+P(t)x=0$
 $$
-\begin{align*}
+\begin{split}
 q(t) &= - \int P(t) \, dt, \\
 x(t) &= c_1 \exp\bigl[q(t)\bigr].
-\end{align*}
+\end{split}
 $$
 ::::
 
@@ -964,12 +964,12 @@ $$
 where $c_1$ is an arbitrary constant and $q = -\int P\, dt$. Something weird and useful happens if we upgrade $c_1$ to an unknown function $k(t)$. Setting $x_p(t)=k(t) e^{q(t)}$, then
 
 $$
-\begin{align*}
+\begin{split}
 \opA[x_p] &= x_p' + P(t) x_p \\ 
 & = k'e^q + k (e^q q') + P k e^q  \\ 
 & = e^q ( k'+ q'k + Pk ) \\ 
 &= e^q (k' + (-P)k + Pk) = e^q k'.
-\end{align*}
+\end{split}
 $$
 
 So, to solve $\opA[x_p] = f$, we can set $e^q k' = f$. Since $f$ is considered given and we already know how to compute $q$, this can be considered a way to define $k'$, and then $k$ is just one more integration away.
@@ -981,13 +981,13 @@ This technique for finding $x_p$ is known as the **variation of parameters** for
 To find a the general solution of $\opA[x]=f$, compute the following, ignoring constants of integration:
 
 $$
-\begin{align*}
+\begin{split}
 q(t) &= -\int P(t)\, dt, \\ 
 x_1(t) &= e^{q(t)}, \\
 k(t) &= \int \frac{f(t)}{x_1(t)} \, dt, \\
 x_p(t) &= k(t) x_1(t), \\
 x(t) &= c_1 x_1(t) + x_p(t).
-\end{align*}
+\end{split}
 $$
 :::
 
@@ -1106,11 +1106,11 @@ $$
 Next,
 
 $$
-\begin{align*}
+\begin{split}
 k(t) & = \int - \frac{1}{2+t} \cdot \frac{1}{2+t} \, dt \\
 &= -\int (2+t)^{-2} \, dt \\
 &= (2+t)^{-1}.
-\end{align*}
+\end{split}
 $$
 
 Thus, $x_p(t)=k(t)x_1(t)=1$ and the general solution is
@@ -1197,10 +1197,10 @@ $$
 which means that $x(t)=x(0)e^{at}$. We are also told that $x(1)=300$ and $x(4)=1000$, so 
 
 $$
-\begin{align*}
+\begin{split}
 300 &= x(0) e^{a} \\ 
 1000 &= x(0) e^{4a}. 
-\end{align*}
+\end{split}
 $$
 
 Everything from here on is pure algebra. We aren't asked to find the value of $a$, so we can be a little clever by substituting from the first equation into the second:
@@ -1280,10 +1280,10 @@ Consider a simple pill of antihistamine taken by a person.  The pill goes to the
 :::{.solution}
 Using the given assumptions and mass balances we obtain the system
 
-\begin{align*}
+\begin{split}
 \frac{dx}{dt} & =-k_1 x, \quad x(0)=\alpha,\\
 \frac{dy}{dt} & = k_1 x - k_2y, \quad y(0)=0.
-\end{align*}
+\end{split}
 
 Although this takes the form of a system of two equations for two dependent variables, we can solve them in series. The first equation makes no reference to $y$, so its solution is $x(t)=\alpha \exp(-k_1 t)$. Thus the second ODE becomes
 
@@ -1360,10 +1360,10 @@ $$
 
 Let $V(t)=$ the volume of the mixture at time $t$. Then
 
-\begin{align*}
+\begin{split}
 \text{rate of salt in} & = 2 \text{ lb/gal }\times 3 \text{ gal/min }= 6 \text{ lb/min}\\
 \text{rate of salt out} & = \frac{x}{V} \text{ lb/gal }\times 2 \text{ gal/min }= \frac{2}{V}\,x \text{ lb/min.}
-\end{align*}
+\end{split}
 
 Hence
 
@@ -1381,10 +1381,10 @@ where we have used the initial volume (100 gal) for the constant of integration.
 
 The initial amount of salt in the tank is 100 lb.  Using the volume expression, we obtain an IVP for $x(t)$, namely
 
-\begin{align*}
+\begin{split}
 \frac{dx}{dt} & = 6 -  \frac{2}{t+100} x,\quad 0\lt t \le 200,\\
 x(0) & = 100.
-\end{align*}
+\end{split}
 
 The ODE in standard form is
 
@@ -1395,11 +1395,11 @@ $$
 which can be solved by variation of parameters:
 
 $$
-\begin{align*}
+\begin{split}
 g(t) & =\exp\left(\int -\frac{2}{t+100}\,dt\right)=(t+100)^{-2}, \\
 k(t) & = \int  6(t+100)^2\, dt = 2(t+100)^3,  \\
 x(t) & = c_1(t+100)^{-2} + 2(t+100)^{3-2}.
-\end{align*}
+\end{split}
 $$
 
 Using the initial condition, we obtain $c_1=-100^3$. The time of overflow is $t=200$ min, so finally we get
@@ -1429,11 +1429,11 @@ $$
 This equation readily solved through variation of parameters:
 
 $$
-\begin{align*}
+\begin{split}
 g(t) & =\exp\left(\int -\frac{2}{3t+1000}\,dt\right)=(3t+1000)^{-2/3}, \\
 k(t) & = \int  35(3t+1000)^{2/3} \, dt = 7(3t+1000)^{5/3},  \\
 x(t) & = c_1(3t+1000)^{-2/3} + 7(3t+1000).
-\end{align*}
+\end{split}
 $$
 
 The initial condition is that $x(0)/V(0)=2$, so

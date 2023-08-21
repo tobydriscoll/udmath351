@@ -1,6 +1,8 @@
-# MATH 351 Notes
+# MATH 351 Notes {.unnumbered}
 
 These are notes on MATH 351 at UD by Toby Driscoll. Copyrighted, all rights reserved.
+
+:::: {.content-visible unless-format="pdf"}
 
 ## Schedule for Fall 2023
 
@@ -155,3 +157,4 @@ Note: Both textbooks have dedicated chapter review problems.
 9. Compute a 2x2 or 3x3 matrix exponential using the polynomial method (including defective case).
 10. Use a matrix exponential to solve an IVP.
 
+::::

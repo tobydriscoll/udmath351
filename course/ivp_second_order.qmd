@@ -222,10 +222,10 @@ $$
 for a to-be-determined value of $\lambda$. We substitute $x_h$ into the ODE and get
 
 $$
-\begin{align*}
+\begin{split}
 0 &= \lambda^2 e^{\lambda t} + b \bigl(\lambda e^{\lambda t}\bigr) + k \bigl(e^{\lambda t}\bigr)\\ 
 &= e^{\lambda t} \bigl(\lambda^2 + b \lambda + k \bigr).
-\end{align*}
+\end{split}
 $$
 
 We therefore know that $x_h$ is a homogeneous solution provided that $\lambda^2 + b \lambda + k =0$.
@@ -300,10 +300,10 @@ $$
 
 The initial conditions lead to
 
-\begin{align*}
+\begin{split}
 6 &= x(0) = c_1 e^0 + c_2 e^0 = c_1 + c_2, \\ 
 0 &= x'(0) = \sqrt{5} c_1 e^0 - \sqrt{5} c_2 e^0 = \sqrt{5}(c_1-c_2).
-\end{align*}
+\end{split}
 
 It's easy to conclude from here that $c_1=c_2=3$. In general we might have to solve a $2\times 2$ linear algebraic system for the constants.
 :::
@@ -608,10 +608,10 @@ The characteristic polynomial is $s^2+9$, giving the roots $\pm 3i$. Hence the g
 
 The initial conditions require
 
-\begin{align*}
+\begin{split}
 2 &= x(0) = c_1e^0 + c_2e^0 = c_1 +c_2,\\ 
 -12 &= x'(0) = 3i c_1e^0 - 3i c_2e^0 = 3i c_1 - 3i c_2.
-\end{align*}
+\end{split}
 
 This system is easy to solve for $c_1$ and $c_2$ to get $c_1=1+2i$, $c_2=1-2i$.
 :::
@@ -659,10 +659,10 @@ $$
 The initial conditions now yield
 
 $$
-\begin{align*}
+\begin{split}
 2 &= x(0) = c_1\cos(0) + c_2\sin(0) = c_1,\\
 -12 &= x'(0) = -3 c_1 \sin(0) + 3 c_2 \cos(0) = 3c_2.
-\end{align*}
+\end{split}
 $$
 
 Hence the IVP solution is $2\cos(3t) - 4\sin(3t).$
@@ -693,10 +693,10 @@ $$
 so $\alpha=3$. The other initial condition leads to
 
 $$
-\begin{align*}
+\begin{split}
 0 = x'(0) &= (3+i\beta) (-2+i)\cdot 1 + (3-i\beta) (-2-i)\cdot 1  \\ 
 &= (-6-2i+3i-\beta) + (-6+2i-3i-\beta) = -12 - 2\beta,
-\end{align*}
+\end{split}
 $$
 
 which yields $\beta=-6$. 
@@ -792,10 +792,10 @@ and then $x_p$ will be the desired particular solution.
 @eq-variation_parameters-eq1 and @eq-variation_parameters-eq2 impose
 
 $$
-\begin{align*}
+\begin{split}
 x_1 u_1' + x_2 u_2' &= 0, \\ 
 x_1'u_1' + x_2'u_2' &= f.
-\end{align*}
+\end{split}
 $$
 
 Writing $u_1'=v_1$ and $u_2'=v_2$, we see that this is a pair of linear equations for $v_1$ and $v_2$, which is routine to solve, leading to the following.
@@ -933,10 +933,10 @@ $$
 
 Plugging that into the ODE yields
 
-\begin{align*}
+\begin{split}
 2C + 4(B+2Ct) + 4(A+Bt+Ct^2) & = 8t^2,\\
 4C t^2 + (8C+4B) + (2C+4B+4A) & = 8t^2.
-\end{align*}
+\end{split}
 
 This has to be an identity for all $t$. Matching like powers, we get a $3\times 3$ linear system for the coefficients. Fortunately, it can be solved easily if we go in order: first we read off $C=2$, then $B=-2C=-4$, and finally $A=-B-C/2=3$. This provides us with
 
@@ -958,10 +958,10 @@ $$
 
 Everything else is algebra.
 
-\begin{align*}
+\begin{split}
 16A e^{4t} - 2 (4A e^{4t}) - 3 (Ae^{4t}) & =10 e^{4t},\\
 16A -8A -3A &=  10.
-\end{align*}.
+\end{split}.
 
 From this it's clear that $A=2$.
 :::
@@ -1184,10 +1184,10 @@ $$
 We can apply the initial conditions directly to the phase–amplitude form:
 
 $$
-\begin{align*}
+\begin{split}
 -0.2 & = x(0) = R\cos(\phi) \\
 1 & = x'(0) = \omega_0 R\sin(\phi).
-\end{align*}
+\end{split}
 $$
 
 Therefore,
@@ -1315,10 +1315,10 @@ A 5 kg mass is hung on a spring with constant $11$ N per m and connected to a da
 The ODE for the mass-spring system is
 
 $$
-\begin{align*}
+\begin{split}
     5 x'' + 8x' + 11 x  & = 0 ,\\
     x'' + 1.6 x' + 2.2 x  & = 0, 
-\end{align*}
+\end{split}
 $$
 
 from which we identify the natural frequency
@@ -1356,10 +1356,10 @@ $$
 We apply the initial conditions $x(0)=0$, $x'(0)=-0.5$ to find
 
 $$
-\begin{align*}
+\begin{split}
 0 & = x_h(0) = c_1, \\ 
 -0.5 & = x_h'(0) = c_1( -0.8 ) + c_2 (1.249 ),
-\end{align*}
+\end{split}
 $$
 
 thus $c_2 = -0.4003$. The motion is therefore given by $x(t)=-0.4003\, e^{-0.8 t} \sin(1.249 t)$.

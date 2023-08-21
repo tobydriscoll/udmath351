@@ -52,10 +52,10 @@ A linear system that has at least one solution is called **consistent**. Otherwi
 Going one more baby step to two equations in two variables, we want to solve
 
 $$
-\begin{align*}
+\begin{split}
 ax + by &= f, \\
 cx + dy &= g.
-\end{align*}
+\end{split}
 $$
 
 There is some easy geometric intuition here. Each equation represents a straight line in the plane, and solving both equations simultaneously means finding an intersection of these lines. Our cases above translate directly into:
@@ -76,20 +76,20 @@ It's not hard to turn those statements into algebraic conditions. The slopes of 
 Find all solutions to the equations
 
 $$
-\begin{align*}
+\begin{split}
 x - 3y & = 1, \\
 -2x + 6y & = 2.
-\end{align*}
+\end{split}
 $$
 
 :::{.solution}
 We identify $(a,b,c,d)=(1,-3,-2,6)$, and $ad-bc=6-6=0$. So we know there is not a unique solution (i.e., the lines are parallel). Dividing the second equation by $-2$ leads to the equivalent system
 
 $$
-\begin{align*}
+\begin{split}
 x - 3y & = 1, \\
 x - 3y & = -1.
-\end{align*}
+\end{split}
 $$
 
 It's now clear that there is no way to satisfy both equations simultaneously. The system is inconsistent.
@@ -103,12 +103,12 @@ Time to put on our big-kid pants. For $m$ equations in $n$ variables, we need to
 ::::{#def-linsys-system}
 A **linear-algebraic system**, usually just written **linear system**, is the set of simultaneous equations
 $$
-\begin{align*}
+\begin{split}
 A_{11} x_1 + A_{12} x_2 + \cdots + A_{1n} x_n & = b_1 \\
 A_{21} x_1 + A_{22} x_2 + \cdots + A_{2n} x_n & = b_2 \\
 & \vdots \\
 A_{m1} x_1 + A_{m2} x_2 + \cdots + A_{mn} x_n & = b_m,
-\end{align*}
+\end{split}
 $$ {#eq-linsys-def}
 where all the $A_{ij}$ and $b_i$ are assumed to be known. A **solution** of the system is a list of values $x_1,\ldots,x_n$ that makes all the equations true. 
 ::::
@@ -147,10 +147,10 @@ The vector $\bfb\in\real^m$ implied in @eq-linsys-def doesn't have a standard na
 Sometimes zeros are needed as placeholders in the coefficient matrix. In the linear system
 
 $$
-\begin{align*}
+\begin{split}
   x_1 - x_2 + 3 x_3 &= 4,\\
   2x_2 + 5x_4 &= -1,
-\end{align*}
+\end{split}
 $$
 
 the coefficient matrix is $2\times 4$, 
@@ -190,30 +190,30 @@ All the row operations are reversible. Therefore, *solutions of a linear system 
 Use elimination to solve the $3\times 3$ system
 
 $$
-\begin{align*}
+\begin{split}
 x_1 - x_2  - x_3 & = 2, \\
 3x_1 - 2x_2 & = 9, \\
 x_1 - 2x_2 - x_3 & = 5.
-\end{align*}
+\end{split}
 $$
 ::::{.solution}
 The first step is to use the first equation to eliminate $x_1$ from the second and third equations. We therefore add $-3$ times equation 1 to equation 2, and $-1$ times equation 1 to equation 3:
 
 $$
-\begin{align*}
+\begin{split}
  x_1 - x_2  - x_3  & = 2, \\
 (3x_1 - 2x_2) - 3(x_1 - x_2  - x_3) & = 9 - 3(2),\\
 (x_1 - 2x_2 - x_3) - 1(x_1 - x_2  - x_3) & = 5 - 1(2) .
-\end{align*}
+\end{split}
 $$
 
 This takes us to
 $$
-\begin{align*}
+\begin{split}
  x_1 - x_2  - x_3  & = 2,  \\
 x_2 + 3x_3 &= 3, \\
 -x_2 &= 3.
-\end{align*}
+\end{split}
 $$
 
 ::: {.callout-note}
@@ -223,21 +223,21 @@ It's tempting to grab that last equation above and use it to remove $x_2$ from e
 Next, we leave the first equation alone and use the second to eliminate $x_2$ from all the others below it.
 
 $$
-\begin{align*}
+\begin{split}
  x_1 - x_2  - x_3  & = 2, \\
 x_2 + 3x_3 & = 3, \\
 (-x_2) + (x_2+3x_3)  & = 3 + 3.
-\end{align*}
+\end{split}
 $$
 
 We now have a system in **triangular** form,
 
 $$
-\begin{align*}
+\begin{split}
  x_1 - x_2  - x_3  & = 2, \\
 x_2 + 3x_3 & = 3, \\
 3x_3  & = 6.
-\end{align*}
+\end{split}
 $$
 
 We can now deduce that $x_3=2$ from the last equation. Moving up to the second equation, we then find that $x_2=3-3(2)=-3$. Finally, the first equation yields $x_1=2+(-3)+(2)=1$.
@@ -254,30 +254,30 @@ An alternative to backward substitution is to transform the triangular system in
 We continue from the end of @exm-gauss-elimination.  Having reached the last variable and equation, we turn around and eliminate *upwards* instead:
 
 $$
-\begin{align*}
+\begin{split}
 (x_1 - x_2 - x_3) + \frac{1}{3}(3x_3) & = 2  +\frac{1}{3}(6), \\
 (x_2 + 3x_3) - (3x_3) & = 3 - (6),\\
 3x_3  & = 6.
-\end{align*}
+\end{split}
 $$
 
 This leaves the system as
 $$
-\begin{align*}
+\begin{split}
  x_1  -x_2 & = 4,\\
 x_2 & = -3,\\
 3x_3  & = 6.
-\end{align*}
+\end{split}
 $$
 
 Moving upwards to the second equation, and use it to eliminate within the one above it:
 
 $$
-\begin{align*}
+\begin{split}
 (x_1 - x_2 ) + (x_2) & = 4  + (-3),\\
 x_2 & = -3,\\
 3x_3  & = 6. 
-\end{align*}
+\end{split}
 $$
 The system is now trivial: $x_1=1$, $x_2=-3$, and $x_3=2$.
 ::::
@@ -297,11 +297,11 @@ We start with  that contains all the equation coefficients and right-side values
 Let's look at elimination in this form for the system
 
 $$
-\begin{align*}
+\begin{split}
 x_1 - x_2 - x_3 &= 2, \\ 
 3x_1-2x_2 &= 9, \\ 
 x_1-2x_2-x_3 &= 5. 
-\end{align*}
+\end{split}
 $$
 
 This system has the augmented matrix
@@ -414,19 +414,19 @@ G
 This is as simple as we can get things. The last row is telling us the astounding fact that $0=0$—i.e., nothing at all. The other two rows imply
 
 $$
-\begin{align*}
+\begin{split}
 x_1 &= 5 + 4x_3, \\
 x_2 &= -1 - 3x_3.
-\end{align*}
+\end{split}
 $$
 
 Since the third row gave us no information, we take the attitude that $x_3$ is unrestricted. That is,
 $$
-\begin{align*}
+\begin{split}
 x_1 &= 5 + 4s, \\
 x_2 &= -1 - 3s, \\
 x_3 &= s.
-\end{align*}
+\end{split}
 $$
 
 is a solution for any value of $s$, and we have an infinite family of solutions.
@@ -587,9 +587,9 @@ S
 This matrix is in RREF. We interpret it as the trivial linear system
 
 $$
-\begin{align*}
+\begin{split}
 x_1 &= -3,\\ x_2 &= 1,\\ x_3 &= 4, \\ x_4 &= -2.
-\end{align*}
+\end{split}
 $$
 
 :::{.callout-tip}
@@ -758,11 +758,11 @@ Show that $\bfv=[1,4,3]$ is in the span of $\bfu_1=[1,-2,-1]$ and $\bfu_2=[3,0,1
 Suppose that $\bfv = c_1 \bfu_1 + c_2 \bfu_2$. Looking at each component of this vector equation, we conclude that
 
 $$
-\begin{align*}
+\begin{split}
   c_1 + 3c_2 &= 1 \\
   -2c_1 + 0c_2 &= 4 \\
   -c_1 + c_2 &= 3,
-\end{align*}
+\end{split}
 $$
 
 which is a linear system with augmented matrix
@@ -812,10 +812,10 @@ $$
 Therefore, the RRE form of the augmented matrix $\augmat{\mathbf{A}}{\boldsymbol{0}}$ is $\augmat{\mathbf{R}}{\boldsymbol{0}}$. The pivot columns are 2 and 4, which makes $x_1=r$, $x_3=s$, and $x_5=t$ free variables. The nonzero rows lead to
 
 $$
-\begin{align*}
+\begin{split}
 x_2 + 4x_3 + x_5 &= 0 &\quad ⇒ \quad x_2 &= -4s-t,\\
 x_4 -3x_5 &= 0 & \quad ⇒ \quad x_4 &= 3t.
-\end{align*}
+\end{split}
 $$
 
 One way to express a generic solution vector in the null space is by a linear combination of constant vectors:
@@ -916,10 +916,10 @@ $$
 Therefore, any vector in $\span(\bfv_1,\bfv_2,\bfv_3)$ can be written as
 
 $$
-\begin{align*}
+\begin{split}
 c_1 \bfv_1 + c_2 \bfv_2 + c_3 \bfv_3 &= c_1(\bfv_2 - 3 \bfv_3) + c_2 \bfv_2 + c_3 \bfv_3 \\
 &= (c_1+c_2) \bfv_2 + (c_3- 3c_1)\bfv_3.
-\end{align*}
+\end{split}
 $$
 
 Hence $\span(\bfv_1,\bfv_2,\bfv_3) = \span(\bfv_2,\bfv_3)$.
