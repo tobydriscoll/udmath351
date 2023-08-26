@@ -766,7 +766,7 @@ $$
 $$
 ::::
 
-### Homogeneous solutions
+### Linear homogeneous equations
 <!-- 
 ```{index} ! homogeneous; ODE
 ``` -->
@@ -828,23 +828,26 @@ We can now outline a plan of attack for solving $\opA[x]=f$.
 
 ::::{#thm-linear-solve} 
 # Solution of a first-order linear ODE
+Follow these steps to find the general solution of the linear first-order ODE $\opA[x]=f$:
 1. Find the general solution $x_h$ of the associated homogeneous problem $\opA[x]=0$.
 2. Find any particular solution $x_p$ of the original $\opA[x]=f$.
 3. Add them to get the general solution, $x=x_h + x_p$. 
 4. If an initial condition is given, use it to solve for the integration constant.
 ::::
 
-Note that because of @thm-linear-super, the homogeneous part $x_h$ will contain the integration constant. We elaborate on steps 1 and 2 in the next two sections.
+Note that because of @thm-linear-super, the homogeneous part $x_h$ will contain the integration constant. 
+
+The next two sections provide the details for steps 1 and 2 of @thm-linear-solve.
 
 ## Homogeneous solutions {#sec-first-order-homogeneous1}
 
-Step one of our solution strategy in @thm-linear-solve is to solve the homogeneous problem $\opA[x]=0$, or
+Step 1 of our solution strategy in @thm-linear-solve is to solve the homogeneous problem $\opA[x]=0$, or
 
 $$
 \dd{x}{t} + P(t) x = 0.
 $$ {#eq-homogeneous-ode}
 
-We know that the solution of $x=ax$ for constant $a$ is $x(t)=\exp(at)$. Let's guess that the solution is exponential in this case as well: 
+We know that the solution of $x=ax$ for constant $a$ is $x(t)=\exp(at)$. The solution is exponential in this more general case as well: 
 
 $$
 x(t) = \exp\bigl[q(t)\bigr],
@@ -860,17 +863,22 @@ If this is to be a solution of @eq-homogeneous-ode, all we need is that $q'(t)=-
 
 ::::{#thm-homogeneous1-solution} 
 # Solution of $x'+P(t)x=0$
+
+To solve the linear first-order homogeneous ODE $\opA[x]=0$, also written as @eq-homogeneous-ode, perform the following steps, ignoring constants of integration:
 $$
 \begin{split}
 q(t) &= - \int P(t) \, dt, \\
-x(t) &= c_1 \exp\bigl[q(t)\bigr].
+x_1(t) &= \exp\bigl[q(t)\bigr] \\
+x(t) &= c_1 x_1(t).
 \end{split}
-$$
+$$ {#eq-homogeneous1-solution}
 ::::
 
 :::{.callout-note}
-We can ignore the integration constant that arises from finding $q$ in @thm-homogeneous1-solution. It would just end up being absorbed into the $c_1$, whose existence is already known from @cor-linear-super.
+In our terminology, $x_1$ in @eq-homogeneous1-solution is a particular solution of $\opA[x]=0$, while $x$ is the general solution of $\opA[x]=0$ as well as the homogenous part of the solution associated with $\opA[x]=f$ in @thm-linear-solve. Got that?
 :::
+
+If you're anxious about having $c_1$ and $x_1$ in @eq-homogeneous1-solution without also having $c_2$ and $x_2$---if you know, you know---just sit tight until the next chapter.
 
 ::::{#exm-homog1-sin}
 Solve $x'=\sin(t) x$. 
@@ -940,7 +948,7 @@ $$
 which gives the homogeneous solution
 
 $$
-x_h(t) = c_1 e^{q(t)} = c_1 t^{-2}. 
+x_1(t) = e^{q(t)} = t^{-2}. 
 $$
 
 This solution fails to exist at $t=0$ because of the singular point implied by $P$.
@@ -948,7 +956,7 @@ This solution fails to exist at $t=0$ because of the singular point implied by $
 
 ## Variation of parameters {#sec-first-order-vop}
 
-@sec-first-order-homogeneous1 explained how to find the general solution $x_h(t)$ of a homoegenous linear system $\opA[x] = 0$. The next step of our solution strategy in @thm-linear-solve is to find some particular solution of $\opA[x]=f$ for the given $f(t)$.
+@sec-first-order-homogeneous1 explained how to find the general solution $x_h(t)$ of a homoegenous linear system $\opA[x] = 0$. The next step of our solution strategy in @thm-linear-solve is to find some particular solution of $\opA[x]=f$ for the given $f(t)$. After that, the general solution is in our hands.
 
 The form of the homogeneous solution is
 
@@ -991,7 +999,7 @@ Keeping track of all the characters appearing in @thm-firstlin-varpar is as diff
 :::
 
 ::: {.callout-warning}
-The unstated very first step in @thm-firstlin-varpar is to put the given ODE into the standard form, $x' + P(t) x = f$. On this, everything depends.
+The unstated setup step before @thm-firstlin-varpar can even be applied is to put a given linear ODE into the standard form, $x' + P(t) x = f$. On this, everything depends.
 :::
 
 ::::{#exm-vop-one}
@@ -1034,7 +1042,7 @@ $$
 Find a particular solution of $x'= 2t x + 6t$. 
 
 :::{.solution}
-This problem is deliberately worded sneakily, to see if you have been paying attention. The function $x_p(t)$ in @thm-firstlin-varpar is all we need. First, note that $\opA[x]=x'-2tx$ and $f(t)=6t$. Then $P(t)=-2t$, so
+This problem is deliberately worded sneakily to see if you have been paying attention. The function $x_p(t)$ in @thm-firstlin-varpar is all we need. First, note that $\opA[x]=x'-2tx$ and $f(t)=6t$. Then $P(t)=-2t$, so
 
 $$
 q(t) = - \int -2t\, dt = t^2,
@@ -1123,9 +1131,6 @@ $$
 Hence $x(t) = 1-3(2+t) = -5-3t.$
 :::
 ::::
-
-::::
-
 
 :::{.callout-tip}
 It takes a rather special relationship between $P(t)$ and $f(t)$ to make all the integrals in the VoP formula reasonable to do by hand. So, if you are solving an exercise and find yourself faced with an impossible or *really* ugly integral, you likely have made some earlier mistake. 
