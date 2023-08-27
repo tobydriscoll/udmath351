@@ -1136,6 +1136,49 @@ Hence $x(t) = 1-3(2+t) = -5-3t.$
 It takes a rather special relationship between $P(t)$ and $f(t)$ to make all the integrals in the VoP formula reasonable to do by hand. So, if you are solving an exercise and find yourself faced with an impossible or *really* ugly integral, you likely have made some earlier mistake. 
 :::
 
+## Integrating factor
+
+::: {.callout-warning}
+You should probably skip this section. You don't need it.
+:::
+
+Textbooks be like:
+![integrating factor meme](integrating_factor.jpg)
+
+A different process for arriving at the solution to a linear first-order ODE goes by the name of the **integrating factor**. Mathematically and computationally, it's identical to @thm-linear-solve, but organized slighly differently. 
+
+The ODE is again 
+
+$$
+x'(t) + P(t) x(t) = f(t). 
+$$
+
+Define the integrating factor
+
+$$
+\mu(t) = \exp \left[ \int P(t)\, dt \right]. 
+$$
+
+(This is just $1/q(t)$ as defined in @eq-homogeneous1-solution.) When you multiply the entire ODE through by $\mu(t)$, the left-hand side of the equation can be simplified by the product rule and chain rule for derivatives:
+
+$$
+\begin{split}
+\dd{}{t} \left[ \mu(t) x(t) \right] &= \mu x' + \mu' x \\
+&= \mu x' + \left(P \mu \right) x \\
+&= \mu(t) f(t). 
+\end{split}
+$$
+
+Now integrate both sides: 
+
+$$
+\mu(t) x(t) = \int \mu(t) f(t)\, dt + c_1. 
+$$
+
+Solve for $x$, and you are finished---assuming you can do the integrals.
+
+There is nothing new going on here, really. You do the same two intgegrals that make up @thm-linear-solve, it works out for exactly the same reason, and it gives an equivalent result. The integrating factor involves a bit less notation, but the notation we developed supports machinery you will learn in the next chapter, when the integrating factor is no longer an option. 
+
 ## Modeling
 
 First-order ODEs are often used to model situations of growth and decay. The linear problem $x'=ax+f(t)$ is a prototype for many important applications:
