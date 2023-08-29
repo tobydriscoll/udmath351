@@ -21,11 +21,15 @@
     &.example {
         border-color: #dee2e6;
     }
+    
+    // &.theorem {
+    //     border-color: #2a0258;
+    // }
 
     &.definition {
         border-color: rgb(83, 150, 150);
-        margin-left: 2rem;
-        margin-right: 2rem;
+        // margin-left: 1rem;
+        // margin-right: 1rem;
     }
 
     &.exercise {

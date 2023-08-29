@@ -187,7 +187,7 @@ Recall that the equations of a linear system correspond to rows of the coefficie
 All the row operations are reversible. Therefore, *solutions of a linear system remain unchanged after a row operation.*
 
 :::::{#exm-gauss-elimination}
-Use elimination to solve the $3\times 3$ system
+Let's use elimination to solve the $3\times 3$ system
 
 $$
 \begin{split}
@@ -196,7 +196,7 @@ x_1 - x_2  - x_3 & = 2, \\
 x_1 - 2x_2 - x_3 & = 5.
 \end{split}
 $$
-::::{.solution}
+
 The first step is to use the first equation to eliminate $x_1$ from the second and third equations. We therefore add $-3$ times equation 1 to equation 2, and $-1$ times equation 1 to equation 3:
 
 $$
@@ -241,7 +241,6 @@ x_2 + 3x_3 & = 3, \\
 $$
 
 We can now deduce that $x_3=2$ from the last equation. Moving up to the second equation, we then find that $x_2=3-3(2)=-3$. Finally, the first equation yields $x_1=2+(-3)+(2)=1$.
-::::
 :::::
 
 The process in @exm-gauss-elimination leading to triangular system is commonly known as **Gaussian elimination**. (It's a poor name, as the process was known at least in China thousands of years before Gauss.) Finding the solution from the triangular form is called **backward substitution**.
@@ -655,7 +654,7 @@ Look at the last row of the system. It expresses the equation $0=1$, which is im
 
 ### Rank
 
-Leaving aside the actual calculation of solutions, a glance at the RRE form tells us instantly whether the system has no solution, a unique solution, or infinitely many solutions. Because of the requirements on leading ones in the RREF definition, the outcomes are constrained simply by how many of those ones there are.
+Leaving aside the actual calculation of solutions, a glance at the RRE form of the augmented matrix tells us instantly whether the system has no solution, a unique solution, or infinitely many solutions. Because of the requirements on leading ones in the RREF definition, the outcomes are constrained simply by how many of those ones there are.
 
 ::::{#def-RREF-rank} 
 # Rank
@@ -670,7 +669,7 @@ Each leading one in the RRE form requires a row and column of its own.
 :::
 
 ::::{#thm-RREF-deficient} 
-Suppose $\bfA$ is $m\times n$. If $\rank(\bfA)<n$, then the linear system with augmented matrix $\augmat{\bfA\}{\bfb}$ cannot have a unique solution. It is inconsistent for some choices of $\bfb$ and has infinitely many solutions for other choices of $\bfb$.
+Suppose $\bfA$ is $m\times n$. If $\rank(\bfA)<n$, then the linear system with augmented matrix $\augmat{\bfA}{\bfb}$ cannot have a unique solution. It is inconsistent for some choices of $\bfb$ and has infinitely many solutions for other choices of $\bfb$.
 ::::
 :::{.proof}
 Let $r=\rank(\bfA)$. Then the RRE form of $\bfA$ has all zero elements in rows $r+1$ to $m$. Now augment $\bfA$ with $\bfb$ and perform the row operations that reduce $\bfA$ to RRE form. If there are any nonzeros in rows $r+1$ to $m$ of the last column, the system is inconsistent. Otherwise, the system has at least one free variable. We can start with either type of outcome and run the row elimination process backward to find a $\bfb$ that led to it.
@@ -710,7 +709,7 @@ Row operations can't change the zeros in that column.
 ### Null space
 
 ::::{#def-nullspace-nullspace}
-The **null space** of a matrix $\bfA$, written $\nullsp(\bfA)$, is the set of all solutions to the homogeneous linear system with coefficient matrix $\bfA$.
+The **nullspace** of a matrix $\bfA$, written $\nullsp(\bfA)$, is the set of all solutions to the homogeneous linear system with coefficient matrix $\bfA$.
 ::::
 
 :::{.callout-note}
@@ -719,9 +718,9 @@ Sometimes the null space is called the *kernel* of the matrix.
 
 <!-- As the name implies, the null space is our first example of what we will call a *subspace*. We won't worry about that definition just yet. -->
 
-For a homogeneous linear system, the zero vector $\bfx=\bfzero$ is always a solution. The only interesting question is whether zero is the *only* solution. Thus, we only need to look at case 2 from the beginning of this section.
+For a homogeneous linear system, the zero vector $\bfx=\bfzero$ is always a solution. The only interesting question is whether zero is all by itself in the nullspace. That is, we only need to look at case 2 from the beginning of this section.
 
-The following follows immediately from our definitions. (That happens a lot in linear algebra: all the work is in the setup, not the punchline.)
+The following conclusions ensue immediately from our definitions and previous results. Often, linear algebra is like standup comedy: all the work is in the setup, not the punchline.
 
 ::::{#thm-nullspace-uniquenes}
 A homogeneous system in $n$ variables with coefficient matrix $\bfA$ has a unique solution if and only if $\rank(\bfA)=n$.
@@ -730,9 +729,6 @@ A homogeneous system in $n$ variables with coefficient matrix $\bfA$ has a uniqu
 ::::{#cor-nullspace-uniqueness}
 A homogeneous linear system with more variables than equations has infinitely many solutions.
 ::::
-:::{.proof}
-$\rank(\bfA) \le m < n$.
-:::
 
 ### Spanning sets
 
@@ -840,7 +836,7 @@ Hence $\nullsp(\bfA)=\span(\bfv_1,\bfv_2,\bfv_3)$, where the $\bfv_j$ are the co
 
 ### Independence
 
-Now that we have a finite description of the null space, we want to refine it to make sure that it is as simple as possible. For this, we need a new take on an old friend.
+Now that we have a finite description of the null space, we want to refine it to make sure that it is as simple as possible. For this, we need to put some fresh paint on an old barn.
 
 ::::{#def-nullspace-indepdendence}
 # Linear independence
@@ -853,14 +849,11 @@ $$
 If the vectors are not linearly dependent, then they are **linearly independent**.
 ::::
 
-:::{.callout-note}
-Sound familiar? Stay tuned!
-:::
-
 Because linear combinations are equivalent to linear systems, statements about linear independence are equivalent to statements about homogeneous linear systems, and therefore about null spaces.
 
 ::::{#exm-nullspace-dependent}
 Determine whether the vectors $\bfv_1=\threevec{1}{0}{-2}$, $\bfv_2=\threevec{1}{0}{1}$, and $\bfv_3 = \threevec{0}{0}{-1}$ are linearly independent.
+
 :::{.solution}
 These vectors are dependent if, and only if, we can find $c_1,c_2,c_3$, not all zero, such that
 
@@ -929,5 +922,5 @@ Hence $\span(\bfv_1,\bfv_2,\bfv_3) = \span(\bfv_2,\bfv_3)$.
 In @exm-nullspace-dependentspan, we could have removed $\bfv_2$ or $\bfv_3$ from the spanning set instead without changing the spanned result. The only requirement is that the coefficient of the removed vector is not zero in the linear combination of them that makes zero.
 :::
 
-A set of vectors that both spans the null space and is linearly independent is called a **basis** of the null space. We'll formalize that idea when we discuss subspaces more generally. For now, just know that a basis is a minimal set of vectors that can get the spanning job done.
+A set of vectors that both spans the null space and is linearly independent is called a *basis* of the null space. We'll formalize that idea when we discuss subspaces more generally. For now, just know that a basis is a minimal set of vectors that can get the spanning job done.
 

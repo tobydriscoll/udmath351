@@ -140,12 +140,14 @@ u_1^{(n-1)} & u_2^{(n-1)} & \cdots & u_n^{(n-1)}
 $$ {#eq-structure-wronskian}
 ::::
 
-:::{.callout-attention}
-@eq-structure-wronskian is a *determinant*, which we will not learn in general for a while yet. But for now we only care about the $2\times 2$ case, in which 
+:::{.callout-note}
+@eq-structure-wronskian is a *determinant*, which we will not learn in general for a while yet. In the $2\times 2$ case, it's
 
 $$
 \begin{vmatrix} a & b \\ c & d \end{vmatrix} = ad-bc.
 $$
+
+In the $3\times 3$ case, it's the same process as finding cross products in vector calculus. You can look ahead at @exm-matrix-determinant3x3 for a refresher.
 :::
 
 Here's the punch line.
