@@ -689,6 +689,8 @@ We now begin a close look at the linear case.
 Linear problems are pretty much all we consider from this point on.
 :::
 
+|[](linearity-button.jpg)
+
 <!-- ```{index} ! linear ODE; first-order
 ``` 
 -->
