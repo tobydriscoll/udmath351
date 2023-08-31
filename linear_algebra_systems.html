@@ -194,7 +194,7 @@ MathJax = {
   <li><a href="#two-variables" id="toc-two-variables" class="nav-link" data-scroll-target="#two-variables"><span class="header-section-number">3.1.1</span> Two variables</a></li>
   <li><a href="#general-case" id="toc-general-case" class="nav-link" data-scroll-target="#general-case"><span class="header-section-number">3.1.2</span> General case</a></li>
   </ul></li>
-  <li><a href="#row-elimintation" id="toc-row-elimintation" class="nav-link" data-scroll-target="#row-elimintation"><span class="header-section-number">3.2</span> Row elimintation</a>
+  <li><a href="#row-elimination" id="toc-row-elimination" class="nav-link" data-scroll-target="#row-elimination"><span class="header-section-number">3.2</span> Row elimination</a>
   <ul class="collapse">
   <li><a href="#augmented-matrix" id="toc-augmented-matrix" class="nav-link" data-scroll-target="#augmented-matrix"><span class="header-section-number">3.2.1</span> Augmented matrix</a></li>
   <li><a href="#row-echelon-form" id="toc-row-echelon-form" class="nav-link" data-scroll-target="#row-echelon-form"><span class="header-section-number">3.2.2</span> Row echelon form</a></li>
@@ -207,7 +207,7 @@ MathJax = {
   <li><a href="#homogeneous-systems" id="toc-homogeneous-systems" class="nav-link" data-scroll-target="#homogeneous-systems"><span class="header-section-number">3.4</span> Homogeneous systems</a>
   <ul class="collapse">
   <li><a href="#null-space" id="toc-null-space" class="nav-link" data-scroll-target="#null-space"><span class="header-section-number">3.4.1</span> Null space</a></li>
-  <li><a href="#relating-to-nonhomoegeneous-systems" id="toc-relating-to-nonhomoegeneous-systems" class="nav-link" data-scroll-target="#relating-to-nonhomoegeneous-systems"><span class="header-section-number">3.4.2</span> Relating to nonhomoegeneous systems</a></li>
+  <li><a href="#relating-to-nonhomogeneous-systems" id="toc-relating-to-nonhomogeneous-systems" class="nav-link" data-scroll-target="#relating-to-nonhomogeneous-systems"><span class="header-section-number">3.4.2</span> Relating to nonhomogeneous systems</a></li>
   </ul></li>
   <li><a href="#linear-combinations" id="toc-linear-combinations" class="nav-link" data-scroll-target="#linear-combinations"><span class="header-section-number">3.5</span> Linear combinations</a>
   <ul class="collapse">
@@ -322,7 +322,7 @@ MathJax = {
 <li>Otherwise, there are no solutions.</li>
 </ul></li>
 </ul>
-<p>It turns out that no matter how many equations and variables we have, the only three possibilites are the ones above: zero, one, or infinitely many solutions. The main difference is that the condition “<span class="math inline">\(a=0\)</span>” has to be generalized.</p>
+<p>It turns out that no matter how many equations and variables we have, the only three possibilities are the ones above: zero, one, or infinitely many solutions. The main difference is that the condition “<span class="math inline">\(a=0\)</span>” has to be generalized.</p>
 <div id="def-linsys-consistent" class="theorem definition">
 <p><span class="theorem-title"><strong>Definition 3.1 (Consistent linear system) </strong></span>A linear system that has at least one solution is called <strong>consistent</strong>. Otherwise, it is <strong>inconsistent</strong>.</p>
 </div>
@@ -456,8 +456,8 @@ Note
 </div>
 </section>
 </section>
-<section id="row-elimintation" class="level2" data-number="3.2">
-<h2 data-number="3.2" class="anchored" data-anchor-id="row-elimintation"><span class="header-section-number">3.2</span> Row elimintation</h2>
+<section id="row-elimination" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="row-elimination"><span class="header-section-number">3.2</span> Row elimination</h2>
 <p>You’ve probably solved small systems of equations by substitution. In order to solve systems with more equations and variables, we systematize this idea as an <em>elimination algorithm</em>. The goal of elimination is to transform the system to an equivalent one whose solution(s) we can deduce easily. There are three legal moves in this game:</p>
 <div id="def-row_elimination-operations" class="theorem definition">
 <p><span class="theorem-title"><strong>Definition 3.5 (Row operations) </strong></span>The following operations do not change the solutions of a linear system:</p>
@@ -634,7 +634,7 @@ x_2 + 3x_3 &amp; = 3, \\
 <p>That last equation is a dealbreaker! The system is inconsistent.</p>
 </div>
 <div id="def-pivot" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 3.8 (Pivots) </strong></span>The leading elements encountered during row elmination are called <strong>pivots</strong>. The columns they occur in are called <strong>leading variables</strong>, while the other variables (if any) are called <strong>free variables</strong>.</p>
+<p><span class="theorem-title"><strong>Definition 3.8 (Pivots) </strong></span>The leading elements encountered during row elimination are called <strong>pivots</strong>. The columns they occur in are called <strong>leading variables</strong>, while the other variables (if any) are called <strong>free variables</strong>.</p>
 </div>
 <div id="exm-elimination-infinite" class="theorem example">
 <p><span class="theorem-title"><strong>Example 3.6 </strong></span>Suppose we begin with the augmented matrix <span class="math display">\[
@@ -1124,9 +1124,9 @@ Note
 <p><span class="theorem-title"><strong>Corollary 3.2 </strong></span>A homogeneous linear system with more variables than equations has infinitely many solutions.</p>
 </div>
 </section>
-<section id="relating-to-nonhomoegeneous-systems" class="level3" data-number="3.4.2">
-<h3 data-number="3.4.2" class="anchored" data-anchor-id="relating-to-nonhomoegeneous-systems"><span class="header-section-number">3.4.2</span> Relating to nonhomoegeneous systems</h3>
-<p>There is a strong correpsondence between a nonhomogeneous linear ODE <span class="math inline">\(\opA[x]=f\)</span> and a nonhomogeneous linear system <span class="math inline">\(\bfA\bfx=\bfb\)</span>.</p>
+<section id="relating-to-nonhomogeneous-systems" class="level3" data-number="3.4.2">
+<h3 data-number="3.4.2" class="anchored" data-anchor-id="relating-to-nonhomogeneous-systems"><span class="header-section-number">3.4.2</span> Relating to nonhomogeneous systems</h3>
+<p>There is a strong correspondence between a nonhomogeneous linear ODE <span class="math inline">\(\opA[x]=f\)</span> and a nonhomogeneous linear system <span class="math inline">\(\bfA\bfx=\bfb\)</span>.</p>
 <div id="thm-linsys-nonhomogeneous" class="theorem">
 <p><span class="theorem-title"><strong>Theorem 3.7 </strong></span>If <span class="math inline">\(\bfu\)</span> is in the nullspace of <span class="math inline">\(\bfA\)</span> and <span class="math inline">\(\bfv\)</span> is any solution of <span class="math inline">\(\bfA\bfx = \bfb\)</span>, then <span class="math inline">\(\bfu+\bfv\)</span> is also a solution of <span class="math inline">\(\bfA\bfx = \bfb\)</span>.</p>
 </div>
@@ -1169,7 +1169,7 @@ Note
 <h3 data-number="3.5.1" class="anchored" data-anchor-id="spanning-sets"><span class="header-section-number">3.5.1</span> Spanning sets</h3>
 <p>When we have infinitely many solutions in a linear system, it’s nice to have a concise description of all of them. This takes us on a considerable side quest.</p>
 <!---
- Using a small matrix, we see an important connection to a familar concept:
+ Using a small matrix, we see an important connection to a familiar concept:
 
 $$
 \begin{split}
@@ -1359,7 +1359,7 @@ c_1 \bfv_1 + c_2 \bfv_2 + c_3 \bfv_3 = \bfzero.
 </div>
 </div>
 <p>Besides the presence of a zero vector, there is one easy case to detect dependence.</p>
-<div id="thm-linsys-depdendence-too-many" class="theorem">
+<div id="thm-linsys-dependence-too-many" class="theorem">
 <p><span class="theorem-title"><strong>Theorem 3.10 </strong></span>Any collection of <span class="math inline">\(n\)</span> vectors in <span class="math inline">\(\real^m\)</span> is dependent if <span class="math inline">\(n &gt; m\)</span>.</p>
 </div>
 <div class="proof">
@@ -1375,7 +1375,7 @@ Warning
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><a href="#thm-linsys-depdendence-too-many" class="quarto-xref">Theorem&nbsp;<span>3.10</span></a> says, “if <span class="math inline">\(n &gt; m\)</span>, then dependent,” but the converse statement, “if dependent, then <span class="math inline">\(n &gt; m\)</span>,” is not logically correct. There are examples of dependent sets of vectors with <span class="math inline">\(n &lt; m\)</span>, <span class="math inline">\(n=m\)</span>, <em>and</em> <span class="math inline">\(n&gt;m\)</span>.</p>
+<p><a href="#thm-linsys-dependence-too-many" class="quarto-xref">Theorem&nbsp;<span>3.10</span></a> says, “if <span class="math inline">\(n &gt; m\)</span>, then dependent,” but the converse statement, “if dependent, then <span class="math inline">\(n &gt; m\)</span>,” is not logically correct. There are examples of dependent sets of vectors with <span class="math inline">\(n &lt; m\)</span>, <span class="math inline">\(n=m\)</span>, <em>and</em> <span class="math inline">\(n&gt;m\)</span>.</p>
 </div>
 </div>
 <p>Dependent vectors lengthen the description of a spanned space without contributing any information. We will come back to finish this thought in the next chapter. But first, we are going to take a closer look at the algebra of vectors and matrices.</p>

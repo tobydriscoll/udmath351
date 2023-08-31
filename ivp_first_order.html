@@ -450,7 +450,7 @@ x(t) = C e^{at}
 <p>Hence we have proved that <a href="#eq-preview-const-growth-solution" class="quarto-xref">Equation&nbsp;<span>1.5</span></a> is a solution of <a href="#eq-preview-const-growth" class="quarto-xref">Equation&nbsp;<span>1.4</span></a>. Note that <span class="math inline">\(x\)</span> never changes sign, and <span class="math inline">\(|x(t)|\)</span> grows without bound as <span class="math inline">\(t\to\infty\)</span>.</p>
 <!-- ```{index} general solution
 ``` -->
-<p>The solution <a href="#eq-preview-const-growth-solution" class="quarto-xref">Equation&nbsp;<span>1.5</span></a> again has an arbitrary constant. Unlike for <a href="#eq-preview-constant-change" class="quarto-xref">Equation&nbsp;<span>1.3</span></a>, however, this constant appears as a mutiplier, not as an addend. It turns out that we will always get such a constant popping up in some form, which leads to the following definition:</p>
+<p>The solution <a href="#eq-preview-const-growth-solution" class="quarto-xref">Equation&nbsp;<span>1.5</span></a> again has an arbitrary constant. Unlike for <a href="#eq-preview-constant-change" class="quarto-xref">Equation&nbsp;<span>1.3</span></a>, however, this constant appears as a multiplier, not as an addend. It turns out that we will always get such a constant popping up in some form, which leads to the following definition:</p>
 <div id="def-first-general-solution" class="theorem definition">
 <p><span class="theorem-title"><strong>Definition 1.3 </strong></span>The <strong>general solution</strong> of a first-order ODE is a family of functions, parameterized by <span class="math inline">\(C\)</span>, such that every member of the family for a particular value of <span class="math inline">\(C\)</span> is a solution.</p>
 </div>
@@ -522,7 +522,7 @@ C \left(2t e^{t^2} \right) &amp;= 2t \left( C e^{t^2} \right),
 <p><span id="eq-preview-nonlinear"><span class="math display">\[
 \dd{x}{t} = x^2
 \tag{1.11}\]</span></span></p>
-<p>to constant growth <span class="math inline">\(x'=ax\)</span>, it is irresistable to interpret this equation as a growth process whose rate at any instant is the momentary value of the solution itself. This suggests a kind of runaway feedback loop.</p>
+<p>to constant growth <span class="math inline">\(x'=ax\)</span>, it is irresistible to interpret this equation as a growth process whose rate at any instant is the momentary value of the solution itself. This suggests a kind of runaway feedback loop.</p>
 <p>The general solution is</p>
 <p><span id="eq-preview-nonlinear-solution"><span class="math display">\[
 x(t) = \frac{1}{C-t}.
@@ -556,7 +556,7 @@ Note
 <section id="initial-value-problems" class="level2" data-number="1.2">
 <h2 data-number="1.2" class="anchored" data-anchor-id="initial-value-problems"><span class="header-section-number">1.2</span> Initial-value problems</h2>
 <p>One of the important findings in <a href="#sec-first-order-preview" class="quarto-xref"><span>Section&nbsp;1.1</span></a> is that solutions of first-order ODEs are not unique. The manifestation of the nonuniqueness is the presence of an integration constant, and we get a <strong>general solution</strong> that describes a family of functions that provide all possible solutions.</p>
-<!-- ```{index} paticular solution, ! initial-value problem; with first-order ODE
+<!-- ```{index} particular solution, ! initial-value problem; with first-order ODE
 ``` -->
 <p>In scientific and engineering problems, we typically have an additional constraint that picks out a single member of the general solution family—a <strong>particular solution</strong>. Usually that constraint takes the form of a specified value,</p>
 <p><span class="math display">\[
@@ -3632,7 +3632,7 @@ x' + \frac{1}{t}x = \frac{\sin(t)}{t}.
 <section id="linear-homogeneous-equations" class="level3" data-number="1.5.2">
 <h3 data-number="1.5.2" class="anchored" data-anchor-id="linear-homogeneous-equations"><span class="header-section-number">1.5.2</span> Linear homogeneous equations</h3>
 <!-- 
-```olfqzps ! homogeneous; ODE
+```pprvsnh ! homogeneous; ODE
 ``` -->
 <p>The equation <span class="math inline">\(\opA[x]=0\)</span>, or <a href="#eq-linear-standard" class="quarto-xref">Equation&nbsp;<span>1.17</span></a> with forcing function <span class="math inline">\(f\)</span> set to zero, plays a key role.</p>
 <div id="def-first-homogeneous" class="theorem definition">
@@ -3643,7 +3643,7 @@ x' + \frac{1}{t}x = \frac{\sin(t)}{t}.
 <p>or <span class="math inline">\(\opA[x]=0\)</span>.</p>
 </div>
 <!-- 
-```olfqzps ! superposition
+```pprvsnh ! superposition
 ``` -->
 <p>Linear homogeneous problems have a key property that allows turning individual solutions into sets of them.</p>
 <div id="thm-linear-super" class="theorem">
@@ -3773,7 +3773,7 @@ x_1(t) = e^{q(t)} = t^{-2}.
 </section>
 <section id="sec-first-order-vop" class="level2" data-number="1.7">
 <h2 data-number="1.7" class="anchored" data-anchor-id="sec-first-order-vop"><span class="header-section-number">1.7</span> Variation of parameters</h2>
-<p><a href="#sec-first-order-homogeneous1" class="quarto-xref"><span>Section&nbsp;1.6</span></a> explained how to find the general solution <span class="math inline">\(x_h(t)\)</span> of a homoegenous linear system <span class="math inline">\(\opA[x] = 0\)</span>. The next step of our solution strategy in <a href="#thm-linear-solve" class="quarto-xref">Theorem&nbsp;<span>1.3</span></a> is to find some particular solution of <span class="math inline">\(\opA[x]=f\)</span> for the given <span class="math inline">\(f(t)\)</span>. After that, the general solution is in our hands.</p>
+<p><a href="#sec-first-order-homogeneous1" class="quarto-xref"><span>Section&nbsp;1.6</span></a> explained how to find the general solution <span class="math inline">\(x_h(t)\)</span> of a homogeneous linear system <span class="math inline">\(\opA[x] = 0\)</span>. The next step of our solution strategy in <a href="#thm-linear-solve" class="quarto-xref">Theorem&nbsp;<span>1.3</span></a> is to find some particular solution of <span class="math inline">\(\opA[x]=f\)</span> for the given <span class="math inline">\(f(t)\)</span>. After that, the general solution is in our hands.</p>
 <p>The form of the homogeneous solution is</p>
 <p><span class="math display">\[
 x_h(t) = c_1 e^{q(t)},
@@ -3957,8 +3957,14 @@ Warning
 <p>You should probably skip this section. You don’t need it.</p>
 </div>
 </div>
-<p>Textbooks be like: <img src="integrating_factor.jpg" class="img-fluid" alt="integrating factor meme"></p>
-<p>A different process for arriving at the solution to a linear first-order ODE goes by the name of the <strong>integrating factor</strong>. Mathematically and computationally, it’s identical to <a href="#thm-linear-solve" class="quarto-xref">Theorem&nbsp;<span>1.3</span></a>, but organized slighly differently.</p>
+<p>Textbooks be like:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="integrating_factor.jpg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">integrating factor meme</figcaption>
+</figure>
+</div>
+<p>A different process for arriving at the solution to a linear first-order ODE goes by the name of the <strong>integrating factor</strong>. Mathematically and computationally, it’s identical to <a href="#thm-linear-solve" class="quarto-xref">Theorem&nbsp;<span>1.3</span></a>, but organized slightly differently.</p>
 <p>The ODE is again</p>
 <p><span class="math display">\[
 x'(t) + P(t) x(t) = f(t).
@@ -3980,7 +3986,7 @@ x'(t) + P(t) x(t) = f(t).
 \mu(t) x(t) = \int \mu(t) f(t)\, dt + c_1.
 \]</span></p>
 <p>Solve for <span class="math inline">\(x\)</span>, and you are finished—assuming you can do the integrals.</p>
-<p>There is nothing new going on here, really. You do the same two intgegrals that make up <a href="#thm-linear-solve" class="quarto-xref">Theorem&nbsp;<span>1.3</span></a>, it works out for exactly the same reason, and it gives an equivalent result. The integrating factor involves a bit less notation, but the notation we developed supports machinery you will learn in the next chapter, when the integrating factor is no longer an option.</p>
+<p>There is nothing new going on here, really. You do the same two integrals that make up <a href="#thm-linear-solve" class="quarto-xref">Theorem&nbsp;<span>1.3</span></a>, it works out for exactly the same reason, and it gives an equivalent result. The integrating factor involves a bit less notation, but the notation we developed supports machinery you will learn in the next chapter, when the integrating factor is no longer an option.</p>
 </section>
 <section id="modeling" class="level2" data-number="1.9">
 <h2 data-number="1.9" class="anchored" data-anchor-id="modeling"><span class="header-section-number">1.9</span> Modeling</h2>
@@ -4004,7 +4010,7 @@ Amount or concentration <span class="math inline">\(x(t)\)</span> of a drug bein
 </dd>
 <dt>Newtonian cooling or heating</dt>
 <dd>
-Temerature difference <span class="math inline">\(x(t)\)</span> between object and environment decays to zero (<span class="math inline">\(a&lt;0\)</span>).
+Temperature difference <span class="math inline">\(x(t)\)</span> between object and environment decays to zero (<span class="math inline">\(a&lt;0\)</span>).
 </dd>
 </dl>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -4299,7 +4305,7 @@ $$
 <section id="cooling-and-heating" class="level3" data-number="1.9.2">
 <h3 data-number="1.9.2" class="anchored" data-anchor-id="cooling-and-heating"><span class="header-section-number">1.9.2</span> Cooling and heating</h3>
 <p>There are formulas to plug and play for this type of problem, but these are not hard to solve directly if you understand how to interpret them.</p>
-<p>Suppose an object is put into an environment that is held at constant tempertature <span class="math inline">\(E\)</span>. Let <span class="math inline">\(T(t)\)</span> be the temperature of the object. The Newton Cooling Law (which applies equally to heating) states that the difference between <span class="math inline">\(T\)</span> and <span class="math inline">\(E\)</span> decreases at a constant decay rate. Mathematically, if we define <span class="math inline">\(x(t) = T(t) - E\)</span>, then</p>
+<p>Suppose an object is put into an environment that is held at constant temperature <span class="math inline">\(E\)</span>. Let <span class="math inline">\(T(t)\)</span> be the temperature of the object. The Newton Cooling Law (which applies equally to heating) states that the difference between <span class="math inline">\(T\)</span> and <span class="math inline">\(E\)</span> decreases at a constant decay rate. Mathematically, if we define <span class="math inline">\(x(t) = T(t) - E\)</span>, then</p>
 <p><span class="math display">\[
 \dd{x}{t} = -k x, \qquad (k&gt;0).
 \]</span></p>
