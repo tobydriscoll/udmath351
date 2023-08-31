@@ -125,7 +125,7 @@ is equivalent to $\tan(t)=-c_1/c2$ if $c_2\neq 0$, which is impossible for all $
 
 ### Wronskian
 
-There is a mechanical way to determine the indepdence of given functions.
+There is a mechanical way to determine the independence of given functions.
 
 ::::{#def-structure-wronskian} 
 Suppose $u_1,\ldots,u_n$ all have at least $n-1$ continuous derivatives. Their **Wronskian** is 
@@ -252,7 +252,7 @@ x_h(t) = c_1 e^{\lambda_1 t} + c_2 e^{\lambda_2 t}.
 $$ {#eq-homogeneous-distinct}
 ::::
 
-Part of what makes @eq-homogeneous-distinct work is that $e^{\lambda_1 t}$ and $e^{\lambda_2 t}$ are indepdendent solutions, because
+Part of what makes @eq-homogeneous-distinct work is that $e^{\lambda_1 t}$ and $e^{\lambda_2 t}$ are independent solutions, because
 
 $$
 \twodet{e^{\lambda_1 t}}{e^{\lambda_2 t}}{\lambda_1 e^{\lambda_1 t}}{\lambda_2 e^{\lambda_2 t}}
@@ -320,7 +320,7 @@ All this seems simple enough. But remember that the roots of a real quadratic po
 using Plots,LaTeXStrings,Printf
 default(linewidth=2,label="",size=(400,280))
 using Logging
-disable_logging(Logging.Info)
+disable_logging(Logging.Info);
 ```
 
 *For a really smart and entertaining introduction to complex numbers, I recommend [this video series](https://youtu.be/T647CGsuOVU).*
@@ -369,7 +369,7 @@ Yet something amazing happens if you do accept imaginary numbers, and their expa
 We can write a complex number $z\in \complex$ as $z=x+iy$, where $i^2=-1$ and $x$ and $y$ are real numbers known as the **real part** and **imaginary part** of $z$,
 
 $$
-z = x + i y \quad \Leftrightarrow \quad x = \Re(z), \quad y = \Im(z).
+z = x + i y \quad \Leftrightarrow \quad x = \text{Re}(z), \quad y = \text{Im}(z).
 $$
 
 Writing a complex number this way is equivalent to using rectangular or Cartesian coordinates in the plane to specify a point $(x,y)$. Thus complex numbers are on a number *plane* rather than a number line.
@@ -745,7 +745,7 @@ Since complex exponentials are much less familiar to you than sin and cos, the r
 
 ## Variation of parameters {#sec-second-vop}
 
-@sec-second-const_coeff and @sec-second-complex explained how to find the general solution $x_h(t)$ of a homoegenous linear system $\opA[x]=0$. We need to perform that same step for a nonhomogeneous problem $\opA[x]=f$, but then also find a particular solution of the original equation. One possibility is to adapt the *variation of parameters* technique used for first-order problems in @sec-first-order-vop.
+@sec-second-const_coeff and @sec-second-complex explained how to find the general solution $x_h(t)$ of a homogeneous linear system $\opA[x]=0$. We need to perform that same step for a nonhomogeneous problem $\opA[x]=f$, but then also find a particular solution of the original equation. One possibility is to adapt the *variation of parameters* technique used for first-order problems in @sec-first-order-vop.
 
 The form of the homogeneous solution is
 
@@ -753,7 +753,7 @@ $$
 x_h(t) = c_1 x_1(t) + c_2 x_2(t),
 $$
 
-where $x_1$ and $x_2$ are indepdendent homogeneous solutions. Now we replace the constants $c_1$ and $c_2$ with functions of $t$:
+where $x_1$ and $x_2$ are independent homogeneous solutions. Now we replace the constants $c_1$ and $c_2$ with functions of $t$:
 
 $$
 x_p(t) = u_1(t) x_1(t) + u_2(t) x_2(t).
@@ -874,7 +874,7 @@ $$
 x_p(t) = \frac{1}{\lambda} t e^{\lambda t}  - \frac{1}{2 \lambda^2} e^{\lambda t}
 $$
 
-is a particular solution. However, the second term is a constant mutiple of $x_1$, so we could drop it and still have a particular solution.
+is a particular solution. However, the second term is a constant multiple of $x_1$, so we could drop it and still have a particular solution.
 :::
 ::::
 

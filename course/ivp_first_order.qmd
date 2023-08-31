@@ -168,7 +168,7 @@ Hence we have proved that @eq-preview-const-growth-solution is a solution of @eq
 <!-- ```{index} general solution
 ``` -->
 
-The solution @eq-preview-const-growth-solution again has an arbitrary constant. Unlike for @eq-preview-constant-change, however, this constant appears as a mutiplier, not as an addend. It turns out that we will always get such a constant popping up in some form, which leads to the following definition:
+The solution @eq-preview-const-growth-solution again has an arbitrary constant. Unlike for @eq-preview-constant-change, however, this constant appears as a multiplier, not as an addend. It turns out that we will always get such a constant popping up in some form, which leads to the following definition:
 
 ::::{#def-first-general-solution}
 The **general solution** of a first-order ODE is a family of functions, parameterized by $C$, such that every member of the family for a particular value of $C$ is a solution.
@@ -253,7 +253,7 @@ $$
 \dd{x}{t} = x^2 
 $$ {#eq-preview-nonlinear}
 
-to constant growth $x'=ax$, it is irresistable to interpret this equation as a growth process whose rate at any instant is the momentary value of the solution itself. This suggests a kind of runaway feedback loop.
+to constant growth $x'=ax$, it is irresistible to interpret this equation as a growth process whose rate at any instant is the momentary value of the solution itself. This suggests a kind of runaway feedback loop.
 
 The general solution is
 
@@ -286,7 +286,7 @@ That concludes our bus tour of first-order equations. It's time to get serious a
 
 One of the important findings in @sec-first-order-preview is that solutions of first-order ODEs are not unique. The manifestation of the nonuniqueness is the presence of an integration constant, and we get a **general solution** that describes a family of functions that provide all possible solutions. 
 
-<!-- ```{index} paticular solution, ! initial-value problem; with first-order ODE
+<!-- ```{index} particular solution, ! initial-value problem; with first-order ODE
 ``` -->
 
 In scientific and engineering problems, we typically have an additional constraint that picks out a single member of the general solution family---a **particular solution**. Usually that constraint takes the form of a specified value,
@@ -689,7 +689,7 @@ We now begin a close look at the linear case.
 Linear problems are pretty much all we consider from this point on.
 :::
 
-|[](linearity-button.jpg)
+![](linearity-button.jpg)
 
 <!-- ```{index} ! linear ODE; first-order
 ``` 
@@ -958,7 +958,7 @@ This solution fails to exist at $t=0$ because of the singular point implied by $
 
 ## Variation of parameters {#sec-first-order-vop}
 
-@sec-first-order-homogeneous1 explained how to find the general solution $x_h(t)$ of a homoegenous linear system $\opA[x] = 0$. The next step of our solution strategy in @thm-linear-solve is to find some particular solution of $\opA[x]=f$ for the given $f(t)$. After that, the general solution is in our hands.
+@sec-first-order-homogeneous1 explained how to find the general solution $x_h(t)$ of a homogeneous linear system $\opA[x] = 0$. The next step of our solution strategy in @thm-linear-solve is to find some particular solution of $\opA[x]=f$ for the given $f(t)$. After that, the general solution is in our hands.
 
 The form of the homogeneous solution is
 
@@ -1145,9 +1145,10 @@ You should probably skip this section. You don't need it.
 :::
 
 Textbooks be like:
+
 ![integrating factor meme](integrating_factor.jpg)
 
-A different process for arriving at the solution to a linear first-order ODE goes by the name of the **integrating factor**. Mathematically and computationally, it's identical to @thm-linear-solve, but organized slighly differently. 
+A different process for arriving at the solution to a linear first-order ODE goes by the name of the **integrating factor**. Mathematically and computationally, it's identical to @thm-linear-solve, but organized slightly differently. 
 
 The ODE is again 
 
@@ -1179,7 +1180,7 @@ $$
 
 Solve for $x$, and you are finished---assuming you can do the integrals.
 
-There is nothing new going on here, really. You do the same two intgegrals that make up @thm-linear-solve, it works out for exactly the same reason, and it gives an equivalent result. The integrating factor involves a bit less notation, but the notation we developed supports machinery you will learn in the next chapter, when the integrating factor is no longer an option. 
+There is nothing new going on here, really. You do the same two integrals that make up @thm-linear-solve, it works out for exactly the same reason, and it gives an equivalent result. The integrating factor involves a bit less notation, but the notation we developed supports machinery you will learn in the next chapter, when the integrating factor is no longer an option. 
 
 ## Modeling
 
@@ -1198,7 +1199,7 @@ Pharmacokinetics
 : Amount or concentration $x(t)$ of a drug being metabolized in the body ($a<0$).
 
 Newtonian cooling or heating
-: Temerature difference $x(t)$ between object and environment decays to zero ($a<0$).
+: Temperature difference $x(t)$ between object and environment decays to zero ($a<0$).
 
 :::{.callout-note}
 In practice, interest rates may be quoted yearly, or quarterly, or according to any other finite time period. The rate in an ODE model is the *continuously compounded* rate.
@@ -1504,7 +1505,7 @@ $$
 
 There are formulas to plug and play for this type of problem, but these are not hard to solve directly if you understand how to interpret them.
 
-Suppose an object is put into an environment that is held at constant tempertature $E$. Let $T(t)$ be the temperature of the object. The Newton Cooling Law (which applies equally to heating) states that the difference between $T$ and $E$ decreases at a constant decay rate. Mathematically, if we define $x(t) = T(t) - E$, then
+Suppose an object is put into an environment that is held at constant temperature $E$. Let $T(t)$ be the temperature of the object. The Newton Cooling Law (which applies equally to heating) states that the difference between $T$ and $E$ decreases at a constant decay rate. Mathematically, if we define $x(t) = T(t) - E$, then
 
 $$
 \dd{x}{t} = -k x, \qquad (k>0).

@@ -16,7 +16,7 @@ jupyter:
     name: julia-1.9
 ---
 
-# Linear algebraic equations
+# Linear algebraic systems
 
 ::: {.content-visible unless-format="pdf"}
 {{< include _macros.qmd >}}
@@ -40,7 +40,7 @@ for $x$.
    - If also $b=0$, then every value of $x$ is a valid solution.
    - Otherwise, there are no solutions.
 
-It turns out that no matter how many equations and variables we have, the only three possibilites are the ones above: zero, one, or infinitely many solutions. The main difference is that the condition "$a=0$" has to be generalized.
+It turns out that no matter how many equations and variables we have, the only three possibilities are the ones above: zero, one, or infinitely many solutions. The main difference is that the condition "$a=0$" has to be generalized.
 
 ::::{#def-linsys-consistent} 
 # Consistent linear system
@@ -169,12 +169,14 @@ and the right-side vector is $\twovec{4}{-1}$.
 We can regard a vector $\bfx \in \real^n$ as also being a matrix, in two ways: as a member of $\rmn{1}{n}$, making it a **row vector**, or as a member of $\rmn{n}{1}$, making it a **column vector**. Our default is that when we want to interpret a named vector as a matrix, it's a column vector. Note, however, that Python assumes a row vector, MATLAB lets you choose either, and Julia considers it a column vector. It's a mess that can lead to frustrating errors in computer codes.
 :::
 
-## Row elimintation
+## Row elimination
 
 You've probably solved small systems of equations by substitution. In order to solve systems with more equations and variables, we systematize this idea as an *elimination algorithm*. The goal of elimination is to transform the system to an equivalent one whose solution(s) we can deduce easily. There are three legal moves in this game:
 
 ::::{#def-row_elimination-operations} 
 # Row operations
+The following operations do not change the solutions of a linear system:
+
 1. Swap the positions of two equations.
 2. Multiply an equation by a nonzero constant.
 3. Add a multiple of one equation to another equation.
@@ -183,8 +185,6 @@ You've probably solved small systems of equations by substitution. In order to s
 ::: {.callout-note}
 Recall that the equations of a linear system correspond to rows of the coefficient matrix $\bfA$ and forcing vector $\bfb$, hence the name "row operations."
 :::
-
-All the row operations are reversible. Therefore, *solutions of a linear system remain unchanged after a row operation.*
 
 :::::{#exm-gauss-elimination}
 Let's use elimination to solve the $3\times 3$ system
@@ -230,11 +230,11 @@ x_2 + 3x_3 & = 3, \\
 \end{split}
 $$
 
-We now have a system in **triangular** form,
+We now have the system, equivalent to the original one, comprising
 
 $$
 \begin{split}
- x_1 - x_2  - x_3  & = 2, \\
+x_1 - x_2  - x_3  & = 2, \\
 x_2 + 3x_3 & = 3, \\
 3x_3  & = 6.
 \end{split}
@@ -245,201 +245,278 @@ We can now deduce that $x_3=2$ from the last equation. Moving up to the second e
 
 The process in @exm-gauss-elimination leading to triangular system is commonly known as **Gaussian elimination**. (It's a poor name, as the process was known at least in China thousands of years before Gauss.) Finding the solution from the triangular form is called **backward substitution**.
 
-### Gauss-Jordan elimination
+### Augmented matrix
 
-An alternative to backward substitution is to transform the triangular system into something even simpler.
-
-::::{#exm-gauss-jordan} 
-We continue from the end of @exm-gauss-elimination.  Having reached the last variable and equation, we turn around and eliminate *upwards* instead:
-
-$$
-\begin{split}
-(x_1 - x_2 - x_3) + \frac{1}{3}(3x_3) & = 2  +\frac{1}{3}(6), \\
-(x_2 + 3x_3) - (3x_3) & = 3 - (6),\\
-3x_3  & = 6.
-\end{split}
-$$
-
-This leaves the system as
-$$
-\begin{split}
- x_1  -x_2 & = 4,\\
-x_2 & = -3,\\
-3x_3  & = 6.
-\end{split}
-$$
-
-Moving upwards to the second equation, and use it to eliminate within the one above it:
-
-$$
-\begin{split}
-(x_1 - x_2 ) + (x_2) & = 4  + (-3),\\
-x_2 & = -3,\\
-3x_3  & = 6. 
-\end{split}
-$$
-The system is now trivial: $x_1=1$, $x_2=-3$, and $x_3=2$.
-::::
-
-The process above is called **Gauss–Jordan elimination**, or more simply, **row elimination**. 
-
-### Matrix form
-
-Before generalizing the elimination process, we will lighten the notational load by using matrices. 
+Before looking further into the elimination process, we will lighten the notational load by using matrices. 
 
 ::::{#def-linsys-augmented}
 The **augmented matrix** of the linear system @eq-linsys-def is the $m\times (n+1)$ matrix $\mathbf{G} = \augmat{\bfA}{\bfb}$.
 ::::
 
-We start with  that contains all the equation coefficients and right-side values. 
-
-Let's look at elimination in this form for the system
-
-$$
-\begin{split}
-x_1 - x_2 - x_3 &= 2, \\ 
-3x_1-2x_2 &= 9, \\ 
-x_1-2x_2-x_3 &= 5. 
-\end{split}
-$$
-
-This system has the augmented matrix
+:::::{#exm-augmented-matrix}
+The starting system in @exm-gauss-elimination has augmented matrix
 
 $$
-\mathbf{G} = 
-\begin{bmatrix}
-1 & -1 & -1 & 2 \\
-3 & -2 & 0 & 9 \\
-1 & -2 & -1 & 5
-\end{bmatrix}.
+\augmat{\begin{matrix}
+1 & -1 & -1  \\
+3 &-2 & 0 \\
+1 & -2 & -1
+\end{matrix}}{
+  \begin{matrix}2\\9\\5\end{matrix}
+  }.
 $$
 
-To ease the arithmetic, we do the elimination in Julia.
-
-```{julia}
-G = Rational.([1 -1 -1 2; 3 -2 0 9; 1 -2 -1 5])
-```
-
-The first elimination step uses multiples of the first row to eliminate below it.
-
-```{julia}
-G[2,:] = G[2,:] - 3*G[1,:]
-G
-```
-
-```{julia}
-G[3,:] = G[3,:] - 1*G[1,:]
-G
-```
-
-Next we use the second row to eliminate below it.
-
-```{julia}
-G[3,:] -= (-1)*G[2,:]
-G
-```
-
-Having reached the last row, we turn around and use it to eliminate above it in column 3.
-
-```{julia}
-G[2,:] -= 1*G[3,:]
-G
-```
-
-```{julia}
-G[1,:] -= (-1/3)*G[3,:]
-G
-```
-
-We move up to the second row and eliminate above that in column 2.
-
-```{julia}
-G[1,:] -= (-1)*G[2,:]
-G
-```
-
-Finally, to be super pedantic, we normalize the last row by its leading nonzero.
-
-```{julia}
-G[3,:] = G[3,:]/G[3,3]
-G
-```
-
-The result is the augmented matrix of the system
-
+The final system in that example has augmented matrix
 $$
-\begin{matrix}
-x_1 & & &= &1 \\
-& x_2 & &= &-3 \\
-& & x_3 &= &2,
-\end{matrix}
+\augmat{\begin{matrix}
+1 & -1 & -1  \\
+0 & 1 & 3 \\
+0 & 0 & 3
+\end{matrix}}{
+  \begin{matrix}2\\3\\6\end{matrix}
+  }.
 $$
+:::::
 
-whose solution is obvious.
+The nonzeros in the final augmented matrix have a triangular shape that is the key to making back substitution work. Next, we will get specific about what this form requires.
 
-Here's an example that works out differently, starting from the augmented matrix
+### Row echelon form
 
-$$
-\begin{bmatrix}
-1 & 1 & -1 & 4 \\
-1 & 2 & 2 & 3 \\
-2 & 1 & -5 & 9
-\end{bmatrix}.
-$$
+Here is a formal description of the goal of row elimination.
 
-First, we use multiples of the first row to eliminate in the first column below it.
+::::{#def-row-echelon}
+# Row echelon form (RE form)
+A matrix is in RE form if:
 
-```{julia}
-G = [ 1 1 -1 4; 1 2 2 3; 2 1 -5 9]
-G[2,:] = G[2,:] - 1*G[1,:]
-G[3,:] = G[3,:] - 2*G[1,:]
-G
-```
-
-Now use a multiple of the second row to put a zero underneath it in column 2.
-
-```{julia}
-G[3,:] -= (-1)*G[2,:]
-G
-```
-
-We have reached the last row, and it's time to turn around and eliminate upwards. But because the last row is entirely zero, it can't make changes to the rows above it. So we skip that and move up to the second row, eliminating upwards in the second column.
-
-```{julia}
-G[1,:] -= 1*G[2,:]
-G
-```
-
-This is as simple as we can get things. The last row is telling us the astounding fact that $0=0$—i.e., nothing at all. The other two rows imply
-
-$$
-\begin{split}
-x_1 &= 5 + 4x_3, \\
-x_2 &= -1 - 3x_3.
-\end{split}
-$$
-
-Since the third row gave us no information, we take the attitude that $x_3$ is unrestricted. That is,
-$$
-\begin{split}
-x_1 &= 5 + 4s, \\
-x_2 &= -1 - 3s, \\
-x_3 &= s.
-\end{split}
-$$
-
-is a solution for any value of $s$, and we have an infinite family of solutions.
-
-## RREF 
-
-It's time to get more formal and precise about row elimination. 
-
-We perform elimination on the augmented matrix. Previously we used row operations going top to bottom on the rows, left to right with the columns, to put the matrix into triangular form. We refer to this process now as the *downward phase* of elimination.
-
-::::{#def-rref-leading}
-The **leading nonzero** of a matrix row is the leftmost nonzero element of that row.
+1. Any rows that are completely zero are at the bottom.
+2. The leftmost nonzero element in a row, called the **leading element**, is to the left of any other leading elements below it.
 ::::
 
+To achieve RE form from a given starting matrix, we start at the top left and use row operations to introduce zeros under the leading element of the first row. We then move down one row and repeat. It's easier to understand from more examples than to write out a formal algorithm.
+
+:::{#exm-RE-inconsistent}
+We start from
+$$
+\begin{bmatrix}
+1 & 2 & -4 & 5 \\ 2 & 4 & 0 & 2 \\ 2 & 3 & 2 & 5 \\ -1 & 1 & 3 & 5
+\end{bmatrix}
+$$
+
+In the first row, the 1 will be the leading element. We then multiples of the first row to create zeros in the rows underneath it.
+
+$$
+\begin{split}
+& \stackrel{R_2=R_2 - 2R_1}{\Longrightarrow} 
+\begin{bmatrix}
+1 & 2 & -4 & 5 \\ 0 & 0 & 8 & -8 \\ 2 & 3 & 2 & 5 \\ -1 & 1 & -8 & 5
+\end{bmatrix} \\[1ex]
+& \stackrel{R_3=R_3 - 2R_1}{\Longrightarrow} 
+\begin{bmatrix}
+1 & 2 & -4 & 5 \\ 0 & 0 & 8 & -8 \\ 0 & -1 & 10 & -5 \\ -1 & 1 & -8 & 5
+\end{bmatrix} \\[1ex]
+& \stackrel{R_4=R_4 + 1R_1}{\Longrightarrow} 
+\begin{bmatrix}
+1 & 2 & -4 & 5 \\ 0 & 0 & 8 & -8 \\ 0 & -1 & 10 & -5 \\ 0 & 3 & -12 & 10
+\end{bmatrix}
+\end{split}
+$$
+
+Now that leading 1 in the first row is all set. From now on, we can safely ignore the first column, as those zeros will remain throughout. 
+
+Moving to the second row, we notice that if we designated the 8 to be the leading element, then at least one of the rows underneath it would have a leading element to its left. That's a violation of RE form. So we can swap either of those rows with the current row 2:
+
+$$
+\stackrel{R_2 \leftrightarrow R_3}{\Longrightarrow} 
+\begin{bmatrix}
+1 & 2 & -4 & 5 \\ 0 & -1 & 10 & -5 \\ 0 & 0 & 8 & -8 \\ 0 & 3 & -12 & 10
+\end{bmatrix}
+$$
+
+We now can select $-1$ as the leading element in row 2, and create zeros underneath it. Of course, we don't have any work to do in the current row 3.
+
+$$
+\stackrel{R_4 = R_4 + 3R_2}{\Longrightarrow} 
+\begin{bmatrix}
+1 & 2 & -4 & 5 \\ 0 & -1 & 10 & -5 \\ 0 & 0 & 8 & -8 \\ 0 & 0 & 18 & -5
+\end{bmatrix}
+$$
+
+Our first two rows are set. We're happy choosing $8$ as the leading element in row 3, and one more operation is needed to clear the element below it:
+
+$$
+\stackrel{R_4 = R_4 - \frac{18}{8}R_3}{\Longrightarrow} 
+\begin{bmatrix}
+1 & 2 & -4 & 5 \\ 0 & -1 & 10 & -5 \\ 0 & 0 & 8 & -8 \\ 0 & 0 & 0 & 13
+\end{bmatrix}
+$$
+
+The matrix is now in RE form.
+
+If our starting point is the augmented matrix of a linear system, then our new linear system would be 
+
+$$
+\begin{split}
+1x_1 + 2x_2 -4x_3 &= 5  \\ 
+0x_1 - 1x_2 +10x_3 &= -5 \\ 
+0x_1 + 0x_2 +8x_3 &= -8 \\ 
+0x_1 + 0x_2 + 0x_3 &= 13
+\end{split}
+$$
+
+That last equation is a dealbreaker! The system is inconsistent.
+:::
+
+::::{#def-pivot}
+# Pivots
+The leading elements encountered during row elimination are called **pivots**. The columns they occur in are called **leading variables**, while the other variables (if any) are called **free variables**.
+::::
+
+:::{#exm-elimination-infinite}
+Suppose we begin with the augmented matrix 
+$$
+\augmat{\begin{matrix}
+1 & 1 & -1  \\
+1 & 2 & 2  \\
+2 & 1 & -5 
+\end{matrix}}{
+  \threevec{4}{3}{9}
+}.
+$$
+
+The first 1 in the first row is a fine pivot, leading to 
+
+$$
+\stackrel{R_2 = R_2 - R_1;\; R_3 = R_3 - 2R_1}{\Longrightarrow} 
+\augmat{\begin{matrix}
+1 & 1 & -1  \\
+0 & 1 & 3  \\
+0 & -1 & -3 
+\end{matrix}}{
+  \begin{matrix}4\\-1\\1\end{matrix} 
+}
+$$
+
+The leading 1 in the second row is the next pivot:
+
+$$
+\stackrel{R_3 = R_3 + R_2}{\Longrightarrow} 
+\augmat{\begin{matrix}
+1 & 1 & -1  \\
+0 & 1 & 3  \\
+0 & 0 & 0 
+\end{matrix}}{
+  \begin{matrix}4\\-1\\0\end{matrix}
+}.
+$$
+
+Only the first two variables are considered leading variables, and $x_3$ remains free. So we say that $x_3=t$ for any arbitrary value of $t$. The last row of the final augmented matrix represents the equation $0=0$, which is true and implies no constraint. The second row implies 
+
+$$
+x_2 + 3x_3 = -1, 
+$$
+
+which is equivalent to $x_2=-1-3t$. Finally, the first row says that 
+
+$$
+x_1 + x_2 - x_3 = 4, 
+$$
+
+so that $x_1 = 4 - (-1-3t) + (t) = 5+4t$. The system has infinitely many solutions.
+:::
+
+## RRE form
+
+An alternative to backward substitution is to transform the RE form further into something even simpler.
+
+::::{#def-linalg-RREF} 
+# RRE form
+
+A matrix is in **RRE form** (reduced row-echelon form) if it meets all of these requirements:
+
+1. Any rows of all zeros appear below all nonzero rows.
+2. The leading element of any row is a one.
+3. Every leading 1 that is lower than another leading 1 is also to the right of it.
+4. Every leading 1 is the only nonzero in its column.
+
+The columns that have leading ones are called **pivot columns**. The other columns are called **free columns**.
+::::
+
+There are two things that make RRE form useful. One is that it makes a unique target:
+
+::::{#thm-RREF-unique} 
+Every matrix is equivalent to a unique matrix in RRE form.
+::::
+
+The other useful fact is that RRE form completely exposes everything we want to know about a linear system. In fact, everything else we will do theoretically with matrices comes back to the RRE form, whether or not it's an augmented matrix.
+
+::::{#exm-gauss-jordan} 
+At the end of @exm-gauss-elimination, we had reached the augmented matrix
+
+$$
+\augmat{\begin{matrix}
+1 & -1 & -1  \\
+0 & 1 & 3 \\
+0 & 0 & 3
+\end{matrix}}{
+  \begin{matrix}2\\3\\6\end{matrix}
+  }.
+$$
+
+Note that the leading element of row 3 is not a 1. We fix that by multiplying it through:
+
+$$
+\stackrel{R_3 = \frac{1}{3}R_3}{\Longrightarrow}
+\augmat{\begin{matrix}
+1 & -1 & -1  \\
+0 & 1 & 3 \\
+0 & 0 & 1
+\end{matrix}}{
+  \begin{matrix}2\\3\\2\end{matrix}
+  }.
+$$
+
+The leading one in row 1 is alone in its column. But the other two leading ones are not. We start at the bottom right and eliminate *upwards* now:
+
+$$
+\begin{split}
+& \stackrel{R_2 = R_2 - 3R_3}{\Longrightarrow}
+\augmat{\begin{matrix}
+1 & -1 & -1  \\
+0 & 1 & 0 \\
+0 & 0 & 1
+\end{matrix}}{
+  \begin{matrix}2\\-3\\2\end{matrix}
+  } \\[1ex]
+  & \stackrel{R_1 = R_1 + 1R_3}{\Longrightarrow}
+\augmat{\begin{matrix}
+1 & -1 & 0  \\
+0 & 1 & 0 \\
+0 & 0 & 1
+\end{matrix}}{
+  \begin{matrix}4\\-3\\2\end{matrix}
+  }.
+\end{split}
+$$
+
+At this point, the leading one of row 3 is ready to go. We have just one more upwards step to perform from row 2:
+
+$$
+\stackrel{R_1 = R_1 + 1R_2}{\Longrightarrow}
+\augmat{\begin{matrix}
+1 & 0 & 0  \\
+0 & 1 & 0 \\
+0 & 0 & 1
+\end{matrix}}{
+  \begin{matrix}1\\-3\\2\end{matrix}
+  }.
+$$
+
+The system is now trivial: $x_1=1$, $x_2=-3$, and $x_3=2$. Done!
+::::
+
+The process above is called **Gauss–Jordan elimination**, to distinguish it from Gaussian elimination. 
+<!---
+ 
 ::::{#thm-linalg-phase1}  
 # Row elimination downward phase
 1. Set $i=1$.
@@ -458,32 +535,11 @@ At the end of the downward phase, the augmented matrix is triangular, which is e
 3. Decrement $i$. If $i> 1$, return to step 2.
 ::::
 
-At the end of the upward phase, the matrix has been put into a form that we define formally here.
+At the end of the upward phase, the matrix has been put into a form that we define formally here. 
+--->
 
-::::{#def-linalg-RREF} 
-# RRE form
-
-A matrix is in **RRE form** (reduced row-echelon form) if it meets all of these requirements:
-
-1. Any rows of all zeros appear below all nonzero rows.
-2. The leading nonzero of any row is a one.
-3. Every leading 1 that is lower than another leading 1 is also to the right of it.
-4. Every leading 1 is the only nonzero in its column.
-
-The columns that have leading ones are called **pivot columns**. The other columns are called **free columns**.
-::::
-
-There are two things that make RRE form useful. One is that it makes a unique target we can always reach:
-
-::::{#thm-RREF-unique} 
-Every matrix is equivalent to a unique matrix in RRE form.
-::::
-
-The other useful fact is that RRE form completely exposes everything we want to know about a linear system. In fact, everything else we will do theoretically with matrices comes back to the RRE form.
-
-### Extended example
-
-Here is an example of reduction to RRE form for a linear system 
+::::{#exm-RRE-julia}
+Here is an example of reduction to RRE form for a linear system using Julia to do the arithmetic.
 
 $$
 \bfA = \begin{bmatrix}
@@ -503,13 +559,13 @@ A = [
     ];
 b = [ 4, 40, 9, 29 ];
 
-S = [A b]
+S = Rational.([A b])
 ```
 
 We start at the top, working downward and rightward. In the first row, the leading nonzero occurs in column 1, which is the pivot column for this row. We normalize this row so that the leading nonzero is a 1.
 
 ```{julia}
-S[1,:] = S[1,:]/S[1,1]
+S[1,:] = S[1,:] / S[1,1]
 S
 ```
 
@@ -525,14 +581,14 @@ S
 Looking at rows 2 to 4, we see that the leftmost nonzero occurs in column 2. Since row 2 has a zero there, we swap rows 2 and 3 to bring a nonzero up.
 
 ```{julia}
-S[2:3,:] = S[[3,2],:]
+S[[2, 3],:] = S[[3, 2],:]
 S
 ```
 
 Now we normalize row 2 so that the leading nonzero is a 1.
 
 ```{julia}
-S[2,:] = S[2,:]/S[2,2]
+S[2,:] = S[2,:] / S[2,2]
 S
 ```
 
@@ -547,7 +603,7 @@ S
 Rows 3 and 4 have a pivot in column 3, and we only need to normalize row 3 to make it 1. Then we subtract a multiple of row 3 from row 4 to put a zero beneath it.
 
 ```{julia}
-S[3,:] = S[3,:]/S[3,3];
+S[3,:] = S[3,:] / S[3,3];
 S[4,:] = S[4,:] - S[4,3]*S[3,:]
 S
 ```
@@ -555,7 +611,7 @@ S
 We complete the downward phase by normalizing row 4 to get a leading 1.
 
 ```{julia}
-S[4,:] = S[4,:]/S[4,4]
+S[4,:] = S[4,:] / S[4,4]
 S
 ```
 
@@ -580,7 +636,7 @@ The last move is to use a multiple of row 2 to put a zero above its leading 1. A
 
 ```{julia}
 S[1,:] = S[1,:] - S[1,2]*S[2,:]
-S
+float(S)
 ```
 
 This matrix is in RREF. We interpret it as the trivial linear system
@@ -590,9 +646,10 @@ $$
 x_1 &= -3,\\ x_2 &= 1,\\ x_3 &= 4, \\ x_4 &= -2.
 \end{split}
 $$
+::::
 
 :::{.callout-tip}
-You can [use Wolfram Alpha]("https://www.wolframalpha.com/input/?i=rref%20%7B%7B1%2C2%2C3%7D%2C%7B4%2C5%2C6%7D%2C%7B7%2C8%2C9%7D%7D") for finding the RRE form of a matrix.
+You can [use Wolfram Alpha]("https://www.wolframalpha.com/input/?i=rref%20%7B%7B1%2C2%2C3%7D%2C%7B4%2C5%2C6%7D%2C%7B7%2C8%2C9%7D%7D") to find the RRE form of a matrix.
 :::
 
 ::: {.callout-caution}
@@ -601,23 +658,30 @@ While MATLAB has an `rref` command, it should not be relied on. It isn't really 
 
 ### Solution from the RRE form
 
-The RRE form of an augmented matrix represents a linear system that we can solve by inspection:
+The RRE form of an augmented matrix represents a linear system that we can solve by inspection.
+
+:::{#thm-RRE-solve}
+To solve a system with augmented matrix in RRE form:
 
 1. Ignore all zero rows.
 2. If a leading one occurs in the last column, the system is inconsistent.
 3. Otherwise, each variable associated with a free column is assigned to a free parameter (e.g., $s$, $t$, etc.).
-4. Use the pivot columns to solve for their corresponding variables in terms of the free parameters.
+4. Use the leading columns to solve for their corresponding variables in terms of the free parameters.
+:::
 
 ::::{#exm-RREF-multiple}
-A linear system has an augmented matrix equivalent to the RRE form
+A linear system has an augmented matrix equivalent to the RRE matrix
 
 $$
-\begin{bmatrix}
-0 & 1 & -3 & 0 & 2 \\
-0 & 0 & 0  & 1 & -4 \\
-0 & 0 & 0  & 0 & 0  \\
-0 & 0 & 0  & 0 & 0  
-\end{bmatrix}.
+\augmat{
+\begin{matrix}
+0 & 1 & -3 & 0 \\
+0 & 0 & 0  & 1  \\
+0 & 0 & 0  & 0   \\
+0 & 0 & 0  & 0  
+\end{matrix} }{
+  \begin{matrix}2 \\ -4 \\ 0 \\ 0 \end{matrix}
+}
 $$
 
 Find all solutions to the linear system.
@@ -637,12 +701,15 @@ $$
 A linear system has an augmented matrix equivalent to the RRE form
 
 $$
-\begin{bmatrix}
-1 & 0 & -4 & 0 & 0 \\
-0 & 1 & 1  & 0 & 0 \\
-0 & 0 & 0  & 1 & 0  \\
-0 & 0 & 0  & 0 & 1
-\end{bmatrix}.
+\augmat{
+\begin{matrix}
+1 & 0 & -4 & 0  \\
+0 & 1 & 1  & 0 \\
+0 & 0 & 0  & 1  \\
+0 & 0 & 0  & 0 
+\end{matrix}}{
+  \begin{matrix}0 \\ 0 \\ 0 \\ 1 \end{matrix}
+}
 $$
 
 Find all solutions to the linear system.
@@ -682,7 +749,7 @@ A linear system with more variables than equations cannot have a unique solution
 $\rank(\bfA) \le m < n$.
 :::
 
-## Nullspaces 
+## Homogeneous systems
 
 There are only three possible outcomes for a linear system, all deducible from the RRE form of the augmented matrix:
 
@@ -730,22 +797,111 @@ A homogeneous system in $n$ variables with coefficient matrix $\bfA$ has a uniqu
 A homogeneous linear system with more variables than equations has infinitely many solutions.
 ::::
 
+### Relating to nonhomogeneous systems
+
+There is a strong correspondence between a nonhomogeneous linear ODE $\opA[x]=f$ and a nonhomogeneous linear system $\bfA\bfx=\bfb$. 
+
+::::{#thm-linsys-nonhomogeneous}
+If $\bfu$ is in the nullspace of $\bfA$ and $\bfv$ is any solution of $\bfA\bfx = \bfb$, then $\bfu+\bfv$ is also a solution of $\bfA\bfx = \bfb$.
+::::
+:::{.proof}
+$$
+\bfA(\bfu + \bfv) = \bfA\bfu + \bfA\bfv = \bfzero + \bfb = \bfb. 
+$$
+:::
+
+::::{#exm-nonhomogeneous-1D}
+Suppose 
+
+$$
+\begin{bmatrix}
+2 & -3
+\end{bmatrix}
+\bfx = \begin{bmatrix}
+5
+\end{bmatrix}. 
+$$
+
+Geometrically, all solutions $[x_1,\:x_2] \in \real^2$ lie on the line defined by $2x_1 - 3x_2 = 5$. Note that the vector $[1,\:-1]$ is one such solution. 
+
+The null space of the matrix is the set of vectors such that $2x_1-3x_2=0$. If we let $x_2=t$ be a free parameter, then $x_1=\frac{3}{2}t$. So we can write solutions of the original problem in the form
+
+$$
+\bfx = \begin{bmatrix}
+\tfrac{3}{2}t \\ t 
+\end{bmatrix} +
+\begin{bmatrix}
+1 \\ -1
+\end{bmatrix}
+= 
+\begin{bmatrix}
+1 + \tfrac{3}{2}t \\ -1 + t
+\end{bmatrix},
+$$
+
+which is simply one way to parameterize the line $2x_1 - 3x_2 = 5$.
+::::
+
+
+
+## Linear combinations 
+
+
 ### Spanning sets
 
-When we do have infinitely many solutions in a homogeneous linear system, it's nice to have a finite description of all of them. This takes us on a considerable side quest.
+When we have infinitely many solutions in a linear system, it's nice to have a concise description of all of them. This takes us on a considerable side quest.
 
-::::{#def-nullspace-linear-comb} 
-# Linear combination and span
+<!---
+ Using a small matrix, we see an important connection to a familiar concept:
+
+$$
+\begin{split}
+\begin{bmatrix}
+A_{11} & A_{12} & A_{13} \\ 
+A_{21} & A_{22} & A_{23} \\ 
+A_{31} & A_{32} & A_{33} 
+\end{bmatrix} \begin{bmatrix}
+  x_1 & x_2 & x_3
+\end{bmatrix}   &=  \begin{bmatrix}
+A_{11}x_1 + A_{12}x_2 +  A_{13}x_3 \\ 
+A_{21}x_1 + A_{22}x_2 +  A_{23}x_3 \\ 
+A_{31}x_1 + A_{32}x_2 +  A_{33}x_3 
+\end{bmatrix} \\ 
+&= x_1 \begin{bmatrix}
+A_{11} \\ A_{21} \\ A_{31}
+\end{bmatrix} + x_2 \begin{bmatrix}
+A_{12} \\ A_{22} \\ A_{32}
+\end{bmatrix} + x_3 \begin{bmatrix}
+A_{13} \\ A_{23} \\ A_{33}
+\end{bmatrix}. 
+$$
+
+This relationship holds in general. 
+--->
+
+::::{#def-linalg-linear-comb} 
+# Linear combination
 A **linear combination** of vectors $\bfv_1, \ldots, \bfv_k$ with **coefficients** $c_1,\ldots,c_k$ is the vector
 
 $$
 c_1 \bfv_1 + c_2 \bfv_2 + \cdots + c_k \bfv_k.
 $$
-
-The set of all linear combinations of $\bfv_1,\ldots,\bfv_k$ is known as the **span** of those vectors. The span of an empty set is the set consisting of only the zero vector.
 ::::
 
-Statements about linear combinations can be transformed into statements about linear systems of equations.
+<!---
+ ::::{#thm-matvec-linear-combination}
+The matrix--vector product $\bfA \bfx$ is a linear combination of the columns of $\bfA$ using the elements of $\bfx$ as coefficients.
+::::
+ 
+--->
+
+As we are about to see, statements about linear combinations can be transformed into statements about linear systems of equations, and vice versa.
+
+### Span
+
+::::{#def-linalg-span}
+The set of all linear combinations of $\bfv_1,\ldots,\bfv_k$ is known as the **span** of those vectors. The span of an empty set is the singleton set $\{\bfzero\}$.
+::::
 
 ::::{#exm-nullspace-combo}
 Show that $\bfv=[1,4,3]$ is in the span of $\bfu_1=[1,-2,-1]$ and $\bfu_2=[3,0,1]$. (That is, $\bfv$ can be written as a linear combination of these two vectors.)
@@ -776,6 +932,7 @@ $$
 The RRE form of this matrix is
 
 $$
+\stackrel{RRE}{\Longrightarrow}
 \augmat{
 \begin{matrix}
   1 & 0  \\ 0 & 1  \\ 0 & 0
@@ -790,7 +947,21 @@ which is consistent. In fact, the unique solution is $c_2=1$, $c_1=2$.
 :::
 ::::
 
-A nontrivial null space (i. e., containing more than the zero vector) can always be described as the span of finitely many vectors.
+Here is a formal statement of the idea used in @exm-nullspace-combo. 
+
+::::{#thm-linsys-span}
+Let $\bfa_1,\ldots,\bfa_n$ be vectors in $\real^n$, and let 
+
+$$
+\bfA = \begin{bmatrix}
+\bfa_1 & \bfa_2 & \cdots & \bfa_n
+\end{bmatrix} \in \rmn{m}{n}. 
+$$
+
+Then a vector $\bfb \in \real^m$ lies in the span of $\bfa_1,\ldots,\bfa_n$ if and only if the system with augmented matrix $\augmat{\bfA}{\bfb}$ is consistent.
+::::
+
+The idea behind span is that it allows us to represent an infinite set, such as a null space, using a finite number of vectors. 
 
 ::::{#exm-nullspace-span}
 Suppose the RRE form of a matrix $\bfA$ is
@@ -836,7 +1007,7 @@ Hence $\nullsp(\bfA)=\span(\bfv_1,\bfv_2,\bfv_3)$, where the $\bfv_j$ are the co
 
 ### Independence
 
-Now that we have a finite description of the null space, we want to refine it to make sure that it is as simple as possible. For this, we need to put some fresh paint on an old barn.
+Now that we have a finite description of the null space, we want to make sure that the description is as simple as possible. For this, we need to put some fresh paint on an old barn.
 
 ::::{#def-nullspace-indepdendence}
 # Linear independence
@@ -850,6 +1021,28 @@ If the vectors are not linearly dependent, then they are **linearly independent*
 ::::
 
 Because linear combinations are equivalent to linear systems, statements about linear independence are equivalent to statements about homogeneous linear systems, and therefore about null spaces.
+
+::::{#thm-linalg-independence}
+Let $\bfa_1,\ldots,\bfa_n$ be vectors in $\real^n$, and let 
+
+$$
+\bfA = \begin{bmatrix}
+\bfa_1 & \bfa_2 & \cdots & \bfa_n
+\end{bmatrix} \in \rmn{m}{n}. 
+$$
+
+The following statements are equivalent.
+
+1. The vectors $\bfa_1,\ldots,\bfa_n$ are linearly independent.
+2. The system with augmented matrix $\augmat{\bfA}{\bfzero}$ has only zero as a solution.
+3. The null space of $\bfA$ contains only the zero vector.
+4. $\rank(\bfA) = n$.
+::::
+
+::::{#exm-dependence-zerovector}
+Any set of vectors that contains the zero vector must be dependent. That's because the zero vector will put a column of zeros in the matrix $\bfA$ in @thm-linalg-independence, and since that column can't possibly have a leading nonzero in it, the rank of $\bfA$ will be less than the number of columns.
+::::
+
 
 ::::{#exm-nullspace-dependent}
 Determine whether the vectors $\bfv_1=\threevec{1}{0}{-2}$, $\bfv_2=\threevec{1}{0}{1}$, and $\bfv_3 = \threevec{0}{0}{-1}$ are linearly independent.
@@ -891,15 +1084,23 @@ whose solutions are $[-t/3,t/3,t]$ for all $t$. Since there are nonzero solution
 :::
 ::::
 
-The result of the preceding example is worth stating on the record. It's basically just a fusion of equivalent terminology.
+Besides the presence of a zero vector, there is one easy case to detect dependence.
 
-::::{#thm-nullspace-dependence}
-Suppose $\bfv_1,\ldots,\bfv_k$ are vectors in $\real^n$, and let $\bfA$ be the matrix whose columns are $\bfv_1,\ldots,\bfv_k$. Then these vectors are linearly dependent if and only if $\bfA$ has a null space containing more than the zero vector.
+::::{#thm-linsys-dependence-too-many}
+Any collection of $n$ vectors in $\real^m$ is dependent if $n > m$. 
 ::::
+:::{.proof}
+The rank of $\bfA$ in @thm-linalg-independence is no greater than $m$, which is less than $n$.
+:::
 
-Dependent vectors can lengthen the description of a spanned space without actually contributing any information.
+::: {.callout-warning}
+@thm-linsys-dependence-too-many says, "if $n > m$, then dependent," but the converse statement, "if dependent, then $n > m$," is not logically correct. There are examples of dependent sets of vectors with $n < m$, $n=m$, *and* $n>m$.  
+:::
 
-::::{#exm-nullspace-dependentspan}
+Dependent vectors lengthen the description of a spanned space without contributing any information. We will come back to finish this thought in the next chapter. But first, we are going to take a closer look at the algebra of vectors and matrices.
+
+<!---
+ ::::{#exm-nullspace-dependentspan}
 The result of @exm-nullspace-dependent is that $\bfv_1=\threevec{1}{0}{-2}$, $\bfv_2=\threevec{1}{0}{1}$, and $\bfv_3 = \threevec{0}{0}{-1}$ are linearly dependent. For instance,
 
 $$
@@ -923,4 +1124,5 @@ In @exm-nullspace-dependentspan, we could have removed $\bfv_2$ or $\bfv_3$ from
 :::
 
 A set of vectors that both spans the null space and is linearly independent is called a *basis* of the null space. We'll formalize that idea when we discuss subspaces more generally. For now, just know that a basis is a minimal set of vectors that can get the spanning job done.
-
+ 
+--->

@@ -27,6 +27,23 @@ using Plots, LinearAlgebra, LaTeXStrings
 default(label="", linewidth=3, markersize=4, size=(500,320))
 ```
 
+We now dive deeply into the world of vectors and matrices. In this world, we often refer to mere numbers as **scalars**. That's because they just scale every element, like in
+
+$$
+c \begin{bmatrix}
+A_{11} & \cdots & A_{1n} \\ 
+\vdots & & \vdots \\ 
+A_{m1} & \cdots & A_{mn}
+\end{bmatrix}
+=
+\begin{bmatrix}
+cA_{11} & \cdots & cA_{1n} \\ 
+\vdots & & \vdots \\ 
+cA_{m1} & \cdots & cA_{mn}
+\end{bmatrix}.
+$$
+
+
 ## Elementwise operations
 
 It's easy to add or subtract two vectors or two matrices that have the same size. Just act elementwise:
@@ -53,22 +70,6 @@ $$
 
 We consider the operation of adding matrices of *different* sizes to be undefined.
 
-We can think the same way about multiplying a matrix or vector by a number:
-
-$$
-c \begin{bmatrix}
-A_{11} & \cdots & A_{1n} \\ 
-\vdots & & \vdots \\ 
-A_{m1} & \cdots & A_{mn}
-\end{bmatrix}
-=
-\begin{bmatrix}
-cA_{11} & \cdots & cA_{1n} \\ 
-\vdots & & \vdots \\ 
-cA_{m1} & \cdots & cA_{mn}
-\end{bmatrix}
-$$
-
 While we're on a roll, you would probably expect that we define matrix multiplication the same way:
 
 $$
@@ -91,7 +92,7 @@ A_{m1}B_{m1} & \cdots & A_{mn}B_{mn}
 \end{bmatrix}
 $$
 
-But we don't! OK, technically this is called a Hadamard product, and it has some uses. But 99.99999% of the time a different, less obvious way of multiplying matrices does a better job of respecting critical mathematical structure. 
+But we don't! OK, *technically* this is called a Hadamard product, and it has some uses. But 99.9999% of the time a different, less obvious way of multiplying matrices does a better job of respecting critical mathematical structure. 
 
 ## Matrix times vector
 
@@ -281,7 +282,7 @@ These properties are easy to check computationally. (But keep in mind that a num
 2. $c(\bfA + \bfB) = (c\bfA) + (c\bfB)$
 3. $(c+d) \bfA = (c\bfA) + (d\bfA)$
 
-Finally, we observe that if $\bfA$ is $m\times n$ and $\bfx$ is an $n$-vector, then $\bfA\bfx$ gives the same result whether we interpet $\bfx$ as a vector or as an $n\times 1$ matrix.
+Finally, we observe that if $\bfA$ is $m\times n$ and $\bfx$ is an $n$-vector, then $\bfA\bfx$ gives the same result whether we interpret $\bfx$ as a vector or as an $n\times 1$ matrix.
 
 <!-- ## Transpose
 
@@ -491,7 +492,7 @@ $$
 \meye = \twomat{a}{b}{c}{d} \bfA = \twomat{b}{0}{d}{0}.
 $$
 
-This is clearly impossible for any chocies of $a,b,c,d$. Hence $\bfA$ is singular.
+This is clearly impossible for any choices of $a,b,c,d$. Hence $\bfA$ is singular.
 ::::
 
 ::: {.callout-important}
@@ -1271,7 +1272,7 @@ $$
 \bfA = \bfV \mathbf{D} \bfV^{-1},
 $$ {#eq-diagonalization-similar}
 
-where (as defined in @eq-diagonalization-VD) $\mathbf{D}$ is a diagonal matix of eigenvalues and $\bfV$ is a square matrix whose columns are corresponding eigenvectors.
+where (as defined in @eq-diagonalization-VD) $\mathbf{D}$ is a diagonal matrix of eigenvalues and $\bfV$ is a square matrix whose columns are corresponding eigenvectors.
 ::::
 
 What can we do about the requirement of linearly independent eigenvectors in the columns of $\bfV$? Without wading into the details, the following wraps this assumption up nicely.
