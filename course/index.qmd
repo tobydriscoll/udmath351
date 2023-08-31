@@ -30,6 +30,7 @@
 
 ### Linear systems
 
+| Date   | Section                                                       | Poole | Suggested practice |
 | ------ | ------------------------------------------------ | -------------------- | ------------------ |
 | Sep 25 | [Intro to linear systems](linear_algebra_systems.html#overview) | 2.1                  |  1-5, 19, 20, 21, 27-30, 31            |
 | Sep 27 | [Row elimination](linear_algebra_systems.html#row-elimination) | 2.1, 2.2                  |   1-8, 9-14, 25-28, 35-38, 40-41  |
@@ -84,18 +85,18 @@ Note: Both textbooks have dedicated chapter review problems.
 
 ### A. First-order scalar ODEs
 1. Verify an ODE or IVP solution.
-2. Sketch or interpret a direction field for a scalar nonautonomous problem.
+2. Interpret a direction field for a scalar nonautonomous problem.
 3. Sketch or interpret a phase diagram for an autonomous equation.
 4. Find the steady states/equilibria of an autonomous equation.
 5. Classify the stability of an equilibrium solution.
-6. Solve separable equations that have tractable integrals, in explicit or implicit form.
-7. Distinguish between linear and nonlinear equations.
-8. Convert between standard and operator expressions of a linear equation.
-9. Assemble a general solution from homogeneous and particular solutions.
-10. Solve an initial-value problem if given, or after finding, a general solution.
+6.  Solve an initial-value problem if given, or after finding, a general solution.
+7. Solve separable equations that have tractable integrals, in explicit or implicit form.
+8. Distinguish between linear and nonlinear ODEs.
+9. Convert between standard and operator expressions of a linear equation.
+10. Assemble a general solution from homogeneous and particular solutions.
 11. Find the general homogeneous solution of a linear equation.
-12. Use variation of parameters or an integrating factor to find a particular solution of a linear equation.
-13. Interpret and apply linear models of stirred tanks, Newtonian cooling/heating, and population dynamics.
+12. Use variation of parameters (or an integrating factor) to find a particular solution of a linear equation.
+13. Interpret and apply models of Newtonian cooling/heating, population dynamics, and free fall.
 
 ### B. Second-order linear ODEs
 1. Assemble a general solution from homogeneous and particular solutions.
