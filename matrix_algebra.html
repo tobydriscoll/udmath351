@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Notes for Math 351 @ UD - 5&nbsp; Matrix algebra</title>
+<title>Notes for Math 351 @ UD - 4&nbsp; Matrix algebra</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -124,7 +124,7 @@ MathJax = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./matrix_algebra.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Matrix algebra</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./matrix_algebra.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Matrix algebra</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -152,31 +152,31 @@ MathJax = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">MATH 351 Notes</span></span></a>
+ <span class="menu-text">Contents</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ivp_first_order.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">First-order IVPs</span></span></a>
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">First-order IVPs</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ivp_second_order.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Second-order linear IVPs</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Second-order linear IVPs</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./linear_algebra_systems.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Linear algebraic equations</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Linear algebraic systems</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./matrix_algebra.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Matrix algebra</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Matrix algebra</span></span></a>
   </div>
 </li>
     </ul>
@@ -191,48 +191,53 @@ MathJax = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#multiplication" id="toc-multiplication" class="nav-link active" data-scroll-target="#multiplication"><span class="header-section-number">5.1</span> Multiplication</a>
+  <li><a href="#elementwise-operations" id="toc-elementwise-operations" class="nav-link active" data-scroll-target="#elementwise-operations"><span class="header-section-number">4.1</span> Elementwise operations</a></li>
+  <li><a href="#matrix-times-vector" id="toc-matrix-times-vector" class="nav-link" data-scroll-target="#matrix-times-vector"><span class="header-section-number">4.2</span> Matrix times vector</a>
   <ul class="collapse">
-  <li><a href="#matrix-times-vector" id="toc-matrix-times-vector" class="nav-link" data-scroll-target="#matrix-times-vector"><span class="header-section-number">5.1.1</span> Matrix times vector</a></li>
-  <li><a href="#matrix-matrix-multiplication" id="toc-matrix-matrix-multiplication" class="nav-link" data-scroll-target="#matrix-matrix-multiplication"><span class="header-section-number">5.1.2</span> Matrix-matrix multiplication</a></li>
+  <li><a href="#properties" id="toc-properties" class="nav-link" data-scroll-target="#properties"><span class="header-section-number">4.2.1</span> Properties</a></li>
+  <li><a href="#connection-to-linear-systems" id="toc-connection-to-linear-systems" class="nav-link" data-scroll-target="#connection-to-linear-systems"><span class="header-section-number">4.2.2</span> Connection to linear systems</a></li>
+  <li><a href="#connection-to-independence" id="toc-connection-to-independence" class="nav-link" data-scroll-target="#connection-to-independence"><span class="header-section-number">4.2.3</span> Connection to independence</a></li>
   </ul></li>
-  <li><a href="#transpose" id="toc-transpose" class="nav-link" data-scroll-target="#transpose"><span class="header-section-number">5.2</span> Transpose</a>
+  <li><a href="#matrix-times-matrix" id="toc-matrix-times-matrix" class="nav-link" data-scroll-target="#matrix-times-matrix"><span class="header-section-number">4.3</span> Matrix times matrix</a>
   <ul class="collapse">
-  <li><a href="#properties-2" id="toc-properties-2" class="nav-link" data-scroll-target="#properties-2"><span class="header-section-number">5.2.1</span> Properties</a></li>
+  <li><a href="#properties-1" id="toc-properties-1" class="nav-link" data-scroll-target="#properties-1"><span class="header-section-number">4.3.1</span> Properties</a></li>
   </ul></li>
-  <li><a href="#identity-and-inverse" id="toc-identity-and-inverse" class="nav-link" data-scroll-target="#identity-and-inverse"><span class="header-section-number">5.3</span> Identity and inverse</a>
+  <li><a href="#identity-and-inverse" id="toc-identity-and-inverse" class="nav-link" data-scroll-target="#identity-and-inverse"><span class="header-section-number">4.4</span> Identity and inverse</a>
   <ul class="collapse">
-  <li><a href="#identity-matrix" id="toc-identity-matrix" class="nav-link" data-scroll-target="#identity-matrix"><span class="header-section-number">5.3.1</span> Identity matrix</a></li>
-  <li><a href="#inverse" id="toc-inverse" class="nav-link" data-scroll-target="#inverse"><span class="header-section-number">5.3.2</span> Inverse</a></li>
-  <li><a href="#singular-matrices" id="toc-singular-matrices" class="nav-link" data-scroll-target="#singular-matrices"><span class="header-section-number">5.3.3</span> Singular matrices</a></li>
+  <li><a href="#identity-matrix" id="toc-identity-matrix" class="nav-link" data-scroll-target="#identity-matrix"><span class="header-section-number">4.4.1</span> Identity matrix</a></li>
+  <li><a href="#inverse" id="toc-inverse" class="nav-link" data-scroll-target="#inverse"><span class="header-section-number">4.4.2</span> Inverse</a></li>
+  <li><a href="#singular-matrices" id="toc-singular-matrices" class="nav-link" data-scroll-target="#singular-matrices"><span class="header-section-number">4.4.3</span> Singular matrices</a></li>
   </ul></li>
-  <li><a href="#fundamental-theorem" id="toc-fundamental-theorem" class="nav-link" data-scroll-target="#fundamental-theorem"><span class="header-section-number">5.4</span> Fundamental Theorem</a></li>
-  <li><a href="#computing-the-inverse" id="toc-computing-the-inverse" class="nav-link" data-scroll-target="#computing-the-inverse"><span class="header-section-number">5.5</span> Computing the inverse</a>
+  <li><a href="#fundamental-theorem" id="toc-fundamental-theorem" class="nav-link" data-scroll-target="#fundamental-theorem"><span class="header-section-number">4.5</span> Fundamental Theorem</a></li>
+  <li><a href="#computing-the-inverse" id="toc-computing-the-inverse" class="nav-link" data-scroll-target="#computing-the-inverse"><span class="header-section-number">4.6</span> Computing the inverse</a>
   <ul class="collapse">
-  <li><a href="#diagonal-matrix" id="toc-diagonal-matrix" class="nav-link" data-scroll-target="#diagonal-matrix"><span class="header-section-number">5.5.1</span> Diagonal matrix</a></li>
-  <li><a href="#times-2" id="toc-times-2" class="nav-link" data-scroll-target="#times-2"><span class="header-section-number">5.5.2</span> <span class="math inline">\(2\times 2\)</span></a></li>
+  <li><a href="#diagonal-matrix" id="toc-diagonal-matrix" class="nav-link" data-scroll-target="#diagonal-matrix"><span class="header-section-number">4.6.1</span> Diagonal matrix</a></li>
+  <li><a href="#times-2" id="toc-times-2" class="nav-link" data-scroll-target="#times-2"><span class="header-section-number">4.6.2</span> <span class="math inline">\(2\times 2\)</span></a></li>
   </ul></li>
-  <li><a href="#sec-matrix-subspaces" id="toc-sec-matrix-subspaces" class="nav-link" data-scroll-target="#sec-matrix-subspaces"><span class="header-section-number">5.6</span> Subspaces</a>
+  <li><a href="#sec-matrix-subspaces" id="toc-sec-matrix-subspaces" class="nav-link" data-scroll-target="#sec-matrix-subspaces"><span class="header-section-number">4.7</span> Subspaces</a>
   <ul class="collapse">
-  <li><a href="#basis" id="toc-basis" class="nav-link" data-scroll-target="#basis"><span class="header-section-number">5.6.1</span> Basis</a></li>
-  <li><a href="#dimension" id="toc-dimension" class="nav-link" data-scroll-target="#dimension"><span class="header-section-number">5.6.2</span> Dimension</a></li>
+  <li><a href="#basis" id="toc-basis" class="nav-link" data-scroll-target="#basis"><span class="header-section-number">4.7.1</span> Basis</a></li>
+  <li><a href="#dimension" id="toc-dimension" class="nav-link" data-scroll-target="#dimension"><span class="header-section-number">4.7.2</span> Dimension</a></li>
   </ul></li>
-  <li><a href="#determinants" id="toc-determinants" class="nav-link" data-scroll-target="#determinants"><span class="header-section-number">5.7</span> Determinants</a>
+  <li><a href="#determinants" id="toc-determinants" class="nav-link" data-scroll-target="#determinants"><span class="header-section-number">4.8</span> Determinants</a>
   <ul class="collapse">
-  <li><a href="#properties-4" id="toc-properties-4" class="nav-link" data-scroll-target="#properties-4"><span class="header-section-number">5.7.1</span> Properties</a></li>
-  <li><a href="#cramers-rule" id="toc-cramers-rule" class="nav-link" data-scroll-target="#cramers-rule"><span class="header-section-number">5.7.2</span> Cramer’s Rule</a></li>
+  <li><a href="#properties-3" id="toc-properties-3" class="nav-link" data-scroll-target="#properties-3"><span class="header-section-number">4.8.1</span> Properties</a></li>
+  <li><a href="#cramers-rule" id="toc-cramers-rule" class="nav-link" data-scroll-target="#cramers-rule"><span class="header-section-number">4.8.2</span> Cramer’s Rule</a></li>
   </ul></li>
-  <li><a href="#eigenvalues" id="toc-eigenvalues" class="nav-link" data-scroll-target="#eigenvalues"><span class="header-section-number">5.8</span> Eigenvalues</a>
+  <li><a href="#eigenvalues" id="toc-eigenvalues" class="nav-link" data-scroll-target="#eigenvalues"><span class="header-section-number">4.9</span> Eigenvalues</a>
   <ul class="collapse">
-  <li><a href="#eigenspaces" id="toc-eigenspaces" class="nav-link" data-scroll-target="#eigenspaces"><span class="header-section-number">5.8.1</span> Eigenspaces</a></li>
-  <li><a href="#properties-5" id="toc-properties-5" class="nav-link" data-scroll-target="#properties-5"><span class="header-section-number">5.8.2</span> Properties</a></li>
+  <li><a href="#eigenspaces" id="toc-eigenspaces" class="nav-link" data-scroll-target="#eigenspaces"><span class="header-section-number">4.9.1</span> Eigenspaces</a></li>
+  <li><a href="#properties-4" id="toc-properties-4" class="nav-link" data-scroll-target="#properties-4"><span class="header-section-number">4.9.2</span> Properties</a></li>
   </ul></li>
-  <li><a href="#computing-eigenvalues" id="toc-computing-eigenvalues" class="nav-link" data-scroll-target="#computing-eigenvalues"><span class="header-section-number">5.9</span> Computing eigenvalues</a>
+  <li><a href="#computing-eigenvalues" id="toc-computing-eigenvalues" class="nav-link" data-scroll-target="#computing-eigenvalues"><span class="header-section-number">4.10</span> Computing eigenvalues</a>
   <ul class="collapse">
-  <li><a href="#eigenvectors-for-2times-2" id="toc-eigenvectors-for-2times-2" class="nav-link" data-scroll-target="#eigenvectors-for-2times-2"><span class="header-section-number">5.9.1</span> Eigenvectors for <span class="math inline">\(2\times 2\)</span></a></li>
-  <li><a href="#geometric-multiplicity" id="toc-geometric-multiplicity" class="nav-link" data-scroll-target="#geometric-multiplicity"><span class="header-section-number">5.9.2</span> Geometric multiplicity</a></li>
-  <li><a href="#defectiveness" id="toc-defectiveness" class="nav-link" data-scroll-target="#defectiveness"><span class="header-section-number">5.9.3</span> Defectiveness</a></li>
-  <li><a href="#diagonalization" id="toc-diagonalization" class="nav-link" data-scroll-target="#diagonalization"><span class="header-section-number">5.9.4</span> Diagonalization</a></li>
+  <li><a href="#eigenvectors-for-2times-2" id="toc-eigenvectors-for-2times-2" class="nav-link" data-scroll-target="#eigenvectors-for-2times-2"><span class="header-section-number">4.10.1</span> Eigenvectors for <span class="math inline">\(2\times 2\)</span></a></li>
+  </ul></li>
+  <li><a href="#diagonalization" id="toc-diagonalization" class="nav-link" data-scroll-target="#diagonalization"><span class="header-section-number">4.11</span> Diagonalization</a>
+  <ul class="collapse">
+  <li><a href="#multiplicity" id="toc-multiplicity" class="nav-link" data-scroll-target="#multiplicity"><span class="header-section-number">4.11.1</span> Multiplicity</a></li>
+  <li><a href="#defectiveness" id="toc-defectiveness" class="nav-link" data-scroll-target="#defectiveness"><span class="header-section-number">4.11.2</span> Defectiveness</a></li>
+  <li><a href="#diagonalization-1" id="toc-diagonalization-1" class="nav-link" data-scroll-target="#diagonalization-1"><span class="header-section-number">4.11.3</span> Diagonalization</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -242,7 +247,7 @@ MathJax = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Matrix algebra</span></h1>
+<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Matrix algebra</span></h1>
 </div>
 
 
@@ -279,6 +284,7 @@ MathJax = {
     \newcommand{\bfz}{\mathbf{z}}
     \newcommand{\bfA}{\mathbf{A}}
     \newcommand{\bfB}{\mathbf{B}}
+    \newcommand{\bfV}{\mathbf{V}}
     \newcommand{\bfW}{\mathbf{W}}
     \newcommand{\bfX}{\mathbf{X}}
     \newcommand{\bfzero}{\boldsymbol{0}}
@@ -320,29 +326,80 @@ MathJax = {
     \newcommand{\augmat}[2]{\left[ #1 \;\middle|\; #2 \right]}
 \]</span></p>
 </div>
-<div id="07222ea3" class="cell" data-execution_count="2">
+<div id="a737a94a" class="cell" data-execution_count="2">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Plots</span>, <span class="bu">LinearAlgebra</span>, <span class="bu">LaTeXStrings</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">default</span>(label<span class="op">=</span><span class="st">""</span>, linewidth<span class="op">=</span><span class="fl">3</span>, markersize<span class="op">=</span><span class="fl">4</span>, size<span class="op">=</span>(<span class="fl">500</span>,<span class="fl">320</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p>Matrices support addition, subtraction, and scalar multiplication just as vectors do, by acting elementwise. But things get more complicated when we start considering how to multiply matrices and vectors together.</p>
-<section id="multiplication" class="level2" data-number="5.1">
-<h2 data-number="5.1" class="anchored" data-anchor-id="multiplication"><span class="header-section-number">5.1</span> Multiplication</h2>
-<p>Here is <strong>how NOT to multiply two matrices</strong>:</p>
+<p>We now dive deeply into the world of vectors and matrices. In this world, we often refer to mere numbers as <strong>scalars</strong>. That’s because they just scale every element, like in</p>
 <p><span class="math display">\[
-\twomat{1}{2}{-2}{0} \twomat{3}{-4}{-1}{2} = \twomat{1\cdot 3}{2\cdot(-4)}{(-2)\cdot (-1)}{0\cdot 2}.
+c \begin{bmatrix}
+A_{11} &amp; \cdots &amp; A_{1n} \\
+\vdots &amp; &amp; \vdots \\
+A_{m1} &amp; \cdots &amp; A_{mn}
+\end{bmatrix}
+=
+\begin{bmatrix}
+cA_{11} &amp; \cdots &amp; cA_{1n} \\
+\vdots &amp; &amp; \vdots \\
+cA_{m1} &amp; \cdots &amp; cA_{mn}
+\end{bmatrix}.
 \]</span></p>
-<p>Technically, the above is called a <em>Hadamard product</em>, and it actually does come in handy sometimes. But it is less than 1/1000th as important as a different, less-obvious definition of multiplication that is tied to deep mathematical structure.</p>
-<section id="matrix-times-vector" class="level3" data-number="5.1.1">
-<h3 data-number="5.1.1" class="anchored" data-anchor-id="matrix-times-vector"><span class="header-section-number">5.1.1</span> Matrix times vector</h3>
-<p>The idea of linear combinations, as defined in <a href="linear_algebra_systems.html#def-nullspace-linear-comb" class="quarto-xref">Definition&nbsp;<span>4.12</span></a>, serves as the foundation of multiplication between a matrix and a vector.</p>
+<section id="elementwise-operations" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="elementwise-operations"><span class="header-section-number">4.1</span> Elementwise operations</h2>
+<p>It’s easy to add or subtract two vectors or two matrices that have the same size. Just act elementwise:</p>
+<p><span class="math display">\[
+\begin{bmatrix}
+A_{11} &amp; \cdots &amp; A_{1n} \\
+\vdots &amp; &amp; \vdots \\
+A_{m1} &amp; \cdots &amp; A_{mn}
+\end{bmatrix}
++
+\begin{bmatrix}
+B_{11} &amp; \cdots &amp; B_{1n} \\
+\vdots &amp; &amp; \vdots \\
+B_{m1} &amp; \cdots &amp; B_{mn}
+\end{bmatrix}
+=
+\begin{bmatrix}
+A_{11}+B_{11} &amp; \cdots &amp; A_{1n}+B_{1n} \\
+\vdots &amp; &amp; \vdots \\
+A_{m1}+B_{m1} &amp; \cdots &amp; A_{mn}+B_{mn}
+\end{bmatrix}
+\]</span></p>
+<p>We consider the operation of adding matrices of <em>different</em> sizes to be undefined.</p>
+<p>While we’re on a roll, you would probably expect that we define matrix multiplication the same way:</p>
+<p><span class="math display">\[
+\begin{bmatrix}
+A_{11} &amp; \cdots &amp; A_{1n} \\
+\vdots &amp; &amp; \vdots \\
+A_{m1} &amp; \cdots &amp; A_{mn}
+\end{bmatrix}
+\cdot
+\begin{bmatrix}
+B_{11} &amp; \cdots &amp; B_{1n} \\
+\vdots &amp; &amp; \vdots \\
+B_{m1} &amp; \cdots &amp; B_{mn}
+\end{bmatrix}
+\stackrel{??}{=}
+\begin{bmatrix}
+A_{11}B_{11} &amp; \cdots &amp; A_{1n}B_{1n} \\
+\vdots &amp; &amp; \vdots \\
+A_{m1}B_{m1} &amp; \cdots &amp; A_{mn}B_{mn}
+\end{bmatrix}
+\]</span></p>
+<p>But we don’t! OK, <em>technically</em> this is called a Hadamard product, and it has some uses. But 99.9999% of the time a different, less obvious way of multiplying matrices does a better job of respecting critical mathematical structure.</p>
+</section>
+<section id="matrix-times-vector" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="matrix-times-vector"><span class="header-section-number">4.2</span> Matrix times vector</h2>
+<p>The idea of linear combinations, as defined in <span class="quarto-unresolved-ref">?def-nullspace-linear-comb</span>, serves as the foundation of multiplication between a matrix and a vector.</p>
 <div id="def-operations-matvec" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 5.1 (Matrix times vector) </strong></span>Given <span class="math inline">\(\bfA\in\cmn{m}{n}\)</span> and <span class="math inline">\(\bfx\in\complex^{n}\)</span>, the product <span class="math inline">\(\bfA\bfx\)</span> is defined as</p>
+<p><span class="theorem-title"><strong>Definition 4.1 (Matrix times vector) </strong></span>Given <span class="math inline">\(\bfA\in\cmn{m}{n}\)</span> and <span class="math inline">\(\bfx\in\complex^{n}\)</span>, the product <span class="math inline">\(\bfA\bfx\)</span> is defined as</p>
 <p><span id="eq-operations-matvec"><span class="math display">\[
 \bfA\bfx = x_1 \bfa_1 + x_2 \bfa_2 + \cdots + x_n \bfa_n = \sum_{j=1}^n x_j \bfa_j,
-\tag{5.1}\]</span></span></p>
+\tag{4.1}\]</span></span></p>
 <p>where <span class="math inline">\(\bfa_j\)</span> refers to the <span class="math inline">\(j\)</span>th column of <span class="math inline">\(\bfA\)</span>.</p>
 </div>
 <div class="callout-attention">
@@ -350,7 +407,7 @@ MathJax = {
 </div>
 <p>Note that when <span class="math inline">\(\bfA\)</span> is <span class="math inline">\(m\times n\)</span>, then <span class="math inline">\(\bfx\)</span> must be in <span class="math inline">\(\real^n\)</span> or <span class="math inline">\(\complex^n\)</span>, and <span class="math inline">\(\bfA\bfx\)</span> has dimension <span class="math inline">\(m\)</span>.</p>
 <div id="exm-" class="theorem example">
-<p><span class="theorem-title"><strong>Example 5.1 </strong></span>Calculate the product</p>
+<p><span class="theorem-title"><strong>Example 4.1 </strong></span>Calculate the product</p>
 <p><span class="math display">\[
 \begin{bmatrix}
 1 &amp; -1 &amp; -1 \\ 3 &amp; -2 &amp; 0 \\ 1 &amp; -2 &amp; -1 \end{bmatrix} \threevec{-1}{2}{-1}.
@@ -367,16 +424,21 @@ MathJax = {
 <p>You might recognize the “zip” expressions in this vector as dot products from vector calculus.</p>
 </div>
 </div>
-<section id="properties" class="level4" data-number="5.1.1.1">
-<h4 data-number="5.1.1.1" class="anchored" data-anchor-id="properties"><span class="header-section-number">5.1.1.1</span> Properties</h4>
+<section id="properties" class="level3" data-number="4.2.1">
+<h3 data-number="4.2.1" class="anchored" data-anchor-id="properties"><span class="header-section-number">4.2.1</span> Properties</h3>
 <p>What justifies calling this operation multiplication? In large part, it’s the natural distributive properties</p>
 <p><span class="math display">\[
 \begin{split}
 \bfA(\bfx+\bfy) &amp; =  \bfA\bfx + \bfA\bfy,\\
 (\bfA+\bfB)\bfx &amp; =  \bfA\bfx + \bfB\bfx,
-\end{split}
+\end{split},
 \]</span></p>
-<p>which can be checked with a little effort. It’s also true that <span class="math inline">\(\bfA(c\bfx)=c(\bfA\bfx)\)</span> for any scalar <span class="math inline">\(c\)</span>. However, there is a big departure from multiplication as we usually know it.</p>
+<p>and the associative property</p>
+<p><span class="math display">\[
+\bfA(\bfB\bfx) = (\bfA\bfB)\bfx,
+\]</span></p>
+<p>all of which can be checked with a little effort. It’s also true that <span class="math inline">\(\bfA(c\bfx)=c(\bfA\bfx)\)</span> for any number <span class="math inline">\(c\)</span>.</p>
+<p>However, there is a big departure from multiplication as we usually know it.</p>
 <div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -391,33 +453,38 @@ Warning
 </div>
 </div>
 </section>
-<section id="connection-to-linear-systems" class="level4" data-number="5.1.1.2">
-<h4 data-number="5.1.1.2" class="anchored" data-anchor-id="connection-to-linear-systems"><span class="header-section-number">5.1.1.2</span> Connection to linear systems</h4>
+<section id="connection-to-linear-systems" class="level3" data-number="4.2.2">
+<h3 data-number="4.2.2" class="anchored" data-anchor-id="connection-to-linear-systems"><span class="header-section-number">4.2.2</span> Connection to linear systems</h3>
 <p>The following observation finally brings us back around to the introduction of linear systems through the insultingly simple scalar equation <span class="math inline">\(ax=b\)</span>.</p>
-<div id="thm">
+<div class="{#thm-Ax=b}">
 <p>The linear system with coefficient matrix <span class="math inline">\(\bfA\)</span>, forcing vector <span class="math inline">\(\bfb\)</span>, and solution <span class="math inline">\(\bfx\)</span> is equivalent to the equation <span class="math inline">\(\bfA\bfx=\bfb\)</span>.</p>
 </div>
-<p>Bringing together more of our definitions:</p>
-<div id="thm-" class="theorem">
-<p><span class="theorem-title"><strong>Theorem 5.1 </strong></span>&nbsp;</p>
-<ol type="1">
-<li>The linear system <span class="math inline">\(\bfA\bfx=\bfb\)</span> is consistent if and only if <span class="math inline">\(\bfb\)</span> is in the span of the columns of <span class="math inline">\(\bfA\)</span>.</li>
-<li>The null space of a matrix contains nonzero vectors if and only if the columns of the matrix are linearly dependent.</li>
-</ol>
+<p>The following result follows quickly from our definitions.</p>
+<div id="thm-b-in-span" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 4.1 </strong></span>The linear system <span class="math inline">\(\bfA\bfx=\bfb\)</span> is consistent if and only if <span class="math inline">\(\bfb\)</span> is in the span of the columns of <span class="math inline">\(\bfA\)</span>.</p>
+</div>
+</section>
+<section id="connection-to-independence" class="level3" data-number="4.2.3">
+<h3 data-number="4.2.3" class="anchored" data-anchor-id="connection-to-independence"><span class="header-section-number">4.2.3</span> Connection to independence</h3>
+<p>Because <span class="math inline">\(\bfA\bfx\)</span> is a linear combination of <span class="math inline">\(\bfA\)</span>’s columns, statements we made previously in connection with linear combinations have corresponding restatements in terms of matrix columns.</p>
+<div id="thm-dependent-columns" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 4.2 </strong></span>The null space of a matrix contains nonzero vectors if and only if the columns of the matrix are linearly dependent.</p>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>Vector <span class="math inline">\(\bfx\)</span> is in the nullspace of <span class="math inline">\(\bfA\)</span> if and only if <span class="math inline">\(\bfA\bfx=\bfzero\)</span>. Therefore, if <span class="math inline">\(\bfx\)</span> is nonzero, then we have a nontrivial linear combination of <span class="math inline">\(\bfA\)</span>’s columns that gives the zero vector.</p>
 </div>
 </section>
 </section>
-<section id="matrix-matrix-multiplication" class="level3" data-number="5.1.2">
-<h3 data-number="5.1.2" class="anchored" data-anchor-id="matrix-matrix-multiplication"><span class="header-section-number">5.1.2</span> Matrix-matrix multiplication</h3>
+<section id="matrix-times-matrix" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="matrix-times-matrix"><span class="header-section-number">4.3</span> Matrix times matrix</h2>
 <p>We can think of vectors as a special kind of matrix, and accordingly we can generalize matrix-vector products to matrix-matrix products. There are many equivalent ways to define these products. Here is the one we start with.</p>
 <div id="def-operations-matmat" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 5.2 (Matrix times matrix) </strong></span>If <span class="math inline">\(\bfA\)</span> is <span class="math inline">\(m\times n\)</span> and <span class="math inline">\(\bfB\)</span> is <span class="math inline">\(n\times p\)</span>, then the product <span class="math inline">\(\bfA\bfB\)</span> is defined as</p>
-<p><span class="math display">\[
-:label: matrix-mult
+<p><span class="theorem-title"><strong>Definition 4.2 (Matrix times matrix) </strong></span>If <span class="math inline">\(\bfA\)</span> is <span class="math inline">\(m\times n\)</span> and <span class="math inline">\(\bfB\)</span> is <span class="math inline">\(n\times p\)</span>, then the product <span class="math inline">\(\bfA\bfB\)</span> is defined as</p>
+<p><span id="eq-matrix-mult"><span class="math display">\[
 \bfA\mathbf{B}
 = \bfA \begin{bmatrix} \mathbf{b}_1 &amp; \mathbf{b}_2 &amp; \cdots &amp; \mathbf{b}_p \end{bmatrix}
 = \begin{bmatrix} \bfA\mathbf{b}_1 &amp; \bfA\mathbf{b}_2 &amp; \cdots &amp; \bfA\mathbf{b}_p \end{bmatrix}.
-\]</span></p>
+\tag{4.2}\]</span></span></p>
 </div>
 <p>In words, a matrix-matrix product is the horizontal concatenation of matrix-vector products involving the columns of the right-hand matrix.</p>
 <div class="callout callout-style-default callout-warning callout-titled">
@@ -436,10 +503,10 @@ Warning
 <p>When we compute a matrix product by hand, we usually don’t write out the above. Instead we use a more compact definition for the individual entries of <span class="math inline">\(\mathbf{C} = \bfA\bfB\)</span>,</p>
 <p><span id="eq-matrix-mult-element"><span class="math display">\[
 C_{ij} = \sum_{k=1}^n a_{ik}b_{kj}, \qquad i=1,\ldots,m, \quad j=1,\ldots,p.
-\tag{5.2}\]</span></span></p>
+\tag{4.3}\]</span></span></p>
 <p>The sum to get a single <span class="math inline">\(C_{ij}\)</span> is what we called a “zip”, or essentially a dot product, of row <span class="math inline">\(i\)</span> from <span class="math inline">\(\bfA\)</span> with column <span class="math inline">\(j\)</span> from <span class="math inline">\(\bfB\)</span>.</p>
 <div id="exm-" class="theorem example">
-<p><span class="theorem-title"><strong>Example 5.2 </strong></span>Find <span class="math inline">\(\mathbf{A}\mathbf{B}\)</span> if</p>
+<p><span class="theorem-title"><strong>Example 4.2 </strong></span>Find <span class="math inline">\(\mathbf{A}\mathbf{B}\)</span> if</p>
 <p><span class="math display">\[
 \bfA = \begin{bmatrix}
 1 &amp; -1 \\ 0 &amp; 2 \\ -3 &amp; 1
@@ -449,7 +516,7 @@ C_{ij} = \sum_{k=1}^n a_{ik}b_{kj}, \qquad i=1,\ldots,m, \quad j=1,\ldots,p.
 \end{bmatrix}.
 \]</span></p>
 <div class="solution proof">
-<p><span class="proof-title"><em>Solution</em>. </span>Using <a href="#eq-matrix-mult-element" class="quarto-xref">Equation&nbsp;<span>5.2</span></a>,</p>
+<p><span class="proof-title"><em>Solution</em>. </span>Using <a href="#eq-matrix-mult-element" class="quarto-xref">Equation&nbsp;<span>4.3</span></a>,</p>
 <p><span class="math display">\[
 \begin{split}
 \bfA\mathbf{B} &amp;= \begin{bmatrix}
@@ -471,9 +538,9 @@ C_{ij} = \sum_{k=1}^n a_{ik}b_{kj}, \qquad i=1,\ldots,m, \quad j=1,\ldots,p.
 <p>and so on.</p>
 </div>
 </div>
-<section id="properties-1" class="level4" data-number="5.1.2.1">
-<h4 data-number="5.1.2.1" class="anchored" data-anchor-id="properties-1"><span class="header-section-number">5.1.2.1</span> Properties</h4>
-<p>First, the bad news.</p>
+<section id="properties-1" class="level3" data-number="4.3.1">
+<h3 data-number="4.3.1" class="anchored" data-anchor-id="properties-1"><span class="header-section-number">4.3.1</span> Properties</h3>
+<p>First, there is something fundamentally different about multiplication of matrices compared to multiplication of numbers.</p>
 <div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -484,7 +551,8 @@ Warning
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Matrix multiplication is not commutative. If <span class="math inline">\(\bfA\bfB\)</span> is defined, then <span class="math inline">\(\bfB\bfA\)</span> may not be, and even if it is, it may not equal <span class="math inline">\(\bfA\bfB\)</span>. Put another way, you cannot simply change the order of the terms in a matrix product without some explicit justification.</p>
+<p>Matrix multiplication is not commutative. If <span class="math inline">\(\bfA\bfB\)</span> is defined, then <span class="math inline">\(\bfB\bfA\)</span> may not be, and even if it is, it may not equal <span class="math inline">\(\bfA\bfB\)</span>.</p>
+<p>In other words, you cannot change the order of the terms in a matrix product without some explicit justification.</p>
 </div>
 </div>
 <p>Fortunately, other familiar and handy properties of multiplication do come along for the ride:</p>
@@ -493,26 +561,43 @@ Warning
 <li><span class="math inline">\(\bfA(\bfB+\mathbf{C}) = \bfA\bfB + \bfA\mathbf{C}\qquad\)</span> (right distribution)</li>
 <li><span class="math inline">\((\bfA+\bfB)\mathbf{C} = \bfA\mathbf{C} + \bfB\mathbf{C}\qquad\)</span> (left distribution)</li>
 </ol>
-<p>These properties are easy to demonstrate computationally. (But keep in mind that a numerical demonstration, or an algebraic one at particular sizes, is not a general proof.)</p>
+<p>These properties are easy to check computationally. (But keep in mind that a numerical demonstration, or an algebraic one at particular sizes, is not a general proof.) In addition, matrix multiplication plays well with numbers:</p>
+<ol type="1">
+<li><span class="math inline">\((c\bfA \bfB) = c (\bfA \bfB) = \bfA (c \bfB)\)</span></li>
+<li><span class="math inline">\(c(\bfA + \bfB) = (c\bfA) + (c\bfB)\)</span></li>
+<li><span class="math inline">\((c+d) \bfA = (c\bfA) + (d\bfA)\)</span></li>
+</ol>
+<p>Finally, we observe that if <span class="math inline">\(\bfA\)</span> is <span class="math inline">\(m\times n\)</span> and <span class="math inline">\(\bfx\)</span> is an <span class="math inline">\(n\)</span>-vector, then <span class="math inline">\(\bfA\bfx\)</span> gives the same result whether we interpet <span class="math inline">\(\bfx\)</span> as a vector or as an <span class="math inline">\(n\times 1\)</span> matrix.</p>
+<!-- ## Transpose
+
+Here's a curious operation that we won't be using much, but it is important enough to know about.
+
+::::{#def-algebra-transpose} 
+# Matrix transpose
+The **transpose** of $m\times n$ matrix $\bfA$, whose elements are $A_{ij}$, is the $n\times m$ matrix $\bfA^T$ with elements $A_{ji}$.
+::::
+
+When taking the transpose, rows become columns, and vice versa.
+
+### Properties
+
+(theorem-algebra-transpose)=
+::::{#thm-} 
+If $\bfA$ and $\bfB$ are matrices of compatible sizes, and $c$ is a number, then
+1. $(\bfA^T)^T = \bfA$
+2. $(\bfA+\bfB)^T = \bfA^T + \bfB^T$
+3. $(c\bfA^T) = c(\bfA^T)$
+4. $(\bfA\bfB)^T = \bfB^T \bfA^T$
+::::
+
+Only the last of these is not intuitively clear. -->
 </section>
 </section>
-</section>
-<section id="transpose" class="level2" data-number="5.2">
-<h2 data-number="5.2" class="anchored" data-anchor-id="transpose"><span class="header-section-number">5.2</span> Transpose</h2>
-<p>Here’s a curious operation that we won’t be using much, but it is important enough to know about.</p>
-<p>(definition-algebra-transpose)= ::::{#def-} Transpose of a matrix The <strong>transpose</strong> of <span class="math inline">\(m\times n\)</span> matrix <span class="math inline">\(\bfA\)</span>, whose elements are <span class="math inline">\(A_{ij}\)</span>, is the <span class="math inline">\(n\times m\)</span> matrix <span class="math inline">\(\bfA^T\)</span> with elements <span class="math inline">\(A_{ji}\)</span>. ::::</p>
-<p>When taking the transpose, rows become columns, and vice versa.</p>
-<section id="properties-2" class="level3" data-number="5.2.1">
-<h3 data-number="5.2.1" class="anchored" data-anchor-id="properties-2"><span class="header-section-number">5.2.1</span> Properties</h3>
-<p>(theorem-algebra-transpose)= ::::{#thm-} If <span class="math inline">\(\bfA\)</span> and <span class="math inline">\(\bfB\)</span> are matrices of compatible sizes, and <span class="math inline">\(c\)</span> is a number, then 1. <span class="math inline">\((\bfA^T)^T = \bfA\)</span> 2. <span class="math inline">\((\bfA+\bfB)^T = \bfA^T + \bfB^T\)</span> 3. <span class="math inline">\((c\bfA^T) = c(\bfA^T)\)</span> 4. <span class="math inline">\((\bfA\bfB)^T = \bfB^T \bfA^T\)</span> ::::</p>
-<p>Only the last of these is not intuitively clear.</p>
-</section>
-</section>
-<section id="identity-and-inverse" class="level2" data-number="5.3">
-<h2 data-number="5.3" class="anchored" data-anchor-id="identity-and-inverse"><span class="header-section-number">5.3</span> Identity and inverse</h2>
+<section id="identity-and-inverse" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="identity-and-inverse"><span class="header-section-number">4.4</span> Identity and inverse</h2>
 <p>You solve <span class="math inline">\(ax=b\)</span> for nonzero <span class="math inline">\(a\)</span> without thinking about it: <span class="math inline">\(x=b/a\)</span>. If we do break it down a little, we can see that when we multiply both sides of <span class="math inline">\(ax=b\)</span> by the number <span class="math inline">\(1/a\)</span>, then on the left the terms <span class="math inline">\(1/a\)</span> and <span class="math inline">\(a\)</span> combine to give <span class="math inline">\(1\)</span>, and <span class="math inline">\(1x=x\)</span>. So the key to the solution is the presence of a <em>multiplicative identity</em> value <span class="math inline">\(1\)</span>, and the existence of the <em>multiplicative inverse</em> <span class="math inline">\(1/a\)</span> when <span class="math inline">\(a\neq 0\)</span>. These two items are also a way to discuss the vector case <span class="math inline">\(\bfA\bfx=\bfb\)</span>.</p>
-<section id="identity-matrix" class="level3" data-number="5.3.1">
-<h3 data-number="5.3.1" class="anchored" data-anchor-id="identity-matrix"><span class="header-section-number">5.3.1</span> Identity matrix</h3>
+<section id="identity-matrix" class="level3" data-number="4.4.1">
+<h3 data-number="4.4.1" class="anchored" data-anchor-id="identity-matrix"><span class="header-section-number">4.4.1</span> Identity matrix</h3>
 <p>Suppose we are given an <span class="math inline">\(m\times n\)</span> matrix <span class="math inline">\(\bfA\)</span>. Writing its columns as the vectors <span class="math inline">\(\bfa_1,\ldots,\bfa_n\)</span>, we can make the rather obvious observations</p>
 <p><span class="math display">\[
 \begin{split}
@@ -524,14 +609,14 @@ Warning
 \]</span></p>
 <p>The purpose in using these expressions is to interpret them as linear combinations, and thus as matrix-vector products. Let’s define <span class="math inline">\(\bfe_j\)</span> for <span class="math inline">\(j=1,\ldots,n\)</span> as follows.</p>
 <div id="def-" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 5.3 (Standard vectors) </strong></span><span class="math display">\[
+<p><span class="theorem-title"><strong>Definition 4.3 (Standard vectors) </strong></span><span class="math display">\[
 \text{$i$th component of }\bfe_j = \begin{cases} 1, &amp; i=j, \\ 0, &amp; i\neq j. \end{cases}
 \]</span></p>
 </div>
 <p>Now we can write</p>
-<p><span class="math display">\[
+<p><span id="eq-identity-columns"><span class="math display">\[
 \bfa_j = \bfA \bfe_j, \quad j=1,\ldots,n.
-\]</span></p>
+\tag{4.4}\]</span></span></p>
 <p>Furthermore, we can use the definition of matrix products as a concatenation of matrix-vector products to derive</p>
 <p><span class="math display">\[
 \begin{split}
@@ -541,7 +626,7 @@ Warning
 \end{split}
 \]</span></p>
 <div id="def-" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 5.4 (Identity matrix) </strong></span>The <span class="math inline">\(n\times n\)</span> <strong>identity matrix</strong> is</p>
+<p><span class="theorem-title"><strong>Definition 4.4 (Identity matrix) </strong></span>The <span class="math inline">\(n\times n\)</span> <strong>identity matrix</strong> is</p>
 <p><span class="math display">\[
 \meye = \begin{bmatrix} \bfe_1 &amp; \bfe_2 &amp; \cdots &amp; \bfe_n \end{bmatrix} =
     \begin{bmatrix}
@@ -567,10 +652,10 @@ Note
 </div>
 </div>
 <div id="thm-" class="theorem">
-<p><span class="theorem-title"><strong>Theorem 5.2 (Multiplicative identity) </strong></span>If <span class="math inline">\(\bfA\)</span> is <span class="math inline">\(m\times n\)</span>, then <span class="math inline">\(\bfA = \meye_m \bfA = \bfA \meye_n\)</span>.</p>
+<p><span class="theorem-title"><strong>Theorem 4.3 (Multiplicative identity) </strong></span>If <span class="math inline">\(\bfA\)</span> is <span class="math inline">\(m\times n\)</span>, then <span class="math inline">\(\bfA = \meye_m \bfA = \bfA \meye_n\)</span>.</p>
 </div>
 <div id="exm-" class="theorem example">
-<p><span class="theorem-title"><strong>Example 5.3 </strong></span>Compute</p>
+<p><span class="theorem-title"><strong>Example 4.3 </strong></span>Compute</p>
 <p><span class="math display">\[
 \begin{bmatrix}
 7 &amp; -2 &amp; 11 \\ 1131 &amp; \pi &amp; -\sqrt{13}
@@ -594,21 +679,21 @@ Note
 </div>
 </div>
 </section>
-<section id="inverse" class="level3" data-number="5.3.2">
-<h3 data-number="5.3.2" class="anchored" data-anchor-id="inverse"><span class="header-section-number">5.3.2</span> Inverse</h3>
+<section id="inverse" class="level3" data-number="4.4.2">
+<h3 data-number="4.4.2" class="anchored" data-anchor-id="inverse"><span class="header-section-number">4.4.2</span> Inverse</h3>
 <p>We are now going to introduce a major simplification.</p>
 <div id="def-inverse-square" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 5.5 (Square matrix) </strong></span>A <strong>square</strong> matrix has the same number of rows as columns.</p>
+<p><span class="theorem-title"><strong>Definition 4.5 (Square matrix) </strong></span>A <strong>square</strong> matrix has the same number of rows as columns.</p>
 </div>
 <p>Here is what we seek from a multiplicative inverse.</p>
 <div id="def-" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 5.6 (Inverse) </strong></span>Suppose <span class="math inline">\(\bfA\)</span> is a square matrix. A matrix <span class="math inline">\(\mathbf{Z}\)</span> of the same size such that <span class="math inline">\(\mathbf{Z}\bfA = \meye\)</span> and <span class="math inline">\(\bfA\mathbf{Z}=\meye\)</span> is called the <strong>inverse</strong> of <span class="math inline">\(\bfA\)</span>, written <span class="math inline">\(\mathbf{Z} = \bfA^{-1}\)</span>. In this case we say <span class="math inline">\(\bfA\)</span> is <strong>invertible</strong>. A matrix that has no inverse is <strong>singular</strong>.</p>
+<p><span class="theorem-title"><strong>Definition 4.6 (Inverse) </strong></span>Suppose <span class="math inline">\(\bfA\)</span> is a square matrix. A matrix <span class="math inline">\(\mathbf{Z}\)</span> of the same size such that <span class="math inline">\(\mathbf{Z}\bfA = \meye\)</span> and <span class="math inline">\(\bfA\mathbf{Z}=\meye\)</span> is called the <strong>inverse</strong> of <span class="math inline">\(\bfA\)</span>, written <span class="math inline">\(\mathbf{Z} = \bfA^{-1}\)</span>. In this case we say <span class="math inline">\(\bfA\)</span> is <strong>invertible</strong>. A matrix that has no inverse is <strong>singular</strong>.</p>
 </div>
 <p>Verifying whether a given matrix is the inverse of another matrix is simply a matter of multiplying them together and seeing if the result is an identity matrix.</p>
 <div id="exm-" class="theorem example">
-<p><span class="theorem-title"><strong>Example 5.4 </strong></span>The matrix <span class="math inline">\(\mathbf{R}(\theta) = \begin{bmatrix} \cos(\theta) &amp; -\sin(\theta) \\ \sin(\theta) &amp; \cos(\theta) \end{bmatrix}\)</span> performs rotation in the plane around the origin by angle <span class="math inline">\(\theta\)</span>. Show that <span class="math inline">\(\mathbf{R}(-\theta)\)</span> is the inverse of <span class="math inline">\(\mathbf{R}(\theta)\)</span>.</p>
+<p><span class="theorem-title"><strong>Example 4.4 </strong></span>The matrix <span class="math inline">\(\mathbf{R}(\theta) = \begin{bmatrix} \cos(\theta) &amp; -\sin(\theta) \\ \sin(\theta) &amp; \cos(\theta) \end{bmatrix}\)</span> performs rotation in the plane around the origin by angle <span class="math inline">\(\theta\)</span>. Show that <span class="math inline">\(\mathbf{R}(-\theta)\)</span> is the inverse of <span class="math inline">\(\mathbf{R}(\theta)\)</span>.</p>
 <div class="solution proof">
-<p><span class="proof-title"><em>Solution</em>. </span>All we need to do is to check that the produc, in either order, is the identity matrix:</p>
+<p><span class="proof-title"><em>Solution</em>. </span>All we need to do is to check that the product, in either order, is the identity matrix:</p>
 <p><span class="math display">\[
 \begin{split}
 \mathbf{R}(-\theta)\mathbf{R}(\theta) &amp;= \begin{bmatrix}
@@ -624,62 +709,97 @@ Note
 &amp;= \begin{bmatrix}
 \cos^2(\theta)+\sin^2(\theta) &amp; -\cos(\theta)\sin(\theta) + \sin(\theta)\cos(\theta) \\
   -\sin(\theta)\cos(\theta) + \cos(\theta)\sin(\theta)  &amp; \sin^2(\theta) + \cos^2(\theta)
-\end{bmatrix} = \meye.
+\end{bmatrix} \\
+&amp;= \twomat{1}{0}{0}{1}.
 \end{split}
 \]</span></p>
 </div>
 </div>
-<section id="properties-3" class="level4" data-number="5.3.2.1">
-<h4 data-number="5.3.2.1" class="anchored" data-anchor-id="properties-3"><span class="header-section-number">5.3.2.1</span> Properties</h4>
-<p>There are some facts about inverses that we will take for granted without justification.</p>
+<section id="properties-2" class="level4" data-number="4.4.2.1">
+<h4 data-number="4.4.2.1" class="anchored" data-anchor-id="properties-2"><span class="header-section-number">4.4.2.1</span> Properties</h4>
+<p>There are some facts about inverses that we will use without justification.</p>
 <div id="thm-" class="theorem">
-<p><span class="theorem-title"><strong>Theorem 5.3 </strong></span>&nbsp;</p>
-<ol type="1">
-<li>If <span class="math inline">\(\bfA\)</span> is invertible, the inverse is unique.</li>
-<li>If either <span class="math inline">\(\mathbf{Z}\bfA = \meye\)</span> or <span class="math inline">\(\bfA\mathbf{Z}=\meye\)</span> is true, then both are true and <span class="math inline">\(\mathbf{Z}=\bfA^{-1}\)</span>.</li>
-<li><span class="math inline">\((\bfA^{-1})^{-1} = \bfA\)</span>; that is, <span class="math inline">\(\bfA\)</span> is the inverse of <span class="math inline">\(\bfA^{-1}\)</span>.</li>
-<li>If <span class="math inline">\(\bfA\)</span> is invertible and <span class="math inline">\(c\)</span> is a nonzero number, then <span class="math inline">\((c\bfA)^{-1}= \dfrac{1}{c}\bfA^{-1}\)</span>.</li>
-<li>If <span class="math inline">\(\bfA\)</span> and <span class="math inline">\(\bfB\)</span> are invertible and the same size, then <span class="math inline">\(\bfA\bfB\)</span> is invertible, and</li>
-</ol>
+<p><span class="theorem-title"><strong>Theorem 4.4 </strong></span>If <span class="math inline">\(\bfA\)</span> and <span class="math inline">\(\bfB\)</span> are square matrices, then: 1. If <span class="math inline">\(\bfA\)</span> is invertible, the inverse is unique. 2. If either <span class="math inline">\(\mathbf{Z}\bfA = \meye\)</span> or <span class="math inline">\(\bfA\mathbf{Z}=\meye\)</span> is true, then both are true and <span class="math inline">\(\mathbf{Z}=\bfA^{-1}\)</span>. 3. <span class="math inline">\((\bfA^{-1})^{-1} = \bfA\)</span>; that is, <span class="math inline">\(\bfA\)</span> is the inverse of <span class="math inline">\(\bfA^{-1}\)</span>. 4. If <span class="math inline">\(\bfA\)</span> is invertible and <span class="math inline">\(c\)</span> is a nonzero number, then <span class="math inline">\((c\bfA)^{-1}= \dfrac{1}{c}\bfA^{-1}\)</span>. 5. If <span class="math inline">\(\bfA\)</span> and <span class="math inline">\(\bfB\)</span> are invertible and the same size, then <span class="math inline">\(\bfA\bfB\)</span> is invertible, and</p>
 <p><span class="math display">\[
 (\bfA\bfB)^{-1} = \bfB^{-1}\bfA^{-1}.
 \]</span></p>
 </div>
-<p>The last identity above is easy to get wrong, so it bears restatement in words. The following also holds for products of three or more invertible matrices.</p>
-<div class="callout-attention">
+<p>The last identity above is easy to get wrong, so it bears restatement in words.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p>The inverse of a product is the product of the inverses <em>in the reverse order</em>.</p>
 </div>
+</div>
+<p>The statement above extends to products of three or more invertible matrices as well.</p>
 </section>
 </section>
-<section id="singular-matrices" class="level3" data-number="5.3.3">
-<h3 data-number="5.3.3" class="anchored" data-anchor-id="singular-matrices"><span class="header-section-number">5.3.3</span> Singular matrices</h3>
-<p>Since a matrix of zeros times any matrix of compatible size is also a matrix of zeros, a zero matrix is singular—no inverse is possible. That much is the same as with numbers. However, there is a major difference with matrices.</p>
-<div class="callout-attention">
+<section id="singular-matrices" class="level3" data-number="4.4.3">
+<h3 data-number="4.4.3" class="anchored" data-anchor-id="singular-matrices"><span class="header-section-number">4.4.3</span> Singular matrices</h3>
+<p>If <span class="math inline">\(\mathbf{S}\)</span> is an <span class="math inline">\(n\times n\)</span> matrix of all zeros, then <span class="math inline">\(\mathbf{S}\bfA\)</span> and <span class="math inline">\(\bfA\mathbf{S}\)</span> are also zero matrices whenever the sizes are compatible. Therefore, <span class="math inline">\(\mathbf{S}\)</span> is singular—no inverse is possible. That much is the same as with numbers. However, there is a <em>major</em> difference with matrices:</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p>Some nonzero matrices are singular.</p>
 </div>
-<p>(example-inverse-singular)= ::::{#exm-} Let <span class="math inline">\(\bfA = \twomat{0}{0}{1}{0}\)</span>. Suppose that</p>
+</div>
+<div id="exm-inverse-singular" class="theorem example">
+<p><span class="theorem-title"><strong>Example 4.5 </strong></span>Let <span class="math inline">\(\bfA = \twomat{0}{0}{1}{0}\)</span>. Suppose that</p>
 <p><span class="math display">\[
 \meye = \twomat{a}{b}{c}{d} \bfA = \twomat{b}{0}{d}{0}.
 \]</span></p>
-<p>This is clearly impossible. ::::</p>
+<p>This is clearly impossible for any chocies of <span class="math inline">\(a,b,c,d\)</span>. Hence <span class="math inline">\(\bfA\)</span> is singular.</p>
+</div>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>It is possible for the product of two nonzero matrices to be zero.</p>
+</div>
+</div>
 <div id="exm-" class="theorem example">
-<p><span class="theorem-title"><strong>Example 5.5 </strong></span>Again let <span class="math inline">\(\bfA = \twomat{0}{0}{1}{0}\)</span>. Note that</p>
+<p><span class="theorem-title"><strong>Example 4.6 </strong></span>Again let <span class="math inline">\(\bfA = \twomat{0}{0}{1}{0}\)</span>. Note that</p>
 <p><span class="math display">\[
 \bfA^2 = \twomat{0}{0}{1}{0} \cdot \twomat{0}{0}{1}{0} = \twomat{0}{0}{0}{0}.
 \]</span></p>
-<p>As a result, when you see <span class="math inline">\(\bfA\bfB = \bfzero\)</span>, you cannot just “cancel out” the <span class="math inline">\(\bfA\)</span> to conclude <span class="math inline">\(\bfB=\bfzero\)</span>. However, if <span class="math inline">\(\bfA\)</span> is invertible, then <span class="math inline">\(\bfB=\bfA^{-1}\cdot \bfzero = \bfzero\)</span> is true.</p>
 </div>
+<p>As a result, we <strong>cannot</strong> make the implication <span class="math display">\[
+\bfA\bfB = \bfzero \implies \bfA = \bfzero \text{ or } \bfB=\bfzero, \qquad \text{(FALSE!)}
+\]</span></p>
+<p>which has been so useful when it comes to scalars. Now, if <span class="math inline">\(\bfA\bfB = \bfzero\)</span> <em>and</em> <span class="math inline">\(\bfA\)</span> is invertible, then we are back in business, because <span class="math display">\[
+\bfB=\bfA^{-1}\cdot \bfzero = \bfzero.
+\]</span></p>
 </section>
 </section>
-<section id="fundamental-theorem" class="level2" data-number="5.4">
-<h2 data-number="5.4" class="anchored" data-anchor-id="fundamental-theorem"><span class="header-section-number">5.4</span> Fundamental Theorem</h2>
+<section id="fundamental-theorem" class="level2" data-number="4.5">
+<h2 data-number="4.5" class="anchored" data-anchor-id="fundamental-theorem"><span class="header-section-number">4.5</span> Fundamental Theorem</h2>
 <p>The following theorem is in every linear algebra course, but it does not have a universally accepted name.</p>
 <div id="thm-FTLA1" class="theorem">
-<p><span class="theorem-title"><strong>Theorem 5.4 (Fundamental Theorem of Linear Algebra, FTLA) </strong></span>If <span class="math inline">\(\bfA\)</span> is an <span class="math inline">\(n\times n\)</span> matrix, then each of these statements is equivalent to all of the others.</p>
+<p><span class="theorem-title"><strong>Theorem 4.5 (Fundamental Theorem of Linear Algebra, FTLA) </strong></span>If <span class="math inline">\(\bfA\)</span> is an <span class="math inline">\(n\times n\)</span> matrix, then each of these statements is equivalent to all of the others.</p>
 <ol type="1">
 <li><span class="math inline">\(\bfA\)</span> is invertible.</li>
-<li>The linear system <span class="math inline">\(\bfA\bfx=\bfb\)</span> has a unique solution for each <span class="math inline">\(\bfb\)</span>.</li>
-<li>The null space of <span class="math inline">\(\bfA\)</span> is just the zero vector.</li>
+<li>The linear system <span class="math inline">\(\bfA\bfx=\bfb\)</span> has the unique solution <span class="math inline">\(\bfx=\bfA^{-1}\bfb\)</span> for each <span class="math inline">\(\bfb\)</span>.</li>
+<li>The null space of <span class="math inline">\(\bfA\)</span> is just <span class="math inline">\(\{\bfzero\}\)</span>.</li>
 <li>The RRE form of <span class="math inline">\(\bfA\)</span> is the identity matrix.</li>
 <li><span class="math inline">\(\rank(\bfA)=n\)</span>.</li>
 </ol>
@@ -705,36 +825,42 @@ Note
 <p>Since the inverse is unique, <span class="math inline">\(\bfx\)</span> is unique as well.</p>
 </div>
 </section>
-<section id="computing-the-inverse" class="level2" data-number="5.5">
-<h2 data-number="5.5" class="anchored" data-anchor-id="computing-the-inverse"><span class="header-section-number">5.5</span> Computing the inverse</h2>
-<p>The solution formula <span class="math inline">\(\bfx=\bfA^{-1}\bfb\)</span> from the proof of <a href="#thm-FTLA1" class="quarto-xref">Theorem&nbsp;<span>5.4</span></a> is theoretically valuable but impossible to apply to specific system without knowing how to calculate the matrix inverse. In general, doing so is harder than just doing row elimination on a linear system, so it’s not a useful algorithm.</p>
-<p>There is a method for computing the inverse based on row elimination. But there is little cause for using it in practice. We will just look at some particular cases where the inverse is very easy to find.</p>
-<section id="diagonal-matrix" class="level3" data-number="5.5.1">
-<h3 data-number="5.5.1" class="anchored" data-anchor-id="diagonal-matrix"><span class="header-section-number">5.5.1</span> Diagonal matrix</h3>
-<p>A <strong>diagonal matrix</strong> has zero elements everywhere the row index is different from the column index. If any diagonal element is zero, then the matrix is singular. Otherwise, its inverse is trivial, thanks to how matrix multiplication is defined.</p>
+<section id="computing-the-inverse" class="level2" data-number="4.6">
+<h2 data-number="4.6" class="anchored" data-anchor-id="computing-the-inverse"><span class="header-section-number">4.6</span> Computing the inverse</h2>
+<p>The solution formula <span class="math inline">\(\bfx=\bfA^{-1}\bfb\)</span> from <a href="#thm-FTLA1" class="quarto-xref">Theorem&nbsp;<span>4.5</span></a> is theoretically valuable but can be applied only if the inverse is available. In general, computing a matrix inverse is harder than doing row elimination on a linear system, so it’s not a useful algorithm.</p>
+<p>There are a few cases for which finding the inverse is not difficult, however.</p>
+<section id="diagonal-matrix" class="level3" data-number="4.6.1">
+<h3 data-number="4.6.1" class="anchored" data-anchor-id="diagonal-matrix"><span class="header-section-number">4.6.1</span> Diagonal matrix</h3>
+<div id="def-diagonal-matrix" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 4.7 </strong></span>A <strong>diagonal matrix</strong> <span class="math inline">\(\mathbf{D}\)</span> is one in which <span class="math inline">\(D_{ij}=0\)</span> whenever <span class="math inline">\(i\neq j\)</span>.</p>
+</div>
+<p>If any diagonal element <span class="math inline">\(D_{ii}\)</span> is zero, then a diagonal matrix is singular. Otherwise, its inverse is trivial, thanks to how matrix multiplication is defined.</p>
 <div id="thm-linalg-inversediag" class="theorem">
-<p><span class="theorem-title"><strong>Theorem 5.5 (Inverse of a diagonal matrix) </strong></span><span class="math display">\[
-:label: linalg-inversediag
+<p><span class="theorem-title"><strong>Theorem 4.6 (Inverse of a diagonal matrix) </strong></span><span id="eq-linalg-inversediag"><span class="math display">\[
 \begin{bmatrix} a_{11} &amp; &amp; &amp; \\  &amp; a_{22} &amp; &amp; \\ &amp; &amp; \ddots &amp; \\ &amp; &amp; &amp; a_{nn} \end{bmatrix}^{-1} = \begin{bmatrix} \frac{1}{a_{11}} &amp; &amp; &amp; \\  &amp; \frac{1}{a_{22}} &amp; &amp; \\ &amp; &amp; \ddots &amp; \\ &amp; &amp; &amp; \frac{1}{a_{nn}} \end{bmatrix}
-\]</span></p>
+\tag{4.5}\]</span></span></p>
 </div>
 </section>
-<section id="times-2" class="level3" data-number="5.5.2">
-<h3 data-number="5.5.2" class="anchored" data-anchor-id="times-2"><span class="header-section-number">5.5.2</span> <span class="math inline">\(2\times 2\)</span></h3>
-<p>In the <span class="math inline">\(2\times 2\)</span> case the inverse is easy enough to memorize.</p>
+<section id="times-2" class="level3" data-number="4.6.2">
+<h3 data-number="4.6.2" class="anchored" data-anchor-id="times-2"><span class="header-section-number">4.6.2</span> <span class="math inline">\(2\times 2\)</span></h3>
+<p>In the <span class="math inline">\(2\times 2\)</span> case, the inverse is easy enough to memorize.</p>
 <div id="thm-linalg-inverse2by2" class="theorem">
-<p><span class="theorem-title"><strong>Theorem 5.6 (Inverse of <span class="math inline">\(2\times 2\)</span>) </strong></span><span id="eq-linalg-inverse2by2"><span class="math display">\[
+<p><span class="theorem-title"><strong>Theorem 4.7 (Inverse of <span class="math inline">\(2\times 2\)</span>) </strong></span><span id="eq-linalg-inverse2by2"><span class="math display">\[
 \begin{bmatrix} a &amp; b \\ c &amp; d \end{bmatrix}^{-1} = \frac{1}{ad-bc}\: \begin{bmatrix} d &amp; -b \\ -c &amp; a \end{bmatrix}.
-\tag{5.3}\]</span></span></p>
+\tag{4.6}\]</span></span></p>
 <p>This formula breaks down if <span class="math inline">\(ad=bc\)</span>, in which case the matrix is singular.</p>
 </div>
 </section>
 </section>
-<section id="sec-matrix-subspaces" class="level2" data-number="5.6">
-<h2 data-number="5.6" class="anchored" data-anchor-id="sec-matrix-subspaces"><span class="header-section-number">5.6</span> Subspaces</h2>
-<p>We encountered the null space of a matrix in <span class="quarto-unresolved-ref">?sec-linsys-nullspace</span>. It’s a special case of a vital type of set.</p>
+<section id="sec-matrix-subspaces" class="level2" data-number="4.7">
+<h2 data-number="4.7" class="anchored" data-anchor-id="sec-matrix-subspaces"><span class="header-section-number">4.7</span> Subspaces</h2>
+<p>The nullspace of a matrix is an example of a vital type of set.</p>
 <div id="def-subspaces-subspace" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 5.7 (Subspace) </strong></span>A <strong>subspace</strong> of <span class="math inline">\(\real^n\)</span> is a set <span class="math inline">\(S\)</span> satisfying: 1. The zero vector is in <span class="math inline">\(S\)</span>. 2. Every linear combination of vectors in <span class="math inline">\(S\)</span> is also in <span class="math inline">\(S\)</span>.</p>
+<p><span class="theorem-title"><strong>Definition 4.8 (Subspace) </strong></span>A <strong>subspace</strong> of <span class="math inline">\(\real^n\)</span> is a subset <span class="math inline">\(S\)</span> satisfying:</p>
+<ol type="1">
+<li>The zero vector is in <span class="math inline">\(S\)</span>.</li>
+<li>Every linear combination of vectors in <span class="math inline">\(S\)</span> is also in <span class="math inline">\(S\)</span>.</li>
+</ol>
 </div>
 <p>The second property above is called <em>closure under linear combination</em>.</p>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -747,15 +873,15 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>We will be making statements about real spaces like <span class="math inline">\(\real^n\)</span>, but everything also works for <span class="math inline">\(\complex^n\)</span>, which turns out to be important soon.</p>
+<p>We will be making statements about real spaces like <span class="math inline">\(\real^n\)</span>, but everything also works for <span class="math inline">\(\complex^n\)</span>, which turns out to be important later.</p>
 </div>
 </div>
 <div id="exm-subspaces-plane" class="theorem example">
-<p><span class="theorem-title"><strong>Example 5.6 </strong></span>The equation <span class="math inline">\(x + 2y + 3z = 0\)</span> describes a plane passing through the origin in <span class="math inline">\(\real^3\)</span>. It’s clear geometrically that scaling a vector in the plane leaves you in the plane, and adding vectors in the plane does as well. This is enough to show that this plane is a subspace of <span class="math inline">\(\real^3\)</span>. In fact, it is the null space of the matrix <span class="math inline">\(\begin{bmatrix} 1 &amp; 2 &amp; 3 \end{bmatrix}.\)</span></p>
+<p><span class="theorem-title"><strong>Example 4.7 </strong></span>The equation <span class="math inline">\(x + 2y + 3z = 0\)</span> describes a plane passing through the origin in <span class="math inline">\(\real^3\)</span>. It’s clear geometrically that scaling a vector in the plane leaves you in the plane, and adding vectors in the plane does as well. This is enough to show that this plane is a subspace of <span class="math inline">\(\real^3\)</span>. In fact, it is the null space of the matrix <span class="math inline">\(\begin{bmatrix} 1 &amp; 2 &amp; 3 \end{bmatrix}.\)</span></p>
 <p>The equation <span class="math inline">\(x+y+z=1\)</span> is also a plane in <span class="math inline">\(\real^3\)</span>, but it does not pass through the origin, so it cannot be a subspace. (It also fails closure for scaling and addition.)</p>
 </div>
 <div id="thm-subspaces-nullspace" class="theorem">
-<p><span class="theorem-title"><strong>Theorem 5.7 </strong></span>The null space of an <span class="math inline">\(m\times n\)</span> matrix is a subspace of <span class="math inline">\(\real^n\)</span>.</p>
+<p><span class="theorem-title"><strong>Theorem 4.8 </strong></span>The null space of an <span class="math inline">\(m\times n\)</span> matrix is a subspace of <span class="math inline">\(\real^n\)</span>.</p>
 </div>
 <div class="proof">
 <p><span class="proof-title"><em>Proof</em>. </span>Let <span class="math inline">\(S=\nullsp(\bfA)\)</span>. If <span class="math inline">\(\bfu\)</span> and <span class="math inline">\(\bfv\)</span> are in <span class="math inline">\(S\)</span>, then by definition, <span class="math inline">\(\bfA\bfu = \bfA\bfv = \bfzero\)</span>. Then by basic algebraic properties,</p>
@@ -765,19 +891,26 @@ Note
 <p>The derivation applies to linear combinations of any length.</p>
 </div>
 <p>There is at least one easy way to generate subspaces. The following is not hard to prove.</p>
-<p>(theorem-subspaces-span)= ::::{#thm-} If <span class="math inline">\(S=\span(\bfv_1,\ldots,\bfv_k)\)</span> for any vectors <span class="math inline">\(\bfv_j\)</span> in <span class="math inline">\(\real^n\)</span>, then <span class="math inline">\(S\)</span> is a subspace of <span class="math inline">\(\real^n\)</span>. ::::</p>
-<p>In addition to the null space, there is another important subspace closely associated with a matrix.</p>
-<p>(definition-subspaces-rowcol)= ::::{#def-} Column space Let <span class="math inline">\(\bfA\)</span> be an <span class="math inline">\(m\times n\)</span> matrix. The <strong>column space</strong> of <span class="math inline">\(\bfA\)</span>, <span class="math inline">\(\colsp(\bfA)\)</span>, is the span of the columns of <span class="math inline">\(\bfA\)</span>. ::::</p>
-<p>By <span class="citation" data-cites="Theorem">(<a href="#ref-Theorem" role="doc-biblioref"><strong>Theorem?</strong></a>)</span> {number} <theorem-subspaces-span>, <span class="math inline">\(\colsp(\bfA)\)</span> is a subspace of <span class="math inline">\(\real^m\)</span>.</theorem-subspaces-span></p>
-<section id="basis" class="level3" data-number="5.6.1">
-<h3 data-number="5.6.1" class="anchored" data-anchor-id="basis"><span class="header-section-number">5.6.1</span> Basis</h3>
-<p>We defined span and independence in <span class="citation" data-cites="section-linear_system-nullspace">(<a href="#ref-section-linear_system-nullspace" role="doc-biblioref"><strong>section-linear_system-nullspace?</strong></a>)</span>. These are two great tastes that taste great together.</p>
-<p>(definition-subspaces-basis)= ::::{#def-} Basis A <strong>basis</strong> of a subspace <span class="math inline">\(S\)</span> is any set of linearly independent vectors that spans <span class="math inline">\(S\)</span>. ::::</p>
-<p>Finding a basis for a null space was demonstrated in <span class="citation" data-cites="Example">(<a href="#ref-Example" role="doc-biblioref"><strong>Example?</strong></a>)</span> {number} <example-nullspace-span>. The column space is also found from the RRE form.</example-nullspace-span></p>
-<div id="thm-" class="theorem">
-<p><span class="theorem-title"><strong>Theorem 5.8 </strong></span>Let <span class="math inline">\(\bfA\)</span> have RRE form with pivot columns numbered <span class="math inline">\(j_1,\ldots,j_r\)</span>. Then columns <span class="math inline">\(j_1,\ldots,j_r\)</span> of <span class="math inline">\(\bfA\)</span> are a basis for <span class="math inline">\(\colsp(\bfA)\)</span>.</p>
+<div id="thm-subspaces-span" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 4.9 </strong></span>If <span class="math inline">\(S=\span(\bfv_1,\ldots,\bfv_k)\)</span> for any vectors <span class="math inline">\(\bfv_j\)</span> in <span class="math inline">\(\real^n\)</span>, then <span class="math inline">\(S\)</span> is a subspace of <span class="math inline">\(\real^n\)</span>.</p>
 </div>
-<p>(example-subspaces-colnull)= ::::{#exm-} Find bases for the null space and column space of</p>
+<p>In addition to the null space, there is another important subspace closely associated with a matrix.</p>
+<div id="def-subspaces-rowcol" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 4.9 (Column space) </strong></span>Let <span class="math inline">\(\bfA\)</span> be an <span class="math inline">\(m\times n\)</span> matrix. The <strong>column space</strong> of <span class="math inline">\(\bfA\)</span>, <span class="math inline">\(\colsp(\bfA)\)</span>, is the span of the columns of <span class="math inline">\(\bfA\)</span>.</p>
+</div>
+<p>By <a href="#thm-subspaces-span" class="quarto-xref">Theorem&nbsp;<span>4.9</span></a>, <span class="math inline">\(\colsp(\bfA)\)</span> is a subspace of <span class="math inline">\(\real^m\)</span>.</p>
+<section id="basis" class="level3" data-number="4.7.1">
+<h3 data-number="4.7.1" class="anchored" data-anchor-id="basis"><span class="header-section-number">4.7.1</span> Basis</h3>
+<p><img src="basis-handshake.jpg" class="img-fluid"></p>
+<div id="def-subspaces-basis" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 4.10 (Basis) </strong></span>A <strong>basis</strong> of a subspace <span class="math inline">\(S\)</span> is any set of linearly independent vectors that spans <span class="math inline">\(S\)</span>.</p>
+</div>
+<p>Finding a basis for a null space was demonstrated in <a href="linear_algebra_systems.html#exm-nullspace-span" class="quarto-xref">Example&nbsp;<span>3.13</span></a>. The column space is also found from the RRE form.</p>
+<div id="thm-" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 4.10 </strong></span>Let <span class="math inline">\(\bfA\)</span> have RRE form with pivot columns numbered <span class="math inline">\(j_1,\ldots,j_r\)</span>. Then columns <span class="math inline">\(j_1,\ldots,j_r\)</span> of <span class="math inline">\(\bfA\)</span> are a basis for <span class="math inline">\(\colsp(\bfA)\)</span>.</p>
+</div>
+<div id="exm-subspaces-colnull" class="theorem example">
+<p><span class="theorem-title"><strong>Example 4.8 </strong></span>Find bases for the null space and column space of</p>
 <p><span class="math display">\[
 \bfA = \begin{bmatrix}
 1 &amp; 2 &amp; 0 &amp; -4 \\
@@ -803,8 +936,9 @@ Note
 \]</span></p>
 <p>which makes <span class="math inline">\(\{[-2,1,0,0],[4,0,-1,1] \}\)</span> a basis for <span class="math inline">\(\nullsp(\bfA)\)</span>.</p>
 </div>
-<p>::::</p>
-<p>(example-subspaces-findbasis)= ::::{#exm-} Find a basis for span of the vectors <span class="math inline">\(\bfv_1=[1,-2,-3,-2]\)</span>, <span class="math inline">\(\bfv_2=[2,-4,-6,-4]\)</span>, <span class="math inline">\(\bfv_3=[0,1,1,0]\)</span>, <span class="math inline">\(\bfv_4=[-4,9,13,8]\)</span>.</p>
+</div>
+<div id="exm-subspaces-findbasis" class="theorem example">
+<p><span class="theorem-title"><strong>Example 4.9 </strong></span>Find a basis for span of the vectors <span class="math inline">\(\bfv_1=[1,-2,-3,-2]\)</span>, <span class="math inline">\(\bfv_2=[2,-4,-6,-4]\)</span>, <span class="math inline">\(\bfv_3=[0,1,1,0]\)</span>, <span class="math inline">\(\bfv_4=[-4,9,13,8]\)</span>.</p>
 <div class="solution proof">
 <p><span class="proof-title"><em>Solution</em>. </span>If we put the given vectors in columns of a matrix, then their span is equivalent to the column space of the matrix:</p>
 <p><span class="math display">\[
@@ -817,45 +951,71 @@ Note
 \end{bmatrix}
 \right).
 \]</span></p>
-<p>This is the same matrix whose column space was found in <span class="citation" data-cites="Example">(<a href="#ref-Example" role="doc-biblioref"><strong>Example?</strong></a>)</span> {number} <example-subspaces-colnull>. Columns 1 and 3 are the pivot columns, and we get the basis <span class="math inline">\(\bfv_1,\bfv_3\)</span> as before.</example-subspaces-colnull></p>
+<p>This is the same matrix whose column space was found in <a href="#exm-subspaces-colnull" class="quarto-xref">Example&nbsp;<span>4.8</span></a>. Columns 1 and 3 are the pivot columns, and we get the basis <span class="math inline">\(\bfv_1,\bfv_3\)</span> as before.</p>
 </div>
-<p>::::</p>
+</div>
 </section>
-<section id="dimension" class="level3" data-number="5.6.2">
-<h3 data-number="5.6.2" class="anchored" data-anchor-id="dimension"><span class="header-section-number">5.6.2</span> Dimension</h3>
-<p>You have an intuitive idea of dimension, but it may seem hard to define rigorously. We’re set up to do that now. First, we need the following result.</p>
-<p>(theorem-subspaces-dimension)= ::::{#thm-} Every basis for a subspace <span class="math inline">\(S\)</span> has the same number of members. ::::</p>
-<p><code>cxqfcus ! dimension</code> (definition-subspaces-dimension)= ::::{#def-} Dimension The <strong>dimension</strong> of a subspace <span class="math inline">\(S\)</span>, written <span class="math inline">\(\dim(S)\)</span>, is the number of vectors in any basis of <span class="math inline">\(S\)</span>. ::::</p>
+<section id="dimension" class="level3" data-number="4.7.2">
+<h3 data-number="4.7.2" class="anchored" data-anchor-id="dimension"><span class="header-section-number">4.7.2</span> Dimension</h3>
+<p>You have an intuitive idea of dimension, but it may seem hard to define rigorously. We’re set up to do that now, thanks to bases.</p>
+<div id="thm-subspaces-dimension" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 4.11 </strong></span>Every basis for a subspace <span class="math inline">\(S\)</span> has the same number of members.</p>
+</div>
+<div id="def-subspaces-dimension" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 4.11 (Dimension) </strong></span>The <strong>dimension</strong> of a subspace <span class="math inline">\(S\)</span>, written <span class="math inline">\(\dim(S)\)</span>, is the number of vectors in any basis of <span class="math inline">\(S\)</span>.</p>
+</div>
 <p>As you would expect, <span class="math inline">\(\dim(\real^n)=n\)</span>. The only way to have <span class="math inline">\(k\)</span> independent vectors that span a subspace <span class="math inline">\(S\)</span> is if <span class="math inline">\(k=\dim(S)\)</span>. More specifically:</p>
 <div id="thm-" class="theorem">
-<p><span class="theorem-title"><strong>Theorem 5.9 </strong></span>Suppose <span class="math inline">\(V\)</span> is a set of <span class="math inline">\(k\)</span> vectors in subspace <span class="math inline">\(S\)</span>. 1. If <span class="math inline">\(k &lt; \dim(S)\)</span>, then <span class="math inline">\(V\)</span> cannot span <span class="math inline">\(S\)</span>. 2. If <span class="math inline">\(k &gt; \dim(S)\)</span>, then <span class="math inline">\(V\)</span> cannot be linearly independent. 3. Suppose <span class="math inline">\(k=\dim(S)\)</span>. If <span class="math inline">\(V\)</span> is independent or if <span class="math inline">\(V\)</span> spans <span class="math inline">\(S\)</span>, then <span class="math inline">\(V\)</span> is a basis for <span class="math inline">\(S\)</span>.</p>
+<p><span class="theorem-title"><strong>Theorem 4.12 </strong></span>Suppose <span class="math inline">\(V\)</span> is a set of <span class="math inline">\(k\)</span> vectors in subspace <span class="math inline">\(S\)</span>.</p>
+<ol type="1">
+<li>If <span class="math inline">\(k &lt; \dim(S)\)</span>, then <span class="math inline">\(V\)</span> cannot span <span class="math inline">\(S\)</span>.</li>
+<li>If <span class="math inline">\(k &gt; \dim(S)\)</span>, then <span class="math inline">\(V\)</span> cannot be linearly independent.</li>
+<li>Suppose <span class="math inline">\(k=\dim(S)\)</span>. If <span class="math inline">\(V\)</span> is independent or if <span class="math inline">\(V\)</span> spans <span class="math inline">\(S\)</span>, then <span class="math inline">\(V\)</span> is a basis for <span class="math inline">\(S\)</span>.</li>
+</ol>
 </div>
-<p>(example-subspaces-dimension)= ::::{#exm-} Determine whether the vectors <span class="math inline">\(\bfv_1=[3,2,1]\)</span>, <span class="math inline">\(\bfv_2=[0,-1,2]\)</span>, <span class="math inline">\(\bfv_3=[1,1,1]\)</span> are a basis of <span class="math inline">\(\real^3\)</span>. :::{.solution} We find a basis for their span by putting them as columns of a matrix, then looking for the column space. The RRE form of this matrix is a <span class="math inline">\(3\times 3\)</span> identity, so every column is a pivot column. The original three vectors form a basis for their span, so they are independent. Since there are 3 of them, they are also a basis of <span class="math inline">\(\real^3\)</span>. ::: ::::</p>
+<div id="exm-subspaces-dimension" class="theorem example">
+<p><span class="theorem-title"><strong>Example 4.10 </strong></span>Determine whether the vectors <span class="math inline">\(\bfv_1=[3,2,1]\)</span>, <span class="math inline">\(\bfv_2=[0,-1,2]\)</span>, <span class="math inline">\(\bfv_3=[1,1,1]\)</span> are a basis of <span class="math inline">\(\real^3\)</span>.</p>
+<div class="solution proof">
+<p><span class="proof-title"><em>Solution</em>. </span>We find a basis for their span by putting them as columns of a matrix, then looking for the column space. The RRE form of this matrix is a <span class="math inline">\(3\times 3\)</span> identity, so every column is a pivot column. The original three vectors form a basis for their span, so they are independent. Since there are 3 of them, they are also a basis of <span class="math inline">\(\real^3\)</span>.</p>
+</div>
+</div>
 <p>Earlier we defined rank as the number of pivot columns in the RRE form of the matrix. So now we have</p>
-<p>(theorem-subspaces-rank)= ::::{#thm-} For any <span class="math inline">\(m\times n\)</span> matrix <span class="math inline">\(\bfA\)</span>, <span class="math inline">\(\rank(\bfA)=\dim(\colsp(\bfA))\)</span>. ::::</p>
+<div id="thm-subspaces-rank" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 4.13 </strong></span>For any <span class="math inline">\(m\times n\)</span> matrix <span class="math inline">\(\bfA\)</span>, <span class="math inline">\(\rank(\bfA)=\dim(\colsp(\bfA))\)</span>.</p>
+</div>
 <p>The dimension of the null space also gets its own name.</p>
-<p>(definition-subspaces-nullity)= ::::{#def-} Nullity The <strong>nullity</strong> of a matrix <span class="math inline">\(\bfA\)</span>, written <span class="math inline">\(\nullity(\bfA)\)</span>, is the dimension of <span class="math inline">\(\nullsp(\bfA)\)</span>. ::::</p>
-<p>Each free variable in the RRE form contributes a vector to the basis of <span class="math inline">\(\nullsp(\bfA)\)</span>. That leads to the following. The following comes from mucking about some more with the RRE form.</p>
-<p>(theorem-subspaces-nullity)= ::::{#thm-} For any <span class="math inline">\(m\times n\)</span> matrix <span class="math inline">\(\bfA\)</span>, 1. <span class="math inline">\(\dim(\nullsp(\bfA))\)</span> is the number of free variables in the RRE form of <span class="math inline">\(\mathbf{A}\)</span>. 2. <span class="math inline">\(\rank(\bfA) + \nullity(\bfA) = n\)</span>. ::::</p>
+<div id="def-subspaces-nullity" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 4.12 (Nullity) </strong></span>The <strong>nullity</strong> of a matrix <span class="math inline">\(\bfA\)</span>, written <span class="math inline">\(\nullity(\bfA)\)</span>, is the dimension of <span class="math inline">\(\nullsp(\bfA)\)</span>.</p>
+</div>
+<p>Each free variable in the RRE form contributes a vector to the basis of <span class="math inline">\(\nullsp(\bfA)\)</span>. That leads to the following.</p>
+<div id="thm-subspaces-nullity" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 4.14 </strong></span>For any <span class="math inline">\(m\times n\)</span> matrix <span class="math inline">\(\bfA\)</span>,</p>
+<ol type="1">
+<li><span class="math inline">\(\dim(\nullsp(\bfA))\)</span> is the number of free variables in the RRE form of <span class="math inline">\(\mathbf{A}\)</span>.</li>
+<li><span class="math inline">\(\rank(\bfA) + \nullity(\bfA) = n\)</span>.</li>
+</ol>
+</div>
 </section>
 </section>
-<section id="determinants" class="level2" data-number="5.7">
-<h2 data-number="5.7" class="anchored" data-anchor-id="determinants"><span class="header-section-number">5.7</span> Determinants</h2>
+<section id="determinants" class="level2" data-number="4.8">
+<h2 data-number="4.8" class="anchored" data-anchor-id="determinants"><span class="header-section-number">4.8</span> Determinants</h2>
 <p>There are many ways to characterize singular matrices, but only a few of them are computationally attractive. One that stands out is a function of square matrices called the <strong>determinant</strong>. (You probably saw some <span class="math inline">\(2\times 2\)</span> and <span class="math inline">\(3\times 3\)</span> determinants in vector calculus. This is the same thing.)</p>
-<p>A definition of the determinant from fundamentals is actually quite tricky. We are going to take a shortcut and “define” it by a formula for computing it. The <span class="math inline">\(2\times 2\)</span> case is easy:</p>
+<p>A definition of the determinant from fundamentals is actually quite tricky. We are going to take a shortcut and define it by a formula for computing it. The <span class="math inline">\(2\times 2\)</span> case is easy:</p>
 <p><span class="math display">\[
 \det\left( \twomat{a}{b}{c}{d} \right) = \twodet{a}{b}{c}{d} = ad-bc.
 \]</span></p>
 <p>This definition can be bootstrapped into a real-valued function for square matrices of any size.</p>
-<p>(definition-linalg-determinant)= ::::{#def-} Determinant If <span class="math inline">\(\bfA\)</span> is <span class="math inline">\(n\times n\)</span>, then its <strong>determinant</strong> is</p>
+<div id="def-linalg-determinant" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 4.13 (Determinant) </strong></span>If <span class="math inline">\(\bfA\)</span> is <span class="math inline">\(n\times n\)</span>, then its <strong>determinant</strong> is</p>
 <p><span id="eq-determinants-cofactor"><span class="math display">\[
 \det(\bfA) = \sum (-1)^{i+j} a_{ij} \det\bigl( \mathbf{M}_{ij} \bigr),
-\tag{5.4}\]</span></span></p>
-<p>where the sum is taken over any row or column of <span class="math inline">\(\bfA\)</span> and <span class="math inline">\(\mathbf{M}_{ij}\)</span> is the matrix that results from deleting row <span class="math inline">\(i\)</span> and column <span class="math inline">\(j\)</span> from <span class="math inline">\(\bfA\)</span>. ::::</p>
-<p>The formula <a href="#eq-determinants-cofactor" class="quarto-xref">Equation&nbsp;<span>5.4</span></a>, which is called <strong>cofactor expansion</strong>, is recursive: the <span class="math inline">\(n\times n\)</span> case is defined in terms of the <span class="math inline">\((n-1)\times (n-1)\)</span> case, and so on all the way back down to <span class="math inline">\(2\times 2\)</span>.</p>
+\tag{4.7}\]</span></span></p>
+<p>where the sum is taken over any row or column of <span class="math inline">\(\bfA\)</span> and <span class="math inline">\(\mathbf{M}_{ij}\)</span> is the matrix that results from deleting row <span class="math inline">\(i\)</span> and column <span class="math inline">\(j\)</span> from <span class="math inline">\(\bfA\)</span>.</p>
+</div>
+<p>The formula <a href="#eq-determinants-cofactor" class="quarto-xref">Equation&nbsp;<span>4.7</span></a>, which is called <strong>cofactor expansion</strong>, is recursive: the <span class="math inline">\(n\times n\)</span> case is defined in terms of the <span class="math inline">\((n-1)\times (n-1)\)</span> case, and so on all the way back down to <span class="math inline">\(2\times 2\)</span>.</p>
 <p>Since expanding along any row or column gives the same result, it can be advantageous to choose one with lots of zeros to cut down on the total computation.</p>
-<div id="exm-" class="theorem example">
-<p><span class="theorem-title"><strong>Example 5.7 </strong></span>Compute the determinant of</p>
+<div id="exm-matrix-determinant3x3" class="theorem example">
+<p><span class="theorem-title"><strong>Example 4.11 </strong></span>Compute the determinant of</p>
 <p><span class="math display">\[
 \begin{bmatrix}
 2 &amp; 0 &amp; -1 \\ -2 &amp; 3 &amp; -1 \\ 2 &amp; 0 &amp; 1
@@ -863,21 +1023,25 @@ Note
 \]</span></p>
 <div class="solution proof">
 <p><span class="proof-title"><em>Solution</em>. </span>Using cofactor expansion along the first row,</p>
-<span class="math display">\[\begin{split}
+<p><span class="math display">\[
+\begin{split}
 \begin{vmatrix} 2 &amp; 0 &amp; -1 \\ -2 &amp; 3 &amp; -1 \\ 2 &amp; 0 &amp; 1 \end{vmatrix} &amp; =  (2) \twodet{3}{-1}{0}{1} - (0) \twodet{-2}{-1}{2}{1} + (-1)\twodet{-2}{3}{2}{0}    \\
 &amp; = 2(3-0) + (-1)(0-6) = 12. \\
-\end{split}\]</span>
+\end{split}
+\]</span></p>
 <p>In this case it might have been a tad easier to exploit the zeros by expanding along the second column instead:</p>
-<span class="math display">\[\begin{split}
+<p><span class="math display">\[
+\begin{split}
 \begin{vmatrix} 2 &amp; 0 &amp; -1 \\ -2 &amp; 3 &amp; -1 \\ 2 &amp; 0 &amp;  1 \end{vmatrix} &amp; =  -(0) \begin{vmatrix} \cdots \end{vmatrix} + (3) \twodet{2}{-1}{2}{1} - (0)\begin{vmatrix} \cdots \end{vmatrix}    \\
 &amp; = 3(2+2) = 12. \\
-\end{split}\]</span>
+\end{split}
+\]</span></p>
 </div>
 </div>
-<section id="properties-4" class="level3" data-number="5.7.1">
-<h3 data-number="5.7.1" class="anchored" data-anchor-id="properties-4"><span class="header-section-number">5.7.1</span> Properties</h3>
+<section id="properties-3" class="level3" data-number="4.8.1">
+<h3 data-number="4.8.1" class="anchored" data-anchor-id="properties-3"><span class="header-section-number">4.8.1</span> Properties</h3>
 <div id="thm-" class="theorem">
-<p><span class="theorem-title"><strong>Theorem 5.10 </strong></span>Let <span class="math inline">\(\bfA\)</span> and <span class="math inline">\(\bfB\)</span> be <span class="math inline">\(n\times n\)</span>, and let <span class="math inline">\(c\)</span> be a number. Then</p>
+<p><span class="theorem-title"><strong>Theorem 4.15 </strong></span>Let <span class="math inline">\(\bfA\)</span> and <span class="math inline">\(\bfB\)</span> be <span class="math inline">\(n\times n\)</span>, and let <span class="math inline">\(c\)</span> be a number. Then</p>
 <ol type="1">
 <li><span class="math inline">\(\det(c\bfA) = c^n \det(\bfA)\)</span>,</li>
 <li><span class="math inline">\(\det(\bfA\bfB) = \det(\bfA)\det(\bfB)\)</span>,</li>
@@ -900,8 +1064,8 @@ Note
 </div>
 </div>
 </section>
-<section id="cramers-rule" class="level3" data-number="5.7.2">
-<h3 data-number="5.7.2" class="anchored" data-anchor-id="cramers-rule"><span class="header-section-number">5.7.2</span> Cramer’s Rule</h3>
+<section id="cramers-rule" class="level3" data-number="4.8.2">
+<h3 data-number="4.8.2" class="anchored" data-anchor-id="cramers-rule"><span class="header-section-number">4.8.2</span> Cramer’s Rule</h3>
 <p>Even though a 2x2 inverse is easy, it’s still not the most convenient way to solve a linear system <span class="math inline">\(\bfA\bfx=\bfb\)</span> by hand. There is another shortcut known as <strong>Cramer’s Rule</strong>:</p>
 <span class="math display">\[\begin{split}
 x_1 &amp; = \frac{ \twodet{b_1}{a_{12}}{b_2}{a_{22}} }{ \det(\bfA) }\\[1ex]
@@ -909,7 +1073,7 @@ x_2 &amp; = \frac{ \twodet{a_{11}}{b_1}{a_{21}}{b_2} }{ \det(\bfA) }.
 \end{split}\]</span>
 <p>Obviously this does not work if <span class="math inline">\(\det(\bfA)=0\)</span>, i. e., when the matrix is singular. In that case, you have to fall back on row elimination.</p>
 <div id="exm-" class="theorem example">
-<p><span class="theorem-title"><strong>Example 5.8 </strong></span>Solve</p>
+<p><span class="theorem-title"><strong>Example 4.12 </strong></span>Solve</p>
 <span class="math display">\[\begin{split}
 -x + 3y &amp; = 1 \\
 3x + y &amp; = 7
@@ -926,22 +1090,32 @@ y &amp; = \frac{ \twodet{-1}{1}{3}{7} }{ \det(\bfA) } = \frac{ \twodet{-1}{1}{3}
 </div>
 </section>
 </section>
-<section id="eigenvalues" class="level2" data-number="5.8">
-<h2 data-number="5.8" class="anchored" data-anchor-id="eigenvalues"><span class="header-section-number">5.8</span> Eigenvalues</h2>
-<div class="callout-attention">
+<section id="eigenvalues" class="level2" data-number="4.9">
+<h2 data-number="4.9" class="anchored" data-anchor-id="eigenvalues"><span class="header-section-number">4.9</span> Eigenvalues</h2>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p>For the rest of the chapter, we deal with square matrices only.</p>
 </div>
+</div>
 <p>The importance and usefulness of the following definition won’t be apparent for a while.</p>
-<p><code>cxqfcus ! eigenvalue, ! eigenvector</code></p>
-<p>(definition-linalg-eigen)= ::::{#def-} Eigenvalue and eigenvector</p>
-<p>Suppose <span class="math inline">\(\bfA\in\cmn{n}{n}\)</span>. If there exist a number <span class="math inline">\(\lambda\)</span> and a nonzero vector <span class="math inline">\(\bfv\)</span> such that</p>
+<div id="def-linalg-eigen" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 4.14 (Eigenvalue and eigenvector) </strong></span>Suppose <span class="math inline">\(\bfA\in\cmn{n}{n}\)</span>. If there exist a number <span class="math inline">\(\lambda\)</span> and a nonzero vector <span class="math inline">\(\bfv\)</span> such that</p>
 <p><span class="math display">\[
 \bfA \bfv = \lambda \bfv,
 \]</span></p>
-<p>then <span class="math inline">\(\lambda\)</span> is an <strong>eigenvalue</strong> of <span class="math inline">\(\bfA\)</span> with associated <strong>eigenvector</strong> <span class="math inline">\(\bfv\)</span>. ::::</p>
+<p>then <span class="math inline">\(\lambda\)</span> is an <strong>eigenvalue</strong> of <span class="math inline">\(\bfA\)</span> with associated <strong>eigenvector</strong> <span class="math inline">\(\bfv\)</span>.</p>
+</div>
 <p>If you think of <span class="math inline">\(\bfA\)</span> as acting on vectors, then an eigenvector is a direction in which the action of <span class="math inline">\(\bfA\)</span> is one-dimensional.</p>
 <p>For example, let <span class="math inline">\(\bfA = -\dfrac{1}{6}\twomat{1}{5}{10}{-4}\)</span>. For any value of <span class="math inline">\(\theta\)</span>, <span class="math inline">\(\bfx = [\cos\theta,\sin\theta]\)</span> is a vector in <span class="math inline">\(\real^2\)</span> in the direction of <span class="math inline">\(\theta\)</span>. If we choose the direction randomly, then there is no special relationship between <span class="math inline">\(\bfx\)</span> (blue) and <span class="math inline">\(\bfA\bfx\)</span> (red). But in two special directions, the result <span class="math inline">\(\bfA\bfx\)</span> is parallel to <span class="math inline">\(\bfx\)</span>. For these directions, <span class="math inline">\(\bfx\)</span> is an eigenvector, and the corresponding eigenvalue is either <span class="math inline">\(1.5\)</span> or <span class="math inline">\(-1\)</span>.</p>
-<div id="c16e6bd6" class="cell" data-execution_count="3">
+<div id="42f0e654" class="cell" data-execution_count="3">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>V <span class="op">=</span> [<span class="op">-</span><span class="fl">2</span> <span class="fl">1</span>;<span class="fl">4</span> <span class="fl">1</span>]</span>
@@ -975,102 +1149,104 @@ y &amp; = \frac{ \twodet{-1}{1}{3}{7} }{ \det(\bfA) } = \frac{ \twodet{-1}{1}{3}
 <!--?xml version="1.0" encoding="utf-8"?-->
 <svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" width="600" height="200" viewbox="0 0 2400 800">
 <defs>
-  <clippath id="clip120">
+  <clippath id="clip250">
     <rect x="0" y="0" width="2400" height="800"></rect>
   </clippath>
 </defs>
-<path clip-path="url(#clip120)" d="M0 800 L2400 800 L2400 0 L0 0  Z" fill="#ffffff" fill-rule="evenodd" fill-opacity="1"></path>
+<path clip-path="url(#clip250)" d="M0 800 L2400 800 L2400 0 L0 0  Z" fill="#ffffff" fill-rule="evenodd" fill-opacity="1"></path>
 <defs>
-  <clippath id="clip121">
+  <clippath id="clip251">
     <rect x="480" y="0" width="1681" height="800"></rect>
   </clippath>
 </defs>
-<path clip-path="url(#clip120)" d="M148.031 752.756 L651.969 752.756 L651.969 47.2441 L148.031 47.2441  Z" fill="#ffffff" fill-rule="evenodd" fill-opacity="1"></path>
+<path clip-path="url(#clip250)" d="M148.031 752.756 L651.969 752.756 L651.969 47.2441 L148.031 47.2441  Z" fill="#ffffff" fill-rule="evenodd" fill-opacity="1"></path>
 <defs>
-  <clippath id="clip122">
+  <clippath id="clip252">
     <rect x="148" y="47" width="505" height="707"></rect>
   </clippath>
 </defs>
-<polyline clip-path="url(#clip120)" style="stroke:#000000; stroke-linecap:round; stroke-linejoin:round; stroke-width:4; stroke-opacity:1; fill:none" points="148.031,400 651.969,400 "></polyline>
-<polyline clip-path="url(#clip120)" style="stroke:#000000; stroke-linecap:round; stroke-linejoin:round; stroke-width:4; stroke-opacity:1; fill:none" points="400,752.756 400,47.2441 "></polyline>
-<polyline clip-path="url(#clip122)" style="stroke:#000000; stroke-linecap:round; stroke-linejoin:round; stroke-width:4; stroke-opacity:0.5; fill:none" points="651.969,400 651.93,395.603 651.815,391.206 651.623,386.813 651.355,382.424 651.01,378.039 650.588,373.662 650.09,369.293 649.516,364.933 648.866,360.583 648.141,356.246 647.339,351.922 646.462,347.613 645.511,343.319 644.484,339.043 643.383,334.786 642.208,330.548 640.959,326.332 639.636,322.137 638.241,317.967 636.773,313.822 635.233,309.703 633.621,305.611 631.938,301.548 630.185,297.515 628.361,293.514 626.468,289.544 624.506,285.609 622.475,281.708 620.377,277.843 618.211,274.016 615.979,270.227 613.681,266.477 611.319,262.768 608.891,259.101 606.401,255.477 603.847,251.897 601.231,248.362 598.554,244.873 595.816,241.431 593.019,238.038 590.163,234.694 587.249,231.4 584.278,228.158 581.251,224.968 578.169,221.831 575.032,218.749 571.842,215.722 568.6,212.751 565.306,209.837 561.962,206.981 558.569,204.184 555.127,201.446 551.638,198.769 548.103,196.153 544.523,193.599 540.899,191.109 537.232,188.681 533.523,186.319 529.773,184.021 525.984,181.789 522.157,179.623 518.292,177.525 514.391,175.494 510.456,173.532 506.486,171.639 502.485,169.815 498.452,168.062 494.389,166.379 490.297,164.767 486.178,163.227 482.033,161.759 477.863,160.364 473.668,159.041 469.452,157.792 465.214,156.617 460.957,155.516 456.681,154.489 452.387,153.538 448.078,152.661 443.754,151.859 439.417,151.134 435.067,150.484 430.707,149.91 426.338,149.412 421.961,148.99 417.576,148.645 413.187,148.377 408.794,148.185 404.397,148.07 400,148.031 395.603,148.07 391.206,148.185 386.813,148.377 382.424,148.645 378.039,148.99 373.662,149.412 369.293,149.91 364.933,150.484 360.583,151.134 356.246,151.859 351.922,152.661 347.613,153.538 343.319,154.489 339.043,155.516 334.786,156.617 330.548,157.792 326.332,159.041 322.137,160.364 317.967,161.759 313.822,163.227 309.703,164.767 305.611,166.379 301.548,168.062 297.515,169.815 293.514,171.639 289.544,173.532 285.609,175.494 281.708,177.525 277.843,179.623 274.016,181.789 270.227,184.021 266.477,186.319 262.768,188.681 259.101,191.109 255.477,193.599 251.897,196.153 248.362,198.769 244.873,201.446 241.431,204.184 238.038,206.981 234.694,209.837 231.4,212.751 228.158,215.722 224.968,218.749 221.831,221.831 218.749,224.968 215.722,228.158 212.751,231.4 209.837,234.694 206.981,238.038 204.184,241.431 201.446,244.873 198.769,248.362 196.153,251.897 193.599,255.477 191.109,259.101 188.681,262.768 186.319,266.477 184.021,270.227 181.789,274.016 179.623,277.843 177.525,281.708 175.494,285.609 173.532,289.544 171.639,293.514 169.815,297.515 168.062,301.548 166.379,305.611 164.767,309.703 163.227,313.822 161.759,317.967 160.364,322.137 159.041,326.332 157.792,330.548 156.617,334.786 155.516,339.043 154.489,343.319 153.538,347.613 152.661,351.922 151.859,356.246 151.134,360.583 150.484,364.933 149.91,369.293 149.412,373.662 148.99,378.039 148.645,382.424 148.377,386.813 148.185,391.206 148.07,395.603 148.031,400 148.07,404.397 148.185,408.794 148.377,413.187 148.645,417.576 148.99,421.961 149.412,426.338 149.91,430.707 150.484,435.067 151.134,439.417 151.859,443.754 152.661,448.078 153.538,452.387 154.489,456.681 155.516,460.957 156.617,465.214 157.792,469.452 159.041,473.668 160.364,477.863 161.759,482.033 163.227,486.178 164.767,490.297 166.379,494.389 168.062,498.452 169.815,502.485 171.639,506.486 173.532,510.456 175.494,514.391 177.525,518.292 179.623,522.157 181.789,525.984 184.021,529.773 186.319,533.523 188.681,537.232 191.109,540.899 193.599,544.523 196.153,548.103 198.769,551.638 201.446,555.127 204.184,558.569 206.981,561.962 209.837,565.306 212.751,568.6 215.722,571.842 218.749,575.032 221.831,578.169 224.968,581.251 228.158,584.278 231.4,587.249 234.694,590.163 238.038,593.019 241.431,595.816 244.873,598.554 248.362,601.231 251.897,603.847 255.477,606.401 259.101,608.891 262.768,611.319 266.477,613.681 270.227,615.979 274.016,618.211 277.843,620.377 281.708,622.475 285.609,624.506 289.544,626.468 293.514,628.361 297.515,630.185 301.548,631.938 305.611,633.621 309.703,635.233 313.822,636.773 317.967,638.241 322.137,639.636 326.332,640.959 330.548,642.208 334.786,643.383 339.043,644.484 343.319,645.511 347.613,646.462 351.922,647.339 356.246,648.141 360.583,648.866 364.933,649.516 369.293,650.09 373.662,650.588 378.039,651.01 382.424,651.355 386.813,651.623 391.206,651.815 395.603,651.93 400,651.969 404.397,651.93 408.794,651.815 413.187,651.623 417.576,651.355 421.961,651.01 426.338,650.588 430.707,650.09 435.067,649.516 439.417,648.866 443.754,648.141 448.078,647.339 452.387,646.462 456.681,645.511 460.957,644.484 465.214,643.383 469.452,642.208 473.668,640.959 477.863,639.636 482.033,638.241 486.178,636.773 490.297,635.233 494.389,633.621 498.452,631.938 502.485,630.185 506.486,628.361 510.456,626.468 514.391,624.506 518.292,622.475 522.157,620.377 525.984,618.211 529.773,615.979 533.523,613.681 537.232,611.319 540.899,608.891 544.523,606.401 548.103,603.847 551.638,601.231 555.127,598.554 558.569,595.816 561.962,593.019 565.306,590.163 568.6,587.249 571.842,584.278 575.032,581.251 578.169,578.169 581.251,575.032 584.278,571.842 587.249,568.6 590.163,565.306 593.019,561.962 595.816,558.569 598.554,555.127 601.231,551.638 603.847,548.103 606.401,544.523 608.891,540.899 611.319,537.232 613.681,533.523 615.979,529.773 618.211,525.984 620.377,522.157 622.475,518.292 624.506,514.391 626.468,510.456 628.361,506.486 630.185,502.485 631.938,498.452 633.621,494.389 635.233,490.297 636.773,486.178 638.241,482.033 639.636,477.863 640.959,473.668 642.208,469.452 643.383,465.214 644.484,460.957 645.511,456.681 646.462,452.387 647.339,448.078 648.141,443.754 648.866,439.417 649.516,435.067 650.09,430.707 650.588,426.338 651.01,421.961 651.355,417.576 651.623,413.187 651.815,408.794 651.93,404.397 651.969,400 "></polyline>
-<polyline clip-path="url(#clip122)" style="stroke:#00008b; stroke-linecap:round; stroke-linejoin:round; stroke-width:12; stroke-opacity:1; fill:none" points="400,400 166.053,493.579 "></polyline>
-<polyline clip-path="url(#clip122)" style="stroke:#00008b; stroke-linecap:round; stroke-linejoin:round; stroke-width:12; stroke-opacity:1; fill:none" points="206.163,496.921 166.053,493.579 192.793,463.496 "></polyline>
-<polyline clip-path="url(#clip122)" style="stroke:#00008b; stroke-linecap:round; stroke-linejoin:round; stroke-width:12; stroke-opacity:1; fill:none" points="166.053,493.579 400,400 "></polyline>
-<polyline clip-path="url(#clip122)" style="stroke:#ff0000; stroke-linecap:round; stroke-linejoin:round; stroke-width:12; stroke-opacity:1; fill:none" points="400,400 516.973,72.4744 "></polyline>
-<polyline clip-path="url(#clip122)" style="stroke:#ff0000; stroke-linecap:round; stroke-linejoin:round; stroke-width:12; stroke-opacity:1; fill:none" points="487.914,100.323 516.973,72.4744 521.817,112.431 "></polyline>
-<polyline clip-path="url(#clip122)" style="stroke:#ff0000; stroke-linecap:round; stroke-linejoin:round; stroke-width:12; stroke-opacity:1; fill:none" points="516.973,72.4744 400,400 "></polyline>
-<path clip-path="url(#clip120)" d="M330.254 515.636 L321.031 515.39 L310.948 515.636 L310.948 511.701 L314.227 511.701 L305.004 500.798 L296.847 509.939 L296.274 510.758 Q296.274 511.127 297.216 511.414 Q298.2 511.701 299.348 511.701 L299.348 515.636 L290.699 515.39 L282.993 515.636 L282.993 511.701 Q285.575 511.701 286.764 511.66 Q287.994 511.578 289.387 511.209 Q290.781 510.84 291.478 510.103 L302.463 497.765 L289.387 482.312 L283.403 482.312 L283.403 478.377 L292.666 478.623 L302.791 478.377 L302.791 482.312 L299.43 482.312 L307.669 491.944 L314.719 484.074 Q314.76 484.033 315.416 483.05 Q314.104 482.312 312.218 482.312 L312.218 478.377 L320.867 478.623 L328.573 478.377 L328.573 482.312 Q325.212 482.312 323.449 482.558 Q321.728 482.763 321.195 483.05 Q320.703 483.337 320.006 484.074 L310.21 494.978 L324.31 511.701 L330.254 511.701 L330.254 515.636 Z" fill="#000000" fill-rule="nonzero" fill-opacity="1"></path><path clip-path="url(#clip120)" d="M546.961 290.457 Q544.009 290.212 533.27 290.212 Q521.67 290.212 518.473 290.457 L518.473 286.522 L526.466 286.522 L521.424 274.267 L498.921 274.267 L494.74 284.432 L494.412 285.416 Q494.412 285.908 496.257 286.195 Q498.142 286.441 499.987 286.482 L501.872 286.522 L501.872 290.457 Q498.757 290.212 490.805 290.212 L480.968 290.457 L480.968 286.522 L482.73 286.522 Q485.805 286.522 487.321 286.277 Q488.838 286.031 489.207 285.703 Q489.576 285.375 489.862 284.596 L510.685 234.056 Q511.177 232.786 511.751 232.335 Q512.325 231.843 513.964 231.843 Q514.866 231.843 515.317 231.925 Q515.768 232.007 516.301 232.54 Q516.874 233.031 517.325 234.056 L538.804 286.522 L546.961 286.522 L546.961 290.457 M519.744 270.291 L510.193 246.968 L500.602 270.291 L519.744 270.291 Z" fill="#000000" fill-rule="nonzero" fill-opacity="1"></path><path clip-path="url(#clip120)" d="M599.105 290.457 L589.882 290.212 L579.799 290.457 L579.799 286.522 L583.078 286.522 L573.855 275.619 L565.698 284.76 L565.125 285.58 Q565.125 285.949 566.067 286.236 Q567.051 286.522 568.199 286.522 L568.199 290.457 L559.55 290.212 L551.844 290.457 L551.844 286.522 Q554.426 286.522 555.615 286.482 Q556.845 286.4 558.238 286.031 Q559.632 285.662 560.329 284.924 L571.314 272.586 L558.238 257.133 L552.254 257.133 L552.254 253.198 L561.518 253.444 L571.642 253.198 L571.642 257.133 L568.281 257.133 L576.52 266.766 L583.57 258.896 Q583.611 258.855 584.267 257.871 Q582.955 257.133 581.069 257.133 L581.069 253.198 L589.718 253.444 L597.424 253.198 L597.424 257.133 Q594.063 257.133 592.3 257.379 Q590.579 257.584 590.046 257.871 Q589.554 258.158 588.857 258.896 L579.061 269.799 L593.161 286.522 L599.105 286.522 L599.105 290.457 Z" fill="#000000" fill-rule="nonzero" fill-opacity="1"></path><path clip-path="url(#clip120)" d="M948.031 752.756 L1451.97 752.756 L1451.97 47.2441 L948.031 47.2441  Z" fill="#ffffff" fill-rule="evenodd" fill-opacity="1"></path>
+<polyline clip-path="url(#clip250)" style="stroke:#000000; stroke-linecap:round; stroke-linejoin:round; stroke-width:4; stroke-opacity:1; fill:none" points="148.031,400 651.969,400 "></polyline>
+<polyline clip-path="url(#clip250)" style="stroke:#000000; stroke-linecap:round; stroke-linejoin:round; stroke-width:4; stroke-opacity:1; fill:none" points="400,752.756 400,47.2441 "></polyline>
+<polyline clip-path="url(#clip252)" style="stroke:#000000; stroke-linecap:round; stroke-linejoin:round; stroke-width:4; stroke-opacity:0.5; fill:none" points="651.969,400 651.93,395.603 651.815,391.206 651.623,386.813 651.355,382.424 651.01,378.039 650.588,373.662 650.09,369.293 649.516,364.933 648.866,360.583 648.141,356.246 647.339,351.922 646.462,347.613 645.511,343.319 644.484,339.043 643.383,334.786 642.208,330.548 640.959,326.332 639.636,322.137 638.241,317.967 636.773,313.822 635.233,309.703 633.621,305.611 631.938,301.548 630.185,297.515 628.361,293.514 626.468,289.544 624.506,285.609 622.475,281.708 620.377,277.843 618.211,274.016 615.979,270.227 613.681,266.477 611.319,262.768 608.891,259.101 606.401,255.477 603.847,251.897 601.231,248.362 598.554,244.873 595.816,241.431 593.019,238.038 590.163,234.694 587.249,231.4 584.278,228.158 581.251,224.968 578.169,221.831 575.032,218.749 571.842,215.722 568.6,212.751 565.306,209.837 561.962,206.981 558.569,204.184 555.127,201.446 551.638,198.769 548.103,196.153 544.523,193.599 540.899,191.109 537.232,188.681 533.523,186.319 529.773,184.021 525.984,181.789 522.157,179.623 518.292,177.525 514.391,175.494 510.456,173.532 506.486,171.639 502.485,169.815 498.452,168.062 494.389,166.379 490.297,164.767 486.178,163.227 482.033,161.759 477.863,160.364 473.668,159.041 469.452,157.792 465.214,156.617 460.957,155.516 456.681,154.489 452.387,153.538 448.078,152.661 443.754,151.859 439.417,151.134 435.067,150.484 430.707,149.91 426.338,149.412 421.961,148.99 417.576,148.645 413.187,148.377 408.794,148.185 404.397,148.07 400,148.031 395.603,148.07 391.206,148.185 386.813,148.377 382.424,148.645 378.039,148.99 373.662,149.412 369.293,149.91 364.933,150.484 360.583,151.134 356.246,151.859 351.922,152.661 347.613,153.538 343.319,154.489 339.043,155.516 334.786,156.617 330.548,157.792 326.332,159.041 322.137,160.364 317.967,161.759 313.822,163.227 309.703,164.767 305.611,166.379 301.548,168.062 297.515,169.815 293.514,171.639 289.544,173.532 285.609,175.494 281.708,177.525 277.843,179.623 274.016,181.789 270.227,184.021 266.477,186.319 262.768,188.681 259.101,191.109 255.477,193.599 251.897,196.153 248.362,198.769 244.873,201.446 241.431,204.184 238.038,206.981 234.694,209.837 231.4,212.751 228.158,215.722 224.968,218.749 221.831,221.831 218.749,224.968 215.722,228.158 212.751,231.4 209.837,234.694 206.981,238.038 204.184,241.431 201.446,244.873 198.769,248.362 196.153,251.897 193.599,255.477 191.109,259.101 188.681,262.768 186.319,266.477 184.021,270.227 181.789,274.016 179.623,277.843 177.525,281.708 175.494,285.609 173.532,289.544 171.639,293.514 169.815,297.515 168.062,301.548 166.379,305.611 164.767,309.703 163.227,313.822 161.759,317.967 160.364,322.137 159.041,326.332 157.792,330.548 156.617,334.786 155.516,339.043 154.489,343.319 153.538,347.613 152.661,351.922 151.859,356.246 151.134,360.583 150.484,364.933 149.91,369.293 149.412,373.662 148.99,378.039 148.645,382.424 148.377,386.813 148.185,391.206 148.07,395.603 148.031,400 148.07,404.397 148.185,408.794 148.377,413.187 148.645,417.576 148.99,421.961 149.412,426.338 149.91,430.707 150.484,435.067 151.134,439.417 151.859,443.754 152.661,448.078 153.538,452.387 154.489,456.681 155.516,460.957 156.617,465.214 157.792,469.452 159.041,473.668 160.364,477.863 161.759,482.033 163.227,486.178 164.767,490.297 166.379,494.389 168.062,498.452 169.815,502.485 171.639,506.486 173.532,510.456 175.494,514.391 177.525,518.292 179.623,522.157 181.789,525.984 184.021,529.773 186.319,533.523 188.681,537.232 191.109,540.899 193.599,544.523 196.153,548.103 198.769,551.638 201.446,555.127 204.184,558.569 206.981,561.962 209.837,565.306 212.751,568.6 215.722,571.842 218.749,575.032 221.831,578.169 224.968,581.251 228.158,584.278 231.4,587.249 234.694,590.163 238.038,593.019 241.431,595.816 244.873,598.554 248.362,601.231 251.897,603.847 255.477,606.401 259.101,608.891 262.768,611.319 266.477,613.681 270.227,615.979 274.016,618.211 277.843,620.377 281.708,622.475 285.609,624.506 289.544,626.468 293.514,628.361 297.515,630.185 301.548,631.938 305.611,633.621 309.703,635.233 313.822,636.773 317.967,638.241 322.137,639.636 326.332,640.959 330.548,642.208 334.786,643.383 339.043,644.484 343.319,645.511 347.613,646.462 351.922,647.339 356.246,648.141 360.583,648.866 364.933,649.516 369.293,650.09 373.662,650.588 378.039,651.01 382.424,651.355 386.813,651.623 391.206,651.815 395.603,651.93 400,651.969 404.397,651.93 408.794,651.815 413.187,651.623 417.576,651.355 421.961,651.01 426.338,650.588 430.707,650.09 435.067,649.516 439.417,648.866 443.754,648.141 448.078,647.339 452.387,646.462 456.681,645.511 460.957,644.484 465.214,643.383 469.452,642.208 473.668,640.959 477.863,639.636 482.033,638.241 486.178,636.773 490.297,635.233 494.389,633.621 498.452,631.938 502.485,630.185 506.486,628.361 510.456,626.468 514.391,624.506 518.292,622.475 522.157,620.377 525.984,618.211 529.773,615.979 533.523,613.681 537.232,611.319 540.899,608.891 544.523,606.401 548.103,603.847 551.638,601.231 555.127,598.554 558.569,595.816 561.962,593.019 565.306,590.163 568.6,587.249 571.842,584.278 575.032,581.251 578.169,578.169 581.251,575.032 584.278,571.842 587.249,568.6 590.163,565.306 593.019,561.962 595.816,558.569 598.554,555.127 601.231,551.638 603.847,548.103 606.401,544.523 608.891,540.899 611.319,537.232 613.681,533.523 615.979,529.773 618.211,525.984 620.377,522.157 622.475,518.292 624.506,514.391 626.468,510.456 628.361,506.486 630.185,502.485 631.938,498.452 633.621,494.389 635.233,490.297 636.773,486.178 638.241,482.033 639.636,477.863 640.959,473.668 642.208,469.452 643.383,465.214 644.484,460.957 645.511,456.681 646.462,452.387 647.339,448.078 648.141,443.754 648.866,439.417 649.516,435.067 650.09,430.707 650.588,426.338 651.01,421.961 651.355,417.576 651.623,413.187 651.815,408.794 651.93,404.397 651.969,400 "></polyline>
+<polyline clip-path="url(#clip252)" style="stroke:#00008b; stroke-linecap:round; stroke-linejoin:round; stroke-width:12; stroke-opacity:1; fill:none" points="400,400 166.053,493.579 "></polyline>
+<polyline clip-path="url(#clip252)" style="stroke:#00008b; stroke-linecap:round; stroke-linejoin:round; stroke-width:12; stroke-opacity:1; fill:none" points="206.163,496.921 166.053,493.579 192.793,463.496 "></polyline>
+<polyline clip-path="url(#clip252)" style="stroke:#00008b; stroke-linecap:round; stroke-linejoin:round; stroke-width:12; stroke-opacity:1; fill:none" points="166.053,493.579 400,400 "></polyline>
+<polyline clip-path="url(#clip252)" style="stroke:#ff0000; stroke-linecap:round; stroke-linejoin:round; stroke-width:12; stroke-opacity:1; fill:none" points="400,400 516.973,72.4744 "></polyline>
+<polyline clip-path="url(#clip252)" style="stroke:#ff0000; stroke-linecap:round; stroke-linejoin:round; stroke-width:12; stroke-opacity:1; fill:none" points="487.914,100.323 516.973,72.4744 521.817,112.431 "></polyline>
+<polyline clip-path="url(#clip252)" style="stroke:#ff0000; stroke-linecap:round; stroke-linejoin:round; stroke-width:12; stroke-opacity:1; fill:none" points="516.973,72.4744 400,400 "></polyline>
+<path clip-path="url(#clip250)" d="M330.254 515.636 L321.031 515.39 L310.948 515.636 L310.948 511.701 L314.227 511.701 L305.004 500.798 L296.847 509.939 L296.274 510.758 Q296.274 511.127 297.216 511.414 Q298.2 511.701 299.348 511.701 L299.348 515.636 L290.699 515.39 L282.993 515.636 L282.993 511.701 Q285.575 511.701 286.764 511.66 Q287.994 511.578 289.387 511.209 Q290.781 510.84 291.478 510.103 L302.463 497.765 L289.387 482.312 L283.403 482.312 L283.403 478.377 L292.666 478.623 L302.791 478.377 L302.791 482.312 L299.43 482.312 L307.669 491.944 L314.719 484.074 Q314.76 484.033 315.416 483.05 Q314.104 482.312 312.218 482.312 L312.218 478.377 L320.867 478.623 L328.573 478.377 L328.573 482.312 Q325.212 482.312 323.449 482.558 Q321.728 482.763 321.195 483.05 Q320.703 483.337 320.006 484.074 L310.21 494.978 L324.31 511.701 L330.254 511.701 L330.254 515.636 Z" fill="#000000" fill-rule="nonzero" fill-opacity="1"></path><path clip-path="url(#clip250)" d="M546.961 290.457 Q544.009 290.212 533.27 290.212 Q521.67 290.212 518.473 290.457 L518.473 286.522 L526.466 286.522 L521.424 274.267 L498.921 274.267 L494.74 284.432 L494.412 285.416 Q494.412 285.908 496.257 286.195 Q498.142 286.441 499.987 286.482 L501.872 286.522 L501.872 290.457 Q498.757 290.212 490.805 290.212 L480.968 290.457 L480.968 286.522 L482.73 286.522 Q485.805 286.522 487.321 286.277 Q488.838 286.031 489.207 285.703 Q489.576 285.375 489.862 284.596 L510.685 234.056 Q511.177 232.786 511.751 232.335 Q512.325 231.843 513.964 231.843 Q514.866 231.843 515.317 231.925 Q515.768 232.007 516.301 232.54 Q516.874 233.031 517.325 234.056 L538.804 286.522 L546.961 286.522 L546.961 290.457 M519.744 270.291 L510.193 246.968 L500.602 270.291 L519.744 270.291 Z" fill="#000000" fill-rule="nonzero" fill-opacity="1"></path><path clip-path="url(#clip250)" d="M599.105 290.457 L589.882 290.212 L579.799 290.457 L579.799 286.522 L583.078 286.522 L573.855 275.619 L565.698 284.76 L565.125 285.58 Q565.125 285.949 566.067 286.236 Q567.051 286.522 568.199 286.522 L568.199 290.457 L559.55 290.212 L551.844 290.457 L551.844 286.522 Q554.426 286.522 555.615 286.482 Q556.845 286.4 558.238 286.031 Q559.632 285.662 560.329 284.924 L571.314 272.586 L558.238 257.133 L552.254 257.133 L552.254 253.198 L561.518 253.444 L571.642 253.198 L571.642 257.133 L568.281 257.133 L576.52 266.766 L583.57 258.896 Q583.611 258.855 584.267 257.871 Q582.955 257.133 581.069 257.133 L581.069 253.198 L589.718 253.444 L597.424 253.198 L597.424 257.133 Q594.063 257.133 592.3 257.379 Q590.579 257.584 590.046 257.871 Q589.554 258.158 588.857 258.896 L579.061 269.799 L593.161 286.522 L599.105 286.522 L599.105 290.457 Z" fill="#000000" fill-rule="nonzero" fill-opacity="1"></path><path clip-path="url(#clip250)" d="M948.031 752.756 L1451.97 752.756 L1451.97 47.2441 L948.031 47.2441  Z" fill="#ffffff" fill-rule="evenodd" fill-opacity="1"></path>
 <defs>
-  <clippath id="clip123">
+  <clippath id="clip253">
     <rect x="948" y="47" width="505" height="707"></rect>
   </clippath>
 </defs>
-<polyline clip-path="url(#clip120)" style="stroke:#000000; stroke-linecap:round; stroke-linejoin:round; stroke-width:4; stroke-opacity:1; fill:none" points="948.031,400 1451.97,400 "></polyline>
-<polyline clip-path="url(#clip120)" style="stroke:#000000; stroke-linecap:round; stroke-linejoin:round; stroke-width:4; stroke-opacity:1; fill:none" points="1200,752.756 1200,47.2441 "></polyline>
-<polyline clip-path="url(#clip123)" style="stroke:#000000; stroke-linecap:round; stroke-linejoin:round; stroke-width:4; stroke-opacity:0.5; fill:none" points="1451.97,400 1451.93,395.603 1451.82,391.206 1451.62,386.813 1451.35,382.424 1451.01,378.039 1450.59,373.662 1450.09,369.293 1449.52,364.933 1448.87,360.583 1448.14,356.246 1447.34,351.922 1446.46,347.613 1445.51,343.319 1444.48,339.043 1443.38,334.786 1442.21,330.548 1440.96,326.332 1439.64,322.137 1438.24,317.967 1436.77,313.822 1435.23,309.703 1433.62,305.611 1431.94,301.548 1430.18,297.515 1428.36,293.514 1426.47,289.544 1424.51,285.609 1422.47,281.708 1420.38,277.843 1418.21,274.016 1415.98,270.227 1413.68,266.477 1411.32,262.768 1408.89,259.101 1406.4,255.477 1403.85,251.897 1401.23,248.362 1398.55,244.873 1395.82,241.431 1393.02,238.038 1390.16,234.694 1387.25,231.4 1384.28,228.158 1381.25,224.968 1378.17,221.831 1375.03,218.749 1371.84,215.722 1368.6,212.751 1365.31,209.837 1361.96,206.981 1358.57,204.184 1355.13,201.446 1351.64,198.769 1348.1,196.153 1344.52,193.599 1340.9,191.109 1337.23,188.681 1333.52,186.319 1329.77,184.021 1325.98,181.789 1322.16,179.623 1318.29,177.525 1314.39,175.494 1310.46,173.532 1306.49,171.639 1302.48,169.815 1298.45,168.062 1294.39,166.379 1290.3,164.767 1286.18,163.227 1282.03,161.759 1277.86,160.364 1273.67,159.041 1269.45,157.792 1265.21,156.617 1260.96,155.516 1256.68,154.489 1252.39,153.538 1248.08,152.661 1243.75,151.859 1239.42,151.134 1235.07,150.484 1230.71,149.91 1226.34,149.412 1221.96,148.99 1217.58,148.645 1213.19,148.377 1208.79,148.185 1204.4,148.07 1200,148.031 1195.6,148.07 1191.21,148.185 1186.81,148.377 1182.42,148.645 1178.04,148.99 1173.66,149.412 1169.29,149.91 1164.93,150.484 1160.58,151.134 1156.25,151.859 1151.92,152.661 1147.61,153.538 1143.32,154.489 1139.04,155.516 1134.79,156.617 1130.55,157.792 1126.33,159.041 1122.14,160.364 1117.97,161.759 1113.82,163.227 1109.7,164.767 1105.61,166.379 1101.55,168.062 1097.52,169.815 1093.51,171.639 1089.54,173.532 1085.61,175.494 1081.71,177.525 1077.84,179.623 1074.02,181.789 1070.23,184.021 1066.48,186.319 1062.77,188.681 1059.1,191.109 1055.48,193.599 1051.9,196.153 1048.36,198.769 1044.87,201.446 1041.43,204.184 1038.04,206.981 1034.69,209.837 1031.4,212.751 1028.16,215.722 1024.97,218.749 1021.83,221.831 1018.75,224.968 1015.72,228.158 1012.75,231.4 1009.84,234.694 1006.98,238.038 1004.18,241.431 1001.45,244.873 998.769,248.362 996.153,251.897 993.599,255.477 991.109,259.101 988.681,262.768 986.319,266.477 984.021,270.227 981.789,274.016 979.623,277.843 977.525,281.708 975.494,285.609 973.532,289.544 971.639,293.514 969.815,297.515 968.062,301.548 966.379,305.611 964.767,309.703 963.227,313.822 961.759,317.967 960.364,322.137 959.041,326.332 957.792,330.548 956.617,334.786 955.516,339.043 954.489,343.319 953.538,347.613 952.661,351.922 951.859,356.246 951.134,360.583 950.484,364.933 949.91,369.293 949.412,373.662 948.99,378.039 948.645,382.424 948.377,386.813 948.185,391.206 948.07,395.603 948.031,400 948.07,404.397 948.185,408.794 948.377,413.187 948.645,417.576 948.99,421.961 949.412,426.338 949.91,430.707 950.484,435.067 951.134,439.417 951.859,443.754 952.661,448.078 953.538,452.387 954.489,456.681 955.516,460.957 956.617,465.214 957.792,469.452 959.041,473.668 960.364,477.863 961.759,482.033 963.227,486.178 964.767,490.297 966.379,494.389 968.062,498.452 969.815,502.485 971.639,506.486 973.532,510.456 975.494,514.391 977.525,518.292 979.623,522.157 981.789,525.984 984.021,529.773 986.319,533.523 988.681,537.232 991.109,540.899 993.599,544.523 996.153,548.103 998.769,551.638 1001.45,555.127 1004.18,558.569 1006.98,561.962 1009.84,565.306 1012.75,568.6 1015.72,571.842 1018.75,575.032 1021.83,578.169 1024.97,581.251 1028.16,584.278 1031.4,587.249 1034.69,590.163 1038.04,593.019 1041.43,595.816 1044.87,598.554 1048.36,601.231 1051.9,603.847 1055.48,606.401 1059.1,608.891 1062.77,611.319 1066.48,613.681 1070.23,615.979 1074.02,618.211 1077.84,620.377 1081.71,622.475 1085.61,624.506 1089.54,626.468 1093.51,628.361 1097.52,630.185 1101.55,631.938 1105.61,633.621 1109.7,635.233 1113.82,636.773 1117.97,638.241 1122.14,639.636 1126.33,640.959 1130.55,642.208 1134.79,643.383 1139.04,644.484 1143.32,645.511 1147.61,646.462 1151.92,647.339 1156.25,648.141 1160.58,648.866 1164.93,649.516 1169.29,650.09 1173.66,650.588 1178.04,651.01 1182.42,651.355 1186.81,651.623 1191.21,651.815 1195.6,651.93 1200,651.969 1204.4,651.93 1208.79,651.815 1213.19,651.623 1217.58,651.355 1221.96,651.01 1226.34,650.588 1230.71,650.09 1235.07,649.516 1239.42,648.866 1243.75,648.141 1248.08,647.339 1252.39,646.462 1256.68,645.511 1260.96,644.484 1265.21,643.383 1269.45,642.208 1273.67,640.959 1277.86,639.636 1282.03,638.241 1286.18,636.773 1290.3,635.233 1294.39,633.621 1298.45,631.938 1302.48,630.185 1306.49,628.361 1310.46,626.468 1314.39,624.506 1318.29,622.475 1322.16,620.377 1325.98,618.211 1329.77,615.979 1333.52,613.681 1337.23,611.319 1340.9,608.891 1344.52,606.401 1348.1,603.847 1351.64,601.231 1355.13,598.554 1358.57,595.816 1361.96,593.019 1365.31,590.163 1368.6,587.249 1371.84,584.278 1375.03,581.251 1378.17,578.169 1381.25,575.032 1384.28,571.842 1387.25,568.6 1390.16,565.306 1393.02,561.962 1395.82,558.569 1398.55,555.127 1401.23,551.638 1403.85,548.103 1406.4,544.523 1408.89,540.899 1411.32,537.232 1413.68,533.523 1415.98,529.773 1418.21,525.984 1420.38,522.157 1422.47,518.292 1424.51,514.391 1426.47,510.456 1428.36,506.486 1430.18,502.485 1431.94,498.452 1433.62,494.389 1435.23,490.297 1436.77,486.178 1438.24,482.033 1439.64,477.863 1440.96,473.668 1442.21,469.452 1443.38,465.214 1444.48,460.957 1445.51,456.681 1446.46,452.387 1447.34,448.078 1448.14,443.754 1448.87,439.417 1449.52,435.067 1450.09,430.707 1450.59,426.338 1451.01,421.961 1451.35,417.576 1451.62,413.187 1451.82,408.794 1451.93,404.397 1451.97,400 "></polyline>
-<polyline clip-path="url(#clip123)" style="stroke:#ff0000; stroke-linecap:round; stroke-linejoin:round; stroke-width:12; stroke-opacity:1; fill:none" points="1200,400 1030.97,61.9488 "></polyline>
-<polyline clip-path="url(#clip123)" style="stroke:#ff0000; stroke-linecap:round; stroke-linejoin:round; stroke-width:12; stroke-opacity:1; fill:none" points="1030.97,102.198 1030.97,61.9488 1063.17,86.0983 "></polyline>
-<polyline clip-path="url(#clip123)" style="stroke:#ff0000; stroke-linecap:round; stroke-linejoin:round; stroke-width:12; stroke-opacity:1; fill:none" points="1030.97,61.9488 1200,400 "></polyline>
-<polyline clip-path="url(#clip123)" style="stroke:#00008b; stroke-linecap:round; stroke-linejoin:round; stroke-width:12; stroke-opacity:1; fill:none" points="1200,400 1087.32,174.633 "></polyline>
-<polyline clip-path="url(#clip123)" style="stroke:#00008b; stroke-linecap:round; stroke-linejoin:round; stroke-width:12; stroke-opacity:1; fill:none" points="1087.32,214.882 1087.32,174.633 1119.52,198.782 "></polyline>
-<polyline clip-path="url(#clip123)" style="stroke:#00008b; stroke-linecap:round; stroke-linejoin:round; stroke-width:12; stroke-opacity:1; fill:none" points="1087.32,174.633 1200,400 "></polyline>
-<path clip-path="url(#clip120)" d="M1748.03 752.756 L2251.97 752.756 L2251.97 47.2441 L1748.03 47.2441  Z" fill="#ffffff" fill-rule="evenodd" fill-opacity="1"></path>
+<polyline clip-path="url(#clip250)" style="stroke:#000000; stroke-linecap:round; stroke-linejoin:round; stroke-width:4; stroke-opacity:1; fill:none" points="948.031,400 1451.97,400 "></polyline>
+<polyline clip-path="url(#clip250)" style="stroke:#000000; stroke-linecap:round; stroke-linejoin:round; stroke-width:4; stroke-opacity:1; fill:none" points="1200,752.756 1200,47.2441 "></polyline>
+<polyline clip-path="url(#clip253)" style="stroke:#000000; stroke-linecap:round; stroke-linejoin:round; stroke-width:4; stroke-opacity:0.5; fill:none" points="1451.97,400 1451.93,395.603 1451.82,391.206 1451.62,386.813 1451.35,382.424 1451.01,378.039 1450.59,373.662 1450.09,369.293 1449.52,364.933 1448.87,360.583 1448.14,356.246 1447.34,351.922 1446.46,347.613 1445.51,343.319 1444.48,339.043 1443.38,334.786 1442.21,330.548 1440.96,326.332 1439.64,322.137 1438.24,317.967 1436.77,313.822 1435.23,309.703 1433.62,305.611 1431.94,301.548 1430.18,297.515 1428.36,293.514 1426.47,289.544 1424.51,285.609 1422.47,281.708 1420.38,277.843 1418.21,274.016 1415.98,270.227 1413.68,266.477 1411.32,262.768 1408.89,259.101 1406.4,255.477 1403.85,251.897 1401.23,248.362 1398.55,244.873 1395.82,241.431 1393.02,238.038 1390.16,234.694 1387.25,231.4 1384.28,228.158 1381.25,224.968 1378.17,221.831 1375.03,218.749 1371.84,215.722 1368.6,212.751 1365.31,209.837 1361.96,206.981 1358.57,204.184 1355.13,201.446 1351.64,198.769 1348.1,196.153 1344.52,193.599 1340.9,191.109 1337.23,188.681 1333.52,186.319 1329.77,184.021 1325.98,181.789 1322.16,179.623 1318.29,177.525 1314.39,175.494 1310.46,173.532 1306.49,171.639 1302.48,169.815 1298.45,168.062 1294.39,166.379 1290.3,164.767 1286.18,163.227 1282.03,161.759 1277.86,160.364 1273.67,159.041 1269.45,157.792 1265.21,156.617 1260.96,155.516 1256.68,154.489 1252.39,153.538 1248.08,152.661 1243.75,151.859 1239.42,151.134 1235.07,150.484 1230.71,149.91 1226.34,149.412 1221.96,148.99 1217.58,148.645 1213.19,148.377 1208.79,148.185 1204.4,148.07 1200,148.031 1195.6,148.07 1191.21,148.185 1186.81,148.377 1182.42,148.645 1178.04,148.99 1173.66,149.412 1169.29,149.91 1164.93,150.484 1160.58,151.134 1156.25,151.859 1151.92,152.661 1147.61,153.538 1143.32,154.489 1139.04,155.516 1134.79,156.617 1130.55,157.792 1126.33,159.041 1122.14,160.364 1117.97,161.759 1113.82,163.227 1109.7,164.767 1105.61,166.379 1101.55,168.062 1097.52,169.815 1093.51,171.639 1089.54,173.532 1085.61,175.494 1081.71,177.525 1077.84,179.623 1074.02,181.789 1070.23,184.021 1066.48,186.319 1062.77,188.681 1059.1,191.109 1055.48,193.599 1051.9,196.153 1048.36,198.769 1044.87,201.446 1041.43,204.184 1038.04,206.981 1034.69,209.837 1031.4,212.751 1028.16,215.722 1024.97,218.749 1021.83,221.831 1018.75,224.968 1015.72,228.158 1012.75,231.4 1009.84,234.694 1006.98,238.038 1004.18,241.431 1001.45,244.873 998.769,248.362 996.153,251.897 993.599,255.477 991.109,259.101 988.681,262.768 986.319,266.477 984.021,270.227 981.789,274.016 979.623,277.843 977.525,281.708 975.494,285.609 973.532,289.544 971.639,293.514 969.815,297.515 968.062,301.548 966.379,305.611 964.767,309.703 963.227,313.822 961.759,317.967 960.364,322.137 959.041,326.332 957.792,330.548 956.617,334.786 955.516,339.043 954.489,343.319 953.538,347.613 952.661,351.922 951.859,356.246 951.134,360.583 950.484,364.933 949.91,369.293 949.412,373.662 948.99,378.039 948.645,382.424 948.377,386.813 948.185,391.206 948.07,395.603 948.031,400 948.07,404.397 948.185,408.794 948.377,413.187 948.645,417.576 948.99,421.961 949.412,426.338 949.91,430.707 950.484,435.067 951.134,439.417 951.859,443.754 952.661,448.078 953.538,452.387 954.489,456.681 955.516,460.957 956.617,465.214 957.792,469.452 959.041,473.668 960.364,477.863 961.759,482.033 963.227,486.178 964.767,490.297 966.379,494.389 968.062,498.452 969.815,502.485 971.639,506.486 973.532,510.456 975.494,514.391 977.525,518.292 979.623,522.157 981.789,525.984 984.021,529.773 986.319,533.523 988.681,537.232 991.109,540.899 993.599,544.523 996.153,548.103 998.769,551.638 1001.45,555.127 1004.18,558.569 1006.98,561.962 1009.84,565.306 1012.75,568.6 1015.72,571.842 1018.75,575.032 1021.83,578.169 1024.97,581.251 1028.16,584.278 1031.4,587.249 1034.69,590.163 1038.04,593.019 1041.43,595.816 1044.87,598.554 1048.36,601.231 1051.9,603.847 1055.48,606.401 1059.1,608.891 1062.77,611.319 1066.48,613.681 1070.23,615.979 1074.02,618.211 1077.84,620.377 1081.71,622.475 1085.61,624.506 1089.54,626.468 1093.51,628.361 1097.52,630.185 1101.55,631.938 1105.61,633.621 1109.7,635.233 1113.82,636.773 1117.97,638.241 1122.14,639.636 1126.33,640.959 1130.55,642.208 1134.79,643.383 1139.04,644.484 1143.32,645.511 1147.61,646.462 1151.92,647.339 1156.25,648.141 1160.58,648.866 1164.93,649.516 1169.29,650.09 1173.66,650.588 1178.04,651.01 1182.42,651.355 1186.81,651.623 1191.21,651.815 1195.6,651.93 1200,651.969 1204.4,651.93 1208.79,651.815 1213.19,651.623 1217.58,651.355 1221.96,651.01 1226.34,650.588 1230.71,650.09 1235.07,649.516 1239.42,648.866 1243.75,648.141 1248.08,647.339 1252.39,646.462 1256.68,645.511 1260.96,644.484 1265.21,643.383 1269.45,642.208 1273.67,640.959 1277.86,639.636 1282.03,638.241 1286.18,636.773 1290.3,635.233 1294.39,633.621 1298.45,631.938 1302.48,630.185 1306.49,628.361 1310.46,626.468 1314.39,624.506 1318.29,622.475 1322.16,620.377 1325.98,618.211 1329.77,615.979 1333.52,613.681 1337.23,611.319 1340.9,608.891 1344.52,606.401 1348.1,603.847 1351.64,601.231 1355.13,598.554 1358.57,595.816 1361.96,593.019 1365.31,590.163 1368.6,587.249 1371.84,584.278 1375.03,581.251 1378.17,578.169 1381.25,575.032 1384.28,571.842 1387.25,568.6 1390.16,565.306 1393.02,561.962 1395.82,558.569 1398.55,555.127 1401.23,551.638 1403.85,548.103 1406.4,544.523 1408.89,540.899 1411.32,537.232 1413.68,533.523 1415.98,529.773 1418.21,525.984 1420.38,522.157 1422.47,518.292 1424.51,514.391 1426.47,510.456 1428.36,506.486 1430.18,502.485 1431.94,498.452 1433.62,494.389 1435.23,490.297 1436.77,486.178 1438.24,482.033 1439.64,477.863 1440.96,473.668 1442.21,469.452 1443.38,465.214 1444.48,460.957 1445.51,456.681 1446.46,452.387 1447.34,448.078 1448.14,443.754 1448.87,439.417 1449.52,435.067 1450.09,430.707 1450.59,426.338 1451.01,421.961 1451.35,417.576 1451.62,413.187 1451.82,408.794 1451.93,404.397 1451.97,400 "></polyline>
+<polyline clip-path="url(#clip253)" style="stroke:#ff0000; stroke-linecap:round; stroke-linejoin:round; stroke-width:12; stroke-opacity:1; fill:none" points="1200,400 1030.97,61.9488 "></polyline>
+<polyline clip-path="url(#clip253)" style="stroke:#ff0000; stroke-linecap:round; stroke-linejoin:round; stroke-width:12; stroke-opacity:1; fill:none" points="1030.97,102.198 1030.97,61.9488 1063.17,86.0983 "></polyline>
+<polyline clip-path="url(#clip253)" style="stroke:#ff0000; stroke-linecap:round; stroke-linejoin:round; stroke-width:12; stroke-opacity:1; fill:none" points="1030.97,61.9488 1200,400 "></polyline>
+<polyline clip-path="url(#clip253)" style="stroke:#00008b; stroke-linecap:round; stroke-linejoin:round; stroke-width:12; stroke-opacity:1; fill:none" points="1200,400 1087.32,174.633 "></polyline>
+<polyline clip-path="url(#clip253)" style="stroke:#00008b; stroke-linecap:round; stroke-linejoin:round; stroke-width:12; stroke-opacity:1; fill:none" points="1087.32,214.882 1087.32,174.633 1119.52,198.782 "></polyline>
+<polyline clip-path="url(#clip253)" style="stroke:#00008b; stroke-linecap:round; stroke-linejoin:round; stroke-width:12; stroke-opacity:1; fill:none" points="1087.32,174.633 1200,400 "></polyline>
+<path clip-path="url(#clip250)" d="M1748.03 752.756 L2251.97 752.756 L2251.97 47.2441 L1748.03 47.2441  Z" fill="#ffffff" fill-rule="evenodd" fill-opacity="1"></path>
 <defs>
-  <clippath id="clip124">
+  <clippath id="clip254">
     <rect x="1748" y="47" width="505" height="707"></rect>
   </clippath>
 </defs>
-<polyline clip-path="url(#clip120)" style="stroke:#000000; stroke-linecap:round; stroke-linejoin:round; stroke-width:4; stroke-opacity:1; fill:none" points="1748.03,400 2251.97,400 "></polyline>
-<polyline clip-path="url(#clip120)" style="stroke:#000000; stroke-linecap:round; stroke-linejoin:round; stroke-width:4; stroke-opacity:1; fill:none" points="2000,752.756 2000,47.2441 "></polyline>
-<polyline clip-path="url(#clip124)" style="stroke:#000000; stroke-linecap:round; stroke-linejoin:round; stroke-width:4; stroke-opacity:0.5; fill:none" points="2251.97,400 2251.93,395.603 2251.82,391.206 2251.62,386.813 2251.35,382.424 2251.01,378.039 2250.59,373.662 2250.09,369.293 2249.52,364.933 2248.87,360.583 2248.14,356.246 2247.34,351.922 2246.46,347.613 2245.51,343.319 2244.48,339.043 2243.38,334.786 2242.21,330.548 2240.96,326.332 2239.64,322.137 2238.24,317.967 2236.77,313.822 2235.23,309.703 2233.62,305.611 2231.94,301.548 2230.18,297.515 2228.36,293.514 2226.47,289.544 2224.51,285.609 2222.47,281.708 2220.38,277.843 2218.21,274.016 2215.98,270.227 2213.68,266.477 2211.32,262.768 2208.89,259.101 2206.4,255.477 2203.85,251.897 2201.23,248.362 2198.55,244.873 2195.82,241.431 2193.02,238.038 2190.16,234.694 2187.25,231.4 2184.28,228.158 2181.25,224.968 2178.17,221.831 2175.03,218.749 2171.84,215.722 2168.6,212.751 2165.31,209.837 2161.96,206.981 2158.57,204.184 2155.13,201.446 2151.64,198.769 2148.1,196.153 2144.52,193.599 2140.9,191.109 2137.23,188.681 2133.52,186.319 2129.77,184.021 2125.98,181.789 2122.16,179.623 2118.29,177.525 2114.39,175.494 2110.46,173.532 2106.49,171.639 2102.48,169.815 2098.45,168.062 2094.39,166.379 2090.3,164.767 2086.18,163.227 2082.03,161.759 2077.86,160.364 2073.67,159.041 2069.45,157.792 2065.21,156.617 2060.96,155.516 2056.68,154.489 2052.39,153.538 2048.08,152.661 2043.75,151.859 2039.42,151.134 2035.07,150.484 2030.71,149.91 2026.34,149.412 2021.96,148.99 2017.58,148.645 2013.19,148.377 2008.79,148.185 2004.4,148.07 2000,148.031 1995.6,148.07 1991.21,148.185 1986.81,148.377 1982.42,148.645 1978.04,148.99 1973.66,149.412 1969.29,149.91 1964.93,150.484 1960.58,151.134 1956.25,151.859 1951.92,152.661 1947.61,153.538 1943.32,154.489 1939.04,155.516 1934.79,156.617 1930.55,157.792 1926.33,159.041 1922.14,160.364 1917.97,161.759 1913.82,163.227 1909.7,164.767 1905.61,166.379 1901.55,168.062 1897.52,169.815 1893.51,171.639 1889.54,173.532 1885.61,175.494 1881.71,177.525 1877.84,179.623 1874.02,181.789 1870.23,184.021 1866.48,186.319 1862.77,188.681 1859.1,191.109 1855.48,193.599 1851.9,196.153 1848.36,198.769 1844.87,201.446 1841.43,204.184 1838.04,206.981 1834.69,209.837 1831.4,212.751 1828.16,215.722 1824.97,218.749 1821.83,221.831 1818.75,224.968 1815.72,228.158 1812.75,231.4 1809.84,234.694 1806.98,238.038 1804.18,241.431 1801.45,244.873 1798.77,248.362 1796.15,251.897 1793.6,255.477 1791.11,259.101 1788.68,262.768 1786.32,266.477 1784.02,270.227 1781.79,274.016 1779.62,277.843 1777.53,281.708 1775.49,285.609 1773.53,289.544 1771.64,293.514 1769.82,297.515 1768.06,301.548 1766.38,305.611 1764.77,309.703 1763.23,313.822 1761.76,317.967 1760.36,322.137 1759.04,326.332 1757.79,330.548 1756.62,334.786 1755.52,339.043 1754.49,343.319 1753.54,347.613 1752.66,351.922 1751.86,356.246 1751.13,360.583 1750.48,364.933 1749.91,369.293 1749.41,373.662 1748.99,378.039 1748.65,382.424 1748.38,386.813 1748.18,391.206 1748.07,395.603 1748.03,400 1748.07,404.397 1748.18,408.794 1748.38,413.187 1748.65,417.576 1748.99,421.961 1749.41,426.338 1749.91,430.707 1750.48,435.067 1751.13,439.417 1751.86,443.754 1752.66,448.078 1753.54,452.387 1754.49,456.681 1755.52,460.957 1756.62,465.214 1757.79,469.452 1759.04,473.668 1760.36,477.863 1761.76,482.033 1763.23,486.178 1764.77,490.297 1766.38,494.389 1768.06,498.452 1769.82,502.485 1771.64,506.486 1773.53,510.456 1775.49,514.391 1777.53,518.292 1779.62,522.157 1781.79,525.984 1784.02,529.773 1786.32,533.523 1788.68,537.232 1791.11,540.899 1793.6,544.523 1796.15,548.103 1798.77,551.638 1801.45,555.127 1804.18,558.569 1806.98,561.962 1809.84,565.306 1812.75,568.6 1815.72,571.842 1818.75,575.032 1821.83,578.169 1824.97,581.251 1828.16,584.278 1831.4,587.249 1834.69,590.163 1838.04,593.019 1841.43,595.816 1844.87,598.554 1848.36,601.231 1851.9,603.847 1855.48,606.401 1859.1,608.891 1862.77,611.319 1866.48,613.681 1870.23,615.979 1874.02,618.211 1877.84,620.377 1881.71,622.475 1885.61,624.506 1889.54,626.468 1893.51,628.361 1897.52,630.185 1901.55,631.938 1905.61,633.621 1909.7,635.233 1913.82,636.773 1917.97,638.241 1922.14,639.636 1926.33,640.959 1930.55,642.208 1934.79,643.383 1939.04,644.484 1943.32,645.511 1947.61,646.462 1951.92,647.339 1956.25,648.141 1960.58,648.866 1964.93,649.516 1969.29,650.09 1973.66,650.588 1978.04,651.01 1982.42,651.355 1986.81,651.623 1991.21,651.815 1995.6,651.93 2000,651.969 2004.4,651.93 2008.79,651.815 2013.19,651.623 2017.58,651.355 2021.96,651.01 2026.34,650.588 2030.71,650.09 2035.07,649.516 2039.42,648.866 2043.75,648.141 2048.08,647.339 2052.39,646.462 2056.68,645.511 2060.96,644.484 2065.21,643.383 2069.45,642.208 2073.67,640.959 2077.86,639.636 2082.03,638.241 2086.18,636.773 2090.3,635.233 2094.39,633.621 2098.45,631.938 2102.48,630.185 2106.49,628.361 2110.46,626.468 2114.39,624.506 2118.29,622.475 2122.16,620.377 2125.98,618.211 2129.77,615.979 2133.52,613.681 2137.23,611.319 2140.9,608.891 2144.52,606.401 2148.1,603.847 2151.64,601.231 2155.13,598.554 2158.57,595.816 2161.96,593.019 2165.31,590.163 2168.6,587.249 2171.84,584.278 2175.03,581.251 2178.17,578.169 2181.25,575.032 2184.28,571.842 2187.25,568.6 2190.16,565.306 2193.02,561.962 2195.82,558.569 2198.55,555.127 2201.23,551.638 2203.85,548.103 2206.4,544.523 2208.89,540.899 2211.32,537.232 2213.68,533.523 2215.98,529.773 2218.21,525.984 2220.38,522.157 2222.47,518.292 2224.51,514.391 2226.47,510.456 2228.36,506.486 2230.18,502.485 2231.94,498.452 2233.62,494.389 2235.23,490.297 2236.77,486.178 2238.24,482.033 2239.64,477.863 2240.96,473.668 2242.21,469.452 2243.38,465.214 2244.48,460.957 2245.51,456.681 2246.46,452.387 2247.34,448.078 2248.14,443.754 2248.87,439.417 2249.52,435.067 2250.09,430.707 2250.59,426.338 2251.01,421.961 2251.35,417.576 2251.62,413.187 2251.82,408.794 2251.93,404.397 2251.97,400 "></polyline>
-<polyline clip-path="url(#clip124)" style="stroke:#ff0000; stroke-linecap:round; stroke-linejoin:round; stroke-width:12; stroke-opacity:1; fill:none" points="2000,400 1821.83,578.169 "></polyline>
-<polyline clip-path="url(#clip124)" style="stroke:#ff0000; stroke-linecap:round; stroke-linejoin:round; stroke-width:12; stroke-opacity:1; fill:none" points="1860.02,565.441 1821.83,578.169 1834.56,539.985 "></polyline>
-<polyline clip-path="url(#clip124)" style="stroke:#ff0000; stroke-linecap:round; stroke-linejoin:round; stroke-width:12; stroke-opacity:1; fill:none" points="1821.83,578.169 2000,400 "></polyline>
-<polyline clip-path="url(#clip124)" style="stroke:#00008b; stroke-linecap:round; stroke-linejoin:round; stroke-width:12; stroke-opacity:1; fill:none" points="2000,400 2178.17,221.831 "></polyline>
-<polyline clip-path="url(#clip124)" style="stroke:#00008b; stroke-linecap:round; stroke-linejoin:round; stroke-width:12; stroke-opacity:1; fill:none" points="2139.98,234.559 2178.17,221.831 2165.44,260.015 "></polyline>
-<polyline clip-path="url(#clip124)" style="stroke:#00008b; stroke-linecap:round; stroke-linejoin:round; stroke-width:12; stroke-opacity:1; fill:none" points="2178.17,221.831 2000,400 "></polyline>
+<polyline clip-path="url(#clip250)" style="stroke:#000000; stroke-linecap:round; stroke-linejoin:round; stroke-width:4; stroke-opacity:1; fill:none" points="1748.03,400 2251.97,400 "></polyline>
+<polyline clip-path="url(#clip250)" style="stroke:#000000; stroke-linecap:round; stroke-linejoin:round; stroke-width:4; stroke-opacity:1; fill:none" points="2000,752.756 2000,47.2441 "></polyline>
+<polyline clip-path="url(#clip254)" style="stroke:#000000; stroke-linecap:round; stroke-linejoin:round; stroke-width:4; stroke-opacity:0.5; fill:none" points="2251.97,400 2251.93,395.603 2251.82,391.206 2251.62,386.813 2251.35,382.424 2251.01,378.039 2250.59,373.662 2250.09,369.293 2249.52,364.933 2248.87,360.583 2248.14,356.246 2247.34,351.922 2246.46,347.613 2245.51,343.319 2244.48,339.043 2243.38,334.786 2242.21,330.548 2240.96,326.332 2239.64,322.137 2238.24,317.967 2236.77,313.822 2235.23,309.703 2233.62,305.611 2231.94,301.548 2230.18,297.515 2228.36,293.514 2226.47,289.544 2224.51,285.609 2222.47,281.708 2220.38,277.843 2218.21,274.016 2215.98,270.227 2213.68,266.477 2211.32,262.768 2208.89,259.101 2206.4,255.477 2203.85,251.897 2201.23,248.362 2198.55,244.873 2195.82,241.431 2193.02,238.038 2190.16,234.694 2187.25,231.4 2184.28,228.158 2181.25,224.968 2178.17,221.831 2175.03,218.749 2171.84,215.722 2168.6,212.751 2165.31,209.837 2161.96,206.981 2158.57,204.184 2155.13,201.446 2151.64,198.769 2148.1,196.153 2144.52,193.599 2140.9,191.109 2137.23,188.681 2133.52,186.319 2129.77,184.021 2125.98,181.789 2122.16,179.623 2118.29,177.525 2114.39,175.494 2110.46,173.532 2106.49,171.639 2102.48,169.815 2098.45,168.062 2094.39,166.379 2090.3,164.767 2086.18,163.227 2082.03,161.759 2077.86,160.364 2073.67,159.041 2069.45,157.792 2065.21,156.617 2060.96,155.516 2056.68,154.489 2052.39,153.538 2048.08,152.661 2043.75,151.859 2039.42,151.134 2035.07,150.484 2030.71,149.91 2026.34,149.412 2021.96,148.99 2017.58,148.645 2013.19,148.377 2008.79,148.185 2004.4,148.07 2000,148.031 1995.6,148.07 1991.21,148.185 1986.81,148.377 1982.42,148.645 1978.04,148.99 1973.66,149.412 1969.29,149.91 1964.93,150.484 1960.58,151.134 1956.25,151.859 1951.92,152.661 1947.61,153.538 1943.32,154.489 1939.04,155.516 1934.79,156.617 1930.55,157.792 1926.33,159.041 1922.14,160.364 1917.97,161.759 1913.82,163.227 1909.7,164.767 1905.61,166.379 1901.55,168.062 1897.52,169.815 1893.51,171.639 1889.54,173.532 1885.61,175.494 1881.71,177.525 1877.84,179.623 1874.02,181.789 1870.23,184.021 1866.48,186.319 1862.77,188.681 1859.1,191.109 1855.48,193.599 1851.9,196.153 1848.36,198.769 1844.87,201.446 1841.43,204.184 1838.04,206.981 1834.69,209.837 1831.4,212.751 1828.16,215.722 1824.97,218.749 1821.83,221.831 1818.75,224.968 1815.72,228.158 1812.75,231.4 1809.84,234.694 1806.98,238.038 1804.18,241.431 1801.45,244.873 1798.77,248.362 1796.15,251.897 1793.6,255.477 1791.11,259.101 1788.68,262.768 1786.32,266.477 1784.02,270.227 1781.79,274.016 1779.62,277.843 1777.53,281.708 1775.49,285.609 1773.53,289.544 1771.64,293.514 1769.82,297.515 1768.06,301.548 1766.38,305.611 1764.77,309.703 1763.23,313.822 1761.76,317.967 1760.36,322.137 1759.04,326.332 1757.79,330.548 1756.62,334.786 1755.52,339.043 1754.49,343.319 1753.54,347.613 1752.66,351.922 1751.86,356.246 1751.13,360.583 1750.48,364.933 1749.91,369.293 1749.41,373.662 1748.99,378.039 1748.65,382.424 1748.38,386.813 1748.18,391.206 1748.07,395.603 1748.03,400 1748.07,404.397 1748.18,408.794 1748.38,413.187 1748.65,417.576 1748.99,421.961 1749.41,426.338 1749.91,430.707 1750.48,435.067 1751.13,439.417 1751.86,443.754 1752.66,448.078 1753.54,452.387 1754.49,456.681 1755.52,460.957 1756.62,465.214 1757.79,469.452 1759.04,473.668 1760.36,477.863 1761.76,482.033 1763.23,486.178 1764.77,490.297 1766.38,494.389 1768.06,498.452 1769.82,502.485 1771.64,506.486 1773.53,510.456 1775.49,514.391 1777.53,518.292 1779.62,522.157 1781.79,525.984 1784.02,529.773 1786.32,533.523 1788.68,537.232 1791.11,540.899 1793.6,544.523 1796.15,548.103 1798.77,551.638 1801.45,555.127 1804.18,558.569 1806.98,561.962 1809.84,565.306 1812.75,568.6 1815.72,571.842 1818.75,575.032 1821.83,578.169 1824.97,581.251 1828.16,584.278 1831.4,587.249 1834.69,590.163 1838.04,593.019 1841.43,595.816 1844.87,598.554 1848.36,601.231 1851.9,603.847 1855.48,606.401 1859.1,608.891 1862.77,611.319 1866.48,613.681 1870.23,615.979 1874.02,618.211 1877.84,620.377 1881.71,622.475 1885.61,624.506 1889.54,626.468 1893.51,628.361 1897.52,630.185 1901.55,631.938 1905.61,633.621 1909.7,635.233 1913.82,636.773 1917.97,638.241 1922.14,639.636 1926.33,640.959 1930.55,642.208 1934.79,643.383 1939.04,644.484 1943.32,645.511 1947.61,646.462 1951.92,647.339 1956.25,648.141 1960.58,648.866 1964.93,649.516 1969.29,650.09 1973.66,650.588 1978.04,651.01 1982.42,651.355 1986.81,651.623 1991.21,651.815 1995.6,651.93 2000,651.969 2004.4,651.93 2008.79,651.815 2013.19,651.623 2017.58,651.355 2021.96,651.01 2026.34,650.588 2030.71,650.09 2035.07,649.516 2039.42,648.866 2043.75,648.141 2048.08,647.339 2052.39,646.462 2056.68,645.511 2060.96,644.484 2065.21,643.383 2069.45,642.208 2073.67,640.959 2077.86,639.636 2082.03,638.241 2086.18,636.773 2090.3,635.233 2094.39,633.621 2098.45,631.938 2102.48,630.185 2106.49,628.361 2110.46,626.468 2114.39,624.506 2118.29,622.475 2122.16,620.377 2125.98,618.211 2129.77,615.979 2133.52,613.681 2137.23,611.319 2140.9,608.891 2144.52,606.401 2148.1,603.847 2151.64,601.231 2155.13,598.554 2158.57,595.816 2161.96,593.019 2165.31,590.163 2168.6,587.249 2171.84,584.278 2175.03,581.251 2178.17,578.169 2181.25,575.032 2184.28,571.842 2187.25,568.6 2190.16,565.306 2193.02,561.962 2195.82,558.569 2198.55,555.127 2201.23,551.638 2203.85,548.103 2206.4,544.523 2208.89,540.899 2211.32,537.232 2213.68,533.523 2215.98,529.773 2218.21,525.984 2220.38,522.157 2222.47,518.292 2224.51,514.391 2226.47,510.456 2228.36,506.486 2230.18,502.485 2231.94,498.452 2233.62,494.389 2235.23,490.297 2236.77,486.178 2238.24,482.033 2239.64,477.863 2240.96,473.668 2242.21,469.452 2243.38,465.214 2244.48,460.957 2245.51,456.681 2246.46,452.387 2247.34,448.078 2248.14,443.754 2248.87,439.417 2249.52,435.067 2250.09,430.707 2250.59,426.338 2251.01,421.961 2251.35,417.576 2251.62,413.187 2251.82,408.794 2251.93,404.397 2251.97,400 "></polyline>
+<polyline clip-path="url(#clip254)" style="stroke:#ff0000; stroke-linecap:round; stroke-linejoin:round; stroke-width:12; stroke-opacity:1; fill:none" points="2000,400 1821.83,578.169 "></polyline>
+<polyline clip-path="url(#clip254)" style="stroke:#ff0000; stroke-linecap:round; stroke-linejoin:round; stroke-width:12; stroke-opacity:1; fill:none" points="1860.02,565.441 1821.83,578.169 1834.56,539.985 "></polyline>
+<polyline clip-path="url(#clip254)" style="stroke:#ff0000; stroke-linecap:round; stroke-linejoin:round; stroke-width:12; stroke-opacity:1; fill:none" points="1821.83,578.169 2000,400 "></polyline>
+<polyline clip-path="url(#clip254)" style="stroke:#00008b; stroke-linecap:round; stroke-linejoin:round; stroke-width:12; stroke-opacity:1; fill:none" points="2000,400 2178.17,221.831 "></polyline>
+<polyline clip-path="url(#clip254)" style="stroke:#00008b; stroke-linecap:round; stroke-linejoin:round; stroke-width:12; stroke-opacity:1; fill:none" points="2139.98,234.559 2178.17,221.831 2165.44,260.015 "></polyline>
+<polyline clip-path="url(#clip254)" style="stroke:#00008b; stroke-linecap:round; stroke-linejoin:round; stroke-width:12; stroke-opacity:1; fill:none" points="2178.17,221.831 2000,400 "></polyline>
 </svg>
 </div>
 </div>
-<section id="eigenspaces" class="level3" data-number="5.8.1">
-<h3 data-number="5.8.1" class="anchored" data-anchor-id="eigenspaces"><span class="header-section-number">5.8.1</span> Eigenspaces</h3>
+<section id="eigenspaces" class="level3" data-number="4.9.1">
+<h3 data-number="4.9.1" class="anchored" data-anchor-id="eigenspaces"><span class="header-section-number">4.9.1</span> Eigenspaces</h3>
 <p>An eigenvalue is a clean, well-defined target. Eigenvectors are a little slipperier. For starters, if <span class="math inline">\(\bfA\bfv=\lambda\bfv\)</span>, then</p>
 <p><span class="math display">\[
 \bfA(c\bfv) = c(\bfA\bfv)=c(\lambda\bfv)=\lambda(c\bfv).
 \]</span></p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
+<div id="thm-" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 4.16 </strong></span>Every nonzero multiple of an eigenvector is also an eigenvector at the same eigenvalue.</p>
 </div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Every nonzero multiple of an eigenvector is also an eigenvector for the same eigenvalue.</p>
-</div>
-</div>
-<p>But there can be even more ambiguity.</p>
+<p>But there can be even more ambiguity:</p>
 <div id="exm-" class="theorem example">
-<p><span class="theorem-title"><strong>Example 5.9 </strong></span>Let <span class="math inline">\(\meye\)</span> be an identity matrix. Then <span class="math inline">\(\meye\bfx=\bfx\)</span> for any vector <span class="math inline">\(\bfx\)</span>, so every nonzero vector is an eigenvector!</p>
+<p><span class="theorem-title"><strong>Example 4.13 </strong></span>Let <span class="math inline">\(\meye\)</span> be an identity matrix. Then <span class="math inline">\(\meye\bfx=\bfx\)</span> for any vector <span class="math inline">\(\bfx\)</span>, so every nonzero vector is an eigenvector!</p>
 </div>
 <p>Fortunately we already have the tools we need to describe a more robust target, based on the very simple reformulation</p>
 <p><span class="math display">\[
 \bfzero=\bfA\bfv-\lambda\bfv=(\bfA-\lambda\meye)\bfv.
 \]</span></p>
-<p>The requirement of an eigenvector to be nonzero, combined with <span class="citation" data-cites="Theorem">(<a href="#ref-Theorem" role="doc-biblioref"><strong>Theorem?</strong></a>)</span> {number} <theorem-ftla1>, leads to the following crucial conclusion.</theorem-ftla1></p>
-<p>(theorem-eigenvalues-singular)= ::::{#thm-} <span class="math inline">\(\lambda\)</span> is an eigenvalue of <span class="math inline">\(\bfA\)</span> if and only if <span class="math inline">\(\bfA-\lambda\meye\)</span> is singular. ::::</p>
-<p><code>cxqfcus ! eigenspace</code></p>
-<p>(definition-linalg-eigenspace)= ::::{#def-} Eigenspace Let <span class="math inline">\(\lambda\)</span> be an eigenvalue of <span class="math inline">\(\bfA\)</span>. The <strong>eigenspace</strong> associated with <span class="math inline">\(\lambda\)</span> is the null space of <span class="math inline">\((\bfA-\lambda\meye)\bfx\)</span>. ::::</p>
-<p>Eigenspaces, unlike eigenvectors, are uniquely associated with their eigenvalues. We have to be a bit careful, though, because we usually express such spaces using basis vectors, and those bases are <em>not</em> themselves unique. It’s also common in problems and discussions to use eigenvectors and silently ignore the nonuniqueness.</p>
+<p>The requirement of an eigenvector to be nonzero, combined with <a href="#thm-FTLA1" class="quarto-xref">Theorem&nbsp;<span>4.5</span></a>, leads to the following crucial conclusion.</p>
+<div id="thm-eigenvalues-singular" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 4.17 </strong></span><span class="math inline">\(\lambda\)</span> is an eigenvalue of <span class="math inline">\(\bfA\)</span> if and only if <span class="math inline">\(\bfA-\lambda\meye\)</span> is singular.</p>
+</div>
+<div id="def-linalg-eigenspace" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 4.15 (Eigenspace) </strong></span>Let <span class="math inline">\(\lambda\)</span> be an eigenvalue of <span class="math inline">\(\bfA\)</span>. The <strong>eigenspace</strong> associated with <span class="math inline">\(\lambda\)</span> is the null space of <span class="math inline">\((\bfA-\lambda\meye)\bfx\)</span>.</p>
+</div>
+<p>Eigenspaces, unlike eigenvectors, are uniquely associated with their eigenvalues. It’s common, though, to use eigenvectors anyway and silently ignore the nonuniqueness.</p>
 </section>
-<section id="properties-5" class="level3" data-number="5.8.2">
-<h3 data-number="5.8.2" class="anchored" data-anchor-id="properties-5"><span class="header-section-number">5.8.2</span> Properties</h3>
-<p>(theorem-eigenvalues-properties)= ::::{#thm-} 1. If <span class="math inline">\(\lambda\)</span> is an eigenvalue of <span class="math inline">\(\bfA\)</span>, then <span class="math inline">\(c\lambda\)</span> is an eigenvalue of <span class="math inline">\(c\bfA\)</span> with the same eigenspace. 2. If <span class="math inline">\(\lambda\)</span> is an eigenvalue of <span class="math inline">\(\bfA\)</span>, then <span class="math inline">\(\lambda-c\)</span> is an eigenvalue of <span class="math inline">\(\bfA-c\meye\)</span> with the same eigenspace. 3. If <span class="math inline">\(\bfA\)</span> is a triangular square matrix, then its eigenvalues are its diagonal elements. 4. A matrix is singular if and only if <span class="math inline">\(0\)</span> is among its eigenvalues. ::::</p>
-<p>Formally for part 3 of the theorem, a matrix is <strong>upper triangular</strong> if <span class="math inline">\(a_{ij}=0\)</span> whenever <span class="math inline">\(i&gt;j\)</span>, and it is <strong>lower triangular</strong> if <span class="math inline">\(a_{ij}=0\)</span> whenever <span class="math inline">\(i&lt;j\)</span>.</p>
-<p>(example-eigenvalues-triangular)= ::::{#exm-} Find the eigenvalues and eigenspaces of <span class="math inline">\(\bfA = \begin{bmatrix} -2 &amp; 4 &amp; 0 \\ 0 &amp; 1 &amp; -3 \\ 0 &amp; 0 &amp; -2 \end{bmatrix}.\)</span></p>
+<section id="properties-4" class="level3" data-number="4.9.2">
+<h3 data-number="4.9.2" class="anchored" data-anchor-id="properties-4"><span class="header-section-number">4.9.2</span> Properties</h3>
+<div id="thm-eigenvalues-properties" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 4.18 </strong></span>Suppose <span class="math inline">\(\bfA\)</span> is a square matrix.</p>
+<ol type="1">
+<li>If <span class="math inline">\(\lambda\)</span> is an eigenvalue of <span class="math inline">\(\bfA\)</span>, then <span class="math inline">\(c\lambda\)</span> is an eigenvalue of <span class="math inline">\(c\bfA\)</span> with the same eigenspace.</li>
+<li>If <span class="math inline">\(\lambda\)</span> is an eigenvalue of <span class="math inline">\(\bfA\)</span>, then <span class="math inline">\(\lambda-c\)</span> is an eigenvalue of <span class="math inline">\(\bfA-c\meye\)</span> with the same eigenspace.</li>
+<li>If <span class="math inline">\(\bfA\)</span> is a triangular square matrix, then its eigenvalues are its diagonal elements.</li>
+<li>A matrix is singular if and only if <span class="math inline">\(0\)</span> is among its eigenvalues.</li>
+</ol>
+</div>
+<p>Formally for part 3 of the theorem, a matrix <span class="math inline">\(\bfA\)</span> is <strong>upper triangular</strong> if <span class="math inline">\(A_{ij}=0\)</span> whenever <span class="math inline">\(i&gt;j\)</span>, and it is <strong>lower triangular</strong> if <span class="math inline">\(A_{ij}=0\)</span> whenever <span class="math inline">\(i&lt;j\)</span>.</p>
+<div id="exm-eigenvalues-triangular" class="theorem example">
+<p><span class="theorem-title"><strong>Example 4.14 </strong></span>Find the eigenvalues and eigenspaces of <span class="math inline">\(\bfA = \begin{bmatrix} -2 &amp; 4 &amp; 0 \\ 0 &amp; 1 &amp; -3 \\ 0 &amp; 0 &amp; -2 \end{bmatrix}.\)</span></p>
 <div class="solution proof">
 <p><span class="proof-title"><em>Solution</em>. </span>Because the matrix is upper triangular, we see right away that its eigenvalues are <span class="math inline">\(\lambda_1=-2\)</span> and <span class="math inline">\(\lambda_2=1\)</span>. The eigenspace for <span class="math inline">\(\lambda_1\)</span> is the null space of</p>
 <p><span class="math display">\[
@@ -1086,22 +1262,25 @@ Note
 \]</span></p>
 <p>A basis for this eigenspace is <span class="math inline">\([\frac{4}{3},1,0]\)</span>, though a more convenient choice is <span class="math inline">\([4,3,0]\)</span>.</p>
 </div>
-<p>::::</p>
+</div>
 </section>
 </section>
-<section id="computing-eigenvalues" class="level2" data-number="5.9">
-<h2 data-number="5.9" class="anchored" data-anchor-id="computing-eigenvalues"><span class="header-section-number">5.9</span> Computing eigenvalues</h2>
-<p>The most common way to find eigenvalues by hand is to use the determinant to detect when <span class="math inline">\(\bfA-\lambda\meye\)</span> is singular, as required by <span class="citation" data-cites="Theorem">(<a href="#ref-Theorem" role="doc-biblioref"><strong>Theorem?</strong></a>)</span> {number} <theorem-eigenvalues-singular>. This determinant has a particular form and name.</theorem-eigenvalues-singular></p>
-<p><code>cxqfcus ! characteristic polynomial; of a matrix</code></p>
-<p><code>dbouhrdnrlxtgknpkk Characteristic polynomial of a matrix Suppose $\bfA$ is an $n\times n$ matrix. The function $p(z) = \det(\bfA-z\meye)$ is a polynomial of degree $n$ in $z$ called the **characteristic polynomial** of $\bfA$.</code></p>
-<p>::::{proof:algorithm} Eigenvalues and eigenspaces Given an <span class="math inline">\(n\times n\)</span> matrix <span class="math inline">\(\bfA\)</span>:</p>
+<section id="computing-eigenvalues" class="level2" data-number="4.10">
+<h2 data-number="4.10" class="anchored" data-anchor-id="computing-eigenvalues"><span class="header-section-number">4.10</span> Computing eigenvalues</h2>
+<p>The most common way to find eigenvalues by hand is to use the determinant to detect when <span class="math inline">\(\bfA-\lambda\meye\)</span> is singular, as required by <a href="#thm-eigenvalues-singular" class="quarto-xref">Theorem&nbsp;<span>4.17</span></a>. This determinant has a particular form and name.</p>
+<div id="def-matrix-charpoly" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 4.16 (Characteristic polynomial of a matrix) </strong></span>Suppose <span class="math inline">\(\bfA\)</span> is an <span class="math inline">\(n\times n\)</span> matrix. The function <span class="math inline">\(p(z) = \det(\bfA-z\meye)\)</span> is a polynomial of degree <span class="math inline">\(n\)</span> in <span class="math inline">\(z\)</span> called the <strong>characteristic polynomial</strong> of <span class="math inline">\(\bfA\)</span>.</p>
+</div>
+<div id="thm-" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 4.19 (Computing eigenvalues and eigenspaces) </strong></span>Given an <span class="math inline">\(n\times n\)</span> matrix <span class="math inline">\(\bfA\)</span>:</p>
 <ol type="1">
 <li>Find the characteristic polynomial <span class="math inline">\(p\)</span> of <span class="math inline">\(\bfA\)</span>.</li>
 <li>Let <span class="math inline">\(\lambda_1,\ldots,\lambda_k\)</span> be the distinct roots of <span class="math inline">\(p\)</span>. These are the eigenvalues. (If <span class="math inline">\(k&lt;n\)</span>, it’s because one or more roots has multiplicity greater than 1.)</li>
-<li>For each <span class="math inline">\(\lambda_j\)</span>, find the general solution of <span class="math inline">\((\bfA-\lambda_j\meye)\bfv=\bfzero\)</span>. This is the eigenspace associated with <span class="math inline">\(\lambda_j\)</span>. ::::</li>
+<li>For each <span class="math inline">\(\lambda_j\)</span>, find the general solution of <span class="math inline">\((\bfA-\lambda_j\meye)\bfv=\bfzero\)</span>. This is the eigenspace associated with <span class="math inline">\(\lambda_j\)</span>.</li>
 </ol>
+</div>
 <div id="exm-" class="theorem example">
-<p><span class="theorem-title"><strong>Example 5.10 </strong></span>Find the eigenvalues and eigenspaces of</p>
+<p><span class="theorem-title"><strong>Example 4.15 </strong></span>Find the eigenvalues and eigenspaces of</p>
 <p><span class="math display">\[
 \bfA = \begin{bmatrix} 1 &amp; 1 \\ 4 &amp; 1 \end{bmatrix}.
 \]</span></p>
@@ -1124,10 +1303,11 @@ Note
 </div>
 </div>
 <p>Because eigenvalues are the roots of the characteristic polynomials, real matrices can have complex eigenvalues occurring in conjugate pairs. We catch a little break from the following fact.</p>
-<div class="{proof:observation}">
-<p>If <span class="math inline">\(\bfv\)</span> is an eigenvector for a complex eigenvalue <span class="math inline">\(\lambda\)</span> of a real matrix, then its conjugate <span class="math inline">\(\overline{\bfv}\)</span> is an eigenvector for <span class="math inline">\(\overline{\lambda}\)</span>.</p>
+<div id="thm-" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 4.20 </strong></span>If <span class="math inline">\(\bfv\)</span> is an eigenvector for a complex eigenvalue <span class="math inline">\(\lambda\)</span> of a real matrix, then its conjugate <span class="math inline">\(\overline{\bfv}\)</span> is an eigenvector for <span class="math inline">\(\overline{\lambda}\)</span>.</p>
 </div>
-<p>(example-eigenvalues-complex)= ::::{#exm-} Find eigenvalues and eigenspaces of <span class="math inline">\(\bfA = \begin{bmatrix} 0 &amp; 0 &amp; 6 \\ 0 &amp; 0 &amp; -3 \\ -3 &amp; -3 &amp; 0 \end{bmatrix}.\)</span></p>
+<div id="exm-eigenvalues-complex" class="theorem example">
+<p><span class="theorem-title"><strong>Example 4.16 </strong></span>Find eigenvalues and eigenspaces of <span class="math inline">\(\bfA = \begin{bmatrix} 0 &amp; 0 &amp; 6 \\ 0 &amp; 0 &amp; -3 \\ -3 &amp; -3 &amp; 0 \end{bmatrix}.\)</span></p>
 <div class="solution proof">
 <p><span class="proof-title"><em>Solution</em>. </span><span class="math display">\[
 \det(\bfA - z\meye) = \begin{vmatrix}
@@ -1152,69 +1332,60 @@ Note
 <p>The third column is free, and a basis for this eigenspace is <span class="math inline">\([-2i,i,1]\)</span>.</p>
 <p>Because <span class="math inline">\(\lambda_3\)</span> is the conjugate of <span class="math inline">\(\lambda_2\)</span>, its eigenspace has basis <span class="math inline">\([2i,-i,1]\)</span>.</p>
 </div>
-<p>::::</p>
-<section id="eigenvectors-for-2times-2" class="level3" data-number="5.9.1">
-<h3 data-number="5.9.1" class="anchored" data-anchor-id="eigenvectors-for-2times-2"><span class="header-section-number">5.9.1</span> Eigenvectors for <span class="math inline">\(2\times 2\)</span></h3>
+</div>
+<section id="eigenvectors-for-2times-2" class="level3" data-number="4.10.1">
+<h3 data-number="4.10.1" class="anchored" data-anchor-id="eigenvectors-for-2times-2"><span class="header-section-number">4.10.1</span> Eigenvectors for <span class="math inline">\(2\times 2\)</span></h3>
 <p>Finding the exact roots of a cubic polynomial is rarely easy. Thus most of our hand computations will be for <span class="math inline">\(2\times 2\)</span> matrices. This allows some shortcuts.</p>
 <p>Suppose <span class="math inline">\(\lambda\)</span> is known to be an eigenvalue of <span class="math inline">\(\bfA\)</span>. Then <span class="math inline">\(\bfA-\lambda\meye\)</span> must be singular, and its RRE form has at least one free column. In the <span class="math inline">\(2\times 2\)</span> case, row elimination must therefore zero out the second row entirely, which spares us from having to do the process at all.</p>
 <p>In summary, we can deduce the following.</p>
-<p>```drotayisdwytqtcxd Eigenvectors for <span class="math inline">\(2\times 2\)</span> Given an eigenvalue <span class="math inline">\(\lambda\)</span> of <span class="math inline">\(2\times 2\)</span> matrix <span class="math inline">\(\bfA\)</span>, let the first row of <span class="math inline">\(\bfA-\lambda\meye\)</span> be written as the vector <span class="math inline">\([\alpha,\beta]\)</span>.</p>
+<div id="thm-" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 4.21 (Eigenvectors for <span class="math inline">\(2\times 2\)</span>) </strong></span>Given an eigenvalue <span class="math inline">\(\lambda\)</span> of <span class="math inline">\(2\times 2\)</span> matrix <span class="math inline">\(\bfA\)</span>, let the first row of <span class="math inline">\(\bfA-\lambda\meye\)</span> be written as the vector <span class="math inline">\([\alpha,\beta]\)</span>.</p>
 <ul>
 <li>If <span class="math inline">\(\alpha=\beta=0\)</span>, then <span class="math inline">\(\bfA-\lambda\meye\)</span> is a zero matrix and all of <span class="math inline">\(\complex^2\)</span> is the eigenspace of <span class="math inline">\(\lambda\)</span>.</li>
 <li>Otherwise, the vector <span class="math inline">\([\beta;\,-\alpha]\)</span> is a basis of the eigenspace of <span class="math inline">\(\lambda\)</span>.</li>
 </ul>
-<pre><code>
-::::{#exm-}
-Find the eigenstuff of 
-
-$$
+</div>
+<div id="exm-" class="theorem example">
+<p><span class="theorem-title"><strong>Example 4.17 </strong></span>Find the eigenstuff of</p>
+<p><span class="math display">\[
 \bfA = \twomat{1}{1}{-1}{1}.
-$$
-:::{.solution}
-We start by finding eigenvalues. 
-
-$$
+\]</span></p>
+<div class="solution proof">
+<p><span class="proof-title"><em>Solution</em>. </span>We start by finding eigenvalues.</p>
+<p><span class="math display">\[
 \det(\bfA - \lambda \meye) = \twodet{1-\lambda}{1}{-1}{1-\lambda} = (1-\lambda)^2 + 1.
-$$
-
-The eigenvalues are therefore roots of $\lambda^2 - 2\lambda + 2$, or 
-
-$$
+\]</span></p>
+<p>The eigenvalues are therefore roots of <span class="math inline">\(\lambda^2 - 2\lambda + 2\)</span>, or</p>
+<p><span class="math display">\[
 \lambda = 1 \pm \sqrt{1-2} = 1 \pm i.
-$$
-
-This is our first case of a real matrix that has complex eigenvalues. We continue as always, only using complex arithmetic.
-
-The eigenspace for $\lambda_1=1+i$ is the homogeneous solution of 
-
-$$
+\]</span></p>
+<p>This is our first case of a real matrix that has complex eigenvalues. We continue as always, only using complex arithmetic.</p>
+<p>The eigenspace for <span class="math inline">\(\lambda_1=1+i\)</span> is the homogeneous solution of</p>
+<p><span class="math display">\[
 \bfA - (1+i) \meye = \twomat{-i}{1}{-1}{-i}.
-$$
-
-To find a basis we just use the first row as explained above, getting $\twovec{1}{i}$. 
-
-Since the matrix is real, a basis for the other eigenspace can be found by conjugating this one to get $\twovec{1}{-i}$.
-:::
-::::
-
-## Diagonalization 
-
-
-The eigenvalues of a matrix are the roots of its characteristic polynomial $p$. In the general $n\times n$ case, we can factor $p$ as
-
-$$
-p(z) = (z-\lambda_1)^{m_1}(z-\lambda_2)^{m_2}\cdots(z-\lambda_k)^{m_k},
-$$
-
-for positive integer exponents such that $m_1+\cdots+m_k=n$. These exponents are the multiplicities of the roots, and that idea carries to the eigenvalues as well.
-
-```{index} ! multiplicity; algebraic</code></pre>
-<p>(definition-linalg-algmult)= ::::{#def-} Algebraic multiplicity The <strong>algebraic multiplicity</strong> of an eigenvalue is its multiplicity as a root of the characteristic polynomial. ::::</p>
+\]</span></p>
+<p>To find a basis we just use the first row as explained above, getting <span class="math inline">\(\twovec{1}{i}\)</span>.</p>
+<p>Since the matrix is real, a basis for the other eigenspace can be found by conjugating this one to get <span class="math inline">\(\twovec{1}{-i}\)</span>.</p>
+</div>
+</div>
 </section>
-<section id="geometric-multiplicity" class="level3" data-number="5.9.2">
-<h3 data-number="5.9.2" class="anchored" data-anchor-id="geometric-multiplicity"><span class="header-section-number">5.9.2</span> Geometric multiplicity</h3>
-<p>The following example illustrates a possibility for eigenvalues of algebraic multiplicity greater than 1.</p>
-<p>(example-diagonalization-defective)= ::::{#exm-} Find the eigenspaces of <span class="math inline">\(\bfA=\twomat{4}{1}{0}{4}\)</span>.</p>
+</section>
+<section id="diagonalization" class="level2" data-number="4.11">
+<h2 data-number="4.11" class="anchored" data-anchor-id="diagonalization"><span class="header-section-number">4.11</span> Diagonalization</h2>
+<p>The eigenvalues of a matrix are the roots of its characteristic polynomial <span class="math inline">\(p\)</span>. In the general <span class="math inline">\(n\times n\)</span> case, we can factor <span class="math inline">\(p\)</span> as</p>
+<p><span id="eq-charpoly-factor"><span class="math display">\[
+p(z) = (z-\lambda_1)^{m_1}(z-\lambda_2)^{m_2}\cdots(z-\lambda_k)^{m_k},
+\tag{4.8}\]</span></span></p>
+<p>for positive integer exponents such that <span class="math inline">\(m_1+\cdots+m_k=n\)</span>. The easiest situation is when all of the exponents are 1, and we say each eigenvalue is <em>simple</em>. Subtle things happen when an exponent is larger than 1.</p>
+<section id="multiplicity" class="level3" data-number="4.11.1">
+<h3 data-number="4.11.1" class="anchored" data-anchor-id="multiplicity"><span class="header-section-number">4.11.1</span> Multiplicity</h3>
+<p>The exponents in <a href="#eq-charpoly-factor" class="quarto-xref">Equation&nbsp;<span>4.8</span></a> are one of two ways to define the the multiplicities of the eigenvalues.</p>
+<div id="def-linalg-algmult" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 4.17 (Algebraic multiplicity) </strong></span>The <strong>algebraic multiplicity</strong> of an eigenvalue is its multiplicity as a root of the characteristic polynomial.</p>
+</div>
+<p>The following example illustrates a peculiar possibility for eigenvalues of algebraic multiplicity greater than 1.</p>
+<div id="exm-diagonalization-defective" class="theorem example">
+<p><span class="theorem-title"><strong>Example 4.18 </strong></span>Find the eigenspaces of <span class="math inline">\(\bfA=\twomat{4}{1}{0}{4}\)</span>.</p>
 <div class="solution proof">
 <p><span class="proof-title"><em>Solution</em>. </span>The characteristic polynomial is</p>
 <p><span class="math display">\[
@@ -1226,37 +1397,44 @@ for positive integer exponents such that $m_1+\cdots+m_k=n$. These exponents are
 \]</span></p>
 <p>the eigenspace has basis <span class="math inline">\(\twovec{1}{0}\)</span>.</p>
 </div>
-<p>::::</p>
+</div>
 <p>This leads us to define a second notion of multiplicity for an eigenvalue.</p>
-<p><code>cxqfcus ! multiplicity; geometric</code></p>
-<p>(definition-linalg-geomult)= ::::{#def-} Geometric multiplicity The <strong>geometric multiplicity</strong> of an eigenvalue is the dimension of its associated eigenspace. ::::</p>
+<div id="def-linalg-geomult" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 4.18 (Geometric multiplicity) </strong></span>The <strong>geometric multiplicity</strong> of an eigenvalue is the dimension of its associated eigenspace.</p>
+</div>
 <p>Here is an important fact we won’t try to justify.</p>
 <div id="thm-" class="theorem">
-<p><span class="theorem-title"><strong>Theorem 5.11 </strong></span>If <span class="math inline">\(\text{AM}\)</span> and <span class="math inline">\(\text{GM}\)</span> are the algebraic and geometric multiplicities respectively of an eigenvalue, then</p>
+<p><span class="theorem-title"><strong>Theorem 4.22 </strong></span>If <span class="math inline">\(\text{AM}\)</span> and <span class="math inline">\(\text{GM}\)</span> are the algebraic and geometric multiplicities respectively of an eigenvalue, then</p>
 <p><span class="math display">\[
 1 \le \text{GM} \le \text{AM}.
 \]</span></p>
 </div>
 </section>
-<section id="defectiveness" class="level3" data-number="5.9.3">
-<h3 data-number="5.9.3" class="anchored" data-anchor-id="defectiveness"><span class="header-section-number">5.9.3</span> Defectiveness</h3>
-<p>In the <span class="citation" data-cites="Example">(<a href="#ref-Example" role="doc-biblioref"><strong>Example?</strong></a>)</span> {number} <example-diagonalization-defective> we found a lone eigenvalue <span class="math inline">\(\lambda_1=4\)</span> of algebraic multiplicity 2 whose geometric multiplicity is 1. The identity matrix is a different sort of example.</example-diagonalization-defective></p>
+<section id="defectiveness" class="level3" data-number="4.11.2">
+<h3 data-number="4.11.2" class="anchored" data-anchor-id="defectiveness"><span class="header-section-number">4.11.2</span> Defectiveness</h3>
+<p>In the <a href="#exm-diagonalization-defective" class="quarto-xref">Example&nbsp;<span>4.18</span></a> we found a lone eigenvalue <span class="math inline">\(\lambda_1=4\)</span> of algebraic multiplicity 2 whose geometric multiplicity is 1. The identity matrix is a different sort of example.</p>
 <div id="exm-" class="theorem example">
-<p><span class="theorem-title"><strong>Example 5.11 </strong></span>The <span class="math inline">\(2\times 2\)</span> identity matrix <span class="math inline">\(\meye\)</span> has a lone eigenvalue <span class="math inline">\(\lambda_1=1\)</span> of algebraic multiplicity 2. The system <span class="math inline">\((\meye - \meye)\bfv=\bfzero\)</span> has an RRE form that is the zero matrix, so there are two free variables and two basis vectors. Hence the geometric multiplicity of <span class="math inline">\(\lambda_1\)</span> is also 2.</p>
+<p><span class="theorem-title"><strong>Example 4.19 </strong></span>The <span class="math inline">\(2\times 2\)</span> identity matrix <span class="math inline">\(\meye\)</span> has a lone eigenvalue <span class="math inline">\(\lambda_1=1\)</span> of algebraic multiplicity 2. The system <span class="math inline">\((\meye - \meye)\bfv=\bfzero\)</span> has an RRE form that is the zero matrix, so there are two free variables and two basis vectors. Hence the geometric multiplicity of <span class="math inline">\(\lambda_1\)</span> is also 2.</p>
 </div>
 <p>The distinction between these cases is significant enough to warrant another definition.</p>
-<p><code>cxqfcus ! defective; eigenvalue, ! defective; matrix</code></p>
-<p>::::{#def-} Defectiveness An eigenvalue <span class="math inline">\(\lambda\)</span> whose geometric multiplicity is strictly less than its algebraic multiplicity is said to be <strong>defective</strong>. A matrix is called defective if any of its eigenvalues are defective. ::::</p>
+<div id="def-" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 4.19 (Defectiveness) </strong></span>An eigenvalue <span class="math inline">\(\lambda\)</span> whose geometric multiplicity is strictly less than its algebraic multiplicity is said to be <strong>defective</strong>. A matrix is called defective if any of its eigenvalues are defective.</p>
+</div>
 <p>As we will see later, defective matrices often complicate the application of eigenvalue analysis.</p>
 <p>Since multiplicities are always at least one, there is a simple and common case in which we are certain that a matrix is not defective.</p>
-<p>::::{#thm-} Distinct eigenvalues If <span class="math inline">\(\bfA\in\cmn{n}{n}\)</span> has <span class="math inline">\(n\)</span> distinct eigenvalues, then <span class="math inline">\(\bfA\)</span> is not defective. ::::</p>
+<div id="thm-" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 4.23 (Distinct eigenvalues) </strong></span>If <span class="math inline">\(\bfA\in\cmn{n}{n}\)</span> has <span class="math inline">\(n\)</span> distinct eigenvalues, then <span class="math inline">\(\bfA\)</span> is not defective.</p>
+</div>
 <p>For <span class="math inline">\(n=2\)</span>, the possibilities in the case of algebraic multiplicity equal to 2 are easy to pin down even further.</p>
-<p>(thm-la-2x2defective)= ::::{#thm-} <span class="math inline">\(2\times 2\)</span> defectiveness Any <span class="math inline">\(\bfA\in\cmn{2}{2}\)</span> that has a single repeated eigenvalue is either defective or a multiple of the identity matrix. ::::</p>
+<div id="thm-la-2x2defective" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 4.24 (<span class="math inline">\(2\times 2\)</span> defectiveness) </strong></span>Any <span class="math inline">\(\bfA\in\cmn{2}{2}\)</span> that has a single repeated eigenvalue is either defective or a multiple of the identity matrix.</p>
+</div>
 </section>
-<section id="diagonalization" class="level3" data-number="5.9.4">
-<h3 data-number="5.9.4" class="anchored" data-anchor-id="diagonalization"><span class="header-section-number">5.9.4</span> Diagonalization</h3>
+<section id="diagonalization-1" class="level3" data-number="4.11.3">
+<h3 data-number="4.11.3" class="anchored" data-anchor-id="diagonalization-1"><span class="header-section-number">4.11.3</span> Diagonalization</h3>
 <p>Suppose <span class="math inline">\(\bfA\)</span> is <span class="math inline">\(n\times n\)</span> and that it has eigenvalues <span class="math inline">\(\lambda_1,\ldots,\lambda_n\)</span> associated with linearly independent eigenvectors <span class="math inline">\(\bfv_1,\ldots,\bfv_n\)</span>. Writing out the equations <span class="math inline">\(\bfA\bfv_j = \lambda_j \bfv_j\)</span> in columns, we find</p>
 <p><span class="math display">\[
+\begin{split}
 \begin{bmatrix}
   \bfA \bfv_1 &amp; \bfA \bfv_2 &amp; \cdots &amp; \bfA \bfv_n
 \end{bmatrix}
@@ -1272,6 +1450,7 @@ for positive integer exponents such that $m_1+\cdots+m_k=n$. These exponents are
   \lambda_1 &amp; &amp; &amp; \\ &amp; \lambda_2  &amp; &amp; \\ &amp; &amp; \ddots &amp; \\ &amp; &amp; &amp; \lambda_n
 \end{bmatrix} \\
 \bfA \bfV &amp;= \bfV \mathbf{D},
+\end{split}
 \]</span></p>
 <p>where we defined</p>
 <p><span id="eq-diagonalization-VD"><span class="math display">\[
@@ -1279,16 +1458,19 @@ for positive integer exponents such that $m_1+\cdots+m_k=n$. These exponents are
 \mathbf{D} = \begin{bmatrix}
   \lambda_1 &amp; &amp; &amp; \\ &amp; \lambda_2  &amp; &amp; \\ &amp; &amp; \ddots &amp; \\ &amp; &amp; &amp; \lambda_n
 \end{bmatrix}.
-\tag{5.5}\]</span></span></p>
+\tag{4.9}\]</span></span></p>
 <p>Since we assumed that the columns of <span class="math inline">\(\bfV\)</span> are linearly independent vectors, the column space of <span class="math inline">\(\bfV\)</span> is <span class="math inline">\(n\)</span>-dimensional. Hence <span class="math inline">\(\rank(\bfV)=n\)</span> and <span class="math inline">\(\bfV\)</span> is invertible.</p>
-<p><code>cxqfcus ! diagonalization</code></p>
-<p>(definition-diagonalization-diag)= ::::{#def-} Diagonalization A <strong>diagonalization</strong> of square matrix <span class="math inline">\(\bfA\)</span> is the factorization</p>
+<div id="def-diagonalization-diag" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 4.20 (Diagonalization) </strong></span>A <strong>diagonalization</strong> of square matrix <span class="math inline">\(\bfA\)</span> is the factorization</p>
 <p><span id="eq-diagonalization-similar"><span class="math display">\[
 \bfA = \bfV \mathbf{D} \bfV^{-1},
-\tag{5.6}\]</span></span></p>
-<p>where (as defined in <a href="#eq-diagonalization-VD" class="quarto-xref">Equation&nbsp;<span>5.5</span></a>) <span class="math inline">\(\mathbf{D}\)</span> is a diagonal matix of eigenvalues and <span class="math inline">\(\bfV\)</span> is a square matrix whose columns are corresponding eigenvectors. ::::</p>
+\tag{4.10}\]</span></span></p>
+<p>where (as defined in <a href="#eq-diagonalization-VD" class="quarto-xref">Equation&nbsp;<span>4.9</span></a>) <span class="math inline">\(\mathbf{D}\)</span> is a diagonal matix of eigenvalues and <span class="math inline">\(\bfV\)</span> is a square matrix whose columns are corresponding eigenvectors.</p>
+</div>
 <p>What can we do about the requirement of linearly independent eigenvectors in the columns of <span class="math inline">\(\bfV\)</span>? Without wading into the details, the following wraps this assumption up nicely.</p>
-<p>(theorem-diagonalization-diag)= ::::{#thm-} A matrix has a diagonalization if and only if it is not defective. ::::</p>
+<div id="thm-diagonalization-diag" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 4.25 </strong></span>A matrix has a diagonalization if and only if it is not defective.</p>
+</div>
 
 
 </section>
@@ -1642,7 +1824,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./linear_algebra_systems.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Linear algebraic equations</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Linear algebraic systems</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
