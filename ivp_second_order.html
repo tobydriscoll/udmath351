@@ -308,7 +308,7 @@ MathJax = {
     \newcommand{\augmat}[2]{\left[ #1 \;\middle|\; #2 \right]}
 \]</span></p>
 </div>
-<div id="64677090" class="cell" data-execution_count="1">
+<div id="64677090" class="cell" data-execution_count="2">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Plots</span>, <span class="bu">DifferentialEquations</span></span>
@@ -573,7 +573,7 @@ x(t) = c_1 e^{\sqrt{5}\, t} + c_2 e^{-\sqrt{5}\, t}.
 </section>
 <section id="sec-second-complex" class="level2" data-number="2.3">
 <h2 data-number="2.3" class="anchored" data-anchor-id="sec-second-complex"><span class="header-section-number">2.3</span> Complex characteristic values</h2>
-<div id="4424e092" class="cell" data-execution_count="2">
+<div id="4424e092" class="cell" data-execution_count="3">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Plots</span>,<span class="bu">LaTeXStrings</span>,<span class="bu">Printf</span></span>
@@ -589,7 +589,7 @@ x(t) = c_1 e^{\sqrt{5}\, t} + c_2 e^{-\sqrt{5}\, t}.
  ## The reality of imaginary numbers (optional)
 
 
-`````btjndltv
+`````jbyfqjpc
 
 Let's rewind a bit. We can probably take for granted the positive integers 1, 2, 3, and so on, and we'll throw in zero as well, though this too was controversial for centuries. It's not long before we want to solve a problem like $x+1=0$. Annoyingly, we can pose the problem using just nonnegative integers, but we can't solve it. So we accept the existence of the negative integers.
 
@@ -724,7 +724,7 @@ $$
 along with $u(0)=1$ and $v(0)=0$. It should not take you long to confirm that $u(t)=\cos(t)$, $v(t)=\sin(t)$ is the result.
 :::: -->
 <p>Euler’s identity shows that imaginary exponents produce oscillation, rather than the growth/decay of real exponents.</p>
-<div id="2b7a8721" class="cell" data-execution_count="3">
+<div id="2b7a8721" class="cell" data-execution_count="4">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>c <span class="op">=</span> t <span class="op">-&gt;</span> <span class="fu">real</span>(<span class="fu">exp</span>(<span class="fl">1im</span><span class="op">*</span>t))</span>
@@ -739,7 +739,7 @@ along with $u(0)=1$ and $v(0)=0$. It should not take you long to confirm that $u
 </div>
 </div>
 <p>Alternatively, if we take <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> to be the real and imaginary parts of <span class="math inline">\(z=e^{it}\)</span>, then they parametrically describe a unit circle in the complex plane.</p>
-<div id="140dca49" class="cell" data-execution_count="4">
+<div id="140dca49" class="cell" data-execution_count="5">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="pp">@gif</span> <span class="cf">for</span> t <span class="kw">in</span> <span class="fu">range</span>(<span class="fl">0</span>,<span class="fl">4</span>π,length<span class="op">=</span><span class="fl">60</span>)</span>
@@ -797,7 +797,7 @@ e^{(a+i \omega)t} = e^{at} \cdot e^{i\omega t} = e^{at} \bigl[ \cos(\omega t) + 
 <section id="growing" class="level4" data-number="2.3.4.1">
 <h4 data-number="2.3.4.1" class="anchored" data-anchor-id="growing"><span class="header-section-number">2.3.4.1</span> Growing</h4>
 <p>If <span class="math inline">\(\text{Re} \lambda &gt; 0\)</span>, the magnitude of the function grows exponentially. The result is an outward spiral. The imaginary part of <span class="math inline">\(\lambda\)</span> controls the frequency or pitch of the spiral. The real and imaginary parts of <span class="math inline">\(e^{\lambda t}\)</span> oscillate between two growing real exponentials.</p>
-<div id="8ac5d0d2" class="cell" data-execution_count="5">
+<div id="8ac5d0d2" class="cell" data-execution_count="6">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="fl">0.025</span>;  ω <span class="op">=</span> <span class="fl">0.75</span>;</span>
@@ -820,7 +820,7 @@ e^{(a+i \omega)t} = e^{at} \cdot e^{i\omega t} = e^{at} \bigl[ \cos(\omega t) + 
 <section id="neutral" class="level4" data-number="2.3.4.2">
 <h4 data-number="2.3.4.2" class="anchored" data-anchor-id="neutral"><span class="header-section-number">2.3.4.2</span> Neutral</h4>
 <p>When <span class="math inline">\(\lambda\)</span> is purely imaginary, the function values stay on the unit circle in the complex plane. Taking the real and imaginary parts of <span class="math inline">\(e^{\lambda t}\)</span> gives cosine and sine, respectively.</p>
-<div id="1346df10" class="cell" data-execution_count="6">
+<div id="1346df10" class="cell" data-execution_count="7">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="fl">0</span>.;  ω <span class="op">=</span> <span class="fl">0.75</span>;</span>
@@ -843,7 +843,7 @@ e^{(a+i \omega)t} = e^{at} \cdot e^{i\omega t} = e^{at} \bigl[ \cos(\omega t) + 
 <section id="decaying" class="level4" data-number="2.3.4.3">
 <h4 data-number="2.3.4.3" class="anchored" data-anchor-id="decaying"><span class="header-section-number">2.3.4.3</span> Decaying</h4>
 <p>Finally, if <span class="math inline">\(\text{Re} \lambda &lt; 0\)</span>, the spiral is a decaying one. The real and imaginary parts are attenuated oscillations.</p>
-<div id="758b339f" class="cell" data-execution_count="7">
+<div id="758b339f" class="cell" data-execution_count="8">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="op">-</span><span class="fl">0.07</span>;  om <span class="op">=</span> <span class="fl">2.4</span>;</span>
@@ -1246,7 +1246,7 @@ x_p(t) = \frac{1}{2} t \sin(t).
 </section>
 <section id="sec-second-oscillators" class="level2" data-number="2.6">
 <h2 data-number="2.6" class="anchored" data-anchor-id="sec-second-oscillators"><span class="header-section-number">2.6</span> Oscillators</h2>
-<div id="ab5b0880" class="cell" data-execution_count="8">
+<div id="ab5b0880" class="cell" data-execution_count="9">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Plots</span>,<span class="bu">LaTeXStrings</span>,<span class="bu">Printf</span></span>
@@ -1405,7 +1405,7 @@ A = \frac{1}{\rule{0pt}{1em} \sqrt{\rule{0pt}{0.8em}(\omega_0^2-\omega^2)^2 + 4\
 \end{cases}
 \tag{2.19}\]</span></span></p>
 <p>Therefore, if the damping coefficient <span class="math inline">\(\zeta\)</span> is small but finite, we have a pseudoresonance of finite amplitude at a frequency just a bit less than the natural frequency. The following figure shows the gain as a function of driving frequency and damping when <span class="math inline">\(\omega_0=1\)</span>. The black curve shows the maximal driving frequency at any given <span class="math inline">\(\zeta\)</span>.</p>
-<div id="b2102d17" class="cell" data-execution_count="9">
+<div id="b2102d17" class="cell" data-execution_count="10">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>ω <span class="op">=</span> <span class="fu">range</span>(<span class="fl">1e-3</span>,<span class="fl">2</span>,length<span class="op">=</span><span class="fl">90</span>)</span>
