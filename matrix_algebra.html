@@ -221,13 +221,15 @@ MathJax = {
   </ul></li>
   <li><a href="#determinants" id="toc-determinants" class="nav-link" data-scroll-target="#determinants"><span class="header-section-number">4.8</span> Determinants</a>
   <ul class="collapse">
-  <li><a href="#properties-3" id="toc-properties-3" class="nav-link" data-scroll-target="#properties-3"><span class="header-section-number">4.8.1</span> Properties</a></li>
-  <li><a href="#cramers-rule" id="toc-cramers-rule" class="nav-link" data-scroll-target="#cramers-rule"><span class="header-section-number">4.8.2</span> Cramer’s Rule</a></li>
+  <li><a href="#triangular-matrices" id="toc-triangular-matrices" class="nav-link" data-scroll-target="#triangular-matrices"><span class="header-section-number">4.8.1</span> Triangular matrices</a></li>
+  <li><a href="#properties-3" id="toc-properties-3" class="nav-link" data-scroll-target="#properties-3"><span class="header-section-number">4.8.2</span> Properties</a></li>
+  <li><a href="#cramers-rule" id="toc-cramers-rule" class="nav-link" data-scroll-target="#cramers-rule"><span class="header-section-number">4.8.3</span> Cramer’s Rule</a></li>
   </ul></li>
   <li><a href="#eigenvalues" id="toc-eigenvalues" class="nav-link" data-scroll-target="#eigenvalues"><span class="header-section-number">4.9</span> Eigenvalues</a>
   <ul class="collapse">
   <li><a href="#eigenspaces" id="toc-eigenspaces" class="nav-link" data-scroll-target="#eigenspaces"><span class="header-section-number">4.9.1</span> Eigenspaces</a></li>
   <li><a href="#properties-4" id="toc-properties-4" class="nav-link" data-scroll-target="#properties-4"><span class="header-section-number">4.9.2</span> Properties</a></li>
+  <li><a href="#fundamental-theorem-redux" id="toc-fundamental-theorem-redux" class="nav-link" data-scroll-target="#fundamental-theorem-redux"><span class="header-section-number">4.9.3</span> Fundamental Theorem redux</a></li>
   </ul></li>
   <li><a href="#computing-eigenvalues" id="toc-computing-eigenvalues" class="nav-link" data-scroll-target="#computing-eigenvalues"><span class="header-section-number">4.10</span> Computing eigenvalues</a>
   <ul class="collapse">
@@ -333,7 +335,10 @@ MathJax = {
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">default</span>(label<span class="op">=</span><span class="st">""</span>, linewidth<span class="op">=</span><span class="fl">3</span>, markersize<span class="op">=</span><span class="fl">4</span>, size<span class="op">=</span>(<span class="fl">500</span>,<span class="fl">320</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p>We now dive deeply into the world of vectors and matrices. In this world, we often refer to mere numbers as <strong>scalars</strong>. That’s because they just scale every element, like in</p>
+<p>We now dive deeply into the world of vectors and matrices. There are a ton of new facts in this chapter, presented in the mathematical form of definitions and theorems so that they are stated precisely. But the terminology overlaps tremendously, and there are actually relatively few unique ideas.</p>
+<section id="elementwise-operations" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="elementwise-operations"><span class="header-section-number">4.1</span> Elementwise operations</h2>
+<p>In this game, we often refer to mere numbers as <strong>scalars</strong>. That’s because they just scale every element, like in</p>
 <p><span class="math display">\[
 c \begin{bmatrix}
 A_{11} &amp; \cdots &amp; A_{1n} \\
@@ -347,8 +352,6 @@ cA_{11} &amp; \cdots &amp; cA_{1n} \\
 cA_{m1} &amp; \cdots &amp; cA_{mn}
 \end{bmatrix}.
 \]</span></p>
-<section id="elementwise-operations" class="level2" data-number="4.1">
-<h2 data-number="4.1" class="anchored" data-anchor-id="elementwise-operations"><span class="header-section-number">4.1</span> Elementwise operations</h2>
 <p>It’s easy to add or subtract two vectors or two matrices that have the same size. Just act elementwise:</p>
 <p><span class="math display">\[
 \begin{bmatrix}
@@ -370,7 +373,20 @@ A_{m1}+B_{m1} &amp; \cdots &amp; A_{mn}+B_{mn}
 \end{bmatrix}
 \]</span></p>
 <p>We consider the operation of adding matrices of <em>different</em> sizes to be undefined.</p>
-<p>While we’re on a roll, you would probably expect that we define matrix multiplication the same way:</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Mathematically, we leave the operation of adding a scalar to a vector or matrix undefined as well, although MATLAB and NumPy will happily do that for you.</p>
+</div>
+</div>
+<p>You would probably expect that we define matrix multiplication similarly:</p>
 <p><span class="math display">\[
 \begin{bmatrix}
 A_{11} &amp; \cdots &amp; A_{1n} \\
@@ -394,7 +410,7 @@ A_{m1}B_{m1} &amp; \cdots &amp; A_{mn}B_{mn}
 </section>
 <section id="matrix-times-vector" class="level2" data-number="4.2">
 <h2 data-number="4.2" class="anchored" data-anchor-id="matrix-times-vector"><span class="header-section-number">4.2</span> Matrix times vector</h2>
-<p>The idea of linear combinations, as defined in <span class="quarto-unresolved-ref">?def-nullspace-linear-comb</span>, serves as the foundation of multiplication between a matrix and a vector.</p>
+<p>The idea of linear combinations, as defined in <a href="linear_algebra_systems.html#def-linalg-linear-comb" class="quarto-xref">Definition&nbsp;<span>3.13</span></a>, serves as the foundation of multiplication between a matrix and a vector.</p>
 <div id="def-operations-matvec" class="theorem definition">
 <p><span class="theorem-title"><strong>Definition 4.1 (Matrix times vector) </strong></span>Given <span class="math inline">\(\bfA\in\cmn{m}{n}\)</span> and <span class="math inline">\(\bfx\in\complex^{n}\)</span>, the product <span class="math inline">\(\bfA\bfx\)</span> is defined as</p>
 <p><span id="eq-operations-matvec"><span class="math display">\[
@@ -424,6 +440,20 @@ A_{m1}B_{m1} &amp; \cdots &amp; A_{mn}B_{mn}
 <p>You might recognize the “zip” expressions in this vector as dot products from vector calculus.</p>
 </div>
 </div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>We can regard a vector <span class="math inline">\(\bfx \in \real^n\)</span> as also being a matrix, in two ways: as a member of <span class="math inline">\(\rmn{1}{n}\)</span>, making it a <strong>row vector</strong>, or as a member of <span class="math inline">\(\rmn{n}{1}\)</span>, making it a <strong>column vector</strong>. Our convention is that <em>when we want to interpret a named vector as a matrix, it’s a column vector.</em></p>
+<p>However, that Python assumes a row vector, MATLAB lets you choose either, and Julia considers it a column vector. It’s a mess that can lead to frustrating errors in computer codes.</p>
+</div>
+</div>
 <section id="properties" class="level3" data-number="4.2.1">
 <h3 data-number="4.2.1" class="anchored" data-anchor-id="properties"><span class="header-section-number">4.2.1</span> Properties</h3>
 <p>What justifies calling this operation multiplication? In large part, it’s the natural distributive properties</p>
@@ -438,7 +468,7 @@ A_{m1}B_{m1} &amp; \cdots &amp; A_{mn}B_{mn}
 \bfA(\bfB\bfx) = (\bfA\bfB)\bfx,
 \]</span></p>
 <p>all of which can be checked with a little effort. It’s also true that <span class="math inline">\(\bfA(c\bfx)=c(\bfA\bfx)\)</span> for any number <span class="math inline">\(c\)</span>.</p>
-<p>However, there is a big departure from multiplication as we usually know it.</p>
+<p>But there is a major departure from multiplication as we usually know it.</p>
 <div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -456,19 +486,19 @@ Warning
 <section id="connection-to-linear-systems" class="level3" data-number="4.2.2">
 <h3 data-number="4.2.2" class="anchored" data-anchor-id="connection-to-linear-systems"><span class="header-section-number">4.2.2</span> Connection to linear systems</h3>
 <p>The following observation finally brings us back around to the introduction of linear systems through the insultingly simple scalar equation <span class="math inline">\(ax=b\)</span>.</p>
-<div class="{#thm-Ax=b}">
-<p>The linear system with coefficient matrix <span class="math inline">\(\bfA\)</span>, forcing vector <span class="math inline">\(\bfb\)</span>, and solution <span class="math inline">\(\bfx\)</span> is equivalent to the equation <span class="math inline">\(\bfA\bfx=\bfb\)</span>.</p>
+<div id="thm-Ax-eq-b" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 4.1 </strong></span>The linear system with coefficient matrix <span class="math inline">\(\bfA\)</span>, forcing vector <span class="math inline">\(\bfb\)</span>, and solution <span class="math inline">\(\bfx\)</span> is equivalent to the equation <span class="math inline">\(\bfA\bfx=\bfb\)</span>.</p>
 </div>
 <p>The following result follows quickly from our definitions.</p>
 <div id="thm-b-in-span" class="theorem">
-<p><span class="theorem-title"><strong>Theorem 4.1 </strong></span>The linear system <span class="math inline">\(\bfA\bfx=\bfb\)</span> is consistent if and only if <span class="math inline">\(\bfb\)</span> is in the span of the columns of <span class="math inline">\(\bfA\)</span>.</p>
+<p><span class="theorem-title"><strong>Theorem 4.2 </strong></span>The linear system <span class="math inline">\(\bfA\bfx=\bfb\)</span> is consistent if and only if <span class="math inline">\(\bfb\)</span> is in the span of the columns of <span class="math inline">\(\bfA\)</span>.</p>
 </div>
 </section>
 <section id="connection-to-independence" class="level3" data-number="4.2.3">
 <h3 data-number="4.2.3" class="anchored" data-anchor-id="connection-to-independence"><span class="header-section-number">4.2.3</span> Connection to independence</h3>
 <p>Because <span class="math inline">\(\bfA\bfx\)</span> is a linear combination of <span class="math inline">\(\bfA\)</span>’s columns, statements we made previously in connection with linear combinations have corresponding restatements in terms of matrix columns.</p>
 <div id="thm-dependent-columns" class="theorem">
-<p><span class="theorem-title"><strong>Theorem 4.2 </strong></span>The null space of a matrix contains nonzero vectors if and only if the columns of the matrix are linearly dependent.</p>
+<p><span class="theorem-title"><strong>Theorem 4.3 </strong></span>The null space of a matrix contains nonzero vectors if and only if the columns of the matrix are linearly dependent.</p>
 </div>
 <div class="proof">
 <p><span class="proof-title"><em>Proof</em>. </span>Vector <span class="math inline">\(\bfx\)</span> is in the nullspace of <span class="math inline">\(\bfA\)</span> if and only if <span class="math inline">\(\bfA\bfx=\bfzero\)</span>. Therefore, if <span class="math inline">\(\bfx\)</span> is nonzero, then we have a nontrivial linear combination of <span class="math inline">\(\bfA\)</span>’s columns that gives the zero vector.</p>
@@ -652,7 +682,7 @@ Note
 </div>
 </div>
 <div id="thm-" class="theorem">
-<p><span class="theorem-title"><strong>Theorem 4.3 (Multiplicative identity) </strong></span>If <span class="math inline">\(\bfA\)</span> is <span class="math inline">\(m\times n\)</span>, then <span class="math inline">\(\bfA = \meye_m \bfA = \bfA \meye_n\)</span>.</p>
+<p><span class="theorem-title"><strong>Theorem 4.4 (Multiplicative identity) </strong></span>If <span class="math inline">\(\bfA\)</span> is <span class="math inline">\(m\times n\)</span>, then <span class="math inline">\(\bfA = \meye_m \bfA = \bfA \meye_n\)</span>.</p>
 </div>
 <div id="exm-" class="theorem example">
 <p><span class="theorem-title"><strong>Example 4.3 </strong></span>Compute</p>
@@ -719,7 +749,7 @@ Note
 <h4 data-number="4.4.2.1" class="anchored" data-anchor-id="properties-2"><span class="header-section-number">4.4.2.1</span> Properties</h4>
 <p>There are some facts about inverses that we will use without justification.</p>
 <div id="thm-" class="theorem">
-<p><span class="theorem-title"><strong>Theorem 4.4 </strong></span>If <span class="math inline">\(\bfA\)</span> and <span class="math inline">\(\bfB\)</span> are square matrices, then: 1. If <span class="math inline">\(\bfA\)</span> is invertible, the inverse is unique. 2. If either <span class="math inline">\(\mathbf{Z}\bfA = \meye\)</span> or <span class="math inline">\(\bfA\mathbf{Z}=\meye\)</span> is true, then both are true and <span class="math inline">\(\mathbf{Z}=\bfA^{-1}\)</span>. 3. <span class="math inline">\((\bfA^{-1})^{-1} = \bfA\)</span>; that is, <span class="math inline">\(\bfA\)</span> is the inverse of <span class="math inline">\(\bfA^{-1}\)</span>. 4. If <span class="math inline">\(\bfA\)</span> is invertible and <span class="math inline">\(c\)</span> is a nonzero number, then <span class="math inline">\((c\bfA)^{-1}= \dfrac{1}{c}\bfA^{-1}\)</span>. 5. If <span class="math inline">\(\bfA\)</span> and <span class="math inline">\(\bfB\)</span> are invertible and the same size, then <span class="math inline">\(\bfA\bfB\)</span> is invertible, and</p>
+<p><span class="theorem-title"><strong>Theorem 4.5 </strong></span>If <span class="math inline">\(\bfA\)</span> and <span class="math inline">\(\bfB\)</span> are square matrices, then: 1. If <span class="math inline">\(\bfA\)</span> is invertible, the inverse is unique. 2. If either <span class="math inline">\(\mathbf{Z}\bfA = \meye\)</span> or <span class="math inline">\(\bfA\mathbf{Z}=\meye\)</span> is true, then both are true and <span class="math inline">\(\mathbf{Z}=\bfA^{-1}\)</span>. 3. <span class="math inline">\((\bfA^{-1})^{-1} = \bfA\)</span>; that is, <span class="math inline">\(\bfA\)</span> is the inverse of <span class="math inline">\(\bfA^{-1}\)</span>. 4. If <span class="math inline">\(\bfA\)</span> is invertible and <span class="math inline">\(c\)</span> is a nonzero number, then <span class="math inline">\((c\bfA)^{-1}= \dfrac{1}{c}\bfA^{-1}\)</span>. 5. If <span class="math inline">\(\bfA\)</span> and <span class="math inline">\(\bfB\)</span> are invertible and the same size, then <span class="math inline">\(\bfA\bfB\)</span> is invertible, and</p>
 <p><span class="math display">\[
 (\bfA\bfB)^{-1} = \bfB^{-1}\bfA^{-1}.
 \]</span></p>
@@ -795,7 +825,7 @@ Important
 <h2 data-number="4.5" class="anchored" data-anchor-id="fundamental-theorem"><span class="header-section-number">4.5</span> Fundamental Theorem</h2>
 <p>The following theorem is in every linear algebra course, but it does not have a universally accepted name.</p>
 <div id="thm-FTLA1" class="theorem">
-<p><span class="theorem-title"><strong>Theorem 4.5 (Fundamental Theorem of Linear Algebra, FTLA) </strong></span>If <span class="math inline">\(\bfA\)</span> is an <span class="math inline">\(n\times n\)</span> matrix, then each of these statements is equivalent to all of the others.</p>
+<p><span class="theorem-title"><strong>Theorem 4.6 (Fundamental Theorem of Linear Algebra, FTLA) </strong></span>If <span class="math inline">\(\bfA\)</span> is an <span class="math inline">\(n\times n\)</span> matrix, then each of these statements is equivalent to all of the others.</p>
 <ol type="1">
 <li><span class="math inline">\(\bfA\)</span> is invertible.</li>
 <li>The linear system <span class="math inline">\(\bfA\bfx=\bfb\)</span> has the unique solution <span class="math inline">\(\bfx=\bfA^{-1}\bfb\)</span> for each <span class="math inline">\(\bfb\)</span>.</li>
@@ -827,7 +857,7 @@ Note
 </section>
 <section id="computing-the-inverse" class="level2" data-number="4.6">
 <h2 data-number="4.6" class="anchored" data-anchor-id="computing-the-inverse"><span class="header-section-number">4.6</span> Computing the inverse</h2>
-<p>The solution formula <span class="math inline">\(\bfx=\bfA^{-1}\bfb\)</span> from <a href="#thm-FTLA1" class="quarto-xref">Theorem&nbsp;<span>4.5</span></a> is theoretically valuable but can be applied only if the inverse is available. In general, computing a matrix inverse is harder than doing row elimination on a linear system, so it’s not a useful algorithm.</p>
+<p>The solution formula <span class="math inline">\(\bfx=\bfA^{-1}\bfb\)</span> from <a href="#thm-FTLA1" class="quarto-xref">Theorem&nbsp;<span>4.6</span></a> is theoretically valuable but can be applied only if the inverse is available. In general, computing a matrix inverse is harder than doing row elimination on a linear system, so it’s not a useful algorithm.</p>
 <p>There are a few cases for which finding the inverse is not difficult, however.</p>
 <section id="diagonal-matrix" class="level3" data-number="4.6.1">
 <h3 data-number="4.6.1" class="anchored" data-anchor-id="diagonal-matrix"><span class="header-section-number">4.6.1</span> Diagonal matrix</h3>
@@ -836,7 +866,7 @@ Note
 </div>
 <p>If any diagonal element <span class="math inline">\(D_{ii}\)</span> is zero, then a diagonal matrix is singular. Otherwise, its inverse is trivial, thanks to how matrix multiplication is defined.</p>
 <div id="thm-linalg-inversediag" class="theorem">
-<p><span class="theorem-title"><strong>Theorem 4.6 (Inverse of a diagonal matrix) </strong></span><span id="eq-linalg-inversediag"><span class="math display">\[
+<p><span class="theorem-title"><strong>Theorem 4.7 (Inverse of a diagonal matrix) </strong></span><span id="eq-linalg-inversediag"><span class="math display">\[
 \begin{bmatrix} a_{11} &amp; &amp; &amp; \\  &amp; a_{22} &amp; &amp; \\ &amp; &amp; \ddots &amp; \\ &amp; &amp; &amp; a_{nn} \end{bmatrix}^{-1} = \begin{bmatrix} \frac{1}{a_{11}} &amp; &amp; &amp; \\  &amp; \frac{1}{a_{22}} &amp; &amp; \\ &amp; &amp; \ddots &amp; \\ &amp; &amp; &amp; \frac{1}{a_{nn}} \end{bmatrix}
 \tag{4.5}\]</span></span></p>
 </div>
@@ -845,7 +875,7 @@ Note
 <h3 data-number="4.6.2" class="anchored" data-anchor-id="times-2"><span class="header-section-number">4.6.2</span> <span class="math inline">\(2\times 2\)</span></h3>
 <p>In the <span class="math inline">\(2\times 2\)</span> case, the inverse is easy enough to memorize.</p>
 <div id="thm-linalg-inverse2by2" class="theorem">
-<p><span class="theorem-title"><strong>Theorem 4.7 (Inverse of <span class="math inline">\(2\times 2\)</span>) </strong></span><span id="eq-linalg-inverse2by2"><span class="math display">\[
+<p><span class="theorem-title"><strong>Theorem 4.8 (Inverse of <span class="math inline">\(2\times 2\)</span>) </strong></span><span id="eq-linalg-inverse2by2"><span class="math display">\[
 \begin{bmatrix} a &amp; b \\ c &amp; d \end{bmatrix}^{-1} = \frac{1}{ad-bc}\: \begin{bmatrix} d &amp; -b \\ -c &amp; a \end{bmatrix}.
 \tag{4.6}\]</span></span></p>
 <p>This formula breaks down if <span class="math inline">\(ad=bc\)</span>, in which case the matrix is singular.</p>
@@ -881,7 +911,7 @@ Note
 <p>The equation <span class="math inline">\(x+y+z=1\)</span> is also a plane in <span class="math inline">\(\real^3\)</span>, but it does not pass through the origin, so it cannot be a subspace. (It also fails closure for scaling and addition.)</p>
 </div>
 <div id="thm-subspaces-nullspace" class="theorem">
-<p><span class="theorem-title"><strong>Theorem 4.8 </strong></span>The null space of an <span class="math inline">\(m\times n\)</span> matrix is a subspace of <span class="math inline">\(\real^n\)</span>.</p>
+<p><span class="theorem-title"><strong>Theorem 4.9 </strong></span>The null space of an <span class="math inline">\(m\times n\)</span> matrix is a subspace of <span class="math inline">\(\real^n\)</span>.</p>
 </div>
 <div class="proof">
 <p><span class="proof-title"><em>Proof</em>. </span>Let <span class="math inline">\(S=\nullsp(\bfA)\)</span>. If <span class="math inline">\(\bfu\)</span> and <span class="math inline">\(\bfv\)</span> are in <span class="math inline">\(S\)</span>, then by definition, <span class="math inline">\(\bfA\bfu = \bfA\bfv = \bfzero\)</span>. Then by basic algebraic properties,</p>
@@ -892,13 +922,13 @@ Note
 </div>
 <p>There is at least one easy way to generate subspaces. The following is not hard to prove.</p>
 <div id="thm-subspaces-span" class="theorem">
-<p><span class="theorem-title"><strong>Theorem 4.9 </strong></span>If <span class="math inline">\(S=\span(\bfv_1,\ldots,\bfv_k)\)</span> for any vectors <span class="math inline">\(\bfv_j\)</span> in <span class="math inline">\(\real^n\)</span>, then <span class="math inline">\(S\)</span> is a subspace of <span class="math inline">\(\real^n\)</span>.</p>
+<p><span class="theorem-title"><strong>Theorem 4.10 </strong></span>If <span class="math inline">\(S=\span(\bfv_1,\ldots,\bfv_k)\)</span> for any vectors <span class="math inline">\(\bfv_j\)</span> in <span class="math inline">\(\real^n\)</span>, then <span class="math inline">\(S\)</span> is a subspace of <span class="math inline">\(\real^n\)</span>.</p>
 </div>
 <p>In addition to the null space, there is another important subspace closely associated with a matrix.</p>
 <div id="def-subspaces-rowcol" class="theorem definition">
 <p><span class="theorem-title"><strong>Definition 4.9 (Column space) </strong></span>Let <span class="math inline">\(\bfA\)</span> be an <span class="math inline">\(m\times n\)</span> matrix. The <strong>column space</strong> of <span class="math inline">\(\bfA\)</span>, <span class="math inline">\(\colsp(\bfA)\)</span>, is the span of the columns of <span class="math inline">\(\bfA\)</span>.</p>
 </div>
-<p>By <a href="#thm-subspaces-span" class="quarto-xref">Theorem&nbsp;<span>4.9</span></a>, <span class="math inline">\(\colsp(\bfA)\)</span> is a subspace of <span class="math inline">\(\real^m\)</span>.</p>
+<p>By <a href="#thm-subspaces-span" class="quarto-xref">Theorem&nbsp;<span>4.10</span></a>, <span class="math inline">\(\colsp(\bfA)\)</span> is a subspace of <span class="math inline">\(\real^m\)</span>.</p>
 <section id="basis" class="level3" data-number="4.7.1">
 <h3 data-number="4.7.1" class="anchored" data-anchor-id="basis"><span class="header-section-number">4.7.1</span> Basis</h3>
 <p><img src="basis-handshake.jpg" class="img-fluid"></p>
@@ -907,7 +937,7 @@ Note
 </div>
 <p>Finding a basis for a null space was demonstrated in <a href="linear_algebra_systems.html#exm-nullspace-span" class="quarto-xref">Example&nbsp;<span>3.13</span></a>. The column space is also found from the RRE form.</p>
 <div id="thm-" class="theorem">
-<p><span class="theorem-title"><strong>Theorem 4.10 </strong></span>Let <span class="math inline">\(\bfA\)</span> have RRE form with pivot columns numbered <span class="math inline">\(j_1,\ldots,j_r\)</span>. Then columns <span class="math inline">\(j_1,\ldots,j_r\)</span> of <span class="math inline">\(\bfA\)</span> are a basis for <span class="math inline">\(\colsp(\bfA)\)</span>.</p>
+<p><span class="theorem-title"><strong>Theorem 4.11 </strong></span>Let <span class="math inline">\(\bfA\)</span> have RRE form with pivot columns numbered <span class="math inline">\(j_1,\ldots,j_r\)</span>. Then columns <span class="math inline">\(j_1,\ldots,j_r\)</span> of <span class="math inline">\(\bfA\)</span> are a basis for <span class="math inline">\(\colsp(\bfA)\)</span>.</p>
 </div>
 <div id="exm-subspaces-colnull" class="theorem example">
 <p><span class="theorem-title"><strong>Example 4.8 </strong></span>Find bases for the null space and column space of</p>
@@ -959,14 +989,14 @@ Note
 <h3 data-number="4.7.2" class="anchored" data-anchor-id="dimension"><span class="header-section-number">4.7.2</span> Dimension</h3>
 <p>You have an intuitive idea of dimension, but it may seem hard to define rigorously. We’re set up to do that now, thanks to bases.</p>
 <div id="thm-subspaces-dimension" class="theorem">
-<p><span class="theorem-title"><strong>Theorem 4.11 </strong></span>Every basis for a subspace <span class="math inline">\(S\)</span> has the same number of members.</p>
+<p><span class="theorem-title"><strong>Theorem 4.12 </strong></span>Every basis for a subspace <span class="math inline">\(S\)</span> has the same number of members.</p>
 </div>
 <div id="def-subspaces-dimension" class="theorem definition">
 <p><span class="theorem-title"><strong>Definition 4.11 (Dimension) </strong></span>The <strong>dimension</strong> of a subspace <span class="math inline">\(S\)</span>, written <span class="math inline">\(\dim(S)\)</span>, is the number of vectors in any basis of <span class="math inline">\(S\)</span>.</p>
 </div>
 <p>As you would expect, <span class="math inline">\(\dim(\real^n)=n\)</span>. The only way to have <span class="math inline">\(k\)</span> independent vectors that span a subspace <span class="math inline">\(S\)</span> is if <span class="math inline">\(k=\dim(S)\)</span>. More specifically:</p>
 <div id="thm-" class="theorem">
-<p><span class="theorem-title"><strong>Theorem 4.12 </strong></span>Suppose <span class="math inline">\(V\)</span> is a set of <span class="math inline">\(k\)</span> vectors in subspace <span class="math inline">\(S\)</span>.</p>
+<p><span class="theorem-title"><strong>Theorem 4.13 </strong></span>Suppose <span class="math inline">\(V\)</span> is a set of <span class="math inline">\(k\)</span> vectors in subspace <span class="math inline">\(S\)</span>.</p>
 <ol type="1">
 <li>If <span class="math inline">\(k &lt; \dim(S)\)</span>, then <span class="math inline">\(V\)</span> cannot span <span class="math inline">\(S\)</span>.</li>
 <li>If <span class="math inline">\(k &gt; \dim(S)\)</span>, then <span class="math inline">\(V\)</span> cannot be linearly independent.</li>
@@ -981,7 +1011,7 @@ Note
 </div>
 <p>Earlier we defined rank as the number of pivot columns in the RRE form of the matrix. So now we have</p>
 <div id="thm-subspaces-rank" class="theorem">
-<p><span class="theorem-title"><strong>Theorem 4.13 </strong></span>For any <span class="math inline">\(m\times n\)</span> matrix <span class="math inline">\(\bfA\)</span>, <span class="math inline">\(\rank(\bfA)=\dim(\colsp(\bfA))\)</span>.</p>
+<p><span class="theorem-title"><strong>Theorem 4.14 </strong></span>For any <span class="math inline">\(m\times n\)</span> matrix <span class="math inline">\(\bfA\)</span>, <span class="math inline">\(\rank(\bfA)=\dim(\colsp(\bfA))\)</span>.</p>
 </div>
 <p>The dimension of the null space also gets its own name.</p>
 <div id="def-subspaces-nullity" class="theorem definition">
@@ -989,11 +1019,51 @@ Note
 </div>
 <p>Each free variable in the RRE form contributes a vector to the basis of <span class="math inline">\(\nullsp(\bfA)\)</span>. That leads to the following.</p>
 <div id="thm-subspaces-nullity" class="theorem">
-<p><span class="theorem-title"><strong>Theorem 4.14 </strong></span>For any <span class="math inline">\(m\times n\)</span> matrix <span class="math inline">\(\bfA\)</span>,</p>
+<p><span class="theorem-title"><strong>Theorem 4.15 </strong></span>For any <span class="math inline">\(m\times n\)</span> matrix <span class="math inline">\(\bfA\)</span>,</p>
 <ol type="1">
 <li><span class="math inline">\(\dim(\nullsp(\bfA))\)</span> is the number of free variables in the RRE form of <span class="math inline">\(\mathbf{A}\)</span>.</li>
 <li><span class="math inline">\(\rank(\bfA) + \nullity(\bfA) = n\)</span>.</li>
 </ol>
+</div>
+<p>Here is a table that tries to organize much of the language of the linear algebra learned so far.</p>
+<div id="tbl-linalg-related" class="anchored">
+<table class="table">
+<caption>Table&nbsp;4.1: Related statements in different areas of linear algebra</caption>
+<colgroup>
+<col style="width: 44%">
+<col style="width: 24%">
+<col style="width: 31%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Linear combinations</th>
+<th style="text-align: center;">Matrices</th>
+<th style="text-align: center;">Linear systems</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(\bfb\)</span> is a combination of columns</td>
+<td style="text-align: center;"><span class="math inline">\(\bfA \bfx = \bfb\)</span></td>
+<td style="text-align: center;">Solve <span class="math inline">\(\augmat{\bfA}{\bfb}\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">columns are dependent</td>
+<td style="text-align: center;">nontrivial <span class="math inline">\(\nullsp(\bfA)\)</span>; <span class="math inline">\(\nullity(\bfA) &gt; 0\)</span></td>
+<td style="text-align: center;">nonzero solution of <span class="math inline">\(\augmat{\bfA}{\bfzero}\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">columns are independent</td>
+<td style="text-align: center;"><span class="math inline">\(\rank(A) = \text{column size of }\bfA\)</span></td>
+<td style="text-align: center;">no free variables</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">columns are a basis</td>
+<td style="text-align: center;"><span class="math inline">\(\bfA\)</span> is square; <span class="math inline">\(\bfA^{-1}\)</span> exists</td>
+<td style="text-align: center;">unique solution; <span class="math inline">\(\bfA\)</span> reduces to <span class="math inline">\(\meye\)</span></td>
+</tr>
+</tbody>
+</table>
 </div>
 </section>
 </section>
@@ -1038,10 +1108,51 @@ Note
 \]</span></p>
 </div>
 </div>
-<section id="properties-3" class="level3" data-number="4.8.1">
-<h3 data-number="4.8.1" class="anchored" data-anchor-id="properties-3"><span class="header-section-number">4.8.1</span> Properties</h3>
+<section id="triangular-matrices" class="level3" data-number="4.8.1">
+<h3 data-number="4.8.1" class="anchored" data-anchor-id="triangular-matrices"><span class="header-section-number">4.8.1</span> Triangular matrices</h3>
+<p>There is one class of matrices for which determinants are super easy to calculate: the triangular matrices.</p>
+<div id="def-linalg-triangular" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 4.14 </strong></span>A matrix <span class="math inline">\(\bfA\)</span> is <strong>upper triangular</strong> if <span class="math inline">\(A_{ij}=0\)</span> whenever <span class="math inline">\(i&gt;j\)</span>. It is <strong>lower triangular</strong> if <span class="math inline">\(A_{ij}=0\)</span> whenever <span class="math inline">\(i&lt;j\)</span>.</p>
+</div>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A triangular matrix has to have zeros in designated elements, but its other elements may or may not be zero.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A matrix that is both upper and lower triangular is diagonal.</p>
+</div>
+</div>
+<p>The following ensues easily from cofactor expansion.</p>
+<div id="thm-det-triangular" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 4.16 </strong></span>The determinant of a triangular matrix is the product of its diagonal elements. That is,</p>
+<p><span class="math display">\[
+\det(\mathbf{T}) = \prod_{i=1}^n t_{ii}
+\]</span></p>
+<p>if <span class="math inline">\(\mathbf{T}\)</span> is triangular.</p>
+</div>
+</section>
+<section id="properties-3" class="level3" data-number="4.8.2">
+<h3 data-number="4.8.2" class="anchored" data-anchor-id="properties-3"><span class="header-section-number">4.8.2</span> Properties</h3>
 <div id="thm-" class="theorem">
-<p><span class="theorem-title"><strong>Theorem 4.15 </strong></span>Let <span class="math inline">\(\bfA\)</span> and <span class="math inline">\(\bfB\)</span> be <span class="math inline">\(n\times n\)</span>, and let <span class="math inline">\(c\)</span> be a number. Then</p>
+<p><span class="theorem-title"><strong>Theorem 4.17 </strong></span>Let <span class="math inline">\(\bfA\)</span> and <span class="math inline">\(\bfB\)</span> be <span class="math inline">\(n\times n\)</span>, and let <span class="math inline">\(c\)</span> be a number. Then</p>
 <ol type="1">
 <li><span class="math inline">\(\det(c\bfA) = c^n \det(\bfA)\)</span>,</li>
 <li><span class="math inline">\(\det(\bfA\bfB) = \det(\bfA)\det(\bfB)\)</span>,</li>
@@ -1064,13 +1175,15 @@ Note
 </div>
 </div>
 </section>
-<section id="cramers-rule" class="level3" data-number="4.8.2">
-<h3 data-number="4.8.2" class="anchored" data-anchor-id="cramers-rule"><span class="header-section-number">4.8.2</span> Cramer’s Rule</h3>
+<section id="cramers-rule" class="level3" data-number="4.8.3">
+<h3 data-number="4.8.3" class="anchored" data-anchor-id="cramers-rule"><span class="header-section-number">4.8.3</span> Cramer’s Rule</h3>
 <p>Even though a 2x2 inverse is easy, it’s still not the most convenient way to solve a linear system <span class="math inline">\(\bfA\bfx=\bfb\)</span> by hand. There is another shortcut known as <strong>Cramer’s Rule</strong>:</p>
-<span class="math display">\[\begin{split}
-x_1 &amp; = \frac{ \twodet{b_1}{a_{12}}{b_2}{a_{22}} }{ \det(\bfA) }\\[1ex]
+<p><span class="math display">\[
+\begin{split}
+x_1 &amp; = \frac{ \twodet{b_1}{a_{12}}{b_2}{a_{22}} }{ \det(\bfA) },\\[1ex]
 x_2 &amp; = \frac{ \twodet{a_{11}}{b_1}{a_{21}}{b_2} }{ \det(\bfA) }.
-\end{split}\]</span>
+\end{split}
+\]</span></p>
 <p>Obviously this does not work if <span class="math inline">\(\det(\bfA)=0\)</span>, i. e., when the matrix is singular. In that case, you have to fall back on row elimination.</p>
 <div id="exm-" class="theorem example">
 <p><span class="theorem-title"><strong>Example 4.12 </strong></span>Solve</p>
@@ -1107,7 +1220,7 @@ Important
 </div>
 <p>The importance and usefulness of the following definition won’t be apparent for a while.</p>
 <div id="def-linalg-eigen" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 4.14 (Eigenvalue and eigenvector) </strong></span>Suppose <span class="math inline">\(\bfA\in\cmn{n}{n}\)</span>. If there exist a number <span class="math inline">\(\lambda\)</span> and a nonzero vector <span class="math inline">\(\bfv\)</span> such that</p>
+<p><span class="theorem-title"><strong>Definition 4.15 (Eigenvalue and eigenvector) </strong></span>Suppose <span class="math inline">\(\bfA\in\cmn{n}{n}\)</span>. If there exist a number <span class="math inline">\(\lambda\)</span> and a nonzero vector <span class="math inline">\(\bfv\)</span> such that</p>
 <p><span class="math display">\[
 \bfA \bfv = \lambda \bfv,
 \]</span></p>
@@ -1213,10 +1326,11 @@ Important
 <p><span class="math display">\[
 \bfA(c\bfv) = c(\bfA\bfv)=c(\lambda\bfv)=\lambda(c\bfv).
 \]</span></p>
+<p>Hence:</p>
 <div id="thm-" class="theorem">
-<p><span class="theorem-title"><strong>Theorem 4.16 </strong></span>Every nonzero multiple of an eigenvector is also an eigenvector at the same eigenvalue.</p>
+<p><span class="theorem-title"><strong>Theorem 4.18 </strong></span>Every nonzero multiple of an eigenvector is also an eigenvector at the same eigenvalue.</p>
 </div>
-<p>But there can be even more ambiguity:</p>
+<p>But a simple example shows that there can be even more ambiguity.</p>
 <div id="exm-" class="theorem example">
 <p><span class="theorem-title"><strong>Example 4.13 </strong></span>Let <span class="math inline">\(\meye\)</span> be an identity matrix. Then <span class="math inline">\(\meye\bfx=\bfx\)</span> for any vector <span class="math inline">\(\bfx\)</span>, so every nonzero vector is an eigenvector!</p>
 </div>
@@ -1224,19 +1338,19 @@ Important
 <p><span class="math display">\[
 \bfzero=\bfA\bfv-\lambda\bfv=(\bfA-\lambda\meye)\bfv.
 \]</span></p>
-<p>The requirement of an eigenvector to be nonzero, combined with <a href="#thm-FTLA1" class="quarto-xref">Theorem&nbsp;<span>4.5</span></a>, leads to the following crucial conclusion.</p>
+<p>The requirement of an eigenvector to be nonzero, combined with <a href="#thm-FTLA1" class="quarto-xref">Theorem&nbsp;<span>4.6</span></a>, leads to the following crucial conclusion.</p>
 <div id="thm-eigenvalues-singular" class="theorem">
-<p><span class="theorem-title"><strong>Theorem 4.17 </strong></span><span class="math inline">\(\lambda\)</span> is an eigenvalue of <span class="math inline">\(\bfA\)</span> if and only if <span class="math inline">\(\bfA-\lambda\meye\)</span> is singular.</p>
+<p><span class="theorem-title"><strong>Theorem 4.19 </strong></span><span class="math inline">\(\lambda\)</span> is an eigenvalue of <span class="math inline">\(\bfA\)</span> if and only if <span class="math inline">\(\bfA-\lambda\meye\)</span> is singular.</p>
 </div>
 <div id="def-linalg-eigenspace" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 4.15 (Eigenspace) </strong></span>Let <span class="math inline">\(\lambda\)</span> be an eigenvalue of <span class="math inline">\(\bfA\)</span>. The <strong>eigenspace</strong> associated with <span class="math inline">\(\lambda\)</span> is the null space of <span class="math inline">\((\bfA-\lambda\meye)\bfx\)</span>.</p>
+<p><span class="theorem-title"><strong>Definition 4.16 (Eigenspace) </strong></span>Let <span class="math inline">\(\lambda\)</span> be an eigenvalue of <span class="math inline">\(\bfA\)</span>. The <strong>eigenspace</strong> associated with <span class="math inline">\(\lambda\)</span> is the null space of <span class="math inline">\((\bfA-\lambda\meye)\bfx\)</span>.</p>
 </div>
 <p>Eigenspaces, unlike eigenvectors, are uniquely associated with their eigenvalues. It’s common, though, to use eigenvectors anyway and silently ignore the nonuniqueness.</p>
 </section>
 <section id="properties-4" class="level3" data-number="4.9.2">
 <h3 data-number="4.9.2" class="anchored" data-anchor-id="properties-4"><span class="header-section-number">4.9.2</span> Properties</h3>
 <div id="thm-eigenvalues-properties" class="theorem">
-<p><span class="theorem-title"><strong>Theorem 4.18 </strong></span>Suppose <span class="math inline">\(\bfA\)</span> is a square matrix.</p>
+<p><span class="theorem-title"><strong>Theorem 4.20 </strong></span>Suppose <span class="math inline">\(\bfA\)</span> is a square matrix.</p>
 <ol type="1">
 <li>If <span class="math inline">\(\lambda\)</span> is an eigenvalue of <span class="math inline">\(\bfA\)</span>, then <span class="math inline">\(c\lambda\)</span> is an eigenvalue of <span class="math inline">\(c\bfA\)</span> with the same eigenspace.</li>
 <li>If <span class="math inline">\(\lambda\)</span> is an eigenvalue of <span class="math inline">\(\bfA\)</span>, then <span class="math inline">\(\lambda-c\)</span> is an eigenvalue of <span class="math inline">\(\bfA-c\meye\)</span> with the same eigenspace.</li>
@@ -1244,7 +1358,6 @@ Important
 <li>A matrix is singular if and only if <span class="math inline">\(0\)</span> is among its eigenvalues.</li>
 </ol>
 </div>
-<p>Formally for part 3 of the theorem, a matrix <span class="math inline">\(\bfA\)</span> is <strong>upper triangular</strong> if <span class="math inline">\(A_{ij}=0\)</span> whenever <span class="math inline">\(i&gt;j\)</span>, and it is <strong>lower triangular</strong> if <span class="math inline">\(A_{ij}=0\)</span> whenever <span class="math inline">\(i&lt;j\)</span>.</p>
 <div id="exm-eigenvalues-triangular" class="theorem example">
 <p><span class="theorem-title"><strong>Example 4.14 </strong></span>Find the eigenvalues and eigenspaces of <span class="math inline">\(\bfA = \begin{bmatrix} -2 &amp; 4 &amp; 0 \\ 0 &amp; 1 &amp; -3 \\ 0 &amp; 0 &amp; -2 \end{bmatrix}.\)</span></p>
 <div class="solution proof">
@@ -1264,15 +1377,31 @@ Important
 </div>
 </div>
 </section>
+<section id="fundamental-theorem-redux" class="level3" data-number="4.9.3">
+<h3 data-number="4.9.3" class="anchored" data-anchor-id="fundamental-theorem-redux"><span class="header-section-number">4.9.3</span> Fundamental Theorem redux</h3>
+<p>We can extend <a href="#thm-FTLA1" class="quarto-xref">Theorem&nbsp;<span>4.6</span></a> to include statements about determinants and eigenvalues.</p>
+<div id="thm-FTLA2" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 4.21 (FTLA, Extended Edition) </strong></span>If <span class="math inline">\(\bfA\)</span> is an <span class="math inline">\(n\times n\)</span> matrix, then each of these statements is equivalent to all of the others.</p>
+<ol type="1">
+<li><span class="math inline">\(\bfA\)</span> is invertible.</li>
+<li>The linear system <span class="math inline">\(\bfA\bfx=\bfb\)</span> has the unique solution <span class="math inline">\(\bfx=\bfA^{-1}\bfb\)</span> for each <span class="math inline">\(\bfb\)</span>.</li>
+<li>The null space of <span class="math inline">\(\bfA\)</span> is just <span class="math inline">\(\{\bfzero\}\)</span>.</li>
+<li>The RRE form of <span class="math inline">\(\bfA\)</span> is the identity matrix.</li>
+<li><span class="math inline">\(\rank(\bfA)=n\)</span>.</li>
+<li><span class="math inline">\(\det(\bfA)\neq 0\)</span>.</li>
+<li>None of the eigenvalues of <span class="math inline">\(\bfA\)</span> is zero.</li>
+</ol>
+</div>
+</section>
 </section>
 <section id="computing-eigenvalues" class="level2" data-number="4.10">
 <h2 data-number="4.10" class="anchored" data-anchor-id="computing-eigenvalues"><span class="header-section-number">4.10</span> Computing eigenvalues</h2>
-<p>The most common way to find eigenvalues by hand is to use the determinant to detect when <span class="math inline">\(\bfA-\lambda\meye\)</span> is singular, as required by <a href="#thm-eigenvalues-singular" class="quarto-xref">Theorem&nbsp;<span>4.17</span></a>. This determinant has a particular form and name.</p>
+<p>The most common way to find eigenvalues by hand is to use the determinant to detect when <span class="math inline">\(\bfA-\lambda\meye\)</span> is singular, as required by <a href="#thm-eigenvalues-singular" class="quarto-xref">Theorem&nbsp;<span>4.19</span></a>. This determinant has a particular form and name.</p>
 <div id="def-matrix-charpoly" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 4.16 (Characteristic polynomial of a matrix) </strong></span>Suppose <span class="math inline">\(\bfA\)</span> is an <span class="math inline">\(n\times n\)</span> matrix. The function <span class="math inline">\(p(z) = \det(\bfA-z\meye)\)</span> is a polynomial of degree <span class="math inline">\(n\)</span> in <span class="math inline">\(z\)</span> called the <strong>characteristic polynomial</strong> of <span class="math inline">\(\bfA\)</span>.</p>
+<p><span class="theorem-title"><strong>Definition 4.17 (Characteristic polynomial of a matrix) </strong></span>Suppose <span class="math inline">\(\bfA\)</span> is an <span class="math inline">\(n\times n\)</span> matrix. The function <span class="math inline">\(p(z) = \det(\bfA-z\meye)\)</span> is a polynomial of degree <span class="math inline">\(n\)</span> in <span class="math inline">\(z\)</span> called the <strong>characteristic polynomial</strong> of <span class="math inline">\(\bfA\)</span>.</p>
 </div>
 <div id="thm-" class="theorem">
-<p><span class="theorem-title"><strong>Theorem 4.19 (Computing eigenvalues and eigenspaces) </strong></span>Given an <span class="math inline">\(n\times n\)</span> matrix <span class="math inline">\(\bfA\)</span>:</p>
+<p><span class="theorem-title"><strong>Theorem 4.22 (Computing eigenvalues and eigenspaces) </strong></span>Given an <span class="math inline">\(n\times n\)</span> matrix <span class="math inline">\(\bfA\)</span>:</p>
 <ol type="1">
 <li>Find the characteristic polynomial <span class="math inline">\(p\)</span> of <span class="math inline">\(\bfA\)</span>.</li>
 <li>Let <span class="math inline">\(\lambda_1,\ldots,\lambda_k\)</span> be the distinct roots of <span class="math inline">\(p\)</span>. These are the eigenvalues. (If <span class="math inline">\(k&lt;n\)</span>, it’s because one or more roots has multiplicity greater than 1.)</li>
@@ -1304,16 +1433,19 @@ Important
 </div>
 <p>Because eigenvalues are the roots of the characteristic polynomials, real matrices can have complex eigenvalues occurring in conjugate pairs. We catch a little break from the following fact.</p>
 <div id="thm-" class="theorem">
-<p><span class="theorem-title"><strong>Theorem 4.20 </strong></span>If <span class="math inline">\(\bfv\)</span> is an eigenvector for a complex eigenvalue <span class="math inline">\(\lambda\)</span> of a real matrix, then its conjugate <span class="math inline">\(\overline{\bfv}\)</span> is an eigenvector for <span class="math inline">\(\overline{\lambda}\)</span>.</p>
+<p><span class="theorem-title"><strong>Theorem 4.23 </strong></span>If <span class="math inline">\(\bfv\)</span> is an eigenvector for a complex eigenvalue <span class="math inline">\(\lambda\)</span> of a real matrix, then its conjugate <span class="math inline">\(\overline{\bfv}\)</span> is an eigenvector for <span class="math inline">\(\overline{\lambda}\)</span>.</p>
 </div>
 <div id="exm-eigenvalues-complex" class="theorem example">
 <p><span class="theorem-title"><strong>Example 4.16 </strong></span>Find eigenvalues and eigenspaces of <span class="math inline">\(\bfA = \begin{bmatrix} 0 &amp; 0 &amp; 6 \\ 0 &amp; 0 &amp; -3 \\ -3 &amp; -3 &amp; 0 \end{bmatrix}.\)</span></p>
 <div class="solution proof">
 <p><span class="proof-title"><em>Solution</em>. </span><span class="math display">\[
-\det(\bfA - z\meye) = \begin{vmatrix}
+\begin{split}
+\det(\bfA - z\meye) &amp; = \begin{vmatrix}
   -z &amp; 0 &amp; 6 \\ 0 &amp; -z &amp; -3 \\ -3 &amp; -3 &amp; -z
-\end{vmatrix}
-= -z(z^2-9) + 6(-3z) = -z(z^2+18-9) = -z(z+3i)(z-3i),
+\end{vmatrix} \\
+&amp; = -z(z^2-9) + 6(-3z) \\
+&amp; = -z(z^2+18-9) = -z(z+3i)(z-3i),
+\end{split}
 \]</span></p>
 <p>which gives us <span class="math inline">\(\lambda_1=0\)</span>, <span class="math inline">\(\lambda_2=3i\)</span>, <span class="math inline">\(\lambda_3=-3i\)</span>.</p>
 <p>The eigenspace for <span class="math inline">\(\lambda_1\)</span> is the null space of</p>
@@ -1339,7 +1471,7 @@ Important
 <p>Suppose <span class="math inline">\(\lambda\)</span> is known to be an eigenvalue of <span class="math inline">\(\bfA\)</span>. Then <span class="math inline">\(\bfA-\lambda\meye\)</span> must be singular, and its RRE form has at least one free column. In the <span class="math inline">\(2\times 2\)</span> case, row elimination must therefore zero out the second row entirely, which spares us from having to do the process at all.</p>
 <p>In summary, we can deduce the following.</p>
 <div id="thm-" class="theorem">
-<p><span class="theorem-title"><strong>Theorem 4.21 (Eigenvectors for <span class="math inline">\(2\times 2\)</span>) </strong></span>Given an eigenvalue <span class="math inline">\(\lambda\)</span> of <span class="math inline">\(2\times 2\)</span> matrix <span class="math inline">\(\bfA\)</span>, let the first row of <span class="math inline">\(\bfA-\lambda\meye\)</span> be written as the vector <span class="math inline">\([\alpha,\beta]\)</span>.</p>
+<p><span class="theorem-title"><strong>Theorem 4.24 (Eigenvectors for <span class="math inline">\(2\times 2\)</span>) </strong></span>Given an eigenvalue <span class="math inline">\(\lambda\)</span> of <span class="math inline">\(2\times 2\)</span> matrix <span class="math inline">\(\bfA\)</span>, let the first row of <span class="math inline">\(\bfA-\lambda\meye\)</span> be written as the vector <span class="math inline">\([\alpha,\beta]\)</span>.</p>
 <ul>
 <li>If <span class="math inline">\(\alpha=\beta=0\)</span>, then <span class="math inline">\(\bfA-\lambda\meye\)</span> is a zero matrix and all of <span class="math inline">\(\complex^2\)</span> is the eigenspace of <span class="math inline">\(\lambda\)</span>.</li>
 <li>Otherwise, the vector <span class="math inline">\([\beta;\,-\alpha]\)</span> is a basis of the eigenspace of <span class="math inline">\(\lambda\)</span>.</li>
@@ -1381,7 +1513,7 @@ p(z) = (z-\lambda_1)^{m_1}(z-\lambda_2)^{m_2}\cdots(z-\lambda_k)^{m_k},
 <h3 data-number="4.11.1" class="anchored" data-anchor-id="multiplicity"><span class="header-section-number">4.11.1</span> Multiplicity</h3>
 <p>The exponents in <a href="#eq-charpoly-factor" class="quarto-xref">Equation&nbsp;<span>4.8</span></a> are one of two ways to define the the multiplicities of the eigenvalues.</p>
 <div id="def-linalg-algmult" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 4.17 (Algebraic multiplicity) </strong></span>The <strong>algebraic multiplicity</strong> of an eigenvalue is its multiplicity as a root of the characteristic polynomial.</p>
+<p><span class="theorem-title"><strong>Definition 4.18 (Algebraic multiplicity) </strong></span>The <strong>algebraic multiplicity</strong> of an eigenvalue is its multiplicity as a root of the characteristic polynomial.</p>
 </div>
 <p>The following example illustrates a peculiar possibility for eigenvalues of algebraic multiplicity greater than 1.</p>
 <div id="exm-diagonalization-defective" class="theorem example">
@@ -1400,11 +1532,11 @@ p(z) = (z-\lambda_1)^{m_1}(z-\lambda_2)^{m_2}\cdots(z-\lambda_k)^{m_k},
 </div>
 <p>This leads us to define a second notion of multiplicity for an eigenvalue.</p>
 <div id="def-linalg-geomult" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 4.18 (Geometric multiplicity) </strong></span>The <strong>geometric multiplicity</strong> of an eigenvalue is the dimension of its associated eigenspace.</p>
+<p><span class="theorem-title"><strong>Definition 4.19 (Geometric multiplicity) </strong></span>The <strong>geometric multiplicity</strong> of an eigenvalue is the dimension of its associated eigenspace.</p>
 </div>
 <p>Here is an important fact we won’t try to justify.</p>
 <div id="thm-" class="theorem">
-<p><span class="theorem-title"><strong>Theorem 4.22 </strong></span>If <span class="math inline">\(\text{AM}\)</span> and <span class="math inline">\(\text{GM}\)</span> are the algebraic and geometric multiplicities respectively of an eigenvalue, then</p>
+<p><span class="theorem-title"><strong>Theorem 4.25 </strong></span>If <span class="math inline">\(\text{AM}\)</span> and <span class="math inline">\(\text{GM}\)</span> are the algebraic and geometric multiplicities respectively of an eigenvalue, then</p>
 <p><span class="math display">\[
 1 \le \text{GM} \le \text{AM}.
 \]</span></p>
@@ -1418,16 +1550,16 @@ p(z) = (z-\lambda_1)^{m_1}(z-\lambda_2)^{m_2}\cdots(z-\lambda_k)^{m_k},
 </div>
 <p>The distinction between these cases is significant enough to warrant another definition.</p>
 <div id="def-" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 4.19 (Defectiveness) </strong></span>An eigenvalue <span class="math inline">\(\lambda\)</span> whose geometric multiplicity is strictly less than its algebraic multiplicity is said to be <strong>defective</strong>. A matrix is called defective if any of its eigenvalues are defective.</p>
+<p><span class="theorem-title"><strong>Definition 4.20 (Defectiveness) </strong></span>An eigenvalue <span class="math inline">\(\lambda\)</span> whose geometric multiplicity is strictly less than its algebraic multiplicity is said to be <strong>defective</strong>. A matrix is called defective if any of its eigenvalues are defective.</p>
 </div>
 <p>As we will see later, defective matrices often complicate the application of eigenvalue analysis.</p>
 <p>Since multiplicities are always at least one, there is a simple and common case in which we are certain that a matrix is not defective.</p>
 <div id="thm-" class="theorem">
-<p><span class="theorem-title"><strong>Theorem 4.23 (Distinct eigenvalues) </strong></span>If <span class="math inline">\(\bfA\in\cmn{n}{n}\)</span> has <span class="math inline">\(n\)</span> distinct eigenvalues, then <span class="math inline">\(\bfA\)</span> is not defective.</p>
+<p><span class="theorem-title"><strong>Theorem 4.26 (Distinct eigenvalues) </strong></span>If <span class="math inline">\(\bfA\in\cmn{n}{n}\)</span> has <span class="math inline">\(n\)</span> distinct eigenvalues, then <span class="math inline">\(\bfA\)</span> is not defective.</p>
 </div>
 <p>For <span class="math inline">\(n=2\)</span>, the possibilities in the case of algebraic multiplicity equal to 2 are easy to pin down even further.</p>
 <div id="thm-la-2x2defective" class="theorem">
-<p><span class="theorem-title"><strong>Theorem 4.24 (<span class="math inline">\(2\times 2\)</span> defectiveness) </strong></span>Any <span class="math inline">\(\bfA\in\cmn{2}{2}\)</span> that has a single repeated eigenvalue is either defective or a multiple of the identity matrix.</p>
+<p><span class="theorem-title"><strong>Theorem 4.27 (<span class="math inline">\(2\times 2\)</span> defectiveness) </strong></span>Any <span class="math inline">\(\bfA\in\cmn{2}{2}\)</span> that has a single repeated eigenvalue is either defective or a multiple of the identity matrix.</p>
 </div>
 </section>
 <section id="diagonalization-1" class="level3" data-number="4.11.3">
@@ -1461,7 +1593,7 @@ p(z) = (z-\lambda_1)^{m_1}(z-\lambda_2)^{m_2}\cdots(z-\lambda_k)^{m_k},
 \tag{4.9}\]</span></span></p>
 <p>Since we assumed that the columns of <span class="math inline">\(\bfV\)</span> are linearly independent vectors, the column space of <span class="math inline">\(\bfV\)</span> is <span class="math inline">\(n\)</span>-dimensional. Hence <span class="math inline">\(\rank(\bfV)=n\)</span> and <span class="math inline">\(\bfV\)</span> is invertible.</p>
 <div id="def-diagonalization-diag" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 4.20 (Diagonalization) </strong></span>A <strong>diagonalization</strong> of square matrix <span class="math inline">\(\bfA\)</span> is the factorization</p>
+<p><span class="theorem-title"><strong>Definition 4.21 (Diagonalization) </strong></span>A <strong>diagonalization</strong> of square matrix <span class="math inline">\(\bfA\)</span> is the factorization</p>
 <p><span id="eq-diagonalization-similar"><span class="math display">\[
 \bfA = \bfV \mathbf{D} \bfV^{-1},
 \tag{4.10}\]</span></span></p>
@@ -1469,7 +1601,7 @@ p(z) = (z-\lambda_1)^{m_1}(z-\lambda_2)^{m_2}\cdots(z-\lambda_k)^{m_k},
 </div>
 <p>What can we do about the requirement of linearly independent eigenvectors in the columns of <span class="math inline">\(\bfV\)</span>? Without wading into the details, the following wraps this assumption up nicely.</p>
 <div id="thm-diagonalization-diag" class="theorem">
-<p><span class="theorem-title"><strong>Theorem 4.25 </strong></span>A matrix has a diagonalization if and only if it is not defective.</p>
+<p><span class="theorem-title"><strong>Theorem 4.28 </strong></span>A matrix has a diagonalization if and only if it is not defective.</p>
 </div>
 
 
