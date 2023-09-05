@@ -165,10 +165,6 @@ $$
 and the right-side vector is $\twovec{4}{-1}$.
 ::::
 
-:::{.callout-note}
-We can regard a vector $\bfx \in \real^n$ as also being a matrix, in two ways: as a member of $\rmn{1}{n}$, making it a **row vector**, or as a member of $\rmn{n}{1}$, making it a **column vector**. Our default is that when we want to interpret a named vector as a matrix, it's a column vector. Note, however, that Python assumes a row vector, MATLAB lets you choose either, and Julia considers it a column vector. It's a mess that can lead to frustrating errors in computer codes.
-:::
-
 ## Row elimination
 
 You've probably solved small systems of equations by substitution. In order to solve systems with more equations and variables, we systematize this idea as an *elimination algorithm*. The goal of elimination is to transform the system to an equivalent one whose solution(s) we can deduce easily. There are three legal moves in this game:

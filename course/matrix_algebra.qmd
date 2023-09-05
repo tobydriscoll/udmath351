@@ -27,7 +27,11 @@ using Plots, LinearAlgebra, LaTeXStrings
 default(label="", linewidth=3, markersize=4, size=(500,320))
 ```
 
-We now dive deeply into the world of vectors and matrices. In this world, we often refer to mere numbers as **scalars**. That's because they just scale every element, like in
+We now dive deeply into the world of vectors and matrices. There are a ton of new facts in this chapter, presented in the mathematical form of definitions and theorems so that they are stated precisely. But the terminology overlaps tremendously, and there are actually relatively few unique ideas. 
+
+## Elementwise operations
+
+In this game, we often refer to mere numbers as **scalars**. That's because they just scale every element, like in
 
 $$
 c \begin{bmatrix}
@@ -42,9 +46,6 @@ cA_{11} & \cdots & cA_{1n} \\
 cA_{m1} & \cdots & cA_{mn}
 \end{bmatrix}.
 $$
-
-
-## Elementwise operations
 
 It's easy to add or subtract two vectors or two matrices that have the same size. Just act elementwise:
 
@@ -68,9 +69,13 @@ A_{m1}+B_{m1} & \cdots & A_{mn}+B_{mn}
 \end{bmatrix}
 $$
 
-We consider the operation of adding matrices of *different* sizes to be undefined.
+We consider the operation of adding matrices of *different* sizes to be undefined. 
 
-While we're on a roll, you would probably expect that we define matrix multiplication the same way:
+::: {.callout-note}
+Mathematically, we leave the operation of adding a scalar to a vector or matrix undefined as well, although MATLAB and NumPy will happily do that for you.
+:::
+
+You would probably expect that we define matrix multiplication similarly:
 
 $$
 \begin{bmatrix}
@@ -96,7 +101,7 @@ But we don't! OK, *technically* this is called a Hadamard product, and it has so
 
 ## Matrix times vector
 
-The idea of linear combinations, as defined in @def-nullspace-linear-comb, serves as the foundation of multiplication between a matrix and a vector.
+The idea of linear combinations, as defined in @def-linalg-linear-comb, serves as the foundation of multiplication between a matrix and a vector.
 
 ::::{#def-operations-matvec}
 # Matrix times vector
@@ -140,6 +145,12 @@ You might recognize the "zip" expressions in this vector as dot products from ve
 :::
 ::::
 
+:::{.callout-note}
+We can regard a vector $\bfx \in \real^n$ as also being a matrix, in two ways: as a member of $\rmn{1}{n}$, making it a **row vector**, or as a member of $\rmn{n}{1}$, making it a **column vector**. Our convention is that *when we want to interpret a named vector as a matrix, it's a column vector.* 
+
+However, that Python assumes a row vector, MATLAB lets you choose either, and Julia considers it a column vector. It's a mess that can lead to frustrating errors in computer codes.
+:::
+
 ### Properties
 
 What justifies calling this operation multiplication? In large part, it's the natural distributive properties
@@ -159,7 +170,7 @@ $$
 
 all of which can be checked with a little effort. It's also true that $\bfA(c\bfx)=c(\bfA\bfx)$ for any number $c$. 
 
-However, there is a big departure from multiplication as we usually know it.
+But there is a major departure from multiplication as we usually know it.
 
 :::{.callout-warning}
 Matrix-vector products are not commutative. In fact, $\bfx\bfA$ is not defined even when $\bfA\bfx$ is.
@@ -169,7 +180,7 @@ Matrix-vector products are not commutative. In fact, $\bfx\bfA$ is not defined e
 
 The following observation finally brings us back around to the introduction of linear systems through the insultingly simple scalar equation $ax=b$. 
 
-::::{#thm-Ax=b}
+::::{#thm-Ax-eq-b}
 The linear system with coefficient matrix $\bfA$, forcing vector $\bfb$, and solution $\bfx$ is equivalent to the equation $\bfA\bfx=\bfb$.
 ::::
 
@@ -760,6 +771,18 @@ For any $m\times n$ matrix $\bfA$,
 2. $\rank(\bfA) + \nullity(\bfA) = n$.
 ::::
 
+
+Here is a table that tries to organize much of the language of the linear algebra learned so far. 
+
+| Linear combinations | Matrices | Linear systems | 
+|:------------------:|:---------:|:------------:|
+| $\bfb$ is a combination of columns | $\bfA \bfx = \bfb$ | Solve $\augmat{\bfA}{\bfb}$ | 
+| columns are dependent |  nontrivial $\nullsp(\bfA)$; $\nullity(\bfA) > 0$ | nonzero solution of $\augmat{\bfA}{\bfzero}$ |
+| columns are independent | $\rank(A) = \text{column size of }\bfA$ | no free variables  | 
+| columns are a basis |  $\bfA$ is square; $\bfA^{-1}$ exists | unique solution; $\bfA$ reduces to $\meye$ |
+
+: Related statements in different areas of linear algebra {#tbl-linalg-related}
+
 ## Determinants
 
 There are many ways to characterize singular matrices, but only a few of them are computationally attractive. One that stands out is a function of square matrices called the **determinant**. (You probably saw some $2\times 2$ and $3\times 3$ determinants in vector calculus. This is the same thing.)
@@ -817,6 +840,35 @@ $$
 :::
 ::::
 
+### Triangular matrices 
+
+There is one class of matrices for which determinants are super easy to calculate: the triangular matrices.
+
+::::{#def-linalg-triangular}
+A matrix $\bfA$ is **upper triangular** if $A_{ij}=0$ whenever $i>j$. It is **lower triangular** if $A_{ij}=0$ whenever $i<j$.
+::::
+
+::: {.callout-important}
+A triangular matrix has to have zeros in designated elements, but its other elements may or may not be zero.
+:::
+
+::: {.callout-note}
+A matrix that is both upper and lower triangular is diagonal.
+:::
+
+The following ensues easily from cofactor expansion.
+
+::::{#thm-det-triangular}
+The determinant of a triangular matrix is the product of its diagonal elements. That is,
+
+$$
+\det(\mathbf{T}) = \prod_{i=1}^n t_{ii}
+$$
+
+if $\mathbf{T}$ is triangular.
+::::
+
+
 ### Properties
 
 ::::{#thm-}
@@ -838,10 +890,12 @@ The determinant is often the easiest way to check by hand for the invertibility 
 
 Even though a 2x2 inverse is easy, it's still not the most convenient way to solve a linear system $\bfA\bfx=\bfb$ by hand. There is another shortcut known as **Cramer's Rule**:
 
+$$
 \begin{split}
-x_1 & = \frac{ \twodet{b_1}{a_{12}}{b_2}{a_{22}} }{ \det(\bfA) }\\[1ex]
+x_1 & = \frac{ \twodet{b_1}{a_{12}}{b_2}{a_{22}} }{ \det(\bfA) },\\[1ex]
 x_2 & = \frac{ \twodet{a_{11}}{b_1}{a_{21}}{b_2} }{ \det(\bfA) }.
 \end{split}
+$$
 
 Obviously this does not work if $\det(\bfA)=0$, i. e., when the matrix is singular. In that case, you have to fall back on row elimination.
 
@@ -926,11 +980,13 @@ $$
 \bfA(c\bfv) = c(\bfA\bfv)=c(\lambda\bfv)=\lambda(c\bfv).
 $$
 
+Hence:
+
 :::{#thm-}
 Every nonzero multiple of an eigenvector is also an eigenvector at the same eigenvalue.
 :::
 
-But there can be even more ambiguity:
+But a simple example shows that there can be even more ambiguity.
 
 ::::{#exm-}
 Let $\meye$ be an identity matrix. Then $\meye\bfx=\bfx$ for any vector $\bfx$, so every nonzero vector is an eigenvector!
@@ -966,8 +1022,6 @@ Suppose $\bfA$ is a square matrix.
 4. A matrix is singular if and only if $0$ is among its eigenvalues.
 ::::
 
-Formally for part 3 of the theorem, a matrix $\bfA$ is **upper triangular** if $A_{ij}=0$ whenever $i>j$, and it is **lower triangular** if $A_{ij}=0$ whenever $i<j$.
-
 ::::{#exm-eigenvalues-triangular} 
 Find the eigenvalues and eigenspaces of 
 $\bfA = \begin{bmatrix} -2 & 4 & 0 \\ 0 & 1 & -3 \\ 0 & 0 & -2 \end{bmatrix}.$
@@ -992,6 +1046,24 @@ $$
 A basis for this eigenspace is $[\frac{4}{3},1,0]$, though a more convenient choice is $[4,3,0]$.
 :::
 ::::
+
+### Fundamental Theorem redux
+
+We can extend @thm-FTLA1 to include statements about determinants and eigenvalues.
+
+::::{#thm-FTLA2} 
+# FTLA, Extended Edition
+If $\bfA$ is an $n\times n$ matrix, then each of these statements is equivalent to all of the others.
+
+1. $\bfA$ is invertible.
+2. The linear system $\bfA\bfx=\bfb$ has the unique solution $\bfx=\bfA^{-1}\bfb$ for each $\bfb$.
+3. The null space of $\bfA$ is just $\{\bfzero\}$.
+4. The RRE form of $\bfA$ is the identity matrix.
+5. $\rank(\bfA)=n$.
+6. $\det(\bfA)\neq 0$. 
+7. None of the eigenvalues of $\bfA$ is zero.
+::::
+
 
 ## Computing eigenvalues 
 
@@ -1057,10 +1129,13 @@ Find eigenvalues and eigenspaces of $\bfA = \begin{bmatrix} 0 & 0 & 6 \\ 0 & 0 &
 :::{.solution}
 
 $$
-\det(\bfA - z\meye) = \begin{vmatrix}
+\begin{split}
+\det(\bfA - z\meye) & = \begin{vmatrix}
   -z & 0 & 6 \\ 0 & -z & -3 \\ -3 & -3 & -z
-\end{vmatrix}
-= -z(z^2-9) + 6(-3z) = -z(z^2+18-9) = -z(z+3i)(z-3i),
+\end{vmatrix} \\
+& = -z(z^2-9) + 6(-3z) \\
+& = -z(z^2+18-9) = -z(z+3i)(z-3i),
+\end{split}
 $$
 
 which gives us $\lambda_1=0$, $\lambda_2=3i$, $\lambda_3=-3i$. 
