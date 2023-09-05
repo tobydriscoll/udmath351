@@ -593,7 +593,7 @@ $$
 |x(t)|=A e^{t^2},
 $$ 
 
-where $A$ must be positive, since it is the exponential of a real $C$. Taking the absolute value off of $x$, however, is the same as allowing $A$ to be negative as well. Note also that $A=0$ clearly leads to the constant solution $x(t)\equiv 0$. Therefore, we finally,conclude that $x=B e^{t^2}$ for an arbitrary $B$.
+where $A$ must be positive, since it is the exponential of a real $C$. Taking the absolute value off of $x$, however, is the same as allowing $A$ to be negative as well. Note also that $A=0$ clearly leads to the constant solution $x(t)\equiv 0$. Therefore, we finally conclude that $x=B e^{t^2}$ for an arbitrary $B$.
 :::
 ::::
 
@@ -1146,7 +1146,7 @@ You should probably skip this section. You don't need it.
 
 Textbooks be like:
 
-![integrating factor meme](integrating_factor.jpg)
+![](integrating_factor.jpg)
 
 A different process for arriving at the solution to a linear first-order ODE goes by the name of the **integrating factor**. Mathematically and computationally, it's identical to @thm-linear-solve, but organized slightly differently. 
 
