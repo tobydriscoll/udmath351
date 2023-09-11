@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.315">
+<meta name="generator" content="quarto-1.4.339">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -180,6 +180,12 @@ MathJax = {
  <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Matrix algebra</span></span></a>
   </div>
 </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ode_systems.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Systems of ODEs</span></span></a>
+  </div>
+</li>
     </ul>
     </div>
 <div class="quarto-sidebar-footer"><div class="sidebar-footer-item">
@@ -197,6 +203,7 @@ MathJax = {
   <li><a href="#independence" id="toc-independence" class="nav-link" data-scroll-target="#independence"><span class="header-section-number">2.1.1</span> Independence</a></li>
   <li><a href="#wronskian" id="toc-wronskian" class="nav-link" data-scroll-target="#wronskian"><span class="header-section-number">2.1.2</span> Wronskian</a></li>
   <li><a href="#general-solution" id="toc-general-solution" class="nav-link" data-scroll-target="#general-solution"><span class="header-section-number">2.1.3</span> General solution</a></li>
+  <li><a href="#constant-coefficients" id="toc-constant-coefficients" class="nav-link" data-scroll-target="#constant-coefficients"><span class="header-section-number">2.1.4</span> Constant coefficients</a></li>
   </ul></li>
   <li><a href="#sec-second-const_coeff" id="toc-sec-second-const_coeff" class="nav-link" data-scroll-target="#sec-second-const_coeff"><span class="header-section-number">2.2</span> Homogeneous solutions</a>
   <ul class="collapse">
@@ -254,7 +261,9 @@ MathJax = {
     \newcommand{\integer}{\mathbb{Z}}
     \newcommand{\bfa}{\mathbf{a}}
     \newcommand{\bfb}{\mathbf{b}}
+    \newcommand{\bfc}{\mathbf{c}}
     \newcommand{\bfe}{\mathbf{e}}
+    \newcommand{\bff}{\mathbf{f}}
     \newcommand{\bfh}{\mathbf{h}}
     \newcommand{\bfp}{\mathbf{p}}
     \newcommand{\bfq}{\mathbf{q}}
@@ -266,9 +275,12 @@ MathJax = {
     \newcommand{\bfz}{\mathbf{z}}
     \newcommand{\bfA}{\mathbf{A}}
     \newcommand{\bfB}{\mathbf{B}}
+    \newcommand{\bfD}{\mathbf{D}}
+    \newcommand{\bfE}{\mathbf{E}}
     \newcommand{\bfV}{\mathbf{V}}
     \newcommand{\bfW}{\mathbf{W}}
     \newcommand{\bfX}{\mathbf{X}}
+    \newcommand{\fundm}{\boldsymbol{\Phi}}
     \newcommand{\bfzero}{\boldsymbol{0}}
     \newcommand{\bfmu}{\boldsymbol{\mu}}
     \newcommand{\opA}{\mathcal{A}}
@@ -472,10 +484,9 @@ x(t) = x_h(t) + x_p(t),
 <p>where <span class="math inline">\(x_h\)</span> is the general homogeneous solution and <span class="math inline">\(x_p\)</span> is any one particular solution of <span class="math inline">\(\opA[x]=f\)</span>.</p>
 </div>
 </section>
-</section>
-<section id="sec-second-const_coeff" class="level2" data-number="2.2">
-<h2 data-number="2.2" class="anchored" data-anchor-id="sec-second-const_coeff"><span class="header-section-number">2.2</span> Homogeneous solutions</h2>
-<p>The linear second-order problem <span class="math inline">\(\opA[x]=f\)</span> has a nice structure, but only a few such problems are straightforward to solve. We will now, and for the rest of the chapter, limit ourselves to a realistic target.</p>
+<section id="constant-coefficients" class="level3" data-number="2.1.4">
+<h3 data-number="2.1.4" class="anchored" data-anchor-id="constant-coefficients"><span class="header-section-number">2.1.4</span> Constant coefficients</h3>
+<p>The general linear second-order problem <span class="math inline">\(\opA[x]=f\)</span> has the structure described above, but only a few such problems are straightforward to solve. When it comes to actually finding solutions, we will limit ourselves to a friendly subset of problems:</p>
 <div id="def-second-cc" class="theorem definition">
 <p><span class="theorem-title"><strong>Definition 2.5 </strong></span>The second-order linear <strong>constant-coefficient</strong> problem is <span id="eq-second-cc-def"><span class="math display">\[
 x'' + bx' + k x = f(t),
@@ -495,6 +506,10 @@ Note
 <p>In <a href="#eq-second-cc-def" class="quarto-xref">Equation&nbsp;<span>2.3</span></a> the coefficient <span class="math inline">\(b\)</span> has units <span class="math inline">\(1/T\)</span>, the coefficient <span class="math inline">\(k\)</span> has units <span class="math inline">\(1/T^2\)</span>, and <span class="math inline">\(f(t)\)</span> has units <span class="math inline">\(X/T^2\)</span>, where <span class="math inline">\(X\)</span> and <span class="math inline">\(T\)</span> are the units of <span class="math inline">\(x\)</span> and <span class="math inline">\(t\)</span>, respectively.</p>
 </div>
 </div>
+</section>
+</section>
+<section id="sec-second-const_coeff" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="sec-second-const_coeff"><span class="header-section-number">2.2</span> Homogeneous solutions</h2>
 <p>We start with solutions of the homogeneous equation</p>
 <p><span class="math display">\[
 x'' + b x' +  k x = 0.
@@ -589,7 +604,7 @@ x(t) = c_1 e^{\sqrt{5}\, t} + c_2 e^{-\sqrt{5}\, t}.
  ## The reality of imaginary numbers (optional)
 
 
-`````gqvwzrgs
+`````yplvrljq
 
 Let's rewind a bit. We can probably take for granted the positive integers 1, 2, 3, and so on, and we'll throw in zero as well, though this too was controversial for centuries. It's not long before we want to solve a problem like $x+1=0$. Annoyingly, we can pose the problem using just nonnegative integers, but we can't solve it. So we accept the existence of the negative integers.
 
