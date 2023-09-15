@@ -216,6 +216,7 @@ MathJax = {
   <li><a href="#polar-form" id="toc-polar-form" class="nav-link" data-scroll-target="#polar-form"><span class="header-section-number">2.3.3</span> Polar form</a></li>
   <li><a href="#complex-exponentials" id="toc-complex-exponentials" class="nav-link" data-scroll-target="#complex-exponentials"><span class="header-section-number">2.3.4</span> Complex exponentials</a></li>
   <li><a href="#homogeneous-solutions" id="toc-homogeneous-solutions" class="nav-link" data-scroll-target="#homogeneous-solutions"><span class="header-section-number">2.3.5</span> Homogeneous solutions</a></li>
+  <li><a href="#fully-real-version" id="toc-fully-real-version" class="nav-link" data-scroll-target="#fully-real-version"><span class="header-section-number">2.3.6</span> Fully real version</a></li>
   </ul></li>
   <li><a href="#sec-second-vop" id="toc-sec-second-vop" class="nav-link" data-scroll-target="#sec-second-vop"><span class="header-section-number">2.4</span> Variation of parameters</a></li>
   <li><a href="#undetermined-coefficients" id="toc-undetermined-coefficients" class="nav-link" data-scroll-target="#undetermined-coefficients"><span class="header-section-number">2.5</span> Undetermined coefficients</a>
@@ -606,7 +607,7 @@ x(t) = c_1 e^{\sqrt{5}\, t} + c_2 e^{-\sqrt{5}\, t}.
  ## The reality of imaginary numbers (optional)
 
 
-`````yhqablwa
+`````jiobyfua
 
 Let's rewind a bit. We can probably take for granted the positive integers 1, 2, 3, and so on, and we'll throw in zero as well, though this too was controversial for centuries. It's not long before we want to solve a problem like $x+1=0$. Annoyingly, we can pose the problem using just nonnegative integers, but we can't solve it. So we accept the existence of the negative integers.
 
@@ -905,34 +906,21 @@ e^{(a+i \omega)t} = e^{at} \cdot e^{i\omega t} = e^{at} \bigl[ \cos(\omega t) + 
 c_1 + c_2 = 2\alpha, \quad c_1-c_2 = 2i\beta.
 \tag{2.12}\]</span></span></p>
 <p>In <a href="#exm-complex-simple" class="quarto-xref">Example&nbsp;<span>2.11</span></a> this would have led us right to <span class="math inline">\(2\alpha=2\)</span> and <span class="math inline">\(3i(2i\beta)=-12\)</span>.</p>
-<p>It might seem odd to use complex numbers to represent what we know must be a real-valued solution. There’s nothing wrong with doing so, but we can also convert it to an explicitly real form. The following is easily proved using Euler’s identity.</p>
-<div id="thm-complex-solution" class="theorem">
-<p><span class="theorem-title"><strong>Theorem 2.9 </strong></span>The general homogeneous solution</p>
-<p><span class="math display">\[
-x_h(t) = c_1 e^{\lambda_1 t} + c_2 e^{\lambda_2 t},
-\]</span></p>
-<p>where <span class="math inline">\(\lambda_{1,2} = a \pm i\omega\)</span> are complex, is equivalent to the real expression</p>
-<p><span class="math display">\[
-x_h(t) = e^{at} \bigl[ b_1 \cos(\omega t) + b_2 \sin(\omega t) \bigr],
-\]</span></p>
-<p>where <span class="math inline">\(b_1,b_2\)</span> are real constants.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
 </div>
-<div id="exm-" class="theorem example">
-<p><span class="theorem-title"><strong>Example 2.12 </strong></span>In <a href="#exm-complex-simple" class="quarto-xref">Example&nbsp;<span>2.11</span></a>, the roots were <span class="math inline">\(0 \pm 3i\)</span>. Thus another expression for the general solution is</p>
-<p><span class="math display">\[
-x_h(t) = c_1\cos(3t) + c_2\sin(3t).
-\]</span></p>
-<p>The initial conditions now yield</p>
-<p><span class="math display">\[
-\begin{split}
-2 &amp;= x(0) = c_1\cos(0) + c_2\sin(0) = c_1,\\
--12 &amp;= x'(0) = -3 c_1 \sin(0) + 3 c_2 \cos(0) = 3c_2.
-\end{split}
-\]</span></p>
-<p>Hence the IVP solution is <span class="math inline">\(2\cos(3t) - 4\sin(3t).\)</span></p>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>When you have a complex expression “stuff <span class="math inline">\(+\)</span> conjugate of that stuff”, the result has to be real, so you needn’t bother computing the imaginary part of that stuff.</p>
+</div>
 </div>
 <div id="exm-complex-complex1" class="theorem example">
-<p><span class="theorem-title"><strong>Example 2.13 </strong></span>Solve the IVP <span class="math inline">\(x'' + 4x' + 5x=0\)</span>, <span class="math inline">\(x(0)=6\)</span>, <span class="math inline">\(x'(0)=0\)</span>.</p>
+<p><span class="theorem-title"><strong>Example 2.12 </strong></span>Solve the IVP <span class="math inline">\(x'' + 4x' + 5x=0\)</span>, <span class="math inline">\(x(0)=6\)</span>, <span class="math inline">\(x'(0)=0\)</span>.</p>
 <div class="solution proof">
 <p><span class="proof-title"><em>Solution</em>. </span>The roots of <span class="math inline">\(s^2+4s+5\)</span> are <span class="math inline">\(-2\pm i\)</span>. Thus the general solution is</p>
 <p><span class="math display">\[
@@ -956,21 +944,37 @@ x'(t) = c_1 (-2+i) e^{(-2+i)t} + \overline{c_1}(-2-i) e^{(-2-i)t}.
 <p>which yields <span class="math inline">\(\beta=-6\)</span>.</p>
 </div>
 </div>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
+</section>
+<section id="fully-real-version" class="level3" data-number="2.3.6">
+<h3 data-number="2.3.6" class="anchored" data-anchor-id="fully-real-version"><span class="header-section-number">2.3.6</span> Fully real version</h3>
+<p>It might seem odd to use complex numbers to represent what we know must be a real-valued solution. There’s nothing wrong with doing so, but we can also convert it to an explicitly real form. The following is easily proved using Euler’s identity.</p>
+<div id="thm-complex-solution" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 2.9 </strong></span>The general homogeneous solution</p>
+<p><span class="math display">\[
+x_h(t) = c_1 e^{\lambda_1 t} + c_2 e^{\lambda_2 t},
+\]</span></p>
+<p>where <span class="math inline">\(\lambda_{1,2} = a \pm i\omega\)</span> are complex, is equivalent to the real expression</p>
+<p><span class="math display">\[
+x_h(t) = e^{at} \bigl[ b_1 \cos(\omega t) + b_2 \sin(\omega t) \bigr],
+\]</span></p>
+<p>where <span class="math inline">\(b_1,b_2\)</span> are real constants.</p>
 </div>
-<div class="callout-title-container flex-fill">
-Tip
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>When you have a complex expression “stuff <span class="math inline">\(+\)</span> conjugate of that stuff”, the result has to be real, so you needn’t bother computing the imaginary part of that stuff.</p>
-</div>
+<div id="exm-" class="theorem example">
+<p><span class="theorem-title"><strong>Example 2.13 </strong></span>In <a href="#exm-complex-simple" class="quarto-xref">Example&nbsp;<span>2.11</span></a>, the roots were <span class="math inline">\(0 \pm 3i\)</span>. Thus another expression for the general solution is</p>
+<p><span class="math display">\[
+x_h(t) = c_1\cos(3t) + c_2\sin(3t).
+\]</span></p>
+<p>The initial conditions now yield</p>
+<p><span class="math display">\[
+\begin{split}
+2 &amp;= x(0) = c_1\cos(0) + c_2\sin(0) = c_1,\\
+-12 &amp;= x'(0) = -3 c_1 \sin(0) + 3 c_2 \cos(0) = 3c_2.
+\end{split}
+\]</span></p>
+<p>Hence the IVP solution is <span class="math inline">\(2\cos(3t) - 4\sin(3t).\)</span></p>
 </div>
 <div id="exm-complex-complex2" class="theorem example">
-<p><span class="theorem-title"><strong>Example 2.14 </strong></span>Solve the IVP of <a href="#exm-complex-complex1" class="quarto-xref">Example&nbsp;<span>2.13</span></a> without using complex numbers.</p>
+<p><span class="theorem-title"><strong>Example 2.14 </strong></span>Solve the IVP of <a href="#exm-complex-complex1" class="quarto-xref">Example&nbsp;<span>2.12</span></a> without using complex numbers to express the solution.</p>
 <div class="solution proof">
 <p><span class="proof-title"><em>Solution</em>. </span>The roots of <span class="math inline">\(s^2+4s+5\)</span> are <span class="math inline">\(-2\pm i\)</span>. Thus the general solution is</p>
 <p><span class="math display">\[
@@ -1036,44 +1040,39 @@ x_1'u_1' + x_2'u_2' &amp;= f.
 <p>Writing <span class="math inline">\(u_1'=v_1\)</span> and <span class="math inline">\(u_2'=v_2\)</span>, we see that this is a pair of linear equations for <span class="math inline">\(v_1\)</span> and <span class="math inline">\(v_2\)</span>, which is routine to solve, leading to the following.</p>
 <div id="thm-variation_parameters" class="theorem">
 <p><span class="theorem-title"><strong>Theorem 2.10 (Variation of parameters, 2nd order) </strong></span>Let</p>
-<p><span class="math display">\[
-u_1 = \int \frac{-x_2 f}{W}\, dt, \quad u_2 = \int \frac{x_1 f}{W}\, dt,
-\]</span></p>
-<p>where <span class="math inline">\(W\)</span> is the Wronskian of independent homogeneous solutions <span class="math inline">\(x_1\)</span> and <span class="math inline">\(x_2\)</span>. Then a particular solution of <span class="math inline">\(\opA[x]=f\)</span> is</p>
+<p><span id="eq-second-vop"><span class="math display">\[
+u_1 = \int \frac{-x_2 f}{W(x_1,x_2)}\, dt, \quad u_2 = \int \frac{x_1 f}{W(x_1,x_2)}\, dt,
+\tag{2.16}\]</span></span></p>
+<p>where <span class="math inline">\(W(x_1,x_2)\)</span> is the Wronskian of independent homogeneous solutions <span class="math inline">\(x_1\)</span> and <span class="math inline">\(x_2\)</span>. Then a particular solution of <span class="math inline">\(\opA[x]=f\)</span> is</p>
 <p><span class="math display">\[
 x_p(t) = u_1(t) x_1(t) + u_2(t) x_2(t).
 \]</span></p>
 </div>
-<div class="callout callout-style-default callout-note callout-titled">
+<!-- 
+:::{.callout-note}
+Isn't it handy now that the Wronskian is never zero?
+::: -->
+<div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Note
+Important
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Isn’t it handy now that the Wronskian is never zero?</p>
-</div>
-</div>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>The integration constants for <span class="math inline">\(u_1\)</span> and <span class="math inline">\(u_2\)</span> can be taken to be zero. Any value is valid, and we need just one particular solution.</p>
+<p>The integration constants for <span class="math inline">\(u_1\)</span> and <span class="math inline">\(u_2\)</span> in <a href="#eq-second-vop" class="quarto-xref">Equation&nbsp;<span>2.16</span></a> can be taken to be zero.</p>
 </div>
 </div>
 <div id="exm-variation_parameters-cons" class="theorem example">
 <p><span class="theorem-title"><strong>Example 2.15 </strong></span>Find a particular solution of <span class="math inline">\(x'' - x = 4\)</span>.</p>
 <div class="solution proof">
-<p><span class="proof-title"><em>Solution</em>. </span>There’s no getting around the need for the homogeneous solution here. The characteristic roots are <span class="math inline">\(\pm 1\)</span>, so we take <span class="math inline">\(x_1=e^t\)</span>, <span class="math inline">\(x_2=e^{-t}\)</span>. Then <span class="math inline">\(W=(e^t)(-e^{-t}) - (e^{-t})(e^t) = 2\)</span>, and</p>
+<p><span class="proof-title"><em>Solution</em>. </span>There’s no getting around the need for the homogeneous solution here. The characteristic roots are <span class="math inline">\(\pm 1\)</span>, so we take <span class="math inline">\(x_1=e^t\)</span>, <span class="math inline">\(x_2=e^{-t}\)</span>. Then</p>
+<p><span class="math display">\[
+W(e^t, e^{-t}) =(e^t)(-e^{-t}) - (e^{-t})(e^t) = 2,
+\]</span></p>
+<p>and</p>
 <p><span class="math display">\[
 u_1' = \frac{-4 e^{-t}}{-2}, \quad u_2' = \frac{4 e^{t}}{-2}.
 \]</span></p>
@@ -1089,7 +1088,7 @@ x_p = (-2e^{-t})(e^t) + (-2e^t)(e^{-t}) = -4.
 <div class="solution proof">
 <p><span class="proof-title"><em>Solution</em>. </span>The homogeneous equation has roots <span class="math inline">\(\pm \lambda\)</span>. We choose <span class="math inline">\(x_1=e^{\lambda t}\)</span>, <span class="math inline">\(x_2=e^{-\lambda t}\)</span>. Now</p>
 <p><span class="math display">\[
-W = \twodet{e^{\lambda t}}{e^{-\lambda t}}{\lambda e^{\lambda t}}{-\lambda e^{-\lambda t}} = -2\lambda.
+W(x_1, x_2) = \twodet{e^{\lambda t}}{e^{-\lambda t}}{\lambda e^{\lambda t}}{-\lambda e^{-\lambda t}} = -2\lambda.
 \]</span></p>
 <p>This gives</p>
 <p><span class="math display">\[
@@ -1119,7 +1118,7 @@ x_p(t) = \frac{1}{\lambda} t e^{\lambda t}  - \frac{1}{2 \lambda^2} e^{\lambda t
 <p>Thus we now consider</p>
 <p><span id="eq-undetermined-ode"><span class="math display">\[
 x'' + bx' + kx = f(t),
-\tag{2.16}\]</span></span></p>
+\tag{2.17}\]</span></span></p>
 <p>where <span class="math inline">\(b\)</span> and <span class="math inline">\(k\)</span> are constants, and <span class="math inline">\(f\)</span> appears in <a href="#tbl-undetermined-forcing" class="quarto-xref">Table&nbsp;<span>2.1</span></a>.</p>
 <div id="tbl-undetermined-forcing" class="anchored">
 <table class="table">
@@ -1274,7 +1273,7 @@ x_p(t) = \frac{1}{2} t \sin(t).
 <p>For instance, an object attached to an ideal spring satisfies the ODE</p>
 <p><span id="eq-oscillators-free"><span class="math display">\[
 mx'' + b x' + kx = 0,
-\tag{2.17}\]</span></span></p>
+\tag{2.18}\]</span></span></p>
 <p>where <span class="math inline">\(x(t)\)</span> is the displacement from the natural resting position, <span class="math inline">\(m\)</span> is the mass of the object, <span class="math inline">\(b\)</span> is an attenuation coefficient due to friction or mechanical damping, and <span class="math inline">\(k\)</span> is a property of the spring called the <strong>spring constant</strong>. This constant is the ratio of the restoring force of the spring to the amount by which it is stretched or compressed.</p>
 <div class="callout-attention">
 <p>All named parameters such as <span class="math inline">\(m\)</span>, <span class="math inline">\(k\)</span>, and <span class="math inline">\(b\)</span> are assumed to be nonnegative unless stated otherwise.</p>
@@ -1289,10 +1288,10 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><a href="#eq-oscillators-free" class="quarto-xref">Equation&nbsp;<span>2.17</span></a> applies equally well to horizontal and vertical oscillations. Gravity does not appear in the vertical case because it is accounted for by measuring <span class="math inline">\(x\)</span> from the static equilibrium position.</p>
+<p><a href="#eq-oscillators-free" class="quarto-xref">Equation&nbsp;<span>2.18</span></a> applies equally well to horizontal and vertical oscillations. Gravity does not appear in the vertical case because it is accounted for by measuring <span class="math inline">\(x\)</span> from the static equilibrium position.</p>
 </div>
 </div>
-<p>If given, initial values for <a href="#eq-oscillators-free" class="quarto-xref">Equation&nbsp;<span>2.17</span></a> supply the initial position and initial velocity, which determine the solution uniquely.</p>
+<p>If given, initial values for <a href="#eq-oscillators-free" class="quarto-xref">Equation&nbsp;<span>2.18</span></a> supply the initial position and initial velocity, which determine the solution uniquely.</p>
 <p>A pendulum is another type of mechanical oscillator. The proper ODE is</p>
 <p><span class="math display">\[
 \theta'' + \gamma \theta + \frac{g}{L}\sin (\theta) = 0,
@@ -1332,7 +1331,7 @@ x'' + \frac{b}{m} x' + \frac{k}{m} x = 0.
 <p>If we include a forcing term, we arrive at the ODE</p>
 <p><span id="eq-oscillators-unified"><span class="math display">\[
 x'' + 2 \zeta \omega_0\, x' + \omega_0^2\, x = f(t).
-\tag{2.18}\]</span></span></p>
+\tag{2.19}\]</span></span></p>
 <p>A similar derivation can be done starting from the pendulum or AC circuit equations. The only type of forcing we shall consider is <em>harmonic</em> forcing of the form</p>
 <p><span class="math display">\[
 f(t) = \cos(\omega t).
@@ -1358,7 +1357,7 @@ e^{i\omega_0 t},\, e^{-i\omega_0 t}
 <p>Either way, these describe pure oscillation at frequency <span class="math inline">\(\omega_0\)</span>. This is known as <strong>simple harmonic motion</strong>. A particularly useful third form is the <strong>amplitude–phase form</strong></p>
 <p><span id="eq-oscillators-amp-phase"><span class="math display">\[
 x_h(t) = R\cos(\omega_0 t+\phi),
-\tag{2.19}\]</span></span></p>
+\tag{2.20}\]</span></span></p>
 <p>where constants <span class="math inline">\(R\)</span> and <span class="math inline">\(\phi\)</span> can be used to satisfy initial conditions.</p>
 <div id="exm-" class="theorem example">
 <p><span class="theorem-title"><strong>Example 2.23 </strong></span>When a 2 kg mass is hung on a spring, the spring stretches by 0.25 m. What is the natural frequency of the mass-spring system? Suppose the mass is pulled down 0.2 m past equilibrium and then thrown upward at 1 m/s. What is the amplitude of the motion?</p>
@@ -1398,29 +1397,29 @@ x_p(t) = \frac{1}{2 \omega_0} t \sin(\omega_0 t),
 </section>
 <section id="underdamped-oscillator-0-zeta-1" class="level4" data-number="2.6.2.2">
 <h4 data-number="2.6.2.2" class="anchored" data-anchor-id="underdamped-oscillator-0-zeta-1"><span class="header-section-number">2.6.2.2</span> Underdamped oscillator, <span class="math inline">\(0 &lt; \zeta &lt; 1\)</span></h4>
-<p>For <span class="math inline">\(0&lt; \zeta &lt; 1\)</span> the roots of <a href="#eq-oscillators-unified" class="quarto-xref">Equation&nbsp;<span>2.18</span></a> are complex, with negative real part:</p>
+<p>For <span class="math inline">\(0&lt; \zeta &lt; 1\)</span> the roots of <a href="#eq-oscillators-unified" class="quarto-xref">Equation&nbsp;<span>2.19</span></a> are complex, with negative real part:</p>
 <p><span class="math display">\[
 \lambda_{1,2} = -\zeta \omega_0 \pm i \omega_0 \sqrt{1-\zeta^2}.
 \]</span></p>
 <p>Define the damped frequency</p>
 <p><span id="eq-oscillators-damped"><span class="math display">\[
 \omega_d=\omega_0 \sqrt{1-\zeta^2}.
-\tag{2.20}\]</span></span></p>
+\tag{2.21}\]</span></span></p>
 <p>The unforced part of the solution is</p>
 <p><span id="eq-oscillators-transient"><span class="math display">\[
 x_h(t) = e^{- \omega_0 \zeta t} [ c_1 \cos( \omega_d t) + c_2 \sin(\omega_d t) ].
-\tag{2.21}\]</span></span></p>
-<p>This solution is pseudoperiodic, combining oscillation at frequency <span class="math inline">\(\omega_d &lt; \omega_0\)</span> inside an exponential decay envelope. We call this an <strong>underdamped oscillator</strong>. The homogeneous solution <a href="#eq-oscillators-transient" class="quarto-xref">Equation&nbsp;<span>2.21</span></a> is also called a <strong>transient solution</strong>, because it vanishes as <span class="math inline">\(t \to \infty\)</span>.</p>
+\tag{2.22}\]</span></span></p>
+<p>This solution is pseudoperiodic, combining oscillation at frequency <span class="math inline">\(\omega_d &lt; \omega_0\)</span> inside an exponential decay envelope. We call this an <strong>underdamped oscillator</strong>. The homogeneous solution <a href="#eq-oscillators-transient" class="quarto-xref">Equation&nbsp;<span>2.22</span></a> is also called a <strong>transient solution</strong>, because it vanishes as <span class="math inline">\(t \to \infty\)</span>.</p>
 <p>If harmonic forcing <span class="math inline">\(f(t)=\cos(\omega t)\)</span> is added, then it determines the steady-state behavior <span class="math inline">\(x_s=A\cos(\omega t + \theta)\)</span>, where</p>
 <p><span id="eq-oscillators-gain"><span class="math display">\[
 A = \frac{1}{\rule{0pt}{1em} \sqrt{\rule{0pt}{0.8em}(\omega_0^2-\omega^2)^2 + 4\omega_0^2\omega^2 \zeta^2 } }
-\tag{2.22}\]</span></span></p>
+\tag{2.23}\]</span></span></p>
 <p>The value <span class="math inline">\(A\)</span> is known as the <strong>gain</strong> of the oscillator; it is the ratio of amplitudes of the steady response and the forcing. A little calculus shows that as a function of <span class="math inline">\(\omega\)</span>, the gain is maximized at</p>
 <p><span id="eq-oscillators-rhomax"><span class="math display">\[
 \omega_\text{max} = \begin{cases}
 \omega_0 \sqrt{1-2\zeta^2}, &amp; \text{ if } 0 &lt; \zeta^2 &lt; \frac{1}{2},\\ 0, &amp; \text{ if } \frac{1}{2} \le \zeta^2.
 \end{cases}
-\tag{2.23}\]</span></span></p>
+\tag{2.24}\]</span></span></p>
 <p>Therefore, if the damping coefficient <span class="math inline">\(\zeta\)</span> is small but finite, we have a pseudoresonance of finite amplitude at a frequency just a bit less than the natural frequency. The following figure shows the gain as a function of driving frequency and damping when <span class="math inline">\(\omega_0=1\)</span>. The black curve shows the maximal driving frequency at any given <span class="math inline">\(\zeta\)</span>.</p>
 <div id="b2102d17" class="cell" data-execution_count="10">
 <details>
