@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.339">
+<meta name="generator" content="quarto-1.4.315">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -178,12 +178,6 @@ MathJax = {
   <div class="sidebar-item-container"> 
   <a href="./matrix_algebra.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Matrix algebra</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./ode_systems.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Systems of ODEs</span></span></a>
   </div>
 </li>
     </ul>
@@ -417,10 +411,10 @@ Note
 <p>Linear independence is a notion that extends well beyond differential equations, as we will see.</p>
 </div>
 </div>
-<div id="exm-structure-dependent" class="theorem example">
+<div id="exm-structure-dependent" class="theorem example" data-chapter="2" data-description="Dependent functions">
 <p><span class="theorem-title"><strong>Example 2.1 </strong></span>The functions <span class="math inline">\(u_1=t\)</span> and <span class="math inline">\(u_2=5t\)</span> are linearly dependent on any interval, because <span class="math inline">\(-5u_1 + u_2 = -5t+5t=0\)</span> for all <span class="math inline">\(t\)</span>.</p>
 </div>
-<div id="exm-structure-independent" class="theorem example">
+<div id="exm-structure-independent" class="theorem example" data-chapter="2" data-description="Independent functions">
 <p><span class="theorem-title"><strong>Example 2.2 </strong></span>The functions <span class="math inline">\(u_1=\cos(t)\)</span> and <span class="math inline">\(u_2=\sin(t)\)</span> are independent on the real line <span class="math inline">\((-\infty,\infty)\)</span>, because the equation</p>
 <p><span class="math display">\[
 c_1\cos(t) + c_2\sin(t) = 0
@@ -464,7 +458,7 @@ Note
 <p><span class="theorem-title"><strong>Theorem 2.1 </strong></span>If <span class="math inline">\(x_1,\ldots,x_n\)</span> are solutions of a linear homogeneous ODE <span class="math inline">\(\opA[x]=0\)</span>, all defined for all <span class="math inline">\(t\in I\)</span>, then they are linearly independent on <span class="math inline">\(I\)</span> if and only if their Wronskian is nonzero at all <span class="math inline">\(t\in I\)</span>.</p>
 </div>
 <p>The upshot is that we can check the Wronskian at any one value of <span class="math inline">\(t\)</span> we want; zero means linear dependence, and nonzero means independence.</p>
-<div id="exm-structure-wronskian" class="theorem example">
+<div id="exm-structure-wronskian" class="theorem example" data-chapter="2" data-description="Wronskian">
 <p><span class="theorem-title"><strong>Example 2.3 </strong></span>You can check that <span class="math inline">\(\cos(t)\)</span> and <span class="math inline">\(\sin(t)\)</span> are solutions of <span class="math inline">\(x''+x=0\)</span>. Since</p>
 <p><span class="math display">\[
 W(t) = \twodet{\cos(t)}{\sin(t)}{-\sin(t)}{\cos(t)} = \cos^2(t) + \sin^2(t) = 1,
@@ -558,20 +552,20 @@ x_h(t) = c_1 e^{\lambda_1 t} + c_2 e^{\lambda_2 t}.
 x_h(t) = e^{\lambda t} \bigl( c_1 t + c_2 \bigr).
 \tag{2.9}\]</span></span></p>
 </div>
-<div id="exm-homogeneous-trivial" class="theorem example">
+<div id="exm-homogeneous-trivial" class="theorem example" data-chapter="2" data-description="Characteristic equation---double root">
 <p><span class="theorem-title"><strong>Example 2.4 </strong></span>The trivial problem <span class="math inline">\(x''=0\)</span> is linear, with <span class="math inline">\(b=k=0\)</span>. The characteristic polynomial is <span class="math inline">\(s^2\)</span>, which makes <span class="math inline">\(\lambda=0\)</span> a double root. So the general solution is</p>
 <p><span class="math display">\[
 x_h(t) = e^{0t} (c_1 t + c_2) = c_1 t + c_2.
 \]</span></p>
 <p>This was not exactly a mystery to us, but it’s a good idea to check new formulas on cases you already understand.</p>
 </div>
-<div id="exm-homogeneous-real-distinct" class="theorem example">
+<div id="exm-homogeneous-real-distinct" class="theorem example" data-chapter="2" data-description="Characteristic equation---distinct real roots">
 <p><span class="theorem-title"><strong>Example 2.5 </strong></span>Find the general solution of <span class="math inline">\(x''-x'-2x=0\)</span>.</p>
 <div class="solution proof">
 <p><span class="proof-title"><em>Solution</em>. </span>The characteristic polynomial is <span class="math inline">\(s^2-s-2\)</span>, which has roots <span class="math inline">\(\lambda_1=-1\)</span>, <span class="math inline">\(\lambda_2=2\)</span>. This gives the general solution <span class="math inline">\(x_h(t)=c_1 e^{-t} + c_2 e^{2t}\)</span>.</p>
 </div>
 </div>
-<div id="exm-homogeneous-real-ivp" class="theorem example">
+<div id="exm-homogeneous-real-ivp" class="theorem example" data-chapter="2" data-description="2nd order IVP">
 <p><span class="theorem-title"><strong>Example 2.6 </strong></span>Solve the IVP <span class="math inline">\(x'' - 5 x = 0\)</span>, <span class="math inline">\(x(0)=6\)</span>, <span class="math inline">\(x'(0)=0\)</span>.</p>
 <div class="solution proof">
 <p><span class="proof-title"><em>Solution</em>. </span>The roots of <span class="math inline">\(s^2-5\)</span> are <span class="math inline">\(\lambda_1=\sqrt{5}\)</span>, <span class="math inline">\(\lambda_2=-\sqrt{5}\)</span>. The general solution is</p>
@@ -607,7 +601,7 @@ x(t) = c_1 e^{\sqrt{5}\, t} + c_2 e^{-\sqrt{5}\, t}.
  ## The reality of imaginary numbers (optional)
 
 
-`````jiobyfua
+`````eltjrfqu
 
 Let's rewind a bit. We can probably take for granted the positive integers 1, 2, 3, and so on, and we'll throw in zero as well, though this too was controversial for centuries. It's not long before we want to solve a problem like $x+1=0$. Annoyingly, we can pose the problem using just nonnegative integers, but we can't solve it. So we accept the existence of the negative integers.
 
@@ -664,13 +658,13 @@ z = x + i y \quad \Leftrightarrow \quad x = \text{Re}(z), \quad y = \text{Im}(z)
 \frac{w}{z} = \frac{w \bar{z}}{z \bar{z}} = \frac{w \bar{z}}{|z|^2}.
 \]</span></p>
 <p>This is a lot like rationalizing a denominator with square roots.</p>
-<div id="exm-" class="theorem example">
+<div id="exm-complex-fraction" class="theorem example" data-chapter="2" data-description="Complex number fractions">
 <p><span class="theorem-title"><strong>Example 2.7 </strong></span><span class="math display">\[
 \frac{2-i}{3+2i} = \frac{2-i}{3+2i}\cdot \frac{3-2i}{3-2i}
 = \frac{6-4i-3i+2i^2}{3^2+2^2} = \frac{4-7i}{13}.
 \]</span></p>
 </div>
-<div id="exm-" class="theorem example">
+<div id="exm-complex-reciprocal" class="theorem example" data-chapter="2" data-description="Complex number reciprocal">
 <p><span class="theorem-title"><strong>Example 2.8 </strong></span>Suppose that <span class="math inline">\(|z|=1\)</span>. Then</p>
 <p><span class="math display">\[
 \frac{1}{z} = \frac{1}{z}\cdot \frac{\bar{z}}{\bar{z}} = \frac{\bar{z}}{|z|^2} = \bar{z}.
@@ -781,7 +775,7 @@ z = |z|\cdot \frac{z}{|z|},
 z = |z|\, e^{i\theta}.
 \tag{2.10}\]</span></span></p>
 <p>We call <a href="#eq-second-polar" class="quarto-xref">Equation&nbsp;<span>2.10</span></a> the <strong>polar form</strong> of a complex number, because it expresses <span class="math inline">\(z\)</span> as a distance from zero and an angle from the positive Re axis. Just as with any point in the plane, we can express a complex number either in Cartesian form using Re and Im parts, or in polar form using modulus and Euler’s identity.</p>
-<div id="exm-" class="theorem example">
+<div id="exm-complex-polar" class="theorem example" data-chapter="2" data-description="Complex numbers polar form">
 <p><span class="theorem-title"><strong>Example 2.9 </strong></span>Suppose <span class="math inline">\(r\)</span> is a positive real number. Then <span class="math inline">\(-r\)</span> lies at a distance <span class="math inline">\(r\)</span> from the origin along the negative real axis. Hence</p>
 <p><span class="math display">\[
 -r = |r|\, e^{i\pi}.
@@ -792,7 +786,7 @@ z = |z|\, e^{i\theta}.
 \]</span></p>
 <p>Using complex numbers, then, we can take the log of a negative number. You will find that this is the case in MATLAB.</p>
 </div>
-<div id="exm-" class="theorem example">
+<div id="exm-complex-sqrt" class="theorem example" data-chapter="2" data-description="Complex number square root">
 <p><span class="theorem-title"><strong>Example 2.10 </strong></span>What’s the square root of <span class="math inline">\(i\)</span>?</p>
 <div class="solution proof">
 <p><span class="proof-title"><em>Solution</em>. </span>Since <span class="math inline">\(i\)</span> lies at a distance 1 from the origin along the positive imaginary axis, its polar form is <span class="math inline">\(e^{i\pi/2}\)</span>. Then the square root is</p>
@@ -885,7 +879,7 @@ e^{(a+i \omega)t} = e^{at} \cdot e^{i\omega t} = e^{at} \bigl[ \cos(\omega t) + 
 <section id="homogeneous-solutions" class="level3" data-number="2.3.5">
 <h3 data-number="2.3.5" class="anchored" data-anchor-id="homogeneous-solutions"><span class="header-section-number">2.3.5</span> Homogeneous solutions</h3>
 <p>Now we can finish the story of computing solutions to homogeneous constant-coefficient ODEs. We can still use <a href="#thm-homogeneous-distinct" class="quarto-xref">Theorem&nbsp;<span>2.3</span></a> and <a href="#thm-homogeneous-repeated" class="quarto-xref">Theorem&nbsp;<span>2.4</span></a>, now with the complex-valued interpretations of the exponentials.</p>
-<div id="exm-complex-simple" class="theorem example">
+<div id="exm-complex-simple" class="theorem example" data-chapter="2" data-description="Characteristic polynomial---complex roots">
 <p><span class="theorem-title"><strong>Example 2.11 </strong></span>Solve the IVP <span class="math inline">\(x''+9x=0\)</span>, <span class="math inline">\(x(0)=2\)</span>, <span class="math inline">\(x'(0)=-12\)</span>.</p>
 <div class="solution proof">
 <p><span class="proof-title"><em>Solution</em>. </span>The characteristic polynomial is <span class="math inline">\(s^2+9\)</span>, giving the roots <span class="math inline">\(\pm 3i\)</span>. Hence the general solution is <span class="math inline">\(x_h(t) = c_1e^{3it} + c_2e^{-3it}\)</span>.</p>
@@ -919,7 +913,7 @@ Tip
 <p>When you have a complex expression “stuff <span class="math inline">\(+\)</span> conjugate of that stuff”, the result has to be real, so you needn’t bother computing the imaginary part of that stuff.</p>
 </div>
 </div>
-<div id="exm-complex-complex1" class="theorem example">
+<div id="exm-complex-complex1" class="theorem example" data-chapter="2" data-description="Characteristic polynomial---complex roots">
 <p><span class="theorem-title"><strong>Example 2.12 </strong></span>Solve the IVP <span class="math inline">\(x'' + 4x' + 5x=0\)</span>, <span class="math inline">\(x(0)=6\)</span>, <span class="math inline">\(x'(0)=0\)</span>.</p>
 <div class="solution proof">
 <p><span class="proof-title"><em>Solution</em>. </span>The roots of <span class="math inline">\(s^2+4s+5\)</span> are <span class="math inline">\(-2\pm i\)</span>. Thus the general solution is</p>
@@ -959,7 +953,7 @@ x_h(t) = e^{at} \bigl[ b_1 \cos(\omega t) + b_2 \sin(\omega t) \bigr],
 \]</span></p>
 <p>where <span class="math inline">\(b_1,b_2\)</span> are real constants.</p>
 </div>
-<div id="exm-" class="theorem example">
+<div id="exm-charpoly-real-solution" class="theorem example" data-chapter="2" data-description="Characteristic polynomial---real solution for complex roots">
 <p><span class="theorem-title"><strong>Example 2.13 </strong></span>In <a href="#exm-complex-simple" class="quarto-xref">Example&nbsp;<span>2.11</span></a>, the roots were <span class="math inline">\(0 \pm 3i\)</span>. Thus another expression for the general solution is</p>
 <p><span class="math display">\[
 x_h(t) = c_1\cos(3t) + c_2\sin(3t).
@@ -973,7 +967,7 @@ x_h(t) = c_1\cos(3t) + c_2\sin(3t).
 \]</span></p>
 <p>Hence the IVP solution is <span class="math inline">\(2\cos(3t) - 4\sin(3t).\)</span></p>
 </div>
-<div id="exm-complex-complex2" class="theorem example">
+<div id="exm-complex-complex2" class="theorem example" data-chapter="2" data-description="Characteristic polynomial---real IVP for complex roots">
 <p><span class="theorem-title"><strong>Example 2.14 </strong></span>Solve the IVP of <a href="#exm-complex-complex1" class="quarto-xref">Example&nbsp;<span>2.12</span></a> without using complex numbers to express the solution.</p>
 <div class="solution proof">
 <p><span class="proof-title"><em>Solution</em>. </span>The roots of <span class="math inline">\(s^2+4s+5\)</span> are <span class="math inline">\(-2\pm i\)</span>. Thus the general solution is</p>
@@ -1065,7 +1059,7 @@ Important
 <p>The integration constants for <span class="math inline">\(u_1\)</span> and <span class="math inline">\(u_2\)</span> in <a href="#eq-second-vop" class="quarto-xref">Equation&nbsp;<span>2.16</span></a> can be taken to be zero.</p>
 </div>
 </div>
-<div id="exm-variation_parameters-cons" class="theorem example">
+<div id="exm-variation_parameters-cons" class="theorem example" data-chapter="2" data-description="2nd order variation of parameters">
 <p><span class="theorem-title"><strong>Example 2.15 </strong></span>Find a particular solution of <span class="math inline">\(x'' - x = 4\)</span>.</p>
 <div class="solution proof">
 <p><span class="proof-title"><em>Solution</em>. </span>There’s no getting around the need for the homogeneous solution here. The characteristic roots are <span class="math inline">\(\pm 1\)</span>, so we take <span class="math inline">\(x_1=e^t\)</span>, <span class="math inline">\(x_2=e^{-t}\)</span>. Then</p>
@@ -1083,7 +1077,7 @@ x_p = (-2e^{-t})(e^t) + (-2e^t)(e^{-t}) = -4.
 <p>You can instantly check that this result is correct.</p>
 </div>
 </div>
-<div id="exm-variation_parameters-resonance" class="theorem example">
+<div id="exm-variation_parameters-resonance" class="theorem example" data-chapter="2" data-description="2nd order variation of parameters">
 <p><span class="theorem-title"><strong>Example 2.16 </strong></span>Find a particular solution of <span class="math inline">\(x'' - \lambda^2 x = 2 e^{\lambda t}\)</span>, where <span class="math inline">\(\lambda\neq 0\)</span>.</p>
 <div class="solution proof">
 <p><span class="proof-title"><em>Solution</em>. </span>The homogeneous equation has roots <span class="math inline">\(\pm \lambda\)</span>. We choose <span class="math inline">\(x_1=e^{\lambda t}\)</span>, <span class="math inline">\(x_2=e^{-\lambda t}\)</span>. Now</p>
@@ -1150,7 +1144,7 @@ x'' + bx' + kx = f(t),
 </table>
 </div>
 <p>Corresponding to each <span class="math inline">\(f\)</span> in <a href="#tbl-undetermined-forcing" class="quarto-xref">Table&nbsp;<span>2.1</span></a> is a specific form for <span class="math inline">\(x_p\)</span> containing one or more constants (given by capital letters) that must be deduced by substituting into the particular ODE under consideration. This procedure is what gives the method its name, the <strong>method of undetermined coefficients</strong>.</p>
-<div id="exm-undetermined-const" class="theorem example">
+<div id="exm-undetermined-const" class="theorem example" data-chapter="2" data-description="Undetermined coefficients---constant">
 <p><span class="theorem-title"><strong>Example 2.17 </strong></span>Rework <a href="#exm-variation_parameters-cons" class="quarto-xref">Example&nbsp;<span>2.15</span></a>, finding a particular solution of <span class="math inline">\(x'' - x = 4\)</span>.</p>
 <div class="solution proof">
 <p><span class="proof-title"><em>Solution</em>. </span>The forcing function is a polynomial of degree zero, so <span class="math inline">\(x_p\)</span> should be as well. Let <span class="math inline">\(x_p=A.\)</span> Then it is a solution if</p>
@@ -1173,7 +1167,7 @@ Caution
 <p>In the case where <span class="math inline">\(f\)</span> is a polynomial that may have some zero coefficients, you <em>cannot</em> assume that <span class="math inline">\(x_p\)</span> has zero coefficients in the same positions.</p>
 </div>
 </div>
-<div id="exm-" class="theorem example">
+<div id="exm-MUC-polynomial" class="theorem example" data-chapter="2" data-description="Undetermined coefficients---polynomial">
 <p><span class="theorem-title"><strong>Example 2.18 </strong></span>Find a particular solution of <span class="math inline">\(x'' +4x'+4x=8t^2\)</span>.</p>
 <div class="solution proof">
 <p><span class="proof-title"><em>Solution</em>. </span>The correct form of <span class="math inline">\(x_p\)</span> is a quadratic polynomial, i.e.,</p>
@@ -1191,7 +1185,7 @@ x_p(t) =2t^2+4t+3.
 \]</span></p>
 </div>
 </div>
-<div id="exm-" class="theorem example">
+<div id="exm-MUC-exponential" class="theorem example" data-chapter="2" data-description="Undetermined coefficients---exponential">
 <p><span class="theorem-title"><strong>Example 2.19 </strong></span>Find a particular solution of <span class="math inline">\(x'' - 2x'-3x=10e^{4t}\)</span>.</p>
 <div class="solution proof">
 <p><span class="proof-title"><em>Solution</em>. </span>The proper choice is</p>
@@ -1207,7 +1201,7 @@ x_p(t) = Ae^{4t}.
 <p>From this it’s clear that <span class="math inline">\(A=2\)</span>.</p>
 </div>
 </div>
-<div id="exm-" class="theorem example">
+<div id="exm-MUC-trig" class="theorem example" data-chapter="2" data-description="Undetermined coefficients---trig">
 <p><span class="theorem-title"><strong>Example 2.20 </strong></span>Find the general solution of <span class="math inline">\(x''+x'=\sin(2t)\)</span>.</p>
 <div class="solution proof">
 <p><span class="proof-title"><em>Solution</em>. </span>The homogeneous problem <span class="math inline">\(x''+x'=0\)</span> has roots <span class="math inline">\(0\)</span> and <span class="math inline">\(-1\)</span>, hence</p>
@@ -1236,7 +1230,7 @@ x(t) = c_1 + c_2 e^{-t} - \frac{1}{10}\cos(2t) - \frac{1}{5}\sin(2t).
 <section id="limitations" class="level3" data-number="2.5.1">
 <h3 data-number="2.5.1" class="anchored" data-anchor-id="limitations"><span class="header-section-number">2.5.1</span> Limitations</h3>
 <p>There are rules for more complicated combinations of the same functions, but we won’t go into them. At some point the calculus/algebra becomes pretty intense. Furthermore, we are not going to cover a refinement of the rules necessary in certain circumstances where our simplified version fails.</p>
-<div id="exm-undetermined-resonance" class="theorem example">
+<div id="exm-undetermined-resonance" class="theorem example" data-chapter="2" data-description="Undetermined coefficients (failure)">
 <p><span class="theorem-title"><strong>Example 2.21 </strong></span>The equation <span class="math inline">\(x''+x=\cos(\omega t)\)</span> suggests the particular solution <span class="math inline">\(x_p(t)=A\cos(\omega t)+B\sin(\omega t)\)</span>. Upon substitution,</p>
 <p><span class="math display">\[
 [-\omega^2 A\cos(\omega t) - \omega^2 B\sin(\omega t) ] + [ A\cos(\omega t) + B\sin(\omega t)] =\cos(\omega t),
@@ -1244,7 +1238,7 @@ x(t) = c_1 + c_2 e^{-t} - \frac{1}{10}\cos(2t) - \frac{1}{5}\sin(2t).
 <p>which leads to the conclusion that <span class="math inline">\(B=0\)</span> and, if <span class="math inline">\(\omega^2 \neq 1\)</span>, <span class="math inline">\(A=1/(1-\omega^2)\)</span>. However, if <span class="math inline">\(\omega = 1\)</span>, the substitution would leave us with <span class="math inline">\(0=\cos(t)\)</span>, which is impossible to satisfy for all <span class="math inline">\(t\)</span>.</p>
 </div>
 <p>The failure of <a href="#exm-undetermined-resonance" class="quarto-xref">Example&nbsp;<span>2.21</span></a> at <span class="math inline">\(\omega = 1\)</span> was due to the fact that the <span class="math inline">\(x_p\)</span> we tried is actually a homogeneous solution. This is not too hard to fix, but a general description is not worth the effort; we can always fall back to variation of parameters.</p>
-<div id="exm-undetermined-resonance-fix" class="theorem example">
+<div id="exm-undetermined-resonance-fix" class="theorem example" data-chapter="2" data-description="Undetermined coefficients---workaround">
 <p><span class="theorem-title"><strong>Example 2.22 </strong></span>We can make the tricky case <span class="math inline">\(x''+x=\cos(t)\)</span> from <a href="#exm-undetermined-resonance" class="quarto-xref">Example&nbsp;<span>2.21</span></a> quite easy by relating it to complex exponentials. Since <span class="math inline">\(\cos(t)\)</span> is the real part of <span class="math inline">\(e^{it}\)</span>, it follows that the solution we seek is the real part of any particular solution of</p>
 <p><span class="math display">\[
 x'' + x = e^{it}.
@@ -1359,7 +1353,7 @@ e^{i\omega_0 t},\, e^{-i\omega_0 t}
 x_h(t) = R\cos(\omega_0 t+\phi),
 \tag{2.20}\]</span></span></p>
 <p>where constants <span class="math inline">\(R\)</span> and <span class="math inline">\(\phi\)</span> can be used to satisfy initial conditions.</p>
-<div id="exm-" class="theorem example">
+<div id="exm-oscillator-frequency" class="theorem example" data-chapter="2" data-description="Natural frequency of an oscillator">
 <p><span class="theorem-title"><strong>Example 2.23 </strong></span>When a 2 kg mass is hung on a spring, the spring stretches by 0.25 m. What is the natural frequency of the mass-spring system? Suppose the mass is pulled down 0.2 m past equilibrium and then thrown upward at 1 m/s. What is the amplitude of the motion?</p>
 <div class="solution proof">
 <p><span class="proof-title"><em>Solution</em>. </span>Hooke’s Law for a spring states that <span class="math inline">\(F=k x\)</span>, so we find the spring constant from <span class="math inline">\(k=F/x=2g/0.25=8g\)</span>, where <span class="math inline">\(g=9.8\)</span> m per second squared. The ODE for free motion of the system is thus <span class="math inline">\(2 x'' + 8g x = 0\)</span>, or</p>
@@ -1579,7 +1573,7 @@ x_h(t) = e^{-\omega_0 t} (c_1 + c_2 t).
 </tbody>
 </table>
 </div>
-<div id="exm-" class="theorem example">
+<div id="exm-damping-strength" class="theorem example" data-chapter="2" data-description="Damping strength">
 <p><span class="theorem-title"><strong>Example 2.24 </strong></span>A 5 kg mass is hung on a spring with constant <span class="math inline">\(11\)</span> N per m and connected to a dashpot that provides 8 N-sec per meter of resistance. Is this system underdamped, overdamped, or critically damped?</p>
 <div class="solution proof">
 <p><span class="proof-title"><em>Solution</em>. </span>The ODE for the mass-spring system is</p>
@@ -1600,7 +1594,7 @@ x_h(t) = e^{-\omega_0 t} (c_1 + c_2 t).
 <p>Since this value is less than one, the system is underdamped.</p>
 </div>
 </div>
-<div id="exm-" class="theorem example">
+<div id="exm-free-oscillations" class="theorem example" data-chapter="2" data-description="Free oscillations">
 <p><span class="theorem-title"><strong>Example 2.25 </strong></span>Suppose the system from the previous example is initially at equilibrium when the mass is suddenly pushed downward at 0.5 m/sec.&nbsp;Find the motion of the mass.</p>
 <div class="solution proof">
 <p><span class="proof-title"><em>Solution</em>. </span>We derived the governing ODE <span class="math inline">\(x'' + 1.6 x' + 2.2 x = 0\)</span>. The roots are the roots of <span class="math inline">\(\lambda^2 + 1.6\lambda + 2.2\)</span>, which are found numerically to be</p>

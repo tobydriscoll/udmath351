@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.339">
+<meta name="generator" content="quarto-1.4.315">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -175,12 +175,6 @@ MathJax = {
   <div class="sidebar-item-container"> 
   <a href="./matrix_algebra.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Matrix algebra</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./ode_systems.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Systems of ODEs</span></span></a>
   </div>
 </li>
     </ul>
@@ -364,7 +358,7 @@ cx + dy &amp;= g.
 <li>Otherwise, there are no solutions.</li>
 </ul></li>
 </ul>
-<div id="exm-" class="theorem example">
+<div id="exm-two-equations" class="theorem example" data-chapter="3" data-description="Two linear equations">
 <p><span class="theorem-title"><strong>Example 3.1 </strong></span>Find all solutions to the equations</p>
 <p><span class="math display">\[
 \begin{split}
@@ -435,7 +429,7 @@ Important
 </div>
 </div>
 <p>The vector <span class="math inline">\(\bfb\in\real^m\)</span> implied in <a href="#eq-linsys-def" class="quarto-xref">Equation&nbsp;<span>3.1</span></a> doesn’t have a standard name, but I will call it the <strong>forcing vector</strong> by analogy with linear ODEs. Altogether, <span class="math inline">\(\bfA\)</span> and <span class="math inline">\(\bfb\)</span> are the data of the linear system, and the vector <span class="math inline">\(\bfx \in \real^{n}\)</span> is the solution.</p>
-<div id="exm-" class="theorem example">
+<div id="exm-coefficient-matrix" class="theorem example" data-chapter="3" data-description="Coefficient matrix">
 <p><span class="theorem-title"><strong>Example 3.2 </strong></span>Sometimes zeros are needed as placeholders in the coefficient matrix. In the linear system</p>
 <p><span class="math display">\[
 \begin{split}
@@ -478,7 +472,7 @@ Note
 <p>Recall that the equations of a linear system correspond to rows of the coefficient matrix <span class="math inline">\(\bfA\)</span> and forcing vector <span class="math inline">\(\bfb\)</span>, hence the name “row operations.”</p>
 </div>
 </div>
-<div id="exm-gauss-elimination" class="theorem example">
+<div id="exm-gauss-elimination" class="theorem example" data-chapter="3" data-description="Row elimination">
 <p><span class="theorem-title"><strong>Example 3.3 </strong></span>Let’s use elimination to solve the <span class="math inline">\(3\times 3\)</span> system</p>
 <p><span class="math display">\[
 \begin{split}
@@ -540,7 +534,7 @@ x_2 + 3x_3 &amp; = 3, \\
 <div id="def-linsys-augmented" class="theorem definition">
 <p><span class="theorem-title"><strong>Definition 3.6 </strong></span>The <strong>augmented matrix</strong> of the linear system <a href="#eq-linsys-def" class="quarto-xref">Equation&nbsp;<span>3.1</span></a> is the <span class="math inline">\(m\times (n+1)\)</span> matrix <span class="math inline">\(\mathbf{G} = \augmat{\bfA}{\bfb}\)</span>.</p>
 </div>
-<div id="exm-augmented-matrix" class="theorem example">
+<div id="exm-augmented-matrix" class="theorem example" data-chapter="3" data-description="Augmented matrix">
 <p><span class="theorem-title"><strong>Example 3.4 </strong></span>The starting system in <a href="#exm-gauss-elimination" class="quarto-xref">Example&nbsp;<span>3.3</span></a> has augmented matrix</p>
 <p><span class="math display">\[
 \augmat{\begin{matrix}
@@ -574,7 +568,7 @@ x_2 + 3x_3 &amp; = 3, \\
 </ol>
 </div>
 <p>To achieve RE form from a given starting matrix, we start at the top left and use row operations to introduce zeros under the leading element of the first row. We then move down one row and repeat. It’s easier to understand from more examples than to write out a formal algorithm.</p>
-<div id="exm-RE-inconsistent" class="theorem example">
+<div id="exm-RE-inconsistent" class="theorem example" data-chapter="3" data-description="Inconsistent system">
 <p><span class="theorem-title"><strong>Example 3.5 </strong></span>We start from <span class="math display">\[
 \begin{bmatrix}
 1 &amp; 2 &amp; -4 &amp; 5 \\ 2 &amp; 4 &amp; 0 &amp; 2 \\ 2 &amp; 3 &amp; 2 &amp; 5 \\ -1 &amp; 1 &amp; 3 &amp; 5
@@ -634,7 +628,7 @@ x_2 + 3x_3 &amp; = 3, \\
 <div id="def-pivot" class="theorem definition">
 <p><span class="theorem-title"><strong>Definition 3.8 (Pivots) </strong></span>The leading elements encountered during row elimination are called <strong>pivots</strong>. The columns they occur in are called <strong>leading variables</strong>, while the other variables (if any) are called <strong>free variables</strong>.</p>
 </div>
-<div id="exm-elimination-infinite" class="theorem example">
+<div id="exm-elimination-infinite" class="theorem example" data-chapter="3" data-description="Infinitely many solutions">
 <p><span class="theorem-title"><strong>Example 3.6 </strong></span>Suppose we begin with the augmented matrix <span class="math display">\[
 \augmat{\begin{matrix}
 1 &amp; 1 &amp; -1  \\
@@ -696,7 +690,7 @@ x_1 + x_2 - x_3 = 4,
 <p><span class="theorem-title"><strong>Theorem 3.1 </strong></span>Every matrix is equivalent to a unique matrix in RRE form.</p>
 </div>
 <p>The other useful fact is that RRE form completely exposes everything we want to know about a linear system. In fact, everything else we will do theoretically with matrices comes back to the RRE form, whether or not it’s an augmented matrix.</p>
-<div id="exm-gauss-jordan" class="theorem example">
+<div id="exm-gauss-jordan" class="theorem example" data-chapter="3" data-description="Gauss--Jordan elimination">
 <p><span class="theorem-title"><strong>Example 3.7 </strong></span>At the end of <a href="#exm-gauss-elimination" class="quarto-xref">Example&nbsp;<span>3.3</span></a>, we had reached the augmented matrix</p>
 <p><span class="math display">\[
 \augmat{\begin{matrix}
@@ -774,7 +768,7 @@ At the end of the downward phase, the augmented matrix is triangular, which is e
 
 At the end of the upward phase, the matrix has been put into a form that we define formally here. 
 ---></p>
-<div id="exm-RRE-julia" class="theorem example">
+<div id="exm-RRE-julia" class="theorem example" data-chapter="3" data-description="RRE form">
 <p><span class="theorem-title"><strong>Example 3.8 </strong></span>Here is an example of reduction to RRE form for a linear system using Julia to do the arithmetic.</p>
 <p><span class="math display">\[
 \bfA = \begin{bmatrix}
@@ -1007,7 +1001,7 @@ Caution
 <li>Use the leading columns to solve for their corresponding variables in terms of the free parameters.</li>
 </ol>
 </div>
-<div id="exm-RREF-multiple" class="theorem example">
+<div id="exm-RREF-multiple" class="theorem example" data-chapter="3" data-description="Solution from RRE form">
 <p><span class="theorem-title"><strong>Example 3.9 </strong></span>A linear system has an augmented matrix equivalent to the RRE matrix</p>
 <p><span class="math display">\[
 \augmat{
@@ -1030,7 +1024,7 @@ s \\ 2+3t \\ t \\ -4
 \]</span></p>
 </div>
 </div>
-<div id="exm-" class="theorem example">
+<div id="exm-rre-inconsistent" class="theorem example" data-chapter="3" data-description="RRE form---inconsistent system">
 <p><span class="theorem-title"><strong>Example 3.10 </strong></span>A linear system has an augmented matrix equivalent to the RRE form</p>
 <p><span class="math display">\[
 \augmat{
@@ -1133,7 +1127,7 @@ Note
 \bfA(\bfu + \bfv) = \bfA\bfu + \bfA\bfv = \bfzero + \bfb = \bfb.
 \]</span></p>
 </div>
-<div id="exm-nonhomogeneous-1D" class="theorem example">
+<div id="exm-nonhomogeneous-1D" class="theorem example" data-chapter="3" data-description="Nullspace in 2D">
 <p><span class="theorem-title"><strong>Example 3.11 </strong></span>Suppose</p>
 <p><span class="math display">\[
 \begin{bmatrix}
@@ -1212,7 +1206,7 @@ The matrix--vector product $\bfA \bfx$ is a linear combination of the columns of
 <div id="def-linalg-span" class="theorem definition">
 <p><span class="theorem-title"><strong>Definition 3.14 </strong></span>The set of all linear combinations of <span class="math inline">\(\bfv_1,\ldots,\bfv_k\)</span> is known as the <strong>span</strong> of those vectors. The span of an empty set is the singleton set <span class="math inline">\(\{\bfzero\}\)</span>.</p>
 </div>
-<div id="exm-nullspace-combo" class="theorem example">
+<div id="exm-nullspace-combo" class="theorem example" data-chapter="3" data-description="Linear dependence">
 <p><span class="theorem-title"><strong>Example 3.12 </strong></span>Show that <span class="math inline">\(\bfv=[1,4,3]\)</span> is in the span of <span class="math inline">\(\bfu_1=[1,-2,-1]\)</span> and <span class="math inline">\(\bfu_2=[3,0,1]\)</span>. (That is, <span class="math inline">\(\bfv\)</span> can be written as a linear combination of these two vectors.)</p>
 <div class="solution proof">
 <p><span class="proof-title"><em>Solution</em>. </span>Suppose that <span class="math inline">\(\bfv = c_1 \bfu_1 + c_2 \bfu_2\)</span>. Looking at each component of this vector equation, we conclude that</p>
@@ -1259,7 +1253,7 @@ The matrix--vector product $\bfA \bfx$ is a linear combination of the columns of
 <p>Then a vector <span class="math inline">\(\bfb \in \real^m\)</span> lies in the span of <span class="math inline">\(\bfa_1,\ldots,\bfa_n\)</span> if and only if the system with augmented matrix <span class="math inline">\(\augmat{\bfA}{\bfb}\)</span> is consistent.</p>
 </div>
 <p>The idea behind span is that it allows us to represent an infinite set, such as a null space, using a finite number of vectors.</p>
-<div id="exm-nullspace-span" class="theorem example">
+<div id="exm-nullspace-span" class="theorem example" data-chapter="3" data-description="Expressing nullspace via span">
 <p><span class="theorem-title"><strong>Example 3.13 </strong></span>Suppose the RRE form of a matrix <span class="math inline">\(\bfA\)</span> is</p>
 <p><span class="math display">\[
 \mathbf{R} =
@@ -1321,10 +1315,10 @@ c_1\bfv_1 + c_2\bfv_2 + \cdots c_n \bfv_n = 0.
 <li><span class="math inline">\(\rank(\bfA) = n\)</span>.</li>
 </ol>
 </div>
-<div id="exm-dependence-zerovector" class="theorem example">
+<div id="exm-dependence-zerovector" class="theorem example" data-chapter="3" data-description="Zero vector implies dependence">
 <p><span class="theorem-title"><strong>Example 3.14 </strong></span>Any set of vectors that contains the zero vector must be dependent. That’s because the zero vector will put a column of zeros in the matrix <span class="math inline">\(\bfA\)</span> in <a href="#thm-linalg-independence" class="quarto-xref">Theorem&nbsp;<span>3.9</span></a>, and since that column can’t possibly have a leading nonzero in it, the rank of <span class="math inline">\(\bfA\)</span> will be less than the number of columns.</p>
 </div>
-<div id="exm-nullspace-dependent" class="theorem example">
+<div id="exm-nullspace-dependent" class="theorem example" data-chapter="3" data-description="Determine independence of vectors">
 <p><span class="theorem-title"><strong>Example 3.15 </strong></span>Determine whether the vectors <span class="math inline">\(\bfv_1=\threevec{1}{0}{-2}\)</span>, <span class="math inline">\(\bfv_2=\threevec{1}{0}{1}\)</span>, and <span class="math inline">\(\bfv_3 = \threevec{0}{0}{-1}\)</span> are linearly independent.</p>
 <div class="solution proof">
 <p><span class="proof-title"><em>Solution</em>. </span>These vectors are dependent if, and only if, we can find <span class="math inline">\(c_1,c_2,c_3\)</span>, not all zero, such that</p>

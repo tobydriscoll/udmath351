@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.339">
+<meta name="generator" content="quarto-1.4.315">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -33,6 +33,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
 <link href="./ivp_first_order.html" rel="next">
+<script src="site_libs/quarto-listing/list.min.js"></script>
+<script src="site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -67,6 +69,36 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script>
+
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-examples-listing .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-description','listing-link','listing-chapter',{ data: ['index'] },{ data: ['categories'] }],
+      page: 30,
+    pagination: { item: "<li class='page-item'><a class='page page-link' href='#'></a></li>" },
+      searchColumns: ["listing-chapter","listing-description","listing-link"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-examples-listing'] = new List('listing-examples-listing', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  </script>
 <script> 
 MathJax = {
   chtml: {
@@ -144,12 +176,6 @@ MathJax = {
  <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Matrix algebra</span></span></a>
   </div>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./ode_systems.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Systems of ODEs</span></span></a>
-  </div>
-</li>
     </ul>
     </div>
 <div class="quarto-sidebar-footer"><div class="sidebar-footer-item">
@@ -172,6 +198,7 @@ MathJax = {
   <li><a href="#matrix-algebra" id="toc-matrix-algebra" class="nav-link" data-scroll-target="#matrix-algebra">Matrix algebra</a></li>
   <li><a href="#linear-ode-systems" id="toc-linear-ode-systems" class="nav-link" data-scroll-target="#linear-ode-systems">Linear ODE systems</a></li>
   </ul></li>
+  <li><a href="#list-of-examples" id="toc-list-of-examples" class="nav-link" data-scroll-target="#list-of-examples">List of examples</a></li>
   <li><a href="#learning-goals" id="toc-learning-goals" class="nav-link" data-scroll-target="#learning-goals">Learning goals</a>
   <ul class="collapse">
   <li><a href="#a.-first-order-scalar-odes" id="toc-a.-first-order-scalar-odes" class="nav-link" data-scroll-target="#a.-first-order-scalar-odes">A. First-order scalar ODEs</a></li>
@@ -522,6 +549,1002 @@ Note: Both textbooks have dedicated chapter review problems.
 * Poole, Chapter 2 Review: 2, 3, 4, 7, 10, 12, 13, 15, 19 -->
 </section>
 </section>
+<section id="list-of-examples" class="level2">
+<h2 class="anchored" data-anchor-id="list-of-examples">List of examples</h2>
+<div id="listing-examples-listing" class="quarto-listing quarto-listing-container-table">
+<div class="listing-actions-group">
+   <div class="input-group input-group-sm quarto-listing-sort">
+     <span class="input-group-text"><i class="bi bi-sort-down"></i></span>
+     <select id="listing-examples-listing-sort" class="form-select" aria-label="Order By" onchange="window['quarto-listings']['listing-examples-listing'].sort(this.options[this.selectedIndex].value, { order: this.options[this.selectedIndex].getAttribute('data-direction')})">
+       <option value="" disabled="" selected="" hidden="">Order By</option>
+       <option value="index" data-direction="asc">Default</option>
+         <option value="listing-chapter" data-direction="asc">
+          chapter
+        </option>
+         <option value="listing-description" data-direction="asc">
+          Description
+        </option>
+         <option value="listing-link" data-direction="asc">
+          link
+        </option>
+     </select>
+  </div>
+    <div class="input-group input-group-sm quarto-listing-filter">
+      <span class="input-group-text"><i class="bi bi-search"></i></span>
+      <input type="text" class="search form-control" placeholder="Filter">
+    </div>
+</div>
+<table class="quarto-listing-table table">
+<thead>
+<tr>
+<th>
+<a class="sort" data-sort="listing-description" onclick="if (this.classList.contains('sort-asc')) { this.classList.add('sort-desc'); this.classList.remove('sort-asc') } else { this.classList.add('sort-asc'); this.classList.remove('sort-desc')} return false;">Description</a>
+</th>
+<th>
+<a class="sort" data-sort="listing-link" onclick="if (this.classList.contains('sort-asc')) { this.classList.add('sort-desc'); this.classList.remove('sort-asc') } else { this.classList.add('sort-asc'); this.classList.remove('sort-desc')} return false;">link</a>
+</th>
+<th>
+<a class="sort" data-sort="listing-chapter" onclick="if (this.classList.contains('sort-asc')) { this.classList.add('sort-desc'); this.classList.remove('sort-asc') } else { this.classList.add('sort-asc'); this.classList.remove('sort-desc')} return false;">chapter</a>
+</th>
+</tr>
+</thead>
+<tbody class="list">
+<tr data-index="0">
+<td>
+<span class="listing-description">1st-order ODE standard form</span>
+</td>
+<td>
+<span class="listing-link"><a href="ivp_first_order.html#exm-preview-rewrite" class="quarto-xref">Example&nbsp;<span>1.1</span></a></span>
+</td>
+<td>
+<span class="listing-chapter">1</span>
+</td>
+</tr>
+<tr data-index="1">
+<td>
+<span class="listing-description">Verify ODE solution</span>
+</td>
+<td>
+<span class="listing-link"><a href="ivp_first_order.html#exm-preview-verify" class="quarto-xref">Example&nbsp;<span>1.2</span></a></span>
+</td>
+<td>
+<span class="listing-chapter">1</span>
+</td>
+</tr>
+<tr data-index="2">
+<td>
+<span class="listing-description">Variable-growth ODE solution</span>
+</td>
+<td>
+<span class="listing-link"><a href="ivp_first_order.html#exm-preview-var-growth" class="quarto-xref">Example&nbsp;<span>1.3</span></a></span>
+</td>
+<td>
+<span class="listing-chapter">1</span>
+</td>
+</tr>
+<tr data-index="3">
+<td>
+<span class="listing-description">Nonlinear growth ODE solution</span>
+</td>
+<td>
+<span class="listing-link"><a href="ivp_first_order.html#exm-preview-nonlinear" class="quarto-xref">Example&nbsp;<span>1.4</span></a></span>
+</td>
+<td>
+<span class="listing-chapter">1</span>
+</td>
+</tr>
+<tr data-index="4">
+<td>
+<span class="listing-description">Solve 1st-order IVP</span>
+</td>
+<td>
+<span class="listing-link"><a href="ivp_first_order.html#exm-ivp1-solve" class="quarto-xref">Example&nbsp;<span>1.5</span></a></span>
+</td>
+<td>
+<span class="listing-chapter">1</span>
+</td>
+</tr>
+<tr data-index="5">
+<td>
+<span class="listing-description">Solution curves and an initial condition</span>
+</td>
+<td>
+<span class="listing-link"><a href="ivp_first_order.html#exm-ivp1-plot" class="quarto-xref">Example&nbsp;<span>1.6</span></a></span>
+</td>
+<td>
+<span class="listing-chapter">1</span>
+</td>
+</tr>
+<tr data-index="6">
+<td>
+<span class="listing-description">Numerical solution for constant growth rate</span>
+</td>
+<td>
+<span class="listing-link"><a href="ivp_first_order.html#exm-ivp1-numerical-constant" class="quarto-xref">Example&nbsp;<span>1.7</span></a></span>
+</td>
+<td>
+<span class="listing-chapter">1</span>
+</td>
+</tr>
+<tr data-index="7">
+<td>
+<span class="listing-description">Numerical solution for variable growth rate</span>
+</td>
+<td>
+<span class="listing-link"><a href="ivp_first_order.html#exm-ivp1-numerical-variable" class="quarto-xref">Example&nbsp;<span>1.8</span></a></span>
+</td>
+<td>
+<span class="listing-chapter">1</span>
+</td>
+</tr>
+<tr data-index="8">
+<td>
+<span class="listing-description">Numerical solution for nonlinear growth</span>
+</td>
+<td>
+<span class="listing-link"><a href="ivp_first_order.html#exm-ivp1-numerical-nonlinear" class="quarto-xref">Example&nbsp;<span>1.9</span></a></span>
+</td>
+<td>
+<span class="listing-chapter">1</span>
+</td>
+</tr>
+<tr data-index="9">
+<td>
+<span class="listing-description">Logistic equation direction field</span>
+</td>
+<td>
+<span class="listing-link"><a href="ivp_first_order.html#exm-qualitative-logistic" class="quarto-xref">Example&nbsp;<span>1.10</span></a></span>
+</td>
+<td>
+<span class="listing-chapter">1</span>
+</td>
+</tr>
+<tr data-index="10">
+<td>
+<span class="listing-description">Direction field for nonautonomous equation</span>
+</td>
+<td>
+<span class="listing-link"><a href="ivp_first_order.html#exm-qualitative-timevarying" class="quarto-xref">Example&nbsp;<span>1.11</span></a></span>
+</td>
+<td>
+<span class="listing-chapter">1</span>
+</td>
+</tr>
+<tr data-index="11">
+<td>
+<span class="listing-description">Phase diagram for stability of equilibria</span>
+</td>
+<td>
+<span class="listing-link"><a href="ivp_first_order.html#exm-qualitative-equilibria" class="quarto-xref">Example&nbsp;<span>1.12</span></a></span>
+</td>
+<td>
+<span class="listing-chapter">1</span>
+</td>
+</tr>
+<tr data-index="12">
+<td>
+<span class="listing-description">Separable equation</span>
+</td>
+<td>
+<span class="listing-link"><a href="ivp_first_order.html#exm-separable-vargrowth" class="quarto-xref">Example&nbsp;<span>1.13</span></a></span>
+</td>
+<td>
+<span class="listing-chapter">1</span>
+</td>
+</tr>
+<tr data-index="13">
+<td>
+<span class="listing-description">Separable equation—implicit solution</span>
+</td>
+<td>
+<span class="listing-link"><a href="ivp_first_order.html#exm-separable-implicit" class="quarto-xref">Example&nbsp;<span>1.14</span></a></span>
+</td>
+<td>
+<span class="listing-chapter">1</span>
+</td>
+</tr>
+<tr data-index="14">
+<td>
+<span class="listing-description">Separable equation—factorization</span>
+</td>
+<td>
+<span class="listing-link"><a href="ivp_first_order.html#exm-separable-factor" class="quarto-xref">Example&nbsp;<span>1.15</span></a></span>
+</td>
+<td>
+<span class="listing-chapter">1</span>
+</td>
+</tr>
+<tr data-index="15">
+<td>
+<span class="listing-description">Separable equation—autonomous</span>
+</td>
+<td>
+<span class="listing-link"><a href="ivp_first_order.html#exm-separable-autonomous" class="quarto-xref">Example&nbsp;<span>1.16</span></a></span>
+</td>
+<td>
+<span class="listing-chapter">1</span>
+</td>
+</tr>
+<tr data-index="16">
+<td>
+<span class="listing-description">Linear operator</span>
+</td>
+<td>
+<span class="listing-link"><a href="ivp_first_order.html#exm-linear-operator" class="quarto-xref">Example&nbsp;<span>1.17</span></a></span>
+</td>
+<td>
+<span class="listing-chapter">1</span>
+</td>
+</tr>
+<tr data-index="17">
+<td>
+<span class="listing-description">1st order homogeneous solution</span>
+</td>
+<td>
+<span class="listing-link"><a href="ivp_first_order.html#exm-homog1-sin" class="quarto-xref">Example&nbsp;<span>1.18</span></a></span>
+</td>
+<td>
+<span class="listing-chapter">1</span>
+</td>
+</tr>
+<tr data-index="18">
+<td>
+<span class="listing-description">1st order homogeneous solution</span>
+</td>
+<td>
+<span class="listing-link"><a href="ivp_first_order.html#exm-homog1-power" class="quarto-xref">Example&nbsp;<span>1.19</span></a></span>
+</td>
+<td>
+<span class="listing-chapter">1</span>
+</td>
+</tr>
+<tr data-index="19">
+<td>
+<span class="listing-description">1st order homogeneous solution</span>
+</td>
+<td>
+<span class="listing-link"><a href="ivp_first_order.html#exm-homog1-singular" class="quarto-xref">Example&nbsp;<span>1.20</span></a></span>
+</td>
+<td>
+<span class="listing-chapter">1</span>
+</td>
+</tr>
+<tr data-index="20">
+<td>
+<span class="listing-description">1st order variation of parameters</span>
+</td>
+<td>
+<span class="listing-link"><a href="ivp_first_order.html#exm-vop-one" class="quarto-xref">Example&nbsp;<span>1.21</span></a></span>
+</td>
+<td>
+<span class="listing-chapter">1</span>
+</td>
+</tr>
+<tr data-index="21">
+<td>
+<span class="listing-description">1st order variation of parameters</span>
+</td>
+<td>
+<span class="listing-link"><a href="ivp_first_order.html#exm-vop-two" class="quarto-xref">Example&nbsp;<span>1.22</span></a></span>
+</td>
+<td>
+<span class="listing-chapter">1</span>
+</td>
+</tr>
+<tr data-index="22">
+<td>
+<span class="listing-description">1st order variation of parameters</span>
+</td>
+<td>
+<span class="listing-link"><a href="ivp_first_order.html#exm-vop-three" class="quarto-xref">Example&nbsp;<span>1.23</span></a></span>
+</td>
+<td>
+<span class="listing-chapter">1</span>
+</td>
+</tr>
+<tr data-index="23">
+<td>
+<span class="listing-description">Bacterial growth model</span>
+</td>
+<td>
+<span class="listing-link"><a href="ivp_first_order.html#exm-modeling-bacteria" class="quarto-xref">Example&nbsp;<span>1.24</span></a></span>
+</td>
+<td>
+<span class="listing-chapter">1</span>
+</td>
+</tr>
+<tr data-index="24">
+<td>
+<span class="listing-description">Radioactive decay model</span>
+</td>
+<td>
+<span class="listing-link"><a href="ivp_first_order.html#exm-modeling-radioactive" class="quarto-xref">Example&nbsp;<span>1.25</span></a></span>
+</td>
+<td>
+<span class="listing-chapter">1</span>
+</td>
+</tr>
+<tr data-index="25">
+<td>
+<span class="listing-description">Cooling coffee model</span>
+</td>
+<td>
+<span class="listing-link"><a href="ivp_first_order.html#exm-modeling-coffee" class="quarto-xref">Example&nbsp;<span>1.26</span></a></span>
+</td>
+<td>
+<span class="listing-chapter">1</span>
+</td>
+</tr>
+<tr data-index="26">
+<td>
+<span class="listing-description">Cooling coffee model</span>
+</td>
+<td>
+<span class="listing-link"><a href="ivp_first_order.html#exm-modeling-flintstones" class="quarto-xref">Example&nbsp;<span>1.27</span></a></span>
+</td>
+<td>
+<span class="listing-chapter">1</span>
+</td>
+</tr>
+<tr data-index="27">
+<td>
+<span class="listing-description">Dependent functions</span>
+</td>
+<td>
+<span class="listing-link"><a href="ivp_second_order.html#exm-structure-dependent" class="quarto-xref">Example&nbsp;<span>2.1</span></a></span>
+</td>
+<td>
+<span class="listing-chapter">2</span>
+</td>
+</tr>
+<tr data-index="28">
+<td>
+<span class="listing-description">Independent functions</span>
+</td>
+<td>
+<span class="listing-link"><a href="ivp_second_order.html#exm-structure-independent" class="quarto-xref">Example&nbsp;<span>2.2</span></a></span>
+</td>
+<td>
+<span class="listing-chapter">2</span>
+</td>
+</tr>
+<tr data-index="29">
+<td>
+<span class="listing-description">Wronskian</span>
+</td>
+<td>
+<span class="listing-link"><a href="ivp_second_order.html#exm-structure-wronskian" class="quarto-xref">Example&nbsp;<span>2.3</span></a></span>
+</td>
+<td>
+<span class="listing-chapter">2</span>
+</td>
+</tr>
+<tr data-index="30">
+<td>
+<span class="listing-description">Characteristic equation—double root</span>
+</td>
+<td>
+<span class="listing-link"><a href="ivp_second_order.html#exm-homogeneous-trivial" class="quarto-xref">Example&nbsp;<span>2.4</span></a></span>
+</td>
+<td>
+<span class="listing-chapter">2</span>
+</td>
+</tr>
+<tr data-index="31">
+<td>
+<span class="listing-description">Characteristic equation—distinct real roots</span>
+</td>
+<td>
+<span class="listing-link"><a href="ivp_second_order.html#exm-homogeneous-real-distinct" class="quarto-xref">Example&nbsp;<span>2.5</span></a></span>
+</td>
+<td>
+<span class="listing-chapter">2</span>
+</td>
+</tr>
+<tr data-index="32">
+<td>
+<span class="listing-description">2nd order IVP</span>
+</td>
+<td>
+<span class="listing-link"><a href="ivp_second_order.html#exm-homogeneous-real-ivp" class="quarto-xref">Example&nbsp;<span>2.6</span></a></span>
+</td>
+<td>
+<span class="listing-chapter">2</span>
+</td>
+</tr>
+<tr data-index="33">
+<td>
+<span class="listing-description">Complex number fractions</span>
+</td>
+<td>
+<span class="listing-link"><a href="ivp_second_order.html#exm-complex-fraction" class="quarto-xref">Example&nbsp;<span>2.7</span></a></span>
+</td>
+<td>
+<span class="listing-chapter">2</span>
+</td>
+</tr>
+<tr data-index="34">
+<td>
+<span class="listing-description">Complex number reciprocal</span>
+</td>
+<td>
+<span class="listing-link"><a href="ivp_second_order.html#exm-complex-reciprocal" class="quarto-xref">Example&nbsp;<span>2.8</span></a></span>
+</td>
+<td>
+<span class="listing-chapter">2</span>
+</td>
+</tr>
+<tr data-index="35">
+<td>
+<span class="listing-description">Complex numbers polar form</span>
+</td>
+<td>
+<span class="listing-link"><a href="ivp_second_order.html#exm-complex-polar" class="quarto-xref">Example&nbsp;<span>2.9</span></a></span>
+</td>
+<td>
+<span class="listing-chapter">2</span>
+</td>
+</tr>
+<tr data-index="36">
+<td>
+<span class="listing-description">Complex number square root</span>
+</td>
+<td>
+<span class="listing-link"><a href="ivp_second_order.html#exm-complex-sqrt" class="quarto-xref">Example&nbsp;<span>2.10</span></a></span>
+</td>
+<td>
+<span class="listing-chapter">2</span>
+</td>
+</tr>
+<tr data-index="37">
+<td>
+<span class="listing-description">Characteristic polynomial—complex roots</span>
+</td>
+<td>
+<span class="listing-link"><a href="ivp_second_order.html#exm-complex-simple" class="quarto-xref">Example&nbsp;<span>2.11</span></a></span>
+</td>
+<td>
+<span class="listing-chapter">2</span>
+</td>
+</tr>
+<tr data-index="38">
+<td>
+<span class="listing-description">Characteristic polynomial—complex roots</span>
+</td>
+<td>
+<span class="listing-link"><a href="ivp_second_order.html#exm-complex-complex1" class="quarto-xref">Example&nbsp;<span>2.12</span></a></span>
+</td>
+<td>
+<span class="listing-chapter">2</span>
+</td>
+</tr>
+<tr data-index="39">
+<td>
+<span class="listing-description">Characteristic polynomial—real solution for complex roots</span>
+</td>
+<td>
+<span class="listing-link"><a href="ivp_second_order.html#exm-charpoly-real-solution" class="quarto-xref">Example&nbsp;<span>2.13</span></a></span>
+</td>
+<td>
+<span class="listing-chapter">2</span>
+</td>
+</tr>
+<tr data-index="40">
+<td>
+<span class="listing-description">Characteristic polynomial—real IVP for complex roots</span>
+</td>
+<td>
+<span class="listing-link"><a href="ivp_second_order.html#exm-complex-complex2" class="quarto-xref">Example&nbsp;<span>2.14</span></a></span>
+</td>
+<td>
+<span class="listing-chapter">2</span>
+</td>
+</tr>
+<tr data-index="41">
+<td>
+<span class="listing-description">2nd order variation of parameters</span>
+</td>
+<td>
+<span class="listing-link"><a href="ivp_second_order.html#exm-variation_parameters-cons" class="quarto-xref">Example&nbsp;<span>2.15</span></a></span>
+</td>
+<td>
+<span class="listing-chapter">2</span>
+</td>
+</tr>
+<tr data-index="42">
+<td>
+<span class="listing-description">2nd order variation of parameters</span>
+</td>
+<td>
+<span class="listing-link"><a href="ivp_second_order.html#exm-variation_parameters-resonance" class="quarto-xref">Example&nbsp;<span>2.16</span></a></span>
+</td>
+<td>
+<span class="listing-chapter">2</span>
+</td>
+</tr>
+<tr data-index="43">
+<td>
+<span class="listing-description">Undetermined coefficients—constant</span>
+</td>
+<td>
+<span class="listing-link"><a href="ivp_second_order.html#exm-undetermined-const" class="quarto-xref">Example&nbsp;<span>2.17</span></a></span>
+</td>
+<td>
+<span class="listing-chapter">2</span>
+</td>
+</tr>
+<tr data-index="44">
+<td>
+<span class="listing-description">Undetermined coefficients—polynomial</span>
+</td>
+<td>
+<span class="listing-link"><a href="ivp_second_order.html#exm-MUC-polynomial" class="quarto-xref">Example&nbsp;<span>2.18</span></a></span>
+</td>
+<td>
+<span class="listing-chapter">2</span>
+</td>
+</tr>
+<tr data-index="45">
+<td>
+<span class="listing-description">Undetermined coefficients—exponential</span>
+</td>
+<td>
+<span class="listing-link"><a href="ivp_second_order.html#exm-MUC-exponential" class="quarto-xref">Example&nbsp;<span>2.19</span></a></span>
+</td>
+<td>
+<span class="listing-chapter">2</span>
+</td>
+</tr>
+<tr data-index="46">
+<td>
+<span class="listing-description">Undetermined coefficients—trig</span>
+</td>
+<td>
+<span class="listing-link"><a href="ivp_second_order.html#exm-MUC-trig" class="quarto-xref">Example&nbsp;<span>2.20</span></a></span>
+</td>
+<td>
+<span class="listing-chapter">2</span>
+</td>
+</tr>
+<tr data-index="47">
+<td>
+<span class="listing-description">Undetermined coefficients (failure)</span>
+</td>
+<td>
+<span class="listing-link"><a href="ivp_second_order.html#exm-undetermined-resonance" class="quarto-xref">Example&nbsp;<span>2.21</span></a></span>
+</td>
+<td>
+<span class="listing-chapter">2</span>
+</td>
+</tr>
+<tr data-index="48">
+<td>
+<span class="listing-description">Undetermined coefficients—workaround</span>
+</td>
+<td>
+<span class="listing-link"><a href="ivp_second_order.html#exm-undetermined-resonance-fix" class="quarto-xref">Example&nbsp;<span>2.22</span></a></span>
+</td>
+<td>
+<span class="listing-chapter">2</span>
+</td>
+</tr>
+<tr data-index="49">
+<td>
+<span class="listing-description">Natural frequency of an oscillator</span>
+</td>
+<td>
+<span class="listing-link"><a href="ivp_second_order.html#exm-oscillator-frequency" class="quarto-xref">Example&nbsp;<span>2.23</span></a></span>
+</td>
+<td>
+<span class="listing-chapter">2</span>
+</td>
+</tr>
+<tr data-index="50">
+<td>
+<span class="listing-description">Damping strength</span>
+</td>
+<td>
+<span class="listing-link"><a href="ivp_second_order.html#exm-damping-strength" class="quarto-xref">Example&nbsp;<span>2.24</span></a></span>
+</td>
+<td>
+<span class="listing-chapter">2</span>
+</td>
+</tr>
+<tr data-index="51">
+<td>
+<span class="listing-description">Free oscillations</span>
+</td>
+<td>
+<span class="listing-link"><a href="ivp_second_order.html#exm-free-oscillations" class="quarto-xref">Example&nbsp;<span>2.25</span></a></span>
+</td>
+<td>
+<span class="listing-chapter">2</span>
+</td>
+</tr>
+<tr data-index="52">
+<td>
+<span class="listing-description">Two linear equations</span>
+</td>
+<td>
+<span class="listing-link"><a href="linear_algebra_systems.html#exm-two-equations" class="quarto-xref">Example&nbsp;<span>3.1</span></a></span>
+</td>
+<td>
+<span class="listing-chapter">3</span>
+</td>
+</tr>
+<tr data-index="53">
+<td>
+<span class="listing-description">Coefficient matrix</span>
+</td>
+<td>
+<span class="listing-link"><a href="linear_algebra_systems.html#exm-coefficient-matrix" class="quarto-xref">Example&nbsp;<span>3.2</span></a></span>
+</td>
+<td>
+<span class="listing-chapter">3</span>
+</td>
+</tr>
+<tr data-index="54">
+<td>
+<span class="listing-description">Row elimination</span>
+</td>
+<td>
+<span class="listing-link"><a href="linear_algebra_systems.html#exm-gauss-elimination" class="quarto-xref">Example&nbsp;<span>3.3</span></a></span>
+</td>
+<td>
+<span class="listing-chapter">3</span>
+</td>
+</tr>
+<tr data-index="55">
+<td>
+<span class="listing-description">Augmented matrix</span>
+</td>
+<td>
+<span class="listing-link"><a href="linear_algebra_systems.html#exm-augmented-matrix" class="quarto-xref">Example&nbsp;<span>3.4</span></a></span>
+</td>
+<td>
+<span class="listing-chapter">3</span>
+</td>
+</tr>
+<tr data-index="56">
+<td>
+<span class="listing-description">Inconsistent system</span>
+</td>
+<td>
+<span class="listing-link"><a href="linear_algebra_systems.html#exm-RE-inconsistent" class="quarto-xref">Example&nbsp;<span>3.5</span></a></span>
+</td>
+<td>
+<span class="listing-chapter">3</span>
+</td>
+</tr>
+<tr data-index="57">
+<td>
+<span class="listing-description">Infinitely many solutions</span>
+</td>
+<td>
+<span class="listing-link"><a href="linear_algebra_systems.html#exm-elimination-infinite" class="quarto-xref">Example&nbsp;<span>3.6</span></a></span>
+</td>
+<td>
+<span class="listing-chapter">3</span>
+</td>
+</tr>
+<tr data-index="58">
+<td>
+<span class="listing-description">Gauss–Jordan elimination</span>
+</td>
+<td>
+<span class="listing-link"><a href="linear_algebra_systems.html#exm-gauss-jordan" class="quarto-xref">Example&nbsp;<span>3.7</span></a></span>
+</td>
+<td>
+<span class="listing-chapter">3</span>
+</td>
+</tr>
+<tr data-index="59">
+<td>
+<span class="listing-description">RRE form</span>
+</td>
+<td>
+<span class="listing-link"><a href="linear_algebra_systems.html#exm-RRE-julia" class="quarto-xref">Example&nbsp;<span>3.8</span></a></span>
+</td>
+<td>
+<span class="listing-chapter">3</span>
+</td>
+</tr>
+<tr data-index="60">
+<td>
+<span class="listing-description">Solution from RRE form</span>
+</td>
+<td>
+<span class="listing-link"><a href="linear_algebra_systems.html#exm-RREF-multiple" class="quarto-xref">Example&nbsp;<span>3.9</span></a></span>
+</td>
+<td>
+<span class="listing-chapter">3</span>
+</td>
+</tr>
+<tr data-index="61">
+<td>
+<span class="listing-description">RRE form—inconsistent system</span>
+</td>
+<td>
+<span class="listing-link"><a href="linear_algebra_systems.html#exm-rre-inconsistent" class="quarto-xref">Example&nbsp;<span>3.10</span></a></span>
+</td>
+<td>
+<span class="listing-chapter">3</span>
+</td>
+</tr>
+<tr data-index="62">
+<td>
+<span class="listing-description">Nullspace in 2D</span>
+</td>
+<td>
+<span class="listing-link"><a href="linear_algebra_systems.html#exm-nonhomogeneous-1D" class="quarto-xref">Example&nbsp;<span>3.11</span></a></span>
+</td>
+<td>
+<span class="listing-chapter">3</span>
+</td>
+</tr>
+<tr data-index="63">
+<td>
+<span class="listing-description">Linear dependence</span>
+</td>
+<td>
+<span class="listing-link"><a href="linear_algebra_systems.html#exm-nullspace-combo" class="quarto-xref">Example&nbsp;<span>3.12</span></a></span>
+</td>
+<td>
+<span class="listing-chapter">3</span>
+</td>
+</tr>
+<tr data-index="64">
+<td>
+<span class="listing-description">Expressing nullspace via span</span>
+</td>
+<td>
+<span class="listing-link"><a href="linear_algebra_systems.html#exm-nullspace-span" class="quarto-xref">Example&nbsp;<span>3.13</span></a></span>
+</td>
+<td>
+<span class="listing-chapter">3</span>
+</td>
+</tr>
+<tr data-index="65">
+<td>
+<span class="listing-description">Zero vector implies dependence</span>
+</td>
+<td>
+<span class="listing-link"><a href="linear_algebra_systems.html#exm-dependence-zerovector" class="quarto-xref">Example&nbsp;<span>3.14</span></a></span>
+</td>
+<td>
+<span class="listing-chapter">3</span>
+</td>
+</tr>
+<tr data-index="66">
+<td>
+<span class="listing-description">Determine independence of vectors</span>
+</td>
+<td>
+<span class="listing-link"><a href="linear_algebra_systems.html#exm-nullspace-dependent" class="quarto-xref">Example&nbsp;<span>3.15</span></a></span>
+</td>
+<td>
+<span class="listing-chapter">3</span>
+</td>
+</tr>
+<tr data-index="67">
+<td>
+<span class="listing-description">Matrix–vector product</span>
+</td>
+<td>
+<span class="listing-link"><a href="matrix_algebra.html#exm-matvec" class="quarto-xref">Example&nbsp;<span>4.1</span></a></span>
+</td>
+<td>
+<span class="listing-chapter">4</span>
+</td>
+</tr>
+<tr data-index="68">
+<td>
+<span class="listing-description">Matrix–matrix product</span>
+</td>
+<td>
+<span class="listing-link"><a href="matrix_algebra.html#exm-matmat" class="quarto-xref">Example&nbsp;<span>4.2</span></a></span>
+</td>
+<td>
+<span class="listing-chapter">4</span>
+</td>
+</tr>
+<tr data-index="69">
+<td>
+<span class="listing-description">Identity matrix</span>
+</td>
+<td>
+<span class="listing-link"><a href="matrix_algebra.html#exm-matrix-identity" class="quarto-xref">Example&nbsp;<span>4.3</span></a></span>
+</td>
+<td>
+<span class="listing-chapter">4</span>
+</td>
+</tr>
+<tr data-index="70">
+<td>
+<span class="listing-description">Matrix inverse</span>
+</td>
+<td>
+<span class="listing-link"><a href="matrix_algebra.html#exm-matrix-inverse" class="quarto-xref">Example&nbsp;<span>4.4</span></a></span>
+</td>
+<td>
+<span class="listing-chapter">4</span>
+</td>
+</tr>
+<tr data-index="71">
+<td>
+<span class="listing-description">Singular matrix</span>
+</td>
+<td>
+<span class="listing-link"><a href="matrix_algebra.html#exm-inverse-singular" class="quarto-xref">Example&nbsp;<span>4.5</span></a></span>
+</td>
+<td>
+<span class="listing-chapter">4</span>
+</td>
+</tr>
+<tr data-index="72">
+<td>
+<span class="listing-description">Singular matrices</span>
+</td>
+<td>
+<span class="listing-link"><a href="matrix_algebra.html#exm-matrix-cancellation" class="quarto-xref">Example&nbsp;<span>4.6</span></a></span>
+</td>
+<td>
+<span class="listing-chapter">4</span>
+</td>
+</tr>
+<tr data-index="73">
+<td>
+<span class="listing-description">Planes and subspaces</span>
+</td>
+<td>
+<span class="listing-link"><a href="matrix_algebra.html#exm-subspaces-plane" class="quarto-xref">Example&nbsp;<span>4.7</span></a></span>
+</td>
+<td>
+<span class="listing-chapter">4</span>
+</td>
+</tr>
+<tr data-index="74">
+<td>
+<span class="listing-description">Bases for matrix subspaces</span>
+</td>
+<td>
+<span class="listing-link"><a href="matrix_algebra.html#exm-subspaces-colnull" class="quarto-xref">Example&nbsp;<span>4.8</span></a></span>
+</td>
+<td>
+<span class="listing-chapter">4</span>
+</td>
+</tr>
+<tr data-index="75">
+<td>
+<span class="listing-description">Basis for a span</span>
+</td>
+<td>
+<span class="listing-link"><a href="matrix_algebra.html#exm-subspaces-findbasis" class="quarto-xref">Example&nbsp;<span>4.9</span></a></span>
+</td>
+<td>
+<span class="listing-chapter">4</span>
+</td>
+</tr>
+<tr data-index="76">
+<td>
+<span class="listing-description">Dimension of a subspace</span>
+</td>
+<td>
+<span class="listing-link"><a href="matrix_algebra.html#exm-subspaces-dimension" class="quarto-xref">Example&nbsp;<span>4.10</span></a></span>
+</td>
+<td>
+<span class="listing-chapter">4</span>
+</td>
+</tr>
+<tr data-index="77">
+<td>
+<span class="listing-description"><span class="math inline">\(3\times 3\)</span> determinant</span>
+</td>
+<td>
+<span class="listing-link"><a href="matrix_algebra.html#exm-matrix-determinant3x3" class="quarto-xref">Example&nbsp;<span>4.11</span></a></span>
+</td>
+<td>
+<span class="listing-chapter">4</span>
+</td>
+</tr>
+<tr data-index="78">
+<td>
+<span class="listing-description">Cramer’s Rule</span>
+</td>
+<td>
+<span class="listing-link"><a href="matrix_algebra.html#exm-cramers-rule" class="quarto-xref">Example&nbsp;<span>4.12</span></a></span>
+</td>
+<td>
+<span class="listing-chapter">4</span>
+</td>
+</tr>
+<tr data-index="79">
+<td>
+<span class="listing-description">Eigenvectors of the identity matrix</span>
+</td>
+<td>
+<span class="listing-link"><a href="matrix_algebra.html#exm-eigvec-identity" class="quarto-xref">Example&nbsp;<span>4.13</span></a></span>
+</td>
+<td>
+<span class="listing-chapter">4</span>
+</td>
+</tr>
+<tr data-index="80">
+<td>
+<span class="listing-description">Eigenspaces of a triangular matrix</span>
+</td>
+<td>
+<span class="listing-link"><a href="matrix_algebra.html#exm-eigenvalues-triangular" class="quarto-xref">Example&nbsp;<span>4.16</span></a></span>
+</td>
+<td>
+<span class="listing-chapter">4</span>
+</td>
+</tr>
+<tr data-index="81">
+<td>
+<span class="listing-description">Eigenspaces of a <span class="math inline">\(2\times 2\)</span></span>
+</td>
+<td>
+<span class="listing-link"><a href="matrix_algebra.html#exm-eigvec-2by2" class="quarto-xref">Example&nbsp;<span>4.15</span></a></span>
+</td>
+<td>
+<span class="listing-chapter">4</span>
+</td>
+</tr>
+<tr data-index="82">
+<td>
+<span class="listing-description">Eigenvalues of a triangular matrix</span>
+</td>
+<td>
+<span class="listing-link"><a href="matrix_algebra.html#exm-eigenvalues-triangular" class="quarto-xref">Example&nbsp;<span>4.16</span></a></span>
+</td>
+<td>
+<span class="listing-chapter">4</span>
+</td>
+</tr>
+<tr data-index="83">
+<td>
+<span class="listing-description">Complex eigenvalues</span>
+</td>
+<td>
+<span class="listing-link"><a href="matrix_algebra.html#exm-eigvals-complex" class="quarto-xref">Example&nbsp;<span>4.17</span></a></span>
+</td>
+<td>
+<span class="listing-chapter">4</span>
+</td>
+</tr>
+<tr data-index="84">
+<td>
+<span class="listing-description">Geometric multiplicity</span>
+</td>
+<td>
+<span class="listing-link"><a href="matrix_algebra.html#exm-diagonalization-defective" class="quarto-xref">Example&nbsp;<span>4.18</span></a></span>
+</td>
+<td>
+<span class="listing-chapter">4</span>
+</td>
+</tr>
+<tr data-index="85">
+<td>
+<span class="listing-description">Nondefective repeated eigenvalue</span>
+</td>
+<td>
+<span class="listing-link"><a href="matrix_algebra.html#exm-diagonalization-nondefective" class="quarto-xref">Example&nbsp;<span>4.19</span></a></span>
+</td>
+<td>
+<span class="listing-chapter">4</span>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="listing-no-matching d-none">
+No matching items
+</div>
+<nav id="examples-listing-pagination" class="listing-pagination" aria-label="Page Navigation">
+  <ul class="pagination"></ul>
+</nav>
+</div>
+</section>
 <section id="learning-goals" class="level2">
 <h2 class="anchored" data-anchor-id="learning-goals">Learning goals</h2>
 <section id="a.-first-order-scalar-odes" class="level3">
@@ -616,6 +1639,7 @@ Note: Both textbooks have dedicated chapter review problems.
 <li>Compute a 2x2 or 3x3 matrix exponential using the polynomial method (including defective case).</li>
 <li>Use a matrix exponential to solve an IVP.</li>
 </ol>
+
 
 
 </section>

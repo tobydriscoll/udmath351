@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.339">
+<meta name="generator" content="quarto-1.4.315">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -180,12 +180,6 @@ MathJax = {
  <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Matrix algebra</span></span></a>
   </div>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./ode_systems.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Systems of ODEs</span></span></a>
-  </div>
-</li>
     </ul>
     </div>
 <div class="quarto-sidebar-footer"><div class="sidebar-footer-item">
@@ -338,7 +332,7 @@ MathJax = {
 \dd{x}{t} = f(t,x).
 \tag{1.1}\]</span></span></p>
 <p>The term <em>first-order</em> indicates that only the first derivative appears and not <span class="math inline">\(x''\)</span>, <span class="math inline">\(x'''\)</span>, etc.</p>
-<div id="exm-preview-rewrite" class="theorem example">
+<div id="exm-preview-rewrite" class="theorem example" data-chapter="1" data-description="1st-order ODE standard form">
 <p><span class="theorem-title"><strong>Example 1.1 </strong></span>The equation</p>
 <p><span class="math display">\[
 2t\dd{x}{t} - x = 0
@@ -360,7 +354,7 @@ MathJax = {
 <p><span class="theorem-title"><strong>Definition 1.2 </strong></span>A <strong>solution</strong> to <a href="#eq-preview-standard" class="quarto-xref">Equation&nbsp;<span>1.1</span></a> is a function <span class="math inline">\(x(t)\)</span> that makes the ODE a true equation when inserted.</p>
 </div>
 <p>It’s easy to check or verify whether a proposed function <span class="math inline">\(x(t)\)</span> is a solution: substitute it into the ODE and manipulate it until you can ascertain whether the equation holds.</p>
-<div id="exm-preview-verify" class="theorem example">
+<div id="exm-preview-verify" class="theorem example" data-chapter="1" data-description="Verify ODE solution">
 <p><span class="theorem-title"><strong>Example 1.2 </strong></span>Show that <span class="math inline">\(x(t)=t^2\)</span> does not solve <a href="#eq-preview-rewrite" class="quarto-xref">Equation&nbsp;<span>1.2</span></a>, while <span class="math inline">\(x(t)=\sqrt{t}\)</span> does.</p>
 <div class="solution proof">
 <p><span class="proof-title"><em>Solution</em>. </span>If <span class="math inline">\(x=t^2\)</span>, then <span class="math inline">\(\dd{x}{t}=2t\)</span>, while</p>
@@ -508,7 +502,7 @@ x(t) = C e^{-at},
 x(t) = C e^{t^2},
 \tag{1.9}\]</span></span></p>
 <p>which grows superexponentially as <span class="math inline">\(t\to\infty\)</span>.</p>
-<div id="exm-preview-var-growth" class="theorem example">
+<div id="exm-preview-var-growth" class="theorem example" data-chapter="1" data-description="Variable-growth ODE solution">
 <p><span class="theorem-title"><strong>Example 1.3 </strong></span>Substituting <a href="#eq-preview-var-growth-solution" class="quarto-xref">Equation&nbsp;<span>1.9</span></a> into <a href="#eq-preview-var-growth" class="quarto-xref">Equation&nbsp;<span>1.8</span></a> yields</p>
 <p><span class="math display">\[
 \begin{split}
@@ -538,7 +532,7 @@ C \left(2t e^{t^2} \right) &amp;= 2t \left( C e^{t^2} \right),
 <p><span id="eq-preview-nonlinear-solution"><span class="math display">\[
 x(t) = \frac{1}{C-t}.
 \tag{1.12}\]</span></span></p>
-<div id="exm-preview-nonlinear" class="theorem example">
+<div id="exm-preview-nonlinear" class="theorem example" data-chapter="1" data-description="Nonlinear growth ODE solution">
 <p><span class="theorem-title"><strong>Example 1.4 </strong></span>The derivative of <a href="#eq-preview-nonlinear-solution" class="quarto-xref">Equation&nbsp;<span>1.12</span></a> leads to</p>
 <p><span class="math display">\[
 \dd{x}{t} = -(C-t)^{-2}\cdot \dd{}{t}(C-t) = (C-t)^{-2} = x^2.
@@ -582,7 +576,7 @@ x(t_0) = x_0,
 <!-- ```{index} ! initial condition
 ``` -->
 <p>A solution of an IVP has to satisfy both the ODE and the initial condition. This is (for our purposes) enough to specify the solution uniquely.</p>
-<div id="exm-ivp1-solve" class="theorem example">
+<div id="exm-ivp1-solve" class="theorem example" data-chapter="1" data-description="Solve 1st-order IVP">
 <p><span class="theorem-title"><strong>Example 1.5 </strong></span>Solve the IVP</p>
 <p><span class="math display">\[
 \dd{x}{t} = ax, \qquad x(2)=5.
@@ -599,7 +593,7 @@ x(t) = 5e^{-2a}\cdot e^{at} = 5e^{a(t-2)}.
 </div>
 </div>
 <p>A graphical interpretation of the role of an initial condition is simple: the general solution is a family of curves in the <span class="math inline">\((t,x)\)</span> plane, and the initial condition is a point in the plane that the one particular solution of interest must pass through.</p>
-<div id="exm-ivp1-plot" class="theorem example">
+<div id="exm-ivp1-plot" class="theorem example" data-chapter="1" data-description="Solution curves and an initial condition">
 <p><span class="theorem-title"><strong>Example 1.6 </strong></span>Here is an illustration of how an initial condition <span class="math inline">\(x(3)=20\)</span> selects one solution of <span class="math inline">\(x'=1.25x\)</span>.</p>
 <div id="f415201c" class="cell" data-execution_count="3">
 <details>
@@ -675,7 +669,7 @@ x(t) = 5e^{-2a}\cdot e^{at} = 5e^{a(t-2)}.
 <section id="numerical-solutions" class="level3" data-number="1.2.1">
 <h3 data-number="1.2.1" class="anchored" data-anchor-id="numerical-solutions"><span class="header-section-number">1.2.1</span> Numerical solutions</h3>
 <p>An initial-value problem has a unique solution, which makes it a suitable target for a numerical approximation. This is how virtually all IVPs are solved in practice.</p>
-<div id="exm-ivp1-numerical-constant" class="theorem example">
+<div id="exm-ivp1-numerical-constant" class="theorem example" data-chapter="1" data-description="Numerical solution for constant growth rate">
 <p><span class="theorem-title"><strong>Example 1.7 (Constant growth) </strong></span>Here’s a numerical approximation in Julia for the ODE of constant growth <span class="math inline">\(x'=2x\)</span>, subject to <span class="math inline">\(x(1)=3\)</span>:</p>
 <div id="308ad94a" class="cell" data-execution_count="4">
 <details>
@@ -778,7 +772,7 @@ x(t) = 5e^{-2a}\cdot e^{at} = 5e^{a(t-2)}.
 </div>
 </div>
 </div>
-<div id="exm-ivp1-numerical-variable" class="theorem example">
+<div id="exm-ivp1-numerical-variable" class="theorem example" data-chapter="1" data-description="Numerical solution for variable growth rate">
 <p><span class="theorem-title"><strong>Example 1.8 (Variable growth) </strong></span>Here’s our example of variable growth. Note that we are not using the known exact solution, but just letting Julia create a numerical approximation by other means.</p>
 <div id="d8b7cec3" class="cell" data-execution_count="6">
 <details>
@@ -834,7 +828,7 @@ x(t) = 5e^{-2a}\cdot e^{at} = 5e^{a(t-2)}.
 </div>
 <p>Even on the log scale, the solution bends upward, showing superexponential growth.</p>
 </div>
-<div id="exm-ivp1-numerical-nonlinear" class="theorem example">
+<div id="exm-ivp1-numerical-nonlinear" class="theorem example" data-chapter="1" data-description="Numerical solution for nonlinear growth">
 <p><span class="theorem-title"><strong>Example 1.9 (Nonlinear) </strong></span>Finally, here is a numerical solution of the nonlinear archetype problem <span class="math inline">\(x'=x^2\)</span>, <span class="math inline">\(x(0)=0.5\)</span>, for <span class="math inline">\(0 \le t \le 4\)</span>:</p>
 <div id="01b8d05e" class="cell" data-execution_count="7">
 <details>
@@ -920,7 +914,7 @@ Note
 <span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span>;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="exm-qualitative-logistic" class="theorem example">
+<div id="exm-qualitative-logistic" class="theorem example" data-chapter="1" data-description="Logistic equation direction field">
 <p><span class="theorem-title"><strong>Example 1.10 </strong></span>The <strong>logistic equation</strong> is</p>
 <p><span id="eq-qualitative-logistic"><span class="math display">\[
 \dd{x}{t} = ax-bx^2,
@@ -2574,7 +2568,7 @@ Note
 </div>
 <!-- ```{index} autonomous equation
 ``` -->
-<div id="exm-qualitative-timevarying" class="theorem example">
+<div id="exm-qualitative-timevarying" class="theorem example" data-chapter="1" data-description="Direction field for nonautonomous equation">
 <p><span class="theorem-title"><strong>Example 1.11 </strong></span>Here is a direction field for <span class="math inline">\(x'=t-x^2\)</span>.</p>
 <div id="e65f2468" class="cell" data-execution_count="11">
 <details>
@@ -3444,7 +3438,7 @@ Note
 <p>(There are other classes of equilibria, but they are much less frequently encountered.)</p>
 <p>The major difference between asymptotically stable and unstable equilibria in the real world is that usually, only the asymptotically stable ones are observable. It’s easy to dangle a broom downward practically forever using just two fingers, but try that with the broom pointing upward!</p>
 <p>It’s usually quite easy to determine the stability of an equilibrium point without finding solutions.</p>
-<div id="exm-qualitative-equilibria" class="theorem example">
+<div id="exm-qualitative-equilibria" class="theorem example" data-chapter="1" data-description="Phase diagram for stability of equilibria">
 <p><span class="theorem-title"><strong>Example 1.12 </strong></span>Consider the ODE <span class="math inline">\(x'=x-x^3\)</span>. We will start by graphing <span class="math inline">\(f(x)=x-x^3\)</span>.</p>
 <p><img src="pldiag1.svg" class="img-fluid"></p>
 <p>The equilibrium solutions occur at the crossings of the <span class="math inline">\(x\)</span>-axis in the plot, where <span class="math inline">\(dx/dt=0\)</span>.</p>
@@ -3488,7 +3482,7 @@ g(x)\, dx = h(t)\, dt.
 \]</span></p>
 <p>where <span class="math inline">\(C\)</span> is the integration constant. (Having an integration constant on both sides would not change anything.)</p>
 <p>This description is all rather generic. The process is very easy to grasp from following a few examples.</p>
-<div id="exm-separable-vargrowth" class="theorem example">
+<div id="exm-separable-vargrowth" class="theorem example" data-chapter="1" data-description="Separable equation">
 <p><span class="theorem-title"><strong>Example 1.13 </strong></span>Solve the variable growth archetype ODE, <span class="math inline">\(x'=2t x\)</span>.</p>
 <div class="solution proof">
 <p><span class="proof-title"><em>Solution</em>. </span>We express <span class="math inline">\(x'\)</span> as <span class="math inline">\(dx/dt\)</span> and then isolate the variables:</p>
@@ -3503,7 +3497,7 @@ g(x)\, dx = h(t)\, dt.
 </div>
 </div>
 <p>In <a href="#exm-separable-vargrowth" class="quarto-xref">Example&nbsp;<span>1.13</span></a>, the first step involved dividing the equation through by <span class="math inline">\(x\)</span>. This implies that we made <span class="math inline">\(x=0\)</span> impossible to achieve. That’s why we had to check it manually at the very end. In the general separable case of <span class="math inline">\(x'=g(x)h(t)\)</span>, we first divide through by <span class="math inline">\(g(x)\)</span>, so the last step is to reintroduce each root <span class="math inline">\(\hat{x}\)</span> of <span class="math inline">\(g\)</span> as an equilibrium solution.</p>
-<div id="exm-separable-implicit" class="theorem example">
+<div id="exm-separable-implicit" class="theorem example" data-chapter="1" data-description="Separable equation---implicit solution">
 <p><span class="theorem-title"><strong>Example 1.14 </strong></span>Solve <span class="math inline">\(x'=t^2/(x^3-2)\)</span>, subject to <span class="math inline">\(x(0)=4\)</span>.</p>
 <div class="solution proof">
 <p><span class="proof-title"><em>Solution</em>. </span>Separation and integration lead to</p>
@@ -3523,7 +3517,7 @@ g(x)\, dx = h(t)\, dt.
 </div>
 </div>
 <p>Sometimes the separable structure isn’t immediately apparent, and you have to manipulate the expressions before you can see it.</p>
-<div id="exm-separable-factor" class="theorem example">
+<div id="exm-separable-factor" class="theorem example" data-chapter="1" data-description="Separable equation---factorization">
 <p><span class="theorem-title"><strong>Example 1.15 </strong></span>Find the general solution of <span class="math inline">\(t x' = x - t x\)</span>.</p>
 <div class="solution proof">
 <p><span class="proof-title"><em>Solution</em>. </span>Nothing happens until you see that you can factor out <span class="math inline">\(x\)</span> on the right side to get</p>
@@ -3549,7 +3543,7 @@ x= C t e^{-t}.
 </div>
 </div>
 <p>Note that an autonomous equation is, by definition, separable.</p>
-<div id="exm-separable-autonomous" class="theorem example">
+<div id="exm-separable-autonomous" class="theorem example" data-chapter="1" data-description="Separable equation---autonomous">
 <p><span class="theorem-title"><strong>Example 1.16 </strong></span>Solve the autonomous ODE <span class="math inline">\(x'=\csc x\)</span>.</p>
 <div class="solution proof">
 <p><span class="proof-title"><em>Solution</em>. </span>Multiplying through by <span class="math inline">\(\sin x\)</span>, we obtain <span class="math inline">\(\sin x\, dx = dt\)</span>, so integration produces</p>
@@ -3625,7 +3619,7 @@ Warning
 <p><span class="math display">\[
 \opA[x]=f.
 \]</span></p>
-<div id="exm-linear-operator" class="theorem example">
+<div id="exm-linear-operator" class="theorem example" data-chapter="1" data-description="Linear operator">
 <p><span class="theorem-title"><strong>Example 1.17 </strong></span>The equation</p>
 <p><span class="math display">\[
 t x' = \sin(t) - x
@@ -3643,7 +3637,7 @@ x' + \frac{1}{t}x = \frac{\sin(t)}{t}.
 <section id="linear-homogeneous-equations" class="level3" data-number="1.5.2">
 <h3 data-number="1.5.2" class="anchored" data-anchor-id="linear-homogeneous-equations"><span class="header-section-number">1.5.2</span> Linear homogeneous equations</h3>
 <!-- 
-```oiokrny ! homogeneous; ODE
+```jzwdoda ! homogeneous; ODE
 ``` -->
 <p>The equation <span class="math inline">\(\opA[x]=0\)</span>, or <a href="#eq-linear-standard" class="quarto-xref">Equation&nbsp;<span>1.17</span></a> with forcing function <span class="math inline">\(f\)</span> set to zero, plays a key role.</p>
 <div id="def-first-homogeneous" class="theorem definition">
@@ -3654,7 +3648,7 @@ x' + \frac{1}{t}x = \frac{\sin(t)}{t}.
 <p>or <span class="math inline">\(\opA[x]=0\)</span>.</p>
 </div>
 <!-- 
-```oiokrny ! superposition
+```jzwdoda ! superposition
 ``` -->
 <p>Linear homogeneous problems have a key property that allows turning individual solutions into sets of them.</p>
 <div id="thm-linear-super" class="theorem">
@@ -3728,7 +3722,7 @@ Note
 </div>
 </div>
 <p>If you’re anxious about having <span class="math inline">\(c_1\)</span> and <span class="math inline">\(x_1\)</span> in <a href="#eq-homogeneous1-solution" class="quarto-xref">Equation&nbsp;<span>1.20</span></a> without also having <span class="math inline">\(c_2\)</span> and <span class="math inline">\(x_2\)</span>—if you know, you know—just sit tight until the next chapter.</p>
-<div id="exm-homog1-sin" class="theorem example">
+<div id="exm-homog1-sin" class="theorem example" data-chapter="1" data-description="1st order homogeneous solution">
 <p><span class="theorem-title"><strong>Example 1.18 </strong></span>Solve <span class="math inline">\(x'=\sin(t) x\)</span>.</p>
 <div class="solution proof">
 <p><span class="proof-title"><em>Solution</em>. </span>By comparison to the standard form <a href="#eq-homogeneous-ode" class="quarto-xref">Equation&nbsp;<span>1.19</span></a>, we find that <span class="math inline">\(P(t)=-\sin(t)\)</span>. Hence</p>
@@ -3741,7 +3735,7 @@ x(t) = c_1 \exp[ -\cos(t) ].
 \]</span></p>
 </div>
 </div>
-<div id="exm-homog1-power" class="theorem example">
+<div id="exm-homog1-power" class="theorem example" data-chapter="1" data-description="1st order homogeneous solution">
 <p><span class="theorem-title"><strong>Example 1.19 </strong></span>Solve the homogeneous IVP</p>
 <p><span class="math display">\[
 t x' = 2x, \quad x(2) = 12.
@@ -3765,7 +3759,7 @@ x(t) = c_1 \exp\left[ \int 2t^{-1}\, dt \right] = c_1 \exp\bigl[2\ln(t)\bigr] = 
 <section id="singularities" class="level3" data-number="1.6.1">
 <h3 data-number="1.6.1" class="anchored" data-anchor-id="singularities"><span class="header-section-number">1.6.1</span> Singularities</h3>
 <p>In <a href="#exm-homog1-power" class="quarto-xref">Example&nbsp;<span>1.19</span></a>, the standard form of the ODE had <span class="math inline">\(P(t)=-2/t\)</span> as the coefficient of <span class="math inline">\(x\)</span>. Because <span class="math inline">\(P(0)\)</span> is undefined, we call <span class="math inline">\(t=0\)</span> a <strong>singular point</strong> of the ODE. It is possible for the general solution to be undefined at a singular point. That did not happen in <a href="#exm-homog1-power" class="quarto-xref">Example&nbsp;<span>1.19</span></a>, but here is a similar problem where it does.</p>
-<div id="exm-homog1-singular" class="theorem example">
+<div id="exm-homog1-singular" class="theorem example" data-chapter="1" data-description="1st order homogeneous solution">
 <p><span class="theorem-title"><strong>Example 1.20 </strong></span>The homogeneous equation</p>
 <p><span class="math display">\[
 x' + \frac{2x}{t} = 0
@@ -3838,7 +3832,7 @@ Warning
 <p>The unstated setup step before <a href="#thm-firstlin-varpar" class="quarto-xref">Theorem&nbsp;<span>1.5</span></a> can even be applied is to put a given linear ODE into the standard form, <span class="math inline">\(x' + P(t) x = f\)</span>. On this, everything depends.</p>
 </div>
 </div>
-<div id="exm-vop-one" class="theorem example">
+<div id="exm-vop-one" class="theorem example" data-chapter="1" data-description="1st order variation of parameters">
 <p><span class="theorem-title"><strong>Example 1.21 </strong></span>Solve <span class="math inline">\(3x'=12x+24t\)</span>.</p>
 <div class="solution proof">
 <p><span class="proof-title"><em>Solution</em>. </span>Rewriting the ODE in standard form as <span class="math inline">\(x'-4x=8t\)</span>, we identify <span class="math inline">\(P(t)=-4\)</span> and <span class="math inline">\(f(t)=8t\)</span>. Then</p>
@@ -3863,7 +3857,7 @@ x(t) =  c_1 e^{4t} - \frac{1}{2} (4t+1).
 \]</span></p>
 </div>
 </div>
-<div id="exm-vop-two" class="theorem example">
+<div id="exm-vop-two" class="theorem example" data-chapter="1" data-description="1st order variation of parameters">
 <p><span class="theorem-title"><strong>Example 1.22 </strong></span>Find a particular solution of <span class="math inline">\(x'= 2t x + 6t\)</span>.</p>
 <div class="solution proof">
 <p><span class="proof-title"><em>Solution</em>. </span>This problem is deliberately worded sneakily to see if you have been paying attention. The function <span class="math inline">\(x_p(t)\)</span> in <a href="#thm-firstlin-varpar" class="quarto-xref">Theorem&nbsp;<span>1.5</span></a> is all we need. First, note that <span class="math inline">\(\opA[x]=x'-2tx\)</span> and <span class="math inline">\(f(t)=6t\)</span>. Then <span class="math inline">\(P(t)=-2t\)</span>, so</p>
@@ -3902,7 +3896,7 @@ Tip
 <p>on which separation gives <span class="math inline">\(\ln|x+3| = t^2 + C\)</span>. For a particular solution, we can use any <span class="math inline">\(C\)</span> we want, and <span class="math inline">\(C=0\)</span> is the easiest. This leads to <span class="math inline">\(x(t) = e^{t^2} - 3\)</span>, which is a much less annoying way to derive the alternative solution that was given.</p>
 </div>
 </div>
-<div id="exm-vop-three" class="theorem example">
+<div id="exm-vop-three" class="theorem example" data-chapter="1" data-description="1st order variation of parameters">
 <p><span class="theorem-title"><strong>Example 1.23 </strong></span>Solve the IVP</p>
 <p><span class="math display">\[
 (2+t) x'= x - 1, \quad x(0) = -5.
@@ -4064,7 +4058,7 @@ Warning
 <p>In a modeling word problem, the game is to use given data to figure out all of the parameters that determine the dynamics. For instance, a population <span class="math inline">\(x(t)\)</span> satisfying <span class="math inline">\(x'=ax\)</span>, <span class="math inline">\(x(0)=p\)</span> is known to obey <span class="math inline">\(x(t)=p e^{at}\)</span>, which is determined completely by the values of <span class="math inline">\(a\)</span> and <span class="math inline">\(p\)</span>. Hence we need to find two independent pieces of information in order to fully deduce the dynamics at any time. Keep in mind that knowing half-life or doubling time is equivalent to knowing the rate constant <span class="math inline">\(a\)</span>.</p>
 <section id="population-dynamics" class="level3" data-number="1.9.1">
 <h3 data-number="1.9.1" class="anchored" data-anchor-id="population-dynamics"><span class="header-section-number">1.9.1</span> Population dynamics</h3>
-<div id="exm-modeling-bacteria" class="theorem example">
+<div id="exm-modeling-bacteria" class="theorem example" data-chapter="1" data-description="Bacterial growth model">
 <p><span class="theorem-title"><strong>Example 1.24 </strong></span>The population of a bacterial culture grows at a rate proportional to the number of bacteria present. You observe that there are 300 bacteria after 1 hour and 1000 after another 3 hours. How many bacteria (to the nearest whole number) were initially present?</p>
 <div class="solution proof">
 <p><span class="proof-title"><em>Solution</em>. </span>The first statement affirms that we are dealing with an ODE in the form</p>
@@ -4089,7 +4083,7 @@ Warning
 <p>or <span class="math inline">\(x(0)=(8.1\times 10^6)^{1/3} \approx 201\)</span>.</p>
 </div>
 </div>
-<div id="exm-modeling-radioactive" class="theorem example">
+<div id="exm-modeling-radioactive" class="theorem example" data-chapter="1" data-description="Radioactive decay model">
 <p><span class="theorem-title"><strong>Example 1.25 </strong></span>Suppose that after 2 hours, a radioactive sample has lost 2% of its mass. What is the half-life of the sample?</p>
 <div class="solution proof">
 <p><span class="proof-title"><em>Solution</em>. </span>We are given that <span class="math inline">\(x(2) = 0.98 x(0)\)</span>. Thus,</p>
@@ -4317,7 +4311,7 @@ $$
 \]</span></p>
 <p>The usual assumption is that <span class="math inline">\(k\)</span> is constant, so the general solution is <span class="math inline">\(x(t)=c_1 e^{-kt}\)</span>. Remember that this is the temperature <em>difference</em>, so to get the object’s temperature, you need to use <span class="math inline">\(T(t) = E + x(t)\)</span>.</p>
 <p>Numerically you need to know three things to completely know the solution: the initial temperature, the decay rate <span class="math inline">\(k\)</span>, and the environmental temperature <span class="math inline">\(E\)</span>. If a word problem gives you any three pieces of relevant information, you need to convert them into these three values.</p>
-<div id="exm-modeling-coffee" class="theorem example">
+<div id="exm-modeling-coffee" class="theorem example" data-chapter="1" data-description="Cooling coffee model">
 <p><span class="theorem-title"><strong>Example 1.26 </strong></span>A mug of coffee at 90 C is put in a room kept at 20 C. After 10 minutes the coffee has cooled by <span class="math inline">\(7\)</span> C. When will the coffee reach 60 C?</p>
 <div class="solution proof">
 <p><span class="proof-title"><em>Solution</em>. </span>In terms of the notation above, we have <span class="math inline">\(E=20\)</span>, <span class="math inline">\(T(0)=90\)</span>, and <span class="math inline">\(T(10)=90-7=83\)</span>. The cooling rate is not yet known. So we have <span class="math inline">\(x(t)=T(t)-20\)</span> and the IVP</p>
@@ -4344,7 +4338,7 @@ s = 10 \frac{\ln(7/4)}{\ln(10/9)} \approx 53.1 \text{ min}.
 </div>
 </div>
 <p>Sometimes you don’t need to find the rate constant explicitly because you can manipulate expressions to substitute for it.</p>
-<div id="exm-modeling-flintstones" class="theorem example">
+<div id="exm-modeling-flintstones" class="theorem example" data-chapter="1" data-description="Cooling coffee model">
 <p><span class="theorem-title"><strong>Example 1.27 </strong></span>Suppose Fred and Wilma each pour out a mug of coffee that is at 85 degrees C. Assume that the cooling rate in a mug is proportional to the cross-section of the mug’s top.Wilma’s mug has a diameter that is <span class="math inline">\(\sqrt{2}\)</span> times as large as Fred’s. Both mugs are left sitting out for 30 minutes in a room that is at 25<span class="math inline">\({}^\circ\)</span> C, at which point Fred’s coffee is at 60 degrees. What is the temperature of Wilma’s coffee at the same moment?</p>
 <div class="solution proof">
 <p><span class="proof-title"><em>Solution</em>. </span>Suppose Fred’s mug has cooling rate <span class="math inline">\(k\)</span>. Since area is proportional to diameter squared, Wilma’s mug has a cooling rate <span class="math inline">\(2k\)</span>. Define <span class="math inline">\(F(t)\)</span> and <span class="math inline">\(W(t)\)</span> to be the temperatures of the two coffees, and let <span class="math inline">\(x(t)=F(t)-25\)</span>, <span class="math inline">\(y(t)=W(t)-25\)</span>. We know that <span class="math inline">\(F(0) = W(0) = 85\)</span>, or</p>
