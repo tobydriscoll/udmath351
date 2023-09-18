@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.315">
+<meta name="generator" content="quarto-1.4.339">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -601,7 +601,7 @@ x(t) = c_1 e^{\sqrt{5}\, t} + c_2 e^{-\sqrt{5}\, t}.
  ## The reality of imaginary numbers (optional)
 
 
-`````eltjrfqu
+`````revcslmz
 
 Let's rewind a bit. We can probably take for granted the positive integers 1, 2, 3, and so on, and we'll throw in zero as well, though this too was controversial for centuries. It's not long before we want to solve a problem like $x+1=0$. Annoyingly, we can pose the problem using just nonnegative integers, but we can't solve it. So we accept the existence of the negative integers.
 
@@ -1033,11 +1033,11 @@ x_1'u_1' + x_2'u_2' &amp;= f.
 \]</span></p>
 <p>Writing <span class="math inline">\(u_1'=v_1\)</span> and <span class="math inline">\(u_2'=v_2\)</span>, we see that this is a pair of linear equations for <span class="math inline">\(v_1\)</span> and <span class="math inline">\(v_2\)</span>, which is routine to solve, leading to the following.</p>
 <div id="thm-variation_parameters" class="theorem">
-<p><span class="theorem-title"><strong>Theorem 2.10 (Variation of parameters, 2nd order) </strong></span>Let</p>
+<p><span class="theorem-title"><strong>Theorem 2.10 (Variation of parameters, 2nd order) </strong></span>Let <span class="math inline">\(x_1\)</span> and <span class="math inline">\(x_2\)</span> be independent solutions of the homogeneous equation <span class="math inline">\(\opA[x]=0\)</span>, and let <span class="math inline">\(W(x_1,x_2)\)</span> be their Wronskian. For any given forcing function <span class="math inline">\(f\)</span>, define</p>
 <p><span id="eq-second-vop"><span class="math display">\[
-u_1 = \int \frac{-x_2 f}{W(x_1,x_2)}\, dt, \quad u_2 = \int \frac{x_1 f}{W(x_1,x_2)}\, dt,
+u_1 = \int \frac{-x_2 f}{W(x_1,x_2)}\, dt, \quad u_2 = \int \frac{x_1 f}{W(x_1,x_2)}\, dt.
 \tag{2.16}\]</span></span></p>
-<p>where <span class="math inline">\(W(x_1,x_2)\)</span> is the Wronskian of independent homogeneous solutions <span class="math inline">\(x_1\)</span> and <span class="math inline">\(x_2\)</span>. Then a particular solution of <span class="math inline">\(\opA[x]=f\)</span> is</p>
+<p>Then a particular solution of <span class="math inline">\(\opA[x]=f\)</span> is</p>
 <p><span class="math display">\[
 x_p(t) = u_1(t) x_1(t) + u_2(t) x_2(t).
 \]</span></p>
@@ -1059,7 +1059,7 @@ Important
 <p>The integration constants for <span class="math inline">\(u_1\)</span> and <span class="math inline">\(u_2\)</span> in <a href="#eq-second-vop" class="quarto-xref">Equation&nbsp;<span>2.16</span></a> can be taken to be zero.</p>
 </div>
 </div>
-<div id="exm-variation_parameters-cons" class="theorem example" data-chapter="2" data-description="2nd order variation of parameters">
+<div id="exm-vop2-cons" class="theorem example" data-chapter="2" data-description="2nd order variation of parameters">
 <p><span class="theorem-title"><strong>Example 2.15 </strong></span>Find a particular solution of <span class="math inline">\(x'' - x = 4\)</span>.</p>
 <div class="solution proof">
 <p><span class="proof-title"><em>Solution</em>. </span>There’s no getting around the need for the homogeneous solution here. The characteristic roots are <span class="math inline">\(\pm 1\)</span>, so we take <span class="math inline">\(x_1=e^t\)</span>, <span class="math inline">\(x_2=e^{-t}\)</span>. Then</p>
@@ -1078,7 +1078,7 @@ x_p = (-2e^{-t})(e^t) + (-2e^t)(e^{-t}) = -4.
 </div>
 </div>
 <div id="exm-variation_parameters-resonance" class="theorem example" data-chapter="2" data-description="2nd order variation of parameters">
-<p><span class="theorem-title"><strong>Example 2.16 </strong></span>Find a particular solution of <span class="math inline">\(x'' - \lambda^2 x = 2 e^{\lambda t}\)</span>, where <span class="math inline">\(\lambda\neq 0\)</span>.</p>
+<p><span class="theorem-title"><strong>Example 2.16 </strong></span>Find a particular solution of <span class="math inline">\(x'' - \lambda^2 x = 2 e^{\lambda t}\)</span>, where <span class="math inline">\(\lambda\neq 0\)</span> is a constant parameter.</p>
 <div class="solution proof">
 <p><span class="proof-title"><em>Solution</em>. </span>The homogeneous equation has roots <span class="math inline">\(\pm \lambda\)</span>. We choose <span class="math inline">\(x_1=e^{\lambda t}\)</span>, <span class="math inline">\(x_2=e^{-\lambda t}\)</span>. Now</p>
 <p><span class="math display">\[
@@ -1097,10 +1097,17 @@ u_2 = -\frac{1}{\lambda} \int e^{2 \lambda t}\, dt  = -\frac{1}{2 \lambda^2} e^{
 <p><span class="math display">\[
 x_p(t) = \frac{1}{\lambda} t e^{\lambda t}  - \frac{1}{2 \lambda^2} e^{\lambda t}
 \]</span></p>
-<p>is a particular solution. However, the second term is a constant multiple of <span class="math inline">\(x_1\)</span>, so we could drop it and still have a particular solution.</p>
+<p>is a particular solution. Our recipe now gives us the general solution</p>
+<p><span class="math display">\[
+x(t) = x_h(t) + x_p(t) = c_1 e^{\lambda t} + c_2e^{-\lambda t} + \frac{1}{\lambda} t e^{\lambda t}  - \frac{1}{2 \lambda^2} e^{\lambda t}.
+\]</span></p>
+<p>However, that last term is redundant—all it does is change the value of <span class="math inline">\(c_1\)</span>. So it’s just as correct to write</p>
+<p><span class="math display">\[
+x(t) = c_1 e^{\lambda t} + c_2e^{-\lambda t} + \frac{1}{\lambda} t e^{\lambda t}.
+\]</span></p>
 </div>
 </div>
-<p>As you can see, the VoP formula is pretty great if you happen to be a robot. [Note to editor: insert CAPTCHA here.] Us humans, though, could use something a little easier, and that is coming next.</p>
+<p>As you can see, the VoP formula is pretty great if you happen to be a robot. [Note to editor: insert CAPTCHA here.] Us humans, though, could use something with a bit less algebra to manage, and that is coming next.</p>
 </section>
 <section id="undetermined-coefficients" class="level2" data-number="2.5">
 <h2 data-number="2.5" class="anchored" data-anchor-id="undetermined-coefficients"><span class="header-section-number">2.5</span> Undetermined coefficients</h2>
@@ -1109,7 +1116,7 @@ x_p(t) = \frac{1}{\lambda} t e^{\lambda t}  - \frac{1}{2 \lambda^2} e^{\lambda t
 <li>The coefficients in the ODE are constants, and</li>
 <li>The forcing function <span class="math inline">\(f(t)\)</span> is a polynomial, exponential, sin, or cos, or a combination of these.</li>
 </ol>
-<p>Thus we now consider</p>
+<p>We have already been assuming point 1 above for a while. Now we consider</p>
 <p><span id="eq-undetermined-ode"><span class="math display">\[
 x'' + bx' + kx = f(t),
 \tag{2.17}\]</span></span></p>
@@ -1145,7 +1152,7 @@ x'' + bx' + kx = f(t),
 </div>
 <p>Corresponding to each <span class="math inline">\(f\)</span> in <a href="#tbl-undetermined-forcing" class="quarto-xref">Table&nbsp;<span>2.1</span></a> is a specific form for <span class="math inline">\(x_p\)</span> containing one or more constants (given by capital letters) that must be deduced by substituting into the particular ODE under consideration. This procedure is what gives the method its name, the <strong>method of undetermined coefficients</strong>.</p>
 <div id="exm-undetermined-const" class="theorem example" data-chapter="2" data-description="Undetermined coefficients---constant">
-<p><span class="theorem-title"><strong>Example 2.17 </strong></span>Rework <a href="#exm-variation_parameters-cons" class="quarto-xref">Example&nbsp;<span>2.15</span></a>, finding a particular solution of <span class="math inline">\(x'' - x = 4\)</span>.</p>
+<p><span class="theorem-title"><strong>Example 2.17 </strong></span>Rework <a href="#exm-vop2-cons" class="quarto-xref">Example&nbsp;<span>2.15</span></a>, finding a particular solution of <span class="math inline">\(x'' - x = 4\)</span>.</p>
 <div class="solution proof">
 <p><span class="proof-title"><em>Solution</em>. </span>The forcing function is a polynomial of degree zero, so <span class="math inline">\(x_p\)</span> should be as well. Let <span class="math inline">\(x_p=A.\)</span> Then it is a solution if</p>
 <p><span class="math display">\[
