@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.315">
+<meta name="generator" content="quarto-1.4.339">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -428,7 +428,7 @@ c_1\cos(t) + c_2\sin(t) = 0
 <div id="def-structure-wronskian" class="theorem definition">
 <p><span class="theorem-title"><strong>Definition 2.5 </strong></span>Suppose <span class="math inline">\(u_1,\ldots,u_n\)</span> all have at least <span class="math inline">\(n-1\)</span> continuous derivatives. Their <strong>Wronskian</strong> is</p>
 <p><span id="eq-structure-wronskian"><span class="math display">\[
-W(t) = \begin{vmatrix}
+W(u_1,\ldots,u_n) = \begin{vmatrix}
 u_1 &amp; u_2 &amp; \cdots &amp; u_n \\
 u_1' &amp; u_2' &amp; \cdots &amp; u_n' \\
 \vdots &amp; \vdots &amp;  &amp; \vdots  \\
@@ -601,7 +601,7 @@ x(t) = c_1 e^{\sqrt{5}\, t} + c_2 e^{-\sqrt{5}\, t}.
  ## The reality of imaginary numbers (optional)
 
 
-`````fkpxgxnq
+`````tjfyvhar
 
 Let's rewind a bit. We can probably take for granted the positive integers 1, 2, 3, and so on, and we'll throw in zero as well, though this too was controversial for centuries. It's not long before we want to solve a problem like $x+1=0$. Annoyingly, we can pose the problem using just nonnegative integers, but we can't solve it. So we accept the existence of the negative integers.
 
@@ -786,16 +786,21 @@ z = |z|\, e^{i\theta}.
 \]</span></p>
 <p>Using complex numbers, then, we can take the log of a negative number. You will find that this is the case in MATLAB.</p>
 </div>
-<div id="exm-complex-sqrt" class="theorem example" data-chapter="2" data-description="Complex number square root">
-<p><span class="theorem-title"><strong>Example 2.10 </strong></span>What’s the square root of <span class="math inline">\(i\)</span>?</p>
-<div class="solution proof">
-<p><span class="proof-title"><em>Solution</em>. </span>Since <span class="math inline">\(i\)</span> lies at a distance 1 from the origin along the positive imaginary axis, its polar form is <span class="math inline">\(e^{i\pi/2}\)</span>. Then the square root is</p>
-<p><span class="math display">\[
+<!-- 
+::::{#exm-complex-sqrt chapter=2 description="Complex number square root"}
+What's the square root of $i$?
+
+:::{.solution}
+Since $i$ lies at a distance 1 from the origin along the positive imaginary axis, its polar form is $e^{i\pi/2}$. Then the square root is
+
+$$
 \bigl( e^{i\pi/2} \bigr)^{1/2} = e^{i\pi/4}.
-\]</span></p>
-<p>Appealing to Euler’s formula, this is equivalent to <span class="math inline">\(\frac{1}{\sqrt{2}}(1+i)\)</span>. We should note that of course, the negative of this value is also a square root.</p>
-</div>
-</div>
+$$
+
+Appealing to Euler's formula, this is equivalent to $\frac{1}{\sqrt{2}}(1+i)$. We should note that of course, the negative of this value is also a square root.
+:::
+:::: 
+-->
 </section>
 <section id="complex-exponentials" class="level3" data-number="2.3.4">
 <h3 data-number="2.3.4" class="anchored" data-anchor-id="complex-exponentials"><span class="header-section-number">2.3.4</span> Complex exponentials</h3>
@@ -879,6 +884,9 @@ e^{(a+i \omega)t} = e^{at} \cdot e^{i\omega t} = e^{at} \bigl[ \cos(\omega t) + 
 <section id="homogeneous-solutions" class="level3" data-number="2.3.5">
 <h3 data-number="2.3.5" class="anchored" data-anchor-id="homogeneous-solutions"><span class="header-section-number">2.3.5</span> Homogeneous solutions</h3>
 <p>Now we can finish the story of computing solutions to homogeneous constant-coefficient ODEs. We can still use <a href="#thm-homogeneous-distinct" class="quarto-xref">Theorem&nbsp;<span>2.3</span></a> and <a href="#thm-homogeneous-repeated" class="quarto-xref">Theorem&nbsp;<span>2.4</span></a>, now with the complex-valued interpretations of the exponentials.</p>
+<div id="exm-complex-dummy" class="theorem example" data-description="Characteristic polynomial---complex roots">
+<p><span class="theorem-title"><strong>Example 2.10 </strong></span>Solve the IVP <span class="math inline">\(x''+9x=0\)</span>, <span class="math inline">\(x(0)=2\)</span>, <span class="math inline">\(x'(0)=-12\)</span>.</p>
+</div>
 <div id="exm-complex-simple" class="theorem example" data-chapter="2" data-description="Characteristic polynomial---complex roots">
 <p><span class="theorem-title"><strong>Example 2.11 </strong></span>Solve the IVP <span class="math inline">\(x''+9x=0\)</span>, <span class="math inline">\(x(0)=2\)</span>, <span class="math inline">\(x'(0)=-12\)</span>.</p>
 <div class="solution proof">

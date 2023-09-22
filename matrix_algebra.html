@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.315">
+<meta name="generator" content="quarto-1.4.339">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -799,6 +799,16 @@ Important
 \]</span></p>
 <p>This is clearly impossible for any choices of <span class="math inline">\(a,b,c,d\)</span>. Hence <span class="math inline">\(\bfA\)</span> is singular.</p>
 </div>
+<div id="exm-matrix-cancellation" class="theorem example" data-chapter="4" data-description="Singular matrices">
+<p><span class="theorem-title"><strong>Example 4.6 </strong></span>Again let <span class="math inline">\(\bfA = \twomat{0}{0}{1}{0}\)</span>. Note that</p>
+<p><span class="math display">\[
+\bfA^2 = \twomat{0}{0}{1}{0} \cdot \twomat{0}{0}{1}{0} = \twomat{0}{0}{0}{0}.
+\]</span></p>
+</div>
+<p>As a result, we <strong>cannot</strong> make the implication <span class="math display">\[
+\bfA\bfB = \bfzero \implies \bfA = \bfzero \text{ or } \bfB=\bfzero, \qquad \text{(FALSE!)}
+\]</span></p>
+<p>which has been so useful when it comes to scalars.</p>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -812,16 +822,7 @@ Important
 <p>It is possible for the product of two nonzero matrices to be zero.</p>
 </div>
 </div>
-<div id="exm-matrix-cancellation" class="theorem example" data-chapter="4" data-description="Singular matrices">
-<p><span class="theorem-title"><strong>Example 4.6 </strong></span>Again let <span class="math inline">\(\bfA = \twomat{0}{0}{1}{0}\)</span>. Note that</p>
-<p><span class="math display">\[
-\bfA^2 = \twomat{0}{0}{1}{0} \cdot \twomat{0}{0}{1}{0} = \twomat{0}{0}{0}{0}.
-\]</span></p>
-</div>
-<p>As a result, we <strong>cannot</strong> make the implication <span class="math display">\[
-\bfA\bfB = \bfzero \implies \bfA = \bfzero \text{ or } \bfB=\bfzero, \qquad \text{(FALSE!)}
-\]</span></p>
-<p>which has been so useful when it comes to scalars. Now, if <span class="math inline">\(\bfA\bfB = \bfzero\)</span> <em>and</em> <span class="math inline">\(\bfA\)</span> is invertible, then we are back in business, because <span class="math display">\[
+<p>Now, if <span class="math inline">\(\bfA\bfB = \bfzero\)</span> <em>and</em> <span class="math inline">\(\bfA\)</span> is invertible, then we are back in business, because <span class="math display">\[
 \bfB=\bfA^{-1}\cdot \bfzero = \bfzero.
 \]</span></p>
 </section>
@@ -940,7 +941,7 @@ Note
 <div id="def-subspaces-basis" class="theorem definition">
 <p><span class="theorem-title"><strong>Definition 4.10 (Basis) </strong></span>A <strong>basis</strong> of a subspace <span class="math inline">\(S\)</span> is any set of linearly independent vectors that spans <span class="math inline">\(S\)</span>.</p>
 </div>
-<p>Finding a basis for a null space was demonstrated in <a href="linear_algebra_systems.html#exm-nullspace-span" class="quarto-xref">Example&nbsp;<span>3.13</span></a>. The column space is also found from the RRE form.</p>
+<p>Finding a basis for a null space was demonstrated in <a href="linear_algebra_systems.html#exm-nullspace-span" class="quarto-xref">Example&nbsp;<span>3.14</span></a>. The column space is also found from the RRE form.</p>
 <div id="thm-" class="theorem">
 <p><span class="theorem-title"><strong>Theorem 4.11 </strong></span>Let <span class="math inline">\(\bfA\)</span> have RRE form with pivot columns numbered <span class="math inline">\(j_1,\ldots,j_r\)</span>. Then columns <span class="math inline">\(j_1,\ldots,j_r\)</span> of <span class="math inline">\(\bfA\)</span> are a basis for <span class="math inline">\(\colsp(\bfA)\)</span>.</p>
 </div>

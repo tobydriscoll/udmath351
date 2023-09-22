@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.315">
+<meta name="generator" content="quarto-1.4.339">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -567,9 +567,22 @@ x_2 + 3x_3 &amp; = 3, \\
 <li>The leftmost nonzero element in a row, called the <strong>leading element</strong>, is to the left of any other leading elements below it.</li>
 </ol>
 </div>
-<p>To achieve RE form from a given starting matrix, we start at the top left and use row operations to introduce zeros under the leading element of the first row. We then move down one row and repeat. It’s easier to understand from more examples than to write out a formal algorithm.</p>
+<div id="exm-RE-not-REF" class="theorem example" data-chapter="3" data-description="RE form">
+<p><span class="theorem-title"><strong>Example 3.5 </strong></span>The following matrices are <strong>not</strong> in RE form:</p>
+<p><span class="math display">\[
+\begin{bmatrix}
+2 &amp; 0 &amp; 1 &amp; -1 \\ 0 &amp; 1 &amp; 0 &amp; 0 \\ 0 &amp; -4 &amp; 1 &amp; 0
+\end{bmatrix}  
+\]</span> (leading nonzeros do not move to the right from row 2 to 3)</p>
+<p><span class="math display">\[
+\begin{bmatrix}
+2 &amp; 0 &amp; 1 &amp; -1 \\ 0 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; -4 &amp; 1 &amp; 0
+\end{bmatrix}  
+\]</span> (zero row not at the bottom)</p>
+</div>
+<p>To achieve RE form by row operations on a given starting matrix, we start at the top left and use row operations to introduce zeros under the leading element of the first row. We then move down one row and repeat. It’s easier to understand from more examples than to write out a formal algorithm.</p>
 <div id="exm-RE-inconsistent" class="theorem example" data-chapter="3" data-description="Inconsistent system">
-<p><span class="theorem-title"><strong>Example 3.5 </strong></span>We start from <span class="math display">\[
+<p><span class="theorem-title"><strong>Example 3.6 </strong></span>We start from <span class="math display">\[
 \begin{bmatrix}
 1 &amp; 2 &amp; -4 &amp; 5 \\ 2 &amp; 4 &amp; 0 &amp; 2 \\ 2 &amp; 3 &amp; 2 &amp; 5 \\ -1 &amp; 1 &amp; 3 &amp; 5
 \end{bmatrix}
@@ -629,7 +642,7 @@ x_2 + 3x_3 &amp; = 3, \\
 <p><span class="theorem-title"><strong>Definition 3.8 (Pivots) </strong></span>The leading elements encountered during row elimination are called <strong>pivots</strong>. The columns they occur in are called <strong>leading variables</strong>, while the other variables (if any) are called <strong>free variables</strong>.</p>
 </div>
 <div id="exm-elimination-infinite" class="theorem example" data-chapter="3" data-description="Infinitely many solutions">
-<p><span class="theorem-title"><strong>Example 3.6 </strong></span>Suppose we begin with the augmented matrix <span class="math display">\[
+<p><span class="theorem-title"><strong>Example 3.7 </strong></span>Suppose we begin with the augmented matrix <span class="math display">\[
 \augmat{\begin{matrix}
 1 &amp; 1 &amp; -1  \\
 1 &amp; 2 &amp; 2  \\
@@ -691,7 +704,7 @@ x_1 + x_2 - x_3 = 4,
 </div>
 <p>The other useful fact is that RRE form completely exposes everything we want to know about a linear system. In fact, everything else we will do theoretically with matrices comes back to the RRE form, whether or not it’s an augmented matrix.</p>
 <div id="exm-gauss-jordan" class="theorem example" data-chapter="3" data-description="Gauss--Jordan elimination">
-<p><span class="theorem-title"><strong>Example 3.7 </strong></span>At the end of <a href="#exm-gauss-elimination" class="quarto-xref">Example&nbsp;<span>3.3</span></a>, we had reached the augmented matrix</p>
+<p><span class="theorem-title"><strong>Example 3.8 </strong></span>At the end of <a href="#exm-gauss-elimination" class="quarto-xref">Example&nbsp;<span>3.3</span></a>, we had reached the augmented matrix</p>
 <p><span class="math display">\[
 \augmat{\begin{matrix}
 1 &amp; -1 &amp; -1  \\
@@ -746,7 +759,8 @@ x_1 + x_2 - x_3 = 4,
 \]</span></p>
 <p>The system is now trivial: <span class="math inline">\(x_1=1\)</span>, <span class="math inline">\(x_2=-3\)</span>, and <span class="math inline">\(x_3=2\)</span>. Done!</p>
 </div>
-<p>The process above is called <strong>Gauss–Jordan elimination</strong>, to distinguish it from Gaussian elimination. <!---
+<p>The process above is called <strong>Gauss–Jordan elimination</strong>, to distinguish it from Gaussian elimination.</p>
+<!---
  
 ::::{#thm-linalg-phase1}  
 # Row elimination downward phase
@@ -767,202 +781,261 @@ At the end of the downward phase, the augmented matrix is triangular, which is e
 ::::
 
 At the end of the upward phase, the matrix has been put into a form that we define formally here. 
----></p>
-<div id="exm-RRE-julia" class="theorem example" data-chapter="3" data-description="RRE form">
-<p><span class="theorem-title"><strong>Example 3.8 </strong></span>Here is an example of reduction to RRE form for a linear system using Julia to do the arithmetic.</p>
-<p><span class="math display">\[
+--->
+<!-- 
+::::{#exm-RRE-julia chapter=3 description="RRE form"}
+Here is an example of reduction to RRE form for a linear system using Julia to do the arithmetic.
+
+$$
 \bfA = \begin{bmatrix}
-2 &amp; 0 &amp; 4 &amp; 3 \\ -2 &amp; 0 &amp; 2 &amp; -13 \\ -4 &amp; 5 &amp; -7 &amp; -10 \\ 1 &amp; 15 &amp; 2 &amp; -4.5
-\end{bmatrix}, \qquad
+2 & 0 & 4 & 3 \\ -2 & 0 & 2 & -13 \\ -4 & 5 & -7 & -10 \\ 1 & 15 & 2 & -4.5
+\end{bmatrix}, \qquad 
 \bfb = \begin{bmatrix}
 4\\40\\9\\29
 \end{bmatrix}.
-\]</span></p>
-<div id="8a11b5b7" class="cell" data-execution_count="3">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> [</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>     <span class="fl">2</span>    <span class="fl">0</span>    <span class="fl">4</span>    <span class="fl">3</span> </span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">-</span><span class="fl">2</span>    <span class="fl">0</span>    <span class="fl">2</span>  <span class="op">-</span><span class="fl">13</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="op">-</span><span class="fl">4</span>    <span class="fl">5</span>   <span class="op">-</span><span class="fl">7</span>  <span class="op">-</span><span class="fl">10</span> </span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>     <span class="fl">1</span>   <span class="fl">15</span>    <span class="fl">2</span>   <span class="op">-</span><span class="fl">4.5</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    ];</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> [ <span class="fl">4</span>, <span class="fl">40</span>, <span class="fl">9</span>, <span class="fl">29</span> ];</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>S <span class="op">=</span> <span class="fu">Rational</span>.([A b])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-display" data-execution_count="3">
-<pre><code>4×5 Matrix{Rational{Int64}}:
+$$
+
+::: {#8a11b5b7 .cell execution_count=3}
+``` {.julia .cell-code}
+A = [
+     2    0    4    3 
+    -2    0    2  -13
+    -4    5   -7  -10 
+     1   15    2   -4.5
+    ];
+b = [ 4, 40, 9, 29 ];
+
+S = Rational.([A b])
+```
+
+::: {.cell-output .cell-output-display execution_count=3}
+```
+4×5 Matrix{Rational{Int64}}:
   2//1   0//1   4//1    3//1   4//1
  -2//1   0//1   2//1  -13//1  40//1
  -4//1   5//1  -7//1  -10//1   9//1
-  1//1  15//1   2//1   -9//2  29//1</code></pre>
-</div>
-</div>
-<p>We start at the top, working downward and rightward. In the first row, the leading nonzero occurs in column 1, which is the pivot column for this row. We normalize this row so that the leading nonzero is a 1.</p>
-<div id="1610aac8" class="cell" data-execution_count="4">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>S[<span class="fl">1</span>,<span class="op">:</span>] <span class="op">=</span> S[<span class="fl">1</span>,<span class="op">:</span>] <span class="op">/</span> S[<span class="fl">1</span>,<span class="fl">1</span>]</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>S</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-display" data-execution_count="4">
-<pre><code>4×5 Matrix{Rational{Int64}}:
+  1//1  15//1   2//1   -9//2  29//1
+```
+:::
+:::
+
+
+We start at the top, working downward and rightward. In the first row, the leading nonzero occurs in column 1, which is the pivot column for this row. We normalize this row so that the leading nonzero is a 1.
+
+::: {#1610aac8 .cell execution_count=4}
+``` {.julia .cell-code}
+S[1,:] = S[1,:] / S[1,1]
+S
+```
+
+::: {.cell-output .cell-output-display execution_count=4}
+```
+4×5 Matrix{Rational{Int64}}:
   1//1   0//1   2//1    3//2   2//1
  -2//1   0//1   2//1  -13//1  40//1
  -4//1   5//1  -7//1  -10//1   9//1
-  1//1  15//1   2//1   -9//2  29//1</code></pre>
-</div>
-</div>
-<p>Now multiples of row 1 are added to the rows below it in order to put zeros in the first column.</p>
-<div id="59901632" class="cell" data-execution_count="5">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>S[<span class="fl">2</span>,<span class="op">:</span>] <span class="op">=</span> S[<span class="fl">2</span>,<span class="op">:</span>] <span class="op">-</span> S[<span class="fl">2</span>,<span class="fl">1</span>]<span class="op">*</span>S[<span class="fl">1</span>,<span class="op">:</span>]</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>S[<span class="fl">3</span>,<span class="op">:</span>] <span class="op">=</span> S[<span class="fl">3</span>,<span class="op">:</span>] <span class="op">-</span> S[<span class="fl">3</span>,<span class="fl">1</span>]<span class="op">*</span>S[<span class="fl">1</span>,<span class="op">:</span>]</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>S[<span class="fl">4</span>,<span class="op">:</span>] <span class="op">=</span> S[<span class="fl">4</span>,<span class="op">:</span>] <span class="op">-</span> S[<span class="fl">4</span>,<span class="fl">1</span>]<span class="op">*</span>S[<span class="fl">1</span>,<span class="op">:</span>]</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>S</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-display" data-execution_count="5">
-<pre><code>4×5 Matrix{Rational{Int64}}:
+  1//1  15//1   2//1   -9//2  29//1
+```
+:::
+:::
+
+
+Now multiples of row 1 are added to the rows below it in order to put zeros in the first column.
+
+::: {#59901632 .cell execution_count=5}
+``` {.julia .cell-code}
+S[2,:] = S[2,:] - S[2,1]*S[1,:]
+S[3,:] = S[3,:] - S[3,1]*S[1,:]
+S[4,:] = S[4,:] - S[4,1]*S[1,:]
+S
+```
+
+::: {.cell-output .cell-output-display execution_count=5}
+```
+4×5 Matrix{Rational{Int64}}:
  1//1   0//1  2//1    3//2   2//1
  0//1   0//1  6//1  -10//1  44//1
  0//1   5//1  1//1   -4//1  17//1
- 0//1  15//1  0//1   -6//1  27//1</code></pre>
-</div>
-</div>
-<p>Looking at rows 2 to 4, we see that the leftmost nonzero occurs in column 2. Since row 2 has a zero there, we swap rows 2 and 3 to bring a nonzero up.</p>
-<div id="6f8c18fb" class="cell" data-execution_count="6">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>S[[<span class="fl">2</span>, <span class="fl">3</span>],<span class="op">:</span>] <span class="op">=</span> S[[<span class="fl">3</span>, <span class="fl">2</span>],<span class="op">:</span>]</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>S</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-display" data-execution_count="6">
-<pre><code>4×5 Matrix{Rational{Int64}}:
+ 0//1  15//1  0//1   -6//1  27//1
+```
+:::
+:::
+
+
+Looking at rows 2 to 4, we see that the leftmost nonzero occurs in column 2. Since row 2 has a zero there, we swap rows 2 and 3 to bring a nonzero up.
+
+::: {#6f8c18fb .cell execution_count=6}
+``` {.julia .cell-code}
+S[[2, 3],:] = S[[3, 2],:]
+S
+```
+
+::: {.cell-output .cell-output-display execution_count=6}
+```
+4×5 Matrix{Rational{Int64}}:
  1//1   0//1  2//1    3//2   2//1
  0//1   5//1  1//1   -4//1  17//1
  0//1   0//1  6//1  -10//1  44//1
- 0//1  15//1  0//1   -6//1  27//1</code></pre>
-</div>
-</div>
-<p>Now we normalize row 2 so that the leading nonzero is a 1.</p>
-<div id="a2e6cb15" class="cell" data-execution_count="7">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>S[<span class="fl">2</span>,<span class="op">:</span>] <span class="op">=</span> S[<span class="fl">2</span>,<span class="op">:</span>] <span class="op">/</span> S[<span class="fl">2</span>,<span class="fl">2</span>]</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>S</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-display" data-execution_count="7">
-<pre><code>4×5 Matrix{Rational{Int64}}:
+ 0//1  15//1  0//1   -6//1  27//1
+```
+:::
+:::
+
+
+Now we normalize row 2 so that the leading nonzero is a 1.
+
+::: {#a2e6cb15 .cell execution_count=7}
+``` {.julia .cell-code}
+S[2,:] = S[2,:] / S[2,2]
+S
+```
+
+::: {.cell-output .cell-output-display execution_count=7}
+```
+4×5 Matrix{Rational{Int64}}:
  1//1   0//1  2//1    3//2   2//1
  0//1   1//1  1//5   -4//5  17//5
  0//1   0//1  6//1  -10//1  44//1
- 0//1  15//1  0//1   -6//1  27//1</code></pre>
-</div>
-</div>
-<p>Multiples of row 2 are now used to put zeros below it in the pivot column.</p>
-<div id="0a49d1e2" class="cell" data-execution_count="8">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>S[<span class="fl">3</span>,<span class="op">:</span>] <span class="op">=</span> S[<span class="fl">3</span>,<span class="op">:</span>] <span class="op">-</span> S[<span class="fl">3</span>,<span class="fl">2</span>]<span class="op">*</span>S[<span class="fl">2</span>,<span class="op">:</span>]</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>S[<span class="fl">4</span>,<span class="op">:</span>] <span class="op">=</span> S[<span class="fl">4</span>,<span class="op">:</span>] <span class="op">-</span> S[<span class="fl">4</span>,<span class="fl">2</span>]<span class="op">*</span>S[<span class="fl">2</span>,<span class="op">:</span>]</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>S</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-display" data-execution_count="8">
-<pre><code>4×5 Matrix{Rational{Int64}}:
+ 0//1  15//1  0//1   -6//1  27//1
+```
+:::
+:::
+
+
+Multiples of row 2 are now used to put zeros below it in the pivot column.
+
+::: {#0a49d1e2 .cell execution_count=8}
+``` {.julia .cell-code}
+S[3,:] = S[3,:] - S[3,2]*S[2,:]
+S[4,:] = S[4,:] - S[4,2]*S[2,:]
+S
+```
+
+::: {.cell-output .cell-output-display execution_count=8}
+```
+4×5 Matrix{Rational{Int64}}:
  1//1  0//1   2//1    3//2    2//1
  0//1  1//1   1//5   -4//5   17//5
  0//1  0//1   6//1  -10//1   44//1
- 0//1  0//1  -3//1    6//1  -24//1</code></pre>
-</div>
-</div>
-<p>Rows 3 and 4 have a pivot in column 3, and we only need to normalize row 3 to make it 1. Then we subtract a multiple of row 3 from row 4 to put a zero beneath it.</p>
-<div id="a0c56d5b" class="cell" data-execution_count="9">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>S[<span class="fl">3</span>,<span class="op">:</span>] <span class="op">=</span> S[<span class="fl">3</span>,<span class="op">:</span>] <span class="op">/</span> S[<span class="fl">3</span>,<span class="fl">3</span>];</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>S[<span class="fl">4</span>,<span class="op">:</span>] <span class="op">=</span> S[<span class="fl">4</span>,<span class="op">:</span>] <span class="op">-</span> S[<span class="fl">4</span>,<span class="fl">3</span>]<span class="op">*</span>S[<span class="fl">3</span>,<span class="op">:</span>]</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>S</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-display" data-execution_count="9">
-<pre><code>4×5 Matrix{Rational{Int64}}:
+ 0//1  0//1  -3//1    6//1  -24//1
+```
+:::
+:::
+
+
+Rows 3 and 4 have a pivot in column 3, and we only need to normalize row 3 to make it 1. Then we subtract a multiple of row 3 from row 4 to put a zero beneath it.
+
+::: {#a0c56d5b .cell execution_count=9}
+``` {.julia .cell-code}
+S[3,:] = S[3,:] / S[3,3];
+S[4,:] = S[4,:] - S[4,3]*S[3,:]
+S
+```
+
+::: {.cell-output .cell-output-display execution_count=9}
+```
+4×5 Matrix{Rational{Int64}}:
  1//1  0//1  2//1   3//2   2//1
  0//1  1//1  1//5  -4//5  17//5
  0//1  0//1  1//1  -5//3  22//3
- 0//1  0//1  0//1   1//1  -2//1</code></pre>
-</div>
-</div>
-<p>We complete the downward phase by normalizing row 4 to get a leading 1.</p>
-<div id="b90425c5" class="cell" data-execution_count="10">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>S[<span class="fl">4</span>,<span class="op">:</span>] <span class="op">=</span> S[<span class="fl">4</span>,<span class="op">:</span>] <span class="op">/</span> S[<span class="fl">4</span>,<span class="fl">4</span>]</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>S</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-display" data-execution_count="10">
-<pre><code>4×5 Matrix{Rational{Int64}}:
+ 0//1  0//1  0//1   1//1  -2//1
+```
+:::
+:::
+
+
+We complete the downward phase by normalizing row 4 to get a leading 1.
+
+::: {#b90425c5 .cell execution_count=10}
+``` {.julia .cell-code}
+S[4,:] = S[4,:] / S[4,4]
+S
+```
+
+::: {.cell-output .cell-output-display execution_count=10}
+```
+4×5 Matrix{Rational{Int64}}:
  1//1  0//1  2//1   3//2   2//1
  0//1  1//1  1//5  -4//5  17//5
  0//1  0//1  1//1  -5//3  22//3
- 0//1  0//1  0//1   1//1  -2//1</code></pre>
-</div>
-</div>
-<p>Now we turn around for the upward phase. The leading 1 in row 4 needs to have zeros above it. We accomplish that by subtracting multiples of row 4 from the others.</p>
-<div id="1060af36" class="cell" data-execution_count="11">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>S[<span class="fl">3</span>,<span class="op">:</span>] <span class="op">=</span> S[<span class="fl">3</span>,<span class="op">:</span>] <span class="op">-</span> S[<span class="fl">3</span>,<span class="fl">4</span>]<span class="op">*</span>S[<span class="fl">4</span>,<span class="op">:</span>]</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>S[<span class="fl">2</span>,<span class="op">:</span>] <span class="op">=</span> S[<span class="fl">2</span>,<span class="op">:</span>] <span class="op">-</span> S[<span class="fl">2</span>,<span class="fl">4</span>]<span class="op">*</span>S[<span class="fl">4</span>,<span class="op">:</span>]</span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>S[<span class="fl">1</span>,<span class="op">:</span>] <span class="op">=</span> S[<span class="fl">1</span>,<span class="op">:</span>] <span class="op">-</span> S[<span class="fl">1</span>,<span class="fl">4</span>]<span class="op">*</span>S[<span class="fl">4</span>,<span class="op">:</span>]</span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>S</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-display" data-execution_count="11">
-<pre><code>4×5 Matrix{Rational{Int64}}:
+ 0//1  0//1  0//1   1//1  -2//1
+```
+:::
+:::
+
+
+Now we turn around for the upward phase. The leading 1 in row 4 needs to have zeros above it. We accomplish that by subtracting multiples of row 4 from the others.
+
+::: {#1060af36 .cell execution_count=11}
+``` {.julia .cell-code}
+S[3,:] = S[3,:] - S[3,4]*S[4,:]
+S[2,:] = S[2,:] - S[2,4]*S[4,:]
+S[1,:] = S[1,:] - S[1,4]*S[4,:]
+S
+```
+
+::: {.cell-output .cell-output-display execution_count=11}
+```
+4×5 Matrix{Rational{Int64}}:
  1//1  0//1  2//1  0//1   5//1
  0//1  1//1  1//5  0//1   9//5
  0//1  0//1  1//1  0//1   4//1
- 0//1  0//1  0//1  1//1  -2//1</code></pre>
-</div>
-</div>
-<p>We move up to row 3 and use multiples of it to put zeros above its leading 1.</p>
-<div id="f68df0e4" class="cell" data-execution_count="12">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>S[<span class="fl">2</span>,<span class="op">:</span>] <span class="op">=</span> S[<span class="fl">2</span>,<span class="op">:</span>] <span class="op">-</span> S[<span class="fl">2</span>,<span class="fl">3</span>]<span class="op">*</span>S[<span class="fl">3</span>,<span class="op">:</span>]</span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>S[<span class="fl">1</span>,<span class="op">:</span>] <span class="op">=</span> S[<span class="fl">1</span>,<span class="op">:</span>] <span class="op">-</span> S[<span class="fl">1</span>,<span class="fl">3</span>]<span class="op">*</span>S[<span class="fl">3</span>,<span class="op">:</span>]</span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>S</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-display" data-execution_count="12">
-<pre><code>4×5 Matrix{Rational{Int64}}:
+ 0//1  0//1  0//1  1//1  -2//1
+```
+:::
+:::
+
+
+We move up to row 3 and use multiples of it to put zeros above its leading 1.
+
+::: {#f68df0e4 .cell execution_count=12}
+``` {.julia .cell-code}
+S[2,:] = S[2,:] - S[2,3]*S[3,:]
+S[1,:] = S[1,:] - S[1,3]*S[3,:]
+S
+```
+
+::: {.cell-output .cell-output-display execution_count=12}
+```
+4×5 Matrix{Rational{Int64}}:
  1//1  0//1  0//1  0//1  -3//1
  0//1  1//1  0//1  0//1   1//1
  0//1  0//1  1//1  0//1   4//1
- 0//1  0//1  0//1  1//1  -2//1</code></pre>
-</div>
-</div>
-<p>The last move is to use a multiple of row 2 to put a zero above its leading 1. As it has played out in this example, this line of code changes nothing because the position was already zero.</p>
-<div id="a41e1677" class="cell" data-execution_count="13">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>S[<span class="fl">1</span>,<span class="op">:</span>] <span class="op">=</span> S[<span class="fl">1</span>,<span class="op">:</span>] <span class="op">-</span> S[<span class="fl">1</span>,<span class="fl">2</span>]<span class="op">*</span>S[<span class="fl">2</span>,<span class="op">:</span>]</span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="fu">float</span>(S)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-display" data-execution_count="13">
-<pre><code>4×5 Matrix{Float64}:
+ 0//1  0//1  0//1  1//1  -2//1
+```
+:::
+:::
+
+
+The last move is to use a multiple of row 2 to put a zero above its leading 1. As it has played out in this example, this line of code changes nothing because the position was already zero.
+
+::: {#a41e1677 .cell execution_count=13}
+``` {.julia .cell-code}
+S[1,:] = S[1,:] - S[1,2]*S[2,:]
+float(S)
+```
+
+::: {.cell-output .cell-output-display execution_count=13}
+```
+4×5 Matrix{Float64}:
  1.0  0.0  0.0  0.0  -3.0
  0.0  1.0  0.0  0.0   1.0
  0.0  0.0  1.0  0.0   4.0
- 0.0  0.0  0.0  1.0  -2.0</code></pre>
-</div>
-</div>
-<p>This matrix is in RREF. We interpret it as the trivial linear system</p>
-<p><span class="math display">\[
+ 0.0  0.0  0.0  1.0  -2.0
+```
+:::
+:::
+
+
+This matrix is in RREF. We interpret it as the trivial linear system
+
+$$
 \begin{split}
-x_1 &amp;= -3,\\ x_2 &amp;= 1,\\ x_3 &amp;= 4, \\ x_4 &amp;= -2.
+x_1 &= -3,\\ x_2 &= 1,\\ x_3 &= 4, \\ x_4 &= -2.
 \end{split}
-\]</span></p>
-</div>
+$$
+:::: 
+-->
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1001,8 +1074,39 @@ Caution
 <li>Use the leading columns to solve for their corresponding variables in terms of the free parameters.</li>
 </ol>
 </div>
+<div id="exm-rref-infinite" class="theorem example" data-chapter="3" data-description="RE form to RRE form">
+<p><span class="theorem-title"><strong>Example 3.9 </strong></span>In <a href="#exm-elimination-infinite" class="quarto-xref">Example&nbsp;<span>3.7</span></a>, we reduced a linear system to the RE augmented matrix</p>
+<p><span class="math display">\[
+\augmat{\begin{matrix}
+1 &amp; 1 &amp; -1  \\
+0 &amp; 1 &amp; 3  \\
+0 &amp; 0 &amp; 0
+\end{matrix}}{
+  \begin{matrix}4\\-1\\0\end{matrix}
+}.
+\]</span></p>
+<p>To put this matrix into RRE form, we can use the second row to put a zero above its leading 1:</p>
+<p><span class="math display">\[
+\stackrel{R_1 = R_1 - R_2}{\Longrightarrow}
+\augmat{\begin{matrix}
+1 &amp; 0 &amp; -4  \\
+0 &amp; 1 &amp; 3  \\
+0 &amp; 0 &amp; 0
+\end{matrix}}{
+  \begin{matrix}5\\-1\\0\end{matrix}
+}.
+\]</span></p>
+<p>This is the system</p>
+<p><span class="math display">\[
+\begin{split}
+x_1 - 4x_3 &amp;= 5 \\
+x_2 + 3x_3 &amp;= -1,
+\end{split}
+\]</span></p>
+<p>in which <span class="math inline">\(x_3=t\)</span> is a free variable. Thus, <span class="math inline">\(x_2=-1-3t\)</span> and <span class="math inline">\(x_1=5+4t\)</span>, which is the same conclusion we reached in <a href="#exm-elimination-infinite" class="quarto-xref">Example&nbsp;<span>3.7</span></a> by backward substitution.</p>
+</div>
 <div id="exm-RREF-multiple" class="theorem example" data-chapter="3" data-description="Solution from RRE form">
-<p><span class="theorem-title"><strong>Example 3.9 </strong></span>A linear system has an augmented matrix equivalent to the RRE matrix</p>
+<p><span class="theorem-title"><strong>Example 3.10 </strong></span>A linear system has an augmented matrix equivalent to the RRE matrix</p>
 <p><span class="math display">\[
 \augmat{
 \begin{matrix}
@@ -1025,7 +1129,7 @@ s \\ 2+3t \\ t \\ -4
 </div>
 </div>
 <div id="exm-rre-inconsistent" class="theorem example" data-chapter="3" data-description="RRE form---inconsistent system">
-<p><span class="theorem-title"><strong>Example 3.10 </strong></span>A linear system has an augmented matrix equivalent to the RRE form</p>
+<p><span class="theorem-title"><strong>Example 3.11 </strong></span>A linear system has an augmented matrix equivalent to the RRE form</p>
 <p><span class="math display">\[
 \augmat{
 \begin{matrix}
@@ -1128,7 +1232,7 @@ Note
 \]</span></p>
 </div>
 <div id="exm-nonhomogeneous-1D" class="theorem example" data-chapter="3" data-description="Nullspace in 2D">
-<p><span class="theorem-title"><strong>Example 3.11 </strong></span>Suppose</p>
+<p><span class="theorem-title"><strong>Example 3.12 </strong></span>Suppose</p>
 <p><span class="math display">\[
 \begin{bmatrix}
 2 &amp; -3
@@ -1207,7 +1311,7 @@ The matrix--vector product $\bfA \bfx$ is a linear combination of the columns of
 <p><span class="theorem-title"><strong>Definition 3.14 </strong></span>The set of all linear combinations of <span class="math inline">\(\bfv_1,\ldots,\bfv_k\)</span> is known as the <strong>span</strong> of those vectors. The span of an empty set is the singleton set <span class="math inline">\(\{\bfzero\}\)</span>.</p>
 </div>
 <div id="exm-nullspace-combo" class="theorem example" data-chapter="3" data-description="Linear dependence">
-<p><span class="theorem-title"><strong>Example 3.12 </strong></span>Show that <span class="math inline">\(\bfv=[1,4,3]\)</span> is in the span of <span class="math inline">\(\bfu_1=[1,-2,-1]\)</span> and <span class="math inline">\(\bfu_2=[3,0,1]\)</span>. (That is, <span class="math inline">\(\bfv\)</span> can be written as a linear combination of these two vectors.)</p>
+<p><span class="theorem-title"><strong>Example 3.13 </strong></span>Show that <span class="math inline">\(\bfv=[1,4,3]\)</span> is in the span of <span class="math inline">\(\bfu_1=[1,-2,-1]\)</span> and <span class="math inline">\(\bfu_2=[3,0,1]\)</span>. (That is, <span class="math inline">\(\bfv\)</span> can be written as a linear combination of these two vectors.)</p>
 <div class="solution proof">
 <p><span class="proof-title"><em>Solution</em>. </span>Suppose that <span class="math inline">\(\bfv = c_1 \bfu_1 + c_2 \bfu_2\)</span>. Looking at each component of this vector equation, we conclude that</p>
 <p><span class="math display">\[
@@ -1242,7 +1346,7 @@ The matrix--vector product $\bfA \bfx$ is a linear combination of the columns of
 <p>which is consistent. In fact, the unique solution is <span class="math inline">\(c_2=1\)</span>, <span class="math inline">\(c_1=2\)</span>.</p>
 </div>
 </div>
-<p>Here is a formal statement of the idea used in <a href="#exm-nullspace-combo" class="quarto-xref">Example&nbsp;<span>3.12</span></a>.</p>
+<p>Here is a formal statement of the idea used in <a href="#exm-nullspace-combo" class="quarto-xref">Example&nbsp;<span>3.13</span></a>.</p>
 <div id="thm-linsys-span" class="theorem">
 <p><span class="theorem-title"><strong>Theorem 3.8 </strong></span>Let <span class="math inline">\(\bfa_1,\ldots,\bfa_n\)</span> be vectors in <span class="math inline">\(\real^n\)</span>, and let</p>
 <p><span class="math display">\[
@@ -1254,7 +1358,7 @@ The matrix--vector product $\bfA \bfx$ is a linear combination of the columns of
 </div>
 <p>The idea behind span is that it allows us to represent an infinite set, such as a null space, using a finite number of vectors.</p>
 <div id="exm-nullspace-span" class="theorem example" data-chapter="3" data-description="Expressing nullspace via span">
-<p><span class="theorem-title"><strong>Example 3.13 </strong></span>Suppose the RRE form of a matrix <span class="math inline">\(\bfA\)</span> is</p>
+<p><span class="theorem-title"><strong>Example 3.14 </strong></span>Suppose the RRE form of a matrix <span class="math inline">\(\bfA\)</span> is</p>
 <p><span class="math display">\[
 \mathbf{R} =
 \begin{bmatrix}
@@ -1292,7 +1396,7 @@ x_4 -3x_5 &amp;= 0 &amp; \quad ⇒ \quad x_4 &amp;= 3t.
 <section id="independence" class="level3" data-number="3.5.3">
 <h3 data-number="3.5.3" class="anchored" data-anchor-id="independence"><span class="header-section-number">3.5.3</span> Independence</h3>
 <p>Now that we have a finite description of the null space, we want to make sure that the description is as simple as possible. For this, we need to put some fresh paint on an old barn.</p>
-<div id="def-nullspace-indepdendence" class="theorem definition">
+<div id="def-nullspace-independence" class="theorem definition">
 <p><span class="theorem-title"><strong>Definition 3.15 (Linear independence) </strong></span>Vectors <span class="math inline">\(\bfv_1,\bfv_2,\ldots,\bfv_n\)</span> are <strong>linearly dependent</strong> if there is a way to choose constants <span class="math inline">\(c_1,\ldots,c_n\)</span>, <em>not all zero</em>, such that</p>
 <p><span class="math display">\[
 c_1\bfv_1 + c_2\bfv_2 + \cdots c_n \bfv_n = 0.
@@ -1316,10 +1420,10 @@ c_1\bfv_1 + c_2\bfv_2 + \cdots c_n \bfv_n = 0.
 </ol>
 </div>
 <div id="exm-dependence-zerovector" class="theorem example" data-chapter="3" data-description="Zero vector implies dependence">
-<p><span class="theorem-title"><strong>Example 3.14 </strong></span>Any set of vectors that contains the zero vector must be dependent. That’s because the zero vector will put a column of zeros in the matrix <span class="math inline">\(\bfA\)</span> in <a href="#thm-linalg-independence" class="quarto-xref">Theorem&nbsp;<span>3.9</span></a>, and since that column can’t possibly have a leading nonzero in it, the rank of <span class="math inline">\(\bfA\)</span> will be less than the number of columns.</p>
+<p><span class="theorem-title"><strong>Example 3.15 </strong></span>Any set of vectors that contains the zero vector must be dependent. That’s because the zero vector will put a column of zeros in the matrix <span class="math inline">\(\bfA\)</span> in <a href="#thm-linalg-independence" class="quarto-xref">Theorem&nbsp;<span>3.9</span></a>, and since that column can’t possibly have a leading nonzero in it, the rank of <span class="math inline">\(\bfA\)</span> will be less than the number of columns.</p>
 </div>
 <div id="exm-nullspace-dependent" class="theorem example" data-chapter="3" data-description="Determine independence of vectors">
-<p><span class="theorem-title"><strong>Example 3.15 </strong></span>Determine whether the vectors <span class="math inline">\(\bfv_1=\threevec{1}{0}{-2}\)</span>, <span class="math inline">\(\bfv_2=\threevec{1}{0}{1}\)</span>, and <span class="math inline">\(\bfv_3 = \threevec{0}{0}{-1}\)</span> are linearly independent.</p>
+<p><span class="theorem-title"><strong>Example 3.16 </strong></span>Determine whether the vectors <span class="math inline">\(\bfv_1=\threevec{1}{0}{-2}\)</span>, <span class="math inline">\(\bfv_2=\threevec{1}{0}{1}\)</span>, and <span class="math inline">\(\bfv_3 = \threevec{0}{0}{-1}\)</span> are linearly independent.</p>
 <div class="solution proof">
 <p><span class="proof-title"><em>Solution</em>. </span>These vectors are dependent if, and only if, we can find <span class="math inline">\(c_1,c_2,c_3\)</span>, not all zero, such that</p>
 <p><span class="math display">\[
