@@ -43,7 +43,7 @@ listing:
 | ------ | ------------------------------------------------ | -------------------- | ------------------ |
 | Sep 25 | [Intro to linear systems](linear_algebra_systems.html#overview) | 2.1                  |  1-5, 19, 20, 21, 27-30, 31            |
 | Sep 27 | [Row elimination](linear_algebra_systems.html#row-elimination) | 2.1, 2.2                  |   1-8, 9-14, 25-28, 35-38, 40-41  |
-| Sep 29  | **EXAM 1**                                       | Goals A1–A13, B1–B10 |                    |
+| Sep 29  | **EXAM 1**                                       | Goals A1–A13, B1–B9 |                    |
 | Oct 2  | [RRE form](linear_algebra_systems.html#rre-form)       | 2.2                  |                    |
 | Oct 4  | [Homogeneous systems](linear_algebra_systems.html#homogeneous-systems)   | 2.2             |                |
 | Oct 6  | [Linear combinations](linear_algebra_systems.html#linear-combinations)   | 2.3             |   1-4, 7, 9, 11, 22-27                 |
