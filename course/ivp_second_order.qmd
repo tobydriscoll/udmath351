@@ -470,19 +470,21 @@ Euler's identity shows that imaginary exponents produce oscillation, rather than
 ```{julia}
 c = t -> real(exp(1im*t))
 s = t -> imag(exp(1im*t))
-@gif for t in range(0,4π,length=60)
+an = @animate for t in range(0,4π,length=60)
 	plot([c s],0,t,label=["Re part" "Im part"],xaxis=(L"t",(0,4π)),yaxis=(L"e^{it}",(-1.05,1.05)))
 	title!("Complex exponential")
 end
+gif(an, "cpxexp.gif")
 ```
 
 Alternatively, if we take $x$ and $y$ to be the real and imaginary parts of $z=e^{it}$, then they parametrically describe a unit circle in the complex plane.
 
 ```{julia}
-@gif for t in range(0,4π,length=60)
+an = @animate for t in range(0,4π,length=60)
 	plot(c,s,0,t,aspect_ratio=1,xaxis=("Re z",(-1.1,1.1)),yaxis=("Im z",(-1.1,1.1)))
 	title!("Complex exponential = unit circle")
 end
+gif(an, "cpxexp-circle.gif")
 ```
 
 ### Polar form
@@ -553,13 +555,14 @@ a = 0.025;  ω = 0.75;
 t = range(0, 25, length=120)
 z = @. exp((a+1im*ω)*t)
 
-@gif for k in [eachindex(t);fill(length(t),5)]
+an = @animate for k in [eachindex(t);fill(length(t),5)]
     plot(t[1:k],real(z[1:k]),imag(z[1:k]),xaxis=("t",(0,30),:flip),yaxis=("Re z",(-2,2)),zaxis=("Im z",(-2,2)))
     plot!(t[1:k],real(z[1:k]),fill(-1.5,k))
     plot!(t[1:k],fill(2,k),imag(z[1:k]))
     plot!(fill(30,k),real(z[1:k]),imag(z[1:k]),l=:black)
     title!(@sprintf("Growth and oscillation: a = %.2f, ω = %.2f",a,ω))
 end
+gif(an, "cexp-growing.gif")
 ```
 
 #### Neutral
@@ -571,13 +574,14 @@ a = 0.;  ω = 0.75;
 t = range(0, 25, length=120)
 z = @. exp((a+1im*ω)*t)
 
-@gif for k in [eachindex(t);fill(length(t),5)]
+an = @animate for k in [eachindex(t);fill(length(t),5)]
     plot(t[1:k],real(z[1:k]),imag(z[1:k]),xaxis=("t",(0,30),:flip),yaxis=("Re z",(-2,2)),zaxis=("Im z",(-2,2)))
     plot!(t[1:k],real(z[1:k]),fill(-1.5,k))
     plot!(t[1:k],fill(2,k),imag(z[1:k]))
     plot!(fill(30,k),real(z[1:k]),imag(z[1:k]),l=:black)
     title!(@sprintf("Pure oscillation: a = %.2f, ω = %.2f",a,ω))
 end
+gif(an, "cxep-neutral.gif")
 ```
 
 #### Decaying
@@ -589,13 +593,14 @@ a = -0.07;  om = 2.4;
 t = range(0, 25, length=120)
 z = @. exp((a+1im*ω)*t)
 
-@gif for k in [eachindex(t);fill(length(t),5)]
+an = @animate for k in [eachindex(t);fill(length(t),5)]
     plot(t[1:k],real(z[1:k]),imag(z[1:k]),xaxis=("t",(0,30),:flip),yaxis=("Re z",(-2,2)),zaxis=("Im z",(-2,2)))
     plot!(t[1:k],real(z[1:k]),fill(-1.5,k))
     plot!(t[1:k],fill(2,k),imag(z[1:k]))
     plot!(fill(30,k),real(z[1:k]),imag(z[1:k]),l=:black)
     title!(@sprintf("Decay and oscillation: a = %.2f, ω = %.2f",a,ω))
 end
+gif(an, "cexp-decay.gif")
 ```
 
 ### Homogeneous solutions

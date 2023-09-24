@@ -1,0 +1,261 @@
+- chapter: '1'
+  description: 1st-order ODE standard form
+  link: '@exm-preview-rewrite'
+- chapter: '1'
+  description: Verify ODE solution
+  link: '@exm-preview-verify'
+- chapter: '1'
+  description: Variable-growth ODE solution
+  link: '@exm-preview-var-growth'
+- chapter: '1'
+  description: Nonlinear growth ODE solution
+  link: '@exm-preview-nonlinear'
+- chapter: '1'
+  description: Solve 1st-order IVP
+  link: '@exm-ivp1-solve'
+- chapter: '1'
+  description: Solution curves and an initial condition
+  link: '@exm-ivp1-plot'
+- chapter: '1'
+  description: Numerical solution for constant growth rate
+  link: '@exm-ivp1-numerical-constant'
+- chapter: '1'
+  description: Numerical solution for variable growth rate
+  link: '@exm-ivp1-numerical-variable'
+- chapter: '1'
+  description: Numerical solution for nonlinear growth
+  link: '@exm-ivp1-numerical-nonlinear'
+- chapter: '1'
+  description: Logistic equation direction field
+  link: '@exm-qualitative-logistic'
+- chapter: '1'
+  description: Direction field for nonautonomous equation
+  link: '@exm-qualitative-timevarying'
+- chapter: '1'
+  description: Phase diagram for stability of equilibria
+  link: '@exm-qualitative-equilibria'
+- chapter: '1'
+  description: Separable equation
+  link: '@exm-separable-vargrowth'
+- chapter: '1'
+  description: Separable equation---implicit solution
+  link: '@exm-separable-implicit'
+- chapter: '1'
+  description: Separable equation---factorization
+  link: '@exm-separable-factor'
+- chapter: '1'
+  description: Separable equation---autonomous
+  link: '@exm-separable-autonomous'
+- chapter: '1'
+  description: Linear operator
+  link: '@exm-linear-operator'
+- chapter: '1'
+  description: 1st order homogeneous solution
+  link: '@exm-homog1-sin'
+- chapter: '1'
+  description: 1st order homogeneous solution
+  link: '@exm-homog1-power'
+- chapter: '1'
+  description: 1st order homogeneous solution
+  link: '@exm-homog1-singular'
+- chapter: '1'
+  description: 1st order variation of parameters
+  link: '@exm-vop-one'
+- chapter: '1'
+  description: 1st order variation of parameters
+  link: '@exm-vop-two'
+- chapter: '1'
+  description: 1st order variation of parameters
+  link: '@exm-vop-three'
+- chapter: '1'
+  description: Bacterial growth model
+  link: '@exm-modeling-bacteria'
+- chapter: '1'
+  description: Radioactive decay model
+  link: '@exm-modeling-radioactive'
+- chapter: '1'
+  description: Cooling coffee model
+  link: '@exm-modeling-coffee'
+- chapter: '1'
+  description: Cooling coffee model
+  link: '@exm-modeling-flintstones'
+- chapter: '2'
+  description: Dependent functions
+  link: '@exm-structure-dependent'
+- chapter: '2'
+  description: Independent functions
+  link: '@exm-structure-independent'
+- chapter: '2'
+  description: Wronskian
+  link: '@exm-structure-wronskian'
+- chapter: '2'
+  description: Characteristic equation---double root
+  link: '@exm-homogeneous-trivial'
+- chapter: '2'
+  description: Characteristic equation---distinct real roots
+  link: '@exm-homogeneous-real-distinct'
+- chapter: '2'
+  description: 2nd order IVP
+  link: '@exm-homogeneous-real-ivp'
+- chapter: '2'
+  description: Complex number fractions
+  link: '@exm-complex-fraction'
+- chapter: '2'
+  description: Complex number reciprocal
+  link: '@exm-complex-reciprocal'
+- chapter: '2'
+  description: Complex numbers polar form
+  link: '@exm-complex-polar'
+- chapter: '2'
+  description: Characteristic polynomial---complex roots
+  link: '@exm-complex-dummy'
+- chapter: '2'
+  description: Characteristic polynomial---complex roots
+  link: '@exm-complex-simple'
+- chapter: '2'
+  description: Characteristic polynomial---complex roots
+  link: '@exm-complex-complex1'
+- chapter: '2'
+  description: Characteristic polynomial---real solution for complex roots
+  link: '@exm-charpoly-real-solution'
+- chapter: '2'
+  description: Characteristic polynomial---real IVP for complex roots
+  link: '@exm-complex-complex2'
+- chapter: '2'
+  description: 2nd order variation of parameters
+  link: '@exm-vop2-cons'
+- chapter: '2'
+  description: 2nd order variation of parameters
+  link: '@exm-variation_parameters-resonance'
+- chapter: '2'
+  description: Undetermined coefficients---constant
+  link: '@exm-undetermined-const'
+- chapter: '2'
+  description: Undetermined coefficients---polynomial
+  link: '@exm-MUC-polynomial'
+- chapter: '2'
+  description: Undetermined coefficients---exponential
+  link: '@exm-MUC-exponential'
+- chapter: '2'
+  description: Undetermined coefficients---trig
+  link: '@exm-MUC-trig'
+- chapter: '2'
+  description: Undetermined coefficients (failure)
+  link: '@exm-undetermined-resonance'
+- chapter: '2'
+  description: Undetermined coefficients---workaround
+  link: '@exm-undetermined-resonance-fix'
+- chapter: '2'
+  description: Natural frequency of an oscillator
+  link: '@exm-oscillator-frequency'
+- chapter: '2'
+  description: Damping strength
+  link: '@exm-damping-strength'
+- chapter: '2'
+  description: Free oscillations
+  link: '@exm-free-oscillations'
+- chapter: '3'
+  description: Two linear equations
+  link: '@exm-two-equations'
+- chapter: '3'
+  description: Coefficient matrix
+  link: '@exm-coefficient-matrix'
+- chapter: '3'
+  description: Row elimination
+  link: '@exm-gauss-elimination'
+- chapter: '3'
+  description: Augmented matrix
+  link: '@exm-augmented-matrix'
+- chapter: '3'
+  description: RE form
+  link: '@exm-RE-not-REF'
+- chapter: '3'
+  description: Inconsistent system
+  link: '@exm-RE-inconsistent'
+- chapter: '3'
+  description: Infinitely many solutions
+  link: '@exm-elimination-infinite'
+- chapter: '3'
+  description: Gauss--Jordan elimination
+  link: '@exm-gauss-jordan'
+- chapter: '3'
+  description: RE form to RRE form
+  link: '@exm-rref-infinite'
+- chapter: '3'
+  description: Solution from RRE form
+  link: '@exm-RREF-multiple'
+- chapter: '3'
+  description: RRE form---inconsistent system
+  link: '@exm-rre-inconsistent'
+- chapter: '3'
+  description: Nullspace in 2D
+  link: '@exm-nonhomogeneous-1D'
+- chapter: '3'
+  description: Linear dependence
+  link: '@exm-nullspace-combo'
+- chapter: '3'
+  description: Expressing nullspace via span
+  link: '@exm-nullspace-span'
+- chapter: '3'
+  description: Zero vector implies dependence
+  link: '@exm-dependence-zerovector'
+- chapter: '3'
+  description: Determine independence of vectors
+  link: '@exm-nullspace-dependent'
+- chapter: '4'
+  description: Matrix--vector product
+  link: '@exm-matvec'
+- chapter: '4'
+  description: Matrix--matrix product
+  link: '@exm-matmat'
+- chapter: '4'
+  description: Identity matrix
+  link: '@exm-matrix-identity'
+- chapter: '4'
+  description: Matrix inverse
+  link: '@exm-matrix-inverse'
+- chapter: '4'
+  description: Singular matrix
+  link: '@exm-inverse-singular'
+- chapter: '4'
+  description: Singular matrices
+  link: '@exm-matrix-cancellation'
+- chapter: '4'
+  description: Planes and subspaces
+  link: '@exm-subspaces-plane'
+- chapter: '4'
+  description: Bases for matrix subspaces
+  link: '@exm-subspaces-colnull'
+- chapter: '4'
+  description: Basis for a span
+  link: '@exm-subspaces-findbasis'
+- chapter: '4'
+  description: Dimension of a subspace
+  link: '@exm-subspaces-dimension'
+- chapter: '4'
+  description: $3\times 3$ determinant
+  link: '@exm-matrix-determinant3x3'
+- chapter: '4'
+  description: Cramer's Rule
+  link: '@exm-cramers-rule'
+- chapter: '4'
+  description: Eigenvectors of the identity matrix
+  link: '@exm-eigvec-identity'
+- chapter: '4'
+  description: Eigenspaces of a triangular matrix
+  link: '@exm-eigenvalues-triangular'
+- chapter: '4'
+  description: Eigenspaces of a $2\times 2$
+  link: '@exm-eigvec-2by2'
+- chapter: '4'
+  description: Eigenvalues of a triangular matrix
+  link: '@exm-eigenvalues-triangular'
+- chapter: '4'
+  description: Complex eigenvalues
+  link: '@exm-eigvals-complex'
+- chapter: '4'
+  description: Geometric multiplicity
+  link: '@exm-diagonalization-defective'
+- chapter: '4'
+  description: Nondefective repeated eigenvalue
+  link: '@exm-diagonalization-nondefective'
