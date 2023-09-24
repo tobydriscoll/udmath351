@@ -1,6 +1,6 @@
 project:
   type: book
-
+  pre-render: find_crossrefs.py
 book:
   title: "Notes for Math 351 @ UD"
   author: "Toby Driscoll"
@@ -11,6 +11,7 @@ book:
     - ivp_second_order.qmd
     - linear_algebra_systems.qmd
     - matrix_algebra.qmd
+    # - ode_systems.qmd
   sidebar: 
     footer: "Copyright 2023 by Toby Driscoll"
   page-footer:

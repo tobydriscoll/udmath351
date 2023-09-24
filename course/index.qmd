@@ -1,3 +1,12 @@
+---
+listing:
+  - id: examples-listing
+    contents: 
+      - _crossrefs/exm.yml
+      - _crossrefs
+    type: table
+    fields: [description, link, chapter]
+---
 # Contents {.unnumbered}
 
 :::: {.content-visible unless-format="pdf"}
@@ -21,12 +30,12 @@
 
 | Date   | Section                                                       | Zill | Suggested practice |
 | ------ | ------------------------------------------------------------- | ---- | ------------------ |
-| Sep 13 | [2nd order linear problems](ivp_second_order.html#sec-second-linear)             | 3.1  |  16, 17, 21           |
+| Sep 13 | [Intro](ivp_second_order.html), [2nd order linear problems](ivp_second_order.html#sec-second-linear)             | 3.1  |  16, 17, 21           |
 | Sep 15 | [Homogeneous solutions](ivp_second_order.html#sec-second-const_coeff)    | 3.3  |  1-14, 29, 33, 49, 51                  |
 | Sep 15 | [Complex solutions](ivp_second_order.html#sec-second-complex)                    | 3.3  |                    |
 | Sep 18 | [Variation of parameters](ivp_second_order.html#sec-second-vop) | 3.5  |   3, 5, 10, 16                 |
-| Sep 20 | [Undetermined coefficients](ivp_second_order.html#undetermined-coefficients)       | 3.4  |    1, 3, 5, 8, 31                |
-| Sep 22 | [Oscillators](ivp_second_order.html#sec-second-oscillators)                      | 3.8  |   1,  6, 27, 31, 33, 43, 44                 |
+| Sep **22** | [Undetermined coefficients](ivp_second_order.html#undetermined-coefficients)       | 3.4  |    1, 3, 5, 8, 31                |
+| Sep **20** | [Oscillators](ivp_second_order.html#sec-second-oscillators)                      | 3.8  |   1,  6, 27, 31, 33, 43, 44                 |
 
 ### Linear systems
 
@@ -83,6 +92,11 @@ Note: Both textbooks have dedicated chapter review problems.
 * Zill, Chapter 2 Review: 5 (skip semi-stable), 13, 26a, 30, 32
 * Poole, Chapter 2 Review: 2, 3, 4, 7, 10, 12, 13, 15, 19 -->
 
+## List of examples
+
+:::{#examples-listing}
+:::
+
 ## Learning goals
 
 ### A. First-order scalar ODEs
@@ -91,7 +105,7 @@ Note: Both textbooks have dedicated chapter review problems.
 3. Sketch or interpret a phase diagram for an autonomous equation.
 4. Find the steady states/equilibria of an autonomous equation.
 5. Classify the stability of an equilibrium solution.
-6.  Solve an initial-value problem if given, or after finding, a general solution.
+6. Solve an initial-value problem if given, or after finding, a general solution.
 7. Solve separable equations that have tractable integrals, in explicit or implicit form.
 8. Distinguish between linear and nonlinear ODEs.
 9. Convert between standard and operator expressions of a linear equation.
@@ -103,14 +117,13 @@ Note: Both textbooks have dedicated chapter review problems.
 ### B. Second-order linear ODEs
 1. Assemble a general solution from homogeneous and particular solutions.
 2. Use initial values to solve for the integration constants in a general solution.  
-3. Compute the Wronskian of two or three functions.
+3. Compute the Wronskian of two functions.
 4. Use a Wronskian to determine the linear independence of given solutions.
-5. Solve a homogeneous linear constant-coefficient equation by way of its characteristic polynomial.
-6. Convert between complex exponentials and real exponentials/oscillations using Euler's identity.
-7. Use variation of parameters to find a particular solution.
-8. Use undetermined coefficients to find a particular solution with polynomial, exponential, or harmonic forcing.
-9. Relate a linear constant-coefficient equation to a mechanical oscillator, and classify as undamped, underdamped, critically damped, or overdamped. 
-10. Identify resonance or pseudoresonance for a harmonically forced oscillator.
+5. Solve a homogeneous, linear, constant-coefficient equation by way of its characteristic polynomial.
+6. Use variation of parameters to find a particular solution.
+7. Use undetermined coefficients to find a particular solution with polynomial, exponential, or harmonic forcing.
+8. Relate a linear constant-coefficient equation to a mechanical oscillator, and classify as undamped, underdamped, critically damped, or overdamped. 
+9. Identify resonance or pseudoresonance for a harmonically forced oscillator.
 
 ### C. Linear algebraic systems
 
@@ -123,7 +136,6 @@ Note: Both textbooks have dedicated chapter review problems.
 7. Find a basis for a null space.
 
 ### D. Matrix algebra
-
 1. Convert between a linear combination and an equivalent matrix–vector multiplication.
 2. Compute products of matrices.
 3. Apply properties of matrix algebra.
@@ -162,5 +174,4 @@ Note: Both textbooks have dedicated chapter review problems.
 8. Compute a matrix exponential using a diagonalization.
 9. Compute a 2x2 or 3x3 matrix exponential using the polynomial method (including defective case).
 10. Use a matrix exponential to solve an IVP.
-
 ::::

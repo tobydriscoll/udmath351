@@ -120,7 +120,7 @@ In order for $\bfA\bfx$ to be defined, the number of columns in $\bfA$ has to be
 
 Note that when $\bfA$ is $m\times n$, then $\bfx$ must be in $\real^n$ or $\complex^n$, and $\bfA\bfx$ has dimension $m$. 
 
-::::{#exm-}
+::::{#exm-matvec chapter=4 description="Matrix--vector product"}
 Calculate the product
 
 $$
@@ -231,7 +231,7 @@ $$ {#eq-matrix-mult-element}
 
 The sum to get a single $C_{ij}$ is what we called a "zip", or essentially a dot product, of row $i$ from $\bfA$ with column $j$ from $\bfB$.
 
-::::{#exm-}
+::::{#exm-matmat chapter=4 description="Matrix--matrix product"}
 Find $\mathbf{A}\mathbf{B}$ if
 
 $$
@@ -386,7 +386,7 @@ Sometimes, when we need to indicate the size of the identity, we use a subscript
 If $\bfA$ is $m\times n$, then $\bfA = \meye_m \bfA = \bfA \meye_n$.
 ::::
 
-::::{#exm-}
+::::{#exm-matrix-identity chapter=4 description="Identity matrix"}
 Compute
 
 $$
@@ -432,7 +432,7 @@ Suppose $\bfA$ is a square matrix. A matrix $\mathbf{Z}$ of the same size such t
 
 Verifying whether a given matrix is the inverse of another matrix is simply a matter of multiplying them together and seeing if the result is an identity matrix.
 
-::::{#exm-}
+::::{#exm-matrix-inverse chapter=4 description="Matrix inverse"}
 The matrix $\mathbf{R}(\theta) = \begin{bmatrix}
 \cos(\theta) & -\sin(\theta) \\ \sin(\theta) & \cos(\theta) 
 \end{bmatrix}$
@@ -496,7 +496,7 @@ If $\mathbf{S}$ is an $n\times n$ matrix of all zeros, then $\mathbf{S}\bfA$ and
 Some nonzero matrices are singular.
 :::
 
-::::{#exm-inverse-singular} 
+::::{#exm-inverse-singular chapter=4 description="Singular matrix"} 
 Let $\bfA = \twomat{0}{0}{1}{0}$. Suppose that 
 
 $$
@@ -506,11 +506,7 @@ $$
 This is clearly impossible for any choices of $a,b,c,d$. Hence $\bfA$ is singular.
 ::::
 
-::: {.callout-important}
-It is possible for the product of two nonzero matrices to be zero.
-:::
-
-::::{#exm-} 
+::::{#exm-matrix-cancellation chapter=4 description="Singular matrices"} 
 Again let $\bfA = \twomat{0}{0}{1}{0}$. Note that 
 
 $$
@@ -523,7 +519,13 @@ $$
 \bfA\bfB = \bfzero \implies \bfA = \bfzero \text{ or } \bfB=\bfzero, \qquad \text{(FALSE!)}
 $$
 
-which has been so useful when it comes to scalars. Now, if $\bfA\bfB = \bfzero$ *and* $\bfA$ is invertible, then we are back in business, because
+which has been so useful when it comes to scalars. 
+
+::: {.callout-important}
+It is possible for the product of two nonzero matrices to be zero.
+:::
+
+Now, if $\bfA\bfB = \bfzero$ *and* $\bfA$ is invertible, then we are back in business, because
 $$
 \bfB=\bfA^{-1}\cdot \bfzero = \bfzero. 
 $$
@@ -610,7 +612,7 @@ The second property above is called *closure under linear combination*.
 We will be making statements about real spaces like $\real^n$, but everything also works for $\complex^n$, which turns out to be important later.
 :::
 
-::::{#exm-subspaces-plane} 
+::::{#exm-subspaces-plane chapter=4 description="Planes and subspaces"} 
 The equation $x + 2y + 3z = 0$ describes a plane passing through the origin in $\real^3$. It's clear geometrically that scaling a vector in the plane leaves you in the plane, and adding vectors in the plane does as well. This is enough to show that this plane is a subspace of $\real^3$. In fact, it is the null space of the matrix $\begin{bmatrix} 1 & 2 & 3 \end{bmatrix}.$
 
 The equation $x+y+z=1$ is also a plane in $\real^3$, but it does not pass through the origin, so it cannot be a subspace. (It also fails closure for scaling and addition.)
@@ -661,7 +663,7 @@ Finding a basis for a null space was demonstrated in @exm-nullspace-span. The co
 Let $\bfA$ have RRE form with pivot columns numbered $j_1,\ldots,j_r$. Then columns $j_1,\ldots,j_r$ of $\bfA$ are a basis for $\colsp(\bfA)$.
 :::
 
-::::{#exm-subspaces-colnull}
+::::{#exm-subspaces-colnull chapter=4 description="Bases for matrix subspaces"}
 Find bases for the null space and column space of   
 
 $$
@@ -697,7 +699,7 @@ which makes $\{[-2,1,0,0],[4,0,-1,1]  \}$ a basis for $\nullsp(\bfA)$.
 :::
 ::::
 
-::::{#exm-subspaces-findbasis}
+::::{#exm-subspaces-findbasis chapter=4 description="Basis for a span"}
 Find a basis for span of the vectors $\bfv_1=[1,-2,-3,-2]$, $\bfv_2=[2,-4,-6,-4]$, $\bfv_3=[0,1,1,0]$, $\bfv_4=[-4,9,13,8]$.
 
 :::{.solution}
@@ -741,7 +743,7 @@ Suppose $V$ is a set of $k$ vectors in subspace $S$.
 3. Suppose $k=\dim(S)$. If $V$ is independent or if $V$ spans $S$, then $V$ is a basis for $S$.
 ::::
 
-::::{#exm-subspaces-dimension} 
+::::{#exm-subspaces-dimension chapter=4 description="Dimension of a subspace"} 
 Determine whether the vectors $\bfv_1=[3,2,1]$, $\bfv_2=[0,-1,2]$, $\bfv_3=[1,1,1]$ are a basis of $\real^3$. 
 
 :::{.solution}
@@ -810,7 +812,7 @@ The formula @eq-determinants-cofactor, which is called **cofactor expansion**, i
 
 Since expanding along any row or column gives the same result, it can be advantageous to choose one with lots of zeros to cut down on the total computation.
 
-::::{#exm-matrix-determinant3x3}
+::::{#exm-matrix-determinant3x3 chapter=4 description="$3\times 3$ determinant"}
 Compute the determinant of 
 
 $$
@@ -899,7 +901,7 @@ $$
 
 Obviously this does not work if $\det(\bfA)=0$, i. e., when the matrix is singular. In that case, you have to fall back on row elimination.
 
-::::{#exm-}
+::::{#exm-cramers-rule chapter=4 description="Cramer's Rule"}
 Solve
 
 \begin{split}
@@ -988,7 +990,7 @@ Every nonzero multiple of an eigenvector is also an eigenvector at the same eige
 
 But a simple example shows that there can be even more ambiguity.
 
-::::{#exm-}
+::::{#exm-eigvec-identity chapter=4 description="Eigenvectors of the identity matrix"}
 Let $\meye$ be an identity matrix. Then $\meye\bfx=\bfx$ for any vector $\bfx$, so every nonzero vector is an eigenvector!
 ::::
 
@@ -1022,7 +1024,7 @@ Suppose $\bfA$ is a square matrix.
 4. A matrix is singular if and only if $0$ is among its eigenvalues.
 ::::
 
-::::{#exm-eigenvalues-triangular} 
+::::{#exm-eigenvalues-triangular chapter=4 description="Eigenspaces of a triangular matrix"} 
 Find the eigenvalues and eigenspaces of 
 $\bfA = \begin{bmatrix} -2 & 4 & 0 \\ 0 & 1 & -3 \\ 0 & 0 & -2 \end{bmatrix}.$
 
@@ -1083,7 +1085,7 @@ Given an $n\times n$ matrix $\bfA$:
 3. For each $\lambda_j$, find the general solution of $(\bfA-\lambda_j\meye)\bfv=\bfzero$. This is the eigenspace associated with $\lambda_j$.
 ::::
 
-::::{#exm-}
+::::{#exm-eigvec-2by2 chapter=4 description="Eigenspaces of a $2\times 2$"}
 Find the eigenvalues and eigenspaces of
 
 $$
@@ -1123,7 +1125,7 @@ Because eigenvalues are the roots of the characteristic polynomials, real matric
 If $\bfv$ is an eigenvector for a complex eigenvalue $\lambda$ of a real matrix, then its conjugate $\overline{\bfv}$ is an eigenvector for $\overline{\lambda}$.
 :::
 
-::::{#exm-eigenvalues-complex} 
+::::{#exm-eigenvalues-triangular chapter=4 description="Eigenvalues of a triangular matrix"} 
 Find eigenvalues and eigenspaces of $\bfA = \begin{bmatrix} 0 & 0 & 6 \\ 0 & 0 & -3 \\ -3 & -3 & 0 \end{bmatrix}.$
 
 :::{.solution}
@@ -1180,7 +1182,7 @@ Given an eigenvalue $\lambda$ of $2\times 2$ matrix $\bfA$, let the first row of
 - Otherwise, the vector $[\beta;\,-\alpha]$ is a basis of the eigenspace of $\lambda$.
 :::
 
-::::{#exm-}
+::::{#exm-eigvals-complex chapter=4 description="Complex eigenvalues"}
 Find the eigenstuff of 
 
 $$
@@ -1235,7 +1237,7 @@ The **algebraic multiplicity** of an eigenvalue is its multiplicity as a root of
 
 The following example illustrates a peculiar possibility for eigenvalues of algebraic multiplicity greater than 1.
 
-::::{#exm-diagonalization-defective}
+::::{#exm-diagonalization-defective chapter=4 description="Geometric multiplicity"}
 Find the eigenspaces of $\bfA=\twomat{4}{1}{0}{4}$.
 
 :::{.solution}
@@ -1276,7 +1278,7 @@ $$
 
 In the @exm-diagonalization-defective we found a lone eigenvalue $\lambda_1=4$ of algebraic multiplicity 2 whose geometric multiplicity is 1. The identity matrix is a different sort of example.
 
-::::{#exm-}
+::::{#exm-diagonalization-nondefective chapter=4 description="Nondefective repeated eigenvalue"}
 The $2\times 2$ identity matrix $\meye$ has a lone eigenvalue $\lambda_1=1$ of algebraic multiplicity 2. The system $(\meye - \meye)\bfv=\bfzero$ has an RRE form that is the zero matrix, so there are two free variables and two basis vectors. Hence the geometric multiplicity of $\lambda_1$ is also 2.
 ::::
 

@@ -72,7 +72,7 @@ It's not hard to turn those statements into algebraic conditions. The slopes of 
    - If one equation is a multiple of the other, there are infinitely many solutions.
    - Otherwise, there are no solutions.
 
-::::{#exm-}
+::::{#exm-two-equations chapter=3 description="Two linear equations"}
 Find all solutions to the equations
 
 $$
@@ -143,7 +143,7 @@ The rows of the coefficient matrix correspond to the equations in the linear sys
 
 The vector $\bfb\in\real^m$ implied in @eq-linsys-def doesn't have a standard name, but I will call it the **forcing vector** by analogy with linear ODEs. Altogether, $\bfA$ and $\bfb$ are the data of the linear system, and the vector $\bfx \in \real^{n}$ is the solution.
 
-::::{#exm-}
+::::{#exm-coefficient-matrix chapter=3 description="Coefficient matrix"}
 Sometimes zeros are needed as placeholders in the coefficient matrix. In the linear system
 
 $$
@@ -182,7 +182,7 @@ The following operations do not change the solutions of a linear system:
 Recall that the equations of a linear system correspond to rows of the coefficient matrix $\bfA$ and forcing vector $\bfb$, hence the name "row operations."
 :::
 
-:::::{#exm-gauss-elimination}
+:::::{#exm-gauss-elimination chapter=3 description="Row elimination"}
 Let's use elimination to solve the $3\times 3$ system
 
 $$
@@ -249,7 +249,7 @@ Before looking further into the elimination process, we will lighten the notatio
 The **augmented matrix** of the linear system @eq-linsys-def is the $m\times (n+1)$ matrix $\mathbf{G} = \augmat{\bfA}{\bfb}$.
 ::::
 
-:::::{#exm-augmented-matrix}
+:::::{#exm-augmented-matrix chapter=3 description="Augmented matrix"}
 The starting system in @exm-gauss-elimination has augmented matrix
 
 $$
@@ -288,9 +288,27 @@ A matrix is in RE form if:
 2. The leftmost nonzero element in a row, called the **leading element**, is to the left of any other leading elements below it.
 ::::
 
-To achieve RE form from a given starting matrix, we start at the top left and use row operations to introduce zeros under the leading element of the first row. We then move down one row and repeat. It's easier to understand from more examples than to write out a formal algorithm.
+:::{#exm-RE-not-REF chapter=3 description="RE form"}
+The following matrices are **not** in RE form:
 
-:::{#exm-RE-inconsistent}
+$$
+\begin{bmatrix}
+2 & 0 & 1 & -1 \\ 0 & 1 & 0 & 0 \\ 0 & -4 & 1 & 0 
+\end{bmatrix}  
+$$
+(leading nonzeros do not move to the right from row 2 to 3)
+
+$$
+\begin{bmatrix}
+2 & 0 & 1 & -1 \\ 0 & 0 & 0 & 0 \\ 0 & -4 & 1 & 0 
+\end{bmatrix}  
+$$
+(zero row not at the bottom)
+:::
+
+To achieve RE form by row operations on a given starting matrix, we start at the top left and use row operations to introduce zeros under the leading element of the first row. We then move down one row and repeat. It's easier to understand from more examples than to write out a formal algorithm.
+
+:::{#exm-RE-inconsistent chapter=3 description="Inconsistent system"}
 We start from
 $$
 \begin{bmatrix}
@@ -367,7 +385,7 @@ That last equation is a dealbreaker! The system is inconsistent.
 The leading elements encountered during row elimination are called **pivots**. The columns they occur in are called **leading variables**, while the other variables (if any) are called **free variables**.
 ::::
 
-:::{#exm-elimination-infinite}
+:::{#exm-elimination-infinite chapter=3 description="Infinitely many solutions"}
 Suppose we begin with the augmented matrix 
 $$
 \augmat{\begin{matrix}
@@ -445,7 +463,7 @@ Every matrix is equivalent to a unique matrix in RRE form.
 
 The other useful fact is that RRE form completely exposes everything we want to know about a linear system. In fact, everything else we will do theoretically with matrices comes back to the RRE form, whether or not it's an augmented matrix.
 
-::::{#exm-gauss-jordan} 
+::::{#exm-gauss-jordan chapter=3 description="Gauss--Jordan elimination"} 
 At the end of @exm-gauss-elimination, we had reached the augmented matrix
 
 $$
@@ -511,6 +529,7 @@ The system is now trivial: $x_1=1$, $x_2=-3$, and $x_3=2$. Done!
 ::::
 
 The process above is called **Gauss–Jordan elimination**, to distinguish it from Gaussian elimination. 
+
 <!---
  
 ::::{#thm-linalg-phase1}  
@@ -533,8 +552,8 @@ At the end of the downward phase, the augmented matrix is triangular, which is e
 
 At the end of the upward phase, the matrix has been put into a form that we define formally here. 
 --->
-
-::::{#exm-RRE-julia}
+<!-- 
+::::{#exm-RRE-julia chapter=3 description="RRE form"}
 Here is an example of reduction to RRE form for a linear system using Julia to do the arithmetic.
 
 $$
@@ -642,7 +661,8 @@ $$
 x_1 &= -3,\\ x_2 &= 1,\\ x_3 &= 4, \\ x_4 &= -2.
 \end{split}
 $$
-::::
+:::: 
+-->
 
 :::{.callout-tip}
 You can [use Wolfram Alpha]("https://www.wolframalpha.com/input/?i=rref%20%7B%7B1%2C2%2C3%7D%2C%7B4%2C5%2C6%7D%2C%7B7%2C8%2C9%7D%7D") to find the RRE form of a matrix.
@@ -665,7 +685,46 @@ To solve a system with augmented matrix in RRE form:
 4. Use the leading columns to solve for their corresponding variables in terms of the free parameters.
 :::
 
-::::{#exm-RREF-multiple}
+
+::::{#exm-rref-infinite chapter=3 description="RE form to RRE form"}
+In @exm-elimination-infinite, we reduced a linear system to the RE augmented matrix
+
+$$
+\augmat{\begin{matrix}
+1 & 1 & -1  \\
+0 & 1 & 3  \\
+0 & 0 & 0 
+\end{matrix}}{
+  \begin{matrix}4\\-1\\0\end{matrix}
+}.
+$$
+
+To put this matrix into RRE form, we can use the second row to put a zero above its leading 1:
+
+$$
+\stackrel{R_1 = R_1 - R_2}{\Longrightarrow} 
+\augmat{\begin{matrix}
+1 & 0 & -4  \\
+0 & 1 & 3  \\
+0 & 0 & 0 
+\end{matrix}}{
+  \begin{matrix}5\\-1\\0\end{matrix}
+}.
+$$
+
+This is the system
+
+$$
+\begin{split}
+x_1 - 4x_3 &= 5 \\ 
+x_2 + 3x_3 &= -1,
+\end{split}
+$$
+
+in which $x_3=t$ is a free variable. Thus, $x_2=-1-3t$ and $x_1=5+4t$, which is the same conclusion we reached in @exm-elimination-infinite by backward substitution.
+::::
+
+::::{#exm-RREF-multiple chapter=3 description="Solution from RRE form"}
 A linear system has an augmented matrix equivalent to the RRE matrix
 
 $$
@@ -693,7 +752,7 @@ $$
 :::
 ::::
 
-::::{#exm-}
+::::{#exm-rre-inconsistent chapter=3 description="RRE form---inconsistent system"}
 A linear system has an augmented matrix equivalent to the RRE form
 
 $$
@@ -806,7 +865,7 @@ $$
 $$
 :::
 
-::::{#exm-nonhomogeneous-1D}
+::::{#exm-nonhomogeneous-1D chapter=3 description="Nullspace in 2D"}
 Suppose 
 
 $$
@@ -899,7 +958,7 @@ As we are about to see, statements about linear combinations can be transformed 
 The set of all linear combinations of $\bfv_1,\ldots,\bfv_k$ is known as the **span** of those vectors. The span of an empty set is the singleton set $\{\bfzero\}$.
 ::::
 
-::::{#exm-nullspace-combo}
+::::{#exm-nullspace-combo chapter=3 description="Linear dependence"}
 Show that $\bfv=[1,4,3]$ is in the span of $\bfu_1=[1,-2,-1]$ and $\bfu_2=[3,0,1]$. (That is, $\bfv$ can be written as a linear combination of these two vectors.)
 
 :::{.solution}
@@ -959,7 +1018,7 @@ Then a vector $\bfb \in \real^m$ lies in the span of $\bfa_1,\ldots,\bfa_n$ if a
 
 The idea behind span is that it allows us to represent an infinite set, such as a null space, using a finite number of vectors. 
 
-::::{#exm-nullspace-span}
+::::{#exm-nullspace-span chapter=3 description="Expressing nullspace via span"}
 Suppose the RRE form of a matrix $\bfA$ is
 
 $$
@@ -1005,7 +1064,7 @@ Hence $\nullsp(\bfA)=\span(\bfv_1,\bfv_2,\bfv_3)$, where the $\bfv_j$ are the co
 
 Now that we have a finite description of the null space, we want to make sure that the description is as simple as possible. For this, we need to put some fresh paint on an old barn.
 
-::::{#def-nullspace-indepdendence}
+::::{#def-nullspace-independence}
 # Linear independence
 Vectors $\bfv_1,\bfv_2,\ldots,\bfv_n$ are **linearly dependent** if there is a way to choose constants $c_1,\ldots,c_n$, *not all zero*, such that
 
@@ -1035,12 +1094,12 @@ The following statements are equivalent.
 4. $\rank(\bfA) = n$.
 ::::
 
-::::{#exm-dependence-zerovector}
+::::{#exm-dependence-zerovector chapter=3 description="Zero vector implies dependence"}
 Any set of vectors that contains the zero vector must be dependent. That's because the zero vector will put a column of zeros in the matrix $\bfA$ in @thm-linalg-independence, and since that column can't possibly have a leading nonzero in it, the rank of $\bfA$ will be less than the number of columns.
 ::::
 
 
-::::{#exm-nullspace-dependent}
+::::{#exm-nullspace-dependent chapter=3 description="Determine independence of vectors"}
 Determine whether the vectors $\bfv_1=\threevec{1}{0}{-2}$, $\bfv_2=\threevec{1}{0}{1}$, and $\bfv_3 = \threevec{0}{0}{-1}$ are linearly independent.
 
 :::{.solution}

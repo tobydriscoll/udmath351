@@ -33,7 +33,7 @@ A **second-order ODE** is an equation of the form
 
 $$
 x'' = F(t,x,x'),
-$$
+$$ {#eq-second-ODE}
 
 to be solved for $x(t)$.
 ::::
@@ -44,8 +44,8 @@ Technically, this is not the most general form possible, since an equation in th
 
 As with first-order problems, we can learn a little from the trivial case $x''=0$. This ODE implies that $x'$ is constant, so $x(t)=c_1 t + c_2$ for arbitrary constants $c_1,c_2$. While a generalization of this observation is far from obvious at this point, it is nonetheless true.
 
-:::{.callout-note}
-The general solution of second-order ODE has two integration constants.
+:::{.callout-important}
+The general solution of a second-order ODE has two integration constants.
 :::
 
 As a consequence, we note that two initial conditions are now needed to specify the integration constants to get a unique solution.
@@ -56,31 +56,37 @@ A **second-order IVP** (initial-value problem) is
 
 $$
 x'' = F(t,x,x'), \quad x(a) = x_0,\, x'(a) = v_0.
-$$
-::::
+$$ {#eq-second-ivp}
+:::: 
 
 ## Linear problems {#sec-second-linear}
 
-We will focus on linear problems,
+We will focus on linear problems.
 
+::::{#def-second-linear-ODE}
+A linear, 2nd-order ODE in standard form is
 $$
-x'' + p(t)x' + q(t) x = f(t).
+x'' + p(t)x' + q(t) x = f(t),
 $$ {#eq-second-linear}
+where $p$, $q$, and $f$ are specified functions of the independent variable.
+::::
 
-Equation @eq-second-linear is in the form of $\opA[x]=f$ for the linear operator
+For a linear initial-value problem, we would also specify two conditions $x(a)=x_0$ and $x'(a)=v_0$, like in @eq-second-ivp.
+
+Equation @eq-second-linear is in the form $\opA[x]=f$ for the linear operator defined by
 
 $$
 \opA[x] = \ddd{x}{t} + p \dd{x}{t} + q x.
 $$
 
-We now reap rewards for using the abstract language of operators with first-order problems, because much of what we learned there applies here as well. In particular, we still have a superposition theorem like @thm-linear-super and a solving strategy like @thm-linear-solve:
+Much of what we learned using the abstract language of operators we introduced for first-order problems applies here as well. In particular, we still have a superposition theorem like @thm-linear-super and a solving strategy like @thm-linear-solve:
 
 1. Find the general solution $x_h$ of the associated homogeneous problem $\opA[x]=0$.
 2. Find any particular solution $x_p$ of the original $\opA[x]=f$.
 3. Add them to get the general solution.
 4. If given, use initial conditions to solve for the integration constants.
 
-The second-order problem does bring in a major new wrinkle regarding the homogeneous solution, however. 
+Steps 1 and 2 above will require some new explanations, however, beginning with a major new wrinkle. 
 
 ### Independence
 
@@ -90,9 +96,7 @@ $$
 c_1\cdot (t) + c_2\cdot (5t)
 $$
 
-for arbitrary constants $c_1$ and $c_2$. While this expression does always give a solution, it doesn't give all of them, such as $x=2$. 
-
-The issue is that $t$ and $5t$ are not different enough, in a way we now make precise. 
+for arbitrary constants $c_1$ and $c_2$. While this expression does always give a solution, it doesn't give all of them, such as the constant solution $x\equiv 2$. The issue is that $t$ and $5t$ are not different enough, in a way we now make precise. 
 
 ::::{#def-second-independence} 
 # Linear independence
@@ -109,11 +113,11 @@ for all $t \in I$. If the functions are not linearly dependent, then they are **
 Linear independence is a notion that extends well beyond differential equations, as we will see.
 :::
 
-:::{#exm-structure-dependent}
+:::{#exm-structure-dependent chapter=2 description="Dependent functions"}
 The functions $u_1=t$ and $u_2=5t$ are linearly dependent on any interval, because $-5u_1 + u_2 = -5t+5t=0$ for all $t$.
 :::
 
-:::{#exm-structure-independent}
+:::{#exm-structure-independent chapter=2 description="Independent functions"}
 The functions $u_1=\cos(t)$ and $u_2=\sin(t)$ are independent on the real line $(-\infty,\infty)$, because the equation
 
 $$
@@ -131,7 +135,7 @@ There is a mechanical way to determine the independence of given functions.
 Suppose $u_1,\ldots,u_n$ all have at least $n-1$ continuous derivatives. Their **Wronskian** is 
 
 $$
-W(t) = \begin{vmatrix} 
+W(u_1,\ldots,u_n) = \begin{vmatrix} 
 u_1 & u_2 & \cdots & u_n \\ 
 u_1' & u_2' & \cdots & u_n' \\ 
 \vdots & \vdots &  & \vdots  \\ 
@@ -141,7 +145,7 @@ $$ {#eq-structure-wronskian}
 ::::
 
 :::{.callout-note}
-@eq-structure-wronskian is a *determinant*, which we will not learn in general for a while yet. In the $2\times 2$ case, it's
+@eq-structure-wronskian is a *determinant*, which we will not learn about in general for a while yet. In the $2\times 2$ case, it's
 
 $$
 \begin{vmatrix} a & b \\ c & d \end{vmatrix} = ad-bc.
@@ -158,7 +162,7 @@ If $x_1,\ldots,x_n$ are solutions of a linear homogeneous ODE $\opA[x]=0$, all d
 
 The upshot is that we can check the Wronskian at any one value of $t$ we want; zero means linear dependence, and nonzero means independence.
 
-::::{#exm-structure-wronskian} 
+::::{#exm-structure-wronskian chapter=2 description="Wronskian"} 
 You can check that $\cos(t)$ and $\sin(t)$ are solutions of $x''+x=0$. Since
 
 $$
@@ -176,34 +180,36 @@ Now we can state precisely what goes into a general solution in the linear, seco
 Suppose $x_1$ and $x_2$ are linearly independent solutions of the second-order linear problem $\opA[x]=0$. Then the general solution of $\opA[x]=0$ is  
 
 $$
-x(t) = c_1 x_1(t) + c_2 x_2(t),
-$$
+x_h(t) = c_1 x_1(t) + c_2 x_2(t),
+$$ {#eq-2nd-homogeneous-solution}
 
 where $c_1$ and $c_2$ are arbitrary constants. Furthermore, the general solution of the nonhomogeneous problem $\opA[x]=f$ is
 
 $$
 x(t) = x_h(t) + x_p(t),
-$$
+$$ {#eq-2nd-general-solution}
 
-where $x_h$ is the general homogeneous solution and $x_p$ is any one particular solution of $\opA[x]=f$.
+where $x_h$ is the homogeneous solution @eq-2nd-homogeneous-solution and $x_p$ is any one particular solution of $\opA[x]=f$.
 ::::
 
-## Homogeneous solutions {#sec-second-const_coeff}
+### Constant coefficients
 
-The linear second-order problem $\opA[x]=f$ has a nice structure, but only a few such problems are straightforward to solve. We will now, and for the rest of the chapter, limit ourselves to a realistic target.
+The general linear second-order problem $\opA[x]=f$ has the structure described above, but only a few such problems are straightforward to solve. When it comes to actually finding solutions, we will limit ourselves to a friendly subset of problems:
 
 ::::{#def-second-cc}
-The second-order linear **constant-coefficient** problem is 
+The second-order, linear, **constant-coefficient** problem in standard form is 
 $$
 x'' + bx' + k x = f(t),
 $$ {#eq-second-cc-def}
 
-where $b$ and $k$ are constants. The function $f(t)$ is the **forcing function**.
+where $b$ and $k$ are constants (positive, negative, or zero). The function $f(t)$ is the **forcing function**.
 ::::
 
 :::{.callout-note}
 In @eq-second-cc-def the coefficient $b$ has units $1/T$, the coefficient $k$ has units $1/T^2$, and $f(t)$ has units $X/T^2$, where $X$ and $T$ are the units of $x$ and $t$, respectively.
 :::
+
+## Homogeneous solutions {#sec-second-const_coeff}
 
 We start with solutions of the homogeneous equation
 
@@ -272,7 +278,7 @@ x_h(t) = e^{\lambda t} \bigl( c_1 t + c_2 \bigr).
 $$ {#eq-homogeneous-repeated}
 ::::
 
-::::{#exm-homogeneous-trivial}
+::::{#exm-homogeneous-trivial chapter=2 description="Characteristic equation---double root"}
 The trivial problem $x''=0$ is linear, with $b=k=0$. The characteristic polynomial is $s^2$, which makes $\lambda=0$ a double root. So the general solution is
 
 $$
@@ -282,7 +288,7 @@ $$
 This was not exactly a mystery to us, but it's a good idea to check new formulas on cases you already understand.
 ::::
 
-::::{#exm-homogeneous-real-distinct}
+::::{#exm-homogeneous-real-distinct chapter=2 description="Characteristic equation---distinct real roots"}
 Find the general solution of $x''-x'-2x=0$.
 
 :::{.solution}
@@ -290,7 +296,7 @@ The characteristic polynomial is $s^2-s-2$, which has roots $\lambda_1=-1$, $\la
 :::
 ::::
 
-::::{#exm-homogeneous-real-ivp}
+::::{#exm-homogeneous-real-ivp chapter=2 description="2nd order IVP"}
 Solve the IVP $x'' - 5 x = 0$, $x(0)=6$, $x'(0)=0$.
 
 :::{.solution}
@@ -398,14 +404,14 @@ $$
 
 This is a lot like rationalizing a denominator with square roots. 
 
-::::{#exm-}
+::::{#exm-complex-fraction chapter=2 description="Complex number fractions"}
 $$
 \frac{2-i}{3+2i} = \frac{2-i}{3+2i}\cdot \frac{3-2i}{3-2i}
 = \frac{6-4i-3i+2i^2}{3^2+2^2} = \frac{4-7i}{13}.
 $$
 ::::
 
-::::{#exm-}
+::::{#exm-complex-reciprocal chapter=2 description="Complex number reciprocal"}
 Suppose that $|z|=1$. Then 
 
 $$
@@ -503,7 +509,7 @@ $$ {#eq-second-polar}
 
 We call @eq-second-polar the **polar form** of a complex number, because it expresses $z$ as a distance from zero and an angle from the positive Re axis. Just as with any point in the plane, we can express a complex number either in Cartesian form using Re and Im parts, or in polar form using modulus and Euler's identity.
 
-::::{#exm-}
+::::{#exm-complex-polar chapter=2 description="Complex numbers polar form"}
 Suppose $r$ is a positive real number. Then $-r$ lies at a distance $r$ from the origin along the negative real axis. Hence
 
 $$
@@ -519,29 +525,17 @@ $$
 Using complex numbers, then, we can take the log of a negative number. You will find that this is the case in MATLAB.
 ::::
 
-::::{#exm-}
-What's the square root of $i$?
-
-:::{.solution}
-Since $i$ lies at a distance 1 from the origin along the positive imaginary axis, its polar form is $e^{i\pi/2}$. Then the square root is
-
-$$
-\bigl( e^{i\pi/2} \bigr)^{1/2} = e^{i\pi/4}.
-$$
-
-Appealing to Euler's formula, this is equivalent to $\frac{1}{\sqrt{2}}(1+i)$. We should note that of course, the negative of this value is also a square root.
-:::
-::::
-
 ### Complex exponentials
 
 Exponential functions still obey the properties you already know, even when the exponents are imaginary or complex numbers. This allows us to handle the exponential of any complex number. Writing $a+i \omega$ for real $a$ and $\omega$, we have the function
 
 ::::{#thm-complex-exp} 
 # Complex exponential function
+
 $$
 e^{(a+i \omega)t} = e^{at} \cdot e^{i\omega t} = e^{at} \bigl[ \cos(\omega t) + i \sin(\omega t)\bigr].
 $$ {#eq-complex-exp}
+
 :::: 
 
 In the function $e^{\lambda t}$, the real part of $\lambda$ controls growth or decay in time, as we are familiar with, and the imaginary part of $\lambda$ controls a frequency of oscillation around a circle in the complex plane.
@@ -607,7 +601,11 @@ gif(an, "cexp-decay.gif")
 
 Now we can finish the story of computing solutions to homogeneous constant-coefficient ODEs. We can still use @thm-homogeneous-distinct and @thm-homogeneous-repeated, now with the complex-valued interpretations of the exponentials.
 
-::::{#exm-complex-simple}
+::::{#exm-complex-dummy chapter=2 description="Characteristic polynomial---complex roots"}
+Solve the IVP $x''+9x=0$, $x(0)=2$, $x'(0)=-12$.
+::::
+
+::::{#exm-complex-simple chapter=2 description="Characteristic polynomial---complex roots"}
 Solve the IVP $x''+9x=0$, $x(0)=2$, $x'(0)=-12$.
 
 :::{.solution}
@@ -638,44 +636,11 @@ $$ {#eq-second-add-subtract}
 
 In @exm-complex-simple this would have led us right to $2\alpha=2$ and $3i(2i\beta)=-12$.
 
-It might seem odd to use complex numbers to represent what we know must be a real-valued solution. There's nothing wrong with doing so, but we can also convert it to an explicitly real form. The following is easily proved using Euler's identity.
+:::{.callout-tip}
+When you have a complex expression "stuff $+$ conjugate of that stuff", the result has to be real, so you needn't bother computing the imaginary part of that stuff.
+:::
 
-::::{#thm-complex-solution}
-The general homogeneous solution
-
-$$
-x_h(t) = c_1 e^{\lambda_1 t} + c_2 e^{\lambda_2 t},
-$$
-
-where $\lambda_{1,2} = a \pm i\omega$ are complex, is equivalent to the real expression
-
-$$
-x_h(t) = e^{at} \bigl[ b_1 \cos(\omega t) + b_2 \sin(\omega t) \bigr],
-$$
-
-where $b_1,b_2$ are real constants.
-::::
-
-::::{#exm-}
-In @exm-complex-simple, the roots were $0 \pm 3i$. Thus another expression for the general solution is
-
-$$
-x_h(t) = c_1\cos(3t) + c_2\sin(3t).
-$$
-
-The initial conditions now yield
-
-$$
-\begin{split}
-2 &= x(0) = c_1\cos(0) + c_2\sin(0) = c_1,\\
--12 &= x'(0) = -3 c_1 \sin(0) + 3 c_2 \cos(0) = 3c_2.
-\end{split}
-$$
-
-Hence the IVP solution is $2\cos(3t) - 4\sin(3t).$
-::::
-
-::::{#exm-complex-complex1} 
+::::{#exm-complex-complex1 chapter=2 description="Characteristic polynomial---complex roots"} 
 Solve the IVP $x'' + 4x' + 5x=0$, $x(0)=6$, $x'(0)=0$.
 
 :::{.solution}
@@ -710,12 +675,47 @@ which yields $\beta=-6$.
 :::
 ::::
 
-:::{.callout-tip}
-When you have a complex expression "stuff $+$ conjugate of that stuff", the result has to be real, so you needn't bother computing the imaginary part of that stuff.
-:::
+### Fully real version
 
-::::{#exm-complex-complex2} 
-Solve the IVP of @exm-complex-complex1 without using complex numbers.
+It might seem odd to use complex numbers to represent what we know must be a real-valued solution. There's nothing wrong with doing so, but we can also convert it to an explicitly real form. The following is easily proved using Euler's identity.
+
+::::{#thm-complex-solution}
+The general homogeneous solution
+
+$$
+x_h(t) = c_1 e^{\lambda_1 t} + c_2 e^{\lambda_2 t},
+$$
+
+where $\lambda_{1,2} = a \pm i\omega$ are complex, is equivalent to the real expression
+
+$$
+x_h(t) = e^{at} \bigl[ b_1 \cos(\omega t) + b_2 \sin(\omega t) \bigr],
+$$
+
+where $b_1,b_2$ are real constants.
+::::
+
+::::{#exm-charpoly-real-solution chapter=2 description="Characteristic polynomial---real solution for complex roots"}
+In @exm-complex-simple, the roots were $0 \pm 3i$. Thus another expression for the general solution is
+
+$$
+x_h(t) = c_1\cos(3t) + c_2\sin(3t).
+$$
+
+The initial conditions now yield
+
+$$
+\begin{split}
+2 &= x(0) = c_1\cos(0) + c_2\sin(0) = c_1,\\
+-12 &= x'(0) = -3 c_1 \sin(0) + 3 c_2 \cos(0) = 3c_2.
+\end{split}
+$$
+
+Hence the IVP solution is $2\cos(3t) - 4\sin(3t).$
+::::
+
+::::{#exm-complex-complex2 chapter=2 description="Characteristic polynomial---real IVP for complex roots"} 
+Solve the IVP of @exm-complex-complex1 without using complex numbers to express the solution.
 
 :::{.solution}
 The roots of $s^2+4s+5$ are $-2\pm i$. Thus the general solution is
@@ -809,32 +809,34 @@ Writing $u_1'=v_1$ and $u_2'=v_2$, we see that this is a pair of linear equation
 
 ::::{#thm-variation_parameters} 
 # Variation of parameters, 2nd order
-Let 
+Let $x_1$ and $x_2$ be independent solutions of the homogeneous equation $\opA[x]=0$, and let $W(x_1,x_2)$ be their Wronskian. For any given forcing function $f$, define
 
 $$
-u_1 = \int \frac{-x_2 f}{W}\, dt, \quad u_2 = \int \frac{x_1 f}{W}\, dt,
-$$
+u_1 = \int \frac{-x_2 f}{W(x_1,x_2)}\, dt, \quad u_2 = \int \frac{x_1 f}{W(x_1,x_2)}\, dt.
+$$ {#eq-second-vop}
 
-where $W$ is the Wronskian of independent homogeneous solutions $x_1$ and $x_2$. Then a particular solution of $\opA[x]=f$ is 
+Then a particular solution of $\opA[x]=f$ is 
 
 $$
 x_p(t) = u_1(t) x_1(t) + u_2(t) x_2(t).
 $$
 ::::
 
-:::{.callout-note}
-Isn't it handy now that the Wronskian is never zero?
+:::{.callout-important}
+The integration constants for $u_1$ and $u_2$ in @eq-second-vop can be taken to be zero. 
 :::
 
-:::{.callout-note}
-The integration constants for $u_1$ and $u_2$ can be taken to be zero. Any value is valid, and we need just one particular solution.
-:::
-
-::::{#exm-variation_parameters-cons} 
+::::{#exm-vop2-cons chapter=2 description="2nd order variation of parameters"} 
 Find a particular solution of $x'' - x = 4$. 
 
 :::{.solution}
-There's no getting around the need for the homogeneous solution here. The characteristic roots are $\pm 1$, so we take $x_1=e^t$, $x_2=e^{-t}$. Then $W=(e^t)(-e^{-t}) - (e^{-t})(e^t) = 2$, and 
+There's no getting around the need for the homogeneous solution here. The characteristic roots are $\pm 1$, so we take $x_1=e^t$, $x_2=e^{-t}$. Then 
+
+$$
+W(e^t, e^{-t}) =(e^t)(-e^{-t}) - (e^{-t})(e^t) = 2,
+$$
+
+and 
 
 $$
 u_1' = \frac{-4 e^{-t}}{-2}, \quad u_2' = \frac{4 e^{t}}{-2}.
@@ -850,14 +852,14 @@ You can instantly check that this result is correct.
 :::
 ::::
 
-::::{#exm-variation_parameters-resonance} 
-Find a particular solution of $x'' - \lambda^2 x = 2 e^{\lambda t}$, where $\lambda\neq 0$. 
+::::{#exm-variation_parameters-resonance chapter=2 description="2nd order variation of parameters"} 
+Find a particular solution of $x'' - \lambda^2 x = 2 e^{\lambda t}$, where $\lambda\neq 0$ is a constant parameter. 
 
 :::{.solution}
 The homogeneous equation has roots $\pm \lambda$. We choose $x_1=e^{\lambda t}$, $x_2=e^{-\lambda t}$. Now
 
 $$
-W = \twodet{e^{\lambda t}}{e^{-\lambda t}}{\lambda e^{\lambda t}}{-\lambda e^{-\lambda t}} = -2\lambda.
+W(x_1, x_2) = \twodet{e^{\lambda t}}{e^{-\lambda t}}{\lambda e^{\lambda t}}{-\lambda e^{-\lambda t}} = -2\lambda.
 $$
 
 This gives
@@ -879,11 +881,21 @@ $$
 x_p(t) = \frac{1}{\lambda} t e^{\lambda t}  - \frac{1}{2 \lambda^2} e^{\lambda t}
 $$
 
-is a particular solution. However, the second term is a constant multiple of $x_1$, so we could drop it and still have a particular solution.
+is a particular solution. Our recipe now gives us the general solution
+
+$$
+x(t) = x_h(t) + x_p(t) = c_1 e^{\lambda t} + c_2e^{-\lambda t} + \frac{1}{\lambda} t e^{\lambda t}  - \frac{1}{2 \lambda^2} e^{\lambda t}.
+$$
+
+However, that last term is redundant---all it does is change the value of $c_1$. So it's just as correct to write 
+
+$$
+x(t) = c_1 e^{\lambda t} + c_2e^{-\lambda t} + \frac{1}{\lambda} t e^{\lambda t}.
+$$
 :::
 ::::
 
-As you can see, the VoP formula is pretty great if you happen to be a robot. [Note to editor: insert CAPTCHA here.] Us humans, though, could use something a little easier, and that is coming next.
+As you can see, the VoP formula is pretty great if you happen to be a robot. [Note to editor: insert CAPTCHA here.] Us humans, though, could use something with a bit less algebra to manage, and that is coming next.
 
 ## Undetermined coefficients
 
@@ -892,7 +904,7 @@ When it comes to finding particular solutions of nonhomogeneous problems, there 
 1. The coefficients in the ODE are constants, and
 2. The forcing function $f(t)$ is a polynomial, exponential, sin, or cos, or a combination of these.
 
-Thus we now consider
+We have already been assuming point 1 above for a while. Now we consider
 
 $$
 x'' + bx' + kx = f(t),
@@ -910,8 +922,8 @@ where $b$ and $k$ are constants, and $f$ appears in @tbl-undetermined-forcing.
 
 Corresponding to each $f$ in @tbl-undetermined-forcing is a specific form for $x_p$ containing one or more constants (given by capital letters) that must be deduced by substituting into the particular ODE under consideration. This procedure is what gives the method its name, the **method of undetermined coefficients**.
 
-::::{#exm-undetermined-const} 
-Rework @exm-variation_parameters-cons, finding a particular solution of $x'' - x = 4$. 
+::::{#exm-undetermined-const chapter=2 description="Undetermined coefficients---constant"} 
+Rework @exm-vop2-cons, finding a particular solution of $x'' - x = 4$. 
 
 :::{.solution}
 The forcing function is a polynomial of degree zero, so $x_p$ should be as well. Let $x_p=A.$ Then it is a solution if
@@ -928,7 +940,7 @@ Hence $A=-4$.
 In the case where $f$ is a polynomial that may have some zero coefficients, you *cannot* assume that $x_p$ has zero coefficients in the same positions.
 :::
 
-::::{#exm-}
+::::{#exm-MUC-polynomial chapter=2 description="Undetermined coefficients---polynomial"}
 Find a particular solution of $x'' +4x'+4x=8t^2$. 
 
 :::{.solution}
@@ -953,7 +965,7 @@ $$
 :::
 ::::
 
-::::{#exm-}
+::::{#exm-MUC-exponential chapter=2 description="Undetermined coefficients---exponential"}
 Find a particular solution of $x'' - 2x'-3x=10e^{4t}$. 
 
 :::{.solution}
@@ -974,7 +986,7 @@ From this it's clear that $A=2$.
 :::
 ::::
 
-::::{#exm-}
+::::{#exm-MUC-trig  chapter=2 description="Undetermined coefficients---trig"}
 Find the general solution of $x''+x'=\sin(2t)$.
 
 :::{.solution}
@@ -1016,7 +1028,7 @@ The examples above are the fundamental ones. If you have a forcing function that
 
 There are rules for more complicated combinations of the same functions, but we won't go into them. At some point the calculus/algebra becomes pretty intense. Furthermore, we are not going to cover a refinement of the rules necessary in certain circumstances where our simplified version fails.
 
-::::{#exm-undetermined-resonance}
+::::{#exm-undetermined-resonance chapter=2 description="Undetermined coefficients (failure)"}
 The equation $x''+x=\cos(\omega t)$ suggests the particular solution $x_p(t)=A\cos(\omega t)+B\sin(\omega t)$. Upon substitution,
 
 $$
@@ -1028,7 +1040,7 @@ which leads to the conclusion that $B=0$ and, if $\omega^2 \neq 1$, $A=1/(1-\ome
 
 The failure of @exm-undetermined-resonance at $\omega = 1$ was due to the fact that the $x_p$ we tried is actually a homogeneous solution. This is not too hard to fix, but a general description is not worth the effort; we can always fall back to variation of parameters. 
 
-::::{#exm-undetermined-resonance-fix}
+:::{#exm-undetermined-resonance-fix chapter=2 description="Undetermined coefficients---workaround"}
 We can make the tricky case $x''+x=\cos(t)$ from @exm-undetermined-resonance quite easy by relating it to complex exponentials. Since $\cos(t)$ is the real part of $e^{it}$, it follows that the solution we seek is the real part of any particular solution of 
 
 $$
@@ -1046,7 +1058,7 @@ Upon taking the real part, we get
 $$
 x_p(t) = \frac{1}{2} t \sin(t).
 $$
-::::
+:::
 
 ## Oscillators {#sec-second-oscillators}
 
@@ -1078,13 +1090,13 @@ If given, initial values for @eq-oscillators-free supply the initial position an
 A pendulum is another type of mechanical oscillator. The proper ODE is
 
 $$
-\theta'' + \gamma \theta + \frac{g}{L}\sin (\theta) = 0,
+\theta'' + \gamma \theta' + \frac{g}{L}\sin (\theta) = 0,
 $$
 
 where $\theta(t)$ is the angle made with vertically-down position, $L$ is the arm length, and $g$ is gravitational acceleration. This equation is nonlinear and difficult to analyze without developing new tools. But if the angle remains small, then a reasonable approximation is
 
 $$
-\theta'' + \gamma \theta + \frac{g}{L}\theta = 0,
+\theta'' + \gamma \theta' + \frac{g}{L}\theta = 0,
 $$
 
 which is a linear oscillator with constant coefficients.
@@ -1123,7 +1135,7 @@ $$
 
 The parameter $\omega_0$ is known as the **natural frequency**, with units of inverse time, and $\zeta$ is a dimensionless **damping coefficient** describing the relative intensity of the damping.
 
-::::{important}
+::::{.callout-important}
 In math we usually use *frequency* to mean the multiplier of $t$ in a sin or cos function. That is our usage. In some fields this is called **angular frequency**, and *frequency* is used to mean the number of cycles per time unit, as in Hz.
 ::::
 
@@ -1172,7 +1184,7 @@ $$ {#eq-oscillators-amp-phase}
 
 where constants $R$ and $\phi$ can be used to satisfy initial conditions. 
 
-::::{#exm-}
+::::{#exm-oscillator-frequency chapter=2 description="Natural frequency of an oscillator"}
 When a 2 kg mass is hung on a spring, the spring stretches by 0.25 m. What is the natural frequency of the mass-spring system? Suppose the mass is pulled down 0.2 m past equilibrium and then thrown upward at 1 m/s. What is the amplitude of the motion?
 
 :::{.solution}
@@ -1315,7 +1327,7 @@ which are negative and real. This gives an exponentially decaying homogeneous so
 | $\zeta > 1$ | real, negative, distinct  | overdamped |
 : Damping coefficient and characteristic values {#tbl-secondlin-oscillators}
 
-::::{#exm-}
+::::{#exm-damping-strength chapter=2 description="Damping strength"}
 A 5 kg mass is hung on a spring with constant $11$ N per m and connected to a dashpot that provides 8 N-sec per meter of resistance. Is this system underdamped, overdamped, or critically damped?
 
 :::{.solution}
@@ -1344,7 +1356,7 @@ Since this value is less than one, the system is underdamped.
 :::
 ::::
 
-::::{#exm-} 
+::::{#exm-free-oscillations chapter=2 description="Free oscillations"} 
 Suppose the system from the previous example is initially at equilibrium when the mass is suddenly pushed downward at 0.5 m/sec. Find the motion of the mass.
 
 :::{.solution}

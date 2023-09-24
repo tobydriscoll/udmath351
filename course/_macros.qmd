@@ -7,7 +7,9 @@ $$
     \newcommand{\integer}{\mathbb{Z}}
     \newcommand{\bfa}{\mathbf{a}}
     \newcommand{\bfb}{\mathbf{b}}
+    \newcommand{\bfc}{\mathbf{c}}
     \newcommand{\bfe}{\mathbf{e}}
+    \newcommand{\bff}{\mathbf{f}}
     \newcommand{\bfh}{\mathbf{h}}
     \newcommand{\bfp}{\mathbf{p}}
     \newcommand{\bfq}{\mathbf{q}}
@@ -19,9 +21,12 @@ $$
     \newcommand{\bfz}{\mathbf{z}}
     \newcommand{\bfA}{\mathbf{A}}
     \newcommand{\bfB}{\mathbf{B}}
+    \newcommand{\bfD}{\mathbf{D}}
+    \newcommand{\bfE}{\mathbf{E}}
     \newcommand{\bfV}{\mathbf{V}}
     \newcommand{\bfW}{\mathbf{W}}
     \newcommand{\bfX}{\mathbf{X}}
+    \newcommand{\fundm}{\boldsymbol{\Phi}}
     \newcommand{\bfzero}{\boldsymbol{0}}
     \newcommand{\bfmu}{\boldsymbol{\mu}}
     \newcommand{\opA}{\mathcal{A}}

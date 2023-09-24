@@ -36,7 +36,7 @@ $$ {#eq-preview-standard}
 
 The term *first-order* indicates that only the first derivative appears and not $x''$, $x'''$, etc.
 
-::::{#exm-preview-rewrite}
+::::{#exm-preview-rewrite chapter=1 description="1st-order ODE standard form"}
 The equation
 
 $$
@@ -68,7 +68,7 @@ A **solution** to @eq-preview-standard is a function $x(t)$ that makes the ODE a
 
 It's easy to check or verify whether a proposed function $x(t)$ is a solution: substitute it into the ODE and manipulate it until you can ascertain whether the equation holds. 
 
-::::{#exm-preview-verify}
+::::{#exm-preview-verify chapter=1 description="Verify ODE solution"}
 Show that $x(t)=t^2$ does not solve @eq-preview-rewrite, while $x(t)=\sqrt{t}$ does.
 
 :::{.solution}
@@ -219,7 +219,7 @@ $$ {#eq-preview-var-growth-solution}
 
 which grows superexponentially as $t\to\infty$. 
 
-:::{#exm-preview-var-growth}
+:::{#exm-preview-var-growth chapter=1 description="Variable-growth ODE solution"}
 Substituting @eq-preview-var-growth-solution into @eq-preview-var-growth yields
 
 $$
@@ -261,7 +261,7 @@ $$
 x(t) = \frac{1}{C-t}. 
 $$ {#eq-preview-nonlinear-solution}
 
-::::{#exm-preview-nonlinear}
+::::{#exm-preview-nonlinear chapter=1 description="Nonlinear growth ODE solution"}
 The derivative of @eq-preview-nonlinear-solution leads to
 
 $$
@@ -309,7 +309,7 @@ $$ {#eq-def-ivp}
 
 A solution of an IVP has to satisfy both the ODE and the initial condition. This is (for our purposes) enough to specify the solution uniquely.
 
-:::: {#exm-ivp1-solve}
+:::: {#exm-ivp1-solve chapter=1 description="Solve 1st-order IVP"}
 Solve the IVP
 
 $$
@@ -333,7 +333,7 @@ $$
 
 A graphical interpretation of the role of an initial condition is simple: the general solution is a family of curves in the $(t,x)$ plane, and the initial condition is a point in the plane that the one particular solution of interest must pass through. 
 
-:::: {#exm-ivp1-plot} 
+:::: {#exm-ivp1-plot chapter=1 description="Solution curves and an initial condition"} 
 Here is an illustration of how an initial condition $x(3)=20$ selects one solution of $x'=1.25x$.
 
 ```{julia}
@@ -355,7 +355,7 @@ In standard problems, at most one particular solution can pass through a given p
 
 An initial-value problem has a unique solution, which makes it a suitable target for a numerical approximation. This is how virtually all IVPs are solved in practice.
 
-::::{#exm-ivp1-numerical-constant}
+::::{#exm-ivp1-numerical-constant chapter=1 description="Numerical solution for constant growth rate"}
 # Constant growth
 Here's a numerical approximation in Julia for the ODE of constant growth $x'=2x$, subject to $x(1)=3$:
 
@@ -374,7 +374,7 @@ plot(x,label="",xaxis="t",yaxis=("x",:log10),title="Constant growth rate (log sc
 ::::
 
 
-::::{#exm-ivp1-numerical-variable}
+::::{#exm-ivp1-numerical-variable chapter=1 description="Numerical solution for variable growth rate"}
 # Variable growth
 Here's our example of variable growth. Note that we are not using the known exact solution, but just letting Julia create a numerical approximation by other means.
 
@@ -388,7 +388,7 @@ plot(x,label="",xlabel="t",yaxis=("x",:log10),title="Growing growth rate")
 Even on the log scale, the solution bends upward, showing superexponential growth. 
 ::::
 
-::::{#exm-ivp1-numerical-nonlinear}
+::::{#exm-ivp1-numerical-nonlinear chapter=1 description="Numerical solution for nonlinear growth"}
 # Nonlinear
 
 Finally, here is a numerical solution of the nonlinear archetype problem $x'=x^2$, $x(0)=0.5$, for $0 \le t \le 4$:
@@ -428,7 +428,7 @@ function dirfield(f,tlims,xlims)
 end;
 ```
 
-::::{#exm-qualitative-logistic}
+::::{#exm-qualitative-logistic chapter=1 description="Logistic equation direction field"}
 The **logistic equation** is 
 
 $$
@@ -459,7 +459,7 @@ plot!()
 
 <!-- ```{index} autonomous equation
 ``` -->
-::::{#exm-qualitative-timevarying}
+::::{#exm-qualitative-timevarying chapter=1 description="Direction field for nonautonomous equation"}
 Here is a direction field for $x'=t-x^2$. 
 
 ```{julia}
@@ -512,7 +512,7 @@ The major difference between asymptotically stable and unstable equilibria in th
 
 It's usually quite easy to determine the stability of an equilibrium point without finding solutions. 
 
-::::{#exm-qualitative-equilibria} 
+::::{#exm-qualitative-equilibria chapter=1 description="Phase diagram for stability of equilibria"} 
 
 Consider the ODE $x'=x-x^3$. We will start by graphing $f(x)=x-x^3$.
 
@@ -577,7 +577,7 @@ where $C$ is the integration constant. (Having an integration constant on both s
 
 This description is all rather generic. The process is very easy to grasp from following a few examples. 
 
-::::{#exm-separable-vargrowth}
+::::{#exm-separable-vargrowth chapter=1 description="Separable equation"}
 Solve the variable growth archetype ODE, $x'=2t x$. 
 
 :::{.solution}
@@ -599,7 +599,7 @@ where $A$ must be positive, since it is the exponential of a real $C$. Taking th
 
 In @exm-separable-vargrowth, the first step involved dividing the equation through by $x$. This implies that we made $x=0$ impossible to achieve. That's why we had to check it manually at the very end. In the general separable case of $x'=g(x)h(t)$, we first divide through by $g(x)$, so the last step is to reintroduce each root $\hat{x}$ of $g$ as an equilibrium solution. 
 
-::::{#exm-separable-implicit} 
+::::{#exm-separable-implicit chapter=1 description="Separable equation---implicit solution"} 
 Solve $x'=t^2/(x^3-2)$, subject to $x(0)=4$.
 
 :::{.solution}
@@ -629,7 +629,7 @@ Hence $C=56$.
 
 Sometimes the separable structure isn't immediately apparent, and you have to manipulate the expressions before you can see it.
 
-::::{#exm-separable-factor}
+::::{#exm-separable-factor chapter=1 description="Separable equation---factorization"}
 Find the general solution of $t x' = x - t x$. 
 
 :::{.solution}
@@ -667,7 +667,7 @@ $$
 
 Note that an autonomous equation is, by definition, separable.
 
-::::{#exm-separable-autonomous}
+::::{#exm-separable-autonomous chapter=1 description="Separable equation---autonomous"}
 Solve the autonomous ODE $x'=\csc x$.
 
 :::{.solution}
@@ -748,7 +748,7 @@ $$
 \opA[x]=f.
 $$
 
-::::{#exm-linear-operator}
+::::{#exm-linear-operator chapter=1 description="Linear operator"}
 The equation
 
 $$
@@ -831,6 +831,7 @@ We can now outline a plan of attack for solving $\opA[x]=f$.
 ::::{#thm-linear-solve} 
 # Solution of a first-order linear ODE
 Follow these steps to find the general solution of the linear first-order ODE $\opA[x]=f$:
+
 1. Find the general solution $x_h$ of the associated homogeneous problem $\opA[x]=0$.
 2. Find any particular solution $x_p$ of the original $\opA[x]=f$.
 3. Add them to get the general solution, $x=x_h + x_p$. 
@@ -882,7 +883,7 @@ In our terminology, $x_1$ in @eq-homogeneous1-solution is a particular solution 
 
 If you're anxious about having $c_1$ and $x_1$ in @eq-homogeneous1-solution without also having $c_2$ and $x_2$---if you know, you know---just sit tight until the next chapter.
 
-::::{#exm-homog1-sin}
+::::{#exm-homog1-sin chapter=1 description="1st order homogeneous solution"}
 Solve $x'=\sin(t) x$. 
 
 :::{.solution}
@@ -900,7 +901,7 @@ $$
 :::
 ::::
 
-::::{#exm-homog1-power}
+::::{#exm-homog1-power chapter=1 description="1st order homogeneous solution"}
 Solve the homogeneous IVP
 
 $$
@@ -934,7 +935,7 @@ Hence $x(t) = 3t^2$.
 
 In @exm-homog1-power, the standard form of the ODE had $P(t)=-2/t$ as the coefficient of $x$. Because $P(0)$ is undefined, we call $t=0$ a **singular point** of the ODE. It is possible for the general solution to be undefined at a singular point. That did not happen in @exm-homog1-power, but here is a similar problem where it does.
 
-::::{#exm-homog1-singular}
+::::{#exm-homog1-singular chapter=1 description="1st order homogeneous solution"}
 The homogeneous equation
 
 $$
@@ -983,7 +984,7 @@ This technique for finding $x_p$ is known as the **variation of parameters** for
 
 :::{#thm-firstlin-varpar} 
 # Variation of parameters (VoP)
-To find a the general solution of $\opA[x]=f$, compute the following, ignoring constants of integration:
+To find the general solution of $\opA[x]=f$, compute the following, ignoring constants of integration:
 
 $$
 \begin{split}
@@ -1004,7 +1005,7 @@ Keeping track of all the characters appearing in @thm-firstlin-varpar is as diff
 The unstated setup step before @thm-firstlin-varpar can even be applied is to put a given linear ODE into the standard form, $x' + P(t) x = f$. On this, everything depends.
 :::
 
-::::{#exm-vop-one}
+::::{#exm-vop-one chapter=1 description="1st order variation of parameters"}
 Solve $3x'=12x+24t$.
 
 :::{.solution}
@@ -1040,7 +1041,7 @@ $$
 :::
 ::::
 
-::::{#exm-vop-two}
+::::{#exm-vop-two chapter=1 description="1st order variation of parameters"}
 Find a particular solution of $x'= 2t x + 6t$. 
 
 :::{.solution}
@@ -1082,7 +1083,7 @@ $$
 on which separation gives $\ln|x+3| = t^2 + C$. For a particular solution, we can use any $C$ we want, and $C=0$ is the easiest. This leads to $x(t) = e^{t^2} - 3$, which is a much less annoying way to derive the alternative solution that was given.
 :::
 
-::::{#exm-vop-three}
+::::{#exm-vop-three chapter=1 description="1st order variation of parameters"}
 Solve the IVP
 
 $$
@@ -1233,7 +1234,7 @@ In a modeling word problem, the game is to use given data to figure out all of t
 
 ### Population dynamics
 
-::::{#exm-modeling-bacteria}
+::::{#exm-modeling-bacteria chapter=1 description="Bacterial growth model"}
 The population of a bacterial culture grows at a rate proportional to the number of bacteria present. You observe that there are 300 bacteria after 1 hour and 1000 after another 3 hours. How many bacteria (to the nearest whole number) were initially present?
 
 :::{.solution}
@@ -1268,7 +1269,7 @@ or $x(0)=(8.1\times 10^6)^{1/3} \approx 201$.
 :::
 ::::
 
-::::{#exm-modeling-radioactive}
+::::{#exm-modeling-radioactive chapter=1 description="Radioactive decay model"}
 Suppose that after 2 hours, a radioactive sample has lost 2% of its mass. What is the half-life of the sample?
 
 :::{.solution}
@@ -1515,7 +1516,7 @@ The usual assumption is that $k$ is constant, so the general solution is $x(t)=c
 
 Numerically you need to know three things to completely know the solution: the initial temperature, the decay rate $k$, and the environmental temperature $E$. If a word problem gives you any three pieces of relevant information, you need to convert them into these three values.
 
-::::{#exm-modeling-coffee}
+::::{#exm-modeling-coffee chapter=1 description="Cooling coffee model"}
 A mug of coffee at 90 C is put in a room kept at 20 C. After 10 minutes the coffee has cooled by $7$ C. When will the coffee reach 60 C?
 
 :::{.solution}
@@ -1555,7 +1556,7 @@ $$
 
 Sometimes you don't need to find the rate constant explicitly because you can manipulate expressions to substitute for it.
 
-::::{#exm-modeling-flintstones}
+::::{#exm-modeling-flintstones chapter=1 description="Cooling coffee model"}
 Suppose Fred and Wilma each pour out a mug of coffee that is at 85 degrees C. Assume that the cooling rate in a mug is proportional to the cross-section of the mug's top.Wilma's mug has a diameter that is $\sqrt{2}$ times as large as Fred's. Both mugs are left sitting out for 30 minutes in a room that is at 25${}^\circ$ C, at which point Fred's coffee is at 60 degrees. What is the temperature of Wilma's coffee at the same moment?
 
 :::{.solution}
@@ -1605,3 +1606,10 @@ $$
 
 As $t\to \infty$, $v\to g/\gamma = mg/k$, which is the *terminal speed*. By opening the parachute, the skydiver dramatically increases $k$ so that the terminal speed is reduced.
 
+Once $v(t)$ is known, it can be integrated to find the net displacement:
+
+$$
+s(t) - s(0) = \int_0^t v(τ) \, dτ. 
+$$
+
+If $v$ never changes sign, then $|s(t)-s(0)|$ is the total distance traveled.
