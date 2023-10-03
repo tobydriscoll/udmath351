@@ -22,11 +22,6 @@ jupyter:
 {{< include _macros.qmd >}}
 :::
 
-```{julia}
-using Plots, DifferentialEquations
-default(label="", linewidth=3, markersize=4, size=(500,320))
-```
-
 ## Overview 
 
 It might feel silly, but let's review what it means to solve the linear equation
@@ -393,11 +388,11 @@ $$
 1 & 2 & 2  \\
 2 & 1 & -5 
 \end{matrix}}{
-  \threevec{4}{3}{9}
+  {4}\\ {3}\\ {9}
 }.
 $$
 
-The first 1 in the first row is a fine pivot, leading to 
+The first 1 in the first row is a pivot, leading to 
 
 $$
 \stackrel{R_2 = R_2 - R_1;\; R_3 = R_3 - 2R_1}{\Longrightarrow} 
@@ -530,140 +525,6 @@ The system is now trivial: $x_1=1$, $x_2=-3$, and $x_3=2$. Done!
 
 The process above is called **Gauss–Jordan elimination**, to distinguish it from Gaussian elimination. 
 
-<!---
- 
-::::{#thm-linalg-phase1}  
-# Row elimination downward phase
-1. Set $i=1$.
-2. Find the leftmost leading nonzero in rows $i$ and below. The column of this leading nonzero is known as the **pivot column**. If no such column exists, stop.
-3. As necessary, swap rows and/or multiply a row by a constant to put a 1 in the pivot column of row $i$.
-4. Add multiples of row $i$ to the rows below it in order to introduce zeros into the pivot column.
-5. Increment $i$ and return to step 2.
-::::
-
-At the end of the downward phase, the augmented matrix is triangular, which is enough for solving a single system through backward substitution. However, it's not the cleanest form to work with theoretically, so we continue.
-
-::::{#thm-linalg-phase2} 
-# Row elimination upward phase
-1. Set $i=m$ (the number of equations).
-2. Use multiples of row $i$ to put zeros above the leading 1 in that row.
-3. Decrement $i$. If $i> 1$, return to step 2.
-::::
-
-At the end of the upward phase, the matrix has been put into a form that we define formally here. 
---->
-<!-- 
-::::{#exm-RRE-julia chapter=3 description="RRE form"}
-Here is an example of reduction to RRE form for a linear system using Julia to do the arithmetic.
-
-$$
-\bfA = \begin{bmatrix}
-2 & 0 & 4 & 3 \\ -2 & 0 & 2 & -13 \\ -4 & 5 & -7 & -10 \\ 1 & 15 & 2 & -4.5
-\end{bmatrix}, \qquad 
-\bfb = \begin{bmatrix}
-4\\40\\9\\29
-\end{bmatrix}.
-$$
-
-```{julia}
-A = [
-     2    0    4    3 
-    -2    0    2  -13
-    -4    5   -7  -10 
-     1   15    2   -4.5
-    ];
-b = [ 4, 40, 9, 29 ];
-
-S = Rational.([A b])
-```
-
-We start at the top, working downward and rightward. In the first row, the leading nonzero occurs in column 1, which is the pivot column for this row. We normalize this row so that the leading nonzero is a 1.
-
-```{julia}
-S[1,:] = S[1,:] / S[1,1]
-S
-```
-
-Now multiples of row 1 are added to the rows below it in order to put zeros in the first column.
-
-```{julia}
-S[2,:] = S[2,:] - S[2,1]*S[1,:]
-S[3,:] = S[3,:] - S[3,1]*S[1,:]
-S[4,:] = S[4,:] - S[4,1]*S[1,:]
-S
-```
-
-Looking at rows 2 to 4, we see that the leftmost nonzero occurs in column 2. Since row 2 has a zero there, we swap rows 2 and 3 to bring a nonzero up.
-
-```{julia}
-S[[2, 3],:] = S[[3, 2],:]
-S
-```
-
-Now we normalize row 2 so that the leading nonzero is a 1.
-
-```{julia}
-S[2,:] = S[2,:] / S[2,2]
-S
-```
-
-Multiples of row 2 are now used to put zeros below it in the pivot column.
-
-```{julia}
-S[3,:] = S[3,:] - S[3,2]*S[2,:]
-S[4,:] = S[4,:] - S[4,2]*S[2,:]
-S
-```
-
-Rows 3 and 4 have a pivot in column 3, and we only need to normalize row 3 to make it 1. Then we subtract a multiple of row 3 from row 4 to put a zero beneath it.
-
-```{julia}
-S[3,:] = S[3,:] / S[3,3];
-S[4,:] = S[4,:] - S[4,3]*S[3,:]
-S
-```
-
-We complete the downward phase by normalizing row 4 to get a leading 1.
-
-```{julia}
-S[4,:] = S[4,:] / S[4,4]
-S
-```
-
-Now we turn around for the upward phase. The leading 1 in row 4 needs to have zeros above it. We accomplish that by subtracting multiples of row 4 from the others.
-
-```{julia}
-S[3,:] = S[3,:] - S[3,4]*S[4,:]
-S[2,:] = S[2,:] - S[2,4]*S[4,:]
-S[1,:] = S[1,:] - S[1,4]*S[4,:]
-S
-```
-
-We move up to row 3 and use multiples of it to put zeros above its leading 1.
-
-```{julia}
-S[2,:] = S[2,:] - S[2,3]*S[3,:]
-S[1,:] = S[1,:] - S[1,3]*S[3,:]
-S
-```
-
-The last move is to use a multiple of row 2 to put a zero above its leading 1. As it has played out in this example, this line of code changes nothing because the position was already zero.
-
-```{julia}
-S[1,:] = S[1,:] - S[1,2]*S[2,:]
-float(S)
-```
-
-This matrix is in RREF. We interpret it as the trivial linear system
-
-$$
-\begin{split}
-x_1 &= -3,\\ x_2 &= 1,\\ x_3 &= 4, \\ x_4 &= -2.
-\end{split}
-$$
-:::: 
--->
-
 :::{.callout-tip}
 You can [use Wolfram Alpha]("https://www.wolframalpha.com/input/?i=rref%20%7B%7B1%2C2%2C3%7D%2C%7B4%2C5%2C6%7D%2C%7B7%2C8%2C9%7D%7D") to find the RRE form of a matrix.
 :::
@@ -684,7 +545,6 @@ To solve a system with augmented matrix in RRE form:
 3. Otherwise, each variable associated with a free column is assigned to a free parameter (e.g., $s$, $t$, etc.).
 4. Use the leading columns to solve for their corresponding variables in terms of the free parameters.
 :::
-
 
 ::::{#exm-rref-infinite chapter=3 description="RE form to RRE form"}
 In @exm-elimination-infinite, we reduced a linear system to the RE augmented matrix
@@ -776,11 +636,17 @@ Look at the last row of the system. It expresses the equation $0=1$, which is im
 
 ### Rank
 
-Leaving aside the actual calculation of solutions, a glance at the RRE form of the augmented matrix tells us instantly whether the system has no solution, a unique solution, or infinitely many solutions. Because of the requirements on leading ones in the RREF definition, the outcomes are constrained simply by how many of those ones there are.
+There are only three possible outcomes for a linear system, all deducible from the RRE form of the augmented matrix:
+
+1. There is a leading 1 in the last column, in which case there are no solutions.
+2. There are fewer pivot columns than variables, in which case there are infinitely many solutions.
+3. There is a unique solution.
+
+Really, these come down to counting the number of leading ones/pivot columns. 
 
 ::::{#def-RREF-rank} 
 # Rank
-The **rank** of a matrix is the number of pivot columns in its RRE form, i. e., the number of leading ones.
+The **rank** of a matrix is the number of pivot columns in its RRE or any equivalent RE form.
 ::::
 
 ::::{#thm-RREF-rank} 
@@ -804,135 +670,9 @@ A linear system with more variables than equations cannot have a unique solution
 $\rank(\bfA) \le m < n$.
 :::
 
-## Homogeneous systems
-
-There are only three possible outcomes for a linear system, all deducible from the RRE form of the augmented matrix:
-
-1. There is a leading 1 in the last column, in which case there are no solutions.
-2. There are fewer pivot columns than variables, in which case there are infinitely many solutions.
-3. There is a unique solution.
-
-There is an important situation where we can rule out case 1 above.
-
-::::{#def-nullspace-def} 
-# Homogeneous linear system
-A **homogeneous** linear system is one that has forcing vector $\bfb$ equal to zero.
-::::
-
-As the following theorem points out, we can work with just the RRE form of the coefficient matrix $\bfA$ instead of the augmented matrix of a homogeneous system.
-
-::::{#thm-nullspace-rref}
-For a homogeneous linear system, the last column of the RRE form of the augmented matrix is a zero vector.
-::::
-:::{.proof}
-Row operations can't change the zeros in that column.
-:::
-
-### Null space
-
-::::{#def-nullspace-nullspace}
-The **nullspace** of a matrix $\bfA$, written $\nullsp(\bfA)$, is the set of all solutions to the homogeneous linear system with coefficient matrix $\bfA$.
-::::
-
-:::{.callout-note}
-Sometimes the null space is called the *kernel* of the matrix.
-:::
-
-<!-- As the name implies, the null space is our first example of what we will call a *subspace*. We won't worry about that definition just yet. -->
-
-For a homogeneous linear system, the zero vector $\bfx=\bfzero$ is always a solution. The only interesting question is whether zero is all by itself in the nullspace. That is, we only need to look at case 2 from the beginning of this section.
-
-The following conclusions ensue immediately from our definitions and previous results. Often, linear algebra is like standup comedy: all the work is in the setup, not the punchline.
-
-::::{#thm-nullspace-uniquenes}
-A homogeneous system in $n$ variables with coefficient matrix $\bfA$ has a unique solution if and only if $\rank(\bfA)=n$.
-::::
-
-::::{#cor-nullspace-uniqueness}
-A homogeneous linear system with more variables than equations has infinitely many solutions.
-::::
-
-### Relating to nonhomogeneous systems
-
-There is a strong correspondence between a nonhomogeneous linear ODE $\opA[x]=f$ and a nonhomogeneous linear system $\bfA\bfx=\bfb$. 
-
-::::{#thm-linsys-nonhomogeneous}
-If $\bfu$ is in the nullspace of $\bfA$ and $\bfv$ is any solution of $\bfA\bfx = \bfb$, then $\bfu+\bfv$ is also a solution of $\bfA\bfx = \bfb$.
-::::
-:::{.proof}
-$$
-\bfA(\bfu + \bfv) = \bfA\bfu + \bfA\bfv = \bfzero + \bfb = \bfb. 
-$$
-:::
-
-::::{#exm-nonhomogeneous-1D chapter=3 description="Nullspace in 2D"}
-Suppose 
-
-$$
-\begin{bmatrix}
-2 & -3
-\end{bmatrix}
-\bfx = \begin{bmatrix}
-5
-\end{bmatrix}. 
-$$
-
-Geometrically, all solutions $[x_1,\:x_2] \in \real^2$ lie on the line defined by $2x_1 - 3x_2 = 5$. Note that the vector $[1,\:-1]$ is one such solution. 
-
-The null space of the matrix is the set of vectors such that $2x_1-3x_2=0$. If we let $x_2=t$ be a free parameter, then $x_1=\frac{3}{2}t$. So we can write solutions of the original problem in the form
-
-$$
-\bfx = \begin{bmatrix}
-\tfrac{3}{2}t \\ t 
-\end{bmatrix} +
-\begin{bmatrix}
-1 \\ -1
-\end{bmatrix}
-= 
-\begin{bmatrix}
-1 + \tfrac{3}{2}t \\ -1 + t
-\end{bmatrix},
-$$
-
-which is simply one way to parameterize the line $2x_1 - 3x_2 = 5$.
-::::
-
-
-
 ## Linear combinations 
 
-
-### Spanning sets
-
-When we have infinitely many solutions in a linear system, it's nice to have a concise description of all of them. This takes us on a considerable side quest.
-
-<!---
- Using a small matrix, we see an important connection to a familiar concept:
-
-$$
-\begin{split}
-\begin{bmatrix}
-A_{11} & A_{12} & A_{13} \\ 
-A_{21} & A_{22} & A_{23} \\ 
-A_{31} & A_{32} & A_{33} 
-\end{bmatrix} \begin{bmatrix}
-  x_1 & x_2 & x_3
-\end{bmatrix}   &=  \begin{bmatrix}
-A_{11}x_1 + A_{12}x_2 +  A_{13}x_3 \\ 
-A_{21}x_1 + A_{22}x_2 +  A_{23}x_3 \\ 
-A_{31}x_1 + A_{32}x_2 +  A_{33}x_3 
-\end{bmatrix} \\ 
-&= x_1 \begin{bmatrix}
-A_{11} \\ A_{21} \\ A_{31}
-\end{bmatrix} + x_2 \begin{bmatrix}
-A_{12} \\ A_{22} \\ A_{32}
-\end{bmatrix} + x_3 \begin{bmatrix}
-A_{13} \\ A_{23} \\ A_{33}
-\end{bmatrix}. 
-$$
-
-This relationship holds in general. 
---->
+There is a different perspective and terminology that is equivalent to linear systems and statements about them. In fact, we first saw this terminology for solutions of linear ODEs.
 
 ::::{#def-linalg-linear-comb} 
 # Linear combination
@@ -943,14 +683,65 @@ c_1 \bfv_1 + c_2 \bfv_2 + \cdots + c_k \bfv_k.
 $$
 ::::
 
-<!---
- ::::{#thm-matvec-linear-combination}
-The matrix--vector product $\bfA \bfx$ is a linear combination of the columns of $\bfA$ using the elements of $\bfx$ as coefficients.
-::::
- 
---->
+::::{#exm-lincomb-system chapter=3 description="Linear combination as a linear system"}
+Is $\threevec{1}{0}{3}$ a linear combination of $\threevec{1}{2}{3}$ and $\threevec{-1}{1}{-3}$? 
 
-As we are about to see, statements about linear combinations can be transformed into statements about linear systems of equations, and vice versa.
+:::{.solution}
+To rephrase the question: do there exist numbers $x_1$ and $x_2$ so that
+
+$$
+\threevec{1}{0}{3} \stackrel{?}{=} x_1 \threevec{1}{2}{3} + x_2 \threevec{-1}{1}{-3}.
+$$
+
+This is the same as 
+
+$$
+\threevec{1}{0}{3} \stackrel{?}{=}  x_1 \threevec{1x_1 - 1x_2}{2x_1+ 1x_2}{3x_1 - 3x_2}.
+$$
+
+This is equivalent to the linear system
+
+$$
+\begin{split}
+x_1 - x_2 &= 1 \\ 
+2x_1 + x_2 &= 0 \\
+3x_1 - 3x_2 &= 3,
+\end{split}
+$$
+
+which has the augmented matrix
+
+$$
+\augmat{\begin{matrix}
+1 & -1  \\
+2 & 1  \\
+3 & -3
+\end{matrix}}{
+  \begin{matrix}1\\0\\3\end{matrix}
+}.
+$$
+
+The RRE form of this matrix is  
+$$
+\stackrel{RRE}{\Longrightarrow}
+\augmat{\begin{matrix}
+1 & 0  \\
+0 & 1  \\
+0 & 0
+\end{matrix}}{
+  \begin{matrix}\frac{1}{3}\\-\frac{2}{3}\\0\end{matrix}
+},
+$$
+
+which implies that the system is consistent and has a unique solution. Therefore, the answer to the original question is yes, and we found out also that is $x_1=\frac{1}{3}$ and $x_2=-\frac{2}{3}$.
+:::
+::::
+
+The preceding example is summarized as the following.
+
+::::{#thm-linalg-system}
+The vector $\bfb$ is a linear combination of $\bfv_1,\ldots,\bfv_k$ if and only if the system with augmented matrix $\augmat{\bfA}{\bfb}$ is consistent, where $\bfA$ is the matrix whose columns are $\bfv_1,\ldots,\bfv_k$.
+::::
 
 ### Span
 
@@ -958,33 +749,37 @@ As we are about to see, statements about linear combinations can be transformed 
 The set of all linear combinations of $\bfv_1,\ldots,\bfv_k$ is known as the **span** of those vectors. The span of an empty set is the singleton set $\{\bfzero\}$.
 ::::
 
+We can now restate @thm-linalg-system as follows.
+
+::::{#thm-linalg-span}
+Let $\bfa_1,\ldots,\bfa_n$ be vectors in $\real^n$, and let 
+
+$$
+\bfA = \begin{bmatrix}
+\bfa_1 & \bfa_2 & \cdots & \bfa_n
+\end{bmatrix} \in \rmn{m}{n}. 
+$$
+
+Then a vector $\bfb \in \real^m$ lies in the span of $\bfa_1,\ldots,\bfa_n$ if and only if the system with augmented matrix $\augmat{\bfA}{\bfb}$ is consistent.
+::::
+
 ::::{#exm-nullspace-combo chapter=3 description="Linear dependence"}
-Show that $\bfv=[1,4,3]$ is in the span of $\bfu_1=[1,-2,-1]$ and $\bfu_2=[3,0,1]$. (That is, $\bfv$ can be written as a linear combination of these two vectors.)
+Show that $\threevec{1}{4}{3}$ is in the span of $\bfu_1=\threevec{1}{-2}{-1}$ and $\bfu_2=\threevec{3}{0}{1}$.
 
 :::{.solution}
-Suppose that $\bfv = c_1 \bfu_1 + c_2 \bfu_2$. Looking at each component of this vector equation, we conclude that
+The goal is equivalent to showing that the linear system with augmented matrix
 
 $$
-\begin{split}
-  c_1 + 3c_2 &= 1 \\
-  -2c_1 + 0c_2 &= 4 \\
-  -c_1 + c_2 &= 3,
-\end{split}
-$$
-
-which is a linear system with augmented matrix
-
-$$
-\augmat{
-\begin{matrix}
-  1 & 3  \\ -2 & 0  \\ -1 & 1 
+\augmat{\begin{matrix}
+1 & 3  \\
+-2 & 0  \\
+-1 & 1
 \end{matrix}}{
-    \begin{matrix}
-   1 \\  4 \\  3
-\end{matrix}}
+  \begin{matrix}1\\4\\3\end{matrix}
+}
 $$
 
-The RRE form of this matrix is
+is consistent. The RRE form of this matrix is
 
 $$
 \stackrel{RRE}{\Longrightarrow}
@@ -998,84 +793,42 @@ $$
 }
 $$
 
-which is consistent. In fact, the unique solution is $c_2=1$, $c_1=2$.
+which is consistent, so we are done.
 :::
 ::::
 
-Here is a formal statement of the idea used in @exm-nullspace-combo. 
+### Homogeneous systems
 
-::::{#thm-linsys-span}
-Let $\bfa_1,\ldots,\bfa_n$ be vectors in $\real^n$, and let 
+In linear ODEs, we found that every problem depends on the associated homogeneous problem. The same is true for linear systems.
 
-$$
-\bfA = \begin{bmatrix}
-\bfa_1 & \bfa_2 & \cdots & \bfa_n
-\end{bmatrix} \in \rmn{m}{n}. 
-$$
-
-Then a vector $\bfb \in \real^m$ lies in the span of $\bfa_1,\ldots,\bfa_n$ if and only if the system with augmented matrix $\augmat{\bfA}{\bfb}$ is consistent.
+::::{#def-linalg-def} 
+# Homogeneous linear system
+A **homogeneous** linear system is one that has forcing vector $\bfb$ equal to zero. We say it has a **nontrivial** solution if the zero vector is not the only solution.
 ::::
 
-The idea behind span is that it allows us to represent an infinite set, such as a null space, using a finite number of vectors. 
+The following conclusions ensue immediately from our definitions and previous results. 
 
-::::{#exm-nullspace-span chapter=3 description="Expressing nullspace via span"}
-Suppose the RRE form of a matrix $\bfA$ is
-
-$$
-\mathbf{R} = 
-\begin{bmatrix}
-0 & 1 & 4 & 0 & 1 \\
-0 & 0 & 0  & 1 & -3 \\
-0 & 0 & 0  & 0 & 0  \\
-0 & 0 & 0  & 0 & 0
-\end{bmatrix}.
-$$
-
-Therefore, the RRE form of the augmented matrix $\augmat{\mathbf{A}}{\boldsymbol{0}}$ is $\augmat{\mathbf{R}}{\boldsymbol{0}}$. The pivot columns are 2 and 4, which makes $x_1=r$, $x_3=s$, and $x_5=t$ free variables. The nonzero rows lead to
-
-$$
-\begin{split}
-x_2 + 4x_3 + x_5 &= 0 &\quad ⇒ \quad x_2 &= -4s-t,\\
-x_4 -3x_5 &= 0 & \quad ⇒ \quad x_4 &= 3t.
-\end{split}
-$$
-
-One way to express a generic solution vector in the null space is by a linear combination of constant vectors:
-
-$$
-\begin{bmatrix}
-  r \\ -4s-t \\ s \\ 3t\\ t
-\end{bmatrix}
-= r \begin{bmatrix}
-  1 \\ 0 \\ 0 \\ 0 \\ 0
-\end{bmatrix}
-+ s \begin{bmatrix}
-  0 \\ -4 \\ 0 \\ 1 \\ 0
-\end{bmatrix}
-+ t \begin{bmatrix}
-  0 \\ -1 \\ 0 \\ 3 \\ 1
-\end{bmatrix} = r\bfv_1 + s\bfv_2 + t\bfv_3 .
-$$
-
-Hence $\nullsp(\bfA)=\span(\bfv_1,\bfv_2,\bfv_3)$, where the $\bfv_j$ are the constant vectors above.
+::::{#thm-linalg-uniqueness}
+A homogeneous system in $n$ variables with coefficient matrix $\bfA$ has a nontrivial solution if and only if $\rank(\bfA)< n$. In particular, a homogeneous system with more variables than equations has a nontrivial solution.
 ::::
 
 ### Independence
 
-Now that we have a finite description of the null space, we want to make sure that the description is as simple as possible. For this, we need to put some fresh paint on an old barn.
+The idea behind span is that it allows us to represent an infinite set using a finite number of vectors. We also want to make sure that the representation is as simple as possible. For this, we need to put some fresh paint on an old barn.
 
-::::{#def-nullspace-independence}
+::::{#def-linalg-independence}
 # Linear independence
 Vectors $\bfv_1,\bfv_2,\ldots,\bfv_n$ are **linearly dependent** if there is a way to choose constants $c_1,\ldots,c_n$, *not all zero*, such that
 
 $$
-c_1\bfv_1 + c_2\bfv_2 + \cdots c_n \bfv_n = 0.
+c_1\bfv_1 + c_2\bfv_2 + \cdots c_n \bfv_n = \bfzero.
 $$
 
 If the vectors are not linearly dependent, then they are **linearly independent**.
 ::::
 
-Because linear combinations are equivalent to linear systems, statements about linear independence are equivalent to statements about homogeneous linear systems, and therefore about null spaces.
+Because linear combinations are equivalent to linear systems, statements about linear independence are equivalent to statements about homogeneous linear systems.
+
 
 ::::{#thm-linalg-independence}
 Let $\bfa_1,\ldots,\bfa_n$ be vectors in $\real^n$, and let 
@@ -1090,14 +843,13 @@ The following statements are equivalent.
 
 1. The vectors $\bfa_1,\ldots,\bfa_n$ are linearly independent.
 2. The system with augmented matrix $\augmat{\bfA}{\bfzero}$ has only zero as a solution.
-3. The null space of $\bfA$ contains only the zero vector.
-4. $\rank(\bfA) = n$.
+<!-- 3. The null space of $\bfA$ contains only the zero vector. -->
+1. $\rank(\bfA) = n$.
 ::::
 
 ::::{#exm-dependence-zerovector chapter=3 description="Zero vector implies dependence"}
 Any set of vectors that contains the zero vector must be dependent. That's because the zero vector will put a column of zeros in the matrix $\bfA$ in @thm-linalg-independence, and since that column can't possibly have a leading nonzero in it, the rank of $\bfA$ will be less than the number of columns.
 ::::
-
 
 ::::{#exm-nullspace-dependent chapter=3 description="Determine independence of vectors"}
 Determine whether the vectors $\bfv_1=\threevec{1}{0}{-2}$, $\bfv_2=\threevec{1}{0}{1}$, and $\bfv_3 = \threevec{0}{0}{-1}$ are linearly independent.
@@ -1125,21 +877,52 @@ $$
 The RRE form of this system is
 
 $$
+\stackrel{RRE}{\Longrightarrow}
 \augmat{
     \begin{matrix}
     1 & 0 & \frac{1}{3}  \\ 0 & 1 & -\frac{1}{3}  \\ 0 & 0 & 0
     \end{matrix}}{
 \begin{matrix}
     0 \\  0 \\  0
-    \end{matrix}
+    \end{matrix},
 }
 $$
 
-whose solutions are $[-t/3,t/3,t]$ for all $t$. Since there are nonzero solutions to the linear system, the original set of vectors is linearly dependent.
+so the rank is equal to 2, which is less than the number of vectors in the question. Therefore, the vectors are linearly dependent.
 :::
 ::::
 
-Besides the presence of a zero vector, there is one easy case to detect dependence.
+::::{#exm-nullspace-dependent chapter=3 description="Determine independence of vectors"}
+Determine whether the vectors (written in row form for compactness) $[2,0,0,-1]$, $[1,1,0,0]$, and $[0,0,-1,1]$ are linearly independent.
+
+:::{.solution}
+We use the given vectors as columns of a coefficient matrix:
+
+$$
+\bfA = \begin{bmatrix}
+2 & 1 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & -1 \\ -1 & 0 & 1
+\end{bmatrix}.
+$$
+
+The linear system with augmented matrix $\augmat{\bfA}{\bfzero}$ has RRE form
+
+$$
+\stackrel{RRE}{\Longrightarrow}
+\augmat{
+    \begin{matrix}
+    1 & 0 & 0  \\ 0 & 1 & 0  \\ 0 & 0 & 1  \\ 0 & 0 & 0 
+    \end{matrix}}{
+\begin{matrix}
+    0 \\  0 \\  0 \\  0
+    \end{matrix}
+}.
+$$
+
+This has rank 3, which is the same as the number of vectors in the question, so the vectors are linearly independent.
+:::
+::::
+
+Besides the presence of a zero vector, there is one easy case for detecting dependence.
 
 ::::{#thm-linsys-dependence-too-many}
 Any collection of $n$ vectors in $\real^m$ is dependent if $n > m$. 
@@ -1148,11 +931,19 @@ Any collection of $n$ vectors in $\real^m$ is dependent if $n > m$.
 The rank of $\bfA$ in @thm-linalg-independence is no greater than $m$, which is less than $n$.
 :::
 
+::::{#exm-linalg-dependence-too-many chapter=3 description="Too many vectors implies dependence"}
+Determine whether the vectors $\bfv_1=\threevec{1}{0}{-2}$, $\bfv_2=\threevec{1}{0}{1}$, $\bfv_3 = \threevec{0}{0}{-1}$, and $\bfv_4 = \threevec{1}{0}{0}$ are linearly independent.
+
+:::{.solution}
+There are four vectors in $\real^3$, so they are dependent by @thm-linsys-dependence-too-many.
+:::
+::::
+
 ::: {.callout-warning}
 @thm-linsys-dependence-too-many says, "if $n > m$, then dependent," but the converse statement, "if dependent, then $n > m$," is not logically correct. There are examples of dependent sets of vectors with $n < m$, $n=m$, *and* $n>m$.  
 :::
 
-Dependent vectors lengthen the description of a spanned space without contributing any information. We will come back to finish this thought in the next chapter. But first, we are going to take a closer look at the algebra of vectors and matrices.
+
 
 <!---
  ::::{#exm-nullspace-dependentspan}
