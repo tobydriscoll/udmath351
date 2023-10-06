@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.315">
+<meta name="generator" content="quarto-1.4.339">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -962,14 +962,14 @@ x_1 - x_2 &amp;= 1 \\
 <p>which is consistent, so we are done.</p>
 </div>
 </div>
-<p>Looking carefully at <a href="#exm-nullspace-combo" class="quarto-xref">Example&nbsp;<span>3.13</span></a>, we can deduce a general statement. Because the coefficient matrix describing the span of the two vectors is taller than it is wide, there will be at least one row that is zero to the left of the augmented-matrix bar. The question really came down to whether the element to the right of that bar is also zero. That was the case for the specific vectors in the example, but it won’t always be. Geometrically, two vectors in <span class="math inline">\(\real^3\)</span> span a plane through the origin, and there will be vectors in <span class="math inline">\(\real^3\)</span> that are left out.</p>
+<p>Looking carefully at <a href="#exm-nullspace-combo" class="quarto-xref">Example&nbsp;<span>3.13</span></a>, we can deduce a general statement. Because the linear system describing the span of the two vectors is taller than it is wide, there will be at least one row that is zero to the left of the augmented-matrix bar. The question really came down to whether the element to the right of that bar is also zero. That was the case for the specific vectors in the example, but it won’t always be, and the answer might have been “no.” Geometrically, two vectors in <span class="math inline">\(\real^3\)</span> span a plane through the origin, and there will be vectors in <span class="math inline">\(\real^3\)</span> that are left out.</p>
 <div id="thm-linalg-span-too-few" class="theorem">
 <p><span class="theorem-title"><strong>Theorem 3.7 </strong></span>Any set of <span class="math inline">\(n\)</span> vectors cannot span <span class="math inline">\(\real^m\)</span> if <span class="math inline">\(n &lt; m\)</span>.</p>
 </div>
 </section>
 <section id="independence" class="level3" data-number="3.4.2">
 <h3 data-number="3.4.2" class="anchored" data-anchor-id="independence"><span class="header-section-number">3.4.2</span> Independence</h3>
-<p>Here is an old ODE friend dressed up in new clothes.</p>
+<p>Here is an old ODE friend, dressed up in new clothes.</p>
 <div id="def-linalg-independence" class="theorem definition">
 <p><span class="theorem-title"><strong>Definition 3.13 (Linear independence) </strong></span>Vectors <span class="math inline">\(\bfv_1,\bfv_2,\ldots,\bfv_n\)</span> are <strong>linearly dependent</strong> if there is a way to choose constants <span class="math inline">\(c_1,\ldots,c_n\)</span>, <em>not all zero</em>, such that</p>
 <p><span id="eq-linalg-combination"><span class="math display">\[
@@ -978,7 +978,7 @@ c_1\bfv_1 + c_2\bfv_2 + \cdots c_n \bfv_n = \bfzero.
 <p>If the vectors are not linearly dependent, then they are <strong>linearly independent</strong>.</p>
 </div>
 <div id="exm-dependence-zerovector" class="theorem example" data-chapter="3" data-description="Zero vector implies dependence">
-<p><span class="theorem-title"><strong>Example 3.14 </strong></span>Any set of vectors that contains the zero vector must be dependent: You can set the coefficient <span class="math inline">\(c_j\)</span> in <a href="#eq-linalg-combination" class="quarto-xref">Equation&nbsp;<span>3.2</span></a> of the zero vector to be 1, and all the others to be 0, and then the equation is true.</p>
+<p><span class="theorem-title"><strong>Example 3.14 </strong></span>Any set of vectors that contains the zero vector must be dependent: You can set the coefficient <span class="math inline">\(c_j\)</span> in <span class="quarto-unresolved-ref">?eq-eq-linalg-combination</span> of the zero vector to be 1, and all the others to be 0, and then the equation is true.</p>
 </div>
 <p>A linear combination is just a linear system in a trench coat, so there is a definition on that side of the fence as well.</p>
 <div id="def-linalg-def" class="theorem definition">
