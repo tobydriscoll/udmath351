@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.315">
+<meta name="generator" content="quarto-1.4.339">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -471,12 +471,17 @@ Note
 (\bfA+\bfB)\bfx &amp; =  \bfA\bfx + \bfB\bfx,
 \end{split},
 \]</span></p>
-<p>and the associative property</p>
+<p>along with</p>
 <p><span class="math display">\[
-\bfA(\bfB\bfx) = (\bfA\bfB)\bfx,
+\bfA(c\bfx)=c(\bfA\bfx)
 \]</span></p>
-<p>all of which can be checked with a little effort. It’s also true that <span class="math inline">\(\bfA(c\bfx)=c(\bfA\bfx)\)</span> for any number <span class="math inline">\(c\)</span>.</p>
-<p>But there is a major departure from multiplication as we usually know it.</p>
+<p>for any scalar <span class="math inline">\(c\)</span>.</p>
+<!-- and the associative property
+
+$$
+\bfA(\bfB\bfx) = (\bfA\bfB)\bfx,
+$$ -->
+<p>But there is a <em>major</em> departure from multiplication as we usually know it.</p>
 <div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -488,6 +493,20 @@ Warning
 </div>
 <div class="callout-body-container callout-body">
 <p>Matrix-vector products are not commutative. In fact, <span class="math inline">\(\bfx\bfA\)</span> is not defined even when <span class="math inline">\(\bfA\bfx\)</span> is.</p>
+</div>
+</div>
+<p>This is the first time we see something that will happen more generally:</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The order of the terms in a product of non-scalars cannot be changed without some explicit justification.</p>
 </div>
 </div>
 </section>
