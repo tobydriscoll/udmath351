@@ -178,8 +178,14 @@ MathJax = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./eigen.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Eigenvalues</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./ode_systems.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Systems of ODEs</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Systems of ODEs</span></span></a>
   </div>
 </li>
     </ul>
@@ -202,6 +208,7 @@ MathJax = {
   <li><a href="#second-order-odes" id="toc-second-order-odes" class="nav-link" data-scroll-target="#second-order-odes">Second-order ODEs</a></li>
   <li><a href="#linear-systems" id="toc-linear-systems" class="nav-link" data-scroll-target="#linear-systems">Linear systems</a></li>
   <li><a href="#matrix-algebra" id="toc-matrix-algebra" class="nav-link" data-scroll-target="#matrix-algebra">Matrix algebra</a></li>
+  <li><a href="#eigenvalues" id="toc-eigenvalues" class="nav-link" data-scroll-target="#eigenvalues">Eigenvalues</a></li>
   <li><a href="#linear-ode-systems" id="toc-linear-ode-systems" class="nav-link" data-scroll-target="#linear-ode-systems">Linear ODE systems</a></li>
   </ul></li>
   <li><a href="#list-of-examples" id="toc-list-of-examples" class="nav-link" data-scroll-target="#list-of-examples">List of examples</a></li>
@@ -211,7 +218,7 @@ MathJax = {
   <li><a href="#b.-second-order-linear-odes" id="toc-b.-second-order-linear-odes" class="nav-link" data-scroll-target="#b.-second-order-linear-odes">B. Second-order linear ODEs</a></li>
   <li><a href="#c.-linear-algebraic-systems" id="toc-c.-linear-algebraic-systems" class="nav-link" data-scroll-target="#c.-linear-algebraic-systems">C. Linear algebraic systems</a></li>
   <li><a href="#d.-matrix-algebra" id="toc-d.-matrix-algebra" class="nav-link" data-scroll-target="#d.-matrix-algebra">D. Matrix algebra</a></li>
-  <li><a href="#e.-vector-spaces" id="toc-e.-vector-spaces" class="nav-link" data-scroll-target="#e.-vector-spaces">E. Vector spaces</a></li>
+  <li><a href="#e.-eigenvalues" id="toc-e.-eigenvalues" class="nav-link" data-scroll-target="#e.-eigenvalues">E. Eigenvalues</a></li>
   <li><a href="#f.-linear-ode-systems" id="toc-f.-linear-ode-systems" class="nav-link" data-scroll-target="#f.-linear-ode-systems">F. Linear ODE systems</a></li>
   </ul></li>
   </ul></li>
@@ -463,70 +470,79 @@ MathJax = {
 <td></td>
 </tr>
 <tr class="even">
-<td>Oct 13</td>
-<td><a href="matrix_algebra.html#computing-the-inverse">Computing inverses</a></td>
-<td>3.3</td>
-<td></td>
-</tr>
-<tr class="odd">
 <td>Oct 16</td>
-<td><a href="matrix_algebra.html#subspaces">Subspaces</a></td>
+<td><a href="matrix_algebra.html#sec-matrix-subspaces">Subspaces</a></td>
 <td>3.5</td>
 <td>(no row spaces) 11-12, 17-20, 27-28, 35-38, 43, 45-46</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>Oct 18</td>
-<td><a href="matrix_algebra.html#determinants">Determinants</a></td>
-<td>4.2</td>
-<td>7-12, 45, 47, 49, 50, 57-58</td>
-</tr>
-<tr class="odd">
-<td>Oct 20</td>
-<td><a href="matrix_algebra.html#eigenvalues">Eigenvalues (properties)</a></td>
-<td>4.1</td>
-<td>1-4, 11-12, 27-28, 36</td>
+<td><a href="matrix_algebra.html#other-vector-spaces">Vector spaces</a></td>
+<td>6.1</td>
+<td>1, 2, 9, 28, 31, 35, 36, 51-52, 53-54</td>
 </tr>
 <tr class="even">
-<td>Oct 23</td>
-<td><a href="matrix_algebra.html#computing-eigenvalues">Eigenvalues (computing)</a></td>
-<td>4.3</td>
-<td>1-3, 10, 23</td>
+<td>Oct 20</td>
+<td><a href="matrix_algebra.html#coordinates">Coordinates</a></td>
+<td>6.1, 6.2</td>
+<td>1-3, 5-7, 18-19, 22-24, 28-29, 51-52</td>
 </tr>
 <tr class="odd">
+<td>Oct 23</td>
+<td><a href="matrix_algebra.html#change-of-basis">Change of basis</a></td>
+<td>6.3</td>
+<td>1-3, 5-7</td>
+</tr>
+<tr class="even">
 <td>Oct 25</td>
 <td>Review</td>
 <td></td>
 <td></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>Oct 27</td>
 <td><strong>EXAM 2</strong></td>
-<td>Goals C1–C7, D1–D12</td>
+<td>Goals C1–C7, D1–D15</td>
 <td></td>
 </tr>
+</tbody>
+</table>
+</section>
+<section id="eigenvalues" class="level3">
+<h3 class="anchored" data-anchor-id="eigenvalues">Eigenvalues</h3>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Date</th>
+<th>Section</th>
+<th>Poole</th>
+<th>Suggested practice</th>
+</tr>
+</thead>
+<tbody>
 <tr class="odd">
 <td>Oct 30</td>
-<td><a href="matrix_algebra.html#diagonalization">Diagonalization</a></td>
-<td>4.4</td>
-<td>5-6, 8-10, 17, 19</td>
+<td><a href="eigen.html#determinants">Determinants</a></td>
+<td>4.2</td>
+<td>7-12, 45, 47, 49, 50, 57-58</td>
 </tr>
 <tr class="even">
 <td>Nov 1</td>
-<td><a href="space/vectors">Vector spaces</a></td>
-<td>6.1</td>
-<td>1, 2, 9, 28, 31, 35, 36, 51-52, 53-54</td>
+<td><a href="eigen.html#eigenvalues">Eigenvalues (properties)</a></td>
+<td>4.1</td>
+<td>1-4, 11-12, 27-28, 36</td>
 </tr>
 <tr class="odd">
 <td>Nov 3</td>
-<td><a href="space/basis">Span, independence, basis</a></td>
-<td>6.1, 6.2</td>
-<td>1-3, 5-7, 18-19, 22-24, 28-29, 51-52</td>
+<td><a href="eigen.html#computing-eigenvalues">Eigenvalues (computing)</a></td>
+<td>4.3</td>
+<td>1-3, 10, 23</td>
 </tr>
 <tr class="even">
 <td>Nov 6</td>
-<td><a href="space/change">Change of basis</a></td>
-<td>6.3</td>
-<td>1-3, 5-7</td>
+<td><a href="eigen.html#diagonalization">Diagonalization</a></td>
+<td>4.4</td>
+<td>5-6, 8-10, 17, 19</td>
 </tr>
 </tbody>
 </table>
@@ -1249,7 +1265,7 @@ Note: Both textbooks have dedicated chapter review problems.
 <span class="listing-description">Singular matrices</span>
 </td>
 <td>
-<span class="listing-link"><a href="matrix_algebra.html#exm-matrix-cancellation" class="quarto-xref">Example&nbsp;<span>4.9</span></a></span>
+<span class="listing-link"><a href="matrix_algebra.html#exm-matrix-cancellation" class="quarto-xref">Example&nbsp;<span>4.5</span></a></span>
 </td>
 <td>
 <span class="listing-chapter">4</span>
@@ -1290,10 +1306,10 @@ Note: Both textbooks have dedicated chapter review problems.
 </tr>
 <tr data-index="63">
 <td>
-<span class="listing-description">Singular matrices</span>
+<span class="listing-description">Planes and subspaces</span>
 </td>
 <td>
-<span class="listing-link"><a href="matrix_algebra.html#exm-matrix-cancellation" class="quarto-xref">Example&nbsp;<span>4.9</span></a></span>
+<span class="listing-link"><a href="matrix_algebra.html#exm-subspaces-plane" class="quarto-xref">Example&nbsp;<span>4.9</span></a></span>
 </td>
 <td>
 <span class="listing-chapter">4</span>
@@ -1301,10 +1317,10 @@ Note: Both textbooks have dedicated chapter review problems.
 </tr>
 <tr data-index="64">
 <td>
-<span class="listing-description">Planes and subspaces</span>
+<span class="listing-description">The trivial subspace</span>
 </td>
 <td>
-<span class="listing-link"><a href="matrix_algebra.html#exm-subspaces-plane" class="quarto-xref">Example&nbsp;<span>4.10</span></a></span>
+<span class="listing-link"><a href="matrix_algebra.html#exm-subspaces-zero" class="quarto-xref">Example&nbsp;<span>4.10</span></a></span>
 </td>
 <td>
 <span class="listing-chapter">4</span>
@@ -1312,10 +1328,10 @@ Note: Both textbooks have dedicated chapter review problems.
 </tr>
 <tr data-index="65">
 <td>
-<span class="listing-description">The trivial subspace</span>
+<span class="listing-description">Is it in the column space?</span>
 </td>
 <td>
-<span class="listing-link"><a href="matrix_algebra.html#exm-subspaces-zero" class="quarto-xref">Example&nbsp;<span>4.11</span></a></span>
+<span class="listing-link"><a href="matrix_algebra.html#exm-subspaces-column" class="quarto-xref">Example&nbsp;<span>4.11</span></a></span>
 </td>
 <td>
 <span class="listing-chapter">4</span>
@@ -1323,32 +1339,32 @@ Note: Both textbooks have dedicated chapter review problems.
 </tr>
 <tr data-index="66">
 <td>
-<span class="listing-description">Is it in the column space?</span>
-</td>
-<td>
-<span class="listing-link"><a href="matrix_algebra.html#exm-subspaces-column" class="quarto-xref">Example&nbsp;<span>4.12</span></a></span>
-</td>
-<td>
-<span class="listing-chapter">4</span>
-</td>
-</tr>
-<tr data-index="67">
-<td>
 <span class="listing-description">Expressing nullspace via span</span>
 </td>
 <td>
-<span class="listing-link"><a href="matrix_algebra.html#exm-nullspace-span" class="quarto-xref">Example&nbsp;<span>4.13</span></a></span>
+<span class="listing-link"><a href="matrix_algebra.html#exm-nullspace-span" class="quarto-xref">Example&nbsp;<span>4.12</span></a></span>
 </td>
 <td>
 <span class="listing-chapter">3</span>
 </td>
 </tr>
-<tr data-index="68">
+<tr data-index="67">
 <td>
 <span class="listing-description">Bases for matrix subspaces</span>
 </td>
 <td>
-<span class="listing-link"><a href="matrix_algebra.html#exm-subspaces-colnull" class="quarto-xref">Example&nbsp;<span>4.14</span></a></span>
+<span class="listing-link"><a href="matrix_algebra.html#exm-subspaces-colnull" class="quarto-xref">Example&nbsp;<span>4.13</span></a></span>
+</td>
+<td>
+<span class="listing-chapter">4</span>
+</td>
+</tr>
+<tr data-index="68">
+<td>
+<span class="listing-description">Basis for a span</span>
+</td>
+<td>
+<span class="listing-link"><a href="matrix_algebra.html#exm-subspaces-findbasis" class="quarto-xref">Example&nbsp;<span>4.14</span></a></span>
 </td>
 <td>
 <span class="listing-chapter">4</span>
@@ -1356,10 +1372,10 @@ Note: Both textbooks have dedicated chapter review problems.
 </tr>
 <tr data-index="69">
 <td>
-<span class="listing-description">Basis for a span</span>
+<span class="listing-description">Too few to span</span>
 </td>
 <td>
-<span class="listing-link"><a href="matrix_algebra.html#exm-subspaces-findbasis" class="quarto-xref">Example&nbsp;<span>4.15</span></a></span>
+<span class="listing-link"><a href="matrix_algebra.html#exm-subspaces-dimension" class="quarto-xref">Example&nbsp;<span>4.17</span></a></span>
 </td>
 <td>
 <span class="listing-chapter">4</span>
@@ -1367,10 +1383,10 @@ Note: Both textbooks have dedicated chapter review problems.
 </tr>
 <tr data-index="70">
 <td>
-<span class="listing-description">Too few to span</span>
+<span class="listing-description">Too many to be independent</span>
 </td>
 <td>
-<span class="listing-link"><a href="matrix_algebra.html#exm-subspaces-dimension" class="quarto-xref">Example&nbsp;<span>4.18</span></a></span>
+<span class="listing-link"><a href="matrix_algebra.html#exm-subspaces-dimension" class="quarto-xref">Example&nbsp;<span>4.17</span></a></span>
 </td>
 <td>
 <span class="listing-chapter">4</span>
@@ -1378,10 +1394,10 @@ Note: Both textbooks have dedicated chapter review problems.
 </tr>
 <tr data-index="71">
 <td>
-<span class="listing-description">Too many to be independent</span>
+<span class="listing-description">Dimension of a subspace</span>
 </td>
 <td>
-<span class="listing-link"><a href="matrix_algebra.html#exm-subspaces-dimension" class="quarto-xref">Example&nbsp;<span>4.18</span></a></span>
+<span class="listing-link"><a href="matrix_algebra.html#exm-subspaces-dimension" class="quarto-xref">Example&nbsp;<span>4.17</span></a></span>
 </td>
 <td>
 <span class="listing-chapter">4</span>
@@ -1389,10 +1405,10 @@ Note: Both textbooks have dedicated chapter review problems.
 </tr>
 <tr data-index="72">
 <td>
-<span class="listing-description">Dimension of a subspace</span>
+<span class="listing-description">Matrices as vectors</span>
 </td>
 <td>
-<span class="listing-link"><a href="matrix_algebra.html#exm-subspaces-dimension" class="quarto-xref">Example&nbsp;<span>4.18</span></a></span>
+<span class="listing-link"><a href="matrix_algebra.html#exm-space-matrices" class="quarto-xref">Example&nbsp;<span>4.18</span></a></span>
 </td>
 <td>
 <span class="listing-chapter">4</span>
@@ -1400,10 +1416,10 @@ Note: Both textbooks have dedicated chapter review problems.
 </tr>
 <tr data-index="73">
 <td>
-<span class="listing-description"><span class="math inline">\(3\times 3\)</span> determinant</span>
+<span class="listing-description">Polynomials as vectors</span>
 </td>
 <td>
-<span class="listing-link"><a href="matrix_algebra.html#exm-matrix-determinant3x3" class="quarto-xref">Example&nbsp;<span>4.19</span></a></span>
+<span class="listing-link"><a href="matrix_algebra.html#exm-space-polynomials" class="quarto-xref">Example&nbsp;<span>4.19</span></a></span>
 </td>
 <td>
 <span class="listing-chapter">4</span>
@@ -1411,10 +1427,10 @@ Note: Both textbooks have dedicated chapter review problems.
 </tr>
 <tr data-index="74">
 <td>
-<span class="listing-description">Cramer’s Rule</span>
+<span class="listing-description">Coordinates relative to a basis</span>
 </td>
 <td>
-<span class="listing-link"><a href="matrix_algebra.html#exm-cramers-rule" class="quarto-xref">Example&nbsp;<span>4.20</span></a></span>
+<span class="listing-link"><a href="matrix_algebra.html#exm-coords-2by2" class="quarto-xref">Example&nbsp;<span>4.20</span></a></span>
 </td>
 <td>
 <span class="listing-chapter">4</span>
@@ -1422,10 +1438,10 @@ Note: Both textbooks have dedicated chapter review problems.
 </tr>
 <tr data-index="75">
 <td>
-<span class="listing-description">Eigenvectors of the identity matrix</span>
+<span class="listing-description">Change of basis matrix</span>
 </td>
 <td>
-<span class="listing-link"><a href="matrix_algebra.html#exm-eigvec-identity" class="quarto-xref">Example&nbsp;<span>4.21</span></a></span>
+<span class="listing-link"><a href="matrix_algebra.html#exm-change-of-basis-matrix" class="quarto-xref">Example&nbsp;<span>4.21</span></a></span>
 </td>
 <td>
 <span class="listing-chapter">4</span>
@@ -1433,10 +1449,10 @@ Note: Both textbooks have dedicated chapter review problems.
 </tr>
 <tr data-index="76">
 <td>
-<span class="listing-description">Eigenspaces of a triangular matrix</span>
+<span class="listing-description">Change of basis</span>
 </td>
 <td>
-<span class="listing-link"><a href="matrix_algebra.html#exm-eigenvalues-triangular" class="quarto-xref">Example&nbsp;<span>4.24</span></a></span>
+<span class="listing-link"><a href="matrix_algebra.html#exm-change-of-basis" class="quarto-xref">Example&nbsp;<span>4.22</span></a></span>
 </td>
 <td>
 <span class="listing-chapter">4</span>
@@ -1444,57 +1460,101 @@ Note: Both textbooks have dedicated chapter review problems.
 </tr>
 <tr data-index="77">
 <td>
-<span class="listing-description">Eigenspaces of a <span class="math inline">\(2\times 2\)</span></span>
+<span class="listing-description"><span class="math inline">\(3\times 3\)</span> determinant</span>
 </td>
 <td>
-<span class="listing-link"><a href="matrix_algebra.html#exm-eigvec-2by2" class="quarto-xref">Example&nbsp;<span>4.23</span></a></span>
+<span class="listing-link"><a href="eigen.html#exm-matrix-determinant3x3" class="quarto-xref">Example&nbsp;<span>5.1</span></a></span>
 </td>
 <td>
-<span class="listing-chapter">4</span>
+<span class="listing-chapter">5</span>
 </td>
 </tr>
 <tr data-index="78">
 <td>
-<span class="listing-description">Complex eigenvalues</span>
+<span class="listing-description">Cramer’s Rule</span>
 </td>
 <td>
-<span class="listing-link"><a href="matrix_algebra.html#exm-eigenvalues-triangular" class="quarto-xref">Example&nbsp;<span>4.24</span></a></span>
+<span class="listing-link"><a href="eigen.html#exm-cramers-rule" class="quarto-xref">Example&nbsp;<span>5.2</span></a></span>
 </td>
 <td>
-<span class="listing-chapter">4</span>
+<span class="listing-chapter">5</span>
 </td>
 </tr>
 <tr data-index="79">
 <td>
-<span class="listing-description">Complex eigenvalues</span>
+<span class="listing-description">Eigenvectors of the identity matrix</span>
 </td>
 <td>
-<span class="listing-link"><a href="matrix_algebra.html#exm-eigvals-complex" class="quarto-xref">Example&nbsp;<span>4.25</span></a></span>
+<span class="listing-link"><a href="eigen.html#exm-eigvec-identity" class="quarto-xref">Example&nbsp;<span>5.3</span></a></span>
 </td>
 <td>
-<span class="listing-chapter">4</span>
+<span class="listing-chapter">5</span>
 </td>
 </tr>
 <tr data-index="80">
 <td>
-<span class="listing-description">Defective eigenvalue</span>
+<span class="listing-description">Eigenspaces of a triangular matrix</span>
 </td>
 <td>
-<span class="listing-link"><a href="matrix_algebra.html#exm-diagonalization-defective" class="quarto-xref">Example&nbsp;<span>4.26</span></a></span>
+<span class="listing-link"><a href="eigen.html#exm-eigenvalues-triangular" class="quarto-xref">Example&nbsp;<span>5.6</span></a></span>
 </td>
 <td>
-<span class="listing-chapter">4</span>
+<span class="listing-chapter">5</span>
 </td>
 </tr>
 <tr data-index="81">
 <td>
+<span class="listing-description">Eigenspaces of a <span class="math inline">\(2\times 2\)</span></span>
+</td>
+<td>
+<span class="listing-link"><a href="eigen.html#exm-eigvec-2by2" class="quarto-xref">Example&nbsp;<span>5.5</span></a></span>
+</td>
+<td>
+<span class="listing-chapter">5</span>
+</td>
+</tr>
+<tr data-index="82">
+<td>
+<span class="listing-description">Complex eigenvalues</span>
+</td>
+<td>
+<span class="listing-link"><a href="eigen.html#exm-eigenvalues-triangular" class="quarto-xref">Example&nbsp;<span>5.6</span></a></span>
+</td>
+<td>
+<span class="listing-chapter">5</span>
+</td>
+</tr>
+<tr data-index="83">
+<td>
+<span class="listing-description">Complex eigenvalues</span>
+</td>
+<td>
+<span class="listing-link"><a href="eigen.html#exm-eigvals-complex" class="quarto-xref">Example&nbsp;<span>5.7</span></a></span>
+</td>
+<td>
+<span class="listing-chapter">5</span>
+</td>
+</tr>
+<tr data-index="84">
+<td>
+<span class="listing-description">Defective eigenvalue</span>
+</td>
+<td>
+<span class="listing-link"><a href="eigen.html#exm-diagonalization-defective" class="quarto-xref">Example&nbsp;<span>5.8</span></a></span>
+</td>
+<td>
+<span class="listing-chapter">5</span>
+</td>
+</tr>
+<tr data-index="85">
+<td>
 <span class="listing-description">Nondefective repeated eigenvalue</span>
 </td>
 <td>
-<span class="listing-link"><a href="matrix_algebra.html#exm-diagonalization-nondefective" class="quarto-xref">Example&nbsp;<span>4.27</span></a></span>
+<span class="listing-link"><a href="eigen.html#exm-diagonalization-nondefective" class="quarto-xref">Example&nbsp;<span>5.9</span></a></span>
 </td>
 <td>
-<span class="listing-chapter">4</span>
+<span class="listing-chapter">5</span>
 </td>
 </tr>
 </tbody>
@@ -1567,6 +1627,16 @@ No matching items
 <li>Compute the inverse of a 2x2 matrix.</li>
 <li>Find a basis for the row space or the column space of a matrix.</li>
 <li>Find the dimension of a subspace.</li>
+<li>Relate the abstract vector spaces <span class="math inline">\(\mathbb{R}^{m\times n}\)</span> and <span class="math inline">\(\mathcal{P}_n\)</span> to <span class="math inline">\(\mathbb{R}^n\)</span>.</li>
+<li>Determine whether given vectors in an abstract space are linearly independent.</li>
+<li>Determine whether a given vector lies in the span of other vectors in an abstract space.</li>
+<li>Compute the coordinates of a given vector in a given basis.</li>
+<li>Compute a change-of-basis matrix between two given bases.</li>
+</ol>
+</section>
+<section id="e.-eigenvalues" class="level3">
+<h3 class="anchored" data-anchor-id="e.-eigenvalues">E. Eigenvalues</h3>
+<ol type="1">
 <li>Compute the determinant of a small matrix.</li>
 <li>Use a determinant to determine whether a matrix is singular.</li>
 <li>Apply the definition and properties of eigenvalues and eigenvectors.</li>
@@ -1574,16 +1644,6 @@ No matching items
 <li>Find the algebraic and geometric multiplicities of an eigenvalue.</li>
 <li>Determine whether an eigenvalue or matrix is defective.</li>
 <li>Express a nondefective matrix in terms of its diagonalization.</li>
-</ol>
-</section>
-<section id="e.-vector-spaces" class="level3">
-<h3 class="anchored" data-anchor-id="e.-vector-spaces">E. Vector spaces</h3>
-<ol type="1">
-<li>Relate the abstract vector spaces <span class="math inline">\(\mathbb{R}^{m\times n}\)</span> and <span class="math inline">\(\mathcal{P}_n\)</span> to <span class="math inline">\(\mathbb{R}^n\)</span>.</li>
-<li>Determine whether given vectors in an abstract space are linearly independent.</li>
-<li>Determine whether a given vector lies in the span of other vectors in an abstract space.</li>
-<li>Compute the coordinates of a given vector in a given basis.</li>
-<li>Compute a change-of-basis matrix between two given bases.</li>
 </ol>
 </section>
 <section id="f.-linear-ode-systems" class="level3">

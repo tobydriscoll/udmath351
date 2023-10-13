@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Notes for Math 351 @ UD - 5&nbsp; Systems of ODEs</title>
+<title>Notes for Math 351 @ UD - 6&nbsp; Systems of ODEs</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -64,7 +64,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./matrix_algebra.html" rel="prev">
+<link href="./eigen.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -121,7 +121,7 @@ MathJax = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ode_systems.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Systems of ODEs</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ode_systems.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Systems of ODEs</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -178,8 +178,14 @@ MathJax = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./eigen.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Eigenvalues</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./ode_systems.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Systems of ODEs</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Systems of ODEs</span></span></a>
   </div>
 </li>
     </ul>
@@ -194,39 +200,39 @@ MathJax = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#introduction-to-systems" id="toc-introduction-to-systems" class="nav-link active" data-scroll-target="#introduction-to-systems"><span class="header-section-number">5.1</span> Introduction to systems</a>
+  <li><a href="#introduction-to-systems" id="toc-introduction-to-systems" class="nav-link active" data-scroll-target="#introduction-to-systems"><span class="header-section-number">6.1</span> Introduction to systems</a>
   <ul class="collapse">
-  <li><a href="#conversion-of-higher-order-odes" id="toc-conversion-of-higher-order-odes" class="nav-link" data-scroll-target="#conversion-of-higher-order-odes"><span class="header-section-number">5.1.1</span> Conversion of higher-order ODEs</a></li>
+  <li><a href="#conversion-of-higher-order-odes" id="toc-conversion-of-higher-order-odes" class="nav-link" data-scroll-target="#conversion-of-higher-order-odes"><span class="header-section-number">6.1.1</span> Conversion of higher-order ODEs</a></li>
   </ul></li>
-  <li><a href="#linear-ode-systems" id="toc-linear-ode-systems" class="nav-link" data-scroll-target="#linear-ode-systems"><span class="header-section-number">5.2</span> Linear ODE systems</a></li>
-  <li><a href="#general-solutions" id="toc-general-solutions" class="nav-link" data-scroll-target="#general-solutions"><span class="header-section-number">5.3</span> General solutions</a></li>
-  <li><a href="#homogeneous-equations" id="toc-homogeneous-equations" class="nav-link" data-scroll-target="#homogeneous-equations"><span class="header-section-number">5.4</span> Homogeneous equations</a>
+  <li><a href="#linear-ode-systems" id="toc-linear-ode-systems" class="nav-link" data-scroll-target="#linear-ode-systems"><span class="header-section-number">6.2</span> Linear ODE systems</a></li>
+  <li><a href="#general-solutions" id="toc-general-solutions" class="nav-link" data-scroll-target="#general-solutions"><span class="header-section-number">6.3</span> General solutions</a></li>
+  <li><a href="#homogeneous-equations" id="toc-homogeneous-equations" class="nav-link" data-scroll-target="#homogeneous-equations"><span class="header-section-number">6.4</span> Homogeneous equations</a>
   <ul class="collapse">
-  <li><a href="#fundamental-matrix" id="toc-fundamental-matrix" class="nav-link" data-scroll-target="#fundamental-matrix"><span class="header-section-number">5.4.1</span> Fundamental matrix</a></li>
-  <li><a href="#wronskian" id="toc-wronskian" class="nav-link" data-scroll-target="#wronskian"><span class="header-section-number">5.4.2</span> Wronskian</a></li>
+  <li><a href="#fundamental-matrix" id="toc-fundamental-matrix" class="nav-link" data-scroll-target="#fundamental-matrix"><span class="header-section-number">6.4.1</span> Fundamental matrix</a></li>
+  <li><a href="#wronskian" id="toc-wronskian" class="nav-link" data-scroll-target="#wronskian"><span class="header-section-number">6.4.2</span> Wronskian</a></li>
   </ul></li>
-  <li><a href="#constant-coefficient-problems" id="toc-constant-coefficient-problems" class="nav-link" data-scroll-target="#constant-coefficient-problems"><span class="header-section-number">5.5</span> Constant-coefficient problems</a>
+  <li><a href="#constant-coefficient-problems" id="toc-constant-coefficient-problems" class="nav-link" data-scroll-target="#constant-coefficient-problems"><span class="header-section-number">6.5</span> Constant-coefficient problems</a>
   <ul class="collapse">
-  <li><a href="#homogeneous-solution" id="toc-homogeneous-solution" class="nav-link" data-scroll-target="#homogeneous-solution"><span class="header-section-number">5.5.1</span> Homogeneous solution</a></li>
-  <li><a href="#complex-eigenvalues" id="toc-complex-eigenvalues" class="nav-link" data-scroll-target="#complex-eigenvalues"><span class="header-section-number">5.5.2</span> Complex eigenvalues</a></li>
-  <li><a href="#the-oscillator-reloaded" id="toc-the-oscillator-reloaded" class="nav-link" data-scroll-target="#the-oscillator-reloaded"><span class="header-section-number">5.5.3</span> The oscillator reloaded</a></li>
+  <li><a href="#homogeneous-solution" id="toc-homogeneous-solution" class="nav-link" data-scroll-target="#homogeneous-solution"><span class="header-section-number">6.5.1</span> Homogeneous solution</a></li>
+  <li><a href="#complex-eigenvalues" id="toc-complex-eigenvalues" class="nav-link" data-scroll-target="#complex-eigenvalues"><span class="header-section-number">6.5.2</span> Complex eigenvalues</a></li>
+  <li><a href="#the-oscillator-reloaded" id="toc-the-oscillator-reloaded" class="nav-link" data-scroll-target="#the-oscillator-reloaded"><span class="header-section-number">6.5.3</span> The oscillator reloaded</a></li>
   </ul></li>
-  <li><a href="#stability-and-the-phase-plane" id="toc-stability-and-the-phase-plane" class="nav-link" data-scroll-target="#stability-and-the-phase-plane"><span class="header-section-number">5.6</span> Stability and the phase plane</a>
+  <li><a href="#stability-and-the-phase-plane" id="toc-stability-and-the-phase-plane" class="nav-link" data-scroll-target="#stability-and-the-phase-plane"><span class="header-section-number">6.6</span> Stability and the phase plane</a>
   <ul class="collapse">
-  <li><a href="#stability" id="toc-stability" class="nav-link" data-scroll-target="#stability"><span class="header-section-number">5.6.1</span> Stability</a></li>
-  <li><a href="#phase-plane" id="toc-phase-plane" class="nav-link" data-scroll-target="#phase-plane"><span class="header-section-number">5.6.2</span> Phase plane</a></li>
-  <li><a href="#tracedeterminant" id="toc-tracedeterminant" class="nav-link" data-scroll-target="#tracedeterminant"><span class="header-section-number">5.6.3</span> Trace/determinant</a></li>
+  <li><a href="#stability" id="toc-stability" class="nav-link" data-scroll-target="#stability"><span class="header-section-number">6.6.1</span> Stability</a></li>
+  <li><a href="#phase-plane" id="toc-phase-plane" class="nav-link" data-scroll-target="#phase-plane"><span class="header-section-number">6.6.2</span> Phase plane</a></li>
+  <li><a href="#tracedeterminant" id="toc-tracedeterminant" class="nav-link" data-scroll-target="#tracedeterminant"><span class="header-section-number">6.6.3</span> Trace/determinant</a></li>
   </ul></li>
-  <li><a href="#the-matrix-exponential" id="toc-the-matrix-exponential" class="nav-link" data-scroll-target="#the-matrix-exponential"><span class="header-section-number">5.7</span> The matrix exponential</a>
+  <li><a href="#the-matrix-exponential" id="toc-the-matrix-exponential" class="nav-link" data-scroll-target="#the-matrix-exponential"><span class="header-section-number">6.7</span> The matrix exponential</a>
   <ul class="collapse">
-  <li><a href="#diagonalization" id="toc-diagonalization" class="nav-link" data-scroll-target="#diagonalization"><span class="header-section-number">5.7.1</span> Diagonalization</a></li>
-  <li><a href="#change-of-basis" id="toc-change-of-basis" class="nav-link" data-scroll-target="#change-of-basis"><span class="header-section-number">5.7.2</span> Change of basis</a></li>
-  <li><a href="#power-series" id="toc-power-series" class="nav-link" data-scroll-target="#power-series"><span class="header-section-number">5.7.3</span> Power series</a></li>
-  <li><a href="#computation" id="toc-computation" class="nav-link" data-scroll-target="#computation"><span class="header-section-number">5.7.4</span> Computation</a></li>
+  <li><a href="#diagonalization" id="toc-diagonalization" class="nav-link" data-scroll-target="#diagonalization"><span class="header-section-number">6.7.1</span> Diagonalization</a></li>
+  <li><a href="#change-of-basis" id="toc-change-of-basis" class="nav-link" data-scroll-target="#change-of-basis"><span class="header-section-number">6.7.2</span> Change of basis</a></li>
+  <li><a href="#power-series" id="toc-power-series" class="nav-link" data-scroll-target="#power-series"><span class="header-section-number">6.7.3</span> Power series</a></li>
+  <li><a href="#computation" id="toc-computation" class="nav-link" data-scroll-target="#computation"><span class="header-section-number">6.7.4</span> Computation</a></li>
   </ul></li>
-  <li><a href="#linearization" id="toc-linearization" class="nav-link" data-scroll-target="#linearization"><span class="header-section-number">5.8</span> Linearization</a>
+  <li><a href="#linearization" id="toc-linearization" class="nav-link" data-scroll-target="#linearization"><span class="header-section-number">6.8</span> Linearization</a>
   <ul class="collapse">
-  <li><a href="#stability-1" id="toc-stability-1" class="nav-link" data-scroll-target="#stability-1"><span class="header-section-number">5.8.1</span> Stability</a></li>
+  <li><a href="#stability-1" id="toc-stability-1" class="nav-link" data-scroll-target="#stability-1"><span class="header-section-number">6.8.1</span> Stability</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -236,7 +242,7 @@ MathJax = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Systems of ODEs</span></h1>
+<h1 class="title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Systems of ODEs</span></h1>
 </div>
 
 
@@ -307,6 +313,8 @@ MathJax = {
     \newcommand{\sign}{\operatorname{sign}}
     \newcommand{\dist}{\operatorname{dist}}
     \newcommand{\simil}{\operatorname{sim}}
+    \newcommand{\vec}{\operatorname{vec}}
+    \newcommand{\unvec}{\operatorname{unvec}}
     \newcommand{\ee}{\times 10^}
     \newcommand{\floor}[1]{\lfloor#1\rfloor}
     \newcommand{\argmin}{\operatorname{argmin}}
@@ -327,22 +335,22 @@ MathJax = {
 </details>
 </div>
 <p>We are finally ready to fuse together the two major themes of the course: dynamics and multiple variables.</p>
-<section id="introduction-to-systems" class="level2" data-number="5.1">
-<h2 data-number="5.1" class="anchored" data-anchor-id="introduction-to-systems"><span class="header-section-number">5.1</span> Introduction to systems</h2>
+<section id="introduction-to-systems" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="introduction-to-systems"><span class="header-section-number">6.1</span> Introduction to systems</h2>
 <p>A <strong>vector-valued ODE</strong> is an equation in the form</p>
 <p><span id="eq-intro-vector-ode"><span class="math display">\[
 \frac{d \bfx}{dt} = \bff(t,\bfx),
-\tag{5.1}\]</span></span></p>
-<p>where <span class="math inline">\(\bfx\)</span> is an <span class="math inline">\(n\)</span>-dimensional vector. An equivalent point of view is to write <a href="#eq-intro-vector-ode" class="quarto-xref">Equation&nbsp;<span>5.1</span></a> as a coupled system of scalar ODEs:</p>
+\tag{6.1}\]</span></span></p>
+<p>where <span class="math inline">\(\bfx\)</span> is an <span class="math inline">\(n\)</span>-dimensional vector. An equivalent point of view is to write <a href="#eq-intro-vector-ode" class="quarto-xref">Equation&nbsp;<span>6.1</span></a> as a coupled system of scalar ODEs:</p>
 <p><span id="eq-intro-system"><span class="math display">\[
 \begin{split}
 \frac{dx_1}{dt} &amp;= f_1(t,x_1,\ldots,x_n),\\
 &amp; \vdots \\
 \frac{dx_n}{dt} &amp;= f_n(t,x_1,\ldots,x_n).
 \end{split}
-\tag{5.2}\]</span></span></p>
-<div id="exm-odesys-lorenz" class="theorem example" data-chapter="5" data-description="Lorenz system">
-<p><span class="theorem-title"><strong>Example 5.1 </strong></span>A famous system of three ODEs is the <strong>Lorenz system</strong>,</p>
+\tag{6.2}\]</span></span></p>
+<div id="exm-odesys-lorenz" class="theorem example" data-chapter="6" data-description="Lorenz system">
+<p><span class="theorem-title"><strong>Example 6.1 </strong></span>A famous system of three ODEs is the <strong>Lorenz system</strong>,</p>
 <p><span class="math display">\[
 \begin{split}
 \dot{x} &amp; = \sigma(y-x), \\
@@ -353,14 +361,14 @@ MathJax = {
 <p>where the dots indicate time derivatives and <span class="math inline">\(\sigma\)</span>, <span class="math inline">\(\rho\)</span>, and <span class="math inline">\(\beta\)</span> are constant parameters. Conversion to the system notation follows from the definitions <span class="math inline">\(x_1=x\)</span>, <span class="math inline">\(x_2=y\)</span>, and <span class="math inline">\(x_3=z\)</span>, though of course the ordering is arbitrary.</p>
 <p>This system is famous for its chaotic behavior and helped inspire the term <em>butterfly effect</em>. The <a href="https://en.wikipedia.org/wiki/Lorenz_system">Wikipedia page</a> has a nice <a href="https://en.wikipedia.org/wiki/File:Lorenz_attractor_in_Julia.gif">animation</a> of a solution.</p>
 </div>
-<p>To define an initial-value problem, we supplement <a href="#eq-intro-vector-ode" class="quarto-xref">Equation&nbsp;<span>5.1</span></a> with the initial condition</p>
+<p>To define an initial-value problem, we supplement <a href="#eq-intro-vector-ode" class="quarto-xref">Equation&nbsp;<span>6.1</span></a> with the initial condition</p>
 <p><span class="math display">\[
 \bfx(0) = \bfx_0.
 \]</span></p>
-<p>We will shortly be limiting our attention to systems in which the dependence in <a href="#eq-intro-system" class="quarto-xref">Equation&nbsp;<span>5.2</span></a> of each <span class="math inline">\(f_i\)</span> on each <span class="math inline">\(x_j\)</span> is linear. First, though, we mention an important connection between first-order systems and higher-order problems.</p>
-<section id="conversion-of-higher-order-odes" class="level3" data-number="5.1.1">
-<h3 data-number="5.1.1" class="anchored" data-anchor-id="conversion-of-higher-order-odes"><span class="header-section-number">5.1.1</span> Conversion of higher-order ODEs</h3>
-<p>The restriction to first-order ODEs in <a href="#eq-intro-vector-ode" class="quarto-xref">Equation&nbsp;<span>5.1</span></a> actually turns out to be no limitation at all. Any higher-order equation, or system of higher-order equations, can be converted to a first-order system by increasing the dimension.</p>
+<p>We will shortly be limiting our attention to systems in which the dependence in <a href="#eq-intro-system" class="quarto-xref">Equation&nbsp;<span>6.2</span></a> of each <span class="math inline">\(f_i\)</span> on each <span class="math inline">\(x_j\)</span> is linear. First, though, we mention an important connection between first-order systems and higher-order problems.</p>
+<section id="conversion-of-higher-order-odes" class="level3" data-number="6.1.1">
+<h3 data-number="6.1.1" class="anchored" data-anchor-id="conversion-of-higher-order-odes"><span class="header-section-number">6.1.1</span> Conversion of higher-order ODEs</h3>
+<p>The restriction to first-order ODEs in <a href="#eq-intro-vector-ode" class="quarto-xref">Equation&nbsp;<span>6.1</span></a> actually turns out to be no limitation at all. Any higher-order equation, or system of higher-order equations, can be converted to a first-order system by increasing the dimension.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -374,8 +382,8 @@ Note
 <p>Each order of a derivative beyond the first can be exchanged for a dimension.</p>
 </div>
 </div>
-<div id="exm-intro-pendulum" class="theorem example" data-chapter="5" data-description="Nonlinear pendulum">
-<p><span class="theorem-title"><strong>Example 5.2 </strong></span>The nonlinear pendulum equation</p>
+<div id="exm-intro-pendulum" class="theorem example" data-chapter="6" data-description="Nonlinear pendulum">
+<p><span class="theorem-title"><strong>Example 6.2 </strong></span>The nonlinear pendulum equation</p>
 <p><span class="math display">\[
 \theta'' + \frac{g}{L} \sin(\theta) = f(t)
 \]</span></p>
@@ -386,11 +394,11 @@ x_1' &amp;= x_2 \\
 x_2' &amp;= f(t) - \frac{g}{L}\sin(x_1),    
 \end{split}
 \]</span></p>
-<p>which is of the form <a href="#eq-intro-vector-ode" class="quarto-xref">Equation&nbsp;<span>5.1</span></a>.</p>
+<p>which is of the form <a href="#eq-intro-vector-ode" class="quarto-xref">Equation&nbsp;<span>6.1</span></a>.</p>
 </div>
-<p>The transformation in <a href="#exm-intro-pendulum" class="quarto-xref">Example&nbsp;<span>5.2</span></a> has the physical interpretation of using position and angular momentum as the dependent unknowns; together these are the <strong>state</strong> of the system. The technique is straightforward to generalize to any problem or system having ODEs of order greater than one. We will encounter just one more significant example.</p>
-<div id="exm-odesys-sho" class="theorem example" data-chapter="5" data-description="Simple harmonic oscillator, as system">
-<p><span class="theorem-title"><strong>Example 5.3 </strong></span>The simple harmonic oscillator</p>
+<p>The transformation in <a href="#exm-intro-pendulum" class="quarto-xref">Example&nbsp;<span>6.2</span></a> has the physical interpretation of using position and angular momentum as the dependent unknowns; together these are the <strong>state</strong> of the system. The technique is straightforward to generalize to any problem or system having ODEs of order greater than one. We will encounter just one more significant example.</p>
+<div id="exm-odesys-sho" class="theorem example" data-chapter="6" data-description="Simple harmonic oscillator, as system">
+<p><span class="theorem-title"><strong>Example 6.3 </strong></span>The simple harmonic oscillator</p>
 <p><span class="math display">\[
 x'' + 2 \zeta \omega_0 x' + \omega_0^2 x = f(t)
 \]</span></p>
@@ -454,14 +462,14 @@ The result is a four-dimensional, first-order system $\mathbf{u}'=\mathbf{f}(t,\
 :::: -->
 </section>
 </section>
-<section id="linear-ode-systems" class="level2" data-number="5.2">
-<h2 data-number="5.2" class="anchored" data-anchor-id="linear-ode-systems"><span class="header-section-number">5.2</span> Linear ODE systems</h2>
-<p>Rather than the fully general system <a href="#eq-intro-vector-ode" class="quarto-xref">Equation&nbsp;<span>5.1</span></a>, we will focus on linear problems.</p>
+<section id="linear-ode-systems" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="linear-ode-systems"><span class="header-section-number">6.2</span> Linear ODE systems</h2>
+<p>Rather than the fully general system <a href="#eq-intro-vector-ode" class="quarto-xref">Equation&nbsp;<span>6.1</span></a>, we will focus on linear problems.</p>
 <div id="def-linear-ODE-system" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 5.1 (Linear system of ODEs) </strong></span>A <strong>linear ODE system</strong> is an equation of the form</p>
+<p><span class="theorem-title"><strong>Definition 6.1 (Linear system of ODEs) </strong></span>A <strong>linear ODE system</strong> is an equation of the form</p>
 <p><span id="eq-structure-vector-linear"><span class="math display">\[
 \mathbf{x}'(t) = \mathbf{A}(t)\mathbf{x}(t) + \bff(t),
-\tag{5.3}\]</span></span></p>
+\tag{6.3}\]</span></span></p>
 <p>where <span class="math inline">\(\mathbf{x}(t)\)</span> is an <span class="math inline">\(n\)</span>-dimensional vector-valued function, <span class="math inline">\(\mathbf{A}(t)\)</span> is an <span class="math inline">\(n\times n\)</span> <strong>coefficient matrix</strong>, and <span class="math inline">\(\bff(t)\)</span> is an <span class="math inline">\(n\)</span>-dimensional <strong>forcing function</strong>. If the coefficient matrix does not depend on time, the system is said to be <strong>constant-coefficient</strong>.</p>
 <p>An <strong>initial condition</strong> for the system is a time <span class="math inline">\(t_0\)</span> and vector <span class="math inline">\(\mathbf{x}_0\)</span> such that <span class="math inline">\(\mathbf{x}(t_0)=\mathbf{x}_0\)</span>.</p>
 </div>
@@ -475,18 +483,18 @@ Important
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>The matrix in <a href="#eq-structure-vector-linear" class="quarto-xref">Equation&nbsp;<span>5.3</span></a> must be square.</p>
+<p>The matrix in <a href="#eq-structure-vector-linear" class="quarto-xref">Equation&nbsp;<span>6.3</span></a> must be square.</p>
 </div>
 </div>
-<div id="exm-odesys-sho-vector" class="theorem example" data-chapter="5" data-description="Simple harmonic oscillator, vector form">
-<p><span class="theorem-title"><strong>Example 5.4 </strong></span>The simple harmonic oscillator system in <a href="#exm-odesys-sho" class="quarto-xref">Example&nbsp;<span>5.3</span></a> is equivalent to</p>
+<div id="exm-odesys-sho-vector" class="theorem example" data-chapter="6" data-description="Simple harmonic oscillator, vector form">
+<p><span class="theorem-title"><strong>Example 6.4 </strong></span>The simple harmonic oscillator system in <a href="#exm-odesys-sho" class="quarto-xref">Example&nbsp;<span>6.3</span></a> is equivalent to</p>
 <p><span class="math display">\[
 \bfu' = \twomat{0}{1}{-\omega_0^2}{-2 \omega_0 \zeta} \bfu + \twovec{0}{f},
 \]</span></p>
 <p>where <span class="math inline">\(u_1 = x\)</span>, <span class="math inline">\(u_2 = x'\)</span> is the state vector.</p>
 </div>
-<div id="exm-intro-twotanks" class="theorem example" data-chapter="5" data-description="Connected tanks">
-<p><span class="theorem-title"><strong>Example 5.5 </strong></span>Suppose two connected tanks hold brine. Tank 1 holds 100 L, has an input of 4 L/hr of brine of concentration 3 kg/L, and an output of 6 L/hr. Tank 2 holds 200 L, has an input of 7 L/hr of brine of concentration 5 kg/L, and an output of 5 L/hr. Tank 1 pumps 1 L/hr into tank 2, and tank 2 pumps 3 L/hr into tank 1.</p>
+<div id="exm-intro-twotanks" class="theorem example" data-chapter="6" data-description="Connected tanks">
+<p><span class="theorem-title"><strong>Example 6.5 </strong></span>Suppose two connected tanks hold brine. Tank 1 holds 100 L, has an input of 4 L/hr of brine of concentration 3 kg/L, and an output of 6 L/hr. Tank 2 holds 200 L, has an input of 7 L/hr of brine of concentration 5 kg/L, and an output of 5 L/hr. Tank 1 pumps 1 L/hr into tank 2, and tank 2 pumps 3 L/hr into tank 1.</p>
 <p>Let <span class="math inline">\(x_i(t)\)</span> be the mass of salt in tank <span class="math inline">\(i\)</span>. The statements above imply</p>
 <p><span class="math display">\[
 \begin{split}
@@ -499,8 +507,8 @@ Important
 \dd{}{t} \twovec{x_1}{x_2} = \frac{1}{200}\twomat{-14}{3}{2}{-8} \twovec{x_1}{x_2} + \twovec{12}{35}.
 \]</span></p>
 </div>
-<div id="exm-intro-heating" class="theorem example" data-chapter="5" data-description="Heating a house">
-<p><span class="theorem-title"><strong>Example 5.6 </strong></span>Here is a basic model for heating in a house. Let <span class="math inline">\(b(t)\)</span> be the temperature of the basement, <span class="math inline">\(m(t)\)</span> be the temperature of the main living area, and <span class="math inline">\(a(t)\)</span> be the temperature of the attic. Suppose the ground is at a constant 10 degrees C. We use a Newtonian model to describe how the temperature of the basement evolves due to interactions with the earth and the main floor:</p>
+<div id="exm-intro-heating" class="theorem example" data-chapter="6" data-description="Heating a house">
+<p><span class="theorem-title"><strong>Example 6.6 </strong></span>Here is a basic model for heating in a house. Let <span class="math inline">\(b(t)\)</span> be the temperature of the basement, <span class="math inline">\(m(t)\)</span> be the temperature of the main living area, and <span class="math inline">\(a(t)\)</span> be the temperature of the attic. Suppose the ground is at a constant 10 degrees C. We use a Newtonian model to describe how the temperature of the basement evolves due to interactions with the earth and the main floor:</p>
 <p><span class="math display">\[
 \frac{db}{dt} = -k_b (b - 10) - k_{mb} (b-m).
 \]</span></p>
@@ -535,11 +543,11 @@ Note
 </div>
 </div>
 </section>
-<section id="general-solutions" class="level2" data-number="5.3">
-<h2 data-number="5.3" class="anchored" data-anchor-id="general-solutions"><span class="header-section-number">5.3</span> General solutions</h2>
+<section id="general-solutions" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="general-solutions"><span class="header-section-number">6.3</span> General solutions</h2>
 <p>Virtually all of the theoretical statements we made about the scalar linear problem <span class="math inline">\(x'=a(t)x+f(t)\)</span> can be remade with boldface/capital letters for the linear system <span class="math inline">\(\mathbf{x}'=\mathbf{A}(t)\mathbf{x}+\bff(t)\)</span>. Those statements relied mainly on linearity. Most notably:</p>
 <div id="thm-intro-general-system" class="theorem">
-<p><span class="theorem-title"><strong>Theorem 5.1 (General solution of ODE linear system) </strong></span>Every solution of</p>
+<p><span class="theorem-title"><strong>Theorem 6.1 (General solution of ODE linear system) </strong></span>Every solution of</p>
 <p><span class="math display">\[
 \mathbf{x}'=\mathbf{A}(t)\mathbf{x}+\bff(t)
 \]</span></p>
@@ -551,36 +559,36 @@ Note
 </div>
 <p>Once again, then, we look first at the homogeneous system with no forcing term.</p>
 </section>
-<section id="homogeneous-equations" class="level2" data-number="5.4">
-<h2 data-number="5.4" class="anchored" data-anchor-id="homogeneous-equations"><span class="header-section-number">5.4</span> Homogeneous equations</h2>
+<section id="homogeneous-equations" class="level2" data-number="6.4">
+<h2 data-number="6.4" class="anchored" data-anchor-id="homogeneous-equations"><span class="header-section-number">6.4</span> Homogeneous equations</h2>
 <p>Given <span id="eq-structure-homog"><span class="math display">\[
 \mathbf{x}' = \mathbf{A}(t)\mathbf{x},
-\tag{5.4}\]</span></span></p>
+\tag{6.4}\]</span></span></p>
 <p>where <span class="math inline">\(\mathbf{x}\in\mathbb{R}^{n}\)</span> and <span class="math inline">\(\mathbf{A}\in\mathbb{R}^{n\times n}\)</span>, we can easily show in the usual way that any linear combination of solutions is also a solution. In fact, we have a new way of stating this result.</p>
 <div id="def-structure-space" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 5.2 (Solution space) </strong></span>The set of all solutions of a homogeneous equation <span class="math inline">\(\mathbf{x}' = \mathbf{A}(t)\mathbf{x}\)</span> is a subspace of vector-valued functions called the <strong>solution space</strong>.</p>
+<p><span class="theorem-title"><strong>Definition 6.2 (Solution space) </strong></span>The set of all solutions of a homogeneous equation <span class="math inline">\(\mathbf{x}' = \mathbf{A}(t)\mathbf{x}\)</span> is a subspace of vector-valued functions called the <strong>solution space</strong>.</p>
 </div>
 <p>Our first major goal is to find a basis for the solution space.</p>
-<section id="fundamental-matrix" class="level3" data-number="5.4.1">
-<h3 data-number="5.4.1" class="anchored" data-anchor-id="fundamental-matrix"><span class="header-section-number">5.4.1</span> Fundamental matrix</h3>
-<p>Suppose <span class="math inline">\(\mathbf{x}_1,\ldots,\mathbf{x}_m\)</span> are homogeneous solutions of <a href="#eq-structure-homog" class="quarto-xref">Equation&nbsp;<span>5.4</span></a>, and that we use a linear combination of them to satisfy an initial condition <span class="math inline">\(\mathbf{x}(0)=\mathbf{x}_0\)</span>:</p>
+<section id="fundamental-matrix" class="level3" data-number="6.4.1">
+<h3 data-number="6.4.1" class="anchored" data-anchor-id="fundamental-matrix"><span class="header-section-number">6.4.1</span> Fundamental matrix</h3>
+<p>Suppose <span class="math inline">\(\mathbf{x}_1,\ldots,\mathbf{x}_m\)</span> are homogeneous solutions of <a href="#eq-structure-homog" class="quarto-xref">Equation&nbsp;<span>6.4</span></a>, and that we use a linear combination of them to satisfy an initial condition <span class="math inline">\(\mathbf{x}(0)=\mathbf{x}_0\)</span>:</p>
 <p><span class="math display">\[
     c_1 \mathbf{x}_1(0) + \cdots + c_m \mathbf{x}_m(0) = \mathbf{x}_0.
 \]</span></p>
 <p>Using the equivalence of linear combination with matrix-vector multiplication, we define the <span class="math inline">\(n\times m\)</span> matrix</p>
 <p><span id="eq-structure-fundamental"><span class="math display">\[
 \fundm(t) = \bigl[ \mathbf{x}_1(t) \; \mathbf{x}_2(t) \; \cdots \; \mathbf{x}_m(t)  \bigr],
-\tag{5.5}\]</span></span></p>
+\tag{6.5}\]</span></span></p>
 <p>so that</p>
 <p><span id="eq-structure-fundamental-init"><span class="math display">\[
 \fundm(0) \begin{bmatrix} c_1 \\ c_2 \\ \vdots \\ c_m \end{bmatrix} = \mathbf{x}_0.
-\tag{5.6}\]</span></span></p>
+\tag{6.6}\]</span></span></p>
 <p>This is a linear algebraic system for the coefficients <span class="math inline">\(c_i\)</span>. We can expect a unique solution if and only if <span class="math inline">\(m=n\)</span> and <span class="math inline">\(\bfX(0)\)</span> is invertible.</p>
 <div id="def-structure-fundamental" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 5.3 (Fundamental matrix) </strong></span>The <span class="math inline">\(n\times n\)</span> matrix <span class="math inline">\(\fundm(t)\)</span> is a <strong>fundamental matrix</strong> of the homogeneous system <span class="math inline">\(\mathbf{x}' = \mathbf{A}(t)\mathbf{x}\)</span> if its columns satisfy</p>
+<p><span class="theorem-title"><strong>Definition 6.3 (Fundamental matrix) </strong></span>The <span class="math inline">\(n\times n\)</span> matrix <span class="math inline">\(\fundm(t)\)</span> is a <strong>fundamental matrix</strong> of the homogeneous system <span class="math inline">\(\mathbf{x}' = \mathbf{A}(t)\mathbf{x}\)</span> if its columns satisfy</p>
 <p><span id="eq-structure-columns"><span class="math display">\[
 \mathbf{x}_j'=\mathbf{A}\mathbf{x}_j, \quad j=1,\ldots,n,
-\tag{5.7}\]</span></span></p>
+\tag{6.7}\]</span></span></p>
 <p>and <span class="math inline">\(\fundm(t)\)</span> is invertible at all times in an open interval <span class="math inline">\(I\)</span> where <span class="math inline">\(\bfA\)</span> is continuous. Equivalently,</p>
 <p><span class="math display">\[
 \fundm'=\bfA\fundm.
@@ -596,37 +604,37 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Because <a href="#def-structure-fundamental" class="quarto-xref">Definition&nbsp;<span>5.3</span></a> says nothing about an initial condition, a homogeneous ODE has infinitely many fundamental matrices.</p>
+<p>Because <a href="#def-structure-fundamental" class="quarto-xref">Definition&nbsp;<span>6.3</span></a> says nothing about an initial condition, a homogeneous ODE has infinitely many fundamental matrices.</p>
 </div>
 </div>
 <p>A fundamental matrix gives all we need to construct the general homogeneous solution.</p>
 <div id="thm-" class="theorem">
-<p><span class="theorem-title"><strong>Theorem 5.2 </strong></span>If <span class="math inline">\(\fundm\)</span> is a fundamental matrix for <span class="math inline">\(\bfx'=\bfA(t)\bfx\)</span>, then the general solution of this system is</p>
+<p><span class="theorem-title"><strong>Theorem 6.2 </strong></span>If <span class="math inline">\(\fundm\)</span> is a fundamental matrix for <span class="math inline">\(\bfx'=\bfA(t)\bfx\)</span>, then the general solution of this system is</p>
 <p><span class="math display">\[
 \bfx_h = \mathbf{x}(t)=\fundm(t)\mathbf{c},
 \]</span></p>
 <p>for an arbitrary constant vector <span class="math inline">\(\mathbf{c}\)</span>.</p>
 </div>
 </section>
-<section id="wronskian" class="level3" data-number="5.4.2">
-<h3 data-number="5.4.2" class="anchored" data-anchor-id="wronskian"><span class="header-section-number">5.4.2</span> Wronskian</h3>
+<section id="wronskian" class="level3" data-number="6.4.2">
+<h3 data-number="6.4.2" class="anchored" data-anchor-id="wronskian"><span class="header-section-number">6.4.2</span> Wronskian</h3>
 <p>Since invertibility is required for a fundamental matrix, we should not be surprised to see its determinant popping up.</p>
 <div id="def-structure-wronskian" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 5.4 (Wronskian) </strong></span>Let <span class="math inline">\(\mathbf{x}_1,\ldots,\mathbf{x}_n\)</span> be a collection of vector-valued functions where each <span class="math inline">\(\bfx_i\)</span> is <span class="math inline">\(n\)</span>-dimensional. Their <strong>Wronskian</strong> is a function of <span class="math inline">\(t\)</span> defined by</p>
+<p><span class="theorem-title"><strong>Definition 6.4 (Wronskian) </strong></span>Let <span class="math inline">\(\mathbf{x}_1,\ldots,\mathbf{x}_n\)</span> be a collection of vector-valued functions where each <span class="math inline">\(\bfx_i\)</span> is <span class="math inline">\(n\)</span>-dimensional. Their <strong>Wronskian</strong> is a function of <span class="math inline">\(t\)</span> defined by</p>
 <p><span class="math display">\[
 W(\bfx_1,\ldots,\bfx_n) = \det\Bigl( \bigl[ \mathbf{x}_1(t) \: \cdots \: \mathbf{x}_n(t)  \bigr] \Bigr).
 \]</span></p>
 </div>
 <div id="thm-structure-wronskian" class="theorem">
-<p><span class="theorem-title"><strong>Theorem 5.3 </strong></span>Suppose that <span class="math inline">\(\mathbf{x}_1,\ldots,\mathbf{x}_n\)</span> are solutions of <a href="#eq-structure-homog" class="quarto-xref">Equation&nbsp;<span>5.4</span></a>, and <span class="math inline">\(I\)</span> is an interval where <span class="math inline">\(\bfA(t)\)</span> is continuous. The following are equivalent statements:</p>
+<p><span class="theorem-title"><strong>Theorem 6.3 </strong></span>Suppose that <span class="math inline">\(\mathbf{x}_1,\ldots,\mathbf{x}_n\)</span> are solutions of <a href="#eq-structure-homog" class="quarto-xref">Equation&nbsp;<span>6.4</span></a>, and <span class="math inline">\(I\)</span> is an interval where <span class="math inline">\(\bfA(t)\)</span> is continuous. The following are equivalent statements:</p>
 <ol type="1">
 <li><span class="math inline">\(\mathbf{x}_1,\ldots,\mathbf{x}_n\)</span> are linearly independent in <span class="math inline">\(I\)</span>.</li>
 <li><span class="math inline">\(\mathbf{x}_1,\ldots,\mathbf{x}_n\)</span> are columns of a fundamental matrix.</li>
 <li>The Wronksian <span class="math inline">\(W(\mathbf{x}_1,\ldots,\mathbf{x}_n)\)</span> is nonzero at all <span class="math inline">\(t\in I\)</span>.</li>
 </ol>
 </div>
-<div id="exm-odesys-wronskian" class="theorem example" data-chapter="5" data-description="Wronskian of an ODE system">
-<p><span class="theorem-title"><strong>Example 5.7 </strong></span>Suppose we have two solutions</p>
+<div id="exm-odesys-wronskian" class="theorem example" data-chapter="6" data-description="Wronskian of an ODE system">
+<p><span class="theorem-title"><strong>Example 6.7 </strong></span>Suppose we have two solutions</p>
 <p><span class="math display">\[
 \mathbf{x}_1(t)=e^{\lambda_1 t}\mathbf{v}_1, \quad \mathbf{x}_2(t)=e^{\lambda_2 t}\mathbf{v}_2,
 \]</span></p>
@@ -645,13 +653,13 @@ W(t) &amp; = \det\Bigl( \bigl[ \mathbf{x}_1(t) \: \mathbf{x}_2(t)  \bigr] \Bigr)
 </div>
 </section>
 </section>
-<section id="constant-coefficient-problems" class="level2" data-number="5.5">
-<h2 data-number="5.5" class="anchored" data-anchor-id="constant-coefficient-problems"><span class="header-section-number">5.5</span> Constant-coefficient problems</h2>
+<section id="constant-coefficient-problems" class="level2" data-number="6.5">
+<h2 data-number="6.5" class="anchored" data-anchor-id="constant-coefficient-problems"><span class="header-section-number">6.5</span> Constant-coefficient problems</h2>
 <p>While the theory of homogeneous linear ODE systems is fairly straightforward, the good news for the general case pretty much ends there. In most problems we cannot get a useful expression for a fundamental matrix. But there is a very important special case in which we can say a lot: when the coefficient matrix is constant.</p>
 <p>Accordingly, we now specialize to</p>
 <p><span id="eq-system-constcoeff"><span class="math display">\[
 \bfx' = \bfA \bfx,
-\tag{5.8}\]</span></span></p>
+\tag{6.8}\]</span></span></p>
 <p>where <span class="math inline">\(\bfA\)</span> is an <span class="math inline">\(n\times n\)</span> <em>constant</em> matrix. We are finally ready to see the significance of the eigenvalue condition</p>
 <p><span class="math display">\[
 \mathbf{A} \mathbf{v} = \lambda \mathbf{v}.
@@ -659,17 +667,17 @@ W(t) &amp; = \det\Bigl( \bigl[ \mathbf{x}_1(t) \: \mathbf{x}_2(t)  \bigr] \Bigr)
 <p>Let’s define</p>
 <p><span id="eq-system-eigvec-solution"><span class="math display">\[
 \bfx(t) = e^{\lambda t} \bfv.
-\tag{5.9}\]</span></span></p>
+\tag{6.9}\]</span></span></p>
 <p>We find that</p>
 <p><span class="math display">\[
 \bfx'(t) = \lambda e^{\lambda t} \bfv = e^{\lambda t} (\lambda \bfv) = e^{\lambda t} (\bfA \bfv)  = \bfA (e^{\lambda t} \bfv).
 \]</span></p>
 <p>That is:</p>
 <div id="thm-odesys-eigvec-solution" class="theorem">
-<p><span class="theorem-title"><strong>Theorem 5.4 </strong></span>If <span class="math inline">\(\mathbf{A} \mathbf{v} = \lambda \mathbf{v}\)</span>, then <a href="#eq-system-eigvec-solution" class="quarto-xref">Equation&nbsp;<span>5.9</span></a> is a solution of <a href="#eq-system-constcoeff" class="quarto-xref">Equation&nbsp;<span>5.8</span></a>.</p>
+<p><span class="theorem-title"><strong>Theorem 6.4 </strong></span>If <span class="math inline">\(\mathbf{A} \mathbf{v} = \lambda \mathbf{v}\)</span>, then <a href="#eq-system-eigvec-solution" class="quarto-xref">Equation&nbsp;<span>6.9</span></a> is a solution of <a href="#eq-system-constcoeff" class="quarto-xref">Equation&nbsp;<span>6.8</span></a>.</p>
 </div>
-<section id="homogeneous-solution" class="level3" data-number="5.5.1">
-<h3 data-number="5.5.1" class="anchored" data-anchor-id="homogeneous-solution"><span class="header-section-number">5.5.1</span> Homogeneous solution</h3>
+<section id="homogeneous-solution" class="level3" data-number="6.5.1">
+<h3 data-number="6.5.1" class="anchored" data-anchor-id="homogeneous-solution"><span class="header-section-number">6.5.1</span> Homogeneous solution</h3>
 <p>Counting algebraic multiplicities, we know that <span class="math inline">\(\mathbf{A}\)</span> has eigenvalues <span class="math inline">\(\lambda_1,\ldots,\lambda_n\)</span>. Say that we have eigenvectors <span class="math inline">\(\mathbf{v}_1,\ldots,\mathbf{v}_n\)</span> to go with them. Then we have <span class="math inline">\(n\)</span> homogeneous solutions</p>
 <p><span class="math display">\[
 \mathbf{x}_j(t) = e^{t \lambda_j} \mathbf{v}_j, \quad j=1,\ldots,n.
@@ -678,23 +686,23 @@ W(t) &amp; = \det\Bigl( \bigl[ \mathbf{x}_1(t) \: \mathbf{x}_2(t)  \bigr] \Bigr)
 <p><span class="math display">\[
 \bigl[ \mathbf{x}_1(t) \; \mathbf{x}_2(t) \; \cdots \; \mathbf{x}_n(t)  \bigr]
 \]</span></p>
-<p>is a fundamental matrix. According to <a href="#thm-structure-wronskian" class="quarto-xref">Theorem&nbsp;<span>5.3</span></a>, we can ask that question at any value of <span class="math inline">\(t\)</span>, including <span class="math inline">\(t=0\)</span>. So the key issue is whether</p>
+<p>is a fundamental matrix. According to <a href="#thm-structure-wronskian" class="quarto-xref">Theorem&nbsp;<span>6.3</span></a>, we can ask that question at any value of <span class="math inline">\(t\)</span>, including <span class="math inline">\(t=0\)</span>. So the key issue is whether</p>
 <p><span id="eq-eigenmat"><span class="math display">\[
 \bfV = \bigl[ \mathbf{v}_1 \; \mathbf{v}_2 \; \cdots \; \mathbf{v}_n  \bigr]
-\tag{5.10}\]</span></span></p>
+\tag{6.10}\]</span></span></p>
 <p>is invertible. If so, then we have the ingredients of the general homogeneous solution.</p>
 <div id="thm-cc-eigensolution" class="theorem">
-<p><span class="theorem-title"><strong>Theorem 5.5 (Solution by eigenvectors) </strong></span>Let <span class="math inline">\(\mathbf{A}\)</span> have eigenvalues <span class="math inline">\(\lambda_1,\ldots,\lambda_n\)</span> and corresponding eigenvectors <span class="math inline">\(\mathbf{v}_1,\ldots,\mathbf{v}_n\)</span>. If <span class="math inline">\(\bfA\)</span> is diagonalizable, then</p>
+<p><span class="theorem-title"><strong>Theorem 6.5 (Solution by eigenvectors) </strong></span>Let <span class="math inline">\(\mathbf{A}\)</span> have eigenvalues <span class="math inline">\(\lambda_1,\ldots,\lambda_n\)</span> and corresponding eigenvectors <span class="math inline">\(\mathbf{v}_1,\ldots,\mathbf{v}_n\)</span>. If <span class="math inline">\(\bfA\)</span> is diagonalizable, then</p>
 <p><span id="eq-fs-eq-eigenfundamental"><span class="math display">\[
 \fundm(t) = \begin{bmatrix}
 e^{t \lambda_1} \mathbf{v}_1 &amp; \cdots &amp; e^{t \lambda_n} \mathbf{v}_n
 \end{bmatrix}
-\tag{5.11}\]</span></span></p>
+\tag{6.11}\]</span></span></p>
 <p>is a fundamental matrix for <span class="math inline">\(\mathbf{x}'=\mathbf{A}\mathbf{x}\)</span>, and the general solution can be expressed as</p>
 <p><span id="eq-cc-eigengeneral"><span class="math display">\[
 \mathbf{x}(t) = \fundm(t)\mathbf{c} = c_1 e^{t \lambda_1} \mathbf{v}_1 + \cdots + c_n e^{t \lambda_n} \mathbf{v}_n.
-\tag{5.12}\]</span></span></p>
-<p>In particular, <a href="#eq-fs-eq-eigenfundamental" class="quarto-xref">Equation&nbsp;<span>5.11</span></a> and <a href="#eq-cc-eigengeneral" class="quarto-xref">Equation&nbsp;<span>5.12</span></a> hold if the eigenvalues of <span class="math inline">\(\bfA\)</span> are distinct (i. e., all of them are simple).</p>
+\tag{6.12}\]</span></span></p>
+<p>In particular, <a href="#eq-fs-eq-eigenfundamental" class="quarto-xref">Equation&nbsp;<span>6.11</span></a> and <a href="#eq-cc-eigengeneral" class="quarto-xref">Equation&nbsp;<span>6.12</span></a> hold if the eigenvalues of <span class="math inline">\(\bfA\)</span> are distinct (i. e., all of them are simple).</p>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -706,11 +714,11 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><a href="#thm-cc-eigensolution" class="quarto-xref">Theorem&nbsp;<span>5.5</span></a> requires that <span class="math inline">\(\bfA\)</span> be diagonalizable. Solutions for defective matrices will have to wait for later.</p>
+<p><a href="#thm-cc-eigensolution" class="quarto-xref">Theorem&nbsp;<span>6.5</span></a> requires that <span class="math inline">\(\bfA\)</span> be diagonalizable. Solutions for defective matrices will have to wait for later.</p>
 </div>
 </div>
-<div id="exm-odesys-eigen-real" class="theorem example" data-chapter="5" data-description="ODE system with real eigenvalues">
-<p><span class="theorem-title"><strong>Example 5.8 </strong></span>Given that</p>
+<div id="exm-odesys-eigen-real" class="theorem example" data-chapter="6" data-description="ODE system with real eigenvalues">
+<p><span class="theorem-title"><strong>Example 6.8 </strong></span>Given that</p>
 <p><span class="math display">\[
 \mathbf{A} = \begin{bmatrix} 1 &amp; 1 \\ 4 &amp; 1 \end{bmatrix}
 \]</span></p>
@@ -729,13 +737,13 @@ Note
 <p><span class="math display">\[
 \bfV = \twomat{1}{1}{2}{-2}
 \]</span></p>
-<p>is <span class="math inline">\(-4\)</span>, so this matrix is not singular, as guaranteed by <a href="#thm-cc-eigensolution" class="quarto-xref">Theorem&nbsp;<span>5.5</span></a>.)</p>
+<p>is <span class="math inline">\(-4\)</span>, so this matrix is not singular, as guaranteed by <a href="#thm-cc-eigensolution" class="quarto-xref">Theorem&nbsp;<span>6.5</span></a>.)</p>
 </div>
 </div>
 </section>
-<section id="complex-eigenvalues" class="level3" data-number="5.5.2">
-<h3 data-number="5.5.2" class="anchored" data-anchor-id="complex-eigenvalues"><span class="header-section-number">5.5.2</span> Complex eigenvalues</h3>
-<p><a href="#thm-cc-eigensolution" class="quarto-xref">Theorem&nbsp;<span>5.5</span></a> works fine if the eigenvalues and eigenvectors are complex. However, a purely real-number alternative form is also available.</p>
+<section id="complex-eigenvalues" class="level3" data-number="6.5.2">
+<h3 data-number="6.5.2" class="anchored" data-anchor-id="complex-eigenvalues"><span class="header-section-number">6.5.2</span> Complex eigenvalues</h3>
+<p><a href="#thm-cc-eigensolution" class="quarto-xref">Theorem&nbsp;<span>6.5</span></a> works fine if the eigenvalues and eigenvectors are complex. However, a purely real-number alternative form is also available.</p>
 <p>Suppose that</p>
 <p><span class="math display">\[
 \lambda = r + i\omega, \qquad \bfv = \bfu_1 + i\, \bfu_2.
@@ -747,10 +755,10 @@ e^{\lambda t} \bfv = e^{rt} (\cos(\omega t) + i\sin(\omega t) )\, (\bfu_1 + i\, 
 <p>The real and imaginary parts of the above product form the basis of the real solution. Specifically,</p>
 <p><span id="eq-sys-complex-real-form"><span class="math display">\[
 \bfx(t) = a_1 e^{rt} \Bigl( \cos(\omega t)\,\bfu_1 - \sin(\omega t) \,\bfu_2(t) \Bigr) + a_2 e^{rt} \Bigl( \cos(\omega t)\,\bfu_2 + \sin(\omega t) \,\bfu_1(t) \Bigr),
-\tag{5.13}\]</span></span></p>
-<p>for arbitrary real <span class="math inline">\(a_1\)</span> and <span class="math inline">\(a_2\)</span>. However, it may be easier to simply apply Euler’s formula for complex exponentials, as shown in the next example, than to apply <a href="#eq-sys-complex-real-form" class="quarto-xref">Equation&nbsp;<span>5.13</span></a>.</p>
-<div id="exm-odesys-eigen-complex" class="theorem example" data-chapter="5" data-description="ODE system with complex eigenvalues">
-<p><span class="theorem-title"><strong>Example 5.9 </strong></span>Find the general solution of</p>
+\tag{6.13}\]</span></span></p>
+<p>for arbitrary real <span class="math inline">\(a_1\)</span> and <span class="math inline">\(a_2\)</span>. However, it may be easier to simply apply Euler’s formula for complex exponentials, as shown in the next example, than to apply <a href="#eq-sys-complex-real-form" class="quarto-xref">Equation&nbsp;<span>6.13</span></a>.</p>
+<div id="exm-odesys-eigen-complex" class="theorem example" data-chapter="6" data-description="ODE system with complex eigenvalues">
+<p><span class="theorem-title"><strong>Example 6.9 </strong></span>Find the general solution of</p>
 <p><span class="math display">\[
 \bfx' = \twomat{1}{1}{-1}{1} \bfx.
 \]</span></p>
@@ -773,8 +781,8 @@ e^{(1+i)t} \twovec{1}{i} = e^t \twovec{\cos t + i \sin t}{i\cos t - \sin t}
 </div>
 </div>
 </section>
-<section id="the-oscillator-reloaded" class="level3" data-number="5.5.3">
-<h3 data-number="5.5.3" class="anchored" data-anchor-id="the-oscillator-reloaded"><span class="header-section-number">5.5.3</span> The oscillator reloaded</h3>
+<section id="the-oscillator-reloaded" class="level3" data-number="6.5.3">
+<h3 data-number="6.5.3" class="anchored" data-anchor-id="the-oscillator-reloaded"><span class="header-section-number">6.5.3</span> The oscillator reloaded</h3>
 <p>Earlier we showed that the harmonic oscillator</p>
 <p><span class="math display">\[
 x'' + 2 Z \omega_0 x' + \omega_0^2 x = 0
@@ -812,10 +820,10 @@ x(t) = u_1(t) = a_1 e^{-\zeta \omega_0t} \cos(\omega_d t) + a_2 e^{-\zeta \omega
 <p>It’s worth repeating: the second-order problem is fully covered by the equivalent first-order system.</p>
 </section>
 </section>
-<section id="stability-and-the-phase-plane" class="level2" data-number="5.6">
-<h2 data-number="5.6" class="anchored" data-anchor-id="stability-and-the-phase-plane"><span class="header-section-number">5.6</span> Stability and the phase plane</h2>
+<section id="stability-and-the-phase-plane" class="level2" data-number="6.6">
+<h2 data-number="6.6" class="anchored" data-anchor-id="stability-and-the-phase-plane"><span class="header-section-number">6.6</span> Stability and the phase plane</h2>
 <div id="def-system-equilibrium" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 5.5 </strong></span>Any constant solution of the homogeneous system <span class="math inline">\(\mathbf{x}'=\mathbf{A}\mathbf{x}\)</span> is an <strong>equilibrium solution</strong> or steady-state solution.</p>
+<p><span class="theorem-title"><strong>Definition 6.5 </strong></span>Any constant solution of the homogeneous system <span class="math inline">\(\mathbf{x}'=\mathbf{A}\mathbf{x}\)</span> is an <strong>equilibrium solution</strong> or steady-state solution.</p>
 </div>
 <p>Clearly, <span class="math inline">\(\mathbf{x}(t)\equiv \bfzero\)</span> is always an equilibrium solution.</p>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -831,13 +839,13 @@ Note
 <p>If <span class="math inline">\(\mathbf{A}\)</span> is singular, then there are nonzero equilibrium solutions of the homogeneous system <span class="math inline">\(\mathbf{x}'=\mathbf{A}\mathbf{x}\)</span> as well, but we will not pursue those.</p>
 </div>
 </div>
-<section id="stability" class="level3" data-number="5.6.1">
-<h3 data-number="5.6.1" class="anchored" data-anchor-id="stability"><span class="header-section-number">5.6.1</span> Stability</h3>
+<section id="stability" class="level3" data-number="6.6.1">
+<h3 data-number="6.6.1" class="anchored" data-anchor-id="stability"><span class="header-section-number">6.6.1</span> Stability</h3>
 <p>Just as with scalar first-order ODEs, stability is a crucial property of an equilibrium solution. Suppose we start <span class="math inline">\(\mathbf{x}'=\mathbf{A}\mathbf{x}\)</span> at infinitesimally small initial conditions. If the state always approaches zero as <span class="math inline">\(t\to\infty\)</span>, we say that the equilibrium at zero is <strong>asymptotically stable</strong>. This is what happens, for instance, to a damped linear oscillator. If, on the other hand, the system has infinitesimal initial states that grow without bound, then the equilibrium is <strong>unstable</strong>.</p>
-<p>The stability properties depend on the eigenvalues of <span class="math inline">\(\mathbf{A}\)</span>. This is most easily summarized in the special case of a <span class="math inline">\(2\times 2\)</span> real matrix with eigenvalues <span class="math inline">\(\lambda_1,\lambda_2\)</span>. The major cases to be considered, leaving out some pesky edge cases, are summarized in <a href="#tbl-phase_plane-stability" class="quarto-xref">Table&nbsp;<span>5.1</span></a>. (The third column of that table is to be explained next.)</p>
+<p>The stability properties depend on the eigenvalues of <span class="math inline">\(\mathbf{A}\)</span>. This is most easily summarized in the special case of a <span class="math inline">\(2\times 2\)</span> real matrix with eigenvalues <span class="math inline">\(\lambda_1,\lambda_2\)</span>. The major cases to be considered, leaving out some pesky edge cases, are summarized in <a href="#tbl-phase_plane-stability" class="quarto-xref">Table&nbsp;<span>6.1</span></a>. (The third column of that table is to be explained next.)</p>
 <div id="tbl-phase_plane-stability" class="anchored">
 <table class="table">
-<caption>Table&nbsp;5.1: Eigenvalues and stability</caption>
+<caption>Table&nbsp;6.1: Eigenvalues and stability</caption>
 <thead>
 <tr class="header">
 <th style="text-align: center;">Eigenvalues</th>
@@ -880,11 +888,11 @@ Note
 </table>
 </div>
 </section>
-<section id="phase-plane" class="level3" data-number="5.6.2">
-<h3 data-number="5.6.2" class="anchored" data-anchor-id="phase-plane"><span class="header-section-number">5.6.2</span> Phase plane</h3>
-<p>In the two-dimensional case, the solutions of <span class="math inline">\(\mathbf{x}'=\mathbf{A}\mathbf{x}\)</span> can be plotted as trajectories parameterized by time in the <span class="math inline">\((x_1,x_2)\)</span> plane, often called the <strong>phase plane</strong>. Each of the cases in <a href="#tbl-phase_plane-stability" class="quarto-xref">Table&nbsp;<span>5.1</span></a> has a characteristic type of phase plane portrait that illustrates major aspects of solution behaviors.</p>
-<section id="node" class="level4" data-number="5.6.2.1">
-<h4 data-number="5.6.2.1" class="anchored" data-anchor-id="node"><span class="header-section-number">5.6.2.1</span> Node</h4>
+<section id="phase-plane" class="level3" data-number="6.6.2">
+<h3 data-number="6.6.2" class="anchored" data-anchor-id="phase-plane"><span class="header-section-number">6.6.2</span> Phase plane</h3>
+<p>In the two-dimensional case, the solutions of <span class="math inline">\(\mathbf{x}'=\mathbf{A}\mathbf{x}\)</span> can be plotted as trajectories parameterized by time in the <span class="math inline">\((x_1,x_2)\)</span> plane, often called the <strong>phase plane</strong>. Each of the cases in <a href="#tbl-phase_plane-stability" class="quarto-xref">Table&nbsp;<span>6.1</span></a> has a characteristic type of phase plane portrait that illustrates major aspects of solution behaviors.</p>
+<section id="node" class="level4" data-number="6.6.2.1">
+<h4 data-number="6.6.2.1" class="anchored" data-anchor-id="node"><span class="header-section-number">6.6.2.1</span> Node</h4>
 <p>When the eigenvalues are real and have the same sign, the steady state is called a <strong>node</strong>. If the sign is negative, all trajectories head into the steady state and it is stable; conversely, in the positive case it is unstable.</p>
 <p>Here is a phase plane plot for <span class="math inline">\(\mathbf{A}=\twomat{-4}{-1}{-2}{-5}\)</span>, which has eigenvalues <span class="math inline">\(-3\)</span> and <span class="math inline">\(-6\)</span>.</p>
 <div id="fd69f478" class="cell" data-execution_count="3">
@@ -929,8 +937,8 @@ Note
 </div>
 <p>The black lines show the directions of the eigenvectors. An initial state on one of those lines stays on it forever. Other initial conditions follow a path tending to become parallel to eigenvector <span class="math inline">\(\mathbf{v}_1\)</span>, since the other component decays out more quickly. The plot for <span class="math inline">\(-\mathbf{A}\)</span> would just reverse all of the arrows and show an unstable steady state.</p>
 </section>
-<section id="saddle" class="level4" data-number="5.6.2.2">
-<h4 data-number="5.6.2.2" class="anchored" data-anchor-id="saddle"><span class="header-section-number">5.6.2.2</span> Saddle</h4>
+<section id="saddle" class="level4" data-number="6.6.2.2">
+<h4 data-number="6.6.2.2" class="anchored" data-anchor-id="saddle"><span class="header-section-number">6.6.2.2</span> Saddle</h4>
 <p>When the eigenvalues are real and of different signs, the steady state is called a <strong>saddle</strong>. A saddle point is always unstable. The part of the solution along the negative eigenvector decays away, but the contribution from the positive eigenvector grows with time.</p>
 <p>Here is a phase plane plot for <span class="math inline">\(\mathbf{A}=\twomat{-2}{-3}{-6}{-5}\)</span>, which has eigenvalues <span class="math inline">\(1\)</span> and <span class="math inline">\(-8\)</span>.</p>
 <div id="fe1daf2a" class="cell" data-execution_count="4">
@@ -975,8 +983,8 @@ Note
 </div>
 <p>An initial condition exactly on the stable black line (eigenvector) will approach the origin, but anything else ends up shooting away more or less in the direction of the unstable eigenvector.</p>
 </section>
-<section id="sec-fs-pp-center" class="level4" data-number="5.6.2.3">
-<h4 data-number="5.6.2.3" class="anchored" data-anchor-id="sec-fs-pp-center"><span class="header-section-number">5.6.2.3</span> Spiral</h4>
+<section id="sec-fs-pp-center" class="level4" data-number="6.6.2.3">
+<h4 data-number="6.6.2.3" class="anchored" data-anchor-id="sec-fs-pp-center"><span class="header-section-number">6.6.2.3</span> Spiral</h4>
 <p>When the eigenvalues are complex conjugates with nonzero real part, the steady state is called a <strong>spiral</strong>. If the eigenvalues are <span class="math inline">\(a \pm i b\)</span>, then all solutions contain <span class="math inline">\(e^{at}e^{\pm i b t}\)</span>, or equivalently, <span class="math inline">\(e^{at}\cos{b t}\)</span> and <span class="math inline">\(e^{at}\sin{b t}\)</span>. The real part causes growth and instability if <span class="math inline">\(a&gt; 0\)</span>, or decay and stability if <span class="math inline">\(a &lt; 0\)</span>. The imaginary part determines the angular speed of the spiral.</p>
 <p>Here is a phase plane plot for <span class="math inline">\(\mathbf{A}=\twomat{1}{-2}{4}{-3}\)</span>, which has eigenvalues <span class="math inline">\(-1\pm 2i\)</span>.</p>
 <div id="37acad7a" class="cell" data-execution_count="5">
@@ -1021,8 +1029,8 @@ Note
 </div>
 <p>The eigenvectors are complex and don’t show up on the plot; there are no purely linear trajectories as in the other cases.</p>
 </section>
-<section id="center" class="level4" data-number="5.6.2.4">
-<h4 data-number="5.6.2.4" class="anchored" data-anchor-id="center"><span class="header-section-number">5.6.2.4</span> Center</h4>
+<section id="center" class="level4" data-number="6.6.2.4">
+<h4 data-number="6.6.2.4" class="anchored" data-anchor-id="center"><span class="header-section-number">6.6.2.4</span> Center</h4>
 <p>The special case of imaginary eigenvalues, <span class="math inline">\(\lambda=\pm i b\)</span>, is called a <strong>center</strong>. You can think of the trajectories as spirals that are perfectly neutral — that is, circles or ellipses. These equilibria are often associated with conservation principles, such as conservation of energy.</p>
 <p>Here is a phase plane plot for <span class="math inline">\(\mathbf{A}=\twomat{0}{-1}{4}{0}\)</span>, which has eigenvalues <span class="math inline">\(\pm 2i\)</span>.</p>
 <div id="a4934ac9" class="cell" data-execution_count="6">
@@ -1068,21 +1076,21 @@ Note
 <p>A center is on a knife edge between asymptotically stable and unstable: small perturbations do not decay away, but they also can grow only by a bounded amount. This situation might be called <em>weakly stable</em>, <em>neutrally stable</em>, or simply <strong>stable</strong> but not asymptotically stable.</p>
 </section>
 </section>
-<section id="tracedeterminant" class="level3" data-number="5.6.3">
-<h3 data-number="5.6.3" class="anchored" data-anchor-id="tracedeterminant"><span class="header-section-number">5.6.3</span> Trace/determinant</h3>
+<section id="tracedeterminant" class="level3" data-number="6.6.3">
+<h3 data-number="6.6.3" class="anchored" data-anchor-id="tracedeterminant"><span class="header-section-number">6.6.3</span> Trace/determinant</h3>
 <div id="def-odesys-trace" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 5.6 (Trace of a matrix) </strong></span>The <strong>trace</strong> of a square matrix is the sum of its diagonal entries.</p>
+<p><span class="theorem-title"><strong>Definition 6.6 (Trace of a matrix) </strong></span>The <strong>trace</strong> of a square matrix is the sum of its diagonal entries.</p>
 </div>
-<p>In the <span class="math inline">\(2\times 2\)</span> case, the trace <span class="math inline">\(\tau\)</span> and determinant <span class="math inline">\(\Delta\)</span> completely determine the eigenvalues, and therefore they determine the nature of the phase portrait, as shown in <a href="#fig-phase_plane-TD" class="quarto-xref">Figure&nbsp;<span>5.1</span></a>.</p>
+<p>In the <span class="math inline">\(2\times 2\)</span> case, the trace <span class="math inline">\(\tau\)</span> and determinant <span class="math inline">\(\Delta\)</span> completely determine the eigenvalues, and therefore they determine the nature of the phase portrait, as shown in <a href="#fig-phase_plane-TD" class="quarto-xref">Figure&nbsp;<span>6.1</span></a>.</p>
 <div id="fig-phase_plane-TD" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="TD-phase.png" class="img-fluid figure-img" alt="Figure from Zill's book."></p>
-<figcaption class="figure-caption">Figure&nbsp;5.1: Phase portrait type based on trace <span class="math inline">\(\tau\)</span> and determinant <span class="math inline">\(\Delta\)</span> of a <span class="math inline">\(2\times 2\)</span> matrix.</figcaption>
+<figcaption class="figure-caption">Figure&nbsp;6.1: Phase portrait type based on trace <span class="math inline">\(\tau\)</span> and determinant <span class="math inline">\(\Delta\)</span> of a <span class="math inline">\(2\times 2\)</span> matrix.</figcaption>
 </figure>
 </div>
 <p>(You can ignore the degenerate cases along <span class="math inline">\(\tau=4\Delta^2\)</span>.) One easy takeaway is that the fixed point is stable if <span class="math inline">\(\tau \le 0\)</span> ans <span class="math inline">\(\Delta \ge 0\)</span>, and unstable otherwise.</p>
-<div id="exm-odesys-tracedet" class="theorem example" data-chapter="5" data-description="Trace and determinant for stability">
-<p><span class="theorem-title"><strong>Example 5.10 </strong></span>Consider <span class="math inline">\(\mathbf{A}=\twomat{1}{-2}{4}{-3}\)</span>, which has trace <span class="math inline">\(\tau=-2\)</span> and determinant <span class="math inline">\(\Delta=5\)</span>. These place us in the second quadrant in <a href="#fig-phase_plane-TD" class="quarto-xref">Figure&nbsp;<span>5.1</span></a>. Since</p>
+<div id="exm-odesys-tracedet" class="theorem example" data-chapter="6" data-description="Trace and determinant for stability">
+<p><span class="theorem-title"><strong>Example 6.10 </strong></span>Consider <span class="math inline">\(\mathbf{A}=\twomat{1}{-2}{4}{-3}\)</span>, which has trace <span class="math inline">\(\tau=-2\)</span> and determinant <span class="math inline">\(\Delta=5\)</span>. These place us in the second quadrant in <a href="#fig-phase_plane-TD" class="quarto-xref">Figure&nbsp;<span>6.1</span></a>. Since</p>
 <p><span class="math display">\[
 4\Delta = 20 &gt; 4 = \tau^2 ,
 \]</span></p>
@@ -1090,8 +1098,8 @@ Note
 </div>
 </section>
 </section>
-<section id="the-matrix-exponential" class="level2" data-number="5.7">
-<h2 data-number="5.7" class="anchored" data-anchor-id="the-matrix-exponential"><span class="header-section-number">5.7</span> The matrix exponential</h2>
+<section id="the-matrix-exponential" class="level2" data-number="6.7">
+<h2 data-number="6.7" class="anchored" data-anchor-id="the-matrix-exponential"><span class="header-section-number">6.7</span> The matrix exponential</h2>
 <p>As we well know by now, the solution of the scalar linear IVP <span class="math inline">\(x'=ax\)</span>, <span class="math inline">\(x(0)=x_0\)</span> is</p>
 <p><span class="math display">\[
 x(t) = e^{at} x_0.
@@ -1101,9 +1109,9 @@ x(t) = e^{at} x_0.
 \bfx(t) \stackrel{?}{=} e^{\bfA t} \bfx_0
 \]</span></p>
 <p>Funny you should ask.</p>
-<section id="diagonalization" class="level3" data-number="5.7.1">
-<h3 data-number="5.7.1" class="anchored" data-anchor-id="diagonalization"><span class="header-section-number">5.7.1</span> Diagonalization</h3>
-<p>Let’s review the process of solving <span class="math inline">\(\mathbf{x}'=\mathbf{A} \mathbf{x}\)</span> using <a href="#thm-cc-eigensolution" class="quarto-xref">Theorem&nbsp;<span>5.5</span></a>. If <span class="math inline">\(\bfA\)</span> has a diagonalization <span class="math inline">\(\bfA=\bfV \mathbf{D}\bfV^{-1}\)</span>, where <span class="math inline">\(\bfV\)</span> has eigenvector columns and <span class="math inline">\(\mathbf{D}\)</span> is a diagonal matrix of the eigenvalues, then the general solution is</p>
+<section id="diagonalization" class="level3" data-number="6.7.1">
+<h3 data-number="6.7.1" class="anchored" data-anchor-id="diagonalization"><span class="header-section-number">6.7.1</span> Diagonalization</h3>
+<p>Let’s review the process of solving <span class="math inline">\(\mathbf{x}'=\mathbf{A} \mathbf{x}\)</span> using <a href="#thm-cc-eigensolution" class="quarto-xref">Theorem&nbsp;<span>6.5</span></a>. If <span class="math inline">\(\bfA\)</span> has a diagonalization <span class="math inline">\(\bfA=\bfV \mathbf{D}\bfV^{-1}\)</span>, where <span class="math inline">\(\bfV\)</span> has eigenvector columns and <span class="math inline">\(\mathbf{D}\)</span> is a diagonal matrix of the eigenvalues, then the general solution is</p>
 <p><span class="math display">\[
 \bfx(t) = c_1 e^{t \lambda_1} \mathbf{v}_1 + \cdots + c_n e^{t \lambda_n} \mathbf{v}_n = \bfV \bfE(t) \bfc,
 \]</span></p>
@@ -1121,8 +1129,8 @@ x(t) = e^{at} x_0.
 \]</span></p>
 <p>The matrix <span class="math inline">\(\bfV \bfE(t) \bfV^{-1}\)</span> is essentially a special fundamental matrix <span class="math inline">\(\fundm\)</span> for which <span class="math inline">\(\fundm(0)=\meye\)</span>, which makes it especially convenient for an IVP.</p>
 </section>
-<section id="change-of-basis" class="level3" data-number="5.7.2">
-<h3 data-number="5.7.2" class="anchored" data-anchor-id="change-of-basis"><span class="header-section-number">5.7.2</span> Change of basis</h3>
+<section id="change-of-basis" class="level3" data-number="6.7.2">
+<h3 data-number="6.7.2" class="anchored" data-anchor-id="change-of-basis"><span class="header-section-number">6.7.2</span> Change of basis</h3>
 <p>Given the diagonalization <span class="math inline">\(\bfA=\bfV \mathbf{D}\bfV^{-1}\)</span>, we can rewrite the ODE <span class="math inline">\(\bfx'=\bfA\bfx\)</span> as</p>
 <p><span class="math display">\[
 \bfx'=\bfV \mathbf{D}\bfV^{-1} \bfx.
@@ -1153,8 +1161,8 @@ y_i(t) = e^{\lambda_i t}y_i(0), \quad i=1,\ldots,n, \Longrightarrow \bfy = \bfE(
 \bfx(t) = \bfV \bfE(t) \bfV^{-1} \bfx(0).
 \]</span></p>
 </section>
-<section id="power-series" class="level3" data-number="5.7.3">
-<h3 data-number="5.7.3" class="anchored" data-anchor-id="power-series"><span class="header-section-number">5.7.3</span> Power series</h3>
+<section id="power-series" class="level3" data-number="6.7.3">
+<h3 data-number="6.7.3" class="anchored" data-anchor-id="power-series"><span class="header-section-number">6.7.3</span> Power series</h3>
 <p>The matrix <span class="math inline">\(\bfE(t)\)</span> has a nice structure:</p>
 <p><span class="math display">\[
 \begin{split}
@@ -1169,10 +1177,10 @@ y_i(t) = e^{\lambda_i t}y_i(0), \quad i=1,\ldots,n, \Longrightarrow \bfy = \bfE(
 <p>This strongly hints at the definition</p>
 <p><span id="eq-matrix_exp-series"><span class="math display">\[
 e^{t\mathbf{A}} = \mathbf{I} + t\mathbf{A} + \frac{1}{2!}t^2 \mathbf{A}^2 + \frac{1}{3!} t^3 \mathbf{A}^3 + \cdots
-\tag{5.14}\]</span></span></p>
+\tag{6.14}\]</span></span></p>
 <p>for a square matrix <span class="math inline">\(\bfA\)</span>, so that <span class="math inline">\(\bfE(t) = e^{t\bfD}\)</span>. Let’s not worry too much about whether this series converges (it does). What are its properties?</p>
 <div id="thm-matrixexp" class="theorem">
-<p><span class="theorem-title"><strong>Theorem 5.6 (Matrix exponential) </strong></span>Let <span class="math inline">\(\mathbf{A},\mathbf{B}\)</span> be <span class="math inline">\(n\times n\)</span> matrices. Then</p>
+<p><span class="theorem-title"><strong>Theorem 6.6 (Matrix exponential) </strong></span>Let <span class="math inline">\(\mathbf{A},\mathbf{B}\)</span> be <span class="math inline">\(n\times n\)</span> matrices. Then</p>
 <ol type="1">
 <li><span class="math inline">\(e^{t\mathbf{A}}=\mathbf{I}\)</span> if <span class="math inline">\(t=0\)</span>,</li>
 <li><span class="math inline">\(\displaystyle \dd{}{t}e^{t\mathbf{A}} = \mathbf{A} e^{t\mathbf{A}} = e^{t\mathbf{A}}\mathbf{A}\)</span>,</li>
@@ -1181,10 +1189,10 @@ e^{t\mathbf{A}} = \mathbf{I} + t\mathbf{A} + \frac{1}{2!}t^2 \mathbf{A}^2 + \fra
 <li>If <span class="math inline">\(\mathbf{A}\mathbf{B}=\mathbf{B}\mathbf{A}\)</span>, then <span class="math inline">\(e^{t(\mathbf{A}+\mathbf{B})} = e^{t\mathbf{A}}\cdot e^{t\mathbf{B}} = e^{t\mathbf{B}}\cdot e^{t\mathbf{A}}\)</span>.</li>
 </ol>
 </div>
-<p>These conclusions follow pretty easily from the series definition <a href="#eq-matrix_exp-series" class="quarto-xref">Equation&nbsp;<span>5.14</span></a>. They are all essential to what we normally expect from an exponential function, although in the last case we have a new restriction specific to matrices.</p>
+<p>These conclusions follow pretty easily from the series definition <a href="#eq-matrix_exp-series" class="quarto-xref">Equation&nbsp;<span>6.14</span></a>. They are all essential to what we normally expect from an exponential function, although in the last case we have a new restriction specific to matrices.</p>
 <p>From these properties we can make the connection to the IVP.</p>
 <div id="thm-" class="theorem">
-<p><span class="theorem-title"><strong>Theorem 5.7 </strong></span>If <span class="math inline">\(\bfA\)</span> is a constant square matrix, then</p>
+<p><span class="theorem-title"><strong>Theorem 6.7 </strong></span>If <span class="math inline">\(\bfA\)</span> is a constant square matrix, then</p>
 <p><span class="math display">\[
 \bfx(t) = e^{t \bfA} \bfx_0
 \]</span></p>
@@ -1202,24 +1210,24 @@ e^{t\mathbf{A}} = \mathbf{I} + t\mathbf{A} + \frac{1}{2!}t^2 \mathbf{A}^2 + \fra
 <p>using property 1 above.</p>
 </div>
 </section>
-<section id="computation" class="level3" data-number="5.7.4">
-<h3 data-number="5.7.4" class="anchored" data-anchor-id="computation"><span class="header-section-number">5.7.4</span> Computation</h3>
-<p>Summing the infinite series of matrices in <a href="#eq-matrix_exp-series" class="quarto-xref">Equation&nbsp;<span>5.14</span></a> seems a daunting project. Fortunately we have a number of ways to avoid that.</p>
-<section id="diagonal-matrix" class="level4" data-number="5.7.4.1">
-<h4 data-number="5.7.4.1" class="anchored" data-anchor-id="diagonal-matrix"><span class="header-section-number">5.7.4.1</span> Diagonal matrix</h4>
+<section id="computation" class="level3" data-number="6.7.4">
+<h3 data-number="6.7.4" class="anchored" data-anchor-id="computation"><span class="header-section-number">6.7.4</span> Computation</h3>
+<p>Summing the infinite series of matrices in <a href="#eq-matrix_exp-series" class="quarto-xref">Equation&nbsp;<span>6.14</span></a> seems a daunting project. Fortunately we have a number of ways to avoid that.</p>
+<section id="diagonal-matrix" class="level4" data-number="6.7.4.1">
+<h4 data-number="6.7.4.1" class="anchored" data-anchor-id="diagonal-matrix"><span class="header-section-number">6.7.4.1</span> Diagonal matrix</h4>
 <p>As derived above, if <span class="math inline">\(\bfD\)</span> is diagonal with <span class="math inline">\(\lambda_1,\ldots,\lambda_n\)</span> on the diagonal, then <span class="math inline">\(e^{t\bfD}\)</span> is diagonal with <span class="math inline">\(e^{t\lambda_1},\ldots,e^{t\lambda_n}\)</span> on the diagonal.</p>
 </section>
-<section id="nilpotent-matrix" class="level4" data-number="5.7.4.2">
-<h4 data-number="5.7.4.2" class="anchored" data-anchor-id="nilpotent-matrix"><span class="header-section-number">5.7.4.2</span> Nilpotent matrix</h4>
+<section id="nilpotent-matrix" class="level4" data-number="6.7.4.2">
+<h4 data-number="6.7.4.2" class="anchored" data-anchor-id="nilpotent-matrix"><span class="header-section-number">6.7.4.2</span> Nilpotent matrix</h4>
 <div id="def-nilpotent" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 5.7 </strong></span>A <strong>nilpotent</strong> matrix <span class="math inline">\(\bfA\)</span> satisfies <span class="math inline">\(\bfA^k=\bfzero\)</span> for some integer <span class="math inline">\(k\)</span>.</p>
+<p><span class="theorem-title"><strong>Definition 6.7 </strong></span>A <strong>nilpotent</strong> matrix <span class="math inline">\(\bfA\)</span> satisfies <span class="math inline">\(\bfA^k=\bfzero\)</span> for some integer <span class="math inline">\(k\)</span>.</p>
 </div>
 <div id="thm-nilpotent-eigvals" class="theorem">
-<p><span class="theorem-title"><strong>Theorem 5.8 </strong></span>A matrix is nilpotent if and only if all of its eigenvalues are zero.</p>
+<p><span class="theorem-title"><strong>Theorem 6.8 </strong></span>A matrix is nilpotent if and only if all of its eigenvalues are zero.</p>
 </div>
 <p>For a nilpotent matrix, the infinite series for the matrix exponential simply truncates at a finite power.</p>
-<div id="exm-odesys-exp-nilpotent" class="theorem example" data-chapter="5" data-description="Matrix exp with nilpotent matrix">
-<p><span class="theorem-title"><strong>Example 5.11 </strong></span>Find <span class="math inline">\(e^{t\bfA}\)</span> if <span class="math inline">\(\bfA= \begin{bmatrix} 0 &amp; 1 &amp; 2 \\ 0 &amp; 0 &amp; 1 \\ 0 &amp; 0 &amp; 0 \end{bmatrix}\)</span>.</p>
+<div id="exm-odesys-exp-nilpotent" class="theorem example" data-chapter="6" data-description="Matrix exp with nilpotent matrix">
+<p><span class="theorem-title"><strong>Example 6.11 </strong></span>Find <span class="math inline">\(e^{t\bfA}\)</span> if <span class="math inline">\(\bfA= \begin{bmatrix} 0 &amp; 1 &amp; 2 \\ 0 &amp; 0 &amp; 1 \\ 0 &amp; 0 &amp; 0 \end{bmatrix}\)</span>.</p>
 <div class="solution proof">
 <p><span class="proof-title"><em>Solution</em>. </span>The matrix is triangular and evidently has all zero eigenvalues. We get</p>
 <p><span class="math display">\[
@@ -1258,16 +1266,16 @@ $$
 :::
 :::: -->
 </section>
-<section id="fundamental-matrix-2" class="level4" data-number="5.7.4.3">
-<h4 data-number="5.7.4.3" class="anchored" data-anchor-id="fundamental-matrix-2"><span class="header-section-number">5.7.4.3</span> Fundamental matrix</h4>
+<section id="fundamental-matrix-2" class="level4" data-number="6.7.4.3">
+<h4 data-number="6.7.4.3" class="anchored" data-anchor-id="fundamental-matrix-2"><span class="header-section-number">6.7.4.3</span> Fundamental matrix</h4>
 <div id="thm-matrix_exp-fundamental" class="theorem">
-<p><span class="theorem-title"><strong>Theorem 5.9 (Matrix exponential by fundamental matrix) </strong></span>If <span class="math inline">\(\fundm(t)\)</span> is any fundamental matrix for <span class="math inline">\(\bfx'=\bfA\bfx\)</span>, then</p>
+<p><span class="theorem-title"><strong>Theorem 6.9 (Matrix exponential by fundamental matrix) </strong></span>If <span class="math inline">\(\fundm(t)\)</span> is any fundamental matrix for <span class="math inline">\(\bfx'=\bfA\bfx\)</span>, then</p>
 <p><span class="math display">\[
 e^{t\bfA} = \fundm(t) \fundm(0)^{-1}.
 \]</span></p>
 </div>
-<div id="exm-odesys-exp-fundamental" class="theorem example" data-chapter="5" data-description="Matrix exp by fundamental matrix">
-<p><span class="theorem-title"><strong>Example 5.12 </strong></span>Given</p>
+<div id="exm-odesys-exp-fundamental" class="theorem example" data-chapter="6" data-description="Matrix exp by fundamental matrix">
+<p><span class="theorem-title"><strong>Example 6.12 </strong></span>Given</p>
 <p><span class="math display">\[
 \mathbf{A} = \twomat{1}{1}{4}{1}
 \]</span></p>
@@ -1290,36 +1298,36 @@ e^{t\mathbf{A}} = \frac{1}{4} \twomat{e^{3t}}{e^{-t}}{2e^{3t}}{-2e^{-t}}
 </div>
 </div>
 </section>
-<section id="diagonalization-1" class="level4" data-number="5.7.4.4">
-<h4 data-number="5.7.4.4" class="anchored" data-anchor-id="diagonalization-1"><span class="header-section-number">5.7.4.4</span> Diagonalization</h4>
+<section id="diagonalization-1" class="level4" data-number="6.7.4.4">
+<h4 data-number="6.7.4.4" class="anchored" data-anchor-id="diagonalization-1"><span class="header-section-number">6.7.4.4</span> Diagonalization</h4>
 <p>We derived the formula <span class="math inline">\(e^{t\bfA} = \bfV e^{t\bfD} \bfV^{-1}\)</span>. If the diagonalization is fully known, this is handy, but otherwise it’s no easier than using the fundamental matrix method above.</p>
 </section>
-<section id="polynomial-representation" class="level4" data-number="5.7.4.5">
-<h4 data-number="5.7.4.5" class="anchored" data-anchor-id="polynomial-representation"><span class="header-section-number">5.7.4.5</span> Polynomial representation</h4>
+<section id="polynomial-representation" class="level4" data-number="6.7.4.5">
+<h4 data-number="6.7.4.5" class="anchored" data-anchor-id="polynomial-representation"><span class="header-section-number">6.7.4.5</span> Polynomial representation</h4>
 <p>Thanks to a result known as the Cayley–Hamilton theorem, the following is true.</p>
 <div id="thm-matrix_exp-poly" class="theorem">
-<p><span class="theorem-title"><strong>Theorem 5.10 (Matrix exponential by polynomial) </strong></span>If <span class="math inline">\(\bfA\)</span> has eigenvalues <span class="math inline">\(\lambda_1,\ldots,\lambda_n\)</span>, then there exist functions <span class="math inline">\(c_0(t),\ldots,c_{n-1}(t)\)</span> such that if we define</p>
+<p><span class="theorem-title"><strong>Theorem 6.10 (Matrix exponential by polynomial) </strong></span>If <span class="math inline">\(\bfA\)</span> has eigenvalues <span class="math inline">\(\lambda_1,\ldots,\lambda_n\)</span>, then there exist functions <span class="math inline">\(c_0(t),\ldots,c_{n-1}(t)\)</span> such that if we define</p>
 <p><span id="eq-matrix_exp-polydef"><span class="math display">\[
 f(t,z) = c_0(t) + c_1(t) z + \cdots + c_{n-1}(t) z,
-\tag{5.15}\]</span></span></p>
+\tag{6.15}\]</span></span></p>
 <p>then</p>
 <p><span id="eq-matrix_exp-polylam"><span class="math display">\[
 f(t,\lambda_k) = e^{t\lambda_k}, \qquad k=1,\ldots,n,
-\tag{5.16}\]</span></span></p>
+\tag{6.16}\]</span></span></p>
 <p>and</p>
 <p><span id="eq-matrix_exp-polymat"><span class="math display">\[
 e^{t\bfA} = f(t,\bfA) = c_0(t)\meye + c_1(t)\bfA + \cdots + c_{n-1}(t)\bfA^{n-1}.
-\tag{5.17}\]</span></span></p>
+\tag{6.17}\]</span></span></p>
 </div>
-<p>The idea is to use the eigenvalues to define the linear system in <a href="#eq-matrix_exp-polylam" class="quarto-xref">Equation&nbsp;<span>5.16</span></a>, which is solved to determine the <span class="math inline">\(c_k(t)\)</span> functions. The matrix exponential is then computed from <a href="#eq-matrix_exp-polymat" class="quarto-xref">Equation&nbsp;<span>5.17</span></a>. The eigenvectors aren’t needed at all.</p>
-<div id="exm-odesys-exp-polynomial" class="theorem example" data-chapter="5" data-description="Matrix exp by polynomial">
-<p><span class="theorem-title"><strong>Example 5.13 </strong></span>Given that</p>
+<p>The idea is to use the eigenvalues to define the linear system in <a href="#eq-matrix_exp-polylam" class="quarto-xref">Equation&nbsp;<span>6.16</span></a>, which is solved to determine the <span class="math inline">\(c_k(t)\)</span> functions. The matrix exponential is then computed from <a href="#eq-matrix_exp-polymat" class="quarto-xref">Equation&nbsp;<span>6.17</span></a>. The eigenvectors aren’t needed at all.</p>
+<div id="exm-odesys-exp-polynomial" class="theorem example" data-chapter="6" data-description="Matrix exp by polynomial">
+<p><span class="theorem-title"><strong>Example 6.13 </strong></span>Given that</p>
 <p><span class="math display">\[
 \mathbf{A} = \twomat{1}{1}{4}{1}
 \]</span></p>
 <p>has eigenvalues <span class="math inline">\(\lambda_1=3\)</span> and <span class="math inline">\(\lambda_2=-1\)</span>, find <span class="math inline">\(e^{t\bfA}\)</span>.</p>
 <div class="solution proof">
-<p><span class="proof-title"><em>Solution</em>. </span>We write out <a href="#eq-matrix_exp-polylam" class="quarto-xref">Equation&nbsp;<span>5.16</span></a>:</p>
+<p><span class="proof-title"><em>Solution</em>. </span>We write out <a href="#eq-matrix_exp-polylam" class="quarto-xref">Equation&nbsp;<span>6.16</span></a>:</p>
 <p><span class="math display">\[
 \begin{split}
 c_0 + 3c_1 &amp;= e^{3t}   \\
@@ -1330,7 +1338,7 @@ c_0 - c_1 &amp;= e^{-t}.
 <p><span class="math display">\[
 c_0 = \frac{-e^{3t}-3e^{-t}}{-4}, \qquad c_1 = \frac{e^{-t}-e^{3t}}{-4}.
 \]</span></p>
-<p>Inserting these into <a href="#eq-matrix_exp-polymat" class="quarto-xref">Equation&nbsp;<span>5.17</span></a> gives</p>
+<p>Inserting these into <a href="#eq-matrix_exp-polymat" class="quarto-xref">Equation&nbsp;<span>6.17</span></a> gives</p>
 <p><span class="math display">\[
 \begin{split}
 e^{t\bfA} &amp;= \frac{e^{3t}+3e^{-t}}{4}\, \meye + \frac{e^{3t}-e^{-t}}{4} \, \bfA \\
@@ -1339,15 +1347,15 @@ e^{t\bfA} &amp;= \frac{e^{3t}+3e^{-t}}{4}\, \meye + \frac{e^{3t}-e^{-t}}{4} \, \
 \]</span></p>
 </div>
 </div>
-<p>The process is modified a bit for complex eigenvalues. Note that the <span class="math inline">\(c_k\)</span> functions in <a href="#eq-matrix_exp-polydef" class="quarto-xref">Equation&nbsp;<span>5.15</span></a> must be real.</p>
-<div id="exm-odesys-exp-complex" class="theorem example" data-chapter="5" data-description="Matrix exp with complex eigenvalues">
-<p><span class="theorem-title"><strong>Example 5.14 </strong></span>Given that</p>
+<p>The process is modified a bit for complex eigenvalues. Note that the <span class="math inline">\(c_k\)</span> functions in <a href="#eq-matrix_exp-polydef" class="quarto-xref">Equation&nbsp;<span>6.15</span></a> must be real.</p>
+<div id="exm-odesys-exp-complex" class="theorem example" data-chapter="6" data-description="Matrix exp with complex eigenvalues">
+<p><span class="theorem-title"><strong>Example 6.14 </strong></span>Given that</p>
 <p><span class="math display">\[
 \mathbf{A} = \twomat{1}{-1}{5}{-3}
 \]</span></p>
 <p>has eigenvalues <span class="math inline">\(-1\pm i\)</span>, find <span class="math inline">\(e^{t\bfA}\)</span> and the solution of the IVP <span class="math inline">\(\bfx'=\mathbf{A}\bfx\)</span>, <span class="math inline">\(\bfx(0)=\twovec{2}{1}\)</span>.</p>
 <div class="solution proof">
-<p><span class="proof-title"><em>Solution</em>. </span>Rather than writing out <a href="#eq-matrix_exp-polylam" class="quarto-xref">Equation&nbsp;<span>5.16</span></a> for both conjugate eigenvalues, we use just one and apply Euler’s formula to take the real and imaginary parts:</p>
+<p><span class="proof-title"><em>Solution</em>. </span>Rather than writing out <a href="#eq-matrix_exp-polylam" class="quarto-xref">Equation&nbsp;<span>6.16</span></a> for both conjugate eigenvalues, we use just one and apply Euler’s formula to take the real and imaginary parts:</p>
 <p><span class="math display">\[
 e^{-t+it} = c_0 + c_1 (-1+i) \quad \Rightarrow \quad e^{-t}\cos(t) = c_0 - c_1, \quad e^{-t}\sin(t) = c_1.
 \]</span></p>
@@ -1364,16 +1372,16 @@ e^{t\bfA} &amp;= e^{-t}[\cos(t)+\sin(t)]\, \meye + e^{-t}\sin(t)\, \bfA \\
 \]</span></p>
 </div>
 </div>
-<p>The process also must be modified if there are repeated eigenvalues. Suppose <span class="math inline">\(\lambda_1=\lambda_2\)</span> has algebraic multiplicity 2. In that case, the second equation in the linear system <a href="#eq-matrix_exp-polylam" class="quarto-xref">Equation&nbsp;<span>5.16</span></a> is a duplicate of the first. We replace it with</p>
+<p>The process also must be modified if there are repeated eigenvalues. Suppose <span class="math inline">\(\lambda_1=\lambda_2\)</span> has algebraic multiplicity 2. In that case, the second equation in the linear system <a href="#eq-matrix_exp-polylam" class="quarto-xref">Equation&nbsp;<span>6.16</span></a> is a duplicate of the first. We replace it with</p>
 <p><span id="eq-matrix_exp-polyder"><span class="math display">\[
 \pp{f}{z}(t,\lambda_1) = \pp{}{z} \bigl[ e^{tz}  \bigr]_{z=\lambda_1} = t e^{\lambda_1 t}.
-\tag{5.18}\]</span></span></p>
-<div id="exm-odesys-exp-defective" class="theorem example" data-chapter="5" data-description="Matrix exp with defective eigenvalue">
-<p><span class="theorem-title"><strong>Example 5.15 </strong></span>A critically damped free oscillator with natural frequency <span class="math inline">\(\omega_0\)</span> is equivalent to an ODE system with the matrix</p>
+\tag{6.18}\]</span></span></p>
+<div id="exm-odesys-exp-defective" class="theorem example" data-chapter="6" data-description="Matrix exp with defective eigenvalue">
+<p><span class="theorem-title"><strong>Example 6.15 </strong></span>A critically damped free oscillator with natural frequency <span class="math inline">\(\omega_0\)</span> is equivalent to an ODE system with the matrix</p>
 <p><span class="math display">\[
 \bfA = \twomat{0}{1}{-\omega_0^2}{-2\omega_0}.
 \]</span></p>
-<p>The characteristic polynomial is <span class="math inline">\(z^2 + 2\omega_0z + \omega_0^2\)</span>, which has the double root <span class="math inline">\(\lambda=-\omega_0\)</span>. We apply <a href="#eq-matrix_exp-polylam" class="quarto-xref">Equation&nbsp;<span>5.16</span></a> and <a href="#eq-matrix_exp-polyder" class="quarto-xref">Equation&nbsp;<span>5.18</span></a> to get the system</p>
+<p>The characteristic polynomial is <span class="math inline">\(z^2 + 2\omega_0z + \omega_0^2\)</span>, which has the double root <span class="math inline">\(\lambda=-\omega_0\)</span>. We apply <a href="#eq-matrix_exp-polylam" class="quarto-xref">Equation&nbsp;<span>6.16</span></a> and <a href="#eq-matrix_exp-polyder" class="quarto-xref">Equation&nbsp;<span>6.18</span></a> to get the system</p>
 <p><span class="math display">\[
 \begin{split}
 c_0 - \omega_0 c_1 &amp;= e^{-\omega_0 t} \\
@@ -1390,7 +1398,7 @@ e^{-t\omega_0}[ C_1 (1+t\omega_0) + C_2 t],
 \]</span></p>
 <p>which is equivalent to the general solution we saw before for this problem.</p>
 </div>
-<p>If <span class="math inline">\(\lambda_1=\lambda_2=\lambda_3\)</span>, then the first three equations of <a href="#eq-matrix_exp-polylam" class="quarto-xref">Equation&nbsp;<span>5.16</span></a> become</p>
+<p>If <span class="math inline">\(\lambda_1=\lambda_2=\lambda_3\)</span>, then the first three equations of <a href="#eq-matrix_exp-polylam" class="quarto-xref">Equation&nbsp;<span>6.16</span></a> become</p>
 <p><span class="math display">\[
 \begin{split}
 f(\lambda_1) &amp;= e^{\lambda_1 t} \\
@@ -1400,7 +1408,7 @@ f_{zz}(\lambda_1) &amp;= t^2 e^{\lambda_1 t}.
 \]</span></p>
 <p>In principle, the method generalizes to any algebraic multiplicity.</p>
 <div id="exm-matrix_exp-repeat" class="theorem example">
-<p><span class="theorem-title"><strong>Example 5.16 </strong></span>The matrix <span class="math inline">\(\bfA = \begin{bmatrix} {2}&amp; {1}&amp; {1}\\ {1} &amp; {2} &amp; {1}\\ {-2}&amp; {-2} &amp; {-1} \end{bmatrix}\)</span> has a triple eigenvalue <span class="math inline">\(\lambda_1=1\)</span>. Find <span class="math inline">\(e^{t\bfA}\)</span>.</p>
+<p><span class="theorem-title"><strong>Example 6.16 </strong></span>The matrix <span class="math inline">\(\bfA = \begin{bmatrix} {2}&amp; {1}&amp; {1}\\ {1} &amp; {2} &amp; {1}\\ {-2}&amp; {-2} &amp; {-1} \end{bmatrix}\)</span> has a triple eigenvalue <span class="math inline">\(\lambda_1=1\)</span>. Find <span class="math inline">\(e^{t\bfA}\)</span>.</p>
 <div class="solution proof">
 <p><span class="proof-title"><em>Solution</em>. </span>The system to solve is</p>
 <p><span class="math display">\[
@@ -1431,8 +1439,8 @@ t &amp; t+1 &amp; t \\
 </section>
 </section>
 </section>
-<section id="linearization" class="level2" data-number="5.8">
-<h2 data-number="5.8" class="anchored" data-anchor-id="linearization"><span class="header-section-number">5.8</span> Linearization</h2>
+<section id="linearization" class="level2" data-number="6.8">
+<h2 data-number="6.8" class="anchored" data-anchor-id="linearization"><span class="header-section-number">6.8</span> Linearization</h2>
 <p>A pendulum with length <span class="math inline">\(L\)</span> and angle of deflection <span class="math inline">\(\theta(t)\)</span> from the vertical is governed by the nonlinear second-order equation</p>
 <p><span class="math display">\[
 \ddd{\theta}{t} + \frac{g}{L} \sin(\theta) = 0,
@@ -1482,22 +1490,22 @@ u_1(t)=x(t)-\hat{x},\quad u_2(t)=y(t)-\hat{y}.
 \]</span></p>
 <p>This inspires the following definition.</p>
 <div id="def-jacobian" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 5.8 (Jacobian matrix) </strong></span>The <strong>Jacobian matrix</strong> of the system <span class="math inline">\(x'=F(x,y),\, y'=G(x,y)\)</span> is</p>
+<p><span class="theorem-title"><strong>Definition 6.8 (Jacobian matrix) </strong></span>The <strong>Jacobian matrix</strong> of the system <span class="math inline">\(x'=F(x,y),\, y'=G(x,y)\)</span> is</p>
 <p><span class="math display">\[
 :label: nl-eq-jacobian
 \mathbf{J}(x,y) = \twomat{\displaystyle \pp{F}{x}}{\displaystyle \pp{F}{y}}{\displaystyle \pp{G}{x}}{\displaystyle \pp{G}{y}}.
 \]</span></p>
 </div>
 <p>The Jacobian matrix is essentially the derivative of a 2D vector field. As such, it is also a function of the variables <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>.</p>
-<section id="stability-1" class="level3" data-number="5.8.1">
-<h3 data-number="5.8.1" class="anchored" data-anchor-id="stability-1"><span class="header-section-number">5.8.1</span> Stability</h3>
+<section id="stability-1" class="level3" data-number="6.8.1">
+<h3 data-number="6.8.1" class="anchored" data-anchor-id="stability-1"><span class="header-section-number">6.8.1</span> Stability</h3>
 <p>Let’s summarize. In the neighborhood of a fixed point <span class="math inline">\((\hat{x},\hat{y})\)</span>, we can define the <em>deviation from equilibrium</em> by the variables <span class="math inline">\(u_1(t)=x(t)-\hat{x}\)</span>, <span class="math inline">\(u_2(t)=y(t)-\hat{y}\)</span>. These variables approximately satisfy <span class="math inline">\(\mathbf{u}'=\mathbf{J}(\hat{x},\hat{y})\mathbf{u}\)</span>, which is a linear, constant-coefficient system in two dimensions. Thus, <strong>near a steady state, dynamics are mostly linear.</strong></p>
 <p>We are now right back into the phase plane we studied earlier. In particular:</p>
 <div id="thm-" class="theorem">
-<p><span class="theorem-title"><strong>Theorem 5.11 </strong></span>The stability of a steady state is (usually) determined by the eigenvalues of the Jacobian matrix at the steady state.</p>
+<p><span class="theorem-title"><strong>Theorem 6.11 </strong></span>The stability of a steady state is (usually) determined by the eigenvalues of the Jacobian matrix at the steady state.</p>
 </div>
 <div id="exm-" class="theorem example">
-<p><span class="theorem-title"><strong>Example 5.17 </strong></span>Let’s examine the steady states of a pendulum with damping,</p>
+<p><span class="theorem-title"><strong>Example 6.17 </strong></span>Let’s examine the steady states of a pendulum with damping,</p>
 <p><span class="math display">\[
 \ddd{\theta}{t} + \gamma \theta' + \frac{g}{L} \sin(\theta) = 0,
 \]</span></p>
@@ -1536,7 +1544,7 @@ u_1(t)=x(t)-\hat{x},\quad u_2(t)=y(t)-\hat{y}.
 </div>
 <p>The caveat on using eigenvalues for stability is when they both have zero real part, which is weakly stable in the linear sense. In such cases the details of the nonlinear terms of the system can swing the stability either way.</p>
 <div id="exm-" class="theorem example">
-<p><span class="theorem-title"><strong>Example 5.18 </strong></span>The system</p>
+<p><span class="theorem-title"><strong>Example 6.18 </strong></span>The system</p>
 <p><span class="math display">\[
 \begin{split}
 \frac{dx}{dt} &amp;= 3x-\frac{xy}{2}\\
@@ -1931,8 +1939,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./matrix_algebra.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Matrix algebra</span></span>
+      <a href="./eigen.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Eigenvalues</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

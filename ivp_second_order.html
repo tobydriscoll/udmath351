@@ -182,8 +182,14 @@ MathJax = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./eigen.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Eigenvalues</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./ode_systems.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Systems of ODEs</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Systems of ODEs</span></span></a>
   </div>
 </li>
     </ul>
@@ -308,6 +314,8 @@ MathJax = {
     \newcommand{\sign}{\operatorname{sign}}
     \newcommand{\dist}{\operatorname{dist}}
     \newcommand{\simil}{\operatorname{sim}}
+    \newcommand{\vec}{\operatorname{vec}}
+    \newcommand{\unvec}{\operatorname{unvec}}
     \newcommand{\ee}{\times 10^}
     \newcommand{\floor}[1]{\lfloor#1\rfloor}
     \newcommand{\argmin}{\operatorname{argmin}}
@@ -456,7 +464,7 @@ Note
 <p><span class="math display">\[
 \begin{vmatrix} a &amp; b \\ c &amp; d \end{vmatrix} = ad-bc.
 \]</span></p>
-<p>In the <span class="math inline">\(3\times 3\)</span> case, it’s the same process as finding cross products in vector calculus. You can look ahead at <a href="matrix_algebra.html#exm-matrix-determinant3x3" class="quarto-xref">Example&nbsp;<span>4.19</span></a> for a refresher.</p>
+<p>In the <span class="math inline">\(3\times 3\)</span> case, it’s the same process as finding cross products in vector calculus. You can look ahead at <a href="eigen.html#exm-matrix-determinant3x3" class="quarto-xref">Example&nbsp;<span>5.1</span></a> for a refresher.</p>
 </div>
 </div>
 <p>Here’s the punch line.</p>
@@ -607,7 +615,7 @@ x(t) = c_1 e^{\sqrt{5}\, t} + c_2 e^{-\sqrt{5}\, t}.
  ## The reality of imaginary numbers (optional)
 
 
-`````woxyxfle
+`````kytnntqy
 
 Let's rewind a bit. We can probably take for granted the positive integers 1, 2, 3, and so on, and we'll throw in zero as well, though this too was controversial for centuries. It's not long before we want to solve a problem like $x+1=0$. Annoyingly, we can pose the problem using just nonnegative integers, but we can't solve it. So we accept the existence of the negative integers.
 
