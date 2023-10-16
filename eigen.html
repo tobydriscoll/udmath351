@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.315">
+<meta name="generator" content="quarto-1.4.339">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -220,7 +220,10 @@ MathJax = {
   <ul class="collapse">
   <li><a href="#eigenvectors-for-2times-2" id="toc-eigenvectors-for-2times-2" class="nav-link" data-scroll-target="#eigenvectors-for-2times-2"><span class="header-section-number">5.3.1</span> Eigenvectors for <span class="math inline">\(2\times 2\)</span></a></li>
   </ul></li>
-  <li><a href="#similarity" id="toc-similarity" class="nav-link" data-scroll-target="#similarity"><span class="header-section-number">5.4</span> Similarity</a></li>
+  <li><a href="#similarity" id="toc-similarity" class="nav-link" data-scroll-target="#similarity"><span class="header-section-number">5.4</span> Similarity</a>
+  <ul class="collapse">
+  <li><a href="#matrix-powers" id="toc-matrix-powers" class="nav-link" data-scroll-target="#matrix-powers"><span class="header-section-number">5.4.1</span> Matrix powers</a></li>
+  </ul></li>
   <li><a href="#diagonalization" id="toc-diagonalization" class="nav-link" data-scroll-target="#diagonalization"><span class="header-section-number">5.5</span> Diagonalization</a>
   <ul class="collapse">
   <li><a href="#multiplicity" id="toc-multiplicity" class="nav-link" data-scroll-target="#multiplicity"><span class="header-section-number">5.5.1</span> Multiplicity</a></li>
@@ -823,7 +826,7 @@ Important
 </div>
 <p>Similarity is an odd-looking relationship. If we were dealing with scalars, then similarity would just be equality. But <a href="#eq-similar" class="quarto-xref">Equation&nbsp;<span>5.3</span></a> has an interesting relationship to eigenvalues. First, if <span class="math inline">\(z\)</span> is any complex scalar, then</p>
 <p><span class="math display">\[
-\bfB - z\meye = \bfP^{-1}\bfA\bfP - z\bfP^{-1}\bfP = \bfP^{-1}(\bfA - z\meye)\bfP/
+\bfB - z\meye = \bfP^{-1}\bfA\bfP - z\bfP^{-1}\bfP = \bfP^{-1}(\bfA - z\meye)\bfP.
 \]</span></p>
 <p>Upon taking determinants and applying <a href="#thm-determinants" class="quarto-xref">Theorem&nbsp;<span>5.2</span></a>, we get</p>
 <p><span class="math display">\[
@@ -839,6 +842,48 @@ Important
 <p><span class="proof-title"><em>Solution</em>. </span>If <span class="math inline">\(\bfA\)</span> and <span class="math inline">\(\meye\)</span> were similar, then they would have the same eigenvalues. But <span class="math inline">\(\bfA\)</span>, which is triangular, has eigenvalues <span class="math inline">\(\lambda_1=1\)</span> and <span class="math inline">\(\lambda_2=0\)</span>, while <span class="math inline">\(\meye\)</span> has only <span class="math inline">\(\lambda=1\)</span>.</p>
 </div>
 </div>
+<section id="matrix-powers" class="level3" data-number="5.4.1">
+<h3 data-number="5.4.1" class="anchored" data-anchor-id="matrix-powers"><span class="header-section-number">5.4.1</span> Matrix powers</h3>
+<p>One use of similarity is to compute powers of matrices. Suppose <span class="math inline">\(\bfB=\bfP^{-1}\bfA\bfP\)</span>. Then</p>
+<p><span class="math display">\[
+\begin{split}
+\bfB^2 &amp;= \bigl(\bfP^{-1}\bfA\bfP\bigr)  \bigl(\bfP^{-1}\bfA\bfP\bigr) \\
+&amp;= \bfP^{-1}\bfA\bigl( \bfP \bfP^{-1}\bigr)  \bfA\bfP \\
+&amp;= \bfP^{-1}\bfA \bfA\bfP \\
+&amp; = \bfP^{-1}\bfA^2\bfP.
+\end{split}
+\]</span></p>
+<p>A similar argument shows that for any positive integer <span class="math inline">\(k\)</span>,</p>
+<p><span id="eq-similarity-powers"><span class="math display">\[
+\bfB^k = \bfP^{-1}\bfA^k\bfP.
+\tag{5.4}\]</span></span></p>
+<p><a href="#eq-similarity-powers" class="quarto-xref">Equation&nbsp;<span>5.4</span></a> becomes useful when <span class="math inline">\(\bfA\)</span> is easy to compute. The easiest case is when <span class="math inline">\(\bfA\)</span> is diagonal, because</p>
+<p><span id="eq-diagonal-powers"><span class="math display">\[
+\begin{bmatrix}
+  D_{11} &amp; &amp; &amp; \\ &amp; D_{22} &amp; &amp; \\ &amp; &amp; \ddots &amp; \\ &amp; &amp; &amp; D_{nn}
+\end{bmatrix}^k  = \begin{bmatrix}
+  D_{11}^k &amp; &amp; &amp; \\ &amp; D_{22}^k &amp; &amp; \\ &amp; &amp; \ddots &amp; \\ &amp; &amp; &amp; D_{nn}^k
+\end{bmatrix}.
+\tag{5.5}\]</span></span></p>
+<div id="exm-similarity-powers" class="theorem example" data-chapter="5" data-description="Matrix powers">
+<p><span class="theorem-title"><strong>Example 5.11 </strong></span>Suppose that <span class="math display">\[
+\bfa = \twomat{1}{3}{2}{0} \; \twomat{1}{0}{0}{-1} \; \twomat{1}{3}{2}{0}^{-1}.
+\]</span> Find <span class="math inline">\(\bfA^{100}\)</span>.</p>
+<div class="solution proof">
+<p><span class="proof-title"><em>Solution</em>. </span>Applying <a href="#eq-similarity-powers" class="quarto-xref">Equation&nbsp;<span>5.4</span></a> and <a href="#eq-diagonal-powers" class="quarto-xref">Equation&nbsp;<span>5.5</span></a>, we get</p>
+<p><span class="math display">\[
+\begin{split}
+\bfA^{100} &amp;= \twomat{1}{3}{2}{0} \; \twomat{1}{0}{0}{-1}^{100} \; \twomat{1}{3}{2}{0}^{-1} \\[1ex]
+&amp;= \twomat{1}{3}{2}{0} \; \twomat{1^{100}}{0}{0}{(-1)^{100}} \; \twomat{1}{3}{2}{0}^{-1} \\[1ex]
+&amp;= \twomat{1}{3}{2}{0} \; \twomat{1}{0}{0}{1} \; \twomat{1}{3}{2}{0}^{-1} \\[1ex]
+&amp;= \twomat{1}{3}{2}{0} \; \twomat{1}{3}{2}{0}^{-1} \\[1em]
+&amp;= \meye.
+\end{split}
+\]</span></p>
+</div>
+</div>
+<p>Now, you may be wondering, how likely is it that we will find that some matrix is similar to a diagonal matrix? Funny you should ask.</p>
+</section>
 </section>
 <section id="diagonalization" class="level2" data-number="5.5">
 <h2 data-number="5.5" class="anchored" data-anchor-id="diagonalization"><span class="header-section-number">5.5</span> Diagonalization</h2>
@@ -868,14 +913,14 @@ Important
 \mathbf{D} = \begin{bmatrix}
   \lambda_1 &amp; &amp; &amp; \\ &amp; \lambda_2  &amp; &amp; \\ &amp; &amp; \ddots &amp; \\ &amp; &amp; &amp; \lambda_n
 \end{bmatrix}.
-\tag{5.4}\]</span></span></p>
+\tag{5.6}\]</span></span></p>
 <p>Since we assumed that the columns of <span class="math inline">\(\bfV\)</span> are linearly independent vectors, the column space of <span class="math inline">\(\bfV\)</span> is <span class="math inline">\(n\)</span>-dimensional. Hence <span class="math inline">\(\rank(\bfV)=n\)</span> and <span class="math inline">\(\bfV\)</span> is invertible, and we can conclude that <span class="math inline">\(\bfA\)</span> and <span class="math inline">\(\mathbf{D}\)</span> are similar.</p>
 <div id="def-diagonalization-diag" class="theorem definition">
 <p><span class="theorem-title"><strong>Definition 5.7 (Diagonalization) </strong></span>A <strong>diagonalization</strong> of square matrix <span class="math inline">\(\bfA\)</span> is the similarity factorization</p>
 <p><span id="eq-diagonalization-similar"><span class="math display">\[
 \bfA = \bfV \mathbf{D} \bfV^{-1},
-\tag{5.5}\]</span></span></p>
-<p>where <span class="math inline">\(\mathbf{D}\)</span> is a diagonal matrix of eigenvalues and <span class="math inline">\(\bfV\)</span> is a square matrix whose columns are corresponding eigenvectors, as defined in <a href="#eq-diagonalization-VD" class="quarto-xref">Equation&nbsp;<span>5.4</span></a>. If such a factorization exists, we say that <span class="math inline">\(\bfA\)</span> is <strong>diagonalizable</strong>.</p>
+\tag{5.7}\]</span></span></p>
+<p>where <span class="math inline">\(\mathbf{D}\)</span> is a diagonal matrix of eigenvalues and <span class="math inline">\(\bfV\)</span> is a square matrix whose columns are corresponding eigenvectors, as defined in <a href="#eq-diagonalization-VD" class="quarto-xref">Equation&nbsp;<span>5.6</span></a>. If such a factorization exists, we say that <span class="math inline">\(\bfA\)</span> is <strong>diagonalizable</strong>.</p>
 </div>
 <div class="callout callout-style-default callout-caution callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -891,7 +936,7 @@ Caution
 </div>
 </div>
 <div id="exm-diagonalization" class="theorem example" data-chapter="5" data-description="Diagonalization">
-<p><span class="theorem-title"><strong>Example 5.11 </strong></span>Find a diagonalization of <span class="math inline">\(\bfA = \twomat{1}{1}{0}{0}\)</span>.</p>
+<p><span class="theorem-title"><strong>Example 5.12 </strong></span>Find a diagonalization of <span class="math inline">\(\bfA = \twomat{1}{1}{0}{0}\)</span>.</p>
 <div class="solution proof">
 <p><span class="proof-title"><em>Solution</em>. </span>Since <span class="math inline">\(\bfA\)</span> is triangular, we see immediately that its eigenvalues are <span class="math inline">\(\lambda_1=1\)</span> and <span class="math inline">\(\lambda_2=0\)</span>. The eigenspace for <span class="math inline">\(\lambda_1\)</span> is the null space of</p>
 <p><span class="math display">\[
@@ -916,7 +961,7 @@ Caution
 </div>
 </div>
 <div id="exm-diagonalization-reverse" class="theorem example" data-chapter="5" data-description="Diagonalization shows all">
-<p><span class="theorem-title"><strong>Example 5.12 </strong></span>Suppose <span class="math inline">\(\bfA\)</span> has the diagonalization</p>
+<p><span class="theorem-title"><strong>Example 5.13 </strong></span>Suppose <span class="math inline">\(\bfA\)</span> has the diagonalization</p>
 <p><span class="math display">\[
 \bfA = \begin{bmatrix} 1 &amp; 0 &amp; 1 \\ -1 &amp; -1 &amp; 0 \\ 0 &amp; 0 &amp; 2 \end{bmatrix} \,
 \begin{bmatrix} -2 &amp; 0 &amp; 0 \\ 0 &amp; 1 &amp; 0 \\ 0 &amp; 0 &amp; 5 \end{bmatrix} \,
@@ -924,7 +969,7 @@ Caution
 \]</span></p>
 <p>Find the eigenvalues and eigenvectors of <span class="math inline">\(\bfA\)</span>.</p>
 <div class="solution proof">
-<p><span class="proof-title"><em>Solution</em>. </span>Fight the temptation to multiply out product to find <span class="math inline">\(\bfA\)</span>! All the information needed is in the first two matrices, which by <a href="#eq-diagonalization-similar" class="quarto-xref">Equation&nbsp;<span>5.5</span></a> give eigenvectors and their corresponding eigenvalues:</p>
+<p><span class="proof-title"><em>Solution</em>. </span>Fight the temptation to multiply out product to find <span class="math inline">\(\bfA\)</span>! All the information needed is in the first two matrices, which by <a href="#eq-diagonalization-similar" class="quarto-xref">Equation&nbsp;<span>5.7</span></a> give eigenvectors and their corresponding eigenvalues:</p>
 <p><span class="math display">\[
 \lambda_1 = -2, \quad \bfv_1 = \threevec{1}{-1}{0}, \qquad
 \lambda_2 = 1, \quad \bfv_2 = \threevec{0}{-1}{0}, \qquad
@@ -937,7 +982,7 @@ Caution
 <p>The eigenvalues of a matrix are the roots of its characteristic polynomial. In the general <span class="math inline">\(n\times n\)</span> case, it factors as</p>
 <p><span id="eq-charpoly-factor"><span class="math display">\[
 p(z) = (z-\lambda_1)^{m_1}(z-\lambda_2)^{m_2}\cdots(z-\lambda_k)^{m_k},
-\tag{5.6}\]</span></span></p>
+\tag{5.8}\]</span></span></p>
 <p>for positive integer multiplicities such that <span class="math inline">\(m_1+\cdots+m_k=n\)</span>.</p>
 <div id="def-linalg-algmult" class="theorem definition">
 <p><span class="theorem-title"><strong>Definition 5.8 (Algebraic multiplicity) </strong></span>The <strong>algebraic multiplicity</strong> (AM) of an eigenvalue is its multiplicity as a root of the characteristic polynomial. An eigenvalue with AM equal to 1 is called <strong>simple</strong>.</p>
@@ -948,7 +993,7 @@ p(z) = (z-\lambda_1)^{m_1}(z-\lambda_2)^{m_2}\cdots(z-\lambda_k)^{m_k},
 </div>
 <p>If the eigenvalues are not all simple, then the matrix may or may not be diagonalizable, and we have to go into greater detail. The following example illustrates a peculiar possibility.</p>
 <div id="exm-diagonalization-defective" class="theorem example" data-chapter="5" data-description="Defective eigenvalue">
-<p><span class="theorem-title"><strong>Example 5.13 </strong></span>Find the eigenspaces of <span class="math inline">\(\bfA=\twomat{4}{1}{0}{4}\)</span>.</p>
+<p><span class="theorem-title"><strong>Example 5.14 </strong></span>Find the eigenspaces of <span class="math inline">\(\bfA=\twomat{4}{1}{0}{4}\)</span>.</p>
 <div class="solution proof">
 <p><span class="proof-title"><em>Solution</em>. </span>The characteristic polynomial is</p>
 <p><span class="math display">\[
@@ -961,7 +1006,7 @@ p(z) = (z-\lambda_1)^{m_1}(z-\lambda_2)^{m_2}\cdots(z-\lambda_k)^{m_k},
 <p>the eigenspace has basis <span class="math inline">\(\twovec{1}{0}\)</span>. There is only one possible eigenvector, up to linear dependence.</p>
 </div>
 </div>
-<p><a href="#exm-diagonalization-defective" class="quarto-xref">Example&nbsp;<span>5.13</span></a> leads us to define a second notion of multiplicity.</p>
+<p><a href="#exm-diagonalization-defective" class="quarto-xref">Example&nbsp;<span>5.14</span></a> leads us to define a second notion of multiplicity.</p>
 <div id="def-linalg-geomult" class="theorem definition">
 <p><span class="theorem-title"><strong>Definition 5.9 (Geometric multiplicity) </strong></span>The <strong>geometric multiplicity</strong> (GM) of an eigenvalue is the dimension of its associated eigenspace.</p>
 </div>
@@ -975,7 +1020,7 @@ p(z) = (z-\lambda_1)^{m_1}(z-\lambda_2)^{m_2}\cdots(z-\lambda_k)^{m_k},
 </section>
 <section id="defectiveness" class="level3" data-number="5.5.2">
 <h3 data-number="5.5.2" class="anchored" data-anchor-id="defectiveness"><span class="header-section-number">5.5.2</span> Defectiveness</h3>
-<p>In the <a href="#exm-diagonalization-defective" class="quarto-xref">Example&nbsp;<span>5.13</span></a> we found an eigenvalue <span class="math inline">\(\lambda_1=4\)</span> of algebraic multiplicity 2 whose geometric multiplicity is 1.</p>
+<p>In the <a href="#exm-diagonalization-defective" class="quarto-xref">Example&nbsp;<span>5.14</span></a> we found an eigenvalue <span class="math inline">\(\lambda_1=4\)</span> of algebraic multiplicity 2 whose geometric multiplicity is 1.</p>
 <div id="def-" class="theorem definition">
 <p><span class="theorem-title"><strong>Definition 5.10 (Defectiveness) </strong></span>An eigenvalue <span class="math inline">\(\lambda\)</span> whose geometric multiplicity is strictly less than its algebraic multiplicity is said to be <strong>defective</strong>. A matrix is called defective if any of its eigenvalues are defective.</p>
 </div>
@@ -987,9 +1032,9 @@ p(z) = (z-\lambda_1)^{m_1}(z-\lambda_2)^{m_2}\cdots(z-\lambda_k)^{m_k},
 <section id="by-2-case" class="level3" data-number="5.5.3">
 <h3 data-number="5.5.3" class="anchored" data-anchor-id="by-2-case"><span class="header-section-number">5.5.3</span> 2-by-2 case</h3>
 <p>A <span class="math inline">\(2\times 2\)</span> matrix has two eigenvalues, counting multiplicities. If they are distinct, then <a href="#thm-diagonalization-distinct" class="quarto-xref">Theorem&nbsp;<span>5.11</span></a> applies and the matrix is diagonalizable. Otherwise, there is a single eigenvalue of AM 2.</p>
-<p><a href="#exm-diagonalization-defective" class="quarto-xref">Example&nbsp;<span>5.13</span></a> showed a defective case. Here is a nondefective case.</p>
+<p><a href="#exm-diagonalization-defective" class="quarto-xref">Example&nbsp;<span>5.14</span></a> showed a defective case. Here is a nondefective case.</p>
 <div id="exm-diagonalization-nondefective" class="theorem example" data-chapter="5" data-description="Nondefective repeated eigenvalue">
-<p><span class="theorem-title"><strong>Example 5.14 </strong></span>The <span class="math inline">\(2\times 2\)</span> identity matrix <span class="math inline">\(\meye\)</span> has a lone eigenvalue <span class="math inline">\(\lambda_1=1\)</span> of algebraic multiplicity 2. The system <span class="math inline">\((\meye - \meye)\bfv=\bfzero\)</span> has an RRE form that is the zero matrix, so there are two free variables and two basis vectors. Hence the geometric multiplicity of <span class="math inline">\(\lambda_1\)</span> is also 2.</p>
+<p><span class="theorem-title"><strong>Example 5.15 </strong></span>The <span class="math inline">\(2\times 2\)</span> identity matrix <span class="math inline">\(\meye\)</span> has a lone eigenvalue <span class="math inline">\(\lambda_1=1\)</span> of algebraic multiplicity 2. The system <span class="math inline">\((\meye - \meye)\bfv=\bfzero\)</span> has an RRE form that is the zero matrix, so there are two free variables and two basis vectors. Hence the geometric multiplicity of <span class="math inline">\(\lambda_1\)</span> is also 2.</p>
 </div>
 <p>In fact, the difference between the cases is easy to spot in <span class="math inline">\(2\times 2\)</span> matrices.</p>
 <div id="thm-la-2x2defective" class="theorem">
