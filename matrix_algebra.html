@@ -1351,14 +1351,14 @@ Note
 <div id="def-spaces-polynomials" class="theorem definition">
 <p><span class="theorem-title"><strong>Definition 4.15 </strong></span>Let <span class="math inline">\(\mathcal{P}_n\)</span> denote the set of all polynomials of degree <span class="math inline">\(n\)</span> or less having real coefficients.</p>
 </div>
-<p>For instance, <span class="math inline">\(2t^2-1\)</span> is a member of <span class="math inline">\(\mathcal{P}_2\)</span> (as well as <span class="math inline">\(\mathcal{P}_3\)</span>, <span class="math inline">\(\mathcal{P}_4\)</span>, etc.), but <span class="math inline">\(t^4+t\)</span> is not.</p>
+<p>For instance, <span class="math inline">\(2x^2-1\)</span> is a member of <span class="math inline">\(\mathcal{P}_2\)</span> (as well as <span class="math inline">\(\mathcal{P}_3\)</span>, <span class="math inline">\(\mathcal{P}_4\)</span>, etc.), but <span class="math inline">\(x^4+t\)</span> is not.</p>
 <p>It is easy to set up a correspondence between every member of <span class="math inline">\(\mathcal{P}_n\)</span> and a vector in <span class="math inline">\(\real^{n+1}\)</span>:</p>
 <p><span id="eq-polynomial-vector"><span class="math display">\[
-c_0 + c_1 t + c_2 t^2 + \cdots + c_n t^n \Longleftrightarrow \begin{bmatrix} c_0 \\ c_1 \\ c_2 \\ \vdots \\ c_n \end{bmatrix}.
+c_0 + c_1 x + c_2 x^2 + \cdots + c_n x^n \Longleftrightarrow \begin{bmatrix} c_0 \\ c_1 \\ c_2 \\ \vdots \\ c_n \end{bmatrix}.
 \tag{4.8}\]</span></span></p>
 <p>As with <span class="math inline">\(\cmn^{m}{n}\)</span>, this correspondence preserves the structure of addition, scalar multiplication, and zero. Therefore, <span class="math inline">\(\mathcal{P}_n\)</span> is a vector space.</p>
 <div id="exm-space-polynomials" class="theorem example" data-chapter="4" data-description="Polynomials as vectors">
-<p><span class="theorem-title"><strong>Example 4.19 </strong></span>Determine whether the polynomials <span class="math inline">\(3t+4\)</span>, <span class="math inline">\(t^2-1\)</span>, and <span class="math inline">\(t^2+t\)</span> are linearly dependent.</p>
+<p><span class="theorem-title"><strong>Example 4.19 </strong></span>Determine whether the polynomials <span class="math inline">\(3x+4\)</span>, <span class="math inline">\(x^2-1\)</span>, and <span class="math inline">\(x^2+x\)</span> are linearly dependent.</p>
 <div class="solution proof">
 <p><span class="proof-title"><em>Solution</em>. </span>This question is identical to asking about the independence of</p>
 <p><span class="math display">\[
@@ -1375,7 +1375,19 @@ c_0 + c_1 t + c_2 t^2 + \cdots + c_n t^n \Longleftrightarrow \begin{bmatrix} c_0
 <p>which has a unique solution. Hence the polynomials are linearly independent.</p>
 </div>
 </div>
-<p>The standard vectors <span class="math inline">\(\bfe_1. \ldots, \bfe_{n+1}\)</span> of <span class="math inline">\(\real^{n+1}\)</span> correspond to <span class="math inline">\(1, t, t^2, \ldots, t^n\)</span> in <span class="math inline">\(\mathcal{P}_n\)</span>.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The standard vectors <span class="math inline">\(\bfe_1. \ldots, \bfe_{n+1}\)</span> of <span class="math inline">\(\real^{n+1}\)</span> correspond to the monomials <span class="math inline">\(1, x, x^2, \ldots, x^n\)</span> in <span class="math inline">\(\mathcal{P}_n\)</span>.</p>
+</div>
+</div>
 </section>
 <section id="ode-solutions" class="level3" data-number="4.7.3">
 <h3 data-number="4.7.3" class="anchored" data-anchor-id="ode-solutions"><span class="header-section-number">4.7.3</span> ODE solutions</h3>
