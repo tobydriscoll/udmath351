@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.315">
+<meta name="generator" content="quarto-1.4.339">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -1311,6 +1311,19 @@ Note
 </tbody>
 </table>
 </div>
+<p>And, here is an expanded form of the Fundamental Theorem.</p>
+<div id="thm-FTLA2" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 4.15 (Fundamental Theorem of Linear Algebra, Director’s Cut) </strong></span>If <span class="math inline">\(\bfA\)</span> is a real <span class="math inline">\(n\times n\)</span> matrix, then each of these statements is equivalent to all of the others.</p>
+<ol type="1">
+<li><span class="math inline">\(\bfA\)</span> is invertible.</li>
+<li>The linear system <span class="math inline">\(\bfA\bfx=\bfb\)</span> has the unique solution <span class="math inline">\(\bfx=\bfA^{-1}\bfb\)</span>.</li>
+<li>The RRE form of <span class="math inline">\(\bfA\)</span> is the identity matrix.</li>
+<li><span class="math inline">\(\rank(\bfA)=n\)</span>.</li>
+<li>The columns of <span class="math inline">\(\bfA\)</span> form a basis of <span class="math inline">\(\real^n\)</span>.</li>
+<li><span class="math inline">\(\nullity(\bfA)=0\)</span>.</li>
+<li>The null space of <span class="math inline">\(\bfA\)</span> is just <span class="math inline">\(\{\bfzero\}\)</span>.</li>
+</ol>
+</div>
 </section>
 </section>
 <section id="other-vector-spaces" class="level2" data-number="4.7">
@@ -1458,7 +1471,7 @@ B = \twomat{1}{1}{0}{1},\; \twomat{1}{0}{1}{1}, \; \twomat{0}{1}{0}{0}, \; \twom
 \]</span></p>
 <p>This notation allows us to write the linear system in <a href="#exm-coords-2by2" class="quarto-xref">Example&nbsp;<span>4.21</span></a>, for instance, in an abstract form.</p>
 <div id="thm-coords-abstract" class="theorem">
-<p><span class="theorem-title"><strong>Theorem 4.15 </strong></span>If <span class="math inline">\(B\)</span> is a basis of a vector space and <span class="math inline">\(\bfv\)</span> is a vector in that space, then</p>
+<p><span class="theorem-title"><strong>Theorem 4.16 </strong></span>If <span class="math inline">\(B\)</span> is a basis of a vector space and <span class="math inline">\(\bfv\)</span> is a vector in that space, then</p>
 <p><span id="eq-coords-abstract"><span class="math display">\[
 \bigl[ B \bigr]_E \cdot \bigl[\bfv\bigr]_B = \bigl[ \bfv \bigr]_E.
 \tag{4.10}\]</span></span></p>
@@ -1497,7 +1510,7 @@ B = \twomat{1}{1}{0}{1},\; \twomat{1}{0}{1}{1}, \; \twomat{0}{1}{0}{0}, \; \twom
 \]</span></p>
 </div>
 <div id="thm-change-of-basis" class="theorem">
-<p><span class="theorem-title"><strong>Theorem 4.16 (Change of basis) </strong></span>Suppose that <span class="math inline">\(B\)</span> and <span class="math inline">\(C\)</span> are bases of the same vector space. Then</p>
+<p><span class="theorem-title"><strong>Theorem 4.17 (Change of basis) </strong></span>Suppose that <span class="math inline">\(B\)</span> and <span class="math inline">\(C\)</span> are bases of the same vector space. Then</p>
 <p><span id="eq-change-of-basis-matrix"><span class="math display">\[
 \bigl[ C \bigr]_B = \bigl[ B \bigr]_E^{-1} \cdot \bigl[ C \bigr]_E\quad ,
 \tag{4.12}\]</span></span></p>
@@ -1537,7 +1550,7 @@ C &amp;= \twovec{1}{0}, \; \twovec{1}{2}.
 <div id="exm-change-of-basis" class="theorem example" data-chapter="4" data-description="Change of basis">
 <p><span class="theorem-title"><strong>Example 4.23 </strong></span>Given the bases <span class="math inline">\(B = \threevec{1}{1}{1}\)</span>, <span class="math inline">\(\threevec{1}{0}{1}\)</span>, <span class="math inline">\(\threevec{1}{1}{0}\)</span> and <span class="math inline">\(C = \threevec{1}{0}{-1}\)</span>, <span class="math inline">\(\threevec{0}{1}{1}\)</span>, <span class="math inline">\(\threevec{0}{2}{1}\)</span> of <span class="math inline">\(\real^3\)</span>, and a vector whose <span class="math inline">\(C\)</span>-coordinates are <span class="math inline">\(\threevec{1}{2}{3}\)</span>, find its <span class="math inline">\(B\)</span>-coordinates.</p>
 <div class="solution proof">
-<p><span class="proof-title"><em>Solution</em>. </span>The <em>hard</em> way to solve this problem would be to first apply <a href="#thm-change-of-basis" class="quarto-xref">Theorem&nbsp;<span>4.16</span></a> to find the change-of-basis matrix <span class="math inline">\(\bigl[ B \bigr]_C\)</span>. That would require finding the inverse of a <span class="math inline">\(3\times 3\)</span> matrix.</p>
+<p><span class="proof-title"><em>Solution</em>. </span>The <em>hard</em> way to solve this problem would be to first apply <a href="#thm-change-of-basis" class="quarto-xref">Theorem&nbsp;<span>4.17</span></a> to find the change-of-basis matrix <span class="math inline">\(\bigl[ B \bigr]_C\)</span>. That would require finding the inverse of a <span class="math inline">\(3\times 3\)</span> matrix.</p>
 <p>The <em>easy</em> way is to use the standard basis as an intermediary, like in <a href="#eq-change-of-basis-standard" class="quarto-xref">Equation&nbsp;<span>4.11</span></a>:</p>
 <p><span class="math display">\[
 \begin{split}
