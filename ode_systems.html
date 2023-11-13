@@ -589,10 +589,7 @@ Note
 <p><span id="eq-structure-columns"><span class="math display">\[
 \mathbf{x}_j'=\mathbf{A}\mathbf{x}_j, \quad j=1,\ldots,n,
 \tag{6.7}\]</span></span></p>
-<p>and <span class="math inline">\(\fundm(t)\)</span> is invertible at all times in an open interval <span class="math inline">\(I\)</span> where <span class="math inline">\(\bfA\)</span> is continuous. Equivalently,</p>
-<p><span class="math display">\[
-\fundm'=\bfA\fundm.
-\]</span></p>
+<p>and <span class="math inline">\(\fundm(t)\)</span> is invertible at all times in an open interval <span class="math inline">\(I\)</span> where <span class="math inline">\(\bfA\)</span> is continuous. In this situation, we refer to the columns of <span class="math inline">\(\fundm\)</span> as a <strong>fundamental set of solutions</strong>.</p>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -607,13 +604,21 @@ Note
 <p>Because <a href="#def-structure-fundamental" class="quarto-xref">Definition&nbsp;<span>6.3</span></a> says nothing about an initial condition, a homogeneous ODE has infinitely many fundamental matrices.</p>
 </div>
 </div>
-<p>A fundamental matrix gives all we need to construct the general homogeneous solution.</p>
-<div id="thm-" class="theorem">
-<p><span class="theorem-title"><strong>Theorem 6.2 </strong></span>If <span class="math inline">\(\fundm\)</span> is a fundamental matrix for <span class="math inline">\(\bfx'=\bfA(t)\bfx\)</span>, then the general solution of this system is</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A condition equivalent to <a href="#eq-structure-columns" class="quarto-xref">Equation&nbsp;<span>6.7</span></a> is that <span class="math inline">\(\fundm\)</span> satisfies the matrix ODE</p>
 <p><span class="math display">\[
-\bfx_h = \mathbf{x}(t)=\fundm(t)\mathbf{c},
+\fundm'=\bfA\fundm.
 \]</span></p>
-<p>for an arbitrary constant vector <span class="math inline">\(\mathbf{c}\)</span>.</p>
+</div>
 </div>
 </section>
 <section id="wronskian" class="level3" data-number="6.4.2">
@@ -626,29 +631,73 @@ W(\bfx_1,\ldots,\bfx_n) = \det\Bigl( \bigl[ \mathbf{x}_1(t) \: \cdots \: \mathbf
 \]</span></p>
 </div>
 <div id="thm-structure-wronskian" class="theorem">
-<p><span class="theorem-title"><strong>Theorem 6.3 </strong></span>Suppose that <span class="math inline">\(\mathbf{x}_1,\ldots,\mathbf{x}_n\)</span> are solutions of <a href="#eq-structure-homog" class="quarto-xref">Equation&nbsp;<span>6.4</span></a>, and <span class="math inline">\(I\)</span> is an interval where <span class="math inline">\(\bfA(t)\)</span> is continuous. The following are equivalent statements:</p>
+<p><span class="theorem-title"><strong>Theorem 6.2 </strong></span>Suppose that <span class="math inline">\(\mathbf{x}_1,\ldots,\mathbf{x}_n\)</span> are solutions of <a href="#eq-structure-homog" class="quarto-xref">Equation&nbsp;<span>6.4</span></a>, and <span class="math inline">\(I\)</span> is an interval where <span class="math inline">\(\bfA(t)\)</span> is continuous. The following are equivalent statements:</p>
 <ol type="1">
 <li><span class="math inline">\(\mathbf{x}_1,\ldots,\mathbf{x}_n\)</span> are linearly independent in <span class="math inline">\(I\)</span>.</li>
-<li><span class="math inline">\(\mathbf{x}_1,\ldots,\mathbf{x}_n\)</span> are columns of a fundamental matrix.</li>
+<li><span class="math inline">\(\mathbf{x}_1,\ldots,\mathbf{x}_n\)</span> are a fundamental set of solutions.</li>
 <li>The Wronksian <span class="math inline">\(W(\mathbf{x}_1,\ldots,\mathbf{x}_n)\)</span> is nonzero at all <span class="math inline">\(t\in I\)</span>.</li>
 </ol>
 </div>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The third item in <a href="#thm-structure-wronskian" class="quarto-xref">Theorem&nbsp;<span>6.2</span></a> is the most interesting. It implies that the Wronskian is either always zero or never zero, so it’s sufficient to check the Wronskian at any single value of <span class="math inline">\(t\)</span>.</p>
+</div>
+</div>
 <div id="exm-odesys-wronskian" class="theorem example" data-chapter="6" data-description="Wronskian of an ODE system">
-<p><span class="theorem-title"><strong>Example 6.7 </strong></span>Suppose we have two solutions</p>
+<p><span class="theorem-title"><strong>Example 6.7 </strong></span>Given the two solutions</p>
 <p><span class="math display">\[
-\mathbf{x}_1(t)=e^{\lambda_1 t}\mathbf{v}_1, \quad \mathbf{x}_2(t)=e^{\lambda_2 t}\mathbf{v}_2,
+\mathbf{x}_1(t)=e^{2 t}\twovec{3}{-1}, \quad \mathbf{x}_2(t)=e^{-3 t}\twovec{2}{2},
 \]</span></p>
-<p>where <span class="math inline">\(\mathbf{v}_1\)</span> and <span class="math inline">\(\mathbf{v}_2\)</span> are columns of an invertible <span class="math inline">\(2\times 2\)</span> constant matrix. Show that the Wronskian of these solutions is nonzero at all times.</p>
+<p>show that they are fundamental.</p>
 <div class="solution proof">
-<p><span class="proof-title"><em>Solution</em>. </span>Say <span class="math inline">\(\mathbf{v}_1=[a,\,c]\)</span> and <span class="math inline">\(\mathbf{v}_2=[b,\,d]\)</span>. Then</p>
+<p><span class="proof-title"><em>Solution</em>. </span>We calculate</p>
 <p><span class="math display">\[
-\begin{split}
-W(t) &amp; = \det\Bigl( \bigl[ \mathbf{x}_1(t) \: \mathbf{x}_2(t)  \bigr] \Bigr)\\
-&amp; = \twodet{a e^{\lambda_1 t}}{be^{\lambda_2 t}}{c e^{\lambda_1 t}}{d e^{\lambda_2 t}}\\
-&amp; = e^{t(\lambda_1+\lambda_2)} (ad-bc) =  e^{t(\lambda_1+\lambda_2)} \det\Bigl(\bigl[\mathbf{v}_1\: \mathbf{v}_2\bigr]\Bigr) \\
-\end{split}
+W(\bfx_1,\ldots,\bfx_n) = \det\bigl(\bigl[ \bfx_1 \: \bfx_2\bigr]\bigr) = \twodet{3 e^{2 t}}{2 e^{-3 t}}{-e^{2 t}}{2 e^{-3 t}} = 8 e^{-t}.
 \]</span></p>
-<p>The exponential function is never zero, and the problem statement guarantees that the last determinant is nonzero. Hence <span class="math inline">\(W\)</span> is nonzero as well.</p>
+<p>The exponential function is never zero, so we know the Wronskian is never zero. Hence the two solutions are fundamental.</p>
+<p>We could have made the process even easier by first setting <span class="math inline">\(t=0\)</span> in both solutions. Then we would have</p>
+<p><span class="math display">\[
+W(\bfx_1,\ldots,\bfx_n; t=0) = \twodet{3}{2}{-1}{2} = 8.
+\]</span></p>
+<p>Say <span class="math inline">\(\mathbf{v}_1=[a,\,c]\)</span> and <span class="math inline">\(\mathbf{v}_2=[b,\,d]\)</span>. Then</p>
+</div>
+</div>
+<p>A fundamental matrix gives everything we need to construct the general homogeneous solution.</p>
+<div id="thm-" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 6.3 </strong></span>If <span class="math inline">\(\fundm\)</span> is a fundamental matrix for <span class="math inline">\(\bfx'=\bfA(t)\bfx\)</span>, then the general solution of this system is</p>
+<p><span class="math display">\[
+\bfx_h = \mathbf{x}(t)=\fundm(t)\mathbf{c},
+\]</span></p>
+<p>for an arbitrary constant vector <span class="math inline">\(\mathbf{c}\)</span>.</p>
+</div>
+<div id="exm-odesys-fundamental" class="theorem example" data-chapter="6" data-description="Fundamental matrix from solutions">
+<p><span class="theorem-title"><strong>Example 6.8 </strong></span>Given that the following are solutions of <span class="math inline">\(\bfx' = \bfA \bfx\)</span> over <span class="math inline">\((-\infty, \infty)\)</span>:</p>
+<p><span class="math display">\[
+\bfx_1 = \threevec{2}{-1}{0} + t \threevec{1}{3}{1}, \quad \bfx_2 = \threevec{0}{1}{2},  \quad \bfx_3 = \threevec{0}{0}{-3} + t \threevec{1}{1}{2},
+\]</span></p>
+<p>find a general solution of the homogeneous system.</p>
+<div class="solution proof">
+<p><span class="proof-title"><em>Solution</em>. </span>We first want to show that these solutions are fundamental. Setting <span class="math inline">\(t=0\)</span>, the Wronskian is</p>
+<p><span class="math display">\[
+\begin{vmatrix}
+2 &amp; 0 &amp; 0 \\
+-1 &amp; 1 &amp; 0 \\
+0 &amp; 2 &amp; -3
+\end{vmatrix} = -6.
+\]</span></p>
+<p>Hence we have the fundamental matrix</p>
+<p><span class="math display">\[
+\fundm(t) = \begin{bmatrix} 2+t &amp; 0 &amp; t \\ -1+3t &amp; 1 &amp; t \\ t &amp; 2 &amp; -3+2t \end{bmatrix},
+\]</span></p>
+<p>and the general solution is <span class="math inline">\(\bfx = \fundm(t) \mathbf{c}\)</span> for an arbitrary constant vector <span class="math inline">\(\mathbf{c}\)</span>.</p>
 </div>
 </div>
 </section>
@@ -686,7 +735,7 @@ W(t) &amp; = \det\Bigl( \bigl[ \mathbf{x}_1(t) \: \mathbf{x}_2(t)  \bigr] \Bigr)
 <p><span class="math display">\[
 \bigl[ \mathbf{x}_1(t) \; \mathbf{x}_2(t) \; \cdots \; \mathbf{x}_n(t)  \bigr]
 \]</span></p>
-<p>is a fundamental matrix. According to <a href="#thm-structure-wronskian" class="quarto-xref">Theorem&nbsp;<span>6.3</span></a>, we can ask that question at any value of <span class="math inline">\(t\)</span>, including <span class="math inline">\(t=0\)</span>. So the key issue is whether</p>
+<p>is a fundamental matrix. According to <a href="#thm-structure-wronskian" class="quarto-xref">Theorem&nbsp;<span>6.2</span></a>, we can ask that question at any value of <span class="math inline">\(t\)</span>, including <span class="math inline">\(t=0\)</span>. So the key issue is whether</p>
 <p><span id="eq-eigenmat"><span class="math display">\[
 \bfV = \bigl[ \mathbf{v}_1 \; \mathbf{v}_2 \; \cdots \; \mathbf{v}_n  \bigr]
 \tag{6.10}\]</span></span></p>
@@ -718,7 +767,7 @@ Note
 </div>
 </div>
 <div id="exm-odesys-eigen-real" class="theorem example" data-chapter="6" data-description="ODE system with real eigenvalues">
-<p><span class="theorem-title"><strong>Example 6.8 </strong></span>Given that</p>
+<p><span class="theorem-title"><strong>Example 6.9 </strong></span>Given that</p>
 <p><span class="math display">\[
 \mathbf{A} = \begin{bmatrix} 1 &amp; 1 \\ 4 &amp; 1 \end{bmatrix}
 \]</span></p>
@@ -758,7 +807,7 @@ e^{\lambda t} \bfv = e^{rt} (\cos(\omega t) + i\sin(\omega t) )\, (\bfu_1 + i\, 
 \tag{6.13}\]</span></span></p>
 <p>for arbitrary real <span class="math inline">\(a_1\)</span> and <span class="math inline">\(a_2\)</span>. However, it may be easier to simply apply Euler’s formula for complex exponentials, as shown in the next example, than to apply <a href="#eq-sys-complex-real-form" class="quarto-xref">Equation&nbsp;<span>6.13</span></a>.</p>
 <div id="exm-odesys-eigen-complex" class="theorem example" data-chapter="6" data-description="ODE system with complex eigenvalues">
-<p><span class="theorem-title"><strong>Example 6.9 </strong></span>Find the general solution of</p>
+<p><span class="theorem-title"><strong>Example 6.10 </strong></span>Find the general solution of</p>
 <p><span class="math display">\[
 \bfx' = \twomat{1}{1}{-1}{1} \bfx.
 \]</span></p>
@@ -1096,7 +1145,7 @@ Note
 </div>
 <p>(You can ignore the degenerate cases along <span class="math inline">\(\tau=4\Delta^2\)</span>.) One easy takeaway is that the fixed point is stable if <span class="math inline">\(\tau \le 0\)</span> ans <span class="math inline">\(\Delta \ge 0\)</span>, and unstable otherwise.</p>
 <div id="exm-odesys-tracedet" class="theorem example" data-chapter="6" data-description="Trace and determinant for stability">
-<p><span class="theorem-title"><strong>Example 6.10 </strong></span>Consider <span class="math inline">\(\mathbf{A}=\twomat{1}{-2}{4}{-3}\)</span>, which has trace <span class="math inline">\(\tau=-2\)</span> and determinant <span class="math inline">\(\Delta=5\)</span>. These place us in the second quadrant in <a href="#fig-phase_plane-TD" class="quarto-xref">Figure&nbsp;<span>6.1</span></a>. Since</p>
+<p><span class="theorem-title"><strong>Example 6.11 </strong></span>Consider <span class="math inline">\(\mathbf{A}=\twomat{1}{-2}{4}{-3}\)</span>, which has trace <span class="math inline">\(\tau=-2\)</span> and determinant <span class="math inline">\(\Delta=5\)</span>. These place us in the second quadrant in <a href="#fig-phase_plane-TD" class="quarto-xref">Figure&nbsp;<span>6.1</span></a>. Since</p>
 <p><span class="math display">\[
 4\Delta = 20 &gt; 4 = \tau^2 ,
 \]</span></p>
@@ -1244,7 +1293,7 @@ e^{t\mathbf{A}} = \mathbf{I} + t\mathbf{A} + \frac{1}{2!}t^2 \mathbf{A}^2 + \fra
 </div>
 <p>For a nilpotent matrix, the infinite series for the matrix exponential simply truncates at a finite power.</p>
 <div id="exm-odesys-exp-nilpotent" class="theorem example" data-chapter="6" data-description="Matrix exp with nilpotent matrix">
-<p><span class="theorem-title"><strong>Example 6.11 </strong></span>Find <span class="math inline">\(e^{t\bfA}\)</span> if <span class="math inline">\(\bfA= \begin{bmatrix} 0 &amp; 1 &amp; 2 \\ 0 &amp; 0 &amp; 1 \\ 0 &amp; 0 &amp; 0 \end{bmatrix}\)</span>.</p>
+<p><span class="theorem-title"><strong>Example 6.12 </strong></span>Find <span class="math inline">\(e^{t\bfA}\)</span> if <span class="math inline">\(\bfA= \begin{bmatrix} 0 &amp; 1 &amp; 2 \\ 0 &amp; 0 &amp; 1 \\ 0 &amp; 0 &amp; 0 \end{bmatrix}\)</span>.</p>
 <div class="solution proof">
 <p><span class="proof-title"><em>Solution</em>. </span>The matrix is triangular and evidently has all zero eigenvalues. We get</p>
 <p><span class="math display">\[
@@ -1315,7 +1364,7 @@ e^{t\bfA} &amp;= c_0(t)\meye + c_1(t)\bfA.
 \tag{6.17}\]</span></span></p>
 <p>Note that eigenvectors aren’t needed.</p>
 <div id="exm-odesys-exp-polynomial" class="theorem example" data-chapter="6" data-description="Matrix exp by polynomial">
-<p><span class="theorem-title"><strong>Example 6.12 </strong></span>Given that</p>
+<p><span class="theorem-title"><strong>Example 6.13 </strong></span>Given that</p>
 <p><span class="math display">\[
 \mathbf{A} = \twomat{1}{1}{4}{1}
 \]</span></p>
@@ -1343,7 +1392,7 @@ e^{t\bfA} &amp;= \frac{e^{3t}+3e^{-t}}{4}\, \meye + \frac{e^{3t}-e^{-t}}{4} \, \
 </div>
 <p>For complex eigenvalues we can quickly get things back to a real footing, as demonstrated next.</p>
 <div id="exm-odesys-exp-complex" class="theorem example" data-chapter="6" data-description="Matrix exp with complex eigenvalues">
-<p><span class="theorem-title"><strong>Example 6.13 </strong></span>Given that</p>
+<p><span class="theorem-title"><strong>Example 6.14 </strong></span>Given that</p>
 <p><span class="math display">\[
 \mathbf{A} = \twomat{1}{-1}{5}{-3}
 \]</span></p>
@@ -1448,7 +1497,7 @@ u_1(t)=x(t)-\hat{x},\quad u_2(t)=y(t)-\hat{y}.
 <p><span class="theorem-title"><strong>Theorem 6.11 </strong></span>The stability of a steady state is (usually) determined by the eigenvalues of the Jacobian matrix at the steady state.</p>
 </div>
 <div id="exm-" class="theorem example">
-<p><span class="theorem-title"><strong>Example 6.14 </strong></span>Let’s examine the steady states of a pendulum with damping,</p>
+<p><span class="theorem-title"><strong>Example 6.15 </strong></span>Let’s examine the steady states of a pendulum with damping,</p>
 <p><span class="math display">\[
 \ddd{\theta}{t} + \gamma \theta' + \frac{g}{L} \sin(\theta) = 0,
 \]</span></p>
@@ -1487,7 +1536,7 @@ u_1(t)=x(t)-\hat{x},\quad u_2(t)=y(t)-\hat{y}.
 </div>
 <p>The caveat on using eigenvalues for stability is when they both have zero real part, which is weakly stable in the linear sense. In such cases the details of the nonlinear terms of the system can swing the stability either way.</p>
 <div id="exm-" class="theorem example">
-<p><span class="theorem-title"><strong>Example 6.15 </strong></span>The system</p>
+<p><span class="theorem-title"><strong>Example 6.16 </strong></span>The system</p>
 <p><span class="math display">\[
 \begin{split}
 \frac{dx}{dt} &amp;= 3x-\frac{xy}{2}\\
