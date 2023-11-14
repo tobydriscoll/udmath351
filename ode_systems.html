@@ -213,9 +213,10 @@ MathJax = {
   </ul></li>
   <li><a href="#constant-coefficient-problems" id="toc-constant-coefficient-problems" class="nav-link" data-scroll-target="#constant-coefficient-problems"><span class="header-section-number">6.5</span> Constant-coefficient problems</a>
   <ul class="collapse">
-  <li><a href="#homogeneous-solution" id="toc-homogeneous-solution" class="nav-link" data-scroll-target="#homogeneous-solution"><span class="header-section-number">6.5.1</span> Homogeneous solution</a></li>
-  <li><a href="#complex-eigenvalues" id="toc-complex-eigenvalues" class="nav-link" data-scroll-target="#complex-eigenvalues"><span class="header-section-number">6.5.2</span> Complex eigenvalues</a></li>
-  <li><a href="#the-oscillator-reloaded" id="toc-the-oscillator-reloaded" class="nav-link" data-scroll-target="#the-oscillator-reloaded"><span class="header-section-number">6.5.3</span> The oscillator reloaded</a></li>
+  <li><a href="#distinct-real-eigenvalues" id="toc-distinct-real-eigenvalues" class="nav-link" data-scroll-target="#distinct-real-eigenvalues"><span class="header-section-number">6.5.1</span> Distinct real eigenvalues</a></li>
+  <li><a href="#repeated-eigenvalue" id="toc-repeated-eigenvalue" class="nav-link" data-scroll-target="#repeated-eigenvalue"><span class="header-section-number">6.5.2</span> Repeated eigenvalue</a></li>
+  <li><a href="#complex-eigenvalues" id="toc-complex-eigenvalues" class="nav-link" data-scroll-target="#complex-eigenvalues"><span class="header-section-number">6.5.3</span> Complex eigenvalues</a></li>
+  <li><a href="#the-oscillator-reloaded" id="toc-the-oscillator-reloaded" class="nav-link" data-scroll-target="#the-oscillator-reloaded"><span class="header-section-number">6.5.4</span> The oscillator reloaded</a></li>
   </ul></li>
   <li><a href="#stability-and-the-phase-plane" id="toc-stability-and-the-phase-plane" class="nav-link" data-scroll-target="#stability-and-the-phase-plane"><span class="header-section-number">6.6</span> Stability and the phase plane</a>
   <ul class="collapse">
@@ -229,9 +230,10 @@ MathJax = {
   <li><a href="#power-series" id="toc-power-series" class="nav-link" data-scroll-target="#power-series"><span class="header-section-number">6.7.2</span> Power series</a></li>
   <li><a href="#computation" id="toc-computation" class="nav-link" data-scroll-target="#computation"><span class="header-section-number">6.7.3</span> Computation</a></li>
   </ul></li>
-  <li><a href="#linearization" id="toc-linearization" class="nav-link" data-scroll-target="#linearization"><span class="header-section-number">6.8</span> Linearization</a>
+  <li><a href="#nonhomogeneous-problem" id="toc-nonhomogeneous-problem" class="nav-link" data-scroll-target="#nonhomogeneous-problem"><span class="header-section-number">6.8</span> Nonhomogeneous problem</a></li>
+  <li><a href="#linearization" id="toc-linearization" class="nav-link" data-scroll-target="#linearization"><span class="header-section-number">6.9</span> Linearization</a>
   <ul class="collapse">
-  <li><a href="#stability-1" id="toc-stability-1" class="nav-link" data-scroll-target="#stability-1"><span class="header-section-number">6.8.1</span> Stability</a></li>
+  <li><a href="#stability-1" id="toc-stability-1" class="nav-link" data-scroll-target="#stability-1"><span class="header-section-number">6.9.1</span> Stability</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -725,8 +727,8 @@ W(\bfx_1,\ldots,\bfx_n; t=0) = \twodet{3}{2}{-1}{2} = 8.
 <div id="thm-odesys-eigvec-solution" class="theorem">
 <p><span class="theorem-title"><strong>Theorem 6.4 </strong></span>If <span class="math inline">\(\mathbf{A} \mathbf{v} = \lambda \mathbf{v}\)</span>, then <a href="#eq-system-eigvec-solution" class="quarto-xref">Equation&nbsp;<span>6.9</span></a> is a solution of <a href="#eq-system-constcoeff" class="quarto-xref">Equation&nbsp;<span>6.8</span></a>.</p>
 </div>
-<section id="homogeneous-solution" class="level3" data-number="6.5.1">
-<h3 data-number="6.5.1" class="anchored" data-anchor-id="homogeneous-solution"><span class="header-section-number">6.5.1</span> Homogeneous solution</h3>
+<section id="distinct-real-eigenvalues" class="level3" data-number="6.5.1">
+<h3 data-number="6.5.1" class="anchored" data-anchor-id="distinct-real-eigenvalues"><span class="header-section-number">6.5.1</span> Distinct real eigenvalues</h3>
 <p>Counting algebraic multiplicities, we know that <span class="math inline">\(\mathbf{A}\)</span> has eigenvalues <span class="math inline">\(\lambda_1,\ldots,\lambda_n\)</span>. Say that we have eigenvectors <span class="math inline">\(\mathbf{v}_1,\ldots,\mathbf{v}_n\)</span> to go with them. Then we have <span class="math inline">\(n\)</span> homogeneous solutions</p>
 <p><span class="math display">\[
 \mathbf{x}_j(t) = e^{t \lambda_j} \mathbf{v}_j, \quad j=1,\ldots,n.
@@ -753,19 +755,6 @@ e^{t \lambda_1} \mathbf{v}_1 &amp; \cdots &amp; e^{t \lambda_n} \mathbf{v}_n
 \tag{6.12}\]</span></span></p>
 <p>In particular, <a href="#eq-fs-eq-eigenfundamental" class="quarto-xref">Equation&nbsp;<span>6.11</span></a> and <a href="#eq-cc-eigengeneral" class="quarto-xref">Equation&nbsp;<span>6.12</span></a> hold if the eigenvalues of <span class="math inline">\(\bfA\)</span> are distinct (i. e., all of them are simple).</p>
 </div>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><a href="#thm-cc-eigensolution" class="quarto-xref">Theorem&nbsp;<span>6.5</span></a> requires that <span class="math inline">\(\bfA\)</span> be diagonalizable. Solutions for defective matrices will have to wait for later.</p>
-</div>
-</div>
 <div id="exm-odesys-eigen-real" class="theorem example" data-chapter="6" data-description="ODE system with real eigenvalues">
 <p><span class="theorem-title"><strong>Example 6.9 </strong></span>Given that</p>
 <p><span class="math display">\[
@@ -790,8 +779,61 @@ Note
 </div>
 </div>
 </section>
-<section id="complex-eigenvalues" class="level3" data-number="6.5.2">
-<h3 data-number="6.5.2" class="anchored" data-anchor-id="complex-eigenvalues"><span class="header-section-number">6.5.2</span> Complex eigenvalues</h3>
+<section id="repeated-eigenvalue" class="level3" data-number="6.5.2">
+<h3 data-number="6.5.2" class="anchored" data-anchor-id="repeated-eigenvalue"><span class="header-section-number">6.5.2</span> Repeated eigenvalue</h3>
+<p>If <span class="math inline">\(\bfA\)</span> has a repeated eigenvalue, then it might not be diagonalizable. If all of the eigenvalues are nondefective, then we can still use <a href="#thm-cc-eigensolution" class="quarto-xref">Theorem&nbsp;<span>6.5</span></a>.</p>
+<p>If the matrix <span class="math inline">\(\bfA\)</span> is not diagonalizable, then we can’t use the eigenvectors alone to find a fundamental matrix. There is a fairly straightforward workaround, although it’s painful to do by hand for more than a double eigenvalue.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><a href="#thm-cc-eigensolution" class="quarto-xref">Theorem&nbsp;<span>6.5</span></a> requires that <span class="math inline">\(\bfA\)</span> be diagonalizable. Solutions for defective matrices will have to wait for later.</p>
+</div>
+</div>
+<p>::::{#exm-odesys-eigen-defective chapter=6 description=“ODE system with defective matrix”} The matrix</p>
+<p><span class="math display">\[
+\mathbf{A} = \begin{bmatrix} -2 &amp; 1 \\ 0 &amp; -2 \end{bmatrix}
+\]</span></p>
+<p>has the single eigenvalue <span class="math inline">\(\lambda_1=-2\)</span> with eigenspace spanned by <span class="math inline">\(\mathbf{v}_1=[1,\,0]\)</span>. Find the general solution of <span class="math inline">\(\bfx'=\bfA\bfx\)</span>.</p>
+<p>:::{.solution} One solution is</p>
+<p><span class="math display">\[
+\bfx_1 = e^{-2t} \twovec{1}{0}.
+\]</span></p>
+<p>We can find a second solution by looking for a solution of the form</p>
+<p><span class="math display">\[
+\bfx_2 = t e^{-2t} \twovec{1}{0} + e^{-2t} \bfw,
+\]</span></p>
+<p>where <span class="math inline">\(\bfw\)</span> is a constant vector to be determined. Then</p>
+<p><span class="math display">\[
+\bfx_2' = (e^{-2t} - 2t e^{-2t})  \twovec{1}{0} -2 e^{-2t} \bfw
+\]</span></p>
+<p>and</p>
+<p><span class="math display">\[
+\bfA \bfx_2 = t e^{-2t} \twovec{-2}{0} + e^{-2t} \bfA \bfw.
+\]</span></p>
+<p>We get <span class="math inline">\(\bfx_2\)</span> to be a solution by making these last two lines equal each other, i. .e,</p>
+<p><span class="math display">\[
+(e^{-2t} - 2t e^{-2t})  \twovec{1}{0} -2 e^{-2t} \bfw = t e^{-2t} \twovec{-2}{0} + e^{-2t} \bfA \bfw,
+\]</span></p>
+<p>or</p>
+<p><span class="math display">\[
+-e^{-2t} \left( \twovec{1}{0} - 2  \bfw  - \bfA \bfw \right) + t e^{-2t} \left( -2 \twovec{1}{0} -  \twovec{-2}{0} \right) = \bfzero.
+\]</span></p>
+<p>The second big group automagically disappears. The first group is zero if and only if</p>
+<p><span class="math display">\[
+\twovec{1}{0} = \bfA \bfw + 2 \bfw  = (\bfA + 2 \meye) \bfw.
+\]</span></p>
+<p>This is just a linear system to solve for <span class="math inline">\(\bfw\)</span>.</p>
+<p>Then</p>
+</section>
+<section id="complex-eigenvalues" class="level3" data-number="6.5.3">
+<h3 data-number="6.5.3" class="anchored" data-anchor-id="complex-eigenvalues"><span class="header-section-number">6.5.3</span> Complex eigenvalues</h3>
 <p><a href="#thm-cc-eigensolution" class="quarto-xref">Theorem&nbsp;<span>6.5</span></a> works fine if the eigenvalues and eigenvectors are complex. However, a purely real-number alternative form is also available.</p>
 <p>Suppose that</p>
 <p><span class="math display">\[
@@ -830,8 +872,8 @@ e^{(1+i)t} \twovec{1}{i} = e^t \twovec{\cos t + i \sin t}{i\cos t - \sin t}
 </div>
 </div>
 </section>
-<section id="the-oscillator-reloaded" class="level3" data-number="6.5.3">
-<h3 data-number="6.5.3" class="anchored" data-anchor-id="the-oscillator-reloaded"><span class="header-section-number">6.5.3</span> The oscillator reloaded</h3>
+<section id="the-oscillator-reloaded" class="level3" data-number="6.5.4">
+<h3 data-number="6.5.4" class="anchored" data-anchor-id="the-oscillator-reloaded"><span class="header-section-number">6.5.4</span> The oscillator reloaded</h3>
 <p>Earlier we showed that the harmonic oscillator</p>
 <p><span class="math display">\[
 x'' + 2 Z \omega_0 x' + \omega_0^2 x = 0
@@ -1278,65 +1320,10 @@ e^{t\mathbf{A}} = \mathbf{I} + t\mathbf{A} + \frac{1}{2!}t^2 \mathbf{A}^2 + \fra
 </section>
 <section id="computation" class="level3" data-number="6.7.3">
 <h3 data-number="6.7.3" class="anchored" data-anchor-id="computation"><span class="header-section-number">6.7.3</span> Computation</h3>
-<p>Summing the infinite series of matrices in <a href="#eq-matrix_exp-series" class="quarto-xref">Equation&nbsp;<span>6.15</span></a> seems a daunting project. Fortunately we have a number of ways to avoid that.</p>
-<section id="diagonal-matrix" class="level4" data-number="6.7.3.1">
-<h4 data-number="6.7.3.1" class="anchored" data-anchor-id="diagonal-matrix"><span class="header-section-number">6.7.3.1</span> Diagonal matrix</h4>
-<p>As in <a href="#eq-odesys-diagexp" class="quarto-xref">Equation&nbsp;<span>6.14</span></a>, if <span class="math inline">\(\bfD\)</span> is diagonal with <span class="math inline">\(\lambda_1,\ldots,\lambda_n\)</span> on the diagonal, then <span class="math inline">\(e^{t\bfD}\)</span> is diagonal with <span class="math inline">\(e^{t\lambda_1},\ldots,e^{t\lambda_n}\)</span> on the diagonal.</p>
-</section>
-<section id="nilpotent-matrix" class="level4" data-number="6.7.3.2">
-<h4 data-number="6.7.3.2" class="anchored" data-anchor-id="nilpotent-matrix"><span class="header-section-number">6.7.3.2</span> Nilpotent matrix</h4>
-<div id="def-nilpotent" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 6.7 </strong></span>A <strong>nilpotent</strong> matrix <span class="math inline">\(\bfA\)</span> satisfies <span class="math inline">\(\bfA^k=\bfzero\)</span> for some integer <span class="math inline">\(k\)</span>.</p>
-</div>
-<div id="thm-nilpotent-eigvals" class="theorem">
-<p><span class="theorem-title"><strong>Theorem 6.9 </strong></span>A matrix is nilpotent if and only if all of its eigenvalues are zero.</p>
-</div>
-<p>For a nilpotent matrix, the infinite series for the matrix exponential simply truncates at a finite power.</p>
-<div id="exm-odesys-exp-nilpotent" class="theorem example" data-chapter="6" data-description="Matrix exp with nilpotent matrix">
-<p><span class="theorem-title"><strong>Example 6.12 </strong></span>Find <span class="math inline">\(e^{t\bfA}\)</span> if <span class="math inline">\(\bfA= \begin{bmatrix} 0 &amp; 1 &amp; 2 \\ 0 &amp; 0 &amp; 1 \\ 0 &amp; 0 &amp; 0 \end{bmatrix}\)</span>.</p>
-<div class="solution proof">
-<p><span class="proof-title"><em>Solution</em>. </span>The matrix is triangular and evidently has all zero eigenvalues. We get</p>
-<p><span class="math display">\[
-\begin{split}
-e^{t\mathbf{A}} &amp;= \mathbf{I} + t\mathbf{A} + \frac{1}{2!}t^2 \mathbf{A}^2 + \frac{1}{3!} t^3 \mathbf{A}^3 + \cdots \\
-&amp;= \begin{bmatrix} 1 &amp; 0 &amp; 0 \\ 0 &amp; 1 &amp; 0 \\ 0 &amp; 0 &amp; 1 \end{bmatrix} + t \begin{bmatrix} 0 &amp; 1 &amp; 2 \\ 0 &amp; 0 &amp; 1 \\ 0 &amp; 0 &amp; 0 \end{bmatrix} + t^2 \begin{bmatrix} 0 &amp; 0 &amp; 1 \\ 0 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 0 \end{bmatrix},
-\end{split}
-\]</span></p>
-<p>since <span class="math inline">\(\bfA^3=\bfzero\)</span>. This simplifies to</p>
-<p><span class="math display">\[
-e^{t\mathbf{A}} = \begin{bmatrix}
-1 &amp; t &amp; 2t+t^2 \\
-0 &amp; 1 &amp; t \\
-0 &amp; 0 &amp; 1
-\end{bmatrix}.
-\]</span></p>
-</div>
-</div>
-<!-- If all the eigenvalues of a matrix equal a single number $\lambda$, then $(\bfA-\lambda\meye)$ is nilpotent. This fact can be used to make the series truncate finitely.
-
-::::{#exm-}
-Find $e^{t\mathbf{A}}$ if $\bfA=\twomat{4}{1}{0}{4}$.
-
-:::{.solution}
-You can check that $\lambda=4$ is the only eigenvalue, with algebraic multiplicity equal to 2. Let $\bfB=\bfA-4\meye$. You can easily calculate that $\bfB^2=\bfzero$, so  
-
-$$
-e^{t\bfB} = \meye + t \bfB = \twomat{1}{t}{0}{1}.
-$$
-
-From the exponential properties we have 
-
-$$
-e^{t\bfA}=e^{t\bfb+4t\meye} = e^{4t\meye} \, e^{\bfB} = e^{4t} \twomat{1}{t}{0}{1}. 
-$$
-:::
-:::: -->
-</section>
-<section id="polynomial-representation" class="level4" data-number="6.7.3.3">
-<h4 data-number="6.7.3.3" class="anchored" data-anchor-id="polynomial-representation"><span class="header-section-number">6.7.3.3</span> Polynomial representation</h4>
-<p>Thanks to a result known as the Cayley–Hamilton theorem, the following is true.</p>
+<p>While the matrix exponential completely solves the initial-value problem for a constant-coefficient homogeneous system, it usually not easy to compute. One exception are diagonal matrices. As seen in <a href="#eq-odesys-diagexp" class="quarto-xref">Equation&nbsp;<span>6.14</span></a>, if <span class="math inline">\(\bfD\)</span> is diagonal with <span class="math inline">\(\lambda_1,\ldots,\lambda_n\)</span> on the diagonal, then <span class="math inline">\(e^{t\bfD}\)</span> is diagonal with <span class="math inline">\(e^{t\lambda_1},\ldots,e^{t\lambda_n}\)</span> on the diagonal.</p>
+<p>A diagonalization can be used to compute the matrix exponential, but that route is no easier than finding a fundamental matrix like we did earlier. Summing the infinite series of matrices in <a href="#eq-matrix_exp-series" class="quarto-xref">Equation&nbsp;<span>6.15</span></a> seems unlikely to be helpful in general. Fortunately, there is an alternative. Thanks to a result known as the Cayley–Hamilton theorem, the following is true.</p>
 <div id="thm-matrix_exp-poly" class="theorem">
-<p><span class="theorem-title"><strong>Theorem 6.10 (Matrix exponential by polynomial) </strong></span>If <span class="math inline">\(\bfA\)</span> has eigenvalues <span class="math inline">\(\lambda_1,\ldots,\lambda_n\)</span>, then there exist functions <span class="math inline">\(c_0(t),\ldots,c_{n-1}(t)\)</span> such that if we define</p>
+<p><span class="theorem-title"><strong>Theorem 6.9 (Matrix exponential by polynomial) </strong></span>If <span class="math inline">\(\bfA\)</span> has eigenvalues <span class="math inline">\(\lambda_1,\ldots,\lambda_n\)</span>, then there exist functions <span class="math inline">\(c_0(t),\ldots,c_{n-1}(t)\)</span> such that if we define</p>
 <p><span class="math display">\[
 f(t,z) = c_0(t) + c_1(t) z + \cdots + c_{n-1}(t) z,
 \]</span></p>
@@ -1349,28 +1336,44 @@ f(t,\lambda_k) = e^{t\lambda_k}, \qquad k=1,\ldots,n,
 e^{t\bfA} = f(t,\bfA) = c_0(t)\meye + c_1(t)\bfA + \cdots + c_{n-1}(t)\bfA^{n-1}.
 \]</span></p>
 </div>
-<p>We will write this out just for the <span class="math inline">\(2\times 2\)</span> case. If the eigenvalues are distinct, then we can solve for <span class="math inline">\(c_0(t)\)</span> and <span class="math inline">\(c_1(t)\)</span> in the linear system</p>
-<p><span id="eq-matrixexp-polylam"><span class="math display">\[
-\begin{split}
-e^{t\lambda_1} &amp;= c_0(t) + c_1(t)\lambda_1 \\
-e^{t\lambda_2} &amp;= c_0(t) + c_1(t)\lambda_2,
-\end{split}
-\tag{6.16}\]</span></span></p>
-<p>and then use them in</p>
+<p>The main appeal of these formulas is that the eigenvectors aren’t needed. We will write out the implications just for the <span class="math inline">\(2\times 2\)</span> case:</p>
+<div id="thm-matrix_exp-2by2" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 6.10 (Matrix exponential for <span class="math inline">\(2\times 2\)</span>) </strong></span>If <span class="math inline">\(\bfA\)</span> is <span class="math inline">\(2\times 2\)</span>, then</p>
 <p><span id="eq-matrixexp-polymat"><span class="math display">\[
 \begin{split}
-e^{t\bfA} &amp;= c_0(t)\meye + c_1(t)\bfA.
+e^{t\bfA} &amp;= c_0(t)\,\meye + c_1(t)\,\bfA.
+\end{split}
+\tag{6.16}\]</span></span></p>
+<p>If the eigenvalues of <span class="math inline">\(\bfA\)</span> are real and distinct, then <span class="math inline">\(c_0\)</span> and <span class="math inline">\(c_1\)</span> are solutions of the system</p>
+<p><span id="eq-matrixexp-2by2real"><span class="math display">\[
+\begin{split}
+e^{t\lambda_1} &amp;= c_0(t) + \lambda_1 c_1(t), \\
+e^{t\lambda_2} &amp;= c_0(t) + \lambda_2 c_1(t).
 \end{split}
 \tag{6.17}\]</span></span></p>
-<p>Note that eigenvectors aren’t needed.</p>
-<div id="exm-odesys-exp-polynomial" class="theorem example" data-chapter="6" data-description="Matrix exp by polynomial">
-<p><span class="theorem-title"><strong>Example 6.13 </strong></span>Given that</p>
+<p>If <span class="math inline">\(\lambda_1 = \lambda_2\)</span>, then</p>
+<p><span id="eq-matrixexp-2by2repeat"><span class="math display">\[
+\begin{split}
+e^{t\lambda_1} &amp;= c_0(t) + \lambda_1 c_1(t), \\
+c_1(t) &amp;=  t e^{t\lambda_1}.
+\end{split}
+\tag{6.18}\]</span></span></p>
+<p>If <span class="math inline">\(\lambda_{1,2} = r \pm i\omega\)</span>, then</p>
+<p><span id="eq-matrixexp-2by2complex"><span class="math display">\[
+\begin{split}
+e^{rt} \cos(\omega t) &amp;= c_0(t) + rc_1(t), \\
+e^{rt} \sin(\omega t) &amp;= \omega c_1(t).
+\end{split}
+\tag{6.19}\]</span></span></p>
+</div>
+<div id="exm-odesys-exp-distinct" class="theorem example" data-chapter="6" data-description="Matrix exp w/distinct eigenvalues">
+<p><span class="theorem-title"><strong>Example 6.12 </strong></span>Given that</p>
 <p><span class="math display">\[
 \mathbf{A} = \twomat{1}{1}{4}{1}
 \]</span></p>
 <p>has eigenvalues <span class="math inline">\(\lambda_1=3\)</span> and <span class="math inline">\(\lambda_2=-1\)</span>, find <span class="math inline">\(e^{t\bfA}\)</span>.</p>
 <div class="solution proof">
-<p><span class="proof-title"><em>Solution</em>. </span>We write out <a href="#eq-matrixexp-polylam" class="quarto-xref">Equation&nbsp;<span>6.16</span></a>:</p>
+<p><span class="proof-title"><em>Solution</em>. </span>We write out <a href="#eq-matrixexp-2by2real" class="quarto-xref">Equation&nbsp;<span>6.17</span></a>:</p>
 <p><span class="math display">\[
 \begin{split}
 c_0 + 3c_1 &amp;= e^{3t}   \\
@@ -1381,7 +1384,7 @@ c_0 - c_1 &amp;= e^{-t}.
 <p><span class="math display">\[
 c_0 = \frac{-e^{3t}-3e^{-t}}{-4}, \qquad c_1 = \frac{e^{-t}-e^{3t}}{-4}.
 \]</span></p>
-<p>Inserting these into <a href="#eq-matrixexp-polymat" class="quarto-xref">Equation&nbsp;<span>6.17</span></a> gives</p>
+<p>Inserting these into <a href="#eq-matrixexp-polymat" class="quarto-xref">Equation&nbsp;<span>6.16</span></a> gives</p>
 <p><span class="math display">\[
 \begin{split}
 e^{t\bfA} &amp;= \frac{e^{3t}+3e^{-t}}{4}\, \meye + \frac{e^{3t}-e^{-t}}{4} \, \bfA \\
@@ -1390,34 +1393,25 @@ e^{t\bfA} &amp;= \frac{e^{3t}+3e^{-t}}{4}\, \meye + \frac{e^{3t}-e^{-t}}{4} \, \
 \]</span></p>
 </div>
 </div>
-<p>For complex eigenvalues we can quickly get things back to a real footing, as demonstrated next.</p>
-<div id="exm-odesys-exp-complex" class="theorem example" data-chapter="6" data-description="Matrix exp with complex eigenvalues">
-<p><span class="theorem-title"><strong>Example 6.14 </strong></span>Given that</p>
+<div id="exm-odesys-exp-complex" class="theorem example" data-chapter="6" data-description="Matrix exp w/complex eigenvalues">
+<p><span class="theorem-title"><strong>Example 6.13 </strong></span>Given that</p>
 <p><span class="math display">\[
 \mathbf{A} = \twomat{1}{-1}{5}{-3}
 \]</span></p>
-<p>has eigenvalues <span class="math inline">\(-1\pm i\)</span>, find <span class="math inline">\(e^{t\bfA}\)</span> and the solution of the IVP <span class="math inline">\(\bfx'=\mathbf{A}\bfx\)</span>, <span class="math inline">\(\bfx(0)=\twovec{2}{1}\)</span>.</p>
+<p>has eigenvalues <span class="math inline">\(-1\pm i\)</span>, find <span class="math inline">\(e^{t\bfA}\)</span> and the solution of the IVP <span class="math inline">\(\bfx'=\mathbf{A}\bfx\)</span> having <span class="math inline">\(\bfx(0)=\twovec{2}{1}\)</span>.</p>
 <div class="solution proof">
-<p><span class="proof-title"><em>Solution</em>. </span>Writing out <a href="#eq-matrixexp-polylam" class="quarto-xref">Equation&nbsp;<span>6.16</span></a> for both conjugate eigenvalues, and using Euler’s formula, we get</p>
+<p><span class="proof-title"><em>Solution</em>. </span>Writing out <a href="#eq-matrixexp-2by2complex" class="quarto-xref">Equation&nbsp;<span>6.19</span></a> with <span class="math inline">\(r=-1\)</span> and <span class="math inline">\(\omega=1\)</span> yields</p>
 <p><span class="math display">\[
 \begin{split}
-c_0 + c_1(-1+i) &amp;= e^{-t+it} = e^{-t}(\cos(t)+i\sin(t)) \\
-c_0 + c_1(-1-i) &amp;= e^{-t-it} = e^{-t}(\cos(t)-i\sin(t)).
+e^{-t} \cos(t) &amp;= c_0(t) - c_1(t), \\
+e^{-t} \sin(t) &amp;= c_1(t).
 \end{split}
 \]</span></p>
-<p>If we subtract the second equation from the first, we get</p>
-<p><span class="math display">\[
-2ic_1 = 2i e^{-t}\sin(t) \quad \implies \quad c_1 = e^{-t}\sin(t),
-\]</span></p>
-<p>If we add the equations, then, we have</p>
-<p><span class="math display">\[
-2c_0 - 2c_1 = 2e^{-t}\cos(t). \quad \implies \quad c_0 = e^{-t}\cos(t) + e^{-t}\sin(t).
-\]</span></p>
-<p>Now we apply <a href="#eq-matrixexp-polymat" class="quarto-xref">Equation&nbsp;<span>6.17</span></a>:</p>
+<p>Hence</p>
 <p><span class="math display">\[
 \begin{split}
-e^{t\bfA} &amp;= e^{-t}[\cos(t) + \sin(t) ]\, \meye + e^{-t}\sin(t)\, \bfA \\
-&amp;= e^{-t}\,\twomat{\cos(t)+\sin(t)}{0}{0}{\cos(t)+\sin(t)} + e^{-t}\,\twomat{\sin(t)}{-\sin(t)}{5\sin(t)}{-3\sin(t)} \\[1em]
+e^{t\bfA} &amp;= [e^{-t} \cos(t) + e^{-t} \sin(t)]\, \meye + e^{-t} \sin(t)\, \bfA \\
+&amp; = e^{-t}\,\twomat{\cos(t)+\sin(t)}{0}{0}{\cos(t)+\sin(t)} + e^{-t}\,\twomat{\sin(t)}{-\sin(t)}{5\sin(t)}{-3\sin(t)} \\
 &amp;= e^{-t}\, \twomat{\cos(t)+2\sin(t)}{-\sin(t)}{5\sin(t)}{\cos(t)-2\sin(t)}.
 \end{split}
 \]</span></p>
@@ -1427,12 +1421,71 @@ e^{t\bfA} &amp;= e^{-t}[\cos(t) + \sin(t) ]\, \meye + e^{-t}\sin(t)\, \bfA \\
 \]</span></p>
 </div>
 </div>
-<p>The process above has to be modified if <span class="math inline">\(\lambda_1=\lambda_2\)</span>, but we won’t get into the details.</p>
+<div id="exm-odesys-exp-repeat" class="theorem example" data-chapter="6" data-description="Matrix exp w/repeated eigenvalue">
+<p><span class="theorem-title"><strong>Example 6.14 </strong></span>Given that</p>
+<p><span class="math display">\[
+\mathbf{A} = \twomat{4}{1}{-1}{2}
+\]</span></p>
+<p>has eigenvalue <span class="math inline">\(\lambda_1=\lambda_2=3\)</span>, find <span class="math inline">\(e^{t\bfA}\)</span>.</p>
+<div class="solution proof">
+<p><span class="proof-title"><em>Solution</em>. </span>Writing out <a href="#eq-matrixexp-2by2repeat" class="quarto-xref">Equation&nbsp;<span>6.18</span></a> with <span class="math inline">\(\lambda_1=3\)</span> yields</p>
+<p><span class="math display">\[
+\begin{split}
+e^{3t} &amp;= c_0(t) + 3c_1(t), \\
+c_1(t) &amp;=  t e^{3t}.
+\end{split}
+\]</span></p>
+<p>Hence</p>
+<p><span class="math display">\[
+\begin{split}
+e^{t\bfA} &amp;= [e^{3t} -3 t e^{3t}]\, \meye + t e^{3t}\, \bfA \\
+&amp;=  e^{3t}\,\twomat{1-3t}{0}{0}{1-3t} + e^{3t}\,\twomat{4t}{t}{-t}{2t} \\
+&amp; = e^{3t}\,\twomat{1+t}{t}{-t}{1-t}.
+\end{split}
+\]</span></p>
+</div>
+</div>
 </section>
 </section>
+<section id="nonhomogeneous-problem" class="level2" data-number="6.8">
+<h2 data-number="6.8" class="anchored" data-anchor-id="nonhomogeneous-problem"><span class="header-section-number">6.8</span> Nonhomogeneous problem</h2>
+<p>The nonhomogeneous system <span class="math inline">\(\mathbf{x}'=\mathbf{A} \mathbf{x} + \mathbf{f}(t)\)</span> has general solution</p>
+<p><span class="math display">\[
+\bfx(t) = \bfx_h(t) + \bfx_p(t),
+\]</span></p>
+<p>where <span class="math inline">\(\bfx_h\)</span> is the general solution of the homogeneous problem <span class="math inline">\(\mathbf{x}'=\mathbf{A} \mathbf{x}\)</span> and <span class="math inline">\(\bfx_p\)</span> is a particular solution of the nonhomogeneous problem. If <span class="math inline">\(\bfA\)</span> has constant coefficients, then</p>
+<p><span class="math display">\[
+\bfx_h(t) = e^{t\bfA} \bfc
+\]</span></p>
+<p>for a constant vector <span class="math inline">\(\bfc\)</span>. To finish the problem, we need to find <span class="math inline">\(\bfx_p\)</span>.</p>
+<p>One option is to turn once again to variation of parameters. If we make the assumption</p>
+<p><span class="math display">\[
+\bfx_p(t) = e^{t\bfA} \bfc(t),
+\]</span></p>
+<p>then</p>
+<p><span class="math display">\[
+\begin{split}
+\bfx_p'(t) &amp;= \bfA e^{t\bfA} \bfc(t) + e^{t\bfA} \bfc'(t) \\
+&amp;= \bfA \bfx_p(t) + e^{t\bfA} \bfc'(t).
+\end{split}
+\]</span></p>
+<p>Comparing this to the ODE, <span class="math inline">\(\mathbf{x}'=\mathbf{A} \mathbf{x} + \mathbf{f}(t)\)</span>, we will have a particular solution if</p>
+<p><span class="math display">\[
+e^{t\bfA} \bfc'(t) = \mathbf{f}(t), \qquad \implies \qquad \bfc'(t) = e^{-t\bfA} \,\mathbf{f}(t).
+\]</span></p>
+<p>In principle, finding the antiderivative of <span class="math inline">\(\bfc'(t)\)</span> is just a bunch of integrations and algebra. In practice, we probably ought to leave it to the computers.</p>
+<p>However, one way of writing the full general solution is interesting:</p>
+<p><span class="math display">\[
+\bfx(t) = e^{t\bfA}\, \bfx(0) + \int_0^t e^{(t-s)\bfA} \, \mathbf{f}(s) \, ds.
+\]</span></p>
+<p>Parsing this formula, the solution comprises two contributions that simply add together (the hallmark of linearity). The first term is the influence of the initial condition, which is propagated by the matrix exponential just as though the forcing isn’t present. In the second term, we can interpret the integral as the sum of infinitesimals: for every <span class="math inline">\(s\)</span> between <span class="math inline">\(0\)</span> and <span class="math inline">\(t\)</span>, we get a contribution of</p>
+<p><span class="math display">\[
+e^{(t-s)\bfA}\, \mathbf{f}(s).
+\]</span></p>
+<p>This is equivalent to the solution of the IVP that starts at time <span class="math inline">\(s\)</span> with initial condition <span class="math inline">\(\bff(s)\)</span> and evolves for an additional time <span class="math inline">\(t-s\)</span> to get to time <span class="math inline">\(t\)</span>. That is, each instant of forcing is propagated as though it resets the initial state of the system. Thus, while the behavior of the matrix exponential can be quite complicated, we can at least intuitively begin to understand how forcing affects the system.</p>
 </section>
-<section id="linearization" class="level2" data-number="6.8">
-<h2 data-number="6.8" class="anchored" data-anchor-id="linearization"><span class="header-section-number">6.8</span> Linearization</h2>
+<section id="linearization" class="level2" data-number="6.9">
+<h2 data-number="6.9" class="anchored" data-anchor-id="linearization"><span class="header-section-number">6.9</span> Linearization</h2>
 <p>A pendulum with length <span class="math inline">\(L\)</span> and angle of deflection <span class="math inline">\(\theta(t)\)</span> from the vertical is governed by the nonlinear second-order equation</p>
 <p><span class="math display">\[
 \ddd{\theta}{t} + \frac{g}{L} \sin(\theta) = 0,
@@ -1482,15 +1535,14 @@ u_1(t)=x(t)-\hat{x},\quad u_2(t)=y(t)-\hat{y}.
 \]</span></p>
 <p>This inspires the following definition.</p>
 <div id="def-jacobian" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 6.8 (Jacobian matrix) </strong></span>The <strong>Jacobian matrix</strong> of the system <span class="math inline">\(x'=F(x,y),\, y'=G(x,y)\)</span> is</p>
-<p><span class="math display">\[
-:label: nl-eq-jacobian
+<p><span class="theorem-title"><strong>Definition 6.7 (Jacobian matrix) </strong></span>The <strong>Jacobian matrix</strong> of the system <span class="math inline">\(x'=F(x,y),\, y'=G(x,y)\)</span> is</p>
+<p><span id="eq-nl-jacobian"><span class="math display">\[
 \mathbf{J}(x,y) = \twomat{\displaystyle \pp{F}{x}}{\displaystyle \pp{F}{y}}{\displaystyle \pp{G}{x}}{\displaystyle \pp{G}{y}}.
-\]</span></p>
+\tag{6.20}\]</span></span></p>
 </div>
 <p>The Jacobian matrix is essentially the derivative of a 2D vector field. As such, it is also a function of the variables <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>.</p>
-<section id="stability-1" class="level3" data-number="6.8.1">
-<h3 data-number="6.8.1" class="anchored" data-anchor-id="stability-1"><span class="header-section-number">6.8.1</span> Stability</h3>
+<section id="stability-1" class="level3" data-number="6.9.1">
+<h3 data-number="6.9.1" class="anchored" data-anchor-id="stability-1"><span class="header-section-number">6.9.1</span> Stability</h3>
 <p>Let’s summarize. In the neighborhood of a fixed point <span class="math inline">\((\hat{x},\hat{y})\)</span>, we can define the <em>deviation from equilibrium</em> by the variables <span class="math inline">\(u_1(t)=x(t)-\hat{x}\)</span>, <span class="math inline">\(u_2(t)=y(t)-\hat{y}\)</span>. These variables approximately satisfy <span class="math inline">\(\mathbf{u}'=\mathbf{J}(\hat{x},\hat{y})\mathbf{u}\)</span>, which is a linear, constant-coefficient system in two dimensions. Thus, <strong>near a steady state, dynamics are mostly linear.</strong></p>
 <p>We are now right back into the phase plane we studied earlier. In particular:</p>
 <div id="thm-" class="theorem">
@@ -1572,12 +1624,6 @@ u_1(t)=x(t)-\hat{x},\quad u_2(t)=y(t)-\hat{y}.
 </figure>
 </div>
 <p>For a different system, however, the nonlinearity could cause this point to be asymptotically stable or unstable.</p>
-</div>
-<div style="max-width:608px">
-<div style="position:relative;padding-bottom:66.118421052632%">
-<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/2358381/sp/235838100/embedIframeJs/uiconf_id/43030021/partner_id/2358381?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_703u26n1&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&amp;wid=1_kplxqi9v" width="608" height="402" allowfullscreen="" webkitallowfullscreen="" mozallowfullscreen="" allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="Kaltura Player" style="position:absolute;top:0;left:0;width:100%;height:100%">
-</iframe>
-</div>
 </div>
 
 
